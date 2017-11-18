@@ -5,7 +5,7 @@ error_reporting(0);
 
 $page = isset($_GET['p'])?$_GET['p']:'';
 
-
+//add new user
 if($page == 'addNewUser'){
 require 'lib/Db.config.pdo.php';
 $Username = mysql_real_escape_string($_POST['UN']);
@@ -27,6 +27,7 @@ $Position = mysql_real_escape_string($_POST['PS']);
 		$stmt->bindParam(7,$Position);
 		$stmt->execute();
 } 
+//add new patient
 if($page == 'addNewPatient'){
 	require 'lib/Db.config.pdo.php';
 
