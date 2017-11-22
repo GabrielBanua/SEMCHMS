@@ -1,11 +1,11 @@
 <?php
 require 'lib/session.php';
 require 'lib/Db.config.php';
-$rowSQL = mysql_query( "SELECT MAX( P_ID ) AS max FROM `patient`;" );
-$row = mysql_fetch_array( $rowSQL );
-$largestNumber = $row['max'];
-$MaxID = $largestNumber + 1;
-$date = date("Y-m-d");
+    $rowSQL = mysql_query( "SELECT MAX( P_ID ) AS max FROM `patient`" );
+    $row = mysql_fetch_array( $rowSQL );
+    $largestNumber = $row['max'];
+    $MaxID = $largestNumber + 1;
+    $date = date("Y-m-d");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,7 +86,7 @@ $date = date("Y-m-d");
                       </a>
                     </li>
 
-                    <li class="sub-menu">
+                    <li class="sub-menu" id="Patient-li">
                         <a href="javascript:;" class="active">
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
@@ -97,7 +97,7 @@ $date = date("Y-m-d");
                         </ul>
                     </li>
 
-                    <li class="sub-menu">
+                    <li class="sub-menu" id="Schedule-li">
                         <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -108,7 +108,7 @@ $date = date("Y-m-d");
                         </ul>
                     </li>
 
-                    <li class="sub-menu">
+                    <li class="sub-menu" id="Inventory-li">
                         <a href="javascript:;">
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
@@ -120,7 +120,7 @@ $date = date("Y-m-d");
                         </ul>
                     </li>
 					
-					<li class="sub-menu">
+					<li class="sub-menu" id="Laboratory-li">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
@@ -140,7 +140,7 @@ $date = date("Y-m-d");
                       </ul>
                   </li>
 
-                    <li class="sub-menu">
+                    <li class="sub-menu" id="User-li">
                         <a href="javascript:;">
                           <i class="icon-group"></i>
                           <span>Users Management</span>
@@ -151,7 +151,7 @@ $date = date("Y-m-d");
                         </ul>
                     </li>
 
-                    <li class="sub-menu">
+                    <li class="sub-menu" id="Reports-li">
                         <a href="javascript:;">
                           <i class="icon-print"></i>
                           <span>Reports</span>
@@ -161,7 +161,7 @@ $date = date("Y-m-d");
                         </ul>
                     </li>
 
-                    <li class="sub-menu">
+                    <li class="sub-menu" id="Maintenance-li">
                         <a href="javascript:;">
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
@@ -752,7 +752,28 @@ $date = date("Y-m-d");
     
   }
 </script>
-	
+<script>
+        $(document).ready(function(){
+        var Auth ='<?php echo $Position; ?>';
+        if (Auth == "Admin") 
+        {                       
+            $('#Patient-li').show(); 
+            $('#Schedule-li').show();
+            $('#Inventory-li').show();
+            $('#Laboratory-li').show();
+            $('#Reports-li').show();
+            $('#User-li').show();
+            $('#Maintenance-li').show();
+        }
+        else if(Auth == "Doctor") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+        });
+</script>	
 <script>
 		$('.btnNext').click(function(){
 			$('.nav-tabs > .active').next('li').find('a').trigger('click');

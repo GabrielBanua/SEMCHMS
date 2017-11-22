@@ -1,5 +1,16 @@
 <?php
 require 'lib/session.php';
+require 'lib/Db.config.php';
+
+if($Position == "Doctor"){
+  header('Location: index.php');
+}
+else if($Position == "Volunter"){
+  header('Location: index.php');
+}
+  //This is the sql for fetching the data in the database
+  $sql = "SELECT User_id, Username, Password, Position, CONCAT(Firstname,' ',Middlename,' ',Lastname) AS FullName FROM users";
+  $result = mysql_query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -189,6 +200,23 @@ require 'lib/session.php';
                                       </tr>
                                       </thead>
                                       <tbody>
+<?php
+                      while($row = mysql_fetch_array($result)){
+
+                              echo "<tr>";
+                              echo "<td><p>".$row['User_id']."</p></td>";
+                              echo "<td>".$row['Username']."</td>";
+                              echo "<td>".$row['Password']."</td>";
+                              echo "<td>".$row['FullName']."</td>";
+                              echo "<td>".$row['Position']."</td>";
+                              echo "<td class=\"center hidden-phone\">";
+                              echo "<a class=\"btn btn-success btn-xs\" href=\"add-user.php\">Edit</a>&nbsp";
+                              echo "<a class=\"btn btn-danger btn-xs\" href=\"\">delete</a>";
+                              echo "</td>";
+                              echo "</tr>";
+    
+                    }
+?>
                                       </tbody>
                           </table>
                                 </div>
@@ -231,11 +259,11 @@ require 'lib/session.php';
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 4, "desc" ]]
+                  "aaSorting": [[ 10, "desc" ]]
               } );
           } );
       </script>
-      <script>
+      <!--<script>
         function viewUser(){
           $.ajax({
               type: "GET", 
@@ -245,6 +273,6 @@ require 'lib/session.php';
               }
           })
         }
-      </script>
+      </script>-->
   </body>
 </html>

@@ -1,5 +1,8 @@
 <?php
 require 'lib/session.php';
+if($Position == "Volunter"){
+  header('Location: index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

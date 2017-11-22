@@ -101,17 +101,14 @@ if($page == 'addNewPatient'){
  		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 }
-else if($page == 'update'){
-		require 'lib/Db.config.pdo.php';
-		
-}else if($page == 'viewPatient'){
+/*else if($page == 'viewPatient'){
 	require 'lib/Db.config.pdo.php';
 	$stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");
 	$stmt->execute();
 	while($row = $stmt->fetch()){
 		?>
 		<tr>
-			<td><p>P000<?php echo $row['P_ID'] ?></p></td>
+			<td><p>P<?php echo $row['P_ID'] ?></p></td>
 			<td><?php echo $row['FullName'] ?></td>
 			<td><?php echo $row['P_GNDR'] ?></td>
 			<td><?php echo $row['P_TYPE'] ?></td>
@@ -122,7 +119,8 @@ else if($page == 'update'){
 		</tr>
 		<?php
 	}
-}else if($page == 'viewUser'){
+}*/
+/*else if($page == 'viewUser'){
 	require 'lib/Db.config.pdo.php';
 	$stmt = $db->prepare("Select User_id, Username, Password, Position, CONCAT(Firstname,' ',Middlename,' ',Lastname) AS FullName from users");
 	$stmt->execute();
@@ -141,6 +139,6 @@ else if($page == 'update'){
         </tr>
 		<?php
 	}
-}
+}*/
 $connection_close();
 ?>

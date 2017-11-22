@@ -30,7 +30,6 @@ require 'lib/session.php';
 </head>
 
 <body>
-
     <section id="container">
         <!--header start-->
         <header class="header white-bg">
@@ -79,10 +78,10 @@ require 'lib/session.php';
                       </a>
                     </li>
 
-                    <li class="sub-menu">
+                    <li class="sub-menu" id="Patient-li">
                         <a href="javascript:;">
                           <i class="icon-user"></i>
-                          <span>Patient Management</span>
+                          <span >Patient Management</span>
 						</a>
                         <ul class="sub">
                             <li><a href="add-patient.php">Add Patients</a></li>
@@ -90,7 +89,7 @@ require 'lib/session.php';
                         </ul>
                     </li>
 
-                    <li class="sub-menu">
+                    <li class="sub-menu" id="Schedule-li">
                         <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -101,7 +100,7 @@ require 'lib/session.php';
                         </ul>
                     </li>
 
-                    <li class="sub-menu">
+                    <li class="sub-menu" id="Inventory-li">
                         <a href="javascript:;">
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
@@ -113,7 +112,7 @@ require 'lib/session.php';
                         </ul>
                     </li>
 					
-					<li class="sub-menu">
+					<li class="sub-menu" id="Laboratory-li">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
@@ -133,7 +132,7 @@ require 'lib/session.php';
                       </ul>
                   </li>
 				  
-                    <li class="sub-menu">
+                    <li class="sub-menu" id="User-li">
                         <a href="javascript:;">
                           <i class="icon-group"></i>
                           <span>Users Management</span>
@@ -144,7 +143,7 @@ require 'lib/session.php';
                         </ul>
                     </li>
 
-                    <li class="sub-menu">
+                    <li class="sub-menu" id="Reports-li">
                         <a href="javascript:;">
                           <i class="icon-print"></i>
                           <span>Reports</span>
@@ -154,7 +153,7 @@ require 'lib/session.php';
                         </ul>
                     </li>
 
-                    <li class="sub-menu">
+                    <li class="sub-menu" id="Maintenance-li">
                         <a href="javascript:;">
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
@@ -427,6 +426,29 @@ require 'lib/session.php';
     <script src="js/easy-pie-chart.js"></script>
     <script src="js/count.js"></script>
 
+    <script>
+            
+        $(document).ready(function(){
+        var Auth ='<?php echo $Position; ?>';
+        if (Auth == "Admin") 
+        {                       
+            $('#Patient-li').show(); 
+            $('#Schedule-li').show();
+            $('#Inventory-li').show();
+            $('#Laboratory-li').show();
+            $('#Reports-li').show();
+            $('#User-li').show();
+            $('#Maintenance-li').show();
+        }
+        else if(Auth == "Doctor") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+});
+    </script>
     <script>
         //owl carousel
 

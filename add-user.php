@@ -1,5 +1,11 @@
 <?php
 require 'lib/session.php';
+if($Position == "Doctor"){
+  header('Location: index.php');
+}
+else if($Position == "Volunter"){
+  header('Location: index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -281,7 +287,6 @@ require 'lib/session.php';
       type: "POST",
       url: "Server.php?p=addNewUser",
       data: "UN="+Username+"&PW="+Password+"&FN="+Firstname+"&LN="+Lastname+"&MN="+Middlename+"&GN="+Gender+"&PS="+Position
-
     });
     
   }

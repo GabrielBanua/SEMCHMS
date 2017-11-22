@@ -27,7 +27,7 @@ if(isset($_POST['login'])){
     //If $row is FALSE.
     if($user === false){
         //Could not find a user
-        die('Incorrect username!  ');
+        echo "<script>alert('incorrect username')</script>";
     } else{
         $valid = $user['Password'];
         
@@ -45,7 +45,7 @@ if(isset($_POST['login'])){
             
         } else{
             //Passwords do not match.
-            die('password combination is wrong!');
+            echo "<script>alert('incorrect password')</script>";
         }
     }
     

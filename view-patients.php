@@ -2,8 +2,9 @@
 <?php
 require 'lib/session.php';
 require 'lib/Db.config.php';
-$sql = "SELECT * FROM `patients`";
-$result = mysql_query($sql);
+
+  $sql = "SELECT P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName FROM patient";
+  $result = mysql_query($sql);
 ?>
 <html lang="en">
   <head>
@@ -79,7 +80,7 @@ $result = mysql_query($sql);
                       </a>
                   </li>
 
-                  <li class="sub-menu">
+                  <li class="sub-menu" id="Patient-li">
                       <a href="javascript:;"class="active" >
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
@@ -90,7 +91,7 @@ $result = mysql_query($sql);
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Schedule-li">
                       <a href="javascript:;" >
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -101,7 +102,7 @@ $result = mysql_query($sql);
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Inventory-li">
                       <a href="javascript:;" >
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
@@ -113,7 +114,7 @@ $result = mysql_query($sql);
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Laboratory-li">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
@@ -123,17 +124,17 @@ $result = mysql_query($sql);
                               <a href="javascript:;">Add Lab Test</a>
                               <ul class="sub">
                                   <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-								  <li><a href="add-lab-fecal.php">Fecalysis</a></li>
-								  <li><a href="add-lab-hema.php">Hematology</a></li>
-								  <li><a href="add-lab-urinal.php">Urinalysis</a></li>
+                								  <li><a href="add-lab-fecal.php">Fecalysis</a></li>
+                								  <li><a href="add-lab-hema.php">Hematology</a></li>
+                								  <li><a href="add-lab-urinal.php">Urinalysis</a></li>
                               </ul>
                           </li>
-						  <li><a  href="lab-request.php">View Lab Request</a></li>
-						  <li><a  href="#">View Lab Records</a></li>
+            						<li><a  href="lab-request.php">View Lab Request</a></li>
+            						<li><a  href="#">View Lab Records</a></li>
                       </ul>
-                  </li>
+          </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="User-li">
                       <a href="javascript:;" >
                           <i class="icon-group"></i>
                           <span>Users Management</span>
@@ -144,7 +145,7 @@ $result = mysql_query($sql);
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Reports-li">
                         <a href="javascript:;">
                           <i class="icon-print"></i>
                           <span>Reports</span>
@@ -154,7 +155,7 @@ $result = mysql_query($sql);
                         </ul>
                     </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
@@ -190,7 +191,21 @@ $result = mysql_query($sql);
                                           <th width="80" class="hidden-phone">Action</th>
                                       </tr>
                                       <tbody>
-                                        
+<?php
+                  while($row = mysql_fetch_array($result)){
+
+                  echo "<tr>";
+                  echo "<td><p>P".$row['P_ID']."</p></td>";
+                  echo "<td>".$row['FullName']."</td>";
+                  echo "<td>".$row['P_GNDR']."</td>";
+                  echo "<td>".$row['P_TYPE']."</td>";
+                  echo "<td align=\"center\">";
+                  echo "<a class=\"btn btn-primary btn-xs\" href=\"view-patient-profile.php\"><i class=\"icon-eye-open\"></i></a>&nbsp";
+                  echo "<a class=\"btn btn-danger btn-xs\" href=\"add-patient.php\"><i class=\"icon-pencil\"></i></a>";
+                  echo "</td>";
+                  echo "</tr>";
+                  }
+?>
                                       </tbody>
                                     </table>
                                 </div>
@@ -231,22 +246,41 @@ $result = mysql_query($sql);
     <!--script for this page only-->
 
       <script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#example').dataTable( {
-                  "aaSorting": [[ 5, "desc" ]]
-              } );
-          } );
-      </script>
-      <script>
+
         function viewData(){
-          $.ajax({
+          /*$.ajax({
               type: "GET", 
               url: "Server.php?p=viewPatient",
               success: function(data){
                 $('tbody').html(data);
               }
-          })
+          });*/
+          $('#example').dataTable( {
+                  "aaSorting": [[ 10, "desc" ]]
+              } );
         }
       </script>
-  </body>
+      <script>
+        $(document).ready(function(){
+        var Auth ='<?php echo $Position; ?>';
+        if (Auth == "Admin") 
+        {                       
+            $('#Patient-li').show(); 
+            $('#Schedule-li').show();
+            $('#Inventory-li').show();
+            $('#Laboratory-li').show();
+            $('#Reports-li').show();
+            $('#User-li').show();
+            $('#Maintenance-li').show();
+        }
+        else if(Auth == "Doctor") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+        });
+    </script>
+</body>
 </html>
