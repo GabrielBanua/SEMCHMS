@@ -42,7 +42,7 @@ require 'lib/Db.config.php';
               <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
           </div>
           <!--logo start-->
-          <a href="index.html" class="logo" >St. Ezekiel Moreno<span>|Healthcare Management System</span></a>
+          <a href="index.php" class="logo" >St. Ezekiel Moreno<span>|Healthcare Management System</span></a>
           <!--logo end-->
           <div class="top-nav ">
               <ul class="nav pull-right top-menu">
@@ -61,7 +61,7 @@ require 'lib/Db.config.php';
                           <li><a href="#"><i class=" icon-suitcase"></i>Profile</a></li>
                           <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
                           <li><a href="#"><i class="icon-bell-alt"></i> Notification</a></li>
-                          <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+                          <li><a href="login.php"><i class="icon-key"></i> Log Out</a></li>
                       </ul>
                   </li>
                   <!-- user login dropdown end -->
@@ -75,7 +75,7 @@ require 'lib/Db.config.php';
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
                   <li>
-                      <a href="index.html">
+                      <a href="index.php">
                           <i class="icon-dashboard"></i>
                           <span>Home</span>
                       </a>
@@ -87,8 +87,8 @@ require 'lib/Db.config.php';
                           <span>Patient Management</span>
                       </a>
                       <ul class="sub">
-                          <li class="active"><a  href="add-patient.html">Add Patients</a></li>
-                          <li><a  href="view-patients.html">View Patients</a></li>
+                          <li class="active"><a  href="add-patient.php">Add Patients</a></li>
+                          <li><a  href="view-patients.php">View Patients</a></li>
                       </ul>
                   </li>
 				  
@@ -98,8 +98,8 @@ require 'lib/Db.config.php';
                           <span>Schedule Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="set-schedule.html">Set Schedule</a></li>
-                          <li><a  href="view-schedule.html">View Schedule</a></li>
+                          <li><a  href="set-schedule.php">Set Schedule</a></li>
+                          <li><a  href="view-schedule.php">View Schedule</a></li>
                       </ul>
                   </li>
 				  
@@ -109,9 +109,9 @@ require 'lib/Db.config.php';
                           <span>Inventory Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a href="add-inventory.html">Add Inventory</a></li>
-							<li><a href="add-medicines.html">Add Medicines</a></li>
-                            <li><a href="view-inventory.html">View Inventory</a></li>
+                          <li><a href="add-inventory.php">Add Inventory</a></li>
+							<li><a href="add-medicines.php">Add Medicines</a></li>
+                            <li><a href="view-inventory.php">View Inventory</a></li>
                       </ul>
                   </li>
 				  
@@ -124,13 +124,13 @@ require 'lib/Db.config.php';
                           <li class="sub-menu">
                               <a href="javascript:;">Add Lab Test</a>
                               <ul class="sub">
-                                  <li><a href="add-lab-blood.html">Blood Chemistry</a></li>
-								  <li><a href="add-lab-fecal.html">Fecalysis</a></li>
-								  <li><a href="add-lab-hema.html">Hematology</a></li>
-								  <li><a href="add-lab-urinal.html">Urinalysis</a></li>
+                                  <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
+								  <li><a href="add-lab-fecal.php">Fecalysis</a></li>
+								  <li><a href="add-lab-hema.php">Hematology</a></li>
+								  <li><a href="add-lab-urinal.php">Urinalysis</a></li>
                               </ul>
                           </li>
-						  <li><a  href="lab-request.html">View Lab Request</a></li>
+						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="#">View Lab Records</a></li>
                       </ul>
                   </li>
@@ -140,7 +140,7 @@ require 'lib/Db.config.php';
                           <span>Users Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="view-users.html">View Users</a></li>
+                          <li><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
 				  
@@ -150,7 +150,7 @@ require 'lib/Db.config.php';
                           <span>Reports</span>
                       </a>
                       <ul class="sub">
-                          <li><a href="reports.html">Generate Reports</a></li>
+                          <li><a href="reports.php">Generate Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -160,7 +160,7 @@ require 'lib/Db.config.php';
                           <span>Maintenance</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="backup.html">Backup Database</a></li>
+                          <li><a  href="backup.php">Backup Database</a></li>
                       </ul>
                   </li>
               </ul>
