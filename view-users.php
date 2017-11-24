@@ -272,10 +272,6 @@ else if($Position == "Volunter"){
               data: "User_id="+id,
               success: function(data){
                 window.location.reload();
-<<<<<<< HEAD
-=======
-                
->>>>>>> master
               }
           });
 } else {
