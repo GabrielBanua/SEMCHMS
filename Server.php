@@ -8,6 +8,7 @@ $page = isset($_GET['p'])?$_GET['p']:'';
 //add new user
 if($page == 'addNewUser'){
 require 'lib/Db.config.pdo.php';
+require 'lib/password.php';
 $Username = mysql_real_escape_string($_POST['UN']);
 $Password = mysql_real_escape_string($_POST['PW']);
 $Firstname = mysql_real_escape_string($_POST['FN']);
@@ -15,7 +16,7 @@ $Lastname = mysql_real_escape_string($_POST['LN']);
 $Middlename = mysql_real_escape_string($_POST['MN']);
 $Gender = mysql_real_escape_string($_POST['GN']);
 $Position = mysql_real_escape_string($_POST['PS']);
-	$Pass = $Password;
+$Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
 
 		$stmt = $db->prepare("insert into users values('',?,?,?,?,?,?,?)");
 		$stmt->bindParam(1,$Username);
@@ -101,6 +102,17 @@ if($page == 'addNewPatient'){
  		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 }
+else if($page == 'DeleteUser'){
+require 'lib/Db.config.pdo.php';
+
+		$ID = mysql_real_escape_string($_POST['User_id']);
+
+		$sql = "DELETE FROM users WHERE User_id = $ID";
+		$stmt = $db->prepare($sql);
+ 		$stmt -> execute();
+ 		echo '<meta http-equiv="refresh content="1;url=view-users.php">';
+
+}
 /*else if($page == 'viewPatient'){
 	require 'lib/Db.config.pdo.php';
 	$stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");
@@ -140,5 +152,4 @@ if($page == 'addNewPatient'){
 		<?php
 	}
 }*/
-$connection_close();
 ?>

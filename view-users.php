@@ -1,6 +1,7 @@
 <?php
 require 'lib/session.php';
 require 'lib/Db.config.php';
+require 'lib/Db.config.pdo.php';
 
 if($Position == "Doctor"){
   header('Location: index.php');
@@ -9,8 +10,8 @@ else if($Position == "Volunter"){
   header('Location: index.php');
 }
   //This is the sql for fetching the data in the database
-  $sql = "SELECT User_id, Username, Password, Position, CONCAT(Firstname,' ',Middlename,' ',Lastname) AS FullName FROM users";
-  $result = mysql_query($sql);
+  $stmt = $db->prepare("Select User_id, Username, Password, Position, CONCAT(Firstname,' ',Middlename,' ',Lastname) AS FullName from users");
+  $stmt->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +40,7 @@ else if($Position == "Volunter"){
     <![endif]-->
   </head>
 
-  <body onload="viewUser()">
+  <body>
 
   <section id="container" class="">
       <!--header start-->
@@ -187,13 +188,12 @@ else if($Position == "Volunter"){
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-								<button type="submit" class="btn btn-success">Add User</button>
+								<a type="submit" href="add-user.php" class="btn btn-success">Add User</a>
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
                                           <th>ID</th>
                                           <th>Username</th>
-                                          <th>Password</th>
                                           <th>Fullname</th>
                                           <th class="hidden-phone">Position</th>
                                           <th class="hidden-phone">Action</th>
@@ -201,21 +201,20 @@ else if($Position == "Volunter"){
                                       </thead>
                                       <tbody>
 <?php
-                      while($row = mysql_fetch_array($result)){
-
-                              echo "<tr>";
-                              echo "<td><p>".$row['User_id']."</p></td>";
-                              echo "<td>".$row['Username']."</td>";
-                              echo "<td>".$row['Password']."</td>";
-                              echo "<td>".$row['FullName']."</td>";
-                              echo "<td>".$row['Position']."</td>";
-                              echo "<td class=\"center hidden-phone\">";
-                              echo "<a class=\"btn btn-success btn-xs\" href=\"add-user.php\">Edit</a>&nbsp";
-                              echo "<a class=\"btn btn-danger btn-xs\" href=\"\">delete</a>";
-                              echo "</td>";
-                              echo "</tr>";
-    
-                    }
+      while($row = $stmt->fetch()){
+?>
+                              <tr class="gradeX">
+                                    <td><?php echo $row['User_id'] ?></td>
+                                    <td><?php echo $row['Username'] ?></td>
+                                    <td><?php echo $row['FullName'] ?></td>
+                                    <td><?php echo $row['Position'] ?></td>
+                                    <td class="center hidden-phone">
+                                    <a class="btn btn-success btn-xs" href="add-user.php">Edit</a>
+                                    <a class="btn btn-danger btn-xs" type="submit" onclick="DeleteUser(<?php echo $row['User_id']?>)">delete</a>
+                                    </td>
+                              </tr>
+<?php
+      }
 ?>
                                       </tbody>
                           </table>
@@ -263,16 +262,23 @@ else if($Position == "Volunter"){
               } );
           } );
       </script>
-      <!--<script>
-        function viewUser(){
-          $.ajax({
-              type: "GET", 
-              url: "Server.php?p=viewUser",
+     <script>
+        function DeleteUser(str){
+          var id = str;
+          if (confirm('Are you sure you want to delete this user in the database?')) {
+              $.ajax({
+              type: "POST",
+              url: "Server.php?p=DeleteUser",
+              data: "User_id="+id,
               success: function(data){
-                $('tbody').html(data);
+                window.location.reload();
               }
-          })
+          });
+} else {
+    // Do nothing!
+}
+          
         }
-      </script>-->
+      </script>
   </body>
 </html>

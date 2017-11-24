@@ -2,9 +2,10 @@
 <?php
 require 'lib/session.php';
 require 'lib/Db.config.php';
+require 'lib/Db.config.pdo.php';
 
-  $sql = "SELECT P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName FROM patient";
-  $result = mysql_query($sql);
+  $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");
+  $stmt->execute();
 ?>
 <html lang="en">
   <head>
@@ -192,19 +193,20 @@ require 'lib/Db.config.php';
                                       </tr>
                                       <tbody>
 <?php
-                  while($row = mysql_fetch_array($result)){
-
-                  echo "<tr>";
-                  echo "<td><p>P".$row['P_ID']."</p></td>";
-                  echo "<td>".$row['FullName']."</td>";
-                  echo "<td>".$row['P_GNDR']."</td>";
-                  echo "<td>".$row['P_TYPE']."</td>";
-                  echo "<td align=\"center\">";
-                  echo "<a class=\"btn btn-primary btn-xs\" href=\"view-patient-profile.php\"><i class=\"icon-eye-open\"></i></a>&nbsp";
-                  echo "<a class=\"btn btn-danger btn-xs\" href=\"add-patient.php\"><i class=\"icon-pencil\"></i></a>";
-                  echo "</td>";
-                  echo "</tr>";
-                  }
+                  while($row = $stmt->fetch()){
+    ?>
+    <tr>
+      <td><p>P<?php echo $row['P_ID'] ?></p></td>
+      <td><?php echo $row['FullName'] ?></td>
+      <td><?php echo $row['P_GNDR'] ?></td>
+      <td><?php echo $row['P_TYPE'] ?></td>
+      <td align="center">
+        <a class="btn btn-primary btn-xs" href="view-patient-profile.php"><i class="icon-eye-open"></i></a>
+        <a class="btn btn-danger btn-xs" href="add-patient.php"><i class="icon-pencil"></i></a>
+      </td>
+    </tr>
+    <?php
+  }
 ?>
                                       </tbody>
                                     </table>
