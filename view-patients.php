@@ -282,7 +282,7 @@ require 'lib/Db.config.pdo.php';
             $('#Laboratory-li').hide();
             $('#Inventory-li').hide();
         }
-        });
+        }); 
     </script>
 </body>
 </html>

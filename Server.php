@@ -110,7 +110,10 @@ require 'lib/Db.config.pdo.php';
 		$sql = "DELETE FROM users WHERE User_id = $ID";
 		$stmt = $db->prepare($sql);
  		$stmt -> execute();
+<<<<<<< HEAD
  		echo '<meta http-equiv="refresh content="1;url=view-users.php">';
+=======
+>>>>>>> master
 
 }
 /*else if($page == 'viewPatient'){
