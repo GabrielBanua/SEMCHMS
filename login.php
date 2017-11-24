@@ -2,8 +2,8 @@
  
 session_start();
  
-require 'lib/password.php';
 require 'lib/Db.config.pdo.php';
+require 'lib/password.php';
  
 if(isset($_POST['login'])){
     
@@ -29,10 +29,10 @@ if(isset($_POST['login'])){
         //Could not find a user
         echo "<script>alert('incorrect username')</script>";
     } else{
-        $valid = $user['Password'];
+        $valid = password_verify($password, $user['Password']);
         
         //If $validPassword is TRUE
-        if($password == $valid){
+        if($valid){
             
             //Provide the user with a login session.
             $_SESSION['user_id'] = $user['User_id'];
@@ -84,8 +84,8 @@ if(isset($_POST['login'])){
       <form class="form-signin" action="login.php" method="POST">
         <h2 class="form-signin-heading">semhcms</h2>
         <div class="login-wrap">
-            <input type="text" name="username" id="username" class="form-control" placeholder="Username" autofocus>
-            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+            <input type="text" name="username" id="username" class="form-control" placeholder="Username" required="" autofocus>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="">
             <label class="checkbox">
 				<input type="checkbox" value="remember-me"> Remember me
                 <span class="pull-right">
@@ -122,6 +122,5 @@ if(isset($_POST['login'])){
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     
-
   </body>
 </html>
