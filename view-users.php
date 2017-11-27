@@ -147,7 +147,6 @@ else if($Position == "Volunter"){
                           <span>Users Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="add-user.php">Add New User</a></li>
                           <li class="active"><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
@@ -188,7 +187,7 @@ else if($Position == "Volunter"){
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-								<a type="submit" href="add-user.php" class="btn btn-success">Add User</a>
+								<a class="btn btn-success" data-toggle="modal" href="#adduser">Add New User</a>
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
@@ -209,17 +208,167 @@ else if($Position == "Volunter"){
                                                 <td><?php echo $row['FullName'] ?></td>
                                                 <td><?php echo $row['Position'] ?></td>
                                                 <td class="center hidden-phone">
-                                                <a class="btn btn-success btn-xs" href="add-user.php">Edit</a>
-                                                <a class="btn btn-danger btn-xs" type="submit" onclick="DeleteUser(<?php echo $row['User_id']?>)">delete</a>
+                                                <a class="btn btn-success btn-xs" href="#edituser">Edit</a>
+                                                <a class="btn btn-danger btn-xs" type="submit" onclick="DeleteUser
+												(<?php echo $row['User_id']?>)">
+												delete</a>
                                                 </td>
                                           </tr>
 <?php
       }
 ?>
                                       </tbody>
-                          </table>
+									</table>
                                 </div>
                           </div>
+						  <!-- Register User Start  MODAL-->
+						  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="adduser" class="modal fade">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                              <h4 class="modal-title">User Registration</h4>
+                                          </div>
+                                          <div class="modal-body">
+
+                                              <form class="form-horizontal" role="form">
+                                                  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Username:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Password:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">First Name:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Middle Name:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Last Name:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Gender:</label>
+                                                      <div class="col-lg-4">
+															<select class="form-control">
+																<option hidden>-None-</option>
+																<option>Male</option>
+																<option>Position</option>
+															</select>
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Position:</label>
+                                                      <div class="col-lg-4">
+															<select class="form-control">
+																<option hidden>-None-</option>
+																<option>Admin</option>
+																<option>Doctor</option>
+																<option>Medtech</option>
+																<option>Pharmacy</option>
+																<option>Pathlogist</option>
+															</select>
+                                                      </div>
+                                                  </div>
+                                              </form>
+                                          </div>
+										<div class="modal-footer">
+											<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+											<button class="btn btn-success" type="button">Register</button>
+										</div>
+                                      </div>
+                                  </div>
+                              </div>
+					  <!--MODAL END-->
+					  <!-- Edit User MODAL-->
+						  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="edituser" class="modal fade">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                              <h4 class="modal-title">Edit User</h4>
+                                          </div>
+                                          <div class="modal-body">
+
+                                              <form class="form-horizontal" role="form">
+                                                  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Username:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Password:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">First Name:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Middle Name:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Last Name:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Gender:</label>
+                                                      <div class="col-lg-4">
+															<select class="form-control">
+																<option hidden>-None-</option>
+																<option>Male</option>
+																<option>Position</option>
+															</select>
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Position:</label>
+                                                      <div class="col-lg-4">
+															<select class="form-control">
+																<option hidden>-None-</option>
+																<option>Admin</option>
+																<option>Doctor</option>
+																<option>Medtech</option>
+																<option>Pharmacy</option>
+																<option>Pathlogist</option>
+															</select>
+                                                      </div>
+                                                  </div>
+                                              </form>
+                                          </div>
+										<div class="modal-footer">
+											<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+											<button class="btn btn-success" type="button">Register</button>
+										</div>
+                                      </div>
+                                  </div>
+                              </div>
+					  <!--MODAL END-->
                       </section>
                   </div>
               </div>
