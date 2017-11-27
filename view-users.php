@@ -203,16 +203,16 @@ else if($Position == "Volunter"){
 <?php
       while($row = $stmt->fetch()){
 ?>
-                              <tr class="gradeX">
-                                    <td><?php echo $row['User_id'] ?></td>
-                                    <td><?php echo $row['Username'] ?></td>
-                                    <td><?php echo $row['FullName'] ?></td>
-                                    <td><?php echo $row['Position'] ?></td>
-                                    <td class="center hidden-phone">
-                                    <a class="btn btn-success btn-xs" href="add-user.php">Edit</a>
-                                    <a class="btn btn-danger btn-xs" type="submit" onclick="DeleteUser(<?php echo $row['User_id']?>)">delete</a>
-                                    </td>
-                              </tr>
+                                          <tr class="gradeX">
+                                                <td><?php echo $row['User_id'] ?></td>
+                                                <td><?php echo $row['Username'] ?></td>
+                                                <td><?php echo $row['FullName'] ?></td>
+                                                <td><?php echo $row['Position'] ?></td>
+                                                <td class="center hidden-phone">
+                                                <a class="btn btn-success btn-xs" href="add-user.php">Edit</a>
+                                                <a class="btn btn-danger btn-xs" type="submit" onclick="DeleteUser(<?php echo $row['User_id']?>)">delete</a>
+                                                </td>
+                                          </tr>
 <?php
       }
 ?>

@@ -61,9 +61,9 @@ if($page == 'addNewPatient'){
 		$stmt->bindParam(4,$Gender);
 		$stmt->bindParam(5,$Birthday);
 		$stmt->bindParam(6,$Age);
-		$stmt->bindParam(7,$Weight);
-		$stmt->bindParam(8,$Height);
-		$stmt->bindParam(9,$Temperature);
+		$stmt->bindParam(8,$Weight);
+		$stmt->bindParam(9,$Height);
+		$stmt->bindParam(7,$Temperature);
 		$stmt->bindParam(10,$Type);
 		$stmt->bindParam(11,$Address);
 		$stmt->bindParam(12,$Contact);

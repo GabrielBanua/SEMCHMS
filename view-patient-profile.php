@@ -1,5 +1,11 @@
 <?php
 require 'lib/session.php';
+require 'lib/Db.config.php';
+
+$VIEW_ID = isset($_GET['VID'])?$_GET['VID']:'';
+$sql = "SELECT *, CONCAT(P_FNAME,' ', P_LNAME) AS FullName FROM patient where P_ID = $VIEW_ID";
+$result = mysql_query($sql);
+$row = mysql_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -174,8 +180,8 @@ require 'lib/session.php';
                               <a href="#">
                                   <img src="img/profile-avatar.jpg" alt="">
                               </a>
-                              <h1>Alessander Rubiato</h1>
-                              <p>Patient No.:0000001</p>
+                              <h3><?php echo $row['FullName']?></h3>
+                              <p>P000<?php echo $row['P_ID']?></p>
                           </div>
 
                           <ul class="nav nav-pills nav-stacked">
@@ -193,28 +199,49 @@ require 'lib/session.php';
                           <div class="panel-body bio-graph-info">
                               <div class="row">
                                   <div class="bio-row">
-                                      <p><span>First Name </span>: Alessander</p>
+                                      <p><span>Date Registered </span>: <?php echo $row['DATE_REG']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Last Name </span>: Rubiato</p>
+                                      <p><span>Address </span>: <?php echo $row['P_ADD']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Country </span>: Australia</p>
+                                      <p><span>First Name</span>: <?php echo $row['P_FNAME']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Birthday</span>: 13 July 1983</p>
+                                      <p><span>Religion </span>: <?php echo $row['P_REL']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Occupation </span>: Embalmer</p>
+                                      <p><span>Middle Name </span>: <?php echo $row['P_MNAME']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Gender </span>: Male</p>
+                                      <p><span>Type </span>: <?php echo $row['P_TYPE']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Mobile </span>: (12) 03 4567890</p>
+                                      <p><span>Last Name </span>: <?php echo $row['P_LNAME']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Phone </span>: 88 (02) 123456</p>
+                                      <p><span>Civil Status </span>: <?php echo $row['P_CVL_STAT']?></p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Birthday</span>: <?php echo $row['P_BDATE']?></p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Occupation </span>: <?php echo $row['P_OCCU']?></p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Age </span>: <?php echo $row['P_AGE']?></p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Gender </span>: <?php echo $row['P_GNDR']?></p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Mobile </span>: 09<?php echo $row['P_CN']?></p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Weight(kg) </span>: <?php echo $row['P_WGHT']?></p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Height(cm) </span>: <?php echo $row['P_HGHT']?></p>
                                   </div>
                               </div>
                           </div>
@@ -241,16 +268,6 @@ require 'lib/session.php';
                               <div class="tab-content">
                                   <div id="patientinfo" class="tab-pane active">
 								  <form role="form" class="form-horizontal">
-										<div class="form-group">
-												<div class="col-sm-4">
-													<p class="help-block">Weight:<p>
-													<input type="text" class="form-control" placeholder="">
-												</div>
-												<div class="col-sm-4">
-													<p class="help-block">Height:<p>
-													<input type="text" class="form-control" placeholder="">
-												</div>
-											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.5 Dominant Hand:<p>

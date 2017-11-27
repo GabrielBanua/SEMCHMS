@@ -1,5 +1,8 @@
 <?php
 require 'lib/session.php';
+require 'lib/Db.config.pdo.php';
+$stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");
+  $stmt->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -177,137 +180,36 @@ require 'lib/session.php';
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-								<a class="btn btn-success" href="add-patient.html">Add Patient</a>
+								<a class="btn btn-success" href="add-patient.php">Add Patient</a>
+<!-- Table part of the code-->
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
                                           <th>Patient No.</th>
                                           <th>Name</th>
-                                          <th>Health Issue</th>
-                                          <th class="hidden-phone">Status</th>
+                                          <th>Gender</th>
+                                          <th class="hidden-phone">Type</th>
                                           <th class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
-                                      <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.php">Set Schedule</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.php">Set Schedule</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.php">Set Schedule</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.php">Set Schedule</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.php">Set Schedule</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.html">Set Schedule</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.html">Set Schedule</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.html">Set Schedule</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.html">Set Schedule</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.html">Set Schedule</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.html">Set Schedule</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.html">Set Schedule</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Cancer</td>
-                                          <td class="center hidden-phone">Triggered</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-success btn-xs" href="set-schedule-patient.html">Set Schedule</a>
-										  </td>
-                                      </tr>
-                                      </tfoot>
-                          </table>
+<?php
+      while($row = $stmt->fetch()){
+?>                                      
+                                          <tr class="gradeX">
+                                              <td><p>P<?php echo $row['P_ID'] ?></p></td>
+                                              <td><?php echo $row['FullName'] ?></td>
+                                              <td><?php echo $row['P_GNDR'] ?></td>
+                                              <td class="center hidden-phone"><?php echo $row['P_TYPE'] ?></td>
+                                              <td class="center hidden-phone">
+                        											<a class="btn btn-success btn-xs" href="set-schedule-patient.php?SID=<?php echo $row['P_ID'] ?>">Set Schedule</a>
+                        										  </td>
+                                          </tr>
+<?php
+      }
+?>
+                                      </tbody>
+                                    </table>
                                 </div>
                           </div>
                       </section>
@@ -342,9 +244,7 @@ require 'lib/session.php';
 
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
-
     <!--script for this page only-->
-
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
@@ -352,6 +252,18 @@ require 'lib/session.php';
               } );
           } );
       </script>
+      <script>
+        function addNewPatient(ID){
+        var S_ID = ID;
+    
+    $.ajax({
+      type: "POST",
+      url: "set-schedule-patient.php",
+      data: "S_ID="+S_ID
+    });
+    
+  }
+</script>
       <script>
         $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';

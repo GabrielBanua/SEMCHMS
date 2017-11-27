@@ -279,25 +279,25 @@ require 'lib/Db.config.php';
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label">Temperature</label>
+                                            <label class="col-md-4 control-label">Temperature (Celcius)</label>
                                             <div class="col-lg-6">
                                                 <input id="P_TEMP" name="P_TEMP" type="text" class="form-control" placeholder=" " required>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                        <label class="col-md-4 control-label">Weight</label>
+                                        <label class="col-md-4 control-label">Weight (Kg)</label>
                                             <div class="col-lg-6">
 												<input id="P_WGHT" name="P_WGHT" type="text" class="form-control" placeholder="">
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-md-4 control-label">Height</label>
+											<label class="col-md-4 control-label">Height (cm)</label>
                                             <div class="col-lg-6">
                                                 <input id="P_HGHT" name="P_HGHT" type="text" class="form-control" placeholder="">
 											</div>
 										</div>
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label">Contact Number</label>
+                                            <label class="col-md-4 control-label">Contact Number (+639)</label>
                                             <div class="col-lg-6">
                                                 <input id="P_CN" name="P_CN" type="text" class="form-control" placeholder=" " required>
                                             </div>
@@ -319,8 +319,8 @@ require 'lib/Db.config.php';
                                                     <option>Single</option>
                                                     <option>Widowed</option>
                                                     <option>Married</option>
-                                                    <option>divorced</option>
-                                                    <option>separated</option>
+                                                    <option>Divorced</option>
+                                                    <option>Separated</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -354,17 +354,17 @@ require 'lib/Db.config.php';
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.7 How do you rate your health in the past Month?:</label>
                                             <div class="col-lg-6">
-                                                <input id="DISE_DISO" type="text" class="form-control" placeholder="">
+                                                <input id="" type="text" class="form-control" placeholder="">
                                             </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.8 Do you currently have any disease(s) or Disorder(s)?:</label>
                                             <div class="col-lg-6">
-                                                <input id="" type="text" class="form-control">
+                                                <input id="DISE_DISO" type="text" class="form-control">
                                             </div>
                                      </div>
 									 <div class="form-group">
-                                            <label class="col-md-4 control-label">A.9 Did you ever have any significant injures that impact on your level of functioning?:</label>
+                                            <label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
 											<div class="col-lg-4">
 												<select class="form-control" name="SIG_INJ" id="SIG_INJ">
 													<option hidden>-None-</option>
@@ -464,19 +464,19 @@ require 'lib/Db.config.php';
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">B.2 Years of Formal Education:</label>
                                             <div class="col-lg-6">
-                                                <input id="" type="text" class="form-control">
+                                                <input id="YEARS_FE" type="text" class="form-control">
                                             </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">B.3 Marital Status:</label>
                                             <div class="col-lg-6">
-                                                <input name="YEARS_FE" type="text" class="form-control" placeholder="">
+                                                <input name="MARITAL_STAT" type="text" class="form-control" placeholder="">
                                             </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">B.4 Current Occupation:</label>
                                             <div class="col-lg-6">
-                                                <input id="MARITAL_STAT" type="text" class="form-control" placeholder="">
+                                                <input id="" type="text" class="form-control" placeholder="">
                                             </div>
                                      </div>
 									 <div class="form-group">

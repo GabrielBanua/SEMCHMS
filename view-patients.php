@@ -33,7 +33,7 @@ require 'lib/Db.config.pdo.php';
     <![endif]-->
   </head>
 
-  <body onload="viewData()">
+  <body>
 
   <section id="container" class="">
       <!--header start-->
@@ -182,13 +182,14 @@ require 'lib/Db.config.pdo.php';
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
+                                  <a class="btn btn-success" href="add-patient.php">Add Patient</a>
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
                                           <th width="40">Patient No.</th>
                                           <th width="200">Full Name</th>
-                                          <th width="150">Health Issue</th>
-                                          <th width="120" class="hidden-phone">Status</th>
+                                          <th width="150">Gender</th>
+                                          <th width="120">Type</th>
                                           <th width="80" class="hidden-phone">Action</th>
                                       </tr>
                                       <tbody>
@@ -201,7 +202,7 @@ require 'lib/Db.config.pdo.php';
       <td><?php echo $row['P_GNDR'] ?></td>
       <td><?php echo $row['P_TYPE'] ?></td>
       <td align="center">
-        <a class="btn btn-primary btn-xs" href="view-patient-profile.php"><i class="icon-eye-open"></i></a>
+        <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class="icon-eye-open"></i></a>
         <a class="btn btn-danger btn-xs" href="add-patient.php"><i class="icon-pencil"></i></a>
       </td>
     </tr>
@@ -248,19 +249,11 @@ require 'lib/Db.config.pdo.php';
     <!--script for this page only-->
 
       <script type="text/javascript" charset="utf-8">
-
-        function viewData(){
-          /*$.ajax({
-              type: "GET", 
-              url: "Server.php?p=viewPatient",
-              success: function(data){
-                $('tbody').html(data);
-              }
-          });*/
-          $('#example').dataTable( {
+          $(document).ready(function() {
+              $('#example').dataTable( {
                   "aaSorting": [[ 10, "desc" ]]
               } );
-        }
+          } );
       </script>
       <script>
         $(document).ready(function(){

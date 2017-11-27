@@ -1,5 +1,8 @@
 <?php
 require 'lib/session.php';
+require 'lib/Db.config.php';
+require 'lib/Db.config.pdo.php';
+$SET_ID = isset($_GET['SID'])?$_GET['SID']:'';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,8 +31,7 @@ require 'lib/session.php';
   </head>
 
   <body>
-
-  <section id="container" class="">
+    <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
           <div class="sidebar-toggle-box">

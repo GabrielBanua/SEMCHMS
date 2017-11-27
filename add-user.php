@@ -229,7 +229,8 @@ else if($Position == "Volunter"){
                                           <select name="Position" id="PS" class="form-control">
 												<option>-None-</option>
 												<option>Admin</option>
-												<option>Volunteer</option>
+												<option>Pharmacist</option>
+                        <option>Medtech</option>
 												<option>Doctor</option>
 										</select>
                                       </div>

@@ -185,31 +185,31 @@ else if($Position == "Volunter"){
                                   <div class="form-group">
                                       <label  class="col-lg-2 control-label">Name of Medicines</label>
                                       <div class="col-lg-4">
-                                          <input type="text" class="form-control" placeholder=" " required autofocus>
+                                          <input type="text" id="" class="form-control" placeholder=" " required autofocus>
                                       </div>
                                   </div>
 								  <div class="form-group">
                                       <label  class="col-lg-2 control-label">Category</label>
                                       <div class="col-lg-4">
-                                          <input type="text" class="form-control" placeholder=" " required>
+                                          <input type="text" id="" class="form-control" placeholder=" " required>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <label  class="col-lg-2 control-label">Brand</label>
                                       <div class="col-lg-4">
-                                          <input type="text" class="form-control" placeholder=" "required>
+                                          <input type="text" id="" class="form-control" placeholder=" "required>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <label  class="col-lg-2 control-label">Supplier</label>
                                       <div class="col-lg-4">
-                                          <input type="text" class="form-control" placeholder=" " required>
+                                          <input type="text" id="" class="form-control" placeholder=" " required>
                                       </div>
                                   </div>
 								  <div class="form-group">
                                       <label  class="col-lg-2 control-label">Expiration Date</label>
                                       <div class="col-lg-4">
-                                          <input type="text" class="form-control" placeholder=" ">
+                                          <input type="text" id="" class="form-control" placeholder=" ">
                                       </div>
                                   </div>
 								  <div class="form-group">
