@@ -53,7 +53,7 @@ else if($Position == "Volunter"){
                   <li class="dropdown">
                       <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                           <img alt="" src="img/avatar1_small.jpg">
-                          <span class="username">Admin</span>
+                          <span class="username"><b><?php echo $UserN; ?></b></span>
                           <b class="caret"></b>
                       </a>
                       <ul class="dropdown-menu extended logout">
@@ -217,22 +217,22 @@ else if($Position == "Volunter"){
                                       <label  class="col-lg-2 control-label">Gender</label>
                                       <div class="col-lg-4">
                                           <select name="Gender" id="GN" class="form-control">
-												<option>-None-</option>
-												<option>Male</option>
-												<option>Female</option>
-										</select>
+                      												<option>-None-</option>
+                      												<option>Male</option>
+                      												<option>Female</option>
+                      										</select>
                                       </div>
                                   </div>
 								  <div class="form-group">
                                       <label  class="col-lg-2 control-label">Position</label>
                                       <div class="col-lg-4">
                                           <select name="Position" id="PS" class="form-control">
-												<option>-None-</option>
-												<option>Admin</option>
-												<option>Pharmacist</option>
-                        <option>Medtech</option>
-												<option>Doctor</option>
-										</select>
+                      												<option>-None-</option>
+                      												<option>Admin</option>
+                      												<option>Pharmacist</option>
+                                              <option>Medtech</option>
+                      												<option>Doctor</option>
+                      										</select>
                                       </div>
                                   </div>
 								  <div class="form-group">

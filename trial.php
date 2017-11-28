@@ -81,3 +81,20 @@ $query = $db->prepare("INSERT INTO users(name, email, username, password) VALUES
 <a class="btn btn-success btn-xs" >Edit</a>
 <a class="btn btn-danger btn-xs" >delete</a>
 	?>
+
+
+
+
+    <script>
+        function EditUser(str){
+          var id = str;
+          if (confirm('Are you sure you want to edit this user in the database?')) {
+              $.ajax({
+              type: "POST",
+              url: "Server.php?p=EditUser",
+              data: "User_id="+id,
+              success: function(data){
+                $('body').html(data);
+              }
+        }
+      </script>

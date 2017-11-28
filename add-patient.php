@@ -53,7 +53,7 @@ require 'lib/Db.config.php';
                   <li class="dropdown">
                       <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                           <img alt="" src="img/avatar1_small.jpg">
-                          <span class="username">Admin</span>
+                          <span class="username"><b><?php echo $UserN; ?></b></span>
                           <b class="caret"></b>
                       </a>
                       <ul class="dropdown-menu extended logout">
@@ -427,7 +427,7 @@ require 'lib/Db.config.php';
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.15 Do you have any person assisting you?:</label>
                                             <div class="col-lg-4">
-												<select class="form-control" name="PERS_ASSIS" id="PERS_ASSIS">
+												<select class="form-control" name="PERS_ASSIS" id="PERS_ASSIST">
 													<option hidden>-None-</option>
 													<option>Yes</option>
 													<option>No</option>
@@ -471,7 +471,7 @@ require 'lib/Db.config.php';
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">B.3 Marital Status:</label>
                                             <div class="col-lg-6">
-                                                <input name="MARITAL_STAT" type="text" class="form-control" placeholder="">
+                                                <input name="MARITAL_STAT" id="MARITAL_STAT" type="text" class="form-control" placeholder="">
                                             </div>
                                      </div>
 									 <div class="form-group">

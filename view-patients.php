@@ -4,7 +4,7 @@ require 'lib/session.php';
 require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
 
-  $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");
+  $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");
   $stmt->execute();
 ?>
 <html lang="en">
@@ -53,7 +53,7 @@ require 'lib/Db.config.pdo.php';
                   <li class="dropdown">
                       <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                           <img alt="" src="img/avatar1_small.jpg">
-                          <span class="username">Admin</span>
+                          <span class="username"><b><?php echo $UserN; ?></b></span>
                           <b class="caret"></b>
                       </a>
                       <ul class="dropdown-menu extended logout">
@@ -186,10 +186,12 @@ require 'lib/Db.config.pdo.php';
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th width="40">Patient No.</th>
-                                          <th width="200">Full Name</th>
-                                          <th width="150">Gender</th>
-                                          <th width="120">Type</th>
+                                          <th width="90">Patient No.</th>
+                                          <th width="150">Full Name</th>
+                                          <th width="100">Gender</th>
+                                          <th width="80">Type</th>
+                                          <th width="150">Address</th>
+                                          <th width="90">Contact No.</th>
                                           <th width="80" class="hidden-phone">Action</th>
                                       </tr>
                                       <tbody>
@@ -201,6 +203,8 @@ require 'lib/Db.config.pdo.php';
       <td><?php echo $row['FullName'] ?></td>
       <td><?php echo $row['P_GNDR'] ?></td>
       <td><?php echo $row['P_TYPE'] ?></td>
+      <td><?php echo $row['P_ADD'] ?></td>
+      <td>+639<?php echo $row['P_CN'] ?></td>
       <td align="center">
         <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class="icon-eye-open"></i></a>
         <a class="btn btn-danger btn-xs" href="add-patient.php"><i class="icon-pencil"></i></a>

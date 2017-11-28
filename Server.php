@@ -112,6 +112,31 @@ require 'lib/Db.config.pdo.php';
  		$stmt -> execute();
 
 }
+else if($page == 'UpdateUser'){
+require 'lib/Db.config.pdo.php';
+
+	$ID = mysql_real_escape_string($_POST['User_id']);
+	$Username = mysql_real_escape_string($_POST['UN']);
+	$Password = mysql_real_escape_string($_POST['PW']);
+	$Firstname = mysql_real_escape_string($_POST['FN']);
+	$Lastname = mysql_real_escape_string($_POST['LN']);
+	$Middlename = mysql_real_escape_string($_POST['MN']);
+	$Gender = mysql_real_escape_string($_POST['GN']);
+	$Position = mysql_real_escape_string($_POST['PS']);
+	$Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
+	
+	$stmt = $db->prepare("update users set Username=?, Password=?, Firstname=?, Middlename=?, Lastname=?, Gender=?, Position=? where User_id=?");
+	$stmt->bindParam(1,$Username);
+	$stmt->bindParam(2,$Pass);
+	$stmt->bindParam(3,$Firstname);
+	$stmt->bindParam(5,$Lastname);
+	$stmt->bindParam(4,$Middlename);
+	$stmt->bindParam(6,$Gender);
+	$stmt->bindParam(7,$Position);
+	$stmt->bindParam(8,$ID);
+	$stmt->execute();
+		
+}
 /*else if($page == 'viewPatient'){
 	require 'lib/Db.config.pdo.php';
 	$stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");

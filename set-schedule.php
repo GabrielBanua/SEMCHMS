@@ -51,7 +51,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                   <li class="dropdown">
                       <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                           <img alt="" src="img/avatar1_small.jpg">
-                          <span class="username">Admin</span>
+                          <span class="username"><b><?php echo $UserN; ?></b></span>
                           <b class="caret"></b>
                       </a>
                       <ul class="dropdown-menu extended logout">

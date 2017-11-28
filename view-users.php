@@ -10,7 +10,7 @@ else if($Position == "Volunter"){
   header('Location: index.php');
 }
   //This is the sql for fetching the data in the database
-  $stmt = $db->prepare("Select User_id, Username, Password, Position, CONCAT(Firstname,' ',Middlename,' ',Lastname) AS FullName from users");
+  $stmt = $db->prepare("Select *, CONCAT(Firstname,' ',Middlename,' ',Lastname) AS FullName from users");
   $stmt->execute();
 ?>
 <!DOCTYPE html>
@@ -60,7 +60,7 @@ else if($Position == "Volunter"){
                   <li class="dropdown">
                       <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                           <img alt="" src="img/avatar1_small.jpg">
-                          <span class="username">Admin</span>
+                          <span class="username"><b><?php echo $UserN; ?></b></span>
                           <b class="caret"></b>
                       </a>
                       <ul class="dropdown-menu extended logout">
@@ -147,7 +147,7 @@ else if($Position == "Volunter"){
                           <span>Users Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="add-user.php">Add New User</a></li>
+                          <!--<li><a  href="add-user.php">Add New User</a></li>-->
                           <li class="active"><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
@@ -188,7 +188,82 @@ else if($Position == "Volunter"){
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-								<a class="btn btn-success" data-toggle="modal" href="#adduser">Add New User</a>
+								<a class="btn btn-success" data-toggle="modal" data-target="#AddModal">Add New User</a>
+<!-- Register User Start  MODAL-->
+              <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddModal" class="modal fade">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                              <h4 class="modal-title">User Registration</h4>
+                                          </div>
+                                          <div class="modal-body">
+
+                                              <form class="form-horizontal" role="form">
+                                                  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Username:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" id="UN" class="form-control">
+                                                      </div>
+                                                  </div>
+                          <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Password:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="Password" id="PW" class="form-control">
+                                                      </div>
+                                                  </div>
+                          <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">First Name:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" id="FN" class="form-control">
+                                                      </div>
+                                                  </div>
+                          <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Middle Name:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" id="MN" class="form-control">
+                                                      </div>
+                                                  </div>
+                          <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Last Name:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" id="LN" class="form-control">
+                                                      </div>
+                                                  </div>
+                          <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Gender:</label>
+                                                      <div class="col-lg-4">
+                                                          <select class="form-control" id="GN">
+                                                            <option hidden>-None-</option>
+                                                            <option>Male</option>
+                                                            <option>Female</option>
+                                                          </select>
+                                                      </div>
+                                                  </div>
+                          <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Position:</label>
+                                                      <div class="col-lg-4">
+                              <select class="form-control" id="PS">
+                                <option hidden>-None-</option>
+                                <option>Admin</option>
+                                <option>Doctor</option>
+                                <option>Medtech</option>
+                                <option>Pharmacy</option>
+                                <option>Pathlogist</option>
+                              </select>
+                                                      </div>
+                                                  </div>
+                                              </form>
+                                          </div>
+                    <div class="modal-footer">
+                      <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                      <button class="btn btn-success" type="submit" onclick="addNewUser()">Register</button>
+                    </div>
+                                      </div>
+                                  </div>
+                              </div>
+<!--MODAL END-->
+
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
@@ -210,166 +285,109 @@ else if($Position == "Volunter"){
                                                 <td><?php echo $row['Position'] ?></td>
                                                 <td class="center hidden-phone">
                                                 <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditModal">Edit</a>
+<!-- Edit User MODAL-->
+              <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                    <h4 class="modal-title"">Edit User</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                <form class="form-horizontal" role="form">
+                                      <div class="form-group">
+                                            <label class="col-md-3 col-sm-2 control-label">ID:</label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" value="<?php echo $row['User_id'] ?>" readonly class="form_datetime form-control">
+                                                </div>
+                                      </div>
+                                      <div class="form-group">
+                                            <label class="col-md-3 col-sm-2 control-label">Username:</label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="UN-<?php echo $row['User_id'] ?>" value="<?php echo $row['Username']; ?>">
+                                                </div>
+                                      </div>
+                                      <div class="form-group">
+                                            <label class="col-md-3 col-sm-2 control-label">Password:</label>
+                                                <div class="col-lg-6">
+                                                    <input type="password" class="form-control" id="PW-<?php echo $row['User_id'] ?>" value="<?php echo $row['Password']; ?>">
+                                                </div>
+                                      </div>
+                                      <div class="form-group">
+                                            <label class="col-md-3 col-sm-2 control-label">First Name:</label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="FN-<?php echo $row['User_id'] ?>" value="<?php echo $row['Firstname']; ?>">
+                                                </div>
+                                      </div>
+                                      <div class="form-group">
+                                            <label class="col-md-3 col-sm-2 control-label">Middle Name:</label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="MN-<?php echo $row['User_id'] ?>" value="<?php echo $row['Middlename']; ?>">
+                                                </div>
+                                      </div>
+                                      <div class="form-group">
+                                            <label class="col-md-3 col-sm-2 control-label">Last Name:</label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="LN-<?php echo $row['User_id'] ?>" value="<?php echo $row['Lastname']; ?>">
+                                                </div>
+                                      </div>
+                                      <div class="form-group">
+                                            <label class="col-md-3 col-sm-2 control-label">Gender:</label>
+                                                <div class="col-lg-4">
+                                                    <select class="form-control" id="GN-<?php echo $row['User_id'] ?>">
+                                                      <option value="-None-" <?php
+                                                      if ($row['Gender'] == "-None-") { echo " selected"; }?>>-None-</option>
+                                                      <option value="Male" <?php
+                                                      if ($row['Gender'] == "Male") { echo " selected"; }?>>Male</option>
+                                                      <option value="Female" <?php
+                                                      if ($row['Gender'] == "Female") { echo " selected"; }?>>Female</option>
+                                                    </select>
+                                                </div>
+                                      </div>
+                                      <div class="form-group">
+                                            <label class="col-md-3 col-sm-2 control-label">Position:</label>
+                                                <div class="col-lg-4">
+                                                    <select class="form-control" id="PS-<?php echo $row['User_id'] ?>">
+                                                      <option value="-None-" <?php
+                                                      if ($row['Position'] == "-None-") { echo " selected"; }?>>-None-</option>
+                                                      <option value="Admin" <?php
+                                                      if ($row['Position'] == "Admin") { echo " selected"; }?>>Admin</option>
+                                                      <option value="Doctor" <?php
+                                                      if ($row['Position'] == "Doctor") { echo " selected"; }?>>Doctor</option>
+                                                      <option value="Medtech" <?php
+                                                      if ($row['Position'] == "Medtech") { echo " selected"; }?>>Medtech</option>
+                                                      <option value="Pharmacist" <?php
+                                                      if ($row['Position'] == "Pharmacist") { echo " selected"; }?>>Pharmacist</option>
+                                                      <option value="Pathologist" <?php
+                                                      if ($row['Position'] == "Pathologist") { echo " selected"; }?>>Pathlogist</option>
+                                                    </select>
+                                                </div>
+                                      </div>
+                                </form>
+                                </div>
+                                                  <div class="modal-footer">
+                                                      <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                                                      <button class="btn btn-success" type="submit" onclick="UpdateUser(<?php echo $row['User_id'] ?>)">Update</button>
+                                                  </div>
+                          </div>
+                    </div>
+              </div>
+<!--MODAL END-->
+
                                                 <a class="btn btn-danger btn-xs" type="submit" onclick="DeleteUser
-												(<?php echo $row['User_id']?>)">
-												delete</a>
+												                        (<?php echo $row['User_id']?>)">delete</a>
                                                 </td>
                                           </tr>
 <?php
       }
 ?>
                                       </tbody>
-									</table>
+									                  </table>
                                 </div>
                           </div>
-						  <!-- Register User Start  MODAL-->
-						  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditModal" class="modal fade">
-                                  <div class="modal-dialog">
-                                      <div class="modal-content">
-                                          <div class="modal-header">
-                                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                              <h4 class="modal-title">User Registration</h4>
-                                          </div>
-                                          <div class="modal-body">
 
-                                              <form class="form-horizontal" role="form">
-                                                  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Username:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Password:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">First Name:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Middle Name:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Last Name:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Gender:</label>
-                                                      <div class="col-lg-4">
-															<select class="form-control">
-																<option hidden>-None-</option>
-																<option>Male</option>
-																<option>Female</option>
-															</select>
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Position:</label>
-                                                      <div class="col-lg-4">
-															<select class="form-control">
-																<option hidden>-None-</option>
-																<option>Admin</option>
-																<option>Doctor</option>
-																<option>Medtech</option>
-																<option>Pharmacy</option>
-																<option>Pathlogist</option>
-															</select>
-                                                      </div>
-                                                  </div>
-                                              </form>
-                                          </div>
-										<div class="modal-footer">
-											<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-											<button class="btn btn-success" type="button">Update</button>
-										</div>
-                                      </div>
-                                  </div>
-                              </div>
-					  <!--MODAL END-->
-					  <!-- Edit User MODAL-->
-						  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="edituser" class="modal fade">
-                                  <div class="modal-dialog">
-                                      <div class="modal-content">
-                                          <div class="modal-header">
-                                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                              <h4 class="modal-title">Edit User</h4>
-                                          </div>
-                                          <div class="modal-body">
 
-                                              <form class="form-horizontal" role="form">
-                                                  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Username:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Password:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">First Name:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Middle Name:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Last Name:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Gender:</label>
-                                                      <div class="col-lg-4">
-															<select class="form-control">
-																<option hidden>-None-</option>
-																<option>Male</option>
-																<option>Position</option>
-															</select>
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Position:</label>
-                                                      <div class="col-lg-4">
-															<select class="form-control">
-																<option hidden>-None-</option>
-																<option>Admin</option>
-																<option>Doctor</option>
-																<option>Medtech</option>
-																<option>Pharmacy</option>
-																<option>Pathlogist</option>
-															</select>
-                                                      </div>
-                                                  </div>
-                                              </form>
-                                          </div>
-										<div class="modal-footer">
-											<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-											<button class="btn btn-success" type="button">Update</button>
-										</div>
-                                      </div>
-                                  </div>
-                              </div>
-					  <!--MODAL END-->
                       </section>
                   </div>
               </div>
@@ -421,13 +439,60 @@ else if($Position == "Volunter"){
               url: "Server.php?p=DeleteUser",
               data: "User_id="+id,
               success: function(data){
+                alert('Deleted successfully!');
                 window.location.reload();
               }
           });
-} else {
-    // Do nothing!
-}
-          
+          } else {
+              // Do nothing!
+          } 
+        }
+
+        function UpdateUser(str){
+          var User_id = str;
+          var Username = $('#UN-'+str).val();
+          var Password = $('#PW-'+str).val();
+          var Firstname = $('#FN-'+str).val();
+          var Lastname= $('#LN-'+str).val();
+          var Middlename= $('#MN-'+str).val();
+          var Gender= $('#GN-'+str).val();
+          var Position= $('#PS-'+str).val();
+          if (confirm('Are you sure you want to update this user in the database?')) {
+          $.ajax({
+            type: "POST",
+            url: "Server.php?p=UpdateUser",
+            data: "UN="+Username+"&PW="+Password+"&FN="+Firstname+"&LN="+Lastname+"&MN="+Middlename+"&GN="+Gender+"&PS="+Position+"&User_id="+User_id,
+            success: function(data){
+                alert('Updated successfully!');
+                window.location.reload();
+              }
+          });
+          } else {
+              // Do nothing!
+          } 
+        }
+
+        function addNewUser(){
+          var Username = $('#UN').val();
+          var Password = $('#PW').val();
+          var Firstname = $('#FN').val();
+          var Lastname= $('#LN').val();
+          var Middlename= $('#MN').val();
+          var Gender= $('#GN').val();
+          var Position= $('#PS').val();
+          if (confirm('Are you sure you want to add this user in the database?')) {
+          $.ajax({
+            type: "POST",
+            url: "Server.php?p=addNewUser",
+            data: "UN="+Username+"&PW="+Password+"&FN="+Firstname+"&LN="+Lastname+"&MN="+Middlename+"&GN="+Gender+"&PS="+Position,
+            success: function(data){
+                alert('Added successfully!');
+                window.location.reload();
+              }
+          });
+          } else {
+              // Do nothing!
+          }
         }
       </script>
   </body>

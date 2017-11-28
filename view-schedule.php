@@ -48,7 +48,7 @@ require 'lib/session.php';
                   <li class="dropdown">
                       <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                           <img alt="" src="img/avatar1_small.jpg">
-                          <span class="username">Admin</span>
+                          <span class="username"><b><?php echo $UserN; ?></b></span>
                           <b class="caret"></b>
                       </a>
                       <ul class="dropdown-menu extended logout">
@@ -189,34 +189,18 @@ require 'lib/session.php';
                                       </tr>
                                       </thead>
                                       <tbody>
+
                                       <tr class="gradeX">
                                           <td>000001</td>
                                           <td>Alec Rubiato</td>
                                           <td>Sept. 20, 2017</td>
                                           <td class="center hidden-phone">Completed</td>
                                           <td class="center hidden-phone">
-											<a class="btn btn-danger btn-xs" href="#">Delete</a>
-										  </td>
+                    											<a class="btn btn-danger btn-xs" href="#">Delete</a>
+                    										  </td>
                                       </tr>
-									  <tr class="gradeX">
-                                          <td>000002</td>
-                                          <td>Gabriel Banua</td>
-                                          <td>Sept. 20, 2017</td>
-                                          <td class="center hidden-phone">Ongoing</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-danger btn-xs" href="#">Delete</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000003</td>
-                                          <td>Alson John Bayon-on</td>
-                                          <td>Sept. 20, 2017</td>
-                                          <td class="center hidden-phone">Pending</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-danger btn-xs" href="#">Delete</a>
-										  </td>
-                                      </tr>
-                                      </tfoot>
+									  
+                                      </tbody>
                           </table>
                                 </div>
                           </div>
