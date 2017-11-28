@@ -22,6 +22,7 @@ require 'lib/Db.config.php';
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap-fileupload/bootstrap-fileupload.css" />
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -247,7 +248,12 @@ require 'lib/Db.config.php';
 										<div class="form-group">
                                             <label class="col-md-4 control-label">Birthdate</label>
                                             <div class="col-lg-6">
-                                                <input  type="text" id="P_BDATE" name="P_BDATE" class="form-control" placeholder=" ">
+												<div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="12-02-1950"  class="input-append date dpYears">
+													<input type="text" id="P_BDATE" name="P_BDATE" readonly=""  size="16" class="form-control">
+													<span class="input-group-btn add-on">
+														<button class="btn btn-info" type="button"><i class="icon-calendar"></i></button>
+													</span>
+												</div>
                                             </div>
                                         </div>
 										<div class="form-group">
@@ -348,8 +354,13 @@ require 'lib/Db.config.php';
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.6 How do you rate Physical Health:</label>
-                                            <div class="col-lg-6">
-                                                <input id="PHY_HEALTH" type="text" class="form-control" placeholder="">
+                                            <div class="col-lg-4">
+												<select class="form-control" name="PHY_HEALTH" id="PHY_HEALTH">
+													<option hidden>-None-</option>
+													<option>Poor</option>
+													<option>Good</option>
+													<option>Very Good</option>
+												</select>
                                             </div>
                                      </div>
 									 <div class="form-group">
@@ -510,6 +521,8 @@ require 'lib/Db.config.php';
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
 	
+	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	
 	<script>
         function addNewPatient(){
         var Lastname = $('#P_LNAME').val();
@@ -581,7 +594,7 @@ require 'lib/Db.config.php';
   <!--common script for all pages-->
 <script src="js/common-scripts.js"></script>
 <script src="js/user-accesslvl.js"></script>
-
+<script src="js/advanced-form-components.js"></script>
 
   </body>
 </html>
