@@ -244,7 +244,7 @@ require 'lib/session.php';
                             </ul>
                             <div class="bar">
                                 <div class="title">JAN</div>
-                                <div class="value tooltips" data-original-title="80%" data-toggle="tooltip" data-placement="top">80%</div>
+                                <div class="value tooltips" data-original-title="9  0%" data-toggle="tooltip" data-placement="top">90%</div>
                             </div>
                             <div class="bar ">
                                 <div class="title">FEB</div>
@@ -427,7 +427,6 @@ require 'lib/session.php';
     <script src="js/count.js"></script>
 
     <script>
-            
         $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';
         if (Auth == "Admin") 
@@ -447,7 +446,7 @@ require 'lib/session.php';
             $('#Laboratory-li').hide();
             $('#Inventory-li').hide();
         }
-});
+        });
     </script>
     <script>
         //owl carousel

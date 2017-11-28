@@ -81,7 +81,7 @@ require 'lib/Db.config.php';
                       </a>
                   </li>
 
-                  <li class="sub-menu">
+                  <li class="sub-menu" id="Patient-li">
                       <a href="javascript:;" class="active">
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
@@ -92,7 +92,7 @@ require 'lib/Db.config.php';
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Schedule-li">
                       <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -103,7 +103,7 @@ require 'lib/Db.config.php';
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Inventory-li">
                       <a href="javascript:;" >
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
@@ -115,7 +115,7 @@ require 'lib/Db.config.php';
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Laboratory-li">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
@@ -125,16 +125,16 @@ require 'lib/Db.config.php';
                               <a href="javascript:;">Add Lab Test</a>
                               <ul class="sub">
                                   <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-								  <li><a href="add-lab-fecal.php">Fecalysis</a></li>
-								  <li><a href="add-lab-hema.php">Hematology</a></li>
-								  <li><a href="add-lab-urinal.php">Urinalysis</a></li>
+                								  <li><a href="add-lab-fecal.php">Fecalysis</a></li>
+                								  <li><a href="add-lab-hema.php">Hematology</a></li>
+                								  <li><a href="add-lab-urinal.php">Urinalysis</a></li>
                               </ul>
                           </li>
-						  <li><a  href="lab-request.php">View Lab Request</a></li>
-						  <li><a  href="#">View Lab Records</a></li>
+                    						  <li><a  href="lab-request.php">View Lab Request</a></li>
+                    						  <li><a  href="#">View Lab Records</a></li>
                       </ul>
-                  </li>
-				  <li class="sub-menu">
+          </li>
+				  <li class="sub-menu" id="User-li">
                       <a href="javascript:;">
                           <i class="icon-group"></i>
                           <span>Users Management</span>
@@ -142,9 +142,9 @@ require 'lib/Db.config.php';
                       <ul class="sub">
                           <li><a  href="view-users.php">View Users</a></li>
                       </ul>
-                  </li>
+          </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Reports-li">
                       <a href="javascript:;" >
                           <i class="icon-print"></i>
                           <span>Reports</span>
@@ -154,7 +154,7 @@ require 'lib/Db.config.php';
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
@@ -162,7 +162,7 @@ require 'lib/Db.config.php';
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
                       </ul>
-                  </li>
+          </li>
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -270,6 +270,7 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">Occupation</label>
                                             <div class="col-lg-6">
                                                 <select class="form-control" name="P_OCCU" id="P_OCCU" required>
+                                                    <option>-None-</option>
                                                     <option>Student</option>
                                                     <option>Government Employee</option>
                                                     <option>Senior Citizen</option>
@@ -474,12 +475,6 @@ require 'lib/Db.config.php';
                                             </div>
                                      </div>
 									 <div class="form-group">
-                                            <label class="col-md-4 control-label">B.4 Current Occupation:</label>
-                                            <div class="col-lg-6">
-                                                <input id="" type="text" class="form-control" placeholder="">
-                                            </div>
-                                     </div>
-									 <div class="form-group">
                                             <div class="col-sm-4 pull-right">
                                                 <button class="btn btn-success" onclick="addNewPatient()">Save</button>
                                             </div>
@@ -560,9 +555,33 @@ require 'lib/Db.config.php';
     
   }
 </script>
+<script>
+        $(document).ready(function(){
+        var Auth ='<?php echo $Position; ?>';
+        if (Auth == "Admin") 
+        {                       
+            $('#Patient-li').show(); 
+            $('#Schedule-li').show();
+            $('#Inventory-li').show();
+            $('#Laboratory-li').show();
+            $('#Reports-li').show();
+            $('#User-li').show();
+            $('#Maintenance-li').show();
+        }
+        else if(Auth == "Doctor") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+        });
+    </script>
 
   <!--common script for all pages-->
-    <script src="js/common-scripts.js"></script>
+<script src="js/common-scripts.js"></script>
+<script src="js/user-accesslvl.js"></script>
+
 
   </body>
 </html>

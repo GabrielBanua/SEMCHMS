@@ -10,7 +10,7 @@ if(isset($_POST['login'])){
     //Retrieve the field values from our login form.
     $username = $_POST['username'];
     $password = $_POST['password'];
-    
+
     //Retrieve the user account information for the given username.
     $sql = "SELECT User_id, Username, Password, Position FROM users WHERE Username = :username";
     $stmt = $db->prepare($sql);

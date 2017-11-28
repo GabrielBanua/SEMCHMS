@@ -147,6 +147,7 @@ else if($Position == "Volunter"){
                           <span>Users Management</span>
                       </a>
                       <ul class="sub">
+                          <li><a  href="add-user.php">Add New User</a></li>
                           <li class="active"><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
@@ -208,7 +209,7 @@ else if($Position == "Volunter"){
                                                 <td><?php echo $row['FullName'] ?></td>
                                                 <td><?php echo $row['Position'] ?></td>
                                                 <td class="center hidden-phone">
-                                                <a class="btn btn-success btn-xs" href="#edituser">Edit</a>
+                                                <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditModal">Edit</a>
                                                 <a class="btn btn-danger btn-xs" type="submit" onclick="DeleteUser
 												(<?php echo $row['User_id']?>)">
 												delete</a>
@@ -222,7 +223,7 @@ else if($Position == "Volunter"){
                                 </div>
                           </div>
 						  <!-- Register User Start  MODAL-->
-						  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="adduser" class="modal fade">
+						  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditModal" class="modal fade">
                                   <div class="modal-dialog">
                                       <div class="modal-content">
                                           <div class="modal-header">
@@ -268,7 +269,7 @@ else if($Position == "Volunter"){
 															<select class="form-control">
 																<option hidden>-None-</option>
 																<option>Male</option>
-																<option>Position</option>
+																<option>Female</option>
 															</select>
                                                       </div>
                                                   </div>
@@ -289,7 +290,7 @@ else if($Position == "Volunter"){
                                           </div>
 										<div class="modal-footer">
 											<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-											<button class="btn btn-success" type="button">Register</button>
+											<button class="btn btn-success" type="button">Update</button>
 										</div>
                                       </div>
                                   </div>
@@ -363,7 +364,7 @@ else if($Position == "Volunter"){
                                           </div>
 										<div class="modal-footer">
 											<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-											<button class="btn btn-success" type="button">Register</button>
+											<button class="btn btn-success" type="button">Update</button>
 										</div>
                                       </div>
                                   </div>
