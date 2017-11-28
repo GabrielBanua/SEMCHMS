@@ -242,7 +242,7 @@ else if($Position == "Volunter"){
 												  <div class="form-group">
                                                       <label class="col-md-3 col-sm-2 control-label">Password:</label>
                                                       <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
+                                                          <input type="password" class="form-control">
                                                       </div>
                                                   </div>
 												  <div class="form-group">

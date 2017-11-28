@@ -177,49 +177,116 @@ require 'lib/session.php';
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-                                    <a class="btn btn-success" href="add-patient.html">Add Patient</a>
+                                    <a class="btn btn-success" data-toggle="modal" href="#setsched">Set Appointment</a>
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th>Patient No.</th>
-                                          <th>Name</th>
                                           <th>Date Schedule</th>
-                                          <th class="hidden-phone">Status</th>
+                                          <th>Patient Name</th>
+                                          <th>Patient Type</th>
+                                          <th class="hidden-phone">Appointment</th>
                                           <th class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
                                       <tr class="gradeX">
-                                          <td>000001</td>
+                                          <td>Sept. 20, 2017</td>
                                           <td>Alec Rubiato</td>
-                                          <td>Sept. 20, 2017</td>
-                                          <td class="center hidden-phone">Completed</td>
+                                          <td>Special Child</td>
+                                          <td class="center hidden-phone">Checkup</td>
                                           <td class="center hidden-phone">
 											<a class="btn btn-danger btn-xs" href="#">Delete</a>
 										  </td>
                                       </tr>
 									  <tr class="gradeX">
-                                          <td>000002</td>
-                                          <td>Gabriel Banua</td>
                                           <td>Sept. 20, 2017</td>
-                                          <td class="center hidden-phone">Ongoing</td>
+                                          <td>Alec Rubiato</td>
+                                          <td>Special Child</td>
+                                          <td class="center hidden-phone">Checkup</td>
                                           <td class="center hidden-phone">
 											<a class="btn btn-danger btn-xs" href="#">Delete</a>
 										  </td>
                                       </tr>
 									  <tr class="gradeX">
-                                          <td>000003</td>
-                                          <td>Alson John Bayon-on</td>
                                           <td>Sept. 20, 2017</td>
-                                          <td class="center hidden-phone">Pending</td>
+                                          <td>Alec Rubiato</td>
+                                          <td>Special Child</td>
+                                          <td class="center hidden-phone">Checkup</td>
                                           <td class="center hidden-phone">
 											<a class="btn btn-danger btn-xs" href="#">Delete</a>
 										  </td>
                                       </tr>
                                       </tfoot>
-                          </table>
+									</table>
                                 </div>
                           </div>
+						  <!-- Register User Start  MODAL-->
+						  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="setsched" class="modal fade">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                              <h4 class="modal-title">Set Appointment</h4>
+                                          </div>
+                                          <div class="modal-body">
+
+                                              <form class="form-horizontal" role="form">
+                                                  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Patient Name:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Date Appointment:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Time:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Patient Type:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control">
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Gender:</label>
+                                                      <div class="col-lg-4">
+															<select class="form-control">
+																<option hidden>-None-</option>
+																<option>Male</option>
+																<option>Female</option>
+															</select>
+                                                      </div>
+                                                  </div>
+												  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
+                                                      <div class="col-lg-4">
+															<select class="form-control">
+																<option hidden>-None-</option>
+																<option>Check Up</option>
+																<option>X-tray</option>
+																<option>Dental</option>
+																<option>Laboratory Test</option>
+															</select>
+                                                      </div>
+                                                  </div>
+                                              </form>
+                                          </div>
+										<div class="modal-footer">
+											<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+											<button class="btn btn-success" type="button">Set Schedule</button>
+										</div>
+                                      </div>
+                                  </div>
+                              </div>
+					  <!--MODAL END-->
                       </section>
                   </div>
               </div>
