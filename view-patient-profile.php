@@ -176,7 +176,7 @@ $row = mysql_fetch_array($result);
               <div class="row">
                   <aside class="profile-nav col-lg-3">
                       <section class="panel">
-                          <div class="user-heading round alt green-bg">
+                          <div class="user-heading round">
                               <a href="#">
                                   <img src="img/profile-avatar.jpg" alt="">
                               </a>

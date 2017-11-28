@@ -30,7 +30,7 @@ a, a:hover, a:focus {
 }
 ::selection {
 
-    background: #FF6C60;
+    background: #3295ff;
     color: #fff;
 }
 ::-moz-selection {
@@ -2344,7 +2344,7 @@ ul.inbox-pagination li {
 /*profile*/
 
 .profile-nav .user-heading {
-    background: #ff766c;
+    background: #3295ff;
     color: #fff;
     border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
