@@ -179,7 +179,7 @@ require 'lib/session.php';
                             </div>
                             <div class="value">
                                 <h1 class="count">
-                                    0
+                                    200
                                 </h1>
                                 <p>New Patients</p>
                             </div>
@@ -191,7 +191,7 @@ require 'lib/session.php';
                                 <i class="icon-stethoscope"></i>
                             </div>
                             <div class="value">
-                                <h1 class=" count2">
+                                <h1 class="count2">
                                     0
                                 </h1>
                                 <p>Patient Care</p>
@@ -444,6 +444,14 @@ require 'lib/session.php';
             $('#Maintenance-li').hide();
             $('#Reports-li').hide();
             $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+        else if(Auth == "Medtech") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Patient-li').hide();
+            $('#Schedule-li').hide();
             $('#Inventory-li').hide();
         }
         });

@@ -284,14 +284,14 @@ else if($Position == "Volunter"){
                                                 <td><?php echo $row['FullName'] ?></td>
                                                 <td><?php echo $row['Position'] ?></td>
                                                 <td class="center hidden-phone">
-                                                <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditModal">Edit</a>
+                                                <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditModal-<?php echo $row['User_id']?>">Edit</a>
 <!-- Edit User MODAL-->
-              <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditModal" class="modal fade">
+              <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['User_id']?>" role="dialog" tabindex="-1" id="EditModal-<?php echo $row['User_id']?>" class="modal fade">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                    <h4 class="modal-title"">Edit User</h4>
+                                    <h4 class="modal-title" id="myModalLabel-<?php echo $row['User_id']?>">Edit User</h4>
                                 </div>
                                 <div class="modal-body">
 

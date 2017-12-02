@@ -193,41 +193,16 @@ require 'lib/session.php';
                                       <tr class="gradeX">
                                           <td>Sept. 20, 2017</td>
                                           <td>Alec Rubiato</td>
-                                          <td>Special Child</td>
+                                          <td>Child</td>
                                           <td class="center hidden-phone">Checkup</td>
                                           <td class="center hidden-phone">
-<<<<<<< HEAD
                     											<a class="btn btn-danger btn-xs" href="#">Delete</a>
                     										  </td>
                                       </tr>
 									  
                                       </tbody>
                           </table>
-=======
-											<a class="btn btn-danger btn-xs" href="#">Delete</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>Sept. 20, 2017</td>
-                                          <td>Alec Rubiato</td>
-                                          <td>Special Child</td>
-                                          <td class="center hidden-phone">Checkup</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-danger btn-xs" href="#">Delete</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>Sept. 20, 2017</td>
-                                          <td>Alec Rubiato</td>
-                                          <td>Special Child</td>
-                                          <td class="center hidden-phone">Checkup</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-danger btn-xs" href="#">Delete</a>
-										  </td>
-                                      </tr>
-                                      </tfoot>
-									</table>
->>>>>>> 5d824d32183e65fa5fd641f5daa1c8213a51fe3b
+											
                                 </div>
                           </div>
 						  <!-- Register User Start  MODAL-->
