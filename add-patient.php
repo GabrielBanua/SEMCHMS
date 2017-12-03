@@ -125,14 +125,14 @@ require 'lib/Db.config.php';
                           <li class="sub-menu">
                               <a href="javascript:;">Add Lab Test</a>
                               <ul class="sub">
-                                  <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-                								  <li><a href="add-lab-fecal.php">Fecalysis</a></li>
-                								  <li><a href="add-lab-hema.php">Hematology</a></li>
-                								  <li><a href="add-lab-urinal.php">Urinalysis</a></li>
+                                <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
+								<li><a href="add-lab-fecal.php">Fecalysis</a></li>
+                				<li><a href="add-lab-hema.php">Hematology</a></li>
+                				<li><a href="add-lab-urinal.php">Urinalysis</a></li>
                               </ul>
                           </li>
-                    						  <li><a  href="lab-request.php">View Lab Request</a></li>
-                    						  <li><a  href="#">View Lab Records</a></li>
+                    			<li><a  href="lab-request.php">View Lab Request</a></li>
+                    			<li><a  href="#">View Lab Records</a></li>
                       </ul>
           </li>
 				  <li class="sub-menu" id="User-li">
@@ -522,6 +522,8 @@ require 'lib/Db.config.php';
     <script src="js/respond.min.js" ></script>
 	
 	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+	<script src="js/advanced-form-components.js"></script>
 	
 	<script>
         function addNewPatient(){
@@ -594,7 +596,6 @@ require 'lib/Db.config.php';
   <!--common script for all pages-->
 <script src="js/common-scripts.js"></script>
 <script src="js/user-accesslvl.js"></script>
-<script src="js/advanced-form-components.js"></script>
 
   </body>
 </html>

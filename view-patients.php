@@ -22,6 +22,9 @@ require 'lib/Db.config.pdo.php';
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+	<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap-fileupload/bootstrap-fileupload.css" />
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -207,7 +210,7 @@ require 'lib/Db.config.pdo.php';
       <td>+639<?php echo $row['P_CN'] ?></td>
       <td align="center">
         <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class="icon-eye-open"></i></a>
-        <a class="btn btn-danger btn-xs" href="add-patient.php"><i class="icon-pencil"></i></a>
+        <a class="btn btn-success btn-xs" data-toggle="modal" href="#editpatient"><i class="icon-pencil"></i></a>
       </td>
     </tr>
     <?php
@@ -217,6 +220,339 @@ require 'lib/Db.config.pdo.php';
                                     </table>
                                 </div>
                           </div>
+						  <!-- Register User Start  MODAL-->
+						  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="editpatient" class="modal fade">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                              <h4 class="modal-title">Edit Patient Profile</h4>
+                                          </div>
+                                          <div class="modal-body">
+												<header class="panel-heading tab-bg-dark-navy-blue ">
+												  <ul class="nav nav-tabs">
+													  <li class="active">
+														  <a data-toggle="tab" href="#basicinfo">Patient Basic Info</a>
+													  </li>
+													  <li class="">
+														  <a data-toggle="tab" href="#healthissue">Health Issue</a>
+													  </li>
+												  </ul>
+											  </header>
+											  <div class="panel-body">
+												  <div class="tab-content">
+													  <div id="basicinfo" class="tab-pane active">
+														  <form action="#" class="form-horizontal tasi-form">
+                                      <div class="form-group">
+                                          <div class="col-md-9">
+                                              <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                  <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                                      <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                  </div>
+                                                  <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                                  <div>
+                                                   <span class="btn btn-white btn-file">
+                                                   <span class="fileupload-new"><i class="icon-paper-clip"></i> Select image</span>
+                                                   <span class="fileupload-exists"><i class="icon-undo"></i> Change</span>
+                                                   <input type="file" class="default" />
+                                                   </span>
+                                                      <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="icon-trash"></i> Remove</a>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+									  <div class="form-group">
+                                            <label class="col-md-4 control-label">Patient Id</label>
+                                            <div class="col-lg-4">
+                                                <input type="text" name="P_ID" id="P_ID" value="P000<?php echo $MaxID ?>" readonly class="form_datetime form-control">
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label class="col-md-4 control-label">Date Registered:</label>
+                                            <div class="col-lg-4">
+                                                <input id=" DATE_REG" name="DATE_REG" type="text" value="<?php echo $date ?>" readonly class="form_datetime form-control">
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label class="col-md-4 control-label">First Name</label>
+                                            <div class="col-lg-6">
+                                                <input id="P_FNAME" name="P_FNAME" type="text" class="form-control" placeholder=" " autofocus required>
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label class="col-md-4 control-label">Middle Name</label>
+                                            <div class="col-lg-6">
+                                                <input id="P_MNAME" name="P_MNAME" type="text" class="form-control" placeholder=" " required>
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label class="col-md-4 control-label">Last Name</label>
+                                            <div class="col-lg-6">
+                                                <input id="P_LNAME" name="P_LNAME" type="text" class="form-control" placeholder=" " required>
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label class="col-md-4 control-label">Address</label>
+                                            <div class="col-lg-6">
+                                                <input id="P_ADD" name="P_ADD" type="text" class="form-control" placeholder=" " required>
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label class="col-md-4 control-label">Gender</label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" name="P_GNDR" id="P_GNDR" required>
+												<option>-None-</option>
+												<option>Male</option>
+												<option>Female</option>
+												</select>
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label class="col-md-4 control-label">Birthdate</label>
+                                            <div class="col-lg-6">
+												<input id="P_BDATE" name="P_BDATE" type="text" class="form-control" placeholder=" " required>
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label class="col-md-4 control-label">Age</label>
+                                            <div class="col-lg-2">
+                                                <input id="P_AGE" name="P_AGE" type="text" class="form-control" placeholder=" " required>
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label class="col-md-4 control-label">Category</label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" name="P_TYPE" id="P_TYPE" required>
+												<option>-None-</option>
+												<option>Adult</option>
+												<option>Children</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+                                            <label class="col-md-4 control-label">Occupation</label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" name="P_OCCU" id="P_OCCU" required>
+                                                    <option>-None-</option>
+                                                    <option>Student</option>
+                                                    <option>Government Employee</option>
+                                                    <option>Senior Citizen</option>
+                                                    <option>Lawyer</option>
+                                                    <option>Director</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Temperature (Celcius)</label>
+                                            <div class="col-lg-6">
+                                                <input id="P_TEMP" name="P_TEMP" type="text" class="form-control" placeholder=" " required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                        <label class="col-md-4 control-label">Weight (Kg)</label>
+                                            <div class="col-lg-6">
+												<input id="P_WGHT" name="P_WGHT" type="text" class="form-control" placeholder="">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-4 control-label">Height (cm)</label>
+                                            <div class="col-lg-6">
+                                                <input id="P_HGHT" name="P_HGHT" type="text" class="form-control" placeholder="">
+											</div>
+										</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Contact Number (+639)</label>
+                                            <div class="col-lg-6">
+                                                <input id="P_CN" name="P_CN" type="text" class="form-control" placeholder=" " required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Religion</label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" name="P_REL" id="P_REL" required>
+													<option>-None-</option>
+													<option>Catholic</option>
+													<option>Muslim</option>
+												</select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Civil Status</label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" name="P_CVL_STAT" id="P_CVL_STAT" required>
+                                                    <option>Single</option>
+                                                    <option>Widowed</option>
+                                                    <option>Married</option>
+                                                    <option>Divorced</option>
+                                                    <option>Separated</option>
+                                                </select>
+                                            </div>
+                                        </div>
+								</form>
+													  </div>
+													  <div id="healthissue" class="tab-pane">
+															<form role="form" class="form-horizontal tasi-form">
+									<div class="form-group">
+                                            <label class="col-md-4 control-label">A.5 Dominant Hand:</label>
+                                            <div class="col-lg-4">
+												<select class="form-control" name="DOM_HAND" id="DOM_HAND">
+													<option hidden>-None-</option>
+													<option>Left</option>
+													<option>Right</option>
+												</select>
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.6 How do you rate Physical Health:</label>
+                                            <div class="col-lg-4">
+												<select class="form-control" name="PHY_HEALTH" id="PHY_HEALTH">
+													<option hidden>-None-</option>
+													<option>Poor</option>
+													<option>Good</option>
+													<option>Very Good</option>
+												</select>
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.7 How do you rate your health in the past Month?:</label>
+                                            <div class="col-lg-6">
+                                                <input id="" type="text" class="form-control" placeholder="">
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.8 Do you currently have any disease(s) or Disorder(s)?:</label>
+                                            <div class="col-lg-6">
+                                                <input id="DISE_DISO" type="text" class="form-control">
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
+											<div class="col-lg-4">
+												<select class="form-control" name="SIG_INJ" id="SIG_INJ">
+													<option hidden>-None-</option>
+													<option>Yes</option>
+													<option>No</option>
+												</select>
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.10 have you been hospitalized in the last year?:</label>
+                                            <div class="col-lg-4">
+												<select class="form-control" name="HPTL" id="HPTL">
+													<option hidden>-None-</option>
+													<option>Yes</option>
+													<option>No</option>
+												</select>
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.11 are you taking medication?:</label>
+                                            <div class="col-lg-4">
+												<select class="form-control" name="MEDCT" id="MEDCT">
+													<option hidden>-None-</option>
+													<option>Yes</option>
+													<option>No</option>
+												</select>
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.12 Do you smoke?:</label>
+                                            <div class="col-lg-4">
+												<select class="form-control" name="SMOKE" id="SMOKE">
+													<option hidden>-None-</option>
+													<option>Yes</option>
+													<option>No</option>
+												</select>
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.13 Do you consume Alcohol or drugs?:</label>
+                                            <div class="col-lg-4">
+												<select class="form-control" name="ALCO_DRUGS" id="ALCO_DRUGS">
+													<option hidden>-None-</option>
+													<option>Yes</option>
+													<option>No</option>
+												</select>
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.14 Do you use Assistive Device?:</label>
+                                            <div class="col-lg-4">
+												<select class="form-control" name="ASSIST_DEV" id="ASSIST_DEV">
+													<option hidden>-None-</option>
+													<option>Yes</option>
+													<option>No</option>
+												</select>
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.15 Do you have any person assisting you?:</label>
+                                            <div class="col-lg-4">
+												<select class="form-control" name="PERS_ASSIS" id="PERS_ASSIST">
+													<option hidden>-None-</option>
+													<option>Yes</option>
+													<option>No</option>
+												</select>
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.16 Are you receiving any land of treatment for you Health?:</label>
+                                            <div class="col-lg-4">
+												<select class="form-control" name="TRMT" id="TRMT">
+													<option hidden>-None-</option>
+													<option>Yes</option>
+													<option>No</option>
+												</select>
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.17 Additional Significant on your past and present health?:</label>
+                                            <div class="col-lg-6">
+                                                <input id="PP_HEATH" type="text" class="form-control" placeholder="">
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.18 In the Past Month, cut back your usual activies because of your health condition?:</label>
+                                            <div class="col-lg-6">
+                                                <input id="CB_HEALTH_COND" type="text" class="form-control" placeholder="">
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">A.19 In the Past Month, have you been totally unable to carry out your usual activities?:</label>
+                                            <div class="col-lg-6">
+                                                <input id="TU_HEALTH_COND" type="text" class="form-control" placeholder="">
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">B.2 Years of Formal Education:</label>
+                                            <div class="col-lg-6">
+                                                <input id="YEARS_FE" type="text" class="form-control">
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <label class="col-md-4 control-label">B.3 Marital Status:</label>
+                                            <div class="col-lg-6">
+                                                <input name="MARITAL_STAT" id="MARITAL_STAT" type="text" class="form-control" placeholder="">
+                                            </div>
+                                     </div>
+									 <div class="form-group">
+                                            <div class="col-sm-4 pull-right">
+                                                <button class="btn btn-success" onclick="addNewPatient()">Save</button>
+                                            </div>
+                                        </div>
+								</form>
+													  </div>
+												  </div>
+											  </div>
+                                          </div>
+										<div class="modal-footer">
+											<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+											<button class="btn btn-success" onclick="addNewPatient()">Save</button>
+										</div>
+                                      </div>
+                                  </div>
+                              </div>
+					  <!--MODAL END-->
                       </section>
                   </div>
               </div>
@@ -245,6 +581,10 @@ require 'lib/Db.config.pdo.php';
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+	
+	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+	<script src="js/advanced-form-components.js"></script>
 
 
   <!--common script for all pages-->
