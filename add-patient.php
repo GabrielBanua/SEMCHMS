@@ -364,25 +364,34 @@ require 'lib/Db.config.php';
                                             </div>
                                      </div>
 									 <div class="form-group">
-                                            <label class="col-md-4 control-label">A.7 How do you rate your health in the past Month?:</label>
-                                            <div class="col-lg-6">
-                                                <input id="" type="text" class="form-control" placeholder="">
+                                            <label class="col-md-4 control-label">A.7 How do you rate your Mental and Emotional health in the past Month?:</label>
+                                            <div class="col-lg-4">
+                                                <select class="form-control" name="MENT_EMO_HEAl" id="PHY_HEALTH">
+                                                  <option hidden>-None-</option>
+                                                  <option>Poor</option>
+                                                  <option>Good</option>
+                                                  <option>Very Good</option>
+                                                </select>
                                             </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.8 Do you currently have any disease(s) or Disorder(s)?:</label>
-                                            <div class="col-lg-6">
-                                                <input id="DISE_DISO" type="text" class="form-control">
+                                            <div class="col-lg-4">
+                                              <select class="form-control" id="DISE_DISO">
+                                                <option hidden>-None-</option>
+                                                <option>Yes</option>
+                                                <option>No</option>
+                                              </select>
                                             </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
-											<div class="col-lg-4">
-												<select class="form-control" name="SIG_INJ" id="SIG_INJ">
-													<option hidden>-None-</option>
-													<option>Yes</option>
-													<option>No</option>
-												</select>
+                      											<div class="col-lg-4">
+                      												<select class="form-control" name="SIG_INJ" id="SIG_INJ">
+                      													<option hidden>-None-</option>
+                      													<option>Yes</option>
+                      													<option>No</option>
+                      												</select>
                                             </div>
                                      </div>
 									 <div class="form-group">

@@ -414,9 +414,14 @@ require 'lib/Db.config.pdo.php';
                                             </div>
                                      </div>
 									 <div class="form-group">
-                                            <label class="col-md-4 control-label">A.7 How do you rate your health in the past Month?:</label>
-                                            <div class="col-lg-6">
-                                                <input id="" type="text" class="form-control" placeholder="">
+                                            <label class="col-md-4 control-label">A.7 How do you rate your health Mental and Emotional in the past Month?:</label>
+                                            <div class="col-lg-4">
+                                                <select class="form-control" name="MENT_EMO_HEAl" id="PHY_HEALTH">
+                                                  <option hidden>-None-</option>
+                                                  <option>Poor</option>
+                                                  <option>Good</option>
+                                                  <option>Very Good</option>
+                                                </select>
                                             </div>
                                      </div>
 									 <div class="form-group">
