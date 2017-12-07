@@ -3,7 +3,7 @@ require 'lib/session.php';
 require 'lib/Db.config.php';
 
 $VIEW_ID = isset($_GET['VID'])?$_GET['VID']:'';
-$sql = "SELECT *, CONCAT(P_FNAME,' ', P_LNAME) AS FullName FROM patient where P_ID = $VIEW_ID";
+$sql = "SELECT *, CONCAT(patient.P_FNAME,' ', patient.P_LNAME) AS FullName FROM ((patient INNER JOIN patient_medical_issue ON patient.P_ID = patient_medical_issue.P_ID) INNER JOIN adult ON patient_medical_issue.PMI_ID = adult.PMI_ID) WHERE patient.P_ID = $VIEW_ID";
 $result = mysql_query($sql);
 $row = mysql_fetch_array($result);
 ?>
@@ -271,85 +271,81 @@ $row = mysql_fetch_array($result);
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.5 Dominant Hand:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['DOM_HAND']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.6 How do you rate Physical Health:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['PHY_HEALTH']?>">
 												</div>
 												<div class="col-sm-4">
-													<p class="help-block">A.7 How do you rate your health in the past Month?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<p class="help-block">A.7 How do you rate your Mental and Emotional health in the past Month?:<p>
+													<input type="text" class="form-control" value="<?php echo $row['MENT_EMO_HEAl']?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.8 Do you currently have any disease(s) or Disorder(s)?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['DISE_DISO']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.9 Did you ever have any significant injures that impact on your level of functioning?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['SIG_INJ']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.10 have you been hospitalized in the last year?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['HPTL']?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.11 are you taking medication?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['MEDCT']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.12 Do you smoke?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['SMOKE']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.13 Do you consume Alcohol or drugs?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['ALCO_DRUGS']?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.14 Do you use Assistive Device?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['ASSIST_DEV']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.15 Do you have any person assisting you?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['PERS_ASSIST']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.16 Are you receiving any land of treatment for you Health?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['TRMT']?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.17 Additional Significant on your past and present health?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['PP_HEATH']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.18 In the Past Month, cut back your usual activies because of your health condition?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['CB_HEALTH_COND']?>">
 												</div>
 												<div class="col-sm-4">
-													<p class="help-block">A.19 In the Past Month, have you been totslly unable to carry out your  unable to carry out your usual activities?:<p>
-													<input type="text" class="form-control" placeholder="">
+													<p class="help-block">A.19 In the Past Month, have you been totally unable to carry out your  unable to carry out your usual activities?:<p>
+													<input type="text" class="form-control" value="<?php echo $row['TU_HEALTH_COND']?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">B.2 Years of Formal Education:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['YEARS_FE']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">B.3 Marital Status:<p>
-													<input type="text" class="form-control" placeholder="">
-												</div>
-												<div class="col-sm-4">
-													<p class="help-block">B.4 Current Occupation:<p>
-													<input type="text" class="form-control" placeholder="">
+													<input type="text" class="form-control" value="<?php echo $row['MARITAL_STAT']?>">
 												</div>
 											</div>
 										</form>

@@ -287,19 +287,24 @@ require 'lib/Db.config.php';
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Temperature (Celcius)</label>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-2">
                                                 <input id="P_TEMP" name="P_TEMP" type="text" class="form-control" placeholder=" " required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                         <label class="col-md-4 control-label">Weight (Kg)</label>
+<<<<<<< HEAD
                                             <div class="col-lg-6">
 												<input id="P_WGHT" name="P_WGHT" type="number" class="form-control" placeholder="">
+=======
+                                            <div class="col-lg-2">
+												<input id="P_WGHT" name="P_WGHT" type="text" class="form-control" placeholder="">
+>>>>>>> b91dcdbbcf72bcece4cf2c5779ad37ca1205833b
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-md-4 control-label">Height (cm)</label>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-2">
                                                 <input id="P_HGHT" name="P_HGHT" type="text" class="form-control" placeholder="">
 											</div>
 										</div>
@@ -353,16 +358,16 @@ require 'lib/Db.config.php';
                                             </div>
                                      </div>
 									 <div class="form-group">
-                                            <label class="col-md-4 control-label">A.6 How do you rate Physical Health:</label>
-                                            <div class="col-lg-4">
-												<select class="form-control" name="PHY_HEALTH" id="PHY_HEALTH">
-													<option hidden>-None-</option>
-													<option>Poor</option>
-													<option>Good</option>
-													<option>Very Good</option>
-												</select>
-                                            </div>
-                                     </div>
+                      <label class="col-md-4 control-label">A.6 How do you rate Physical Health:</label>
+                          <div class="col-lg-4">
+                      				<select class="form-control" name="PHY_HEALTH" id="PHY_HEALTH">
+                      						<option hidden>-None-</option>
+                      						<option>Poor</option>
+                      						<option>Good</option>
+                      						<option>Very Good</option>
+                      				</select>
+                          </div>
+                   </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.7 How do you rate your Mental and Emotional health in the past Month?:</label>
                                             <div class="col-lg-4">
@@ -447,7 +452,7 @@ require 'lib/Db.config.php';
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.15 Do you have any person assisting you?:</label>
                                             <div class="col-lg-4">
-												<select class="form-control" name="PERS_ASSIS" id="PERS_ASSIST">
+												<select class="form-control" name="PERS_ASSIST" id="PERS_ASSIST">
 													<option hidden>-None-</option>
 													<option>Yes</option>
 													<option>No</option>
@@ -493,7 +498,7 @@ require 'lib/Db.config.php';
                                             <div class="col-lg-6">
                                                 <input name="MARITAL_STAT" id="MARITAL_STAT" type="text" class="form-control" placeholder="">
                                             </div>
-                                     </div>
+                   </div>
 									 <div class="form-group">
                                             <div class="col-sm-4 pull-right">
                                                 <button class="btn btn-success" onclick="addNewPatient()">Save</button>

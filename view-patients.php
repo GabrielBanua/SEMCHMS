@@ -197,29 +197,384 @@ require 'lib/Db.config.pdo.php';
                                           <th width="90">Contact No.</th>
                                           <th width="80" class="hidden-phone">Action</th>
                                       </tr>
+                                      </thead>
                                       <tbody>
 <?php
-                  while($row = $stmt->fetch()){
-    ?>
-    <tr>
-      <td><p>P<?php echo $row['P_ID'] ?></p></td>
-      <td><?php echo $row['FullName'] ?></td>
-      <td><?php echo $row['P_GNDR'] ?></td>
-      <td><?php echo $row['P_TYPE'] ?></td>
-      <td><?php echo $row['P_ADD'] ?></td>
-      <td>+639<?php echo $row['P_CN'] ?></td>
-      <td align="center">
-        <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class="icon-eye-open"></i></a>
-        <a class="btn btn-success btn-xs" data-toggle="modal" href="#editpatient"><i class="icon-pencil"></i></a>
+while($row = $stmt->fetch()){
+?>
+                                        <tr>
+                                          <td><p>P<?php echo $row['P_ID'] ?></p></td>
+                                          <td><?php echo $row['FullName'] ?></td>
+                                          <td><?php echo $row['P_GNDR'] ?></td>
+                                          <td><?php echo $row['P_TYPE'] ?></td>
+                                          <td><?php echo $row['P_ADD'] ?></td>
+                                          <td>+639<?php echo $row['P_CN'] ?></td>
+                                          <td align="center">
+                                            <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class="icon-eye-open"></i></a>
+                                            <a class="btn btn-success btn-xs" data-toggle="modal" href="#editpatient-<?php echo $row['P_ID'] ?>"><i class="icon-pencil"></i></a>
+<!-- Register User Start  MODAL-->
+<div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['P_ID'] ?>" role="dialog" tabindex="-1" id="editpatient-<?php echo $row['P_ID'] ?>" class="modal fade">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title" id="myModalLabel-<?php echo $row['P_ID'] ?>">Edit Patient Profile</h4>
+          </div>
+          <div class="modal-body">
+              <header class="panel-heading tab-bg-dark-navy-blue ">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a data-toggle="tab" href="#basicinfo">Patient Basic Info</a>
+                    </li>
+                    <li class="">
+                      <a data-toggle="tab" href="#healthissue">Health Issue</a>
+                    </li>
+                  </ul>
+              </header>
+            <div class="panel-body">
+              <div class="tab-content">
+                <div id="basicinfo" class="tab-pane active">
+                              <form action="#" class="form-horizontal tasi-form">
+                  <div class="form-group">
+                    <div class="col-md-3">
+                      <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                  <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                </div>
+                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                              <div>
+                            <span class="btn btn-white btn-file">
+                            <span class="fileupload-new"><i class="icon-paper-clip"></i> Select image</span>
+                            <span class="fileupload-exists"><i class="icon-undo"></i> Change</span>
+                              <input type="file" class="default" />
+                            </span>
+                          <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="icon-trash"></i> Remove</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Patient Id</label>
+                      <div class="col-lg-4">
+                        <input type="text" name="P_ID" id="P_ID" value="P000<?php echo $row['P_ID'] ?>" readonly class="form_datetime form-control">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Date Registered:</label>
+                      <div class="col-lg-4">
+                        <input id=" DATE_REG" name="DATE_REG" type="text" value="<?php echo $row['DATE_REG'] ?>" readonly class="form_datetime form-control">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">First Name</label>
+                      <div class="col-lg-6">
+                        <input id="P_FNAME" name="P_FNAME" type="text" class="form-control" value="<?php echo $row['P_FNAME'] ?>" autofocus required>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Middle Name</label>
+                      <div class="col-lg-6">
+                        <input id="P_MNAME" name="P_MNAME" type="text" class="form-control" value="<?php echo $row['P_MNAME'] ?>" required>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Last Name</label>
+                      <div class="col-lg-6">
+                        <input id="P_LNAME" name="P_LNAME" type="text" class="form-control" value="<?php echo $row['P_LNAME'] ?>" required>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Address</label>
+                      <div class="col-lg-6">
+                        <input id="P_ADD" name="P_ADD" type="text" class="form-control" value="<?php echo $row['P_ADD'] ?>" required>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Gender</label>
+                      <div class="col-lg-6">
+                        <select class="form-control" name="P_GNDR" id="P_GNDR" required>
+                          <option value="-None-"<?php
+                            if ($row['P_GNDR'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option value="Male"<?php
+                            if ($row['P_GNDR'] == "Male") { echo " selected"; }?>>Male</option>
+                          <option value="Female"<?php
+                            if ($row['P_GNDR'] == "Female") { echo " selected"; }?>>Female</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Birthdate</label>
+                      <div class="col-lg-6">
+                        <input id="P_BDATE" name="P_BDATE" type="text" class="form-control" value="<?php echo $row['P_BDATE'] ?>" required>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Age</label>
+                      <div class="col-lg-2">
+                        <input id="P_AGE" name="P_AGE" type="text" class="form-control" value="<?php echo $row['P_AGE'] ?>" required>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Category</label>
+                      <div class="col-lg-6">
+                        <select class="form-control" name="P_TYPE" id="P_TYPE" required>
+                          <option value="-None-"<?php
+                            if ($row['P_TYPE'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option value="Adult"<?php
+                            if ($row['P_TYPE'] == "Adult") { echo " selected"; }?>>Adult</option>
+                          <option value="Children"<?php
+                            if ($row['P_TYPE'] == "Children") { echo " selected"; }?>>Children</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Occupation</label>
+                      <div class="col-lg-6">
+                        <select class="form-control" name="P_OCCU" id="P_OCCU" required>
+                          <option value="-None-"<?php
+                            if ($row['P_OCCU'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option value="Student"<?php
+                            if ($row['P_OCCU'] == "Student") { echo " selected"; }?>>Student</option>
+                          <option value="Government Employee"<?php
+                            if ($row['P_OCCU'] == "Government Employee") { echo " selected"; }?>>Government Employee</option>
+                          <option value="Senior Citizen"<?php
+                            if ($row['P_OCCU'] == "Senior Citizen") { echo " selected"; }?>>Senior Citizen</option>
+                          <option value="Lawyer"<?php
+                            if ($row['P_OCCU'] == "Lawyer") { echo " selected"; }?>>Lawyer</option>
+                          <option value="Director"<?php
+                            if ($row['P_OCCU'] == "Director") { echo " selected"; }?>>Director</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Temperature (Celcius)</label>
+                      <div class="col-lg-6">
+                        <input id="P_TEMP" name="P_TEMP" type="text" class="form-control" value="<?php echo $row['P_TEMP'] ?>" required>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Weight (Kg)</label>
+                      <div class="col-lg-6">
+                        <input id="P_WGHT" name="P_WGHT" type="text" class="form-control" value="<?php echo $row['P_WGHT'] ?>">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Height (cm)</label>
+                      <div class="col-lg-6">
+                        <input id="P_HGHT" name="P_HGHT" type="text" class="form-control" value="<?php echo $row['P_HGHT'] ?>">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Contact Number (+639)</label>
+                      <div class="col-lg-6">
+                        <input id="P_CN" name="P_CN" type="text" class="form-control" value="<?php echo $row['P_CN'] ?>" required>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Religion</label>
+                      <div class="col-lg-6">
+                        <select class="form-control" name="P_REL" id="P_REL" required>
+                          <option value="-None-"<?php
+                            if ($row['P_REL'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option value="Catholic"<?php
+                            if ($row['P_REL'] == "Catholic") { echo " selected"; }?>>Catholic</option>
+                          <option value="Muslim"<?php
+                            if ($row['P_REL'] == "Muslim") { echo " selected"; }?>>Muslim</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Civil Status</label>
+                      <div class="col-lg-6">
+                        <select class="form-control" name="P_CVL_STAT" id="P_CVL_STAT" required>
+                          <option value="Single"<?php
+                            if ($row['P_CVL_STAT'] == "Single") { echo " selected"; }?>>Single</option>
+                          <option value="Widowed"<?php
+                            if ($row['P_CVL_STAT'] == "Widowed") { echo " selected"; }?>>Widowed</option>
+                          <option value="Married"<?php
+                            if ($row['P_CVL_STAT'] == "Married") { echo " selected"; }?>>Married</option>
+                          <option value="Divorced"<?php
+                            if ($row['P_CVL_STAT'] == "Divorced") { echo " selected"; }?>>Divorced</option>
+                          <option value="Separated"<?php
+                            if ($row['P_CVL_STAT'] == "Separated") { echo " selected"; }?>>Separated</option>
+                        </select>
+                      </div>
+                  </div>
+                </form>
+              </div>
+              <div id="healthissue" class="tab-pane">
+                <form role="form" class="form-horizontal tasi-form">
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.5 Dominant Hand:</label>
+                      <div class="col-lg-4">
+                        <select class="form-control" name="DOM_HAND" id="DOM_HAND">
+                          <option hidden>-None-</option>
+                          <option>Left</option>
+                          <option>Right</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.6 How do you rate Physical Health:</label>
+                      <div class="col-lg-4">
+                        <select class="form-control" name="PHY_HEALTH" id="PHY_HEALTH">
+                          <option hidden>-None-</option>
+                          <option>Poor</option>
+                          <option>Good</option>
+                          <option>Very Good</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.7 How do you rate your health Mental and Emotional in the past Month?:</label>
+                      <div class="col-lg-4">
+                        <select class="form-control" name="MENT_EMO_HEAl" id="PHY_HEALTH">
+                          <option hidden>-None-</option>
+                          <option>Poor</option>
+                          <option>Good</option>
+                          <option>Very Good</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.8 Do you currently have any disease(s) or Disorder(s)?:</label>
+                      <div class="col-lg-6">
+                        <input id="DISE_DISO" type="text" class="form-control">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
+                      <div class="col-lg-4">
+                        <select class="form-control" name="SIG_INJ" id="SIG_INJ">
+                          <option hidden>-None-</option>
+                          <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.10 have you been hospitalized in the last year?:</label>
+                      <div class="col-lg-4">
+                        <select class="form-control" name="HPTL" id="HPTL">
+                          <option hidden>-None-</option>
+                          <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.11 are you taking medication?:</label>
+                      <div class="col-lg-4">
+                        <select class="form-control" name="MEDCT" id="MEDCT">
+                          <option hidden>-None-</option>
+                          <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.12 Do you smoke?:</label>
+                      <div class="col-lg-4">
+                        <select class="form-control" name="SMOKE" id="SMOKE">
+                          <option hidden>-None-</option>
+                          <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.13 Do you consume Alcohol or drugs?:</label>
+                      <div class="col-lg-4">
+                        <select class="form-control" name="ALCO_DRUGS" id="ALCO_DRUGS">
+                          <option hidden>-None-</option>
+                          <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.14 Do you use Assistive Device?:</label>
+                      <div class="col-lg-4">
+                        <select class="form-control" name="ASSIST_DEV" id="ASSIST_DEV">
+                          <option hidden>-None-</option>
+                          <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.15 Do you have any person assisting you?:</label>
+                      <div class="col-lg-4">
+                        <select class="form-control" name="PERS_ASSIS" id="PERS_ASSIST">
+                          <option hidden>-None-</option>
+                          <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.16 Are you receiving any land of treatment for you Health?:</label>
+                      <div class="col-lg-4">
+                        <select class="form-control" name="TRMT" id="TRMT">
+                          <option hidden>-None-</option>
+                          <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.17 Additional Significant on your past and present health?:</label>
+                      <div class="col-lg-6">
+                        <input id="PP_HEATH" type="text" class="form-control" placeholder="">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.18 In the Past Month, cut back your usual activies because of your health condition?:</label>
+                      <div class="col-lg-6">
+                        <input id="CB_HEALTH_COND" type="text" class="form-control" placeholder="">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">A.19 In the Past Month, have you been totally unable to carry out your usual activities?:</label>
+                       <div class="col-lg-6">
+                         <input id="TU_HEALTH_COND" type="text" class="form-control" placeholder="">
+                       </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">B.2 Years of Formal Education:</label>
+                      <div class="col-lg-6">
+                        <input id="YEARS_FE" type="text" class="form-control">
+                      </div>                    
+                  </div>
+                  <div class="form-group">
+                      <label class="col-md-4 control-label">B.3 Marital Status:</label>
+                      <div class="col-lg-6">
+                        <input name="MARITAL_STAT" id="MARITAL_STAT" type="text" class="form-control" placeholder="">
+                      </div>                        
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+                  <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                    <button class="btn btn-success" onclick="addNewPatient()">Save</button>
+                  </div>
+      </div>
+    </div>
+  </div>
+<!--MODAL END-->
       </td>
     </tr>
-    <?php
+<?php
   }
 ?>
                                       </tbody>
                                     </table>
                                 </div>
                           </div>
+<<<<<<< HEAD
 						  <!-- Register User Start  MODAL-->
 						  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="editpatient" class="modal fade">
                                   <div class="modal-dialog">
@@ -553,9 +908,12 @@ require 'lib/Db.config.pdo.php';
                                   </div>
                               </div>
 					  <!--MODAL END-->
+=======
+>>>>>>> b91dcdbbcf72bcece4cf2c5779ad37ca1205833b
                       </section>
                   </div>
               </div>
+
               <!-- page end-->
           </section>
       </section>
