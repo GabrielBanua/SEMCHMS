@@ -540,11 +540,6 @@ require 'lib/Db.config.pdo.php';
                                                 <input name="MARITAL_STAT" id="MARITAL_STAT" type="text" class="form-control" placeholder="">
                                             </div>
                                      </div>
-									 <div class="form-group">
-                                            <div class="col-sm-4 pull-right">
-                                                <button class="btn btn-success" onclick="addNewPatient()">Save</button>
-                                            </div>
-                                        </div>
 								</form>
 													  </div>
 												  </div>
