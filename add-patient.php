@@ -293,13 +293,8 @@ require 'lib/Db.config.php';
                                         </div>
                                         <div class="form-group">
                                         <label class="col-md-4 control-label">Weight (Kg)</label>
-<<<<<<< HEAD
-                                            <div class="col-lg-6">
-												<input id="P_WGHT" name="P_WGHT" type="number" class="form-control" placeholder="">
-=======
                                             <div class="col-lg-2">
 												<input id="P_WGHT" name="P_WGHT" type="text" class="form-control" placeholder="">
->>>>>>> b91dcdbbcf72bcece4cf2c5779ad37ca1205833b
 											</div>
 										</div>
 										<div class="form-group">
