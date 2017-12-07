@@ -249,7 +249,7 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">Birthdate</label>
                                             <div class="col-lg-6">
 												<div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="12-02-1950"  class="input-append date dpYears">
-													<input type="date" id="P_BDATE" name="P_BDATE" readonly=""  size="16" class="form-control">
+													<input type="text" id="P_BDATE" name="P_BDATE" readonly=""  size="16" class="form-control">
 													<span class="input-group-btn add-on">
 														<button class="btn btn-info" type="button"><i class="icon-calendar"></i></button>
 													</span>
@@ -313,7 +313,7 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">Religion</label>
                                             <div class="col-lg-6">
                                                 <select class="form-control" name="P_REL" id="P_REL" required>
-													<option>-None-</option>
+													<option hidden>-None-</option>
 													<option>Catholic</option>
 													<option>Muslim</option>
 												</select>
@@ -323,6 +323,7 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">Civil Status</label>
                                             <div class="col-lg-6">
                                                 <select class="form-control" name="P_CVL_STAT" id="P_CVL_STAT" required>
+													<option hidden>-None-</option>
                                                     <option>Single</option>
                                                     <option>Widowed</option>
                                                     <option>Married</option>
@@ -383,6 +384,9 @@ require 'lib/Db.config.php';
                                                 <option>No</option>
                                               </select>
                                             </div>
+											<div class="col-lg-10">
+												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
@@ -393,6 +397,9 @@ require 'lib/Db.config.php';
                       													<option>No</option>
                       												</select>
                                             </div>
+											<div class="col-lg-10">
+												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.10 have you been hospitalized in the last year?:</label>
@@ -413,6 +420,9 @@ require 'lib/Db.config.php';
 													<option>No</option>
 												</select>
                                             </div>
+											<div class="col-lg-10">
+												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.12 Do you smoke?:</label>
@@ -433,6 +443,9 @@ require 'lib/Db.config.php';
 													<option>No</option>
 												</select>
                                             </div>
+											<div class="col-lg-10">
+												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.14 Do you use Assistive Device?:</label>
@@ -443,6 +456,9 @@ require 'lib/Db.config.php';
 													<option>No</option>
 												</select>
                                             </div>
+											<div class="col-lg-10">
+												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.15 Do you have any person assisting you?:</label>
@@ -469,6 +485,9 @@ require 'lib/Db.config.php';
                                             <div class="col-lg-6">
                                                 <input id="PP_HEATH" type="text" class="form-control" placeholder="">
                                             </div>
+											<div class="col-lg-10">
+												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.18 In the Past Month, cut back your usual activies because of your health condition?:</label>
