@@ -177,20 +177,10 @@ require 'lib/Db.config.php';
 							<form action="#" class="form-horizontal tasi-form">
                                       <div class="form-group">
                                           <div class="col-md-9">
-                                              <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                  <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                                      <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
-                                                  </div>
-                                                  <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                                  <div>
-                                                   <span class="btn btn-white btn-file">
-                                                   <span class="fileupload-new"><i class="icon-paper-clip"></i> Select image</span>
-                                                   <span class="fileupload-exists"><i class="icon-undo"></i> Change</span>
-                                                   <input type="file" class="default" />
-                                                   </span>
-                                                      <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="icon-trash"></i> Remove</a>
-                                                  </div>
-                                              </div>
+                                              <div id="my_camera"></div>
+												<input type=button value="Take Snapshot" onClick="take_snapshot()">
+												 
+												<div id="results" ></div> 
                                           </div>
                                       </div>
 									  <div class="form-group">
@@ -542,6 +532,8 @@ require 'lib/Db.config.php';
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+	<!-- Webcam.min.js -->
+	<script type="text/javascript" src="js/webcam.min.js"></script>
 	
 	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
@@ -614,6 +606,27 @@ require 'lib/Db.config.php';
         }
         });
     </script>
+	<!-- Configure a few settings and attach camera -->
+<script language="JavaScript">
+ Webcam.set({
+  width: 320,
+  height: 240,
+  image_format: 'jpeg',
+  jpeg_quality: 90
+ });
+ Webcam.attach( '#my_camera' );
+
+<!-- Code to handle taking the snapshot and displaying it locally -->
+function take_snapshot() {
+ 
+ // take snapshot and get image data
+ Webcam.snap( function(data_uri) {
+  // display results in page
+  document.getElementById('results').innerHTML = 
+  '<img src="'+data_uri+'"/>';
+  } );
+}
+</script>
 
   <!--common script for all pages-->
 <script src="js/common-scripts.js"></script>
