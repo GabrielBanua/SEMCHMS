@@ -86,6 +86,7 @@ require 'lib/session.php';
                         <ul class="sub">
                             <li><a href="add-patient.php">Add Patients</a></li>
                             <li><a href="view-patients.php">View Patients</a></li>
+							<li><a href="#">Patient Reports</a></li>
                         </ul>
                     </li>
 
@@ -97,6 +98,7 @@ require 'lib/session.php';
                         <ul class="sub">
                             <li><a href="set-schedule.php">Set Schedule</a></li>
                             <li><a href="view-schedule.php">View Schedule</a></li>
+							<li><a href="#">Schedule Reports</a></li>
                         </ul>
                     </li>
 
@@ -109,6 +111,7 @@ require 'lib/session.php';
                             <li><a href="add-inventory.php">Add Inventory</a></li>
 							<li><a href="add-medicines.php">Add Medicines</a></li>
                             <li><a href="view-inventory.php">View Inventory</a></li>
+							<li><a  href="#">Inventory Reports</a></li>
                         </ul>
                     </li>
 					
@@ -129,6 +132,7 @@ require 'lib/session.php';
                           </li>
 						  <li><a  href="lab-request.html">View Lab Request</a></li>
 						  <li><a  href="#">View Lab Records</a></li>
+						  <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -140,16 +144,6 @@ require 'lib/session.php';
                         <ul class="sub">
                             <!--<li><a href="add-user.php">Add New User</a></li>-->
                             <li><a href="view-users.php">View Users</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="sub-menu" id="Reports-li">
-                        <a href="javascript:;">
-                          <i class="icon-print"></i>
-                          <span>Reports</span>
-                      </a>
-                        <ul class="sub">
-                            <li><a href="reports.php">Generate Reports</a></li>
                         </ul>
                     </li>
 
