@@ -57,7 +57,7 @@ if(isset($_POST['login'])){
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/favicon.ico">
 
     <title>Healthcare Management System</title>
 
