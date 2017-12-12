@@ -88,7 +88,8 @@ else if($Position == "Volunter"){
                       </a>
                       <ul class="sub">
                           <li><a  href="add-patient.php">Add Patients</a></li>
-                          <li><a  href="view-patients.php">View Patients</a></li>
+                          <li><a  href="view-patients.php">View Patients</a></li
+						  <li><a  href="#">Patient Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -100,6 +101,7 @@ else if($Position == "Volunter"){
                       <ul class="sub">
                           <li><a  href="set-schedule.php">Set Schedule</a></li>
                           <li><a  href="view-schedule.php">View Schedule</a></li>
+						  <li><a  href="#">Schedule Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -112,10 +114,11 @@ else if($Position == "Volunter"){
                           <li><a href="add-inventory.php">Add Inventory</a></li>
 							<li><a href="add-medicines.php">Add Medicines</a></li>
                             <li><a href="view-inventory.php">View Inventory</a></li>
+							<li><a href="#">Inventory Reports</a></li>
                       </ul>
                   </li>
 
-          <li class="sub-menu">
+				 <li class="sub-menu">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
@@ -125,13 +128,14 @@ else if($Position == "Volunter"){
                               <a href="javascript:;">Add Lab Results</a>
                               <ul class="sub">
                                   <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-                  <li><a href="add-lab-fecal.php">Fecalysis</a></li>
-                  <li><a href="add-lab-hema.php">Hematology</a></li>
-                  <li><a href="add-lab-urinal.php">Urinalysis</a></li>
+								  <li><a href="add-lab-fecal.php">Fecalysis</a></li>
+								  <li><a href="add-lab-hema.php">Hematology</a></li>
+								  <li><a href="add-lab-urinal.php">Urinalysis</a></li>
                               </ul>
                           </li>
-              <li><a  href="lab-request.php">View Lab Request</a></li>
-              <li><a  href="#">View Lab Records</a></li>
+						  <li><a  href="lab-request.php">View Lab Request</a></li>
+						  <li><a  href="#">View Lab Records</a></li>
+						  <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
                   </li>
 
@@ -144,16 +148,6 @@ else if($Position == "Volunter"){
                       <ul class="sub">
                           <li class="active"><a  href="add-user.php">Add New User</a></li>
                           <li><a  href="view-users.php">View Users</a></li>
-                      </ul>
-                  </li>
-				  
-				  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-print"></i>
-                          <span>Reports</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a href="reports.php">Generate Reports</a></li>
                       </ul>
                   </li>
 				  

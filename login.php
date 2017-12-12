@@ -57,7 +57,7 @@ if(isset($_POST['login'])){
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/favicon.ico">
 
     <title>Healthcare Management System</title>
 
@@ -82,7 +82,7 @@ if(isset($_POST['login'])){
     <div class="container">
 
       <form class="form-signin" action="login.php" method="POST">
-        <h2 class="form-signin-heading">semhcms</h2>
+        <h2 class="form-signin-heading"><strong>semhcms</strong></h2>
         <div class="login-wrap">
             <input type="text" name="username" id="username" class="form-control" placeholder="Username" required="" autofocus>
             <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="">

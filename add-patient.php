@@ -88,8 +88,9 @@ require 'lib/Db.config.php';
                           <span>Patient Management</span>
                       </a>
                       <ul class="sub">
-                          <li class="active"><a  href="add-patient.php">Add Patients</a></li>
+                          <li class="active"><a href="add-patient.php">Add Patients</a></li>
                           <li><a  href="view-patients.php">View Patients</a></li>
+						  <li><a  href="#">Patient Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -101,6 +102,7 @@ require 'lib/Db.config.php';
                       <ul class="sub">
                           <li><a  href="set-schedule.php">Set Schedule</a></li>
                           <li><a  href="view-schedule.php">View Schedule</a></li>
+						  <li><a  href="#">Schedule Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -111,8 +113,9 @@ require 'lib/Db.config.php';
                       </a>
                       <ul class="sub">
                           <li><a href="add-inventory.php">Add Inventory</a></li>
-							<li><a href="add-medicines.php">Add Medicines</a></li>
-                            <li><a href="view-inventory.php">View Inventory</a></li>
+						  <li><a href="add-medicines.php">Add Medicines</a></li>
+						  <li><a href="view-inventory.php">View Inventory</a></li>
+						  <li><a  href="#">Inventory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -133,8 +136,9 @@ require 'lib/Db.config.php';
                           </li>
                     			<li><a  href="lab-request.php">View Lab Request</a></li>
                     			<li><a  href="#">View Lab Records</a></li>
+								<li><a  href="#">Laboratory Reports</a></li>
                       </ul>
-          </li>
+				</li>
 				  <li class="sub-menu" id="User-li">
                       <a href="javascript:;">
                           <i class="icon-group"></i>
@@ -144,17 +148,7 @@ require 'lib/Db.config.php';
                           <li><a  href="view-users.php">View Users</a></li>
                       </ul>
           </li>
-				  
-				  <li class="sub-menu" id="Reports-li">
-                      <a href="javascript:;" >
-                          <i class="icon-print"></i>
-                          <span>Reports</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a href="reports.php">Generate Reports</a></li>
-                      </ul>
-                  </li>
-				  
+
 				  <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
                           <i class="icon-download-alt"></i>
@@ -183,20 +177,10 @@ require 'lib/Db.config.php';
 							<form action="#" class="form-horizontal tasi-form">
                                       <div class="form-group">
                                           <div class="col-md-9">
-                                              <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                  <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                                      <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
-                                                  </div>
-                                                  <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                                  <div>
-                                                   <span class="btn btn-white btn-file">
-                                                   <span class="fileupload-new"><i class="icon-paper-clip"></i> Select image</span>
-                                                   <span class="fileupload-exists"><i class="icon-undo"></i> Change</span>
-                                                   <input type="file" class="default" />
-                                                   </span>
-                                                      <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="icon-trash"></i> Remove</a>
-                                                  </div>
-                                              </div>
+                                              <div id="my_camera"></div>
+												<input type=button value="Take Snapshot" onClick="take_snapshot()">
+												 
+												<div id="results" ></div> 
                                           </div>
                                       </div>
 									  <div class="form-group">
@@ -239,7 +223,7 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">Gender</label>
                                             <div class="col-lg-6">
                                                 <select class="form-control" name="P_GNDR" id="P_GNDR" required>
-												<option>-None-</option>
+												<option hidden>-None-</option>
 												<option>Male</option>
 												<option>Female</option>
 												</select>
@@ -266,7 +250,7 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">Category</label>
                                             <div class="col-lg-6">
                                                 <select class="form-control" name="P_TYPE" id="P_TYPE" required>
-												<option>-None-</option>
+												<option hidden>-None-</option>
 												<option>Adult</option>
 												<option>Children</option>
 												</select>
@@ -313,7 +297,7 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">Religion</label>
                                             <div class="col-lg-6">
                                                 <select class="form-control" name="P_REL" id="P_REL" required>
-													<option>-None-</option>
+													<option hidden>-None-</option>
 													<option>Catholic</option>
 													<option>Muslim</option>
 												</select>
@@ -323,6 +307,7 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">Civil Status</label>
                                             <div class="col-lg-6">
                                                 <select class="form-control" name="P_CVL_STAT" id="P_CVL_STAT" required>
+													<option hidden>-None-</option>
                                                     <option>Single</option>
                                                     <option>Widowed</option>
                                                     <option>Married</option>
@@ -383,6 +368,9 @@ require 'lib/Db.config.php';
                                                 <option>No</option>
                                               </select>
                                             </div>
+											<div class="col-lg-10">
+												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
@@ -393,6 +381,9 @@ require 'lib/Db.config.php';
                       													<option>No</option>
                       												</select>
                                             </div>
+											<div class="col-lg-10">
+												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.10 have you been hospitalized in the last year?:</label>
@@ -413,6 +404,9 @@ require 'lib/Db.config.php';
 													<option>No</option>
 												</select>
                                             </div>
+											<div class="col-lg-10">
+												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.12 Do you smoke?:</label>
@@ -433,6 +427,9 @@ require 'lib/Db.config.php';
 													<option>No</option>
 												</select>
                                             </div>
+											<div class="col-lg-10">
+												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.14 Do you use Assistive Device?:</label>
@@ -443,6 +440,9 @@ require 'lib/Db.config.php';
 													<option>No</option>
 												</select>
                                             </div>
+											<div class="col-lg-10">
+												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.15 Do you have any person assisting you?:</label>
@@ -469,6 +469,9 @@ require 'lib/Db.config.php';
                                             <div class="col-lg-6">
                                                 <input id="PP_HEATH" type="text" class="form-control" placeholder="">
                                             </div>
+											<div class="col-lg-10">
+												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.18 In the Past Month, cut back your usual activies because of your health condition?:</label>
@@ -529,6 +532,8 @@ require 'lib/Db.config.php';
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+	<!-- Webcam.min.js -->
+	<script type="text/javascript" src="js/webcam.min.js"></script>
 	
 	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
@@ -601,6 +606,27 @@ require 'lib/Db.config.php';
         }
         });
     </script>
+	<!-- Configure a few settings and attach camera -->
+<script language="JavaScript">
+ Webcam.set({
+  width: 320,
+  height: 240,
+  image_format: 'jpeg',
+  jpeg_quality: 90
+ });
+ Webcam.attach( '#my_camera' );
+
+<!-- Code to handle taking the snapshot and displaying it locally -->
+function take_snapshot() {
+ 
+ // take snapshot and get image data
+ Webcam.snap( function(data_uri) {
+  // display results in page
+  document.getElementById('results').innerHTML = 
+  '<img src="'+data_uri+'"/>';
+  } );
+}
+</script>
 
   <!--common script for all pages-->
 <script src="js/common-scripts.js"></script>

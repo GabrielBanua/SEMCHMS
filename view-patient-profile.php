@@ -88,6 +88,7 @@ $row = mysql_fetch_array($result);
                       <ul class="sub">
                           <li><a  href="add-patient.php">Add Patients</a></li>
                           <li class="active"><a  href="view-patients.php">View Patients</a></li>
+						  <li><a  href="#">Patient Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -99,6 +100,7 @@ $row = mysql_fetch_array($result);
                       <ul class="sub">
                           <li><a  href="set-schedule.php">Set Schedule</a></li>
                           <li><a  href="view-schedule.php">View Schedule</a></li>
+						  <li><a  href="#">Schedule Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -111,6 +113,7 @@ $row = mysql_fetch_array($result);
                           <li><a href="add-inventory.php">Add Inventory</a></li>
 							<li><a href="add-medicines.php">Add Medicines</a></li>
                             <li><a href="view-inventory.php">View Inventory</a></li>
+							<li><a  href="#">Inventory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -131,6 +134,7 @@ $row = mysql_fetch_array($result);
                           </li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="#">View Lab Records</a></li>
+						  <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -142,16 +146,6 @@ $row = mysql_fetch_array($result);
                       <ul class="sub">
                           <li><a  href="add-user.php">Add New User</a></li>
                           <li><a  href="view-users.php">View Users</a></li>
-                      </ul>
-                  </li>
-				  
-				  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-print"></i>
-                          <span>Reports</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a href="reports.php">Generate Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -352,163 +346,51 @@ $row = mysql_fetch_array($result);
 									</div>
 											<!--Medical Records start-->
                                   <div id="medrecord" class="tab-pane">
-									<div class="row">
-										<div class="col-lg-12">
-											<section class="panel">
-												<header class="panel-heading">
-													Medical Records
-													<a class="btn btn-success btn-sm" href="add-med-record.php">Add Medical Record</a>
+									<div class="adv-table">
+										<header class="panel-heading">
+													<a class="btn btn-success" data-toggle="modal" href="#apointment">Add Medical Records</a>
 												</header>
-												<table class="table table-striped table-advance table-hover">
-											<thead>
-                              <tr>
-                                  <th><i class="icon-calendar"></i>Date</th>
-                                  <th class="hidden-phone"><i class="icon-question-sign"></i>Ilness/Ailments</th>
-                                  <th><i class="icon-bookmark"></i> Blood Pressure</th>
-                                  <th><i class=" icon-edit"></i> Status</th>
-                                  <th></th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <tr>
-                                  <td><a href="#">1/01/2017</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                  <td>110/70</td>
-                                  <td><span class="label label-info label-mini">Ongoing</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">
-                                          1/01/2017
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                  <td>110/70</td>
-                                  <td><span class="label label-warning label-mini">Late</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">
-                                          1/01/2017
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                  <td>110/70</td>
-                                  <td><span class="label label-success label-mini">Done</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">
-                                          1/01/2017
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                  <td>110/70</td>
-                                  <td><span class="label label-danger label-mini">Late</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td><a href="#">1/01/2017</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                  <td>110/70</td>
-                                  <td><span class="label label-primary label-mini">Waiting</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">
-                                          1/01/2017
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                  <td>110/70 </td>
-                                  <td><span class="label label-warning label-mini">Ongoing</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td><a href="#">1/01/2017</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                  <td>110/70 </td>
-                                  <td><span class="label label-success label-mini">Done</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">
-                                          1/01/2017
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                  <td>110/70</td>
-                                  <td><span class="label label-warning label-mini">Due</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td><a href="#">1/01/2017</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                  <td>110/70</td>
-                                  <td><span class="label label-info label-mini">Due</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">
-                                          1/01/2017
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                  <td>110/70</td>
-                                  <td><span class="label label-warning label-mini">Due</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
-                                  </td>
-                              </tr>
-                              </tbody>
-                          </table>
-                      </section>
-                  </div>
-              </div>
+                                    <table  class="display table table-bordered table-striped" id="example">
+                                      <thead>
+                                      <tr>
+                                          <th>Date</th>
+                                          <th>Diagnosis</th>
+                                          <th>Blood Pressure</th>
+                                          <th class="hidden-phone">Test Requested</th>
+                                          <th class="hidden-phone">Action</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody>
+                                      <tr class="gradeX">
+                                          <td>000001</td>
+                                          <td>Urinalysis</td>
+                                          <td>12/12/2017</td>
+                                          <td class="center hidden-phone">Uric Acid</td>
+                                          <td class="center hidden-phone">
+											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
+										  </td>
+                                      </tr>
+									  <tr class="gradeX">
+                                          <td>000001</td>
+                                          <td>Urinalysis</td>
+                                          <td>12/12/2017</td>
+                                          <td class="center hidden-phone">Uric Acid</td>
+                                          <td class="center hidden-phone">
+											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
+										  </td>
+                                      </tr>
+									  <tr class="gradeX">
+                                          <td>000001</td>
+                                          <td>Urinalysis</td>
+                                          <td>12/12/2017</td>
+                                          <td class="center hidden-phone">Uric Acid</td>
+                                          <td class="center hidden-phone">
+											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
+										  </td>
+                                      </tr>
+                                      </tfoot>
+									</table>
+								  </div>
 			  
 								  </div>
 								  			<!--Medical Records end-->
@@ -561,6 +443,53 @@ $row = mysql_fetch_array($result);
 				</div>
                       </section>
                   </aside>
+				  <!-- Modal -->
+          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="apointment" class="modal fade">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title">Add Medical Records</h4>
+                      </div>
+                      <div class="modal-body">
+                          <form class="form-horizontal" role="form">
+                                  <div class="form-group">
+                                      <label  class="col-lg-3 control-label">Date Schedule</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" placeholder=" "autofocus required>
+                                      </div>
+                                  </div>
+								  <div class="form-group">
+                                      <label  class="col-lg-3 control-label">Time</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" placeholder=" " required>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label  class="col-lg-3 control-label">Consultant</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" placeholder=" ">
+                                      </div>
+                                  </div>
+								  <div class="form-group">
+                                      <label  class="col-lg-3 control-label">Appointment Reason</label>
+                                      <div class="col-lg-6">
+                                          <select class="form-control">
+												<option hidden>-None-</option>
+												<option>Consultation</option>
+												<option>Follow up Checkup</option>
+										</select>
+                                      </div>
+                                  </div>
+                              </form>
+                      </div>
+                      <div class="modal-footer">
+                          <button data-dismiss="modal" class="btn btn-success" type="button">Add</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- modal -->
               </div>
 
               <!-- page end-->
