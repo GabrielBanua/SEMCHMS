@@ -1,5 +1,6 @@
 <?php
 require 'lib/session.php';
+
 if($Position == "Doctor"){
   header('Location: index.php');
 }
@@ -8,20 +9,19 @@ else if($Position == "Volunter"){
 }
 ?>
 <!DOCTYPE html>
-<html     lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Backup</title>
+    <title>Backup Database</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="assets/bootstrap-fileupload/bootstrap-fileupload.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -42,7 +42,7 @@ else if($Position == "Volunter"){
               <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
           </div>
           <!--logo start-->
-          <a href="index.php" class="logo" >St. Ezekiel Moreno<span>|Healthcare Management System</span></a>
+          <a href="index.html" class="logo" >St. Ezekiel Moreno<span>|Healthcare Management System</span></a>
           <!--logo end-->
           <div class="top-nav ">
               <ul class="nav pull-right top-menu">
@@ -82,7 +82,7 @@ else if($Position == "Volunter"){
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;">
+                      <a href="javascript:;" >
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
                       </a>
@@ -94,7 +94,7 @@ else if($Position == "Volunter"){
                   </li>
 				  
 				  <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
                       </a>
@@ -106,15 +106,15 @@ else if($Position == "Volunter"){
                   </li>
 				  
 				  <li class="sub-menu">
-                      <a href="javascript:;">
+                      <a href="javascript:;" >
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
                       </a>
                       <ul class="sub">
                           <li><a href="add-inventory.php">Add Inventory</a></li>
-							<li><a href="add-medicines.php">Add Medicines</a></li>
-                            <li><a href="view-inventory.php">View Inventory</a></li>
-							<li><a  href="#">Inventory Reports</a></li>
+						  <li><a href="add-medicines.php">Add Medicines</a></li>
+						  <li><a href="view-inventory.php">View Inventory</a></li>
+						  <li><a href="#">Inventory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -138,14 +138,13 @@ else if($Position == "Volunter"){
 						  <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
                   </li>
-				  
 				  <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="javascript:;">
                           <i class="icon-group"></i>
                           <span>Users Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="add-user.php">Add New User</a></li>
+                          <!--<li><a  href="add-user.php">Add New User</a></li>-->
                           <li><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
@@ -168,28 +167,25 @@ else if($Position == "Volunter"){
       <section id="main-content">
           <section class="wrapper">
               <!-- page start-->
-                  <div class="profile-info col-lg-12">
+              <div class="row">
+                  <div class="col-lg-12">
                       <section class="panel">
-							<header class="panel-heading">
-                              Backup Database
-							  </header>
-                          <div class="panel-body bio-graph-info">
-                              <h1>Backup</h1>
-                              <form class="form-horizontal" role="form">
+                          <header class="panel-heading">
+                              Database Backup
+                          </header>
+                          <div class="panel-body">
+								<form class="form-horizontal" role="form">
 								  <div class="form-group">
-                                      <div class="col-lg-offset-2 col-lg-10">
-                                          <button type="submit" class="btn btn-success" href="export.php">Backup Database</button>
-										  <button type="submit" class="btn btn-success">Import Database</button>
-                                          <button type="button" class="btn btn-default">Cancel</button>
+                                      <div class="col-lg-12">
+											<a class="btn btn-shadow btn-success btn-lg" href="backup/backup_db.php"><i class="icon-download-alt"> </i>Backup Database</a>
+											<a class="btn btn-shadow btn-success btn-lg" href="backup/import_db.php"><i class="icon-upload-alt"> </i>Import Database</a>
                                       </div>
                                   </div>
-
                               </form>
-                          </div>
-                      </section>
+						</div>
+                    </section>
                   </div>
               </div>
-
               <!-- page end-->
           </section>
       </section>
@@ -207,16 +203,18 @@ else if($Position == "Volunter"){
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
+    <!--<script src="js/jquery.js"></script>-->
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="assets/jquery-knob/js/jquery.knob.js"></script>
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-    <!--common script for all pages-->
-    <script src="js/common-scripts.js"></script>
 
+
+  <!--common script for all pages-->
+    <script src="js/common-scripts.js"></script>
 
   </body>
 </html>

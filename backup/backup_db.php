@@ -38,5 +38,5 @@ $handle = fopen('semchms.sql', 'w+');
 fwrite($handle, $return);
 fclose($handle);
 echo "<script> alert ('Successfully Back up the Database')</script>";
-echo "<script>document.location='../download_database.php'</script>";  
+echo "<script>document.location='../backup.php'</script>";  
 ?>
