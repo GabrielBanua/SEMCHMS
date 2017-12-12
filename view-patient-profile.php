@@ -271,81 +271,81 @@ $row = mysql_fetch_array($result);
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.5 Dominant Hand:<p>
-													<input type="text" class="form-control" value="<?php echo $row['DOM_HAND']?>">
+													<input type="text" class="form-control" value="<?php echo $row['DOM_HAND']?>" readonly>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.6 How do you rate Physical Health:<p>
-													<input type="text" class="form-control" value="<?php echo $row['PHY_HEALTH']?>">
+													<input type="text" class="form-control" value="<?php echo $row['PHY_HEALTH']?>" readonly>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.7 How do you rate your Mental and Emotional health in the past Month?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['MENT_EMO_HEAl']?>">
+													<input type="text" class="form-control" value="<?php echo $row['MENT_EMO_HEAl']?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.8 Do you currently have any disease(s) or Disorder(s)?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['DISE_DISO']?>">
+													<input type="text" class="form-control" value="<?php echo $row['DISE_DISO']?>" readonly>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.9 Did you ever have any significant injures that impact on your level of functioning?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['SIG_INJ']?>">
+													<input type="text" class="form-control" value="<?php echo $row['SIG_INJ']?>" readonly>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.10 have you been hospitalized in the last year?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['HPTL']?>">
+													<input type="text" class="form-control" value="<?php echo $row['HPTL']?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.11 are you taking medication?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['MEDCT']?>">
+													<input type="text" class="form-control" value="<?php echo $row['MEDCT']?>" readonly>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.12 Do you smoke?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['SMOKE']?>">
+													<input type="text" class="form-control" value="<?php echo $row['SMOKE']?>" readonly>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.13 Do you consume Alcohol or drugs?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['ALCO_DRUGS']?>">
+													<input type="text" class="form-control" value="<?php echo $row['ALCO_DRUGS']?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.14 Do you use Assistive Device?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['ASSIST_DEV']?>">
+													<input type="text" class="form-control" value="<?php echo $row['ASSIST_DEV']?>" readonly>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.15 Do you have any person assisting you?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['PERS_ASSIST']?>">
+													<input type="text" class="form-control" value="<?php echo $row['PERS_ASSIST']?>" readonly>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.16 Are you receiving any land of treatment for you Health?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['TRMT']?>">
+													<input type="text" class="form-control" value="<?php echo $row['TRMT']?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.17 Additional Significant on your past and present health?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['PP_HEATH']?>">
+													<input type="text" class="form-control" value="<?php echo $row['PP_HEATH']?>" readonly>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.18 In the Past Month, cut back your usual activies because of your health condition?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['CB_HEALTH_COND']?>">
+													<input type="text" class="form-control" value="<?php echo $row['CB_HEALTH_COND']?>" readonly>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.19 In the Past Month, have you been totally unable to carry out your  unable to carry out your usual activities?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['TU_HEALTH_COND']?>">
+													<input type="text" class="form-control" value="<?php echo $row['TU_HEALTH_COND']?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">B.2 Years of Formal Education:<p>
-													<input type="text" class="form-control" value="<?php echo $row['YEARS_FE']?>">
+													<input type="text" class="form-control" value="<?php echo $row['YEARS_FE']?>" readonly>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">B.3 Marital Status:<p>
-													<input type="text" class="form-control" value="<?php echo $row['MARITAL_STAT']?>">
+													<input type="text" class="form-control" value="<?php echo $row['MARITAL_STAT']?>" readonly>
 												</div>
 											</div>
 										</form>
