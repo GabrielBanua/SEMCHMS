@@ -21,8 +21,8 @@ require 'lib/Db.config.php';
     <link href="css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="assets/bootstrap-fileupload/bootstrap-fileupload.css" />
-	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
+  	<link rel="stylesheet" type="text/css" href="assets/bootstrap-fileupload/bootstrap-fileupload.css" />
+  	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -232,12 +232,12 @@ require 'lib/Db.config.php';
 										<div class="form-group">
                                             <label class="col-md-4 control-label">Birthdate</label>
                                             <div class="col-lg-6">
-												<div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="12-02-1950"  class="input-append date dpYears">
-													<input type="text" id="P_BDATE" name="P_BDATE" readonly=""  size="16" class="form-control">
-													<span class="input-group-btn add-on">
-														<button class="btn btn-info" type="button"><i class="icon-calendar"></i></button>
-													</span>
-												</div>
+                      												<div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="12-02-1950" class="input-append date dpYears">
+                      													<input type="text" id="P_BDATE" name="P_BDATE" readonly=""  size="16" class="form-control">
+                      													<span class="input-group-btn add-on">
+                      														<button class="btn btn-info" type="button"><i class="icon-calendar"></i></button>
+                      													</span>
+                      												</div>
                                             </div>
                                         </div>
 										<div class="form-group">
@@ -532,12 +532,12 @@ require 'lib/Db.config.php';
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-	<!-- Webcam.min.js -->
-	<script type="text/javascript" src="js/webcam.min.js"></script>
-	
-	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-	<script src="js/advanced-form-components.js"></script>
+	   <!-- Webcam.min.js -->
+  	<script type="text/javascript" src="js/webcam.min.js"></script>
+  	
+  	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  	<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+  	<script src="js/advanced-form-components.js"></script>
 	
 	<script>
         function addNewPatient(){
@@ -630,7 +630,6 @@ function take_snapshot() {
 
   <!--common script for all pages-->
 <script src="js/common-scripts.js"></script>
-<script src="js/user-accesslvl.js"></script>
 
   </body>
 </html>

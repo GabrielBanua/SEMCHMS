@@ -1,5 +1,9 @@
 <?php
 require 'lib/session.php';
+require 'lib/Db.config.php';
+require 'lib/Db.config.pdo.php';
+  $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
+  $stmt->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -140,7 +144,6 @@ require 'lib/session.php';
                           <span>Users Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="add-user.php">Add New User</a></li>
                           <li><a  href="view-users.php">View User</a></li>
                       </ul>
           </li>
@@ -175,97 +178,35 @@ require 'lib/session.php';
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th>Date Schedule</th>
-                                          <th>Patient Name</th>
-                                          <th>Patient Type</th>
-                                          <th class="hidden-phone">Appointment</th>
-                                          <th class="hidden-phone">Action</th>
+                                          <th width="100">Date Schedule</th>
+                                          <th width="150">Patient Name</th>
+                                          <th width="100">Patient Type</th>
+                                          <th width="100" class="hidden-phone">Appointment</th>
+                                          <th width="60" class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
-
+<?php
+      while($row = $stmt->fetch()){
+?>
                                       <tr class="gradeX">
-                                          <td>Sept. 20, 2017</td>
-                                          <td>Alec Rubiato</td>
-                                          <td>Child</td>
-                                          <td class="center hidden-phone">Checkup</td>
+                                          <td><?php echo $row['SCHEDULE_DATE'] ?></td>
+                                          <td><?php echo $row['FullName'] ?></td>
+                                          <td><?php echo $row['P_TYPE'] ?></td>
+                                          <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
-                    											<a class="btn btn-danger btn-xs" href="#">Delete</a>
+                                          <a class="btn btn-success btn-xs"><i class="icon-pencil"></i> Edit</a>
+                    											<a class="btn btn-danger btn-xs"><i class="icon-trash"></i> Delete</a>
                     										  </td>
                                       </tr>
-									  
+<?php
+      }
+?>
                                       </tbody>
                           </table>
 											
                                 </div>
                           </div>
-						  <!-- Register User Start  MODAL-->
-						  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="setsched" class="modal fade">
-                                  <div class="modal-dialog">
-                                      <div class="modal-content">
-                                          <div class="modal-header">
-                                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                              <h4 class="modal-title">Set Appointment</h4>
-                                          </div>
-                                          <div class="modal-body">
-
-                                              <form class="form-horizontal" role="form">
-                                                  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Patient Name:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Date Appointment:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Time:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Patient Type:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control">
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Gender:</label>
-                                                      <div class="col-lg-4">
-															<select class="form-control">
-																<option hidden>-None-</option>
-																<option>Male</option>
-																<option>Female</option>
-															</select>
-                                                      </div>
-                                                  </div>
-												  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
-                                                      <div class="col-lg-4">
-															<select class="form-control">
-																<option hidden>-None-</option>
-																<option>Check Up</option>
-																<option>X-tray</option>
-																<option>Dental</option>
-																<option>Laboratory Test</option>
-															</select>
-                                                      </div>
-                                                  </div>
-                                              </form>
-                                          </div>
-										<div class="modal-footer">
-											<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-											<button class="btn btn-success" type="button">Set Schedule</button>
-										</div>
-                                      </div>
-                                  </div>
-                              </div>
-					  <!--MODAL END-->
                       </section>
                   </div>
               </div>

@@ -187,16 +187,79 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                                       </tr>
                                       </thead>
                                       <tbody>
-<?php
+ <?php
       while($row = $stmt->fetch()){
-?>                                      
+?>                                     
                                           <tr class="gradeX">
                                               <td><p>P<?php echo $row['P_ID'] ?></p></td>
                                               <td><?php echo $row['FullName'] ?></td>
                                               <td><?php echo $row['P_GNDR'] ?></td>
                                               <td class="center hidden-phone"><?php echo $row['P_TYPE'] ?></td>
                                               <td class="center hidden-phone">
-                        											<a class="btn btn-success btn-xs" href="set-schedule-patient.php?SID=<?php echo $row['P_ID'] ?>">Set Schedule</a>
+                        											<a class="btn btn-success btn-xs" data-toggle="modal" data-target="#setsched-<?php echo $row['P_ID']?>">Set Schedule</a>
+<!-- Register User Start  MODAL-->
+                                <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="setsched-<?php echo $row['P_ID']?>" class="modal fade">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                              <h4 class="modal-title" id="myModalLabel-<?php echo $row['P_ID']?>">Set Appointment</h4>
+                                          </div>
+                                          <div class="modal-body">
+                                                <form class="form-horizontal" role="form">
+                                                  <div class="form-group">
+                                                      <label class="col-md-3 col-sm-2 control-label">Patient Name:</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" value="<?php echo $row['FullName']; ?>" class="form-control" readonly class="form_datetime form-control" disabled>
+                                                      </div>
+                                                  </div>
+                                <div class="form-group">
+                                  <label class="col-md-3 col-sm-2 control-label">Patient Type:</label>
+                                      <div class="col-lg-6">
+                                        <input type="text" value="<?php echo $row['P_TYPE']; ?>" readonly class="form_datetime form-control" disabled>
+                                      </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-md-3 col-sm-2 control-label">Gender:</label>
+                                      <div class="col-lg-4">
+                                        <select readonly class="form_datetime form-control" disabled>
+                                          <option value="-None-"<?php
+                                              if ($row['P_GNDR'] == "-None-") { echo " selected"; }?>>-None-</option>
+                                          <option value="Male"<?php
+                                              if ($row['P_GNDR'] == "Male") { echo " selected"; }?>>Male</option>
+                                          <option value="Female"<?php
+                                              if ($row['P_GNDR'] == "Female") { echo " selected"; }?>>Female</option>
+                                        </select>
+                                      </div>
+                                </div>                        
+                          <div class="form-group">
+                              <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
+                                  <div class="col-lg-6">
+                                        <input type="date"  id="SCHEDULE_DATE" size="16" class="form-control">
+                                  </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
+                                  <div class="col-lg-4">
+                                      <select class="form-control" id="SCHEDULE_PURPOSE">
+                                        <option hidden>-None-</option>
+                                        <option>Check Up</option>
+                                        <option>X-ray</option>
+                                        <option>Dental</option>
+                                        <option>Laboratory Test</option>
+                                      </select>
+                                  </div>
+                          </div>
+                          </form>
+                        </div>
+                    <div class="modal-footer">
+                      <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                      <button class="btn btn-success" type="button" onclick="SetSched(<?php echo $row['P_ID'] ?>)">Set Schedule</button>
+                    </div>
+                                      </div>
+                                  </div>
+                              </div>
+            <!--MODAL END-->
                         										  </td>
                                           </tr>
 <?php
@@ -234,6 +297,10 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+    <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+    <script src="js/advanced-form-components.js"></script>
+    <script src="js/common-scripts.js"></script>
 
 
   <!--common script for all pages-->
@@ -246,18 +313,27 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
               } );
           } );
       </script>
-      <script>
-        function addNewPatient(ID){
-        var S_ID = ID;
-    
-    $.ajax({
-      type: "POST",
-      url: "set-schedule-patient.php",
-      data: "S_ID="+S_ID
-    });
+        <script>
+        function SetSched(str){
+        var P_ID = str;
+        var SCHEDULE_DATE = $('#SCHEDULE_DATE').val();
+        var SCHEDULE_PURPOSE = $('#SCHEDULE_PURPOSE').val();
+        if (confirm('Are you sure you want to set schedule for this patient?')) {
+        $.ajax({
+          type: "POST",
+          url: "Server.php?p=SetSched",
+          data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
+          success: function(data){
+                alert('Added successfully!');
+                window.location.reload();
+              }
+          });
+      }else{
+
+      }
     
   }
-</script>
+      </script>
       <script>
         $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';

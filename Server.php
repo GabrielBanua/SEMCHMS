@@ -136,7 +136,21 @@ require 'lib/Db.config.pdo.php';
 	$stmt->bindParam(8,$ID);
 	$stmt->execute();
 		
-}
+}else if($page == 'SetSched'){
+require 'lib/Db.config.pdo.php';
+
+$P_ID = mysql_real_escape_string($_POST['P_ID']);
+$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
+$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
+$sqldate = date('Y-m-d',strtotime($Sched_date)); 
+
+
+		$stmt = $db->prepare("insert into schedule values('',?,?,?)");
+		$stmt->bindParam(1,$P_ID);
+		$stmt->bindParam(2,$sqldate);
+		$stmt->bindParam(3,$Sched_purpose);
+		$stmt->execute();
+} 
 /*else if($page == 'viewPatient'){
 	require 'lib/Db.config.pdo.php';
 	$stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");
