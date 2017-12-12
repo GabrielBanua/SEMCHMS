@@ -1,5 +1,12 @@
 <?php
 require 'lib/session.php';
+
+if($Position == "Doctor"){
+  header('Location: index.php');
+}
+else if($Position == "Volunter"){
+  header('Location: index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +42,7 @@ require 'lib/session.php';
               <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
           </div>
           <!--logo start-->
-          <a href="index.php" class="logo" >St. Ezekiel Moreno<span>|Healthcare Management System</span></a>
+          <a href="index.html" class="logo" >St. Ezekiel Moreno<span>|Healthcare Management System</span></a>
           <!--logo end-->
           <div class="top-nav ">
               <ul class="nav pull-right top-menu">
@@ -74,7 +81,7 @@ require 'lib/session.php';
                       </a>
                   </li>
 
-          <li class="sub-menu" id="Patient-li">
+                  <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
@@ -84,9 +91,9 @@ require 'lib/session.php';
                           <li><a  href="view-patients.php">View Patients</a></li>
 						  <li><a  href="#">Patient Reports</a></li>
                       </ul>
-          </li>
+                  </li>
 				  
-				  <li class="sub-menu" id="Schedule-li">
+				  <li class="sub-menu">
                       <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -94,11 +101,11 @@ require 'lib/session.php';
                       <ul class="sub">
                           <li><a  href="set-schedule.php">Set Schedule</a></li>
                           <li><a  href="view-schedule.php">View Schedule</a></li>
-						  <li><a href="#">Schedule Reports</a></li>
+						  <li><a  href="#">Schedule Reports</a></li>
                       </ul>
-          </li>
+                  </li>
 				  
-				  <li class="sub-menu" id="Inventory-li">
+				  <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
@@ -111,7 +118,7 @@ require 'lib/session.php';
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu" id="Laboratory-li">
+				  <li class="sub-menu">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
@@ -121,29 +128,28 @@ require 'lib/session.php';
                               <a href="javascript:;">Add Lab Results</a>
                               <ul class="sub">
                                   <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-                					<li><a href="add-lab-fecal.php">Fecalysis</a></li>
-                					<li><a href="add-lab-hema.php">Hematology</a></li>
-                					<li><a href="add-lab-urinal.php">Urinalysis</a></li>
+								  <li><a href="add-lab-fecal.php">Fecalysis</a></li>
+								  <li><a href="add-lab-hema.php">Hematology</a></li>
+								  <li><a href="add-lab-urinal.php">Urinalysis</a></li>
                               </ul>
                           </li>
-          						  <li><a  href="lab-request.php">View Lab Request</a></li>
-          						  <li><a  href="#">View Lab Records</a></li>
-								  <li><a  href="#">Laboratory Reports</a></li>
+						  <li><a  href="lab-request.php">View Lab Request</a></li>
+						  <li><a  href="#">View Lab Records</a></li>
+						  <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
-          </li>
-				  
-				  <li class="sub-menu" id="User-li">
-                      <a href="javascript:;" >
+                  </li>
+				  <li class="sub-menu">
+                      <a href="javascript:;">
                           <i class="icon-group"></i>
                           <span>Users Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="add-user.php">Add New User</a></li>
-                          <li><a  href="view-users.php">View User</a></li>
+                          <!--<li><a  href="add-user.php">Add New User</a></li>-->
+                          <li><a  href="view-users.php">View Users</a></li>
                       </ul>
-          </li>
+                  </li>
 				  
-				  <li class="sub-menu" id="Maintenance-li">
+				  <li class="sub-menu">
                       <a href="javascript:;" class="active">
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
@@ -165,19 +171,19 @@ require 'lib/session.php';
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              List of Patients
+                              Database Backup
                           </header>
                           <div class="panel-body">
 								<form class="form-horizontal" role="form">
 								  <div class="form-group">
-                                      <div class="col-lg-offset-2 col-lg-10">
-											<a class="btn btn-success" href="backup/backup_db.php">Backup Database</a>
-											<a class="btn btn-success" href="backup/import_db.php">Import Database</a>
+                                      <div class="col-lg-12">
+											<a class="btn btn-shadow btn-success btn-lg" href="backup/backup_db.php"><i class="icon-download-alt"> </i>Backup Database</a>
+											<a class="btn btn-shadow btn-success btn-lg" href="backup/import_db.php"><i class="icon-upload-alt"> </i>Import Database</a>
                                       </div>
                                   </div>
                               </form>
-                          </div>
-                      </section>
+						</div>
+                    </section>
                   </div>
               </div>
               <!-- page end-->
@@ -203,34 +209,12 @@ require 'lib/session.php';
     <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
 
 
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 
-    <!--script for this page only-->
-      <script>
-        $(document).ready(function(){
-        var Auth ='<?php echo $Position; ?>';
-        if (Auth == "Admin") 
-        {                       
-            $('#Patient-li').show(); 
-            $('#Schedule-li').show();
-            $('#Inventory-li').show();
-            $('#Laboratory-li').show();
-            $('#Reports-li').show();
-            $('#User-li').show();
-            $('#Maintenance-li').show();
-        }
-        else if(Auth == "Doctor") {
-            $('#User-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Laboratory-li').hide();
-            $('#Inventory-li').hide();
-        }
-        });
-      </script> 
   </body>
 </html>
