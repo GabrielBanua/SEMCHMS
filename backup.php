@@ -174,13 +174,11 @@ else if($Position == "Volunter"){
                               Backup Database
 							  </header>
                           <div class="panel-body bio-graph-info">
-                              <h1>Backup</h1>
                               <form class="form-horizontal" role="form">
 								  <div class="form-group">
                                       <div class="col-lg-offset-2 col-lg-10">
-                                          <button type="submit" class="btn btn-success" href="export.php">Backup Database</button>
-										  <button type="submit" class="btn btn-success">Import Database</button>
-                                          <button type="button" class="btn btn-default">Cancel</button>
+											<a class="btn btn-success" href="backup/backup_db.php">Backup Database</a>
+											<a class="btn btn-success" href="backup/import_db.php">Import Database</a>
                                       </div>
                                   </div>
 
