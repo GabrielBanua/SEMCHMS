@@ -566,7 +566,7 @@ while($row = $stmt->fetch()){
                                     </table>
                                 </div>
                           </div>
-<<<<<<< HEAD
+
 						  <!-- Register User Start  MODAL-->
 						  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="editpatient" class="modal fade">
                                   <div class="modal-dialog">
@@ -900,8 +900,6 @@ while($row = $stmt->fetch()){
                                   </div>
                               </div>
 					  <!--MODAL END-->
-=======
->>>>>>> b91dcdbbcf72bcece4cf2c5779ad37ca1205833b
                       </section>
                   </div>
               </div>
