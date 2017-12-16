@@ -351,7 +351,7 @@ require 'lib/Db.config.php';
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.7 How do you rate your Mental and Emotional health in the past Month?:</label>
                                             <div class="col-lg-4">
-                                                <select class="form-control" name="MENT_EMO_HEAl" id="PHY_HEALTH">
+                                                <select class="form-control" name="MENT_EMO_HEAl" id="MENT_EMO_HEAl">
                                                   <option hidden>-None-</option>
                                                   <option>Poor</option>
                                                   <option>Good</option>
@@ -575,13 +575,21 @@ require 'lib/Db.config.php';
         var Formal_ED = $('#YEARS_FE').val();
         var CB_Health = $('#CB_HEALTH_COND').val();
         var TU_Health = $('#TU_HEALTH_COND').val();
-    
+    if (confirm('Are you sure you want to add this patient record in the database?')) {
     $.ajax({
       type: "POST",
       url: "Server.php?p=addNewPatient",
-      data: "P_LNAME="+Lastname+"&P_FNAME="+Firstname+"&P_MNAME="+Middlename+"&P_GNDR="+Gender+"&P_BDATE="+Birthday+"&P_AGE="+Age+"&P_TEMP="+Temperature+"&P_WGHT="+Weight+"&P_HGHT="+Height+"&P_TYPE="+Type+"&P_ADD="+Address+"&P_CN="+Contact+"&P_OCCU="+Occupation+"&P_REL="+Religion+"&P_CVL_STAT="+Civil+"&PP_HEATH="+Past_pre+"&TRMT="+Treatment+"&MEDCT="+Medication+"&DISE_DISO="+Disease+"&HPTL="+Hospitalized+"&DOM_HAND="+Dominant+"&PHY_HEALTH="+Physical_H+"&MENT_EMO_HEAl="+Mental_Emo+"&SIG_INJ="+Significant+"&SMOKE="+Smoke+"&ALCO_DRUGS="+Alcohol+"&ASSIST_DEV="+Assistive_dev+"&PERS_ASSIST="+Person_assist+"&MARITAL_STAT="+Marital_stat+"&YEARS_FE="+Formal_ED+"&CB_HEALTH_COND="+CB_Health+"&TU_HEALTH_COND="+TU_Health
+      data: "P_LNAME="+Lastname+"&P_FNAME="+Firstname+"&P_MNAME="+Middlename+"&P_GNDR="+Gender+"&P_BDATE="+Birthday+"&P_AGE="+Age+"&P_TEMP="+Temperature+"&P_WGHT="+Weight+"&P_HGHT="+Height+"&P_TYPE="+Type+"&P_ADD="+Address+"&P_CN="+Contact+"&P_OCCU="+Occupation+"&P_REL="+Religion+"&P_CVL_STAT="+Civil+"&PP_HEATH="+Past_pre+"&TRMT="+Treatment+"&MEDCT="+Medication+"&DISE_DISO="+Disease+"&HPTL="+Hospitalized+"&DOM_HAND="+Dominant+"&PHY_HEALTH="+Physical_H+"&MENT_EMO_HEAl="+Mental_Emo+"&SIG_INJ="+Significant+"&SMOKE="+Smoke+"&ALCO_DRUGS="+Alcohol+"&ASSIST_DEV="+Assistive_dev+"&PERS_ASSIST="+Person_assist+"&MARITAL_STAT="+Marital_stat+"&YEARS_FE="+Formal_ED+"&CB_HEALTH_COND="+CB_Health+"&TU_HEALTH_COND="+TU_Health,
+      success: function(data){
+        alert('upadate successfully!');
+        window.location.reload();
+      }
     });
+  }else{
+    //do nothing
+  }
     
+  }
   }
 </script>
 <script>

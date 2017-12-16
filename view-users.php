@@ -88,7 +88,7 @@ else if($Position == "Volunter"){
                       </a>
                   </li>
 
-                  <li class="sub-menu">
+                  <li class="sub-menu" id="Patient-li">
                       <a href="javascript:;" >
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
@@ -100,7 +100,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Schedule-li">
                       <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -112,7 +112,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Inventory-li">
                       <a href="javascript:;" >
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
@@ -125,7 +125,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Laboratory-li">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
@@ -145,7 +145,7 @@ else if($Position == "Volunter"){
 						  <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
                   </li>
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="User-li">
                       <a href="javascript:;" class="active">
                           <i class="icon-group"></i>
                           <span>Users Management</span>
@@ -156,7 +156,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
@@ -261,11 +261,11 @@ else if($Position == "Volunter"){
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th>ID</th>
-                                          <th>Username</th>
-                                          <th>Fullname</th>
-                                          <th class="hidden-phone">Position</th>
-                                          <th class="hidden-phone">Action</th>
+                                          <th width="30">ID</th>
+                                          <th width="90">Username</th>
+                                          <th width="150">Fullname</th>
+                                          <th width="90" class="hidden-phone">Position</th>
+                                          <th width="60" class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
@@ -278,7 +278,7 @@ else if($Position == "Volunter"){
                                                 <td><?php echo $row['FullName'] ?></td>
                                                 <td><?php echo $row['Position'] ?></td>
                                                 <td class="center hidden-phone">
-                                                <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditModal-<?php echo $row['User_id']?>">Edit</a>
+                                                <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#EditModal-<?php echo $row['User_id']?>">Edit</a>
 <!-- Edit User MODAL-->
               <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['User_id']?>" role="dialog" tabindex="-1" id="EditModal-<?php echo $row['User_id']?>" class="modal fade">
                         <div class="modal-dialog">
@@ -369,7 +369,7 @@ else if($Position == "Volunter"){
               </div>
 <!--MODAL END-->
 
-                                                <a class="btn btn-danger btn-xs" type="submit" onclick="DeleteUser
+                                                <a class="btn btn-danger btn-sm" type="submit" onclick="DeleteUser
 												                        (<?php echo $row['User_id']?>)">delete</a>
                                                 </td>
                                           </tr>
@@ -488,6 +488,27 @@ else if($Position == "Volunter"){
               // Do nothing!
           }
         }
+
+        $(document).ready(function(){
+        var Auth ='<?php echo $Position; ?>';
+        if (Auth == "Admin") 
+        {                       
+            $('#Patient-li').show(); 
+            $('#Schedule-li').show();
+            $('#Inventory-li').show();
+            $('#Laboratory-li').show();
+            $('#Reports-li').show();
+            $('#User-li').show();
+            $('#Maintenance-li').show();
+        }
+        else if(Auth == "Doctor") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+        });
       </script>
   </body>
 </html>

@@ -80,7 +80,7 @@ $row = mysql_fetch_array($result);
                       </a>
                   </li>
 
-                  <li class="sub-menu">
+                  <li class="sub-menu" id="Patient-li">
                       <a href="javascript:;" class="active" >
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
@@ -92,7 +92,7 @@ $row = mysql_fetch_array($result);
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Schedule-li">
                       <a href="javascript:;" >
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -104,7 +104,7 @@ $row = mysql_fetch_array($result);
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Inventory-li">
                       <a href="javascript:;" >
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
@@ -117,7 +117,7 @@ $row = mysql_fetch_array($result);
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Laboratory-li">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
@@ -138,18 +138,17 @@ $row = mysql_fetch_array($result);
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="User-li">
                       <a href="javascript:;" >
                           <i class="icon-group"></i>
                           <span>Users Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="add-user.php">Add New User</a></li>
                           <li><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
@@ -179,7 +178,7 @@ $row = mysql_fetch_array($result);
                           </div>
 
                           <ul class="nav nav-pills nav-stacked">
-                              <li class="active"><a href="profile.html"> <i class="icon-user"></i> Profile</a></li>
+                              <li class="active"><a> <i class="icon-user"></i> Profile</a></li>
 							  <li><a href="add-patient.html"> <i class="icon-pencil"></i>Edit Profile</a></li>
                           </ul>
 
@@ -519,7 +518,27 @@ $row = mysql_fetch_array($result);
 
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
-
-
+    <script>
+      $(document).ready(function(){ 
+        var Auth ='<?php echo $Position; ?>';
+        if (Auth == "Admin") 
+        {                       
+            $('#Patient-li').show(); 
+            $('#Schedule-li').show();
+            $('#Inventory-li').show();
+            $('#Laboratory-li').show();
+            $('#Reports-li').show();
+            $('#User-li').show();
+            $('#Maintenance-li').show();
+        }
+        else if(Auth == "Doctor") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+        });
+    </script>
   </body>
 </html>

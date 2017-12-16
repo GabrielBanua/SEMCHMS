@@ -4,6 +4,7 @@ require 'lib/Db.config.pdo.php';
 $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");
   $stmt->execute();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +13,6 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
     <link rel="shortcut icon" href="img/favicon.ico">
 
     <title>Set Schedule</title>
-
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -20,6 +20,9 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-fileupload/bootstrap-fileupload.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -79,44 +82,44 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                       </a>
                   </li>
 
-                  <li class="sub-menu" id="Patient-li">
+          <li class="sub-menu" id="Patient-li">
                       <a href="javascript:;" >
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="add-patient.php">Add Patients</a></li>
-                          <li><a  href="view-patients.php">View Patients</a></li>
-						  <li><a  href="#">Patient Reports</a></li>
+                          <li><a href="add-patient.php">Add Patients</a></li>
+                          <li><a href="view-patients.php">View Patients</a></li>
+                          <li><a href="#">Patient Reports</a></li>
                       </ul>
-                  </li>
-				  
-				  <li class="sub-menu" id="Schedule-li">
+          </li>
+          
+          <li class="sub-menu" id="Schedule-li">
                       <a href="javascript:;" class="active">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
                       </a>
                       <ul class="sub">
-                          <li class="active"><a  href="set-schedule.php">Set Schedule</a></li>
-                          <li><a  href="view-schedule.php">View Schedule</a></li>
-						  <li><a  href="#">Schedule Reports</a></li>
+                          <li class="active"><a href="set-schedule.php">Set Schedule</a></li>
+                          <li><a href="view-schedule.php">View Schedule</a></li>
+                          <li><a href="#">Schedule Reports</a></li>
                       </ul>
-                  </li>
-				  
-				  <li class="sub-menu" id="Inventory-li">
+          </li>
+          
+          <li class="sub-menu" id="Inventory-li">
                       <a href="javascript:;" >
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
                       </a>
                       <ul class="sub">
                           <li><a href="add-inventory.php">Add Inventory</a></li>
-						  <li><a href="add-medicines.php">Add Medicines</a></li>
-						  <li><a href="view-inventory.php">View Inventory</a></li>
-						  <li><a  href="#">Inventory Reports</a></li>
+                          <li><a href="add-medicines.php">Add Medicines</a></li>
+                          <li><a href="view-inventory.php">View Inventory</a></li>
+                          <li><a href="#">Inventory Reports</a></li>
                       </ul>
                   </li>
-				  
-				  <li class="sub-menu" id="Laboratory-li">
+          
+          <li class="sub-menu" id="Laboratory-li">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
@@ -126,29 +129,28 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                               <a href="javascript:;">Add Lab Results</a>
                               <ul class="sub">
                                   <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-                					<li><a href="add-lab-fecal.php">Fecalysis</a></li>
-                					<li><a href="add-lab-hema.php">Hematology</a></li>
-                					<li><a href="add-lab-urinal.php">Urinalysis</a></li>
+                                  <li><a href="add-lab-fecal.php">Fecalysis</a></li>
+                                  <li><a href="add-lab-hema.php">Hematology</a></li>
+                                  <li><a href="add-lab-urinal.php">Urinalysis</a></li>
                               </ul>
                           </li>
-          						  <li><a  href="lab-request.php">View Lab Request</a></li>
-          						  <li><a  href="#">View Lab Records</a></li>
-								  <li><a  href="#">Laboratory Reports</a></li>
+                        <li><a  href="lab-request.php">View Lab Request</a></li>
+                        <li><a  href="#">View Lab Records</a></li>
+                  <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
           </li>
-				  
-				  <li class="sub-menu" id="User-li">
+          
+          <li class="sub-menu" id="User-li">
                       <a href="javascript:;" >
                           <i class="icon-group"></i>
                           <span>Users Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="add-user.php">Add New User</a></li>
-                          <li><a  href="view-users.php">View Users</a></li>
+                          <li><a  href="view-users.php">View User</a></li>
                       </ul>
-                  </li>
-				  
-				  <li class="sub-menu" id="Maintenance-li">
+          </li>
+          
+          <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
@@ -179,11 +181,11 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th>Patient No.</th>
-                                          <th>Name</th>
-                                          <th>Gender</th>
-                                          <th class="hidden-phone">Type</th>
-                                          <th class="hidden-phone">Action</th>
+                                          <th width="20">Patient No.</th>
+                                          <th width="180">Name</th>
+                                          <th width="50">Gender</th>
+                                          <th width="70" class="hidden-phone">Type</th>
+                                          <th width="10" class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
@@ -198,7 +200,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                                               <td class="center hidden-phone">
                         											<a class="btn btn-success btn-xs" data-toggle="modal" data-target="#setsched-<?php echo $row['P_ID']?>">Set Schedule</a>
 <!-- Register User Start  MODAL-->
-                                <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="setsched-<?php echo $row['P_ID']?>" class="modal fade">
+                                <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['P_ID']?>" role="dialog" tabindex="-1" id="setsched-<?php echo $row['P_ID']?>" class="modal fade">
                                   <div class="modal-dialog">
                                       <div class="modal-content">
                                           <div class="modal-header">
@@ -235,13 +237,13 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
                                   <div class="col-lg-6">
-                                        <input type="date"  id="SCHEDULE_DATE" size="16" class="form-control">
+                                        <input type="date" id="SCHEDULE_DATE-<?php echo $row['P_ID'] ?>" size="16" class="form-control">
                                   </div>
                           </div>
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
                                   <div class="col-lg-4">
-                                      <select class="form-control" id="SCHEDULE_PURPOSE">
+                                      <select class="form-control" id="SCHEDULE_PURPOSE-<?php echo $row['P_ID'] ?>">
                                         <option hidden>-None-</option>
                                         <option>Check Up</option>
                                         <option>X-ray</option>
@@ -288,7 +290,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
       <!--footer end-->
   </section>
 
-    <!-- js placed at the end of the document so the pages load faster -->
+   <!-- js placed at the end of the document so the pages load faster -->
     <!--<script src="js/jquery.js"></script>-->
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -297,42 +299,43 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+  
     <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
     <script src="js/advanced-form-components.js"></script>
-    <script src="js/common-scripts.js"></script>
 
 
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
+
     <!--script for this page only-->
+
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 4, "desc" ]]
+                  "aaSorting": [[ 10, "asc" ]]
               } );
           } );
       </script>
-        <script>
+      <script>
         function SetSched(str){
         var P_ID = str;
-        var SCHEDULE_DATE = $('#SCHEDULE_DATE').val();
-        var SCHEDULE_PURPOSE = $('#SCHEDULE_PURPOSE').val();
-        if (confirm('Are you sure you want to set schedule for this patient?')) {
-        $.ajax({
-          type: "POST",
-          url: "Server.php?p=SetSched",
-          data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
-          success: function(data){
-                alert('Added successfully!');
-                window.location.reload();
-              }
-          });
-      }else{
-
-      }
-    
-  }
+        var SCHEDULE_DATE = $('#SCHEDULE_DATE-'+str).val();
+        var SCHEDULE_PURPOSE = $('#SCHEDULE_PURPOSE-'+str).val();
+            if (confirm('Are you sure you want to set schedule for this patient?')) {
+            $.ajax({
+              type: "POST",
+              url: "Server.php?p=SetSched",
+              data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
+              success: function(data){
+                    alert('Added successfully!');
+                    window.location.reload();
+                  }
+              });
+            }else{
+              //do nothing
+          }
+        }
       </script>
       <script>
         $(document).ready(function(){
