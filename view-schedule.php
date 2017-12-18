@@ -372,6 +372,10 @@ require 'lib/Db.config.pdo.php';
           });
           } else {
               // Do nothing!
+<<<<<<< HEAD
+=======
+  
+>>>>>>> b4038d6ff6928e86d261380be09415ee43650f8f
           } 
         }
       </script> 
