@@ -139,16 +139,6 @@ require 'lib/Db.config.pdo.php';
                       </ul>
           </li>
 				  
-				  <li class="sub-menu" id="User-li">
-                      <a href="javascript:;" >
-                          <i class="icon-group"></i>
-                          <span>Users Management</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="view-users.php">View User</a></li>
-                      </ul>
-          </li>
-				  
 				  <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
                           <i class="icon-download-alt"></i>
@@ -156,6 +146,7 @@ require 'lib/Db.config.pdo.php';
                       </a>
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
+						  <li><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
               </ul>

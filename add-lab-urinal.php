@@ -139,26 +139,15 @@ else if($Position == "Volunter"){
 						  <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
                   </li>
-
 				  
-				  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-group"></i>
-                          <span>Users Management</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="add-user.php">Add New User</a></li>
-                          <li><a  href="view-users.php">View Users</a></li>
-                      </ul>
-                  </li>
-
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
+						  <li><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
               </ul>

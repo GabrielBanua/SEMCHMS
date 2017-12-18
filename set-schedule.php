@@ -140,16 +140,6 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                       </ul>
           </li>
           
-          <li class="sub-menu" id="User-li">
-                      <a href="javascript:;" >
-                          <i class="icon-group"></i>
-                          <span>Users Management</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="view-users.php">View User</a></li>
-                      </ul>
-          </li>
-          
           <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
                           <i class="icon-download-alt"></i>
@@ -157,6 +147,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                       </a>
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
+						  <li><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
               </ul>
