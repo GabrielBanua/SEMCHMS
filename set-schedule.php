@@ -110,13 +110,13 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                       </a>
                       <ul class="sub">
                           <li><a href="add-inventory.php">Add Inventory</a></li>
-						  <li><a href="add-medicines.php">Add Medicines</a></li>
-						  <li><a href="view-inventory.php">View Inventory</a></li>
-						  <li><a  href="#">Inventory Reports</a></li>
+              <li><a href="add-medicines.php">Add Medicines</a></li>
+              <li><a href="view-inventory.php">View Inventory</a></li>
+              <li><a  href="#">Inventory Reports</a></li>
                       </ul>
                   </li>
-				  
-				  <li class="sub-menu" id="Laboratory-li">
+          
+          <li class="sub-menu" id="Laboratory-li">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
@@ -125,36 +125,26 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                           <li class="sub-menu">
                               <a href="javascript:;">Add Lab Results</a>
                               <ul class="sub">
-                                  <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-                					<li><a href="add-lab-fecal.php">Fecalysis</a></li>
-                					<li><a href="add-lab-hema.php">Hematology</a></li>
-                					<li><a href="add-lab-urinal.php">Urinalysis</a></li>
+                                <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
+                <li><a href="add-lab-fecal.php">Fecalysis</a></li>
+                        <li><a href="add-lab-hema.php">Hematology</a></li>
+                        <li><a href="add-lab-urinal.php">Urinalysis</a></li>
                               </ul>
                           </li>
-          						  <li><a  href="lab-request.php">View Lab Request</a></li>
-          						  <li><a  href="#">View Lab Records</a></li>
-								  <li><a  href="#">Laboratory Reports</a></li>
+                          <li><a  href="lab-request.php">View Lab Request</a></li>
+                          <li><a  href="#">View Lab Records</a></li>
+                <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
-          </li>
-				  
-				  <li class="sub-menu" id="User-li">
-                      <a href="javascript:;" >
-                          <i class="icon-group"></i>
-                          <span>Users Management</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="add-user.php">Add New User</a></li>
-                          <li><a  href="view-users.php">View Users</a></li>
-                      </ul>
-                  </li>
-				  
-				  <li class="sub-menu" id="Maintenance-li">
+        </li>
+          
+          <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
+                          <li><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
               </ul>
