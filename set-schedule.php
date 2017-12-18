@@ -4,7 +4,6 @@ require 'lib/Db.config.pdo.php';
 $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");
   $stmt->execute();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,6 +12,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
     <link rel="shortcut icon" href="img/favicon.ico">
 
     <title>Set Schedule</title>
+
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -20,9 +20,6 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap-fileupload/bootstrap-fileupload.css" />
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -82,44 +79,44 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                       </a>
                   </li>
 
-          <li class="sub-menu" id="Patient-li">
+                  <li class="sub-menu" id="Patient-li">
                       <a href="javascript:;" >
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a href="add-patient.php">Add Patients</a></li>
-                          <li><a href="view-patients.php">View Patients</a></li>
-                          <li><a href="#">Patient Reports</a></li>
+                          <li><a  href="add-patient.php">Add Patients</a></li>
+                          <li><a  href="view-patients.php">View Patients</a></li>
+						  <li><a  href="#">Patient Reports</a></li>
                       </ul>
-          </li>
-          
-          <li class="sub-menu" id="Schedule-li">
+                  </li>
+				  
+				  <li class="sub-menu" id="Schedule-li">
                       <a href="javascript:;" class="active">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
                       </a>
                       <ul class="sub">
-                          <li class="active"><a href="set-schedule.php">Set Schedule</a></li>
-                          <li><a href="view-schedule.php">View Schedule</a></li>
-                          <li><a href="#">Schedule Reports</a></li>
+                          <li class="active"><a  href="set-schedule.php">Set Schedule</a></li>
+                          <li><a  href="view-schedule.php">View Schedule</a></li>
+						  <li><a  href="#">Schedule Reports</a></li>
                       </ul>
-          </li>
-          
-          <li class="sub-menu" id="Inventory-li">
+                  </li>
+				  
+				  <li class="sub-menu" id="Inventory-li">
                       <a href="javascript:;" >
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
                       </a>
                       <ul class="sub">
                           <li><a href="add-inventory.php">Add Inventory</a></li>
-                          <li><a href="add-medicines.php">Add Medicines</a></li>
-                          <li><a href="view-inventory.php">View Inventory</a></li>
-                          <li><a href="#">Inventory Reports</a></li>
+						  <li><a href="add-medicines.php">Add Medicines</a></li>
+						  <li><a href="view-inventory.php">View Inventory</a></li>
+						  <li><a  href="#">Inventory Reports</a></li>
                       </ul>
                   </li>
-          
-          <li class="sub-menu" id="Laboratory-li">
+				  
+				  <li class="sub-menu" id="Laboratory-li">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
@@ -129,25 +126,35 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                               <a href="javascript:;">Add Lab Results</a>
                               <ul class="sub">
                                   <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-                                  <li><a href="add-lab-fecal.php">Fecalysis</a></li>
-                                  <li><a href="add-lab-hema.php">Hematology</a></li>
-                                  <li><a href="add-lab-urinal.php">Urinalysis</a></li>
+                					<li><a href="add-lab-fecal.php">Fecalysis</a></li>
+                					<li><a href="add-lab-hema.php">Hematology</a></li>
+                					<li><a href="add-lab-urinal.php">Urinalysis</a></li>
                               </ul>
                           </li>
-                        <li><a  href="lab-request.php">View Lab Request</a></li>
-                        <li><a  href="#">View Lab Records</a></li>
-                  <li><a  href="#">Laboratory Reports</a></li>
+          						  <li><a  href="lab-request.php">View Lab Request</a></li>
+          						  <li><a  href="#">View Lab Records</a></li>
+								  <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
           </li>
-          
-          <li class="sub-menu" id="Maintenance-li">
+				  
+				  <li class="sub-menu" id="User-li">
+                      <a href="javascript:;" >
+                          <i class="icon-group"></i>
+                          <span>Users Management</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="add-user.php">Add New User</a></li>
+                          <li><a  href="view-users.php">View Users</a></li>
+                      </ul>
+                  </li>
+				  
+				  <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
-						  <li><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
               </ul>
@@ -281,7 +288,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
       <!--footer end-->
   </section>
 
-   <!-- js placed at the end of the document so the pages load faster -->
+    <!-- js placed at the end of the document so the pages load faster -->
     <!--<script src="js/jquery.js"></script>-->
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -290,25 +297,23 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-  
     <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
     <script src="js/advanced-form-components.js"></script>
+    <script src="js/common-scripts.js"></script>
 
 
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
-
     <!--script for this page only-->
-
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 10, "asc" ]]
+                  "aaSorting": [[ 4, "desc" ]]
               } );
           } );
       </script>
-      <script>
+        <script>
         function SetSched(str){
         var P_ID = str;
         var SCHEDULE_DATE = $('#SCHEDULE_DATE-'+str).val();

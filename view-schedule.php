@@ -68,7 +68,6 @@ require 'lib/Db.config.pdo.php';
           </div>
       </header>
       <!--header end-->
-
       <!--sidebar start-->
       <aside>
           <div id="sidebar"  class="nav-collapse ">
@@ -89,7 +88,7 @@ require 'lib/Db.config.pdo.php';
                       <ul class="sub">
                           <li><a  href="add-patient.php">Add Patients</a></li>
                           <li><a  href="view-patients.php">View Patients</a></li>
-						              <li><a  href="#">Patient Reports</a></li>
+						  <li><a  href="#">Patient Reports</a></li>
                       </ul>
           </li>
 				  
@@ -101,7 +100,7 @@ require 'lib/Db.config.pdo.php';
                       <ul class="sub">
                           <li><a  href="set-schedule.php">Set Schedule</a></li>
                           <li class="active"><a  href="view-schedule.php">View Schedule</a></li>
-						              <li><a href="#">Schedule Reports</a></li>
+						  <li><a href="#">Schedule Reports</a></li>
                       </ul>
           </li>
 				  
@@ -112,9 +111,9 @@ require 'lib/Db.config.pdo.php';
                       </a>
                       <ul class="sub">
                           <li><a href="add-inventory.php">Add Inventory</a></li>
-            						  <li><a href="add-medicines.php">Add Medicines</a></li>
-            						  <li><a href="view-inventory.php">View Inventory</a></li>
-            						  <li><a href="#">Inventory Reports</a></li>
+						  <li><a href="add-medicines.php">Add Medicines</a></li>
+						  <li><a href="view-inventory.php">View Inventory</a></li>
+						  <li><a href="#">Inventory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -128,14 +127,24 @@ require 'lib/Db.config.pdo.php';
                               <a href="javascript:;">Add Lab Results</a>
                               <ul class="sub">
                                   <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-                        					<li><a href="add-lab-fecal.php">Fecalysis</a></li>
-                        					<li><a href="add-lab-hema.php">Hematology</a></li>
-                        					<li><a href="add-lab-urinal.php">Urinalysis</a></li>
+                					<li><a href="add-lab-fecal.php">Fecalysis</a></li>
+                					<li><a href="add-lab-hema.php">Hematology</a></li>
+                					<li><a href="add-lab-urinal.php">Urinalysis</a></li>
                               </ul>
                           </li>
           						  <li><a  href="lab-request.php">View Lab Request</a></li>
           						  <li><a  href="#">View Lab Records</a></li>
 								  <li><a  href="#">Laboratory Reports</a></li>
+                      </ul>
+          </li>
+				  
+				  <li class="sub-menu" id="User-li">
+                      <a href="javascript:;" >
+                          <i class="icon-group"></i>
+                          <span>Users Management</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="view-users.php">View User</a></li>
                       </ul>
           </li>
 				  
@@ -146,7 +155,6 @@ require 'lib/Db.config.pdo.php';
                       </a>
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
-						  <li><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
               </ul>
@@ -187,14 +195,14 @@ require 'lib/Db.config.pdo.php';
                                           <td><?php echo $row['P_TYPE'] ?></td>
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
-                                          <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i> Edit</a>
+                                          <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['P_ID']?>"><i class="icon-pencil"></i> Edit</a>
  <!-- Register User Start  MODAL-->
-                                <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['SCHEDULE_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['SCHEDULE_ID']?>" class="modal fade">
+                                <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['P_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['P_ID']?>" class="modal fade">
                                   <div class="modal-dialog">
                                       <div class="modal-content">
                                           <div class="modal-header">
                                               <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                              <h4 class="modal-title" id="myModalLabel-<?php echo $row['SCHEDULE_ID']?>">Edit Appointment</h4>
+                                              <h4 class="modal-title" id="myModalLabel-<?php echo $row['P_ID']?>">Edit Appointment</h4>
                                           </div>
                                           <div class="modal-body">
                                                 <form class="form-horizontal" role="form">
@@ -226,13 +234,13 @@ require 'lib/Db.config.pdo.php';
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
                                   <div class="col-lg-6">
-                                        <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
+                                        <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" id="SCHEDULE_DATE-<?php echo $row['P_ID'] ?>" size="16" class="form-control">
                                   </div>
                           </div>
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
                                   <div class="col-lg-4">
-                                      <select class="form-control" id="SCHEDULE_PURPOSE-<?php echo $row['SCHEDULE_ID'] ?>">
+                                      <select class="form-control" id="SCHEDULE_PURPOSE-<?php echo $row['P_ID'] ?>">
                                         <option value="-None-"<?php
                                               if ($row['SCHEDULE_PURPOSE'] == "-None-") { echo " selected"; }?>>-None-</option>
                                         <option value="Check Up"<?php
@@ -250,13 +258,13 @@ require 'lib/Db.config.pdo.php';
                         </div>
                     <div class="modal-footer">
                       <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                      <button class="btn btn-success" type="button" onclick="UpdateSched(<?php echo $row['SCHEDULE_ID'] ?>)">Update Schedule</button>
+                      <button class="btn btn-success" type="button" onclick="UpdateSched(<?php echo $row['P_ID'] ?>)">Update Schedule</button>
                     </div>
                                       </div>
                                   </div>
                               </div>
             <!--MODAL END-->
-                    											<a class="btn btn-danger btn-sm" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
+                    											<a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
                     										  </td>
                                       </tr>
 <?php
@@ -300,11 +308,12 @@ require 'lib/Db.config.pdo.php';
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 
-  <!--script for this page only-->
-  <script type="text/javascript" charset="utf-8">
+    <!--script for this page only-->
+
+      <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 4, "asc" ]]
+                  "aaSorting": [[ 4, "desc" ]]
               } );
           } );
       </script>
@@ -331,14 +340,14 @@ require 'lib/Db.config.pdo.php';
         });
 
         function UpdateSched(str){
-        var Sched_id = str;
+        var P_ID = str;
         var SCHEDULE_DATE = $('#SCHEDULE_DATE-'+str).val();
         var SCHEDULE_PURPOSE = $('#SCHEDULE_PURPOSE-'+str).val();
             if (confirm('Are you sure you want to update schedule for this patient?')) {
             $.ajax({
               type: "POST",
               url: "Server.php?p=UpdateSched",
-              data: "Sched_id="+Sched_id+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
+              data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
               success: function(data){
                     alert('upadate successfully!');
                     window.location.reload();
@@ -363,7 +372,6 @@ require 'lib/Db.config.pdo.php';
           });
           } else {
               // Do nothing!
-              
           } 
         }
       </script> 
