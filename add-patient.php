@@ -169,10 +169,15 @@ require 'lib/Db.config.php';
 							<form action="#" class="form-horizontal tasi-form">
                                       <div class="form-group">
                                           <div class="col-md-9">
-                                              <div id="my_camera"></div>
-												<input type=button value="Take Snapshot" onClick="take_snapshot()">
-												 
-												<div id="results" ></div> 
+												<div id="my_camera"></div><br>
+                                              <div id="pre_take_buttons">
+												<!-- This button is shown before the user takes a snapshot -->
+												<button type="button" class="btn btn-success" onClick="preview_snapshot()"><i class="icon-camera"></i> Take Snapchat</button>
+											</div>
+											<div id="post_take_buttons" style="display:none">
+												<!-- These buttons are shown after a snapshot is taken -->
+												<button type="button" class="btn btn-success" onClick="cancel_preview()"><i class="icon-undo"></i> Re-Take Snapchat</button>
+											</div>
                                           </div>
                                       </div>
 									  <div class="form-group">
@@ -606,27 +611,59 @@ require 'lib/Db.config.php';
         }
         });
     </script>
-	<!-- Configure a few settings and attach camera -->
-<script language="JavaScript">
- Webcam.set({
-  width: 320,
-  height: 240,
-  image_format: 'jpeg',
-  jpeg_quality: 90
- });
- Webcam.attach( '#my_camera' );
-
-<!-- Code to handle taking the snapshot and displaying it locally -->
-function take_snapshot() {
- 
- // take snapshot and get image data
- Webcam.snap( function(data_uri) {
-  // display results in page
-  document.getElementById('results').innerHTML = 
-  '<img src="'+data_uri+'"/>';
-  } );
-}
-</script>
+	<script language="JavaScript">
+			Webcam.set({
+				// live preview size
+				width: 320,
+				height: 240,
+				
+				// device capture size
+				dest_width: 640,
+				dest_height: 480,
+				
+				// final cropped size
+				crop_width: 480,
+				crop_height: 480,
+				
+				// format and quality
+				image_format: 'jpeg',
+				jpeg_quality: 90,
+				
+				// flip horizontal (mirror mode)
+				flip_horiz: true
+			});
+			Webcam.attach( '#my_camera' );
+		</script>
+		
+		<!-- Code to handle taking the snapshot and displaying it locally -->
+	<script language="JavaScript">
+		// preload shutter audio clip
+		var shutter = new Audio();
+		shutter.autoplay = false;
+		shutter.src = navigator.userAgent.match(/Firefox/) ? 'shutter.ogg' : 'shutter.mp3';
+		
+		function preview_snapshot() {
+			// play sound effect
+			try { shutter.currentTime = 0; } catch(e) {;} // fails in IE
+			shutter.play();
+			
+			// freeze camera so user can preview current frame
+			Webcam.freeze();
+			
+			// swap button sets
+			document.getElementById('pre_take_buttons').style.display = 'none';
+			document.getElementById('post_take_buttons').style.display = '';
+		}
+		
+		function cancel_preview() {
+			// cancel preview freeze and return to live camera view
+			Webcam.unfreeze();
+			
+			// swap buttons back to first set
+			document.getElementById('pre_take_buttons').style.display = '';
+			document.getElementById('post_take_buttons').style.display = 'none';
+		}
+	</script>
 
   <!--common script for all pages-->
 <script src="js/common-scripts.js"></script>
