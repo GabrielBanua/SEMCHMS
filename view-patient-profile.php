@@ -350,39 +350,25 @@ $row = mysql_fetch_array($result);
                                       <thead>
                                       <tr>
                                           <th>Date</th>
-                                          <th>Diagnosis</th>
+                                          <th>Illness / Ailments</th>
                                           <th>Blood Pressure</th>
-                                          <th class="hidden-phone">Test Requested</th>
-                                          <th class="hidden-phone">Action</th>
+										  <th>Weight</th>
+										  <th>Temperature</th>
+										  <th>Follow-up Checkup Date</th>
+                                          <th class="hidden-phone">Remarks</th>
+                                          <th class="hidden-phone">Status</th>
                                       </tr>
                                       </thead>
                                       <tbody>
                                       <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Urinalysis</td>
-                                          <td>12/12/2017</td>
-                                          <td class="center hidden-phone">Uric Acid</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Urinalysis</td>
-                                          <td>12/12/2017</td>
-                                          <td class="center hidden-phone">Uric Acid</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Urinalysis</td>
-                                          <td>12/12/2017</td>
-                                          <td class="center hidden-phone">Uric Acid</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
-										  </td>
+                                          <td>12/25/2017 10:00am</td>
+                                          <td>Highblood</td>
+                                          <td>110/80</td>
+										  <td>80 kgs</td>
+										  <td>27F</td>
+										  <td>12/31/2017</td>
+										  <td class="hidden-phone">So bad</td>
+										  <td class="hidden-phone">Completed</td>
                                       </tr>
                                       </tfoot>
 									</table>
@@ -462,7 +448,43 @@ $row = mysql_fetch_array($result);
                                       </div>
                                   </div>
                                   <div class="form-group">
-                                      <label  class="col-lg-3 control-label">Consultant</label>
+                                      <label  class="col-lg-3 control-label">Illness/Ailments</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" placeholder=" ">
+                                      </div>
+                                  </div>
+								   <div class="form-group">
+                                      <label  class="col-lg-3 control-label">Blood Pressure</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" placeholder=" ">
+                                      </div>
+                                  </div>
+								   <div class="form-group">
+                                      <label  class="col-lg-3 control-label">Weight</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" placeholder=" ">
+                                      </div>
+                                  </div>
+								   <div class="form-group">
+                                      <label  class="col-lg-3 control-label">Temperature</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" placeholder=" ">
+                                      </div>
+                                  </div>
+								  <div class="form-group">
+                                      <label  class="col-lg-3 control-label">Follow-up Check up Date</label>
+                                      <div class="col-lg-6">
+                                          <input type="text" class="form-control" placeholder=" ">
+                                      </div>
+                                  </div>
+								  <div class="form-group">
+                                      <label  class="col-lg-3 control-label">Remarks</label>
+                                      <div class="col-lg-6">
+										  <textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+                                      </div>
+                                  </div>
+								  <div class="form-group">
+                                      <label  class="col-lg-3 control-label">Status</label>
                                       <div class="col-lg-6">
                                           <input type="text" class="form-control" placeholder=" ">
                                       </div>
