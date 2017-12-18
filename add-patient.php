@@ -360,95 +360,90 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">A.8 Do you currently have any disease(s) or Disorder(s)?:</label>
                                             <div class="col-lg-4">
                                               <select class="form-control" id="DISE_DISO">
-                                                <option hidden>-None-</option>
-                                                <option>Yes</option>
                                                 <option>No</option>
+                                                <option>Yes</option>
                                               </select>
                                             </div>
 											<div class="col-lg-10">
-												<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+												<textarea id="DISE_DISO_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
                       											<div class="col-lg-4">
                       												<select class="form-control" name="SIG_INJ" id="SIG_INJ">
-                      													<option hidden>-None-</option>
-                      													<option>Yes</option>
                       													<option>No</option>
+                      													<option>Yes</option>
                       												</select>
                                             </div>
 											<div class="col-lg-10">
-												<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+												<textarea id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled></textarea>
 										  </div>
-                                     </div>
+                   </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.10 have you been hospitalized in the last year?:</label>
-                                            <div class="col-lg-4">
-												<select class="form-control" name="HPTL" id="HPTL">
-													<option hidden>-None-</option>
-													<option>Yes</option>
-													<option>No</option>
-												</select>
-                                            </div>
-                                     </div>
+                                              <div class="col-lg-4">
+                          												<select class="form-control" name="HPTL" id="HPTL">
+                          													<option hidden>-None-</option>
+                          													<option>Yes</option>
+                          													<option>No</option>
+                          												</select>
+                                              </div>
+                   </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.11 are you taking medication?:</label>
-                                            <div class="col-lg-4">
-												<select class="form-control" name="MEDCT" id="MEDCT">
-													<option hidden>-None-</option>
-													<option>Yes</option>
-													<option>No</option>
-												</select>
-                                            </div>
+                                              <div class="col-lg-4">
+                        												<select class="form-control" name="MEDCT" id="MEDCT">
+                        													<option>No</option>
+                        													<option>Yes</option>
+                        												</select>
+                                              </div>
 											<div class="col-lg-10">
-												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+												<textarea id="MEDCT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.12 Do you smoke?:</label>
                                             <div class="col-lg-4">
-												<select class="form-control" name="SMOKE" id="SMOKE">
-													<option hidden>-None-</option>
-													<option>Yes</option>
-													<option>No</option>
-												</select>
+                      												<select class="form-control" name="SMOKE" id="SMOKE">
+                      													<option hidden>-None-</option>
+                      													<option>Yes</option>
+                      													<option>No</option>
+                      												</select>
                                             </div>
-                                     </div>
+                   </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.13 Do you consume Alcohol or drugs?:</label>
-                                            <div class="col-lg-4">
-												<select class="form-control" name="ALCO_DRUGS" id="ALCO_DRUGS">
-													<option hidden>-None-</option>
-													<option>Yes</option>
-													<option>No</option>
-												</select>
-                                            </div>
+                                              <div class="col-lg-4">
+                        												<select class="form-control" name="ALCO_DRUGS" id="ALCO_DRUGS">
+                        													<option>No</option>
+                        													<option>Yes</option>
+                        												</select>
+                                              </div>
 											<div class="col-lg-10">
-												<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+												<textarea id="ALCO_DRUGS_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.14 Do you use Assistive Device?:</label>
-                                            <div class="col-lg-4">
-												<select class="form-control" name="ASSIST_DEV" id="ASSIST_DEV">
-													<option hidden>-None-</option>
-													<option>Yes</option>
-													<option>No</option>
-												</select>
-                                            </div>
+                                              <div class="col-lg-4">
+                        												<select class="form-control" name="ASSIST_DEV" id="ASSIST_DEV">
+                        													<option>No</option>
+                        													<option>Yes</option>
+                        												</select>
+                                              </div>  
 											<div class="col-lg-10">
-												<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+												<textarea id="ASSIST_DEV_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.15 Do you have any person assisting you?:</label>
                                             <div class="col-lg-4">
-												<select class="form-control" name="PERS_ASSIST" id="PERS_ASSIST">
-													<option hidden>-None-</option>
-													<option>Yes</option>
-													<option>No</option>
-												</select>
+                      												<select class="form-control" name="PERS_ASSIST" id="PERS_ASSIST">
+                      													<option hidden>-None-</option>
+                      													<option>Yes</option>
+                      													<option>No</option>
+                      												</select>
                                             </div>
                                      </div>
 									 <div class="form-group">
@@ -463,11 +458,8 @@ require 'lib/Db.config.php';
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.17 Additional Significant on your past and present health?:</label>
-                                            <div class="col-lg-6">
-                                                <input id="PP_HEATH" type="text" class="form-control" placeholder="">
-                                            </div>
 											<div class="col-lg-10">
-												<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+												<textarea name="" id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">
@@ -609,6 +601,22 @@ require 'lib/Db.config.php';
             $('#Laboratory-li').hide();
             $('#Inventory-li').hide();
         }
+        });
+
+        $('#DISE_DISO').change(function(){
+          $('#DISE_DISO_TXTA').prop('disabled', !($(this).val() == "Yes"));
+        });
+        $('#SIG_INJ').change(function(){
+          $('#SIG_INJ_TXTA').prop('disabled', !($(this).val() == "Yes"));
+        });
+        $('#MEDCT').change(function(){
+          $('#MEDCT_TXTA').prop('disabled', !($(this).val() == "Yes"));
+        });
+        $('#ALCO_DRUGS').change(function(){
+          $('#ALCO_DRUGS_TXTA').prop('disabled', !($(this).val() == "Yes"));
+        });
+        $('#ASSIST_DEV').change(function(){
+          $('#ASSIST_DEV_TXTA').prop('disabled', !($(this).val() == "Yes"));
         });
     </script>
 	<script language="JavaScript">
