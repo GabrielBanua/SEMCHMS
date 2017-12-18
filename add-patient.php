@@ -366,7 +366,7 @@ require 'lib/Db.config.php';
                                               </select>
                                             </div>
 											<div class="col-lg-10">
-												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+												<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">
@@ -379,7 +379,7 @@ require 'lib/Db.config.php';
                       												</select>
                                             </div>
 											<div class="col-lg-10">
-												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+												<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">
@@ -425,7 +425,7 @@ require 'lib/Db.config.php';
 												</select>
                                             </div>
 											<div class="col-lg-10">
-												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+												<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">
@@ -438,7 +438,7 @@ require 'lib/Db.config.php';
 												</select>
                                             </div>
 											<div class="col-lg-10">
-												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+												<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">
@@ -467,7 +467,7 @@ require 'lib/Db.config.php';
                                                 <input id="PP_HEATH" type="text" class="form-control" placeholder="">
                                             </div>
 											<div class="col-lg-10">
-												<textarea name="" id="" class="form-control" cols="2" rows="4"></textarea>
+												<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">

@@ -270,10 +270,12 @@ $row = mysql_fetch_array($result);
 												<div class="col-sm-4">
 													<p class="help-block">A.8 Do you currently have any disease(s) or Disorder(s)?:<p>
 													<input type="text" class="form-control" value="<?php echo $row['DISE_DISO']?>" readonly>
+													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.9 Did you ever have any significant injures that impact on your level of functioning?:<p>
 													<input type="text" class="form-control" value="<?php echo $row['SIG_INJ']?>" readonly>
+													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.10 have you been hospitalized in the last year?:<p>
@@ -284,6 +286,7 @@ $row = mysql_fetch_array($result);
 												<div class="col-sm-4">
 													<p class="help-block">A.11 are you taking medication?:<p>
 													<input type="text" class="form-control" value="<?php echo $row['MEDCT']?>" readonly>
+													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.12 Do you smoke?:<p>
@@ -292,12 +295,14 @@ $row = mysql_fetch_array($result);
 												<div class="col-sm-4">
 													<p class="help-block">A.13 Do you consume Alcohol or drugs?:<p>
 													<input type="text" class="form-control" value="<?php echo $row['ALCO_DRUGS']?>" readonly>
+													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.14 Do you use Assistive Device?:<p>
 													<input type="text" class="form-control" value="<?php echo $row['ASSIST_DEV']?>" readonly>
+													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.15 Do you have any person assisting you?:<p>
@@ -312,6 +317,7 @@ $row = mysql_fetch_array($result);
 												<div class="col-sm-4">
 													<p class="help-block">A.17 Additional Significant on your past and present health?:<p>
 													<input type="text" class="form-control" value="<?php echo $row['PP_HEATH']?>" readonly>
+													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.18 In the Past Month, cut back your usual activies because of your health condition?:<p>
