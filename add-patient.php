@@ -360,9 +360,8 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">A.8 Do you currently have any disease(s) or Disorder(s)?:</label>
                                             <div class="col-lg-4">
                                               <select class="form-control" id="DISE_DISO">
-                                                <option hidden>-None-</option>
-                                                <option>Yes</option>
                                                 <option>No</option>
+                                                <option>Yes</option>
                                               </select>
                                             </div>
 											<div class="col-lg-10">
@@ -373,13 +372,12 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
                       											<div class="col-lg-4">
                       												<select class="form-control" name="SIG_INJ" id="SIG_INJ">
-                      												
-                      													<option>Yes</option>
                       													<option>No</option>
+                      													<option>Yes</option>
                       												</select>
                                             </div>
 											<div class="col-lg-10">
-												<textarea id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+												<textarea id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled></textarea>
 										  </div>
                    </div>
 									 <div class="form-group">
@@ -396,13 +394,12 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">A.11 are you taking medication?:</label>
                                               <div class="col-lg-4">
                         												<select class="form-control" name="MEDCT" id="MEDCT">
-                        													<option hidden>-None-</option>
-                        													<option>Yes</option>
                         													<option>No</option>
+                        													<option>Yes</option>
                         												</select>
                                               </div>
 											<div class="col-lg-10">
-												<textarea id="MEDCT_TXTA" class="form-control" cols="2" rows="4"></textarea>
+												<textarea id="MEDCT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">
@@ -419,26 +416,24 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">A.13 Do you consume Alcohol or drugs?:</label>
                                               <div class="col-lg-4">
                         												<select class="form-control" name="ALCO_DRUGS" id="ALCO_DRUGS">
-                        													<option hidden>-None-</option>
-                        													<option>Yes</option>
                         													<option>No</option>
+                        													<option>Yes</option>
                         												</select>
                                               </div>
 											<div class="col-lg-10">
-												<textarea id="ALCO_DRUGS_TXTA" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+												<textarea id="ALCO_DRUGS_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">
                                             <label class="col-md-4 control-label">A.14 Do you use Assistive Device?:</label>
                                               <div class="col-lg-4">
                         												<select class="form-control" name="ASSIST_DEV" id="ASSIST_DEV">
-                        													<option hidden>-None-</option>
-                        													<option>Yes</option>
                         													<option>No</option>
+                        													<option>Yes</option>
                         												</select>
                                               </div>  
 											<div class="col-lg-10">
-												<textarea name="" id="ASSIST_DEV_TXTA" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+												<textarea id="ASSIST_DEV_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled></textarea>
 										  </div>
                                      </div>
 									 <div class="form-group">

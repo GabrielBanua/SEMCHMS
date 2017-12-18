@@ -363,7 +363,7 @@ require 'lib/Db.config.pdo.php';
           });
           } else {
               // Do nothing!
-              
+  
           } 
         }
       </script> 
