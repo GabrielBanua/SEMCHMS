@@ -641,7 +641,7 @@ while($row = $stmt->fetch()){
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 10, "asc" ]]
+                  "aaSorting": [[ 10, "desc" ]]
               } );
           } );
       </script>

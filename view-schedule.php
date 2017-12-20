@@ -12,7 +12,7 @@ require 'lib/Db.config.pdo.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Schedules</title>
+    <title>View Schedule</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -98,9 +98,9 @@ require 'lib/Db.config.pdo.php';
                           <span>Schedule Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="set-schedule.php">Set Schedule</a></li>
-                          <li class="active"><a  href="view-schedule.php">View Schedule</a></li>
-                          <li><a  href="#">Schedule Reports</a></li>
+                          <li><a href="set-schedule.php">Set Schedule</a></li>
+                          <li class="active"><a href="view-schedule.php">View Schedule</a></li>
+                          <li><a href="#">Schedule Reports</a></li>
                       </ul>
                   </li>
           
@@ -304,7 +304,7 @@ require 'lib/Db.config.pdo.php';
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 4, "desc" ]]
+                  "aaSorting": [[ 4, "asc" ]]
               } );
           } );
       </script>

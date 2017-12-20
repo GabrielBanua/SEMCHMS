@@ -527,6 +527,9 @@ require 'lib/Db.config.php';
   	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
   	<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
   	<script src="js/advanced-form-components.js"></script>
+
+    <!--common script for all pages-->
+    <script src="js/common-scripts.js"></script>
 	
 	<script>
         function addNewPatient(){
@@ -578,7 +581,6 @@ require 'lib/Db.config.php';
     //do nothing
   }
     
-  }
   }
 </script>
 <script>
@@ -672,9 +674,6 @@ require 'lib/Db.config.php';
 			document.getElementById('post_take_buttons').style.display = 'none';
 		}
 	</script>
-
-  <!--common script for all pages-->
-<script src="js/common-scripts.js"></script>
 
   </body>
 </html>
