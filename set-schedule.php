@@ -287,15 +287,13 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-    <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-    <script src="js/advanced-form-components.js"></script>
-    <script src="js/common-scripts.js"></script>
 
 
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
+
     <!--script for this page only-->
+
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
