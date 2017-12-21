@@ -168,7 +168,7 @@ else if($Position == "Volunter"){
 								<form class="form-horizontal" role="form">
 								  <div class="form-group">
                                       <div class="col-lg-12">
-											<a class="btn btn-shadow btn-success btn-lg" href="backup/backup_db.php"><i class="icon-download-alt"> </i>Backup Database</a>
+											<a class="btn btn-shadow btn-success btn-lg" href="backup/backup_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup"><i class="icon-download-alt"> </i>Backup Database</a>
 											<a class="btn btn-shadow btn-success btn-lg" href="backup/import_db.php"><i class="icon-upload-alt"> </i>Import Database</a>
                                       </div>
                                   </div>
@@ -202,6 +202,15 @@ else if($Position == "Volunter"){
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+	<script>
+		$('.btn').on('click', function() {
+			var $this = $(this);
+		  $this.button('loading');
+			setTimeout(function() {
+			   $this.button('reset');
+		   }, 8000);
+		});
+	</script>
 
 
   <!--common script for all pages-->
