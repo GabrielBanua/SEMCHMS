@@ -229,12 +229,12 @@ require 'lib/Db.config.php';
 										<div class="form-group">
                                             <label class="col-md-4 control-label">Birthdate</label>
                                             <div class="col-lg-6">
-                      												<div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="12-02-1950" class="input-append date dpYears">
-                      													<input type="text" id="P_BDATE" name="P_BDATE" readonly=""  size="16" class="form-control">
-                      													<span class="input-group-btn add-on">
-                      														<button class="btn btn-info" type="button"><i class="icon-calendar"></i></button>
-                      													</span>
-                      												</div>
+                      							<div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="12-02-1950" class="input-append date dpYears">
+													<input type="text" id="P_BDATE" name="P_BDATE" readonly=""  size="16" class="form-control">
+                      								<span class="input-group-btn add-on">
+                      								<button class="btn btn-info" type="button"><i class="icon-calendar"></i></button>
+                      								</span>
+                      							</div>
                                             </div>
                                         </div>
 										<div class="form-group">
