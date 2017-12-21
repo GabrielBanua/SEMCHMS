@@ -162,8 +162,8 @@ require 'lib/session.php';
                                 <i class="icon-user"></i>
                             </div>
                             <div class="value">
-                                <h1 class="count">
-                                    200
+                                <h1 class="counter" data-count="150">
+                                    0
                                 </h1>
                                 <p>New Patients</p>
                             </div>
@@ -175,7 +175,7 @@ require 'lib/session.php';
                                 <i class="icon-stethoscope"></i>
                             </div>
                             <div class="value">
-                                <h1 class="count2">
+                                <h1 class="counter" data-count="150">
                                     0
                                 </h1>
                                 <p>Patient Care</p>
@@ -188,7 +188,7 @@ require 'lib/session.php';
                                 <i class="icon-user-md"></i>
                             </div>
                             <div class="value">
-                                <h1 class=" count3">
+                                <h1 class="counter" data-count="150">
                                     0
                                 </h1>
                                 <p>Users & Physicians</p>
@@ -201,7 +201,7 @@ require 'lib/session.php';
                                 <i class=" icon-group"></i>
                             </div>
                             <div class="value">
-                                <h1 class=" count4">
+                                <h1 class="counter" data-count="150">
                                     0
                                 </h1>
                                 <p>Total Patients</p>
