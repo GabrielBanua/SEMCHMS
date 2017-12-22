@@ -269,7 +269,7 @@ require 'lib/Db.config.php';
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Temperature (Celcius)</label>
                                             <div class="col-lg-2">
-                                                <input id="P_TEMP" name="P_TEMP" type="text" class="form-control" placeholder=" " required>
+                                                <input id="P_TEMP" name="P_TEMP" type="text" maxlength="2" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -527,7 +527,6 @@ require 'lib/Db.config.php';
   	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
   	<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
   	<script src="js/advanced-form-components.js"></script>
-
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 	
@@ -674,6 +673,5 @@ require 'lib/Db.config.php';
 			document.getElementById('post_take_buttons').style.display = 'none';
 		}
 	</script>
-
   </body>
 </html>
