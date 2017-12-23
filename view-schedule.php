@@ -4,6 +4,7 @@ require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
   $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
   $stmt->execute();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +34,7 @@ require 'lib/Db.config.pdo.php';
     <![endif]-->
   </head>
 
-  <body>
+  <body onload="CheckSchedValidity()">
 
   <section id="container" class="">
       <!--header start-->
@@ -365,6 +366,15 @@ require 'lib/Db.config.pdo.php';
           } else {
               // Do nothing!
           } 
+        }
+
+        function CheckSchedValidity(){
+          $.ajax({
+            type: "GET",
+            url: "Server.php?p=CheckSchedValid",
+              success: function(data){
+              }
+          });
         }
       </script> 
   </body>

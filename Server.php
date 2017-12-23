@@ -249,4 +249,11 @@ require 'lib/Db.config.pdo.php';
  		$stmt -> execute();
 
 }
+else if($page == 'CheckSchedValid'){
+require 'lib/Db.config.pdo.php';
+	$date = date("Y-m-d");
+  	$stmt->execute();
+  	$stmt = $db->prepare("DELETE FROM schedule WHERE $date > SCHEDULE_DATE");
+}
+
 ?>

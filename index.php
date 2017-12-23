@@ -409,6 +409,7 @@ require 'lib/session.php';
     <script src="js/sparkline-chart.js"></script>
     <script src="js/easy-pie-chart.js"></script>
     <script src="js/count.js"></script>
+    <script src="lib/levelaccess.js"></script>
 
     <script>
         $(document).ready(function(){
