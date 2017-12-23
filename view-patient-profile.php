@@ -350,35 +350,40 @@ $row = mysql_fetch_array($result);
 										<header class="panel-heading">
 													<a class="btn btn-success" data-toggle="modal" href="#apointment">Add Medical Records</a>
 												</header>
-                                    <table  class="display table table-bordered table-striped" id="example">
-                                      <thead>
-                                      <tr>
-                                          <th>Date</th>
-                                          <th>Illness / Ailments</th>
-                                          <th>Blood Pressure</th>
+                                    <table class="table table-striped table-advance table-hover">
+									  <thead>
+									  <tr>
+										  <th style="width:15%;"><i class="icon-bullhorn"></i> Date</th>
+										  <th>Illness / Ailments</th>
+										  <th><i class="icon-bookmark"></i>Blood Pressure</th>
 										  <th>Weight</th>
 										  <th>Temperature</th>
-										  <th>Follow-up Checkup Date</th>
-                                          <th class="hidden-phone">Remarks</th>
-                                          <th class="hidden-phone">Status</th>
-                                      </tr>
-                                      </thead>
-                                      <tbody>
-                                      <tr class="gradeX">
-                                          <td>12/25/2017 10:00am</td>
-                                          <td>Highblood</td>
-                                          <td>110/80</td>
-										  <td>80 kgs</td>
-										  <td>27F</td>
-										  <td>12/31/2017</td>
-										  <td class="hidden-phone">So bad</td>
-										  <td class="hidden-phone">Completed</td>
-                                      </tr>
-                                      </tfoot>
-									</table>
+										  <th style="width:15%;">Follow-Up Checkup</th>
+										  <th>Remark</th>
+										  <th><i class=" icon-edit"></i> Status</th>
+										  <th>Action</th>
+									  </tr>
+									  </thead>
+									  <tbody>
+									  <tr>
+										  <td>2017-12-1</td>
+										  <td>Headache</td>
+										  <td>50/50</td>
+										  <td>69 kgs</td>
+										  <td>50`C</td>
+										  <td>2017-12-2</td>
+										  <td>So Hot</td>
+										  <td><span class="label label-success label-mini">Finish</span></td>
+										  <td>
+											  <a class="btn btn-primary btn-xs"><i class="icon-share-alt"></i> Proceed</a>
+										  </td>
+									  </tr>
+									  
+									  </tbody>
+								  </table>
 								  </div>
 			  
-								  </div>
+								</div>
 								  			<!--Medical Records end-->
                                   <div id="labresult" class="tab-pane">
 										<div class="adv-table">
