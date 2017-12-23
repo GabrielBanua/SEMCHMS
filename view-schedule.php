@@ -189,6 +189,8 @@ require 'lib/Db.config.pdo.php';
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
                                           <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['P_ID']?>"><i class="icon-pencil"></i> Edit</a>
+										  <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
+										  <a class="btn btn-primary btn-xs" href="view-patient-profile.php"><i class=" icon-share-alt"></i> Proceed</a>
  <!-- Register User Start  MODAL-->
                                 <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['P_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['P_ID']?>" class="modal fade">
                                   <div class="modal-dialog">
@@ -257,7 +259,7 @@ require 'lib/Db.config.pdo.php';
                                   </div>
                               </div>
             <!--MODAL END-->
-                    											<a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
+                    											
                     										  </td>
                                       </tr>
 <?php
