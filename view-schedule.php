@@ -373,6 +373,7 @@ require 'lib/Db.config.pdo.php';
             type: "GET",
             url: "Server.php?p=CheckSchedValid",
               success: function(data){
+                alert('Load updated schedule for today');
               }
           });
         }

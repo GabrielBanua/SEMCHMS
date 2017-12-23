@@ -275,8 +275,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">Gender</label>
                       <div class="col-lg-6">
                         <select class="form-control" name="P_GNDR" id="P_GNDR-<?php echo $row['P_ID'] ?>" required>
-                          <option value="-None-"<?php
-                            if ($row['P_GNDR'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option value="--Select--"<?php
+                            if ($row['P_GNDR'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Male"<?php
                             if ($row['P_GNDR'] == "Male") { echo " selected"; }?>>Male</option>
                           <option value="Female"<?php
@@ -300,8 +300,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">Category</label>
                       <div class="col-lg-6">
                         <select class="form-control" name="P_TYPE" id="P_TYPE-<?php echo $row['P_ID'] ?>" required>
-                          <option value="-None-"<?php
-                            if ($row['P_TYPE'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option value="--Select--"<?php
+                            if ($row['P_TYPE'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Adult"<?php
                             if ($row['P_TYPE'] == "Adult") { echo " selected"; }?>>Adult</option>
                           <option value="Children"<?php
@@ -313,8 +313,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">Occupation</label>
                       <div class="col-lg-6">
                         <select class="form-control" name="P_OCCU" id="P_OCCU-<?php echo $row['P_ID'] ?>" required>
-                          <option value="-None-"<?php
-                            if ($row['P_OCCU'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option value="--Select--"<?php
+                            if ($row['P_OCCU'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Student"<?php
                             if ($row['P_OCCU'] == "Student") { echo " selected"; }?>>Student</option>
                           <option value="Government Employee"<?php
@@ -356,8 +356,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">Religion</label>
                       <div class="col-lg-6">
                         <select class="form-control" name="P_REL" id="P_REL-<?php echo $row['P_ID'] ?>" required>
-                          <option value="-None-"<?php
-                            if ($row['P_REL'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option value="--Select--"<?php
+                            if ($row['P_REL'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Catholic"<?php
                             if ($row['P_REL'] == "Catholic") { echo " selected"; }?>>Catholic</option>
                           <option value="Muslim"<?php
@@ -369,6 +369,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">Civil Status</label>
                       <div class="col-lg-6">
                         <select class="form-control" name="P_CVL_STAT" id="P_CVL_STAT-<?php echo $row['P_ID'] ?>" required>
+                          <option value="--Select--"<?php
+                            if ($row['P_CVL_STAT'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Single"<?php
                             if ($row['P_CVL_STAT'] == "Single") { echo " selected"; }?>>Single</option>
                           <option value="Widowed"<?php
@@ -390,8 +392,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">A.5 Dominant Hand:</label>
                       <div class="col-lg-4">
                         <select class="form-control" name="DOM_HAND" id="DOM_HAND-<?php echo $row['P_ID'] ?>">
-                          <option hidden value="-None-"<?php
-                            if ($row['DOM_HAND'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option hidden value="--Select--"<?php
+                            if ($row['DOM_HAND'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Left"<?php
                             if ($row['DOM_HAND'] == "Left") { echo " selected"; }?>>Left</option>
                           <option value="Right"<?php
@@ -403,8 +405,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">A.6 How do you rate Physical Health:</label>
                       <div class="col-lg-4">
                         <select class="form-control" name="PHY_HEALTH" id="PHY_HEALTH-<?php echo $row['P_ID'] ?>">
-                          <option hidden value="-None-"<?php
-                            if ($row['PHY_HEALTH'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option hidden value="--Select--"<?php
+                            if ($row['PHY_HEALTH'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Poor"<?php
                             if ($row['PHY_HEALTH'] == "Poor") { echo " selected"; }?>>Poor</option>
                           <option value="Good"<?php
@@ -418,8 +420,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">A.7 How do you rate your health Mental and Emotional in the past Month?:</label>
                       <div class="col-lg-4">
                         <select class="form-control" name="MENT_EMO_HEAl" id="MENT_EMO_HEAl-<?php echo $row['P_ID'] ?>">
-                          <option hidden value="-None-"<?php
-                            if ($row['MENT_EMO_HEAl'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option hidden value="--Select--"<?php
+                            if ($row['MENT_EMO_HEAl'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Poor"<?php
                             if ($row['MENT_EMO_HEAl'] == "Poor") { echo " selected"; }?>>Poor</option>
                           <option value="Good"<?php
@@ -433,8 +435,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">A.8 Do you currently have any disease(s) or Disorder(s)?:</label>
                       <div class="col-lg-4">
                         <select class="form-control" name="DISE_DISO" id="DISE_DISO-<?php echo $row['P_ID'] ?>">
-                          <option hidden value="-None-"<?php
-                            if ($row['DISE_DISO'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option hidden value="--Select--"<?php
+                            if ($row['DISE_DISO'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
                             if ($row['DISE_DISO'] == "Yes") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
@@ -446,8 +448,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
                       <div class="col-lg-4">
                         <select class="form-control" name="SIG_INJ" id="SIG_INJ-<?php echo $row['P_ID'] ?>">
-                          <option hidden value="-None-"<?php
-                            if ($row['SIG_INJ'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option hidden value="--Select--"<?php
+                            if ($row['SIG_INJ'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
                             if ($row['SIG_INJ'] == "Yes") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
@@ -459,8 +461,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">A.10 have you been hospitalized in the last year?:</label>
                       <div class="col-lg-4">
                         <select class="form-control" name="HPTL" id="HPTL-<?php echo $row['P_ID'] ?>">
-                         <option hidden value="-None-"<?php
-                            if ($row['HPTL'] == "-None-") { echo " selected"; }?>>-None-</option>
+                         <option hidden value="--Select--"<?php
+                            if ($row['HPTL'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
                             if ($row['HPTL'] == "Yes") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
@@ -472,8 +474,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">A.11 are you taking medication?:</label>
                       <div class="col-lg-4">
                         <select class="form-control" name="MEDCT" id="MEDCT-<?php echo $row['P_ID'] ?>">
-                          <option hidden value="-None-"<?php
-                            if ($row['MEDCT'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option hidden value="--Select--"<?php
+                            if ($row['MEDCT'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
                             if ($row['MEDCT'] == "Yes") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
@@ -485,8 +487,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">A.12 Do you smoke?:</label>
                       <div class="col-lg-4">
                         <select class="form-control" name="SMOKE" id="SMOKE-<?php echo $row['P_ID'] ?>">
-                          <option hidden value="-None-"<?php
-                            if ($row['SMOKE'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option hidden value="--Select--"<?php
+                            if ($row['SMOKE'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
                             if ($row['SMOKE'] == "Yes") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
@@ -498,8 +500,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">A.13 Do you consume Alcohol or drugs?:</label>
                       <div class="col-lg-4">
                         <select class="form-control" name="ALCO_DRUGS" id="ALCO_DRUGS-<?php echo $row['P_ID'] ?>">
-                          <option hidden value="-None-"<?php
-                            if ($row['ALCO_DRUGS'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option hidden value="--Select--"<?php
+                            if ($row['ALCO_DRUGS'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
                             if ($row['ALCO_DRUGS'] == "Yes") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
@@ -511,8 +513,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">A.14 Do you use Assistive Device?:</label>
                       <div class="col-lg-4">
                         <select class="form-control" name="ASSIST_DEV" id="ASSIST_DEV-<?php echo $row['P_ID'] ?>">
-                          <option hidden value="-None-"<?php
-                            if ($row['ASSIST_DEV'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option hidden value="--Select--"<?php
+                            if ($row['ASSIST_DEV'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
                             if ($row['ASSIST_DEV'] == "Yes") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
@@ -524,8 +526,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">A.15 Do you have any person assisting you?:</label>
                       <div class="col-lg-4">
                         <select class="form-control" name="PERS_ASSIS" id="PERS_ASSIST-<?php echo $row['P_ID'] ?>">
-                          <option hidden value="-None-"<?php
-                            if ($row['PERS_ASSIST'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option hidden value="--Select--"<?php
+                            if ($row['PERS_ASSIST'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
                             if ($row['PERS_ASSIST'] == "Yes") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
@@ -537,8 +539,8 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">A.16 Are you receiving any land of treatment for you Health?:</label>
                       <div class="col-lg-4">
                         <select class="form-control" name="TRMT" id="TRMT-<?php echo $row['P_ID'] ?>">
-                          <option hidden value="-None-"<?php
-                            if ($row['TRMT'] == "-None-") { echo " selected"; }?>>-None-</option>
+                          <option hidden value="--Select--"<?php
+                            if ($row['TRMT'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
                             if ($row['TRMT'] == "Yes") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php

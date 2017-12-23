@@ -255,87 +255,91 @@ $row = mysql_fetch_array($result);
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.5 Dominant Hand:<p>
-													<input type="text" class="form-control" value="<?php echo $row['DOM_HAND']?>" readonly>
+													<input type="text" class="form-control" value="<?php echo $row['DOM_HAND']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.6 How do you rate Physical Health:<p>
-													<input type="text" class="form-control" value="<?php echo $row['PHY_HEALTH']?>" readonly>
+													<input type="text" class="form-control" value="<?php echo $row['PHY_HEALTH']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.7 How do you rate your Mental and Emotional health in the past Month?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['MENT_EMO_HEAl']?>" readonly>
+													<input type="text" class="form-control" value="<?php echo $row['MENT_EMO_HEAl']?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.8 Do you currently have any disease(s) or Disorder(s)?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['DISE_DISO']?>" readonly>
-													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+													<input type="text" id="DISE_DISO" class="form-control" <?php if ($row['DISE_DISO'] != "No" && $row['DISE_DISO'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+                          <br>
+													<textarea name="" id="DISE_DISO_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['DISE_DISO'] != "No" && $row['DISE_DISO'] != "--Select--"){ echo $row['DISE_DISO']; }else{ echo "";}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.9 Did you ever have any significant injures that impact on your level of functioning?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['SIG_INJ']?>" readonly>
-													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+													<input type="text" id="SIG_INJ" class="form-control" <?php if ($row['SIG_INJ'] != "No" && $row['SIG_INJ'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+                          <br>
+													<textarea name="" id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['SIG_INJ'] != "No" && $row['SIG_INJ'] != "--Select--"){ echo $row['SIG_INJ']; }else{ echo "";}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.10 have you been hospitalized in the last year?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['HPTL']?>" readonly>
+													<input type="text" class="form-control" value="<?php echo $row['HPTL']?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.11 are you taking medication?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['MEDCT']?>" readonly>
-													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+													<input type="text" id="MEDCT" class="form-control" <?php if ($row['MEDCT'] != "No" && $row['MEDCT'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+                          <br>
+													<textarea name="" id="MEDCT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['MEDCT'] != "No" && $row['MEDCT'] != "--Select--"){ echo $row['MEDCT']; }else{ echo "";}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.12 Do you smoke?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['SMOKE']?>" readonly>
+													<input type="text" class="form-control" value="<?php echo $row['SMOKE']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.13 Do you consume Alcohol or drugs?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['ALCO_DRUGS']?>" readonly>
-													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+													<input type="text" id="ALCO_DRUGS" class="form-control" <?php if ($row['ALCO_DRUGS'] != "No" && $row['ALCO_DRUGS'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+                          <br>
+													<textarea name="" id="ALCO_DRUGS_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['ALCO_DRUGS'] != "No" && $row['ALCO_DRUGS'] != "--Select--"){ echo $row['ALCO_DRUGS']; }else{ echo "";}?></textarea>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.14 Do you use Assistive Device?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['ASSIST_DEV']?>" readonly>
-													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+													<input type="text" id="ASSIST_DEV" class="form-control" <?php if ($row['ASSIST_DEV'] != "No" && $row['ASSIST_DEV'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+                          <br>
+													<textarea name="" id="ASSIST_DEV_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['ASSIST_DEV'] != "No" && $row['ASSIST_DEV'] != "--Select--"){ echo $row['ASSIST_DEV']; }else{ echo "";}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.15 Do you have any person assisting you?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['PERS_ASSIST']?>" readonly>
+													<input type="text" class="form-control" value="<?php echo $row['PERS_ASSIST']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.16 Are you receiving any land of treatment for you Health?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['TRMT']?>" readonly>
+													<input type="text" class="form-control" value="<?php echo $row['TRMT']?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.17 Additional Significant on your past and present health?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['PP_HEATH']?>" readonly>
-													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+													<textarea name="" id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.18 In the Past Month, cut back your usual activies because of your health condition?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['CB_HEALTH_COND']?>" readonly>
+													<input type="text" class="form-control" value="<?php echo $row['CB_HEALTH_COND']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.19 In the Past Month, have you been totally unable to carry out your  unable to carry out your usual activities?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['TU_HEALTH_COND']?>" readonly>
+													<input type="text" class="form-control" value="<?php echo $row['TU_HEALTH_COND']?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">B.2 Years of Formal Education:<p>
-													<input type="text" class="form-control" value="<?php echo $row['YEARS_FE']?>" readonly>
+													<input type="text" class="form-control" value="<?php echo $row['YEARS_FE']?>">
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">B.3 Marital Status:<p>
-													<input type="text" class="form-control" value="<?php echo $row['MARITAL_STAT']?>" readonly>
+													<input type="text" class="form-control" value="<?php echo $row['MARITAL_STAT']?>">
 												</div>
 											</div>
 										</form>
@@ -558,6 +562,35 @@ $row = mysql_fetch_array($result);
             $('#Inventory-li').hide();
         }
         });
+
+      $(document).ready(function(){
+          var Disease = $('#DISE_DISO').val();
+          var Significant = $('#SIG_INJ').val(); 
+          var Alcohol = $('#ALCO_DRUGS').val();
+          var Medication = $('#MEDCT').val();
+          var Assistive_dev = $('#ASSIST_DEV').val();   
+          $('#DISE_DISO_TXTA').attr('disabled',true);
+          $('#SIG_INJ_TXTA').attr('disabled',true);
+          $('#ALCO_DRUGS_TXTA').attr('disabled',true);
+          $('#MEDCT_TXTA').attr('disabled',true);
+          $('#ASSIST_DEV_TXTA').attr('disabled',true);
+          if(Disease == "Yes"){
+            $('#DISE_DISO_TXTA').attr('disabled',false);
+          }
+          if(Significant == "Yes"){
+            $('#SIG_INJ_TXTA').attr('disabled',false);
+          }
+          if(Alcohol == "Yes"){
+            $('#ALCO_DRUGS_TXTA').attr('disabled',false);
+          }
+          if(Medication == "Yes"){
+            $('#MEDCT_TXTA').attr('disabled',false);
+          }
+          if(Assistive_dev == "Yes"){
+            $('#ASSIST_DEV_TXTA').attr('disabled',false);
+          }
+      });
+        
     </script>
   </body>
 </html>
