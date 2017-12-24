@@ -228,15 +228,15 @@ $sqldate = date('Y-m-d',strtotime($Sched_date));
 else if($page == 'UpdateSched'){
 require 'lib/Db.config.pdo.php';
 
-$Sched_ID = mysql_real_escape_string($_POST['Sched_id']);
+$Sched_ID = mysql_real_escape_string($_POST['Sched_Id']);
 $Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
 $Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
 $sqldate = date('Y-m-d',strtotime($Sched_date)); 
 	
-		$stmt = $db->prepare("update schedule set SCHEDULE_DATE=?, SCHEDULE_PURPOSE=? where SCHEDULE_ID=?");
-		$stmt->bindParam(3,$Sched_ID);
+		$stmt = $db->prepare("Update schedule set SCHEDULE_DATE=?, SCHEDULE_PURPOSE=? where SCHEDULE_ID=?");
 		$stmt->bindParam(1,$sqldate);
 		$stmt->bindParam(2,$Sched_purpose);
+		$stmt->bindParam(3,$Sched_ID);
 		$stmt->execute();
 }
 else if($page == 'DeleteSched'){
@@ -248,13 +248,6 @@ require 'lib/Db.config.pdo.php';
 		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 
-}
-else if($page == 'CheckSchedValid'){
-require 'lib/Db.config.pdo.php';
-	$date = date("Y-m-d");
-	
-  	$stmt->execute();
-  	$stmt = $db->prepare("DELETE FROM schedule WHERE $date > SCHEDULE_DATE");
 }
 
 ?>

@@ -426,6 +426,7 @@ require 'lib/session.php';
         }
         else if(Auth == "Doctor") {
             $('#User-li').hide();
+            $('#Patient-li').hide();
             $('#Maintenance-li').hide();
             $('#Reports-li').hide();
             $('#Laboratory-li').hide();

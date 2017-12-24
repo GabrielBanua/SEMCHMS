@@ -662,9 +662,18 @@ while($row = $stmt->fetch()){
         }
         else if(Auth == "Doctor") {
             $('#User-li').hide();
+            $('#Patient-li').hide();
             $('#Maintenance-li').hide();
             $('#Reports-li').hide();
             $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+        else if(Auth == "Medtech") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Patient-li').hide();
+            $('#Schedule-li').hide();
             $('#Inventory-li').hide();
         }
         });

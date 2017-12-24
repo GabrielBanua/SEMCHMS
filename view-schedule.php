@@ -188,16 +188,16 @@ require 'lib/Db.config.pdo.php';
                                           <td><?php echo $row['P_TYPE'] ?></td>
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
-                                          <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['P_ID']?>"><i class="icon-pencil"></i> Edit</a>
+                                          <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i> Edit</a>
 										  <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
-										  <a class="btn btn-primary btn-xs" href="view-patient-profile.php"><i class=" icon-share-alt"></i> Proceed</a>
+										  <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class=" icon-share-alt"></i> Proceed</a>
  <!-- Register User Start  MODAL-->
-                                <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['P_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['P_ID']?>" class="modal fade">
+                                <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['SCHEDULE_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['SCHEDULE_ID']?>" class="modal fade">
                                   <div class="modal-dialog">
                                       <div class="modal-content">
                                           <div class="modal-header">
                                               <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                              <h4 class="modal-title" id="myModalLabel-<?php echo $row['P_ID']?>">Edit Appointment</h4>
+                                              <h4 class="modal-title" id="myModalLabel-<?php echo $row['SCHEDULE_ID']?>">Edit Appointment</h4>
                                           </div>
                                           <div class="modal-body">
                                                 <form class="form-horizontal" role="form">
@@ -229,13 +229,13 @@ require 'lib/Db.config.pdo.php';
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
                                   <div class="col-lg-6">
-                                        <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" id="SCHEDULE_DATE-<?php echo $row['P_ID'] ?>" size="16" class="form-control">
+                                        <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
                                   </div>
                           </div>
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
                                   <div class="col-lg-4">
-                                      <select class="form-control" id="SCHEDULE_PURPOSE-<?php echo $row['P_ID'] ?>">
+                                      <select class="form-control" id="SCHEDULE_PURPOSE-<?php echo $row['SCHEDULE_ID'] ?>">
                                         <option value="-None-"<?php
                                               if ($row['SCHEDULE_PURPOSE'] == "-None-") { echo " selected"; }?>>-None-</option>
                                         <option value="Check Up"<?php
@@ -253,7 +253,7 @@ require 'lib/Db.config.pdo.php';
                         </div>
                     <div class="modal-footer">
                       <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                      <button class="btn btn-success" type="button" onclick="UpdateSched(<?php echo $row['P_ID'] ?>)">Update Schedule</button>
+                      <button class="btn btn-success" type="button" onclick="UpdateSched(<?php echo $row['SCHEDULE_ID']; ?>)">Update Schedule</button>
                     </div>
                                       </div>
                                   </div>
@@ -327,22 +327,31 @@ require 'lib/Db.config.pdo.php';
         }
         else if(Auth == "Doctor") {
             $('#User-li').hide();
+            $('#Patient-li').hide();
             $('#Maintenance-li').hide();
             $('#Reports-li').hide();
             $('#Laboratory-li').hide();
             $('#Inventory-li').hide();
         }
+        else if(Auth == "Medtech") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Patient-li').hide();
+            $('#Schedule-li').hide();
+            $('#Inventory-li').hide();
+        }
         });
 
         function UpdateSched(str){
-        var P_ID = str;
+        var Sched_Id = str;
         var SCHEDULE_DATE = $('#SCHEDULE_DATE-'+str).val();
         var SCHEDULE_PURPOSE = $('#SCHEDULE_PURPOSE-'+str).val();
             if (confirm('Are you sure you want to update schedule for this patient?')) {
             $.ajax({
               type: "POST",
               url: "Server.php?p=UpdateSched",
-              data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
+              data: "Sched_Id="+Sched_Id+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
               success: function(data){
                     alert('upadate successfully!');
                     window.location.reload();
@@ -368,16 +377,6 @@ require 'lib/Db.config.pdo.php';
           } else {
               // Do nothing!
           } 
-        }
-
-        function CheckSchedValidity(){
-          $.ajax({
-            type: "GET",
-            url: "Server.php?p=CheckSchedValid",
-              success: function(data){
-                alert('Load updated schedule for today');
-              }
-          });
         }
       </script> 
   </body>

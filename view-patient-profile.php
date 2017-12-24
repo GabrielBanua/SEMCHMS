@@ -353,14 +353,14 @@ $row = mysql_fetch_array($result);
                                     <table class="table table-striped table-advance table-hover">
 									  <thead>
 									  <tr>
-										  <th style="width:15%;"><i class="icon-bullhorn"></i> Date</th>
+										  <th style="width:8%;"><i class="icon-bullhorn"></i> Date</th>
 										  <th>Illness / Ailments</th>
 										  <th><i class="icon-bookmark"></i>Blood Pressure</th>
 										  <th>Weight</th>
 										  <th>Temperature</th>
 										  <th style="width:15%;">Follow-Up Checkup</th>
 										  <th>Remark</th>
-										  <th><i class=" icon-edit"></i> Status</th>
+										  <th style="width:10%;"><i class=" icon-edit"></i> Status</th>
 										  <th>Action</th>
 									  </tr>
 									  </thead>
@@ -547,7 +547,7 @@ $row = mysql_fetch_array($result);
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
     <script>
-      $(document).ready(function(){ 
+      $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';
         if (Auth == "Admin") 
         {                       
@@ -561,9 +561,18 @@ $row = mysql_fetch_array($result);
         }
         else if(Auth == "Doctor") {
             $('#User-li').hide();
+            $('#Patient-li').hide();
             $('#Maintenance-li').hide();
             $('#Reports-li').hide();
             $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+        else if(Auth == "Medtech") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Patient-li').hide();
+            $('#Schedule-li').hide();
             $('#Inventory-li').hide();
         }
         });

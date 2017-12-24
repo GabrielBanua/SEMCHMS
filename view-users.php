@@ -188,37 +188,37 @@ else if($Position == "Volunter"){
                                                   <div class="form-group">
                                                       <label class="col-md-3 col-sm-2 control-label">Username:</label>
                                                       <div class="col-lg-6">
-                                                          <input type="text" id="UN" class="form-control">
+                                                          <input type="text" id="UN" class="form-control" required>
                                                       </div>
                                                   </div>
                           <div class="form-group">
                                                       <label class="col-md-3 col-sm-2 control-label">Password:</label>
                                                       <div class="col-lg-6">
-                                                          <input type="Password" id="PW" class="form-control">
+                                                          <input type="Password" id="PW" class="form-control" required>
                                                       </div>
                                                   </div>
                           <div class="form-group">
                                                       <label class="col-md-3 col-sm-2 control-label">First Name:</label>
                                                       <div class="col-lg-6">
-                                                          <input type="text" id="FN" class="form-control">
+                                                          <input type="text" id="FN" class="form-control" required>
                                                       </div>
                                                   </div>
                           <div class="form-group">
                                                       <label class="col-md-3 col-sm-2 control-label">Middle Name:</label>
                                                       <div class="col-lg-6">
-                                                          <input type="text" id="MN" class="form-control">
+                                                          <input type="text" id="MN" class="form-control" required>
                                                       </div>
                                                   </div>
                           <div class="form-group">
                                                       <label class="col-md-3 col-sm-2 control-label">Last Name:</label>
                                                       <div class="col-lg-6">
-                                                          <input type="text" id="LN" class="form-control">
+                                                          <input type="text" id="LN" class="form-control" required>
                                                       </div>
                                                   </div>
                           <div class="form-group">
                                                       <label class="col-md-3 col-sm-2 control-label">Gender:</label>
                                                       <div class="col-lg-4">
-                                                          <select class="form-control" id="GN">
+                                                          <select class="form-control" id="GN" required>
                                                             <option hidden>-None-</option>
                                                             <option>Male</option>
                                                             <option>Female</option>
@@ -228,7 +228,7 @@ else if($Position == "Volunter"){
                           <div class="form-group">
                                                       <label class="col-md-3 col-sm-2 control-label">Position:</label>
                                                       <div class="col-lg-4">
-                              <select class="form-control" id="PS">
+                              <select class="form-control" id="PS" required>
                                 <option hidden>-None-</option>
                                 <option>Admin</option>
                                 <option>Doctor</option>
@@ -494,9 +494,18 @@ else if($Position == "Volunter"){
         }
         else if(Auth == "Doctor") {
             $('#User-li').hide();
+            $('#Patient-li').hide();
             $('#Maintenance-li').hide();
             $('#Reports-li').hide();
             $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+        else if(Auth == "Medtech") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Patient-li').hide();
+            $('#Schedule-li').hide();
             $('#Inventory-li').hide();
         }
         });

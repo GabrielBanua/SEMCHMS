@@ -311,8 +311,9 @@ require 'lib/Db.config.php';
                                                     <option>Divorced</option>
                                                     <option>Separated</option>
                                                 </select>
-                          </div>
-                      </div>
+                                            </div>
+                                            <button style="display: none;" type="submit" id="submit-button"></button>
+                                        </div>
                   </form>
               </div>    
           </section>
@@ -535,9 +536,9 @@ require 'lib/Db.config.php';
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 	
-	<script>
-        function addNewPatient(){
-    
+<script>
+function addNewPatient(){
+        
         var Lastname = $('#P_LNAME').val();
         var Firstname = $('#P_FNAME').val();
         var Middlename = $('#P_MNAME').val();
@@ -617,9 +618,18 @@ require 'lib/Db.config.php';
         }
         else if(Auth == "Doctor") {
             $('#User-li').hide();
+            $('#Patient-li').hide();
             $('#Maintenance-li').hide();
             $('#Reports-li').hide();
             $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+        else if(Auth == "Medtech") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Patient-li').hide();
+            $('#Schedule-li').hide();
             $('#Inventory-li').hide();
         }
         });
