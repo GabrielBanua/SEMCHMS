@@ -443,6 +443,9 @@ while($row = $stmt->fetch()){
                             if ($row['DISE_DISO'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
+					  <div class="col-lg-10">
+							<textarea id="" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
@@ -456,6 +459,9 @@ while($row = $stmt->fetch()){
                             if ($row['SIG_INJ'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
+					  <div class="col-lg-10">
+							<textarea id="" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.10 have you been hospitalized in the last year?:</label>
@@ -469,6 +475,9 @@ while($row = $stmt->fetch()){
                             if ($row['HPTL'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
+					  <div class="col-lg-10">
+							<textarea id="" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.11 are you taking medication?:</label>
@@ -495,6 +504,9 @@ while($row = $stmt->fetch()){
                             if ($row['SMOKE'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
+					  <div class="col-lg-10">
+							<textarea id="" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.13 Do you consume Alcohol or drugs?:</label>
@@ -508,6 +520,9 @@ while($row = $stmt->fetch()){
                             if ($row['ALCO_DRUGS'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
+					  <div class="col-lg-10">
+							<textarea id="" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.14 Do you use Assistive Device?:</label>
@@ -521,6 +536,9 @@ while($row = $stmt->fetch()){
                             if ($row['ASSIST_DEV'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
+					  <div class="col-lg-10">
+							<textarea id="" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.15 Do you have any person assisting you?:</label>
@@ -534,6 +552,9 @@ while($row = $stmt->fetch()){
                             if ($row['PERS_ASSIST'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
+					  <div class="col-lg-10">
+							<textarea id="" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.16 Are you receiving any land of treatment for you Health?:</label>
@@ -547,6 +568,9 @@ while($row = $stmt->fetch()){
                             if ($row['TRMT'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
+					  <div class="col-lg-10">
+							<textarea id="" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.17 Additional Significant on your past and present health?:</label>
