@@ -392,6 +392,9 @@ require 'lib/Db.config.php';
                           	   <option>No</option>
                           	</select>
                           </div>
+						  <div class="col-lg-10">
+								<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+							</div>
                     </div>
 									  <div class="form-group">
                       <label class="col-md-4 control-label">A.11 are you taking medication?:</label>
@@ -415,6 +418,9 @@ require 'lib/Db.config.php';
                       					<option>No</option>
                       				</select>
                           </div>
+						  <div class="col-lg-10">
+								<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+							</div>
                     </div>
 									  <div class="form-group">
                       <label class="col-md-4 control-label">A.13 Do you consume Alcohol or drugs?:</label>
@@ -451,6 +457,9 @@ require 'lib/Db.config.php';
                         				<option>No</option>
                         				</select>
                           </div>
+						  <div class="col-lg-10">
+								<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+							</div>
                     </div>
 									  <div class="form-group">
                       <label class="col-md-4 control-label">A.16 Are you receiving any land of treatment for you Health?:</label>
@@ -473,12 +482,18 @@ require 'lib/Db.config.php';
                           <div class="col-lg-6">
                             <input name="" id="CB_HEALTH_COND" type="text" class="form-control" required>
                           </div>
+						  <div class="col-lg-10">
+								<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+							</div>
                     </div>
 									  <div class="form-group">
                       <label class="col-md-4 control-label">A.19 In the Past Month, have you been totally unable to carry out your usual activities?:</label>
                           <div class="col-lg-6">
                             <input name="" id="TU_HEALTH_COND" type="text" class="form-control" required>
                           </div>
+						  <div class="col-lg-10">
+								<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+							</div>
                     </div>
 									  <div class="form-group">
                       <label class="col-md-4 control-label">B.2 Years of Formal Education:</label>
