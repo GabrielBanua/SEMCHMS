@@ -443,9 +443,9 @@ while($row = $stmt->fetch()){
                             if ($row['DISE_DISO'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
-					  <div class="col-lg-10">
-							<textarea id="" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
-						</div>
+      					  <div class="col-lg-10">
+      							<textarea id="DISE_DISO_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['DISE_DISO'] != "No" && $row['DISE_DISO'] != "--Select--"){ echo $row['DISE_DISO']; }else{ echo "";}?></textarea>
+      						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
@@ -459,9 +459,9 @@ while($row = $stmt->fetch()){
                             if ($row['SIG_INJ'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
-					  <div class="col-lg-10">
-							<textarea id="" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
-						</div>
+      					  <div class="col-lg-10">
+      							<textarea id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['SIG_INJ'] != "No" && $row['SIG_INJ'] != "--Select--"){ echo $row['SIG_INJ']; }else{ echo "";}?></textarea>
+      						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.10 have you been hospitalized in the last year?:</label>
@@ -723,16 +723,31 @@ while($row = $stmt->fetch()){
         var Past_pre = $('#PP_HEATH-'+str).val();
         var Treatment = $('#TRMT-'+str).val();
         var Medication = $('#MEDCT-'+str).val();
+        if(Medication == 'Yes'){
+              Medication = $('#MEDCT_TXTA').val();
+            }
         var Disease = $('#DISE_DISO-'+str).val();
+        if(Disease == 'Yes'){
+              Disease = $('#DISE_DISO_TXTA').val();
+            }
         var Hospitalized = $('#HPTL-'+str).val();
         
         var Dominant = $('#DOM_HAND-'+str).val();
         var Physical_H = $('#PHY_HEALTH-'+str).val();
         var Mental_Emo = $('#MENT_EMO_HEAl-'+str).val();
         var Significant = $('#SIG_INJ-'+str).val();
+        if(Significant == 'Yes'){
+              Significant = $('#SIG_INJ_TXTA').val();
+            }
         var Smoke = $('#SMOKE-'+str).val();
         var Alcohol = $('#ALCO_DRUGS-'+str).val();
+        if(Alcohol == 'Yes'){
+              Alcohol = $('#ALCO_DRUGS_TXTA').val();
+            }
         var Assistive_dev = $('#ASSIST_DEV-'+str).val();
+        if(Assistive_dev == 'Yes'){
+              Assistive_dev = $('#ASSIST_DEV_TXTA').val();
+            }
         var Person_assist = $('#PERS_ASSIST-'+str).val();
         var Marital_stat = $('#MARITAL_STAT-'+str).val();
         var Formal_ED = $('#YEARS_FE-'+str).val();
