@@ -464,12 +464,15 @@ require 'lib/Db.config.php';
 									  <div class="form-group">
                       <label class="col-md-4 control-label">A.16 Are you receiving any land of treatment for you Health?:</label>
                           <div class="col-lg-4">
-  				                    <select class="form-control" name="TRMT" id="TRMT" required>
-  									            <option hidden>--Select--</option>
-      													<option>Yes</option>
-      													<option>No</option>
-  												    </select>
+  				                <select class="form-control" name="TRMT" id="TRMT" required>
+  									<option hidden>--Select--</option>
+      								<option>Yes</option>
+      								<option>No</option>
+  								</select>
                           </div>
+						  <div class="col-lg-10">
+								<textarea name="" id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4" required></textarea>
+						</div>
                     </div>
 									  <div class="form-group">
                       <label class="col-md-4 control-label">A.17 Additional Significant on your past and present health?:</label>
@@ -479,8 +482,12 @@ require 'lib/Db.config.php';
                     </div>
 									  <div class="form-group">
                       <label class="col-md-4 control-label">A.18 In the Past Month, cut back your usual activies because of your health condition?:</label>
-                          <div class="col-lg-6">
-                            <input name="" id="CB_HEALTH_COND" type="text" class="form-control" required>
+						  <div class="col-lg-4">
+  				                <select class="form-control" id="CB_HEALTH_COND" required>
+  									<option hidden>--Select--</option>
+      								<option>Yes</option>
+      								<option>No</option>
+  								</select>
                           </div>
 						  <div class="col-lg-10">
 								<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
@@ -488,8 +495,12 @@ require 'lib/Db.config.php';
                     </div>
 									  <div class="form-group">
                       <label class="col-md-4 control-label">A.19 In the Past Month, have you been totally unable to carry out your usual activities?:</label>
-                          <div class="col-lg-6">
-                            <input name="" id="TU_HEALTH_COND" type="text" class="form-control" required>
+						  <div class="col-lg-4">
+  				                <select class="form-control" id="TU_HEALTH_COND" required>
+  									<option hidden>--Select--</option>
+      								<option>Yes</option>
+      								<option>No</option>
+  								</select>
                           </div>
 						  <div class="col-lg-10">
 								<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
