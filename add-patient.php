@@ -294,17 +294,17 @@ require 'lib/Db.config.php';
                                             <label class="col-md-4 control-label">Religion</label>
                                             <div class="col-lg-6">
                                                 <select class="form-control" name="P_REL" id="P_REL" required>
-            													             <option hidden>--Select--</option>
-            													             <option>Catholic</option>
-            													             <option>Muslim</option>
-        												                </select>
+            										<option hidden>--Select--</option>
+            										<option>Catholic</option>
+            										<option>Muslim</option>
+        										</select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Civil Status</label>
                                             <div class="col-lg-6">
                                                 <select class="form-control" name="P_CVL_STAT" id="P_CVL_STAT" required>
-													                          <option hidden>--Select--</option>
+													<option hidden>--Select--</option>
                                                     <option>Single</option>
                                                     <option>Widowed</option>
                                                     <option>Married</option>

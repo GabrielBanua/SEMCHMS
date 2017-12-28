@@ -270,35 +270,39 @@ $row = mysql_fetch_array($result);
 												<div class="col-sm-4">
 													<p class="help-block">A.8 Do you currently have any disease(s) or Disorder(s)?:<p>
 													<input type="text" id="DISE_DISO" class="form-control" <?php if ($row['DISE_DISO'] != "No" && $row['DISE_DISO'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
-                          <br>
+													<br>
 													<textarea name="" id="DISE_DISO_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['DISE_DISO'] != "No" && $row['DISE_DISO'] != "--Select--"){ echo $row['DISE_DISO']; }else{ echo "";}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.9 Did you ever have any significant injures that impact on your level of functioning?:<p>
 													<input type="text" id="SIG_INJ" class="form-control" <?php if ($row['SIG_INJ'] != "No" && $row['SIG_INJ'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
-                          <br>
+													<br>
 													<textarea name="" id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['SIG_INJ'] != "No" && $row['SIG_INJ'] != "--Select--"){ echo $row['SIG_INJ']; }else{ echo "";}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.10 have you been hospitalized in the last year?:<p>
 													<input type="text" class="form-control" value="<?php echo $row['HPTL']?>">
+													<br>
+													<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.11 are you taking medication?:<p>
 													<input type="text" id="MEDCT" class="form-control" <?php if ($row['MEDCT'] != "No" && $row['MEDCT'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
-                          <br>
+													<br>
 													<textarea name="" id="MEDCT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['MEDCT'] != "No" && $row['MEDCT'] != "--Select--"){ echo $row['MEDCT']; }else{ echo "";}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.12 Do you smoke?:<p>
 													<input type="text" class="form-control" value="<?php echo $row['SMOKE']?>">
+													<br>
+													<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.13 Do you consume Alcohol or drugs?:<p>
 													<input type="text" id="ALCO_DRUGS" class="form-control" <?php if ($row['ALCO_DRUGS'] != "No" && $row['ALCO_DRUGS'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
-                          <br>
+													<br>
 													<textarea name="" id="ALCO_DRUGS_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['ALCO_DRUGS'] != "No" && $row['ALCO_DRUGS'] != "--Select--"){ echo $row['ALCO_DRUGS']; }else{ echo "";}?></textarea>
 												</div>
 											</div>
@@ -306,16 +310,20 @@ $row = mysql_fetch_array($result);
 												<div class="col-sm-4">
 													<p class="help-block">A.14 Do you use Assistive Device?:<p>
 													<input type="text" id="ASSIST_DEV" class="form-control" <?php if ($row['ASSIST_DEV'] != "No" && $row['ASSIST_DEV'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
-                          <br>
+													<br>
 													<textarea name="" id="ASSIST_DEV_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['ASSIST_DEV'] != "No" && $row['ASSIST_DEV'] != "--Select--"){ echo $row['ASSIST_DEV']; }else{ echo "";}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.15 Do you have any person assisting you?:<p>
 													<input type="text" class="form-control" value="<?php echo $row['PERS_ASSIST']?>">
+													<br>
+													<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.16 Are you receiving any land of treatment for you Health?:<p>
 													<input type="text" class="form-control" value="<?php echo $row['TRMT']?>">
+													<br>
+													<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
 												</div>
 											</div>
 											<div class="form-group">
