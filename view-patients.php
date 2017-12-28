@@ -193,7 +193,7 @@ while($row = $stmt->fetch()){
                                           <td>+639<?php echo $row['P_CN'] ?></td>
                                           <td align="center">
                                             <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class="icon-eye-open"></i></a>
-                                            <a class="btn btn-success btn-xs" data-toggle="modal" href="#editpatient-<?php echo $row['P_ID'] ?>"><i class="icon-pencil"></i></a>
+                                            <a class="btn btn-success btn-xs" data-toggle="modal" onclick="change(<?php echo $row['P_ID'] ?>)" href="#editpatient-<?php echo $row['P_ID'] ?>"><i class="icon-pencil"></i></a>
 <!-- Register User Start  MODAL-->
 <div aria-hidden="true" onchange="modalLoad()" aria-labelledby="myModalLabel-<?php echo $row['P_ID'] ?>" role="dialog" tabindex="-1" id="editpatient-<?php echo $row['P_ID'] ?>" class="modal fade">
   <div class="modal-dialog">
@@ -553,7 +553,7 @@ while($row = $stmt->fetch()){
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.15 Do you have any person assisting you?:</label>
                       <div class="col-lg-4">
-                        <select class="form-control" name="PERS_ASSIS" id="PERS_ASSIST-<?php echo $row['P_ID'] ?>">
+                        <select class="form-control" name="PERS_ASSIST" id="PERS_ASSIST-<?php echo $row['P_ID'] ?>">
                           <option hidden value="--Select--"<?php
                             if ($row['PERS_ASSIST'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
@@ -632,6 +632,8 @@ while($row = $stmt->fetch()){
 <?php
   }
 ?>
+
+
                                       </tbody>
                                     </table>
                                 </div>
@@ -714,65 +716,87 @@ while($row = $stmt->fetch()){
         }
         });
        
-        
-        $('#DISE_DISO-'+"1").change(function(){
-          $('#DISE_DISO_TXTA-'+"1").prop('disabled', !($(this).val() == "Yes"));
+       function change(str){
+        var id = str;
+        load(id);
+        $('#DISE_DISO-'+id).change(function(){
+          $('#DISE_DISO_TXTA-'+id).prop('disabled', !($(this).val() == "Yes"));
         });
+        $('#SIG_INJ-'+id).change(function(){
+          $('#SIG_INJ_TXTA-'+id).prop('disabled', !($(this).val() == "Yes"));
+        });
+        $('#MEDCT-'+id).change(function(){
+          $('#MEDCT_TXTA-'+id).prop('disabled', !($(this).val() == "Yes"));
+        });
+        $('#ALCO_DRUGS-'+id).change(function(){
+          $('#ALCO_DRUGS_TXTA-'+id).prop('disabled', !($(this).val() == "Yes"));
+        });
+        $('#HPTL-'+id).change(function(){
+          $('#HPTL_TXTA-'+id).prop('disabled', !($(this).val() == "Yes"));
+        });
+        $('#ASSIST_DEV-'+id).change(function(){
+          $('#ASSIST_DEV_TXTA-'+id).prop('disabled', !($(this).val() == "Yes"));
+        });
+        $('#SMOKE-'+id).change(function(){
+          $('#SMOKE_TXTA-'+id).prop('disabled', !($(this).val() == "Yes"));
+        });
+        $('#PERS_ASSIST-'+id).change(function(){
+          $('#PERS_ASSIST_TXTA-'+id).prop('disabled', !($(this).val() == "Yes"));
+        });
+        $('#TRMT-'+id).change(function(){
+          $('#TRMT_TXTA-'+id).prop('disabled', !($(this).val() == "Yes"));
+        });
+        }
 
-        $('#SIG_INJ-'+"1").change(function(){
-          $('#SIG_INJ_TXTA-'+"1").prop('disabled', !($(this).val() == "Yes"));
-        });
-        $('#MEDCT').change(function(){
-          $('#MEDCT_TXTA').prop('disabled', !($(this).val() == "Yes"));
-        });
-        $('#ALCO_DRUGS').change(function(){
-          $('#ALCO_DRUGS_TXTA').prop('disabled', !($(this).val() == "Yes"));
-        });
-         $('#HPTL').change(function(){
-          $('#HPTL_TXTA').prop('disabled', !($(this).val() == "Yes"));
-        });
-        $('#ASSIST_DEV').change(function(){
-          $('#ASSIST_DEV_TXTA').prop('disabled', !($(this).val() == "Yes"));
-        });
-        $('#SMOKE').change(function(){
-          $('#SMOKE_TXTA').prop('disabled', !($(this).val() == "Yes"));
-        });
-        $('#PERS_ASSIST').change(function(){
-          $('#PERS_ASSIST_TXTA').prop('disabled', !($(this).val() == "Yes"));
-        });
-        $('#TRMT').change(function(){
-          $('#TRMT_TXTA').prop('disabled', !($(this).val() == "Yes"));
-        });
+        function load(str){
+          var id = str;
+          var Disease = $('#DISE_DISO-'+id).val();
+          var Significant = $('#SIG_INJ-'+id).val(); 
+          var Alcohol = $('#ALCO_DRUGS-'+id).val();
+          var Medication = $('#MEDCT-'+id).val();
+          var Assistive_dev = $('#ASSIST_DEV-'+id).val();
+          var Person_assist = $('#PERS_ASSIST-'+id).val();
+          var Hospitalized = $('#HPTL-'+id).val();
+          var Treatment = $('#TRMT-'+id).val();
+          var Smoke = $('#SMOKE-'+id).val();
+          $('#DISE_DISO_TXTA-'+id).attr('disabled',true);
+          $('#SIG_INJ_TXTA-'+id).attr('disabled',true);
+          $('#ALCO_DRUGS_TXTA-'+id).attr('disabled',true);
+          $('#MEDCT_TXTA-'+id).attr('disabled',true);
+          $('#SMOKE_TXTA-'+id).attr('disabled',true);
+          $('#PERS_ASSIST_TXTA-'+id).attr('disabled',true);
+          $('#HPTL_TXTA-'+id).attr('disabled',true);
+          $('#TRMT_TXTA-'+id).attr('disabled',true);
+          $('#ASSIST_DEV_TXTA-'+id).attr('disabled',true);
 
-
-        $(document).ready(function(){
-          var Disease = $('#DISE_DISO-'+"1").val();
-          var Significant = $('#SIG_INJ-').val(); 
-          var Alcohol = $('#ALCO_DRUGS-').val();
-          var Medication = $('#MEDCT-').val();
-          var Assistive_dev = $('#ASSIST_DEV-').val();
-          $('#DISE_DISO_TXTA-'+"1").attr('disabled',true);
-          $('#SIG_INJ_TXTA-'+"1").attr('disabled',true);
-          $('#ALCO_DRUGS_TXTA-'+"1").attr('disabled',true);
-          $('#MEDCT_TXTA-'+"1").attr('disabled',true);
-          $('#ASSIST_DEV_TXTA-'+"1").attr('disabled',true);
           if(Disease == "Yes"){
-            $('#DISE_DISO_TXTA-'+"1").attr('disabled',false);
+            $('#DISE_DISO_TXTA-'+id).attr('disabled',false);
           }
           if(Significant == "Yes"){
-            $('#SIG_INJ_TXTA-'+"1").attr('disabled',false);
+            $('#SIG_INJ_TXTA-'+id).attr('disabled',false);
           }
           if(Alcohol == "Yes"){
-            $('#ALCO_DRUGS_TXTA-'+"1").attr('disabled',false);
+            $('#ALCO_DRUGS_TXTA-'+id).attr('disabled',false);
           }
           if(Medication == "Yes"){
-            $('#MEDCT_TXTA-'+"1").attr('disabled',false);
+            $('#MEDCT_TXTA-'+id).attr('disabled',false);
           }
           if(Assistive_dev == "Yes"){
-            $('#ASSIST_DEV_TXTA-'+"1").attr('disabled',false);
+            $('#ASSIST_DEV_TXTA-'+id).attr('disabled',false);
           }
-      
-        });
+          if(Person_assist == "Yes"){
+            $('#PERS_ASSIST_TXTA-'+id).attr('disabled',false);
+          }
+          if(Treatment == "Yes"){
+            $('#TRMT_TXTA-'+id).attr('disabled',false);
+          }
+          if(Hospitalized == "Yes"){
+            $('#HPTL_TXTA-'+id).attr('disabled',false);
+          }
+          if(Smoke == "Yes"){
+            $('#SMOKE_TXTA-'+id).attr('disabled',false);
+          }
+        }
 
         function UpdatePatient(str){
         var P_ID = str;
@@ -794,6 +818,9 @@ while($row = $stmt->fetch()){
         
         var Past_pre = $('#PP_HEATH-'+str).val();
         var Treatment = $('#TRMT-'+str).val();
+        if(Treatment == 'Yes'){
+              Treatment = $('#TRMT_TXTA-'+str).val();
+            }
         var Medication = $('#MEDCT-'+str).val();
         if(Medication == 'Yes'){
               Medication = $('#MEDCT_TXTA-'+str).val();
@@ -814,6 +841,9 @@ while($row = $stmt->fetch()){
               Significant = $('#SIG_INJ_TXTA-'+str).val();
             }
         var Smoke = $('#SMOKE-'+str).val();
+        if(Smoke == 'Yes'){
+              Smoke = $('#SMOKE_TXTA-'+str).val();
+            }
         var Alcohol = $('#ALCO_DRUGS-'+str).val();
         if(Alcohol == 'Yes'){
               Alcohol = $('#ALCO_DRUGS_TXTA-'+str).val();
