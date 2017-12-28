@@ -166,11 +166,11 @@ require 'lib/Db.config.php';
                               Basic Information
                           </header>
                           <div class="panel-body">
-							<form class="form-horizontal tasi-form">
+							<form id="basicvalid" class="form-horizontal tasi-form">
                 <div class="form-group">
                   <div class="col-md-9">
-										<div id="my_camera"></div><br>
-                      <div id="pre_take_buttons">
+					<div id="my_camera"></div><br>
+                    <div id="pre_take_buttons">
 												<!-- This button is shown before the user takes a snapshot -->
 												<button type="button" class="btn btn-success" onClick="preview_snapshot()"><i class="icon-camera"></i> Take Snapchat</button>
 											</div>
@@ -240,7 +240,7 @@ require 'lib/Db.config.php';
 										<div class="form-group">
                                             <label class="col-md-4 control-label">Age</label>
                                             <div class="col-lg-2">
-                                                <input id="P_AGE" name="P_AGE" type="text" class="form-control" required>
+                                                <input id="P_AGE" name="P_AGE" type="text" class="form-control"required>
                                             </div>
                                         </div>
 										<div class="form-group">
@@ -268,26 +268,26 @@ require 'lib/Db.config.php';
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Temperature (Celcius)</label>
-                                            <div class="col-lg-2">
-                                                <input id="P_TEMP" name="P_TEMP" type="text" maxlength="4" class="form-control" required>
+                                            <div class="col-lg-3">
+                                                <input id="P_TEMP" name="P_TEMP" maxlength="5" type="text"class="form-control numdecimal">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Weight (Kg)</label>
-                                            <div class="col-lg-2">
-												                        <input id="P_WGHT" name="P_WGHT" type="text" class="form-control" required>
-											                       </div>
-										                    </div>
-										                    <div class="form-group">
-											                      <label class="col-md-4 control-label">Height (cm)</label>
-                                            <div class="col-lg-2">
-                                                <input id="P_HGHT" name="P_HGHT" type="text" class="form-control" required>
-											                     </div>
-										                    </div>
+                                            <div class="col-lg-3">
+											<input id="P_WGHT" name="P_WGHT" maxlength="5" type="text" class="form-control numdecimal" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-4 control-label">Height (cm)</label>
+											<div class="col-lg-3">
+												<input id="P_HGHT" name="P_HGHT" maxlength="5" type="text" class="form-control numdecimal" required>
+											</div>
+										</div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Contact Number (+639)</label>
                                             <div class="col-lg-6">
-                                                <input id="P_CN" name="P_CN" type="text" class="form-control" required>
+                                                <input id="P_CN" name="P_CN" type="text" maxlength="11" class="form-control numonly" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -542,17 +542,20 @@ require 'lib/Db.config.php';
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-	   <!-- Webcam.min.js -->
+	<!-- Webcam.min.js -->
   	<script type="text/javascript" src="js/webcam.min.js"></script>
-  	
+  	<!-- Plugins -->
   	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  	<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
   	<script src="js/advanced-form-components.js"></script>
+	
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 	
-<script>
-function addNewPatient(){
+	<!-- Keypress Limit -->
+	<script src="js/numbers-only.js"></script>
+	
+	<script>
+	function addNewPatient(){
         
         var Lastname = $('#P_LNAME').val();
         var Firstname = $('#P_FNAME').val();
@@ -617,8 +620,8 @@ function addNewPatient(){
         //do nothing
       }
 }
-</script>
-<script>
+	</script>
+	<script>
         $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';
         if (Auth == "Admin") 

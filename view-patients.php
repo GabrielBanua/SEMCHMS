@@ -714,15 +714,13 @@ while($row = $stmt->fetch()){
         }
         });
        
-<?php
-while($row = $stmt->fetch()){
-?>
-        $('#DISE_DISO').change(function(){
-          $('#DISE_DISO_TXTA').prop('disabled', !($(this).val() == "Yes"));
+        
+        $('#DISE_DISO-'+"1").change(function(){
+          $('#DISE_DISO_TXTA-'+"1").prop('disabled', !($(this).val() == "Yes"));
         });
 
-        $('#SIG_INJ').change(function(){
-          $('#SIG_INJ_TXTA').prop('disabled', !($(this).val() == "Yes"));
+        $('#SIG_INJ-'+"1").change(function(){
+          $('#SIG_INJ_TXTA-'+"1").prop('disabled', !($(this).val() == "Yes"));
         });
         $('#MEDCT').change(function(){
           $('#MEDCT_TXTA').prop('disabled', !($(this).val() == "Yes"));
@@ -748,37 +746,33 @@ while($row = $stmt->fetch()){
 
 
         $(document).ready(function(){
-          var id = <?php echo $row['P_ID'];?>
-          var Disease = $('#DISE_DISO-'+id).val();
+          var Disease = $('#DISE_DISO-'+"1").val();
           var Significant = $('#SIG_INJ-').val(); 
           var Alcohol = $('#ALCO_DRUGS-').val();
           var Medication = $('#MEDCT-').val();
           var Assistive_dev = $('#ASSIST_DEV-').val();
-          $('#DISE_DISO_TXTA-'+id).attr('disabled',true);
-          $('#SIG_INJ_TXTA-'+id).attr('disabled',true);
-          $('#ALCO_DRUGS_TXTA').attr('disabled',true);
-          $('#MEDCT_TXTA').attr('disabled',true);
-          $('#ASSIST_DEV_TXTA').attr('disabled',true);
+          $('#DISE_DISO_TXTA-'+"1").attr('disabled',true);
+          $('#SIG_INJ_TXTA-'+"1").attr('disabled',true);
+          $('#ALCO_DRUGS_TXTA-'+"1").attr('disabled',true);
+          $('#MEDCT_TXTA-'+"1").attr('disabled',true);
+          $('#ASSIST_DEV_TXTA-'+"1").attr('disabled',true);
           if(Disease == "Yes"){
-            $('#DISE_DISO_TXTA-'+id).attr('disabled',false);
+            $('#DISE_DISO_TXTA-'+"1").attr('disabled',false);
           }
           if(Significant == "Yes"){
-            $('#SIG_INJ_TXTA-').attr('disabled',false);
+            $('#SIG_INJ_TXTA-'+"1").attr('disabled',false);
           }
           if(Alcohol == "Yes"){
-            $('#ALCO_DRUGS_TXTA-').attr('disabled',false);
+            $('#ALCO_DRUGS_TXTA-'+"1").attr('disabled',false);
           }
           if(Medication == "Yes"){
-            $('#MEDCT_TXTA-').attr('disabled',false);
+            $('#MEDCT_TXTA-'+"1").attr('disabled',false);
           }
           if(Assistive_dev == "Yes"){
-            $('#ASSIST_DEV_TXTA-').attr('disabled',false);
+            $('#ASSIST_DEV_TXTA-'+"1").attr('disabled',false);
           }
       
         });
-<?php
-}
-?>
 
         function UpdatePatient(str){
         var P_ID = str;
