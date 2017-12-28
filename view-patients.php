@@ -195,7 +195,7 @@ while($row = $stmt->fetch()){
                                             <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class="icon-eye-open"></i></a>
                                             <a class="btn btn-success btn-xs" data-toggle="modal" href="#editpatient-<?php echo $row['P_ID'] ?>"><i class="icon-pencil"></i></a>
 <!-- Register User Start  MODAL-->
-<div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['P_ID'] ?>" role="dialog" tabindex="-1" id="editpatient-<?php echo $row['P_ID'] ?>" class="modal fade">
+<div aria-hidden="true" onchange="modalLoad()" aria-labelledby="myModalLabel-<?php echo $row['P_ID'] ?>" role="dialog" tabindex="-1" id="editpatient-<?php echo $row['P_ID'] ?>" class="modal fade">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
@@ -434,18 +434,18 @@ while($row = $stmt->fetch()){
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.8 Do you currently have any disease(s) or Disorder(s)?:</label>
                       <div class="col-lg-4">
-                        <select class="form-control" name="DISE_DISO" id="DISE_DISO-<?php echo $row['P_ID'] ?>">
+                        <select class="form-control" id="DISE_DISO-<?php echo $row['P_ID'] ?>">
                           <option hidden value="--Select--"<?php
                             if ($row['DISE_DISO'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
-                            if ($row['DISE_DISO'] == "Yes") { echo " selected"; }?>>Yes</option>
+                            if ($row['DISE_DISO'] != "No" && $row['DISE_DISO'] != "--Select--") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
                             if ($row['DISE_DISO'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="DISE_DISO_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['DISE_DISO'] != "No" && $row['DISE_DISO'] != "--Select--"){ echo $row['DISE_DISO']; }else{ echo "";}?></textarea>
+          							<textarea id="DISE_DISO_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['DISE_DISO'] != "No" && $row['DISE_DISO'] != "--Select--"){ echo $row['DISE_DISO']; }else{ echo "";}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -455,14 +455,14 @@ while($row = $stmt->fetch()){
                           <option hidden value="--Select--"<?php
                             if ($row['SIG_INJ'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
-                            if ($row['SIG_INJ'] == "Yes") { echo " selected"; }?>>Yes</option>
+                            if ($row['SIG_INJ'] != "No" && $row['SIG_INJ'] != "--Select--") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
                             if ($row['SIG_INJ'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['SIG_INJ'] != "No" && $row['SIG_INJ'] != "--Select--"){ echo $row['SIG_INJ']; }else{ echo "";}?></textarea>
+          							<textarea id="SIG_INJ_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['SIG_INJ'] != "No" && $row['SIG_INJ'] != "--Select--"){ echo $row['SIG_INJ']; }else{ echo "";}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -472,14 +472,14 @@ while($row = $stmt->fetch()){
                          <option hidden value="--Select--"<?php
                             if ($row['HPTL'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
-                            if ($row['HPTL'] == "Yes") { echo " selected"; }?>>Yes</option>
+                            if ($row['HPTL'] != "No" && $row['HPTL'] != "--Select--") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
                             if ($row['HPTL'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="HPTL_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['HPTL'] != "No" && $row['HPTL'] != "--Select--"){ echo $row['HPTL']; }else{ echo "";}?></textarea>
+          							<textarea id="HPTL_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['HPTL'] != "No" && $row['HPTL'] != "--Select--"){ echo $row['HPTL']; }else{ echo "";}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -489,14 +489,14 @@ while($row = $stmt->fetch()){
                           <option hidden value="--Select--"<?php
                             if ($row['MEDCT'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
-                            if ($row['MEDCT'] == "Yes") { echo " selected"; }?>>Yes</option>
+                            if ($row['MEDCT'] != "No" && $row['MEDCT'] != "--Select--") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
                             if ($row['MEDCT'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
                       <br>
                       <div class="col-lg-10">
-                        <textarea id="MEDCT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['MEDCT'] != "No" && $row['MEDCT'] != "--Select--"){ echo $row['MEDCT']; }else{ echo "";}?></textarea>
+                        <textarea id="MEDCT_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['MEDCT'] != "No" && $row['MEDCT'] != "--Select--"){ echo $row['MEDCT']; }else{ echo "";}?></textarea>
                       </div>
                   </div>
                   <div class="form-group">
@@ -506,14 +506,14 @@ while($row = $stmt->fetch()){
                           <option hidden value="--Select--"<?php
                             if ($row['SMOKE'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
-                            if ($row['SMOKE'] == "Yes") { echo " selected"; }?>>Yes</option>
+                            if ($row['SMOKE'] != "No" && $row['SMOKE'] != "--Select--") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
                             if ($row['SMOKE'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="SMOKE_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['SMOKE'] != "No" && $row['SMOKE'] != "--Select--"){ echo $row['SMOKE']; }else{ echo "";}?></textarea>
+          							<textarea id="SMOKE_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['SMOKE'] != "No" && $row['SMOKE'] != "--Select--"){ echo $row['SMOKE']; }else{ echo "";}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -523,14 +523,14 @@ while($row = $stmt->fetch()){
                           <option hidden value="--Select--"<?php
                             if ($row['ALCO_DRUGS'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
-                            if ($row['ALCO_DRUGS'] == "Yes") { echo " selected"; }?>>Yes</option>
+                            if ($row['ALCO_DRUGS'] != "No" && $row['ALCO_DRUGS'] != "--Select--") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
                             if ($row['ALCO_DRUGS'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="ALCO_DRUGS_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['ALCO_DRUGS'] != "No" && $row['ALCO_DRUGS'] != "--Select--"){ echo $row['ALCO_DRUGS']; }else{ echo "";}?></textarea>
+          							<textarea id="ALCO_DRUGS_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['ALCO_DRUGS'] != "No" && $row['ALCO_DRUGS'] != "--Select--"){ echo $row['ALCO_DRUGS']; }else{ echo "";}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -540,14 +540,14 @@ while($row = $stmt->fetch()){
                           <option hidden value="--Select--"<?php
                             if ($row['ASSIST_DEV'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
-                            if ($row['ASSIST_DEV'] == "Yes") { echo " selected"; }?>>Yes</option>
+                            if ($row['ASSIST_DEV'] != "No" && $row['ASSIST_DEV'] != "--Select--") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
                             if ($row['ASSIST_DEV'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="ASSIST_DEV_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['ASSIST_DEV'] != "No" && $row['ASSIST_DEV'] != "--Select--"){ echo $row['ASSIST_DEV']; }else{ echo "";}?></textarea>
+          							<textarea id="ASSIST_DEV_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['ASSIST_DEV'] != "No" && $row['ASSIST_DEV'] != "--Select--"){ echo $row['ASSIST_DEV']; }else{ echo "";}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -557,14 +557,14 @@ while($row = $stmt->fetch()){
                           <option hidden value="--Select--"<?php
                             if ($row['PERS_ASSIST'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
-                            if ($row['PERS_ASSIST'] == "Yes") { echo " selected"; }?>>Yes</option>
+                            if ($row['PERS_ASSIST'] != "No" && $row['PERS_ASSIST'] != "--Select--") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
                             if ($row['PERS_ASSIST'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="PERS_ASSIST_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['PERS_ASSIST'] != "No" && $row['PERS_ASSIST'] != "--Select--"){ echo $row['PERS_ASSIST']; }else{ echo "";}?></textarea>
+          							<textarea id="PERS_ASSIST_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['PERS_ASSIST'] != "No" && $row['PERS_ASSIST'] != "--Select--"){ echo $row['PERS_ASSIST']; }else{ echo "";}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -574,14 +574,14 @@ while($row = $stmt->fetch()){
                           <option hidden value="--Select--"<?php
                             if ($row['TRMT'] == "--Select--") { echo " selected"; }?>>--Select--</option>
                           <option value="Yes"<?php
-                            if ($row['TRMT'] == "Yes") { echo " selected"; }?>>Yes</option>
+                            if ($row['TRMT'] != "No" && $row['TRMT'] != "--Select--") { echo " selected"; }?>>Yes</option>
                           <option value="No"<?php
                             if ($row['TRMT'] == "No") { echo " selected"; }?>>No</option>
                         </select>
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="TRMT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['TRMT'] != "No" && $row['TRMT'] != "--Select--"){ echo $row['TRMT']; }else{ echo "";}?></textarea>
+          							<textarea id="TRMT_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['TRMT'] != "No" && $row['TRMT'] != "--Select--"){ echo $row['TRMT']; }else{ echo "";}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -713,10 +713,14 @@ while($row = $stmt->fetch()){
             $('#Inventory-li').hide();
         }
         });
-
-        $('#DISE_DISO-'+"1").change(function(){
+       
+<?php
+while($row = $stmt->fetch()){
+?>
+        $('#DISE_DISO').change(function(){
           $('#DISE_DISO_TXTA').prop('disabled', !($(this).val() == "Yes"));
         });
+
         $('#SIG_INJ').change(function(){
           $('#SIG_INJ_TXTA').prop('disabled', !($(this).val() == "Yes"));
         });
@@ -725,6 +729,9 @@ while($row = $stmt->fetch()){
         });
         $('#ALCO_DRUGS').change(function(){
           $('#ALCO_DRUGS_TXTA').prop('disabled', !($(this).val() == "Yes"));
+        });
+         $('#HPTL').change(function(){
+          $('#HPTL_TXTA').prop('disabled', !($(this).val() == "Yes"));
         });
         $('#ASSIST_DEV').change(function(){
           $('#ASSIST_DEV_TXTA').prop('disabled', !($(this).val() == "Yes"));
@@ -738,6 +745,40 @@ while($row = $stmt->fetch()){
         $('#TRMT').change(function(){
           $('#TRMT_TXTA').prop('disabled', !($(this).val() == "Yes"));
         });
+
+
+        $(document).ready(function(){
+          var id = <?php echo $row['P_ID'];?>
+          var Disease = $('#DISE_DISO-'+id).val();
+          var Significant = $('#SIG_INJ-').val(); 
+          var Alcohol = $('#ALCO_DRUGS-').val();
+          var Medication = $('#MEDCT-').val();
+          var Assistive_dev = $('#ASSIST_DEV-').val();
+          $('#DISE_DISO_TXTA-'+id).attr('disabled',true);
+          $('#SIG_INJ_TXTA-'+id).attr('disabled',true);
+          $('#ALCO_DRUGS_TXTA').attr('disabled',true);
+          $('#MEDCT_TXTA').attr('disabled',true);
+          $('#ASSIST_DEV_TXTA').attr('disabled',true);
+          if(Disease == "Yes"){
+            $('#DISE_DISO_TXTA-'+id).attr('disabled',false);
+          }
+          if(Significant == "Yes"){
+            $('#SIG_INJ_TXTA-').attr('disabled',false);
+          }
+          if(Alcohol == "Yes"){
+            $('#ALCO_DRUGS_TXTA-').attr('disabled',false);
+          }
+          if(Medication == "Yes"){
+            $('#MEDCT_TXTA-').attr('disabled',false);
+          }
+          if(Assistive_dev == "Yes"){
+            $('#ASSIST_DEV_TXTA-').attr('disabled',false);
+          }
+      
+        });
+<?php
+}
+?>
 
         function UpdatePatient(str){
         var P_ID = str;
@@ -761,33 +802,36 @@ while($row = $stmt->fetch()){
         var Treatment = $('#TRMT-'+str).val();
         var Medication = $('#MEDCT-'+str).val();
         if(Medication == 'Yes'){
-              Medication = $('#MEDCT_TXTA').val();
+              Medication = $('#MEDCT_TXTA-'+str).val();
             }
         var Disease = $('#DISE_DISO-'+str).val();
         if(Disease == 'Yes'){
-              Disease = $('#DISE_DISO_TXTA').val();
+              Disease = $('#DISE_DISO_TXTA-'+str).val();
             }
         var Hospitalized = $('#HPTL-'+str).val();
         if(Hospitalized == 'Yes'){
-              Hospitalized = $('#HPTL_TXTA').val();
+              Hospitalized = $('#HPTL_TXTA-'+str).val();
             }
         var Dominant = $('#DOM_HAND-'+str).val();
         var Physical_H = $('#PHY_HEALTH-'+str).val();
         var Mental_Emo = $('#MENT_EMO_HEAl-'+str).val();
         var Significant = $('#SIG_INJ-'+str).val();
         if(Significant == 'Yes'){
-              Significant = $('#SIG_INJ_TXTA').val();
+              Significant = $('#SIG_INJ_TXTA-'+str).val();
             }
         var Smoke = $('#SMOKE-'+str).val();
         var Alcohol = $('#ALCO_DRUGS-'+str).val();
         if(Alcohol == 'Yes'){
-              Alcohol = $('#ALCO_DRUGS_TXTA').val();
+              Alcohol = $('#ALCO_DRUGS_TXTA-'+str).val();
             }
         var Assistive_dev = $('#ASSIST_DEV-'+str).val();
         if(Assistive_dev == 'Yes'){
-              Assistive_dev = $('#ASSIST_DEV_TXTA').val();
+              Assistive_dev = $('#ASSIST_DEV_TXTA-'+str).val();
             }
         var Person_assist = $('#PERS_ASSIST-'+str).val();
+        if(Person_assist == 'Yes'){
+              Person_assist = $('#PERS_ASSIST_TXTA-'+str).val();
+            }
         var Marital_stat = $('#MARITAL_STAT-'+str).val();
         var Formal_ED = $('#YEARS_FE-'+str).val();
         var CB_Health = $('#CB_HEALTH_COND-'+str).val();
