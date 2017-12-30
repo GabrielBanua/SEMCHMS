@@ -240,7 +240,7 @@ require 'lib/Db.config.php';
 										<div class="form-group">
                                             <label class="col-md-4 control-label">Age</label>
                                             <div class="col-lg-2">
-                                                <input id="P_AGE" name="P_AGE" type="text" class="form-control"required>
+                                                <input id="P_AGE" name="P_AGE" type="text" class="form-control" required>
                                             </div>
                                         </div>
 										<div class="form-group">
@@ -367,7 +367,7 @@ require 'lib/Db.config.php';
                             </select>
                           </div>
 											    <div class="col-lg-10">
-												    <textarea id="DISE_DISO_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+												    <textarea id="DISE_DISO_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
 										      </div>
                     </div>
 									  <div class="form-group">
@@ -380,7 +380,7 @@ require 'lib/Db.config.php';
                       			</select>
                           </div>
 											    <div class="col-lg-10">
-												    <textarea id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+												    <textarea id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
 										      </div>
                     </div>
 									  <div class="form-group">
@@ -393,7 +393,7 @@ require 'lib/Db.config.php';
                           	</select>
                           </div>
             						  <div class="col-lg-10">
-            								<textarea style="resize:none" id="HPTL_TXTA" class="form-control" cols="2" rows="4" disabled required></textarea>
+            								<textarea style="resize:none" id="HPTL_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
             							</div>
                     </div>
 									  <div class="form-group">
@@ -406,7 +406,7 @@ require 'lib/Db.config.php';
                         			</select>
                           </div>
 											    <div class="col-lg-10">
-												    <textarea id="MEDCT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+												    <textarea id="MEDCT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
 										      </div>
                     </div>
 									  <div class="form-group">
@@ -420,7 +420,7 @@ require 'lib/Db.config.php';
                           </div>
             						  <div class="col-lg-10">
                             <br>
-            								<textarea style="resize:none" id="SMOKE_TXTA" class="form-control" cols="2" rows="4" disabled required></textarea>
+            								<textarea style="resize:none" id="SMOKE_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
             							</div>
                     </div>
 									  <div class="form-group">
@@ -433,7 +433,7 @@ require 'lib/Db.config.php';
                         			</select>
                           </div>
 											    <div class="col-lg-10">
-												        <textarea id="ALCO_DRUGS_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+												        <textarea id="ALCO_DRUGS_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
 										      </div>
                     </div>
 									  <div class="form-group">
@@ -446,7 +446,7 @@ require 'lib/Db.config.php';
                         			</select>
                           </div>  
 											    <div class="col-lg-10">
-												        <textarea id="ASSIST_DEV_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+												        <textarea id="ASSIST_DEV_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
 										      </div>
                     </div>
 									  <div class="form-group">
@@ -459,7 +459,7 @@ require 'lib/Db.config.php';
                         				</select>
                           </div>
             						  <div class="col-lg-10">
-            								<textarea style="resize:none" id="PERS_ASSIST_TXTA" class="form-control" cols="2" rows="4" disabled required></textarea>
+            								<textarea style="resize:none" id="PERS_ASSIST_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
             							</div>
                     </div>
 									  <div class="form-group">
@@ -472,13 +472,13 @@ require 'lib/Db.config.php';
           								</select>
                           </div>
             						  <div class="col-lg-10">
-            								<textarea name="" id="TRMT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" required></textarea>
+            								<textarea id="TRMT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
             						  </div>
                     </div>
 									  <div class="form-group">
                       <label class="col-md-4 control-label">A.17 Additional Significant on your past and present health?:</label>
 											    <div class="col-lg-10">
-												    <textarea name="" id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4" required></textarea>
+												    <textarea id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4" required></textarea>
 										      </div>
                     </div>
 									  <div class="form-group">
@@ -509,8 +509,8 @@ require 'lib/Db.config.php';
                     </div>
 									  <div class="form-group">
                       <label class="col-md-4 control-label">B.2 Years of Formal Education:</label>
-                          <div class="col-lg-6">
-                            <input name="" id="YEARS_FE" type="text" class="form-control" required>
+                          <div class="col-lg-2">
+                            <input id="YEARS_FE" maxlength="2" type="text" class="form-control numdecimal" required>
                           </div>
                     </div>
 									  <div class="form-group">
