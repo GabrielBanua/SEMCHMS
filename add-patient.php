@@ -511,6 +511,33 @@ require 'lib/Db.config.php';
 							<textarea id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4" required></textarea>
 						</div>
                     </div>
+<<<<<<< HEAD
+									  <div class="form-group">
+                      <label class="col-md-4 control-label">A.18 In the Past Month, cut back your usual activies because of your health condition?:</label>
+						  <div class="col-lg-4">
+  				                <select class="form-control" id="CB_HEALTH_COND" required>
+  									<option hidden>--Select--</option>
+      								<option>Yes</option>
+      								<option>No</option>
+  								</select>
+                          </div>
+						  <div class="col-lg-10">
+								<textarea style="resize:none" id="CB_HEALTH_COND_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
+							</div>
+                    </div>
+									  <div class="form-group">
+                      <label class="col-md-4 control-label">A.19 In the Past Month, have you been totally unable to carry out your usual activities?:</label>
+						  <div class="col-lg-4">
+  				                <select class="form-control" id="TU_HEALTH_COND" required>
+  									<option hidden>--Select--</option>
+      								<option>Yes</option>
+      								<option>No</option>
+  								</select>
+                          </div>
+						  <div class="col-lg-10">
+								<textarea style="resize:none" id="TU_HEALTH_COND_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
+							</div>
+=======
 					<div class="form-group">
 						<label class="col-md-4 control-label">A.18 In the Past Month, cut back your usual activies because of your health condition?:</label>
 						<div class="col-lg-4">
@@ -536,6 +563,7 @@ require 'lib/Db.config.php';
 						<div class="col-lg-10">
 							<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
 						</div>
+>>>>>>> b7e2d48be9d7ad571a6d16d6172b8ba13df86394
                     </div>
 					<div class="form-group">
 						<div class="col-sm-4 pull-right">
@@ -607,18 +635,26 @@ require 'lib/Db.config.php';
         var Treatment = $('#TRMT').val();
             if(Treatment == 'Yes'){
               Treatment = $('#TRMT_TXTA').val();
+            }else if(Treatment == '--Select--'){
+              Treatment = 'No information given!';
             }
         var Medication = $('#MEDCT').val();
             if(Medication == 'Yes'){
               Medication = $('#MEDCT_TXTA').val();
+            }else if(Medication == '--Select--'){
+              Medication = 'No information given!';
             }
         var Disease = $('#DISE_DISO').val();
             if(Disease == 'Yes'){
               Disease = $('#DISE_DISO_TXTA').val();
+            }else if(Disease == '--Select--'){
+              Disease = 'No information given!';
             }
         var Hospitalized = $('#HPTL').val();
             if(Hospitalized == 'Yes'){
               Hospitalized = $('#HPTL_TXTA').val();
+            }else if(Hospitalized == '--Select--'){
+              Hospitalized = 'No information given!';
             }
         var Dominant = $('#DOM_HAND').val();
         var Physical_H = $('#PHY_HEALTH').val();
@@ -626,27 +662,47 @@ require 'lib/Db.config.php';
         var Significant = $('#SIG_INJ').val();
             if(Significant == 'Yes'){
               Significant = $('#SIG_INJ_TXTA').val();
+            }else if(Significant == '--Select--'){
+              Significant = 'No information given!';
             }
         var Smoke = $('#SMOKE').val();
             if(Smoke == 'Yes'){
               Smoke = $('#SMOKE_TXTA').val();
+            }else if(Smoke == '--Select--'){
+              Smoke = 'No information given!';
             }
         var Alcohol = $('#ALCO_DRUGS').val();
             if(Alcohol == 'Yes'){
               Alcohol = $('#ALCO_DRUGS_TXTA').val();
+            }else if(Alcohol == '--Select--'){
+              Alcohol = 'No information given!';
             }
         var Assistive_dev = $('#ASSIST_DEV').val();
             if(Assistive_dev == 'Yes'){
               Assistive_dev = $('#ASSIST_DEV_TXTA').val();
+            }else if(Assistive_dev == '--Select--'){
+              Assistive_dev = 'No information given!';
             }
         var Person_assist = $('#PERS_ASSIST').val();
             if(Person_assist == 'Yes'){
               Person_assist = $('#PERS_ASSIST_TXTA').val();
+            }else if(Person_assist == '--Select--'){
+              Person_assist = 'No information given!';
             }
         var Marital_stat = $('#MARITAL_STAT').val();
         var Formal_ED = $('#YEARS_FE').val();
         var CB_Health = $('#CB_HEALTH_COND').val();
+            if(CB_Health == 'Yes'){
+              CB_Health = $('#CB_HEALTH_COND_TXTA').val();
+            }else if(CB_Health == '--Select--'){
+              CB_Health = 'No information given!';
+            }
         var TU_Health = $('#TU_HEALTH_COND').val();
+            if(TU_Health == 'Yes'){
+              TU_Health = $('#TU_HEALTH_COND_TXTA').val();
+            }else if(TU_Health == '--Select--'){
+              TU_Health = 'No information given!';
+            }
         if (confirm('Are you sure you want to add this patient record in the database?')) {
         $.ajax({
           type: "POST",
@@ -720,6 +776,12 @@ require 'lib/Db.config.php';
         $('#SMOKE').change(function(){
           $('#SMOKE_TXTA').prop('disabled', !($(this).val() == "Yes"));
         });
+        $('#CB_HEALTH_COND').change(function(){
+          $('#CB_HEALTH_COND_TXTA').prop('disabled', !($(this).val() == "Yes"));
+        });
+        $('#TU_HEALTH_COND').change(function(){
+          $('#TU_HEALTH_COND_TXTA').prop('disabled', !($(this).val() == "Yes"));
+        });
     </script>
 	<script language="JavaScript">
 			Webcam.set({
@@ -757,6 +819,7 @@ require 'lib/Db.config.php';
 			try { shutter.currentTime = 0; } catch(e) {;} // fails in IE
 			shutter.play();
 			
+
 			// freeze camera so user can preview current frame
 			Webcam.freeze();
 			
