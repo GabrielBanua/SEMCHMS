@@ -329,19 +329,19 @@ $row = mysql_fetch_array($result);
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.17 Additional Significant on your past and present health?:<p>
-													<textarea name="" id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+													<textarea id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.18 In the Past Month, cut back your usual activies because of your health condition?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['CB_HEALTH_COND']?>">
+													<input type="text" id="CB_HEALTH_COND" class="form-control" <?php if ($row['CB_HEALTH_COND'] != "No" && $row['CB_HEALTH_COND'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
 													<br>
-													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+													<textarea id="CB_HEALTH_COND_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['CB_HEALTH_COND'] != "No" && $row['CB_HEALTH_COND'] != "--Select--"){ echo $row['CB_HEALTH_COND']; }else{ echo "";}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.19 In the Past Month, have you been totally unable to carry out your  unable to carry out your usual activities?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['TU_HEALTH_COND']?>">
+													<input type="text" id="TU_HEALTH_COND" class="form-control" <?php if ($row['TU_HEALTH_COND'] != "No" && $row['TU_HEALTH_COND'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
 													<br>
-													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+													<textarea id="TU_HEALTH_COND_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['TU_HEALTH_COND'] != "No" && $row['TU_HEALTH_COND'] != "--Select--"){ echo $row['TU_HEALTH_COND']; }else{ echo "";}?></textarea>
 												</div>
 											</div>
 											<div class="form-group">
@@ -598,7 +598,9 @@ $row = mysql_fetch_array($result);
           var Treatment = $('#TRMT').val();
           var Hospitalized = $('#HPTL').val();
           var Person_Assist = $('#PERS_ASSIST').val();
-          var Smoke = $('#SMOKE').val();   
+          var Smoke = $('#SMOKE').val();
+          var CB_Health = $('#CB_HEALTH_COND').val();
+          var TU_Health = $('#TU_HEALTH_COND').val();   
           $('#DISE_DISO_TXTA').attr('disabled',true);
           $('#SIG_INJ_TXTA').attr('disabled',true);
           $('#ALCO_DRUGS_TXTA').attr('disabled',true);
@@ -608,6 +610,8 @@ $row = mysql_fetch_array($result);
           $('#TRMT_TXTA').attr('disabled',true);
           $('#SMOKE_TXTA').attr('disabled',true);
           $('#PERS_ASSIST_TXTA').attr('disabled',true);
+          $('#CB_HEALTH_COND_TXTA').attr('disabled',true);
+          $('#TU_HEALTH_COND_TXTA').attr('disabled',true);
           if(Disease == "Yes"){
             $('#DISE_DISO_TXTA').attr('disabled',false);
           }
@@ -634,6 +638,12 @@ $row = mysql_fetch_array($result);
           }
           if(Smoke == "Yes"){
             $('#SMOKE_TXTA').attr('disabled',false);
+          }
+          if(CB_Health == "Yes"){
+            $('#CB_HEALTH_COND_TXTA').attr('disabled',false);
+          }
+          if(TU_Health == "Yes"){
+            $('#TU_HEALTH_COND_TXTA').attr('disabled',false);
           }
       });
         
