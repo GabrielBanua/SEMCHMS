@@ -253,19 +253,6 @@ require 'lib/Db.config.php';
 									</select>
 								</div>
 							</div>
-							<div class="form-group">
-                                <label class="col-md-4 control-label">Occupation</label>
-                                <div class="col-lg-6">
-                                    <select class="form-control" name="P_OCCU" id="P_OCCU" required>
-                                        <option hidden>--Select--</option>
-                                        <option>Student</option>
-                                        <option>Government Employee</option>
-                                        <option>Senior Citizen</option>
-                                        <option>Lawyer</option>
-                                        <option>Director</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Temperature (Celcius)</label>
                                 <div class="col-lg-3">
@@ -310,6 +297,50 @@ require 'lib/Db.config.php';
                                         <option>Married</option>
                                         <option>Divorced</option>
                                         <option>Separated</option>
+                                    </select>
+                                </div>
+                            </div>
+							<div class="form-group">
+								<label class="col-md-4 control-label">Years of Formal Education:</label>
+								<div class="col-lg-2">
+									<input id="YEARS_FE" maxlength="2" type="text" class="form-control numdecimal" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-4 control-label">Marital Status:</label>
+								<div class="col-lg-6">
+									<input name="MARITAL_STAT" id="MARITAL_STAT" type="text" class="form-control" required>
+								</div>
+							</div>
+							<div class="form-group">
+                                <label class="col-md-4 control-label">Current Occupation</label>
+                                <div class="col-lg-6">
+                                    <select class="form-control" name="#" id="#" required>
+                                        <option hidden>--Select--</option>
+                                        <option>Paid Employment</option>
+										<option>Self-Employment</option>
+										<option>Non-paid work(Volunteer/Charity)</option>
+										<option>Student</option>
+										<option>Keeping house(for others)</option>
+										<option>House-maker(Own House)</option>
+										<option>Retired</option>
+										<option>Unemployed</option>
+                                    </select>
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label class="col-md-4 control-label">Current Occupation (Family Bread Winner)</label>
+                                <div class="col-lg-6">
+                                    <select class="form-control" name="#" id="#" required>
+                                        <option hidden>--Select--</option>
+                                        <option>Paid Employment</option>
+										<option>Self-Employment</option>
+										<option>Non-paid work(Volunteer/Charity)</option>
+										<option>Student</option>
+										<option>Keeping house(for others)</option>
+										<option>House-maker(Own House)</option>
+										<option>Retired</option>
+										<option>Unemployed</option>
                                     </select>
                                 </div>
                             </div>
@@ -505,18 +536,6 @@ require 'lib/Db.config.php';
 						<div class="col-lg-10">
 							<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
 						</div>
-                    </div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">B.2 Years of Formal Education:</label>
-						<div class="col-lg-2">
-							<input id="YEARS_FE" maxlength="2" type="text" class="form-control numdecimal" required>
-                        </div>
-                    </div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">B.3 Marital Status:</label>
-                          <div class="col-lg-6">
-                            <input name="MARITAL_STAT" id="MARITAL_STAT" type="text" class="form-control" required>
-                          </div>
                     </div>
 					<div class="form-group">
 						<div class="col-sm-4 pull-right">
