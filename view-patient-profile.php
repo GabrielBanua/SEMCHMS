@@ -281,9 +281,9 @@ $row = mysql_fetch_array($result);
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.10 have you been hospitalized in the last year?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['HPTL']?>">
+													<input type="text" class="form-control" id="HPTL" <?php if ($row['HPTL'] != "No" && $row['HPTL'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
 													<br>
-													<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+													<textarea style="resize:none" id="HPTL_TXTA" class="form-control" cols="2" rows="4" disabled><?php if($row['HPTL'] != "No" && $row['HPTL'] != "--Select--"){ echo $row['HPTL']; }else{ echo "";}?></textarea>
 												</div>
 											</div>
 											<div class="form-group">
@@ -295,9 +295,9 @@ $row = mysql_fetch_array($result);
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.12 Do you smoke?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['SMOKE']?>">
+													<input type="text" class="form-control" id="SMOKE" <?php if ($row['SMOKE'] != "No" && $row['SMOKE'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
 													<br>
-													<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+													<textarea style="resize:none" class="form-control" id="SMOKE_TXTA" cols="2" rows="4" disabled><?php if($row['SMOKE'] != "No" && $row['SMOKE'] != "--Select--"){ echo $row['SMOKE']; }else{ echo "";}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.13 Do you consume Alcohol or drugs?:<p>
@@ -315,15 +315,15 @@ $row = mysql_fetch_array($result);
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.15 Do you have any person assisting you?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['PERS_ASSIST']?>">
+													<input type="text" class="form-control" id="PERS_ASSIST" <?php if ($row['PERS_ASSIST'] != "No" && $row['PERS_ASSIST'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
 													<br>
-													<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+													<textarea style="resize:none" id="PERS_ASSIST_TXTA" class="form-control" cols="2" rows="4" disabled><?php if($row['PERS_ASSIST'] != "No" && $row['PERS_ASSIST'] != "--Select--"){ echo $row['PERS_ASSIST']; }else{ echo "";}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.16 Are you receiving any land of treatment for you Health?:<p>
-													<input type="text" class="form-control" value="<?php echo $row['TRMT']?>">
+													<input type="text" class="form-control" id="TRMT" <?php if ($row['TRMT'] != "No" && $row['TRMT'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
 													<br>
-													<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
+													<textarea style="resize:none" class="form-control" id="TRMT_TXTA" cols="2" rows="4" disabled><?php if($row['TRMT'] != "No" && $row['TRMT'] != "--Select--"){ echo $row['TRMT']; }else{ echo "";}?></textarea>
 												</div>
 											</div>
 											<div class="form-group">
@@ -590,12 +590,20 @@ $row = mysql_fetch_array($result);
           var Significant = $('#SIG_INJ').val(); 
           var Alcohol = $('#ALCO_DRUGS').val();
           var Medication = $('#MEDCT').val();
-          var Assistive_dev = $('#ASSIST_DEV').val();   
+          var Assistive_dev = $('#ASSIST_DEV').val();
+          var Treatment = $('#TRMT').val();
+          var Hospitalized = $('#HPTL').val();
+          var Person_Assist = $('#PERS_ASSIST').val();
+          var Smoke = $('#SMOKE').val();   
           $('#DISE_DISO_TXTA').attr('disabled',true);
           $('#SIG_INJ_TXTA').attr('disabled',true);
           $('#ALCO_DRUGS_TXTA').attr('disabled',true);
           $('#MEDCT_TXTA').attr('disabled',true);
           $('#ASSIST_DEV_TXTA').attr('disabled',true);
+          $('#HPTL_TXTA').attr('disabled',true);
+          $('#TRMT_TXTA').attr('disabled',true);
+          $('#SMOKE_TXTA').attr('disabled',true);
+          $('#PERS_ASSIST_TXTA').attr('disabled',true);
           if(Disease == "Yes"){
             $('#DISE_DISO_TXTA').attr('disabled',false);
           }
@@ -610,6 +618,18 @@ $row = mysql_fetch_array($result);
           }
           if(Assistive_dev == "Yes"){
             $('#ASSIST_DEV_TXTA').attr('disabled',false);
+          }
+          if(Treatment == "Yes"){
+            $('#TRMT_TXTA').attr('disabled',false);
+          }
+          if(Person_Assist == "Yes"){
+            $('#PERS_ASSIST_TXTA').attr('disabled',false);
+          }
+          if(Hospitalized == "Yes"){
+            $('#HPTL_TXTA').attr('disabled',false);
+          }
+          if(Smoke == "Yes"){
+            $('#SMOKE_TXTA').attr('disabled',false);
           }
       });
         
