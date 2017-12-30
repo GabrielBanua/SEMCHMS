@@ -592,15 +592,37 @@ while($row = $stmt->fetch()){
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.18 In the Past Month, cut back your usual activies because of your health condition?:</label>
-                      <div class="col-lg-6">
-                        <input id="CB_HEALTH_COND-<?php echo $row['P_ID'] ?>" value="<?php echo $row['CB_HEALTH_COND'];?>" type="text" class="form-control" placeholder="">
+					  <div class="col-lg-4">
+                        <select class="form-control" name="CB_HEALTH_COND" id="CB_HEALTH_COND-<?php echo $row['P_ID'] ?>">
+                          <option hidden value="--Select--"<?php
+                            if ($row['CB_HEALTH_COND'] == "--Select--") { echo " selected"; }?>>--Select--</option>
+                          <option value="Yes"<?php
+                            if ($row['CB_HEALTH_COND'] != "No" && $row['CB_HEALTH_COND'] != "--Select--") { echo " selected"; }?>>Yes</option>
+                          <option value="No"<?php
+                            if ($row['CB_HEALTH_COND'] == "No") { echo " selected"; }?>>No</option>
+                        </select>
                       </div>
+					  <br>
+          					  <div class="col-lg-10">
+          							<textarea id="#" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['#'] != "No" && $row['#'] != "--Select--"){ echo $row['#']; }else{ echo "";}?></textarea>
+          						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">A.19 In the Past Month, have you been totally unable to carry out your usual activities?:</label>
-                       <div class="col-lg-6">
-                         <input id="TU_HEALTH_COND-<?php echo $row['P_ID'] ?>" value="<?php echo $row['TU_HEALTH_COND'];?>" type="text" class="form-control" placeholder="">
-                       </div>
+					   <div class="col-lg-4">
+                        <select class="form-control" name="TU_HEALTH_COND" id="TU_HEALTH_COND-<?php echo $row['P_ID'] ?>">
+                          <option hidden value="--Select--"<?php
+                            if ($row['TU_HEALTH_COND'] == "--Select--") { echo " selected"; }?>>--Select--</option>
+                          <option value="Yes"<?php
+                            if ($row['TU_HEALTH_COND'] != "No" && $row['TU_HEALTH_COND'] != "--Select--") { echo " selected"; }?>>Yes</option>
+                          <option value="No"<?php
+                            if ($row['TU_HEALTH_COND'] == "No") { echo " selected"; }?>>No</option>
+                        </select>
+                      </div>
+					  <br>
+          					  <div class="col-lg-10">
+          							<textarea id="#" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['#'] != "No" && $row['#'] != "--Select--"){ echo $row['#']; }else{ echo "";}?></textarea>
+          						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">B.2 Years of Formal Education:</label>

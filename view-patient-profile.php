@@ -334,10 +334,14 @@ $row = mysql_fetch_array($result);
 												<div class="col-sm-4">
 													<p class="help-block">A.18 In the Past Month, cut back your usual activies because of your health condition?:<p>
 													<input type="text" class="form-control" value="<?php echo $row['CB_HEALTH_COND']?>">
+													<br>
+													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.19 In the Past Month, have you been totally unable to carry out your  unable to carry out your usual activities?:<p>
 													<input type="text" class="form-control" value="<?php echo $row['TU_HEALTH_COND']?>">
+													<br>
+													<textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
 												</div>
 											</div>
 											<div class="form-group">
