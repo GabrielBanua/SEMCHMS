@@ -310,25 +310,6 @@ while($row = $stmt->fetch()){
                       </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-4 control-label">Occupation</label>
-                      <div class="col-lg-6">
-                        <select class="form-control" name="P_OCCU" id="P_OCCU-<?php echo $row['P_ID'] ?>" required>
-                          <option value="--Select--"<?php
-                            if ($row['P_OCCU'] == "--Select--") { echo " selected"; }?>>--Select--</option>
-                          <option value="Student"<?php
-                            if ($row['P_OCCU'] == "Student") { echo " selected"; }?>>Student</option>
-                          <option value="Government Employee"<?php
-                            if ($row['P_OCCU'] == "Government Employee") { echo " selected"; }?>>Government Employee</option>
-                          <option value="Senior Citizen"<?php
-                            if ($row['P_OCCU'] == "Senior Citizen") { echo " selected"; }?>>Senior Citizen</option>
-                          <option value="Lawyer"<?php
-                            if ($row['P_OCCU'] == "Lawyer") { echo " selected"; }?>>Lawyer</option>
-                          <option value="Director"<?php
-                            if ($row['P_OCCU'] == "Director") { echo " selected"; }?>>Director</option>
-                        </select>
-                      </div>
-                  </div>
-                  <div class="form-group">
                     <label class="col-md-4 control-label">Temperature (Celcius)</label>
                       <div class="col-lg-6">
                         <input id="P_TEMP-<?php echo $row['P_ID'] ?>" name="P_TEMP" type="text" class="form-control" value="<?php echo $row['P_TEMP'] ?>" required>
@@ -384,6 +365,50 @@ while($row = $stmt->fetch()){
                         </select>
                       </div>
                   </div>
+				<div class="form-group">
+					<label class="col-md-4 control-label">Years of Formal Education:</label>
+					<div class="col-lg-2">
+						<input id="YEARS_FE" maxlength="2" type="text" class="form-control numdecimal" required>
+					</div>
+				</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label">Marital Status:</label>
+						<div class="col-lg-6">
+							<input name="MARITAL_STAT" id="MARITAL_STAT" type="text" class="form-control" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label">Current Occupation</label>
+						<div class="col-lg-6">
+							<select class="form-control" name="#" id="#" required>
+								<option hidden>--Select--</option>
+								<option>Paid Employment</option>
+								<option>Self-Employment</option>
+								<option>Non-paid work(Volunteer/Charity)</option>
+								<option>Student</option>
+								<option>Keeping house(for others)</option>
+								<option>House-maker(Own House)</option>
+								<option>Retired</option>
+								<option>Unemployed</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label">Current Occupation (Family Bread Winner)</label>
+						<div class="col-lg-6">
+							<select class="form-control" name="#" id="#" required>
+								<option hidden>--Select--</option>
+								<option>Paid Employment</option>
+								<option>Self-Employment</option>
+								<option>Non-paid work(Volunteer/Charity)</option>
+								<option>Student</option>
+								<option>Keeping house(for others)</option>
+								<option>House-maker(Own House)</option>
+								<option>Retired</option>
+								<option>Unemployed</option>
+							</select>
+						</div>
+					</div>
                 </form>
               </div>
               <div id="healthissue-<?php echo $row['P_ID'] ?>" class="tab-pane">
