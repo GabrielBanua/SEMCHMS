@@ -315,32 +315,32 @@ require 'lib/Db.config.php';
 							<div class="form-group">
                                 <label class="col-md-4 control-label">Current Occupation</label>
                                 <div class="col-lg-6">
-                                    <select class="form-control" name="#" id="#" required>
+                                    <select class="form-control" id="P_OCCU" required>
                                         <option hidden>--Select--</option>
                                         <option>Paid Employment</option>
-										<option>Self-Employment</option>
-										<option>Non-paid work(Volunteer/Charity)</option>
-										<option>Student</option>
-										<option>Keeping house(for others)</option>
-										<option>House-maker(Own House)</option>
-										<option>Retired</option>
-										<option>Unemployed</option>
+                    										<option>Self-Employment</option>
+                    										<option>Non-paid work(Volunteer/Charity)</option>
+                    										<option>Student</option>
+                    										<option>Keeping house(for others)</option>
+                    										<option>House-maker(Own House)</option>
+                    										<option>Retired</option>
+                    										<option>Unemployed</option>
                                     </select>
                                 </div>
                             </div>
 							<div class="form-group">
                                 <label class="col-md-4 control-label">Current Occupation (Family Bread Winner)</label>
                                 <div class="col-lg-6">
-                                    <select class="form-control" name="#" id="#" required>
+                                    <select class="form-control" id="P_OCCU_FBW" required>
                                         <option hidden>--Select--</option>
                                         <option>Paid Employment</option>
-										<option>Self-Employment</option>
-										<option>Non-paid work(Volunteer/Charity)</option>
-										<option>Student</option>
-										<option>Keeping house(for others)</option>
-										<option>House-maker(Own House)</option>
-										<option>Retired</option>
-										<option>Unemployed</option>
+                    										<option>Self-Employment</option>
+                    										<option>Non-paid work(Volunteer/Charity)</option>
+                    										<option>Student</option>
+                    										<option>Keeping house(for others)</option>
+                    										<option>House-maker(Own House)</option>
+                    										<option>Retired</option>
+                    										<option>Unemployed</option>
                                     </select>
                                 </div>
                             </div>
@@ -542,9 +542,6 @@ require 'lib/Db.config.php';
     							<button class="btn btn-success" type="submit" onclick="addNewPatient()">Save</button>
     						</div>
               </div>
-
-					
-
 				</form>
             </div>
         </section>
@@ -601,6 +598,7 @@ require 'lib/Db.config.php';
         var Address = $('#P_ADD').val();
         var Contact = $('#P_CN').val();
         var Occupation = $('#P_OCCU').val();
+        var OccupationFBW = $('#P_OCCU_FBW').val();
         var Religion = $('#P_REL').val();
         var Civil = $('#P_CVL_STAT').val();
         var Weight = $('#P_WGHT').val();
@@ -678,13 +676,13 @@ require 'lib/Db.config.php';
             }else if(TU_Health == '--Select--'){
               TU_Health = 'No information given!';
             }
-        if (confirm('Are you sure you want to add this patient record in the database?')) {
+        if(confirm('Are you sure you want to add this patient record in the database?')) {
         $.ajax({
           type: "POST",
           url: "Server.php?p=addNewPatient",
-          data: "P_LNAME="+Lastname+"&P_FNAME="+Firstname+"&P_MNAME="+Middlename+"&P_GNDR="+Gender+"&P_BDATE="+Birthday+"&P_AGE="+Age+"&P_TEMP="+Temperature+"&P_WGHT="+Weight+"&P_HGHT="+Height+"&P_TYPE="+Type+"&P_ADD="+Address+"&P_CN="+Contact+"&P_OCCU="+Occupation+"&P_REL="+Religion+"&P_CVL_STAT="+Civil+"&PP_HEATH="+Past_pre+"&TRMT="+Treatment+"&MEDCT="+Medication+"&DISE_DISO="+Disease+"&HPTL="+Hospitalized+"&DOM_HAND="+Dominant+"&PHY_HEALTH="+Physical_H+"&MENT_EMO_HEAl="+Mental_Emo+"&SIG_INJ="+Significant+"&SMOKE="+Smoke+"&ALCO_DRUGS="+Alcohol+"&ASSIST_DEV="+Assistive_dev+"&PERS_ASSIST="+Person_assist+"&MARITAL_STAT="+Marital_stat+"&YEARS_FE="+Formal_ED+"&CB_HEALTH_COND="+CB_Health+"&TU_HEALTH_COND="+TU_Health,
+          data: "P_LNAME="+Lastname+"&P_FNAME="+Firstname+"&P_MNAME="+Middlename+"&P_GNDR="+Gender+"&P_BDATE="+Birthday+"&P_AGE="+Age+"&P_TEMP="+Temperature+"&P_WGHT="+Weight+"&P_HGHT="+Height+"&P_TYPE="+Type+"&P_ADD="+Address+"&P_CN="+Contact+"&P_OCCU="+Occupation+"&P_REL="+Religion+"&P_CVL_STAT="+Civil+"&PP_HEATH="+Past_pre+"&TRMT="+Treatment+"&MEDCT="+Medication+"&DISE_DISO="+Disease+"&HPTL="+Hospitalized+"&DOM_HAND="+Dominant+"&PHY_HEALTH="+Physical_H+"&MENT_EMO_HEAl="+Mental_Emo+"&SIG_INJ="+Significant+"&SMOKE="+Smoke+"&ALCO_DRUGS="+Alcohol+"&ASSIST_DEV="+Assistive_dev+"&PERS_ASSIST="+Person_assist+"&MARITAL_STAT="+Marital_stat+"&YEARS_FE="+Formal_ED+"&CB_HEALTH_COND="+CB_Health+"&TU_HEALTH_COND="+TU_Health+"&P_OCCU_FBW="+OccupationFBW,
           success: function(data){
-            alert('added successfully!');
+            alert('Added successfully!');
             window.location.reload();
           }
         });
