@@ -354,19 +354,19 @@ require 'lib/Db.config.php';
 					   Health Issue
 					</header>
             <div class="panel-body">
-				<form role="form" class="form-horizontal tasi-form">
-					<div class="form-group">
-						<label class="col-md-4 control-label">A.5 Dominant Hand:</label>
-							<div class="col-lg-4">
-								<select class="form-control" name="DOM_HAND" id="DOM_HAND" required>
-									<option hidden>--Select--</option>
-									<option>Left</option>
-									<option>Right</option>
-								</select>
-                          </div>
+				        <form role="form" class="form-horizontal tasi-form">
+          					<div class="form-group">
+          						<label class="col-md-4 control-label">A.5 Dominant Hand:</label>
+							          <div class="col-lg-4">
+          								<select class="form-control" name="DOM_HAND" id="DOM_HAND" required>
+          									<option hidden>--Select--</option>
+          									<option>Left</option>
+          									<option>Right</option>
+          								</select>
+                        </div>
                     </div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">A.6 How do you rate Physical Health:</label>
+          					<div class="form-group">
+          						<label class="col-md-4 control-label">A.6 How do you rate Physical Health:</label>
                         <div class="col-lg-4">
                       		<select class="form-control" name="PHY_HEALTH" id="PHY_HEALTH" required>
                       			<option hidden>--Select--</option>
@@ -376,85 +376,85 @@ require 'lib/Db.config.php';
                       		</select>
                         </div>
                     </div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">A.7 How do you rate your Mental and Emotional health in the past Month?:</label>
+          					<div class="form-group">
+          						<label class="col-md-4 control-label">A.7 How do you rate your Mental and Emotional health in the past Month?:</label>
                         <div class="col-lg-4">
                             <select class="form-control" name="MENT_EMO_HEAl" id="MENT_EMO_HEAl" required>
-								<option hidden>--Select--</option>
-								<option>Poor</option>
-								<option>Good</option>
-								<option>Very Good</option>
+              								<option hidden>--Select--</option>
+              								<option>Poor</option>
+              								<option>Good</option>
+              								<option>Very Good</option>
                             </select>
                         </div>
                     </div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">A.8 Do you currently have any disease(s) or Disorder(s)?:</label>
+          					<div class="form-group">
+          						<label class="col-md-4 control-label">A.8 Do you currently have any disease(s) or Disorder(s)?:</label>
                         <div class="col-lg-4">
-							<select class="form-control" id="DISE_DISO" required>
-								<option hidden>--Select--</option>
-								<option>No</option>
-								<option>Yes</option>
+            							<select class="form-control" id="DISE_DISO" required>
+            								<option hidden>--Select--</option>
+            								<option>No</option>
+            								<option>Yes</option>
                             </select>
                         </div>
-						<div class="col-lg-10">
-							<textarea id="DISE_DISO_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
-						</div>
+            						<div class="col-lg-10">
+            							<textarea id="DISE_DISO_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
+            						</div>
                     </div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
+          					<div class="form-group">
+          						<label class="col-md-4 control-label">A.9 Did you ever have any significant injuries that impact on your level of functioning?:</label>
                       	<div class="col-lg-4">
                       		<select class="form-control" name="SIG_INJ" id="SIG_INJ" required>
-								<option hidden>--Select--</option>
-								<option>No</option>
+            								<option hidden>--Select--</option>
+            								<option>No</option>
                       			<option>Yes</option>
                       		</select>
-						</div>
-						<div class="col-lg-10">
-							<textarea id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
-						</div>
+						            </div>
+        						<div class="col-lg-10">
+        							<textarea id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
+        						</div>
                     </div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">A.10 have you been hospitalized in the last year?:</label>
+          					<div class="form-group">
+          						<label class="col-md-4 control-label">A.10 have you been hospitalized in the last year?:</label>
                         <div class="col-lg-4">
-							<select class="form-control" name="HPTL" id="HPTL" required>
-								<option hidden>--Select--</option>
-								<option>Yes</option>
-								<option>No</option>
+              							<select class="form-control" name="HPTL" id="HPTL" required>
+              								<option hidden>--Select--</option>
+              								<option>Yes</option>
+              								<option>No</option>
                           	</select>
                         </div>
-            			<div class="col-lg-10">
-            				<textarea style="resize:none" id="HPTL_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
-            			</div>
+                  			<div class="col-lg-10">
+                  				<textarea style="resize:none" id="HPTL_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
+                  			</div>
                     </div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">A.11 are you taking medication?:</label>
+          					<div class="form-group">
+          						<label class="col-md-4 control-label">A.11 are you taking medication?:</label>
                         <div class="col-lg-4">
-							<select class="form-control" name="MEDCT" id="MEDCT" required>
+							            <select class="form-control" name="MEDCT" id="MEDCT" required>
                         		<option hidden>--Select--</option>
                                 <option>No</option>
                         		<option>Yes</option>
                         	</select>
                           </div>
-						<div class="col-lg-10">
-							<textarea id="MEDCT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
-						</div>
+              						<div class="col-lg-10">
+              							<textarea id="MEDCT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
+              						</div>
                     </div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">A.12 Do you smoke?:</label>
+          					<div class="form-group">
+          						<label class="col-md-4 control-label">A.12 Do you smoke?:</label>
                         <div class="col-lg-4">
-							<select class="form-control" name="SMOKE" id="SMOKE" required>
+							            <select class="form-control" name="SMOKE" id="SMOKE" required>
                       			<option hidden>--Select--</option>
                       			<option>Yes</option>
                       			<option>No</option>
                       		</select>
-                          </div>
-            			<div class="col-lg-10">
-							<br>
-							<textarea style="resize:none" id="SMOKE_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
-						</div>
+                        </div>
+            			      <div class="col-lg-10">
+            							<br>
+            							<textarea style="resize:none" id="SMOKE_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
+        						    </div>
                     </div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">A.13 Do you consume Alcohol or drugs?:</label>
+          					<div class="form-group">
+          						<label class="col-md-4 control-label">A.13 Do you consume Alcohol or drugs?:</label>
                         <div class="col-lg-4">
                         	<select class="form-control" name="ALCO_DRUGS" id="ALCO_DRUGS" required>
                         		<option hidden>--Select--</option>
@@ -462,12 +462,12 @@ require 'lib/Db.config.php';
                         		<option>Yes</option>
                         	</select>
                         </div>
-						<div class="col-lg-10">
-							<textarea id="ALCO_DRUGS_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
-						</div>
+            						<div class="col-lg-10">
+            							<textarea id="ALCO_DRUGS_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
+            						</div>
                     </div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">A.14 Do you use Assistive Device?:</label>
+          					<div class="form-group">
+          						<label class="col-md-4 control-label">A.14 Do you use Assistive Device?:</label>
                         <div class="col-lg-4">
             							<select class="form-control" name="ASSIST_DEV" id="ASSIST_DEV" required>
             								<option hidden>--Select--</option>
@@ -526,38 +526,30 @@ require 'lib/Db.config.php';
                     </div>
 									  <div class="form-group">
                       <label class="col-md-4 control-label">A.19 In the Past Month, have you been totally unable to carry out your usual activities?:</label>
-						  <div class="col-lg-4">
+						            <div class="col-lg-4">
   				                <select class="form-control" id="TU_HEALTH_COND" required>
-  									<option hidden>--Select--</option>
-      								<option>Yes</option>
-      								<option>No</option>
-  								</select>
+          									<option hidden>--Select--</option>
+              								<option>Yes</option>
+              								<option>No</option>
+          								</select>
                           </div>
-      						  <div class="col-lg-10">
-      								<textarea style="resize:none" id="TU_HEALTH_COND_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
-      							</div>
-<<<<<<< HEAD
-              </div>
-=======
-						</div>
->>>>>>> b3ff6d11686835dbcd5c6e513c03f76e94c48820
-    					<div class="form-group">
-    						<div class="col-sm-4 pull-right">
-    							<button class="btn btn-success" type="submit" onclick="addNewPatient()">Save</button>
-    						</div>
-<<<<<<< HEAD
-              </div>
-=======
-                        </div>
->>>>>>> b3ff6d11686835dbcd5c6e513c03f76e94c48820
+            						  <div class="col-lg-10">
+            								<textarea style="resize:none" id="TU_HEALTH_COND_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
+            							</div>
+                    </div>
+          					<div class="form-group">
+          						<div class="col-sm-4 pull-right">
+          							<button class="btn btn-success" type="submit" onclick="addNewPatient()">Save</button>
+          						</div>
+                    </div>
 				</form>
-            </div>
-        </section>
-		</div>
-    </div>
-      <!-- page end-->
-		</section>
+      </div>
     </section>
+	</div>
+</div>
+      <!-- page end-->
+</section>
+</section>
       <!--main content end-->
       <!--footer start-->
       <footer class="site-footer">
