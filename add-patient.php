@@ -536,12 +536,20 @@ require 'lib/Db.config.php';
       						  <div class="col-lg-10">
       								<textarea style="resize:none" id="TU_HEALTH_COND_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
       							</div>
+<<<<<<< HEAD
               </div>
+=======
+						</div>
+>>>>>>> b3ff6d11686835dbcd5c6e513c03f76e94c48820
     					<div class="form-group">
     						<div class="col-sm-4 pull-right">
     							<button class="btn btn-success" type="submit" onclick="addNewPatient()">Save</button>
     						</div>
+<<<<<<< HEAD
               </div>
+=======
+                        </div>
+>>>>>>> b3ff6d11686835dbcd5c6e513c03f76e94c48820
 				</form>
             </div>
         </section>

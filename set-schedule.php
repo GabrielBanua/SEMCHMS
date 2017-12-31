@@ -8,6 +8,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
 <html lang="en">
   <head>
     <meta charset="utf-8">
+	<meta name="google" content="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -20,6 +21,8 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datetimepicker/css/datetimepicker.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -224,9 +227,15 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                                 </div>                        
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
-                                  <div class="col-lg-6">
-                                        <input type="date" id="SCHEDULE_DATE-<?php echo $row['P_ID'] ?>" size="16" class="form-control">
-                                  </div>
+                                  <div class="col-md-7">
+                                          <div data-date="2012-12-21T15:25:00Z" class="input-group date form_datetime-meridian">
+                                              <input type="text" class="form-control" readonly="" size="16">
+                                              <div class="input-group-btn">
+                                                  <button type="button" class="btn btn-danger date-reset"><i class="icon-remove"></i></button>
+                                                  <button type="button" class="btn btn-info date-set"><i class="icon-calendar"></i></button>
+                                              </div>
+                                          </div>
+                                      </div>
                           </div>
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
@@ -293,7 +302,9 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
     <script src="js/common-scripts.js"></script>
 
     <!--script for this page only-->
-
+	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script src="js/advanced-form-components.js"></script>
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
