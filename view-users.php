@@ -270,6 +270,7 @@ else if($Position == "Volunter"){
                                                 <td><?php echo $row['Position'] ?></td>
                                                 <td class="center hidden-phone">
                                                 <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#EditModal-<?php echo $row['User_id']?>">Edit</a>
+												<a class="btn btn-danger btn-sm" type="submit" onclick="DeleteUser(<?php echo $row['User_id']?>)">delete</a>
 <!-- Edit User MODAL-->
               <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['User_id']?>" role="dialog" tabindex="-1" id="EditModal-<?php echo $row['User_id']?>" class="modal fade">
                         <div class="modal-dialog">
@@ -359,9 +360,6 @@ else if($Position == "Volunter"){
                     </div>
               </div>
 <!--MODAL END-->
-
-                                                <a class="btn btn-danger btn-sm" type="submit" onclick="DeleteUser
-												                        (<?php echo $row['User_id']?>)">delete</a>
                                                 </td>
                                           </tr>
 <?php
