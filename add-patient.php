@@ -536,37 +536,12 @@ require 'lib/Db.config.php';
       						  <div class="col-lg-10">
       								<textarea style="resize:none" id="TU_HEALTH_COND_TXTA" class="form-control" cols="2" rows="4" disabled required placeholder="if yes, please input additional information"></textarea>
       							</div>
-              </div>
-    					<div class="form-group">
-    						<label class="col-md-4 control-label">B.2 Years of Formal Education:</label>
-    						<div class="col-lg-2">
-    							<input id="YEARS_FE" maxlength="2" type="text" class="form-control numdecimal" required>
-                            </div>
-                        </div>
-    					<div class="form-group">
-    						<label class="col-md-4 control-label">B.3 Marital Status:</label>
-                              <div class="col-lg-6">
-                                <input name="MARITAL_STAT" id="MARITAL_STAT" type="text" class="form-control" required>
-                              </div>
-                        </div>
-<<<<<<< HEAD
+						</div>
     					<div class="form-group">
     						<div class="col-sm-4 pull-right">
     							<button class="btn btn-success" type="submit" onclick="addNewPatient()">Save</button>
     						</div>
                         </div>
-=======
-						<div class="col-lg-10">
-							<textarea style="resize:none" class="form-control" cols="2" rows="4" disabled required></textarea>
-						</div>
->>>>>>> b7e2d48be9d7ad571a6d16d6172b8ba13df86394
-                    </div>
-					<div class="form-group">
-						<div class="col-sm-4 pull-right">
-							<button class="btn btn-success" type="submit" onclick="addNewPatient()">Save</button>
-						</div>
-                    </div>
->>>>>>> af3c8bbd0da5319272663406f039b1d3bc2e6e95
 				</form>
             </div>
 
