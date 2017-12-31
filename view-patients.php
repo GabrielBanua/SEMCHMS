@@ -445,7 +445,7 @@ while($row = $stmt->fetch()){
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="DISE_DISO_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php echo $row['DISE_DISO']; ?></textarea>
+          							<textarea id="DISE_DISO_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['DISE_DISO'] == "No"){ echo "";}else if($row['DISE_DISO'] == '--Select--'){ echo "No information given!";}else{ echo $row['DISE_DISO'];}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -462,7 +462,7 @@ while($row = $stmt->fetch()){
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="SIG_INJ_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php echo $row['SIG_INJ']; ?></textarea>
+          							<textarea id="SIG_INJ_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['SIG_INJ'] == "No"){ echo "";}else if($row['SIG_INJ'] == '--Select--'){ echo "No information given!";}else{ echo $row['SIG_INJ'];}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -479,7 +479,7 @@ while($row = $stmt->fetch()){
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="HPTL_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php echo $row['HPTL']; ?></textarea>
+          							<textarea id="HPTL_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['HPTL'] == "No"){ echo "";}else if($row['HPTL'] == '--Select--'){ echo "No information given!";}else{ echo $row['HPTL'];}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -496,7 +496,7 @@ while($row = $stmt->fetch()){
                       </div>
                       <br>
                       <div class="col-lg-10">
-                        <textarea id="MEDCT_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php echo $row['MEDCT']; ?></textarea>
+                        <textarea id="MEDCT_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['MEDCT'] == "No"){ echo "";}else if($row['MEDCT'] == '--Select--'){ echo "No information given!";}else{ echo $row['MEDCT'];}?></textarea>
                       </div>
                   </div>
                   <div class="form-group">
@@ -514,7 +514,7 @@ while($row = $stmt->fetch()){
                       <br>
           					  <div class="col-lg-10">
                         <br>
-          							<textarea id="SMOKE_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php echo $row['SMOKE']; ?></textarea>
+          							<textarea id="SMOKE_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['SMOKE'] == "No"){ echo "";}else if($row['SMOKE'] == '--Select--'){ echo "No information given!";}else{ echo $row['SMOKE'];}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -531,7 +531,7 @@ while($row = $stmt->fetch()){
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="ALCO_DRUGS_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php echo $row['ALCO_DRUGS']; ?></textarea>
+          							<textarea id="ALCO_DRUGS_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['ALCO_DRUGS'] == "No"){ echo "";}else if($row['ALCO_DRUGS'] == '--Select--'){ echo "No information given!";}else{ echo $row['ALCO_DRUGS'];}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -548,7 +548,7 @@ while($row = $stmt->fetch()){
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="ASSIST_DEV_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php echo $row['ASSIST_DEV']; ?></textarea>
+          							<textarea id="ASSIST_DEV_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['ASSIST_DEV'] == "No"){ echo "";}else if($row['ASSIST_DEV'] == '--Select--'){echo "No information given!";}else{ echo $row['ASSIST_DEV'];}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -565,7 +565,7 @@ while($row = $stmt->fetch()){
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="PERS_ASSIST_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['PERS_ASSIST'] != "No" && $row['PERS_ASSIST'] != "No information given!"){ echo $row['PERS_ASSIST']; }else{ echo "";}?></textarea>
+          							<textarea id="PERS_ASSIST_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['PERS_ASSIST'] == "No"){ echo "";}else if($row['PERS_ASSIST'] == '--Select--'){echo "No information given!";}else{ echo $row['PERS_ASSIST'];}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -582,7 +582,7 @@ while($row = $stmt->fetch()){
                       </div>
                       <br>
           					  <div class="col-lg-10">
-          							<textarea id="TRMT_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['TRMT'] != "No" && $row['TRMT'] != "No information given!"){ echo $row['TRMT']; }else{ echo "";}?></textarea>
+          							<textarea id="TRMT_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['TRMT'] == "No"){ echo "";}else if($row['TRMT'] == '--Select--'){echo "No information given!";}else{ echo $row['TRMT'];}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -605,7 +605,7 @@ while($row = $stmt->fetch()){
                       </div>
 					  <br>
           					  <div class="col-lg-10">
-          							<textarea id="CB_HEALTH_COND_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['CB_HEALTH_COND'] == "No"){ echo "";}else?></textarea>
+          							<textarea id="CB_HEALTH_COND_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['CB_HEALTH_COND'] == "No"){ echo "";}else if($row['CB_HEALTH_COND'] == '--Select--'){echo "No information given!";}else{ echo $row['CB_HEALTH_COND'];}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
@@ -622,7 +622,7 @@ while($row = $stmt->fetch()){
                       </div>
 					  <br>
           					  <div class="col-lg-10">
-          							<textarea id="TU_HEALTH_COND_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['TU_HEALTH_COND'] == "No"){ echo "";}?></textarea>
+          							<textarea id="TU_HEALTH_COND_TXTA-<?php echo $row['P_ID'] ?>" style="resize:none" class="form-control" cols="2" rows="4" disabled required><?php if($row['TU_HEALTH_COND'] == "No"){ echo "";}else if($row['TU_HEALTH_COND'] == '--Select--'){echo "No information given!";}else{ echo $row['TU_HEALTH_COND'];}?></textarea>
           						</div>
                   </div>
                   <div class="form-group">
