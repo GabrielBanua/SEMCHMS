@@ -207,7 +207,7 @@ $row = mysql_fetch_array($result);
                                       <p><span>Civil Status </span>: <?php echo $row['P_CVL_STAT']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Birthday</span>: <?php echo $row['P_BDATE']?></p>
+                                      <p><span>Birthday </span>: <?php echo $row['P_BDATE']?></p>
                                   </div>
                                   <div class="bio-row">
                                       <p><span>Occupation </span>: <?php echo $row['P_OCCU']?></p>
@@ -216,10 +216,13 @@ $row = mysql_fetch_array($result);
                                       <p><span>Age </span>: <?php echo $row['P_AGE']?></p>
                                   </div>
                                   <div class="bio-row">
+                                      <p><span>Occupation<br>(FBW)</span>: <?php echo $row['P_OCCU_FBW']?></p>
+                                  </div>
+                                  <div class="bio-row">
                                       <p><span>Gender </span>: <?php echo $row['P_GNDR']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Mobile </span>: 09<?php echo $row['P_CN']?></p>
+                                      <p><span>Mobile </span>: <?php echo $row['P_CN']?></p>
                                   </div>
                                   <div class="bio-row">
                                       <p><span>Weight(kg) </span>: <?php echo $row['P_WGHT']?></p>
@@ -269,79 +272,79 @@ $row = mysql_fetch_array($result);
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.8 Do you currently have any disease(s) or Disorder(s)?:<p>
-													<input type="text" id="DISE_DISO" class="form-control" <?php if ($row['DISE_DISO'] != "No" && $row['DISE_DISO'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+													<input type="text" id="DISE_DISO" class="form-control" <?php if ($row['DISE_DISO'] == "No"){echo "value=\"No\"";}else if($row['DISE_DISO'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
 													<br>
-													<textarea name="" id="DISE_DISO_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['DISE_DISO'] != "No" && $row['DISE_DISO'] != "--Select--"){ echo $row['DISE_DISO']; }else{ echo "";}?></textarea>
+													<textarea name="" id="DISE_DISO_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['DISE_DISO'] == "No"){ echo "";}else if($row['DISE_DISO'] == 'No information given!'){ echo "No information given!";}else{ echo $row['DISE_DISO'];}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.9 Did you ever have any significant injures that impact on your level of functioning?:<p>
-													<input type="text" id="SIG_INJ" class="form-control" <?php if ($row['SIG_INJ'] != "No" && $row['SIG_INJ'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+													<input type="text" id="SIG_INJ" class="form-control" <?php if ($row['SIG_INJ'] == "No"){echo "value=\"No\"";}else if($row['SIG_INJ'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
 													<br>
-													<textarea name="" id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['SIG_INJ'] != "No" && $row['SIG_INJ'] != "--Select--"){ echo $row['SIG_INJ']; }else{ echo "";}?></textarea>
-												</div>
+													<textarea name="" id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['SIG_INJ'] == "No"){ echo "";}else if($row['SIG_INJ'] == 'No information given!'){ echo "No information given!";}else{ echo $row['SIG_INJ'];}?></textarea>
+                        </div>
 												<div class="col-sm-4">
 													<p class="help-block">A.10 have you been hospitalized in the last year?:<p>
-													<input type="text" class="form-control" id="HPTL" <?php if ($row['HPTL'] != "No" && $row['HPTL'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+													<input type="text" class="form-control" id="HPTL" <?php if ($row['HPTL'] == "No"){echo "value=\"No\"";}else if($row['HPTL'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
 													<br>
-													<textarea style="resize:none" id="HPTL_TXTA" class="form-control" cols="2" rows="4" disabled><?php if($row['HPTL'] != "No" && $row['HPTL'] != "--Select--"){ echo $row['HPTL']; }else{ echo "";}?></textarea>
+													<textarea style="resize:none" id="HPTL_TXTA" class="form-control" cols="2" rows="4" disabled><?php if($row['HPTL'] == "No"){ echo "";}else if($row['HPTL'] == 'No information given!'){ echo "No information given!";}else{ echo $row['HPTL'];}?></textarea>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.11 are you taking medication?:<p>
-													<input type="text" id="MEDCT" class="form-control" <?php if ($row['MEDCT'] != "No" && $row['MEDCT'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+													<input type="text" id="MEDCT" class="form-control" <?php if ($row['MEDCT'] == "No"){echo "value=\"No\"";}else if($row['MEDCT'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
 													<br>
-													<textarea name="" id="MEDCT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['MEDCT'] != "No" && $row['MEDCT'] != "--Select--"){ echo $row['MEDCT']; }else{ echo "";}?></textarea>
+													<textarea name="" id="MEDCT_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['MEDCT'] == "No"){ echo "";}else if($row['MEDCT'] == 'No information given!'){ echo "No information given!";}else{ echo $row['MEDCT'];}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.12 Do you smoke?:<p>
-													<input type="text" class="form-control" id="SMOKE" <?php if ($row['SMOKE'] != "No" && $row['SMOKE'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+													<input type="text" class="form-control" id="SMOKE" <?php if ($row['SMOKE'] == "No"){echo "value=\"No\"";}else if($row['SMOKE'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
 													<br>
-													<textarea style="resize:none" class="form-control" id="SMOKE_TXTA" cols="2" rows="4" disabled><?php if($row['SMOKE'] != "No" && $row['SMOKE'] != "--Select--"){ echo $row['SMOKE']; }else{ echo "";}?></textarea>
+													<textarea style="resize:none" class="form-control" id="SMOKE_TXTA" cols="2" rows="4" disabled><?php if($row['SMOKE'] == "No"){ echo "";}else if($row['SMOKE'] == 'No information given!'){ echo "No information given!";}else{ echo $row['SMOKE'];}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.13 Do you consume Alcohol or drugs?:<p>
-													<input type="text" id="ALCO_DRUGS" class="form-control" <?php if ($row['ALCO_DRUGS'] != "No" && $row['ALCO_DRUGS'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+													<input type="text" id="ALCO_DRUGS" class="form-control" <?php if ($row['ALCO_DRUGS'] == "No"){echo "value=\"No\"";}else if($row['ALCO_DRUGS'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
 													<br>
-													<textarea name="" id="ALCO_DRUGS_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['ALCO_DRUGS'] != "No" && $row['ALCO_DRUGS'] != "--Select--"){ echo $row['ALCO_DRUGS']; }else{ echo "";}?></textarea>
+													<textarea name="" id="ALCO_DRUGS_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['ALCO_DRUGS'] == "No"){ echo "";}else if($row['ALCO_DRUGS'] == 'No information given!'){ echo "No information given!";}else{ echo $row['ALCO_DRUGS'];}?></textarea>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.14 Do you use Assistive Device?:<p>
-													<input type="text" id="ASSIST_DEV" class="form-control" <?php if ($row['ASSIST_DEV'] != "No" && $row['ASSIST_DEV'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+													<input type="text" id="ASSIST_DEV" class="form-control" <?php if ($row['ASSIST_DEV'] == "No"){echo "value=\"No\"";}else if($row['ASSIST_DEV'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
 													<br>
-													<textarea name="" id="ASSIST_DEV_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['ASSIST_DEV'] != "No" && $row['ASSIST_DEV'] != "--Select--"){ echo $row['ASSIST_DEV']; }else{ echo "";}?></textarea>
+													<textarea name="" id="ASSIST_DEV_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['ASSIST_DEV'] == "No"){ echo "";}else if($row['ASSIST_DEV'] == 'No information given!'){echo "No information given!";}else{ echo $row['ASSIST_DEV'];}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.15 Do you have any person assisting you?:<p>
-													<input type="text" class="form-control" id="PERS_ASSIST" <?php if ($row['PERS_ASSIST'] != "No" && $row['PERS_ASSIST'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+													<input type="text" class="form-control" id="PERS_ASSIST" <?php if ($row['PERS_ASSIST'] == "No"){echo "value=\"No\"";}else if($row['PERS_ASSIST'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
 													<br>
-													<textarea style="resize:none" id="PERS_ASSIST_TXTA" class="form-control" cols="2" rows="4" disabled><?php if($row['PERS_ASSIST'] != "No" && $row['PERS_ASSIST'] != "--Select--"){ echo $row['PERS_ASSIST']; }else{ echo "";}?></textarea>
+													<textarea style="resize:none" id="PERS_ASSIST_TXTA" class="form-control" cols="2" rows="4" disabled><?php if($row['PERS_ASSIST'] == "No"){ echo "";}else if($row['PERS_ASSIST'] == 'No information given!'){echo "No information given!";}else{ echo $row['PERS_ASSIST'];}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.16 Are you receiving any land of treatment for you Health?:<p>
-													<input type="text" class="form-control" id="TRMT" <?php if ($row['TRMT'] != "No" && $row['TRMT'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+													<input type="text" class="form-control" id="TRMT" <?php if ($row['TRMT'] == "No"){echo "value=\"No\"";}else if($row['TRMT'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
 													<br>
-													<textarea style="resize:none" class="form-control" id="TRMT_TXTA" cols="2" rows="4" disabled><?php if($row['TRMT'] != "No" && $row['TRMT'] != "--Select--"){ echo $row['TRMT']; }else{ echo "";}?></textarea>
+													<textarea style="resize:none" class="form-control" id="TRMT_TXTA" cols="2" rows="4" disabled><?php if($row['TRMT'] == "No"){ echo "";}else if($row['TRMT'] == 'No information given!'){echo "No information given!";}else{ echo $row['TRMT'];}?></textarea>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
 													<p class="help-block">A.17 Additional Significant on your past and present health?:<p>
-													<textarea id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
+													<textarea id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4"><?php echo $row['PP_HEATH']; ?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.18 In the Past Month, cut back your usual activies because of your health condition?:<p>
-													<input type="text" id="CB_HEALTH_COND" class="form-control" <?php if ($row['CB_HEALTH_COND'] != "No" && $row['CB_HEALTH_COND'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+													<input type="text" id="CB_HEALTH_COND" class="form-control" <?php if ($row['CB_HEALTH_COND'] == "No"){echo "value=\"No\"";}else if($row['CB_HEALTH_COND'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
 													<br>
-													<textarea id="CB_HEALTH_COND_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['CB_HEALTH_COND'] != "No" && $row['CB_HEALTH_COND'] != "--Select--"){ echo $row['CB_HEALTH_COND']; }else{ echo "";}?></textarea>
+													<textarea id="CB_HEALTH_COND_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['CB_HEALTH_COND'] == "No"){ echo "";}else if($row['CB_HEALTH_COND'] == 'No information given!'){echo "No information given!";}else{ echo $row['CB_HEALTH_COND'];}?></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="help-block">A.19 In the Past Month, have you been totally unable to carry out your  unable to carry out your usual activities?:<p>
-													<input type="text" id="TU_HEALTH_COND" class="form-control" <?php if ($row['TU_HEALTH_COND'] != "No" && $row['TU_HEALTH_COND'] != "--Select--"){ echo "value=\"Yes\""; }else{ echo "value=\"No\"";}?>>
+													<input type="text" id="TU_HEALTH_COND" class="form-control" <?php if ($row['TU_HEALTH_COND'] == "No"){echo "value=\"No\"";}else if($row['TU_HEALTH_COND'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
 													<br>
-													<textarea id="TU_HEALTH_COND_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['TU_HEALTH_COND'] != "No" && $row['TU_HEALTH_COND'] != "--Select--"){ echo $row['TU_HEALTH_COND']; }else{ echo "";}?></textarea>
+													<textarea id="TU_HEALTH_COND_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['TU_HEALTH_COND'] == "No"){ echo "";}else if($row['TU_HEALTH_COND'] == 'No information given!'){echo "No information given!";}else{ echo $row['TU_HEALTH_COND'];}?></textarea>
 												</div>
 											</div>
 											<div class="form-group">

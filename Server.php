@@ -48,13 +48,14 @@ if($page == 'addNewPatient'){
 	$Civil = mysql_real_escape_string($_POST['P_CVL_STAT']);
 	$Date_Reg = mysql_real_escape_string($_POST['DATE_REG']);
 	$Occupation = mysql_real_escape_string($_POST['P_OCCU']);
+	$OccupationFBW = mysql_real_escape_string($_POST['P_OCCU_FBW']);
 		$timezone = date("Ymd");
 		$DATE_REGISTER = $timezone;
 
 	$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
 	$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);	
 	
-		$stmt = $db->prepare("insert into Patient values('',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$stmt = $db->prepare("insert into Patient values('',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		$stmt->bindParam(1,$Lastname);
 		$stmt->bindParam(2,$Firstname);
 		$stmt->bindParam(3,$Middlename);
@@ -71,6 +72,7 @@ if($page == 'addNewPatient'){
 		$stmt->bindParam(14,$Religion);
 		$stmt->bindParam(15,$Civil);
 		$stmt->bindParam(16,$DATE_REGISTER);
+		$stmt->bindParam(17,$OccupationFBW);
 		$stmt->execute();
 
 			$Last_ID = $db->lastInsertId();
@@ -121,13 +123,14 @@ if($page == 'addNewPatient'){
 	$Civil = mysql_real_escape_string($_POST['P_CVL_STAT']);
 	$Date_Reg = mysql_real_escape_string($_POST['DATE_REG']);
 	$Occupation = mysql_real_escape_string($_POST['P_OCCU']);
+	$OccupationFBW = mysql_real_escape_string($_POST['P_OCCU_FBW']);
 		$timezone = date("Ymd");
 		$DATE_REGISTER = $timezone;
 
 	$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
 	$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);	
 	
-		$stmt = $db->prepare("Update Patient set P_LNAME=?, P_FNAME=?, P_MNAME=?, P_GNDR=?, P_BDATE=?, P_AGE=?, P_TEMP=?, P_WGHT=?, P_HGHT=?, P_TYPE=?, P_ADD=?, P_CN=?, P_OCCU=?, P_REL=?, P_CVL_STAT=?, DATE_REG=? where P_ID = ?");
+		$stmt = $db->prepare("Update Patient set P_LNAME=?, P_FNAME=?, P_MNAME=?, P_GNDR=?, P_BDATE=?, P_AGE=?, P_TEMP=?, P_WGHT=?, P_HGHT=?, P_TYPE=?, P_ADD=?, P_CN=?, P_OCCU=?, P_REL=?, P_CVL_STAT=?, DATE_REG=?, P_OCCU_FBW=? where P_ID = ?");
 		$stmt->bindParam(1,$Lastname);
 		$stmt->bindParam(2,$Firstname);
 		$stmt->bindParam(3,$Middlename);
@@ -144,7 +147,8 @@ if($page == 'addNewPatient'){
 		$stmt->bindParam(14,$Religion);
 		$stmt->bindParam(15,$Civil);
 		$stmt->bindParam(16,$DATE_REGISTER);
-		$stmt->bindParam(17,$P_ID);
+		$stmt->bindParam(17,$OccupationFBW);
+		$stmt->bindParam(18,$P_ID);
 		$stmt->execute();
 
 			$Past_pre = mysql_real_escape_string($_POST['PP_HEATH']);
