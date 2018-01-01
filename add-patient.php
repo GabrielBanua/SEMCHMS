@@ -228,7 +228,7 @@ require 'lib/Db.config.php';
 								<label class="col-md-4 control-label">Birthdate</label>
 								<div class="col-lg-6">
 									<div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="12-02-1950" class="input-append date dpYears">
-										<input type="text" id="P_BDATE" name="P_BDATE" readonly="" size="16" class="form-control" required>
+										<input type="text" id="P_BDATE" name="P_BDATE" onblur="getAge();" readonly="" size="16" class="form-control" required>
 										<span class="input-group-btn add-on">
 											<button class="btn btn-info" type="button"><i class="icon-calendar"></i></button>
 										</span>
@@ -238,7 +238,7 @@ require 'lib/Db.config.php';
 							<div class="form-group">
                                 <label class="col-md-4 control-label">Age</label>
                                 <div class="col-lg-2">
-                                    <input id="P_AGE" name="P_AGE" type="text" class="form-control" required>
+                                    <input id="P_AGE" name="P_AGE" type="text" class="form-control" readonly>
                                 </div>
                             </div>
 							<div class="form-group">
@@ -808,5 +808,16 @@ require 'lib/Db.config.php';
 			document.getElementById('post_take_buttons').style.display = 'none';
 		}
 	</script>
+	<script type="text/javascript">
+
+	function getAge(){
+		var dob = document.getElementById('P_BDATE').value;
+		dob = new Date(dob);
+		var today = new Date();
+		var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+		document.getElementById('P_AGE').value=age;
+	}
+
+</script>
   </body>
 </html>
