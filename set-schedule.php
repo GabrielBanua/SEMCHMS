@@ -229,6 +229,12 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                                           <input type="date" class="form-control" id="SCHEDULE_DATE-<?php echo $row['P_ID'] ?>" size="16">
                                       </div>
                           </div>
+						  <div class="form-group">
+                              <label class="col-md-3 col-sm-2 control-label">Time:</label>
+                                  <div class="col-md-6">
+                                          <input type="time" class="form-control" id="#" size="16">
+                                      </div>
+                          </div>
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
                                   <div class="col-lg-4">
