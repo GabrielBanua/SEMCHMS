@@ -112,10 +112,8 @@ require 'lib/Db.config.pdo.php';
                           <span>Inventory Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a href="add-inventory.php">Add Inventory</a></li>
-              <li><a href="add-medicines.php">Add Medicines</a></li>
-              <li><a href="view-inventory.php">View Inventory</a></li>
-              <li><a  href="#">Inventory Reports</a></li>
+						  <li><a href="view-inventory.php">View Inventory</a></li>
+						  <li><a  href="#">Inventory Reports</a></li>
                       </ul>
                   </li>
           

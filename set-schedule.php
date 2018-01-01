@@ -112,10 +112,8 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                           <span>Inventory Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a href="add-inventory.php">Add Inventory</a></li>
-              <li><a href="add-medicines.php">Add Medicines</a></li>
-              <li><a href="view-inventory.php">View Inventory</a></li>
-              <li><a  href="#">Inventory Reports</a></li>
+						  <li><a href="view-inventory.php">View Inventory</a></li>
+						  <li><a  href="#">Inventory Reports</a></li>
                       </ul>
                   </li>
           

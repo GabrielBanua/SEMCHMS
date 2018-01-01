@@ -112,8 +112,6 @@ else if($Position == "Volunter"){
                           <span>Inventory Management</span>
                       </a>
                       <ul class="sub">
-						  <li><a href="add-inventory.php">Add Inventory</a></li>
-                          <li><a  href="add-medicines.php">Add Medicines</a></li>
                           <li class="active" ><a  href="view-inventory.php">View Inventory</a></li>
 						  <li><a  href="#">Inventory Reports</a></li>
                       </ul>
@@ -167,7 +165,108 @@ else if($Position == "Volunter"){
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-								<a class="btn btn-success" href="add-medicines.html">Add Inventory</a>
+								<a class="btn btn-success" data-toggle="modal" data-target="#AddInventory">Add Inventory</a>
+								<a class="btn btn-success" data-toggle="modal" data-target="#AddMed">Add Medicines</a>
+									<!--Start Model Add Inventory-->
+									<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddInventory" class="modal fade">
+										<div class="modal-dialog">
+											<div class="modal-content">
+													<div class="modal-header">
+														<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+														<h4 class="modal-title">Add Inventory</h4>
+													</div>
+												<div class="modal-body">
+													<form class="form-horizontal" role="form">
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Date Arrived:</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Name of Medicines:</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Quantity:</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Supplier:</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Remarks:</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+													</form>
+												</div>
+												<div class="modal-footer">
+													<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+													<button class="btn btn-success" type="submit" onclick="#">Add</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--MODAL END-->
+									<!--Start Model Add Medicines-->
+									<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddMed" class="modal fade">
+										<div class="modal-dialog">
+											<div class="modal-content">
+													<div class="modal-header">
+														<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+														<h4 class="modal-title">Add Medicines</h4>
+													</div>
+												<div class="modal-body">
+													<form class="form-horizontal" role="form">
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Name of Medicines:</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Category:</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Brand:</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Supplier:</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Expiration Date:</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+													</form>
+												</div>
+												<div class="modal-footer">
+													<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+													<button class="btn btn-success" type="submit" onclick="#">Add</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--MODAL END-->
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
