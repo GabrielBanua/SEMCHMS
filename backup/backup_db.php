@@ -34,7 +34,7 @@ foreach ($tables as $table) {
 }
 
 
-$handle = fopen('semchms.sql', 'w+');
+$handle = fopen('semhcms.sql', 'w+');
 fwrite($handle, $return);
 fclose($handle);
 echo "<script> alert ('Successfully Back up the Database')</script>";
