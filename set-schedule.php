@@ -127,9 +127,9 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                               <a href="javascript:;">Add Lab Results</a>
                               <ul class="sub">
                                 <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-                <li><a href="add-lab-fecal.php">Fecalysis</a></li>
-                        <li><a href="add-lab-hema.php">Hematology</a></li>
-                        <li><a href="add-lab-urinal.php">Urinalysis</a></li>
+								<li><a href="add-lab-fecal.php">Fecalysis</a></li>
+								<li><a href="add-lab-hema.php">Hematology</a></li>
+								<li><a href="add-lab-urinal.php">Urinalysis</a></li>
                               </ul>
                           </li>
                           <li><a  href="lab-request.php">View Lab Request</a></li>
