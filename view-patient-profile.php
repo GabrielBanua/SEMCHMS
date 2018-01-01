@@ -345,16 +345,6 @@ $row = mysql_fetch_array($result);
 													<textarea id="TU_HEALTH_COND_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['TU_HEALTH_COND'] == "No"){ echo "";}else if($row['TU_HEALTH_COND'] == 'No information given!'){echo "No information given!";}else{ echo $row['TU_HEALTH_COND'];}?></textarea>
 												</div>
 											</div>
-											<div class="form-group">
-												<div class="col-sm-4">
-													<p class="help-block">B.2 Years of Formal Education:<p>
-													<input type="text" class="form-control" value="<?php echo $row['YEARS_FE']?>">
-												</div>
-												<div class="col-sm-4">
-													<p class="help-block">B.3 Marital Status:<p>
-													<input type="text" class="form-control" value="<?php echo $row['MARITAL_STAT']?>">
-												</div>
-											</div>
 										</form>
 									</div>
 											<!--Medical Records start-->
