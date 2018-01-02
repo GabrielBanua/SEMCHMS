@@ -288,7 +288,7 @@ while($row = $stmt->fetch()){
 							<div data-date-viewmode="years" data-date-format="yyyy-mm-dd"  class="input-append date dpYears">
 								<input type="text" id="P_BDATE-<?php echo $row['P_ID'] ?>" name="P_BDATE" value="<?php echo $row['P_BDATE'] ?>" readonly="" size="16" class="form-control">
 									<span class="input-group-btn add-on">
-									<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
+									<button class="btn btn-danger"  type="button"><i class="icon-calendar"></i></button>
 									</span>
 							</div>
 						</div>
