@@ -284,9 +284,14 @@ while($row = $stmt->fetch()){
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Birthdate</label>
-                      <div class="col-lg-6">
-                        <input id="P_BDATE-<?php echo $row['P_ID'] ?>" name="P_BDATE" type="text" class="form-control" value="<?php echo $row['P_BDATE'] ?>" required>
-                      </div>
+						<div class="col-lg-6">
+							<div data-date-viewmode="years" data-date-format="yyyy-mm-dd"  class="input-append date dpYears">
+								<input type="text" id="P_BDATE-<?php echo $row['P_ID'] ?>" name="P_BDATE" value="<?php echo $row['P_BDATE'] ?>" readonly="" size="16" class="form-control">
+									<span class="input-group-btn add-on">
+									<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
+									</span>
+							</div>
+						</div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Age</label>
@@ -959,16 +964,16 @@ while($row = $stmt->fetch()){
           } 
         }
     </script>
-		<script>
+	<script>
 		$("#P_BDATE").change(function(){
-		var date_of_birth = new Date($(this).val());
-		var today = new Date();
-		var age = Math.floor((today-date_of_birth) / (365.25 * 24 * 60 * 60 * 1000));
+			var date_of_birth = new Date($(this).val());
+			var today = new Date();
+			var age = Math.floor((today-date_of_birth) / (365.25 * 24 * 60 * 60 * 1000));
 		$('#P_AGE').val(age);
 		if(age > 20){
-		$('#P_TYPE').val('ADULT');
+			$('#P_TYPE').val('ADULT');
 		}else{
-		$('#P_TYPE').val('MINOR');
+			$('#P_TYPE').val('MINOR');
 		}
 		});
 	</script>
