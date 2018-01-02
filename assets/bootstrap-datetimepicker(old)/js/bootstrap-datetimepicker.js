@@ -1514,9 +1514,9 @@
 		},
 		headTemplate: '<thead>'+
 							'<tr>'+
-								'<th class="prev"><i class="fa fa-angle-left"/></th>'+
+								'<th class="prev"><i class="icon-angle-left"/></th>'+
 								'<th colspan="5" class="switch"></th>'+
-								'<th class="next"><i class="fa fa-angle-right"/></th>'+
+								'<th class="next"><i class="icon-angle-right"/></th>'+
 							'</tr>'+
 						'</thead>',
 		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',

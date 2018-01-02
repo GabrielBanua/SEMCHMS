@@ -227,12 +227,12 @@ require 'lib/Db.config.php';
 							<div class="form-group">
 								<label class="col-md-4 control-label">Birthdate</label>
 								<div class="col-lg-6">
-									<div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="12-02-1950" class="input-append date dpYears">
-										<input type="text" id="P_BDATE" name="P_BDATE" onblur="getAge();" readonly="" size="16" class="form-control" required>
-										<span class="input-group-btn add-on">
-											<button class="btn btn-info" type="button"><i class="icon-calendar"></i></button>
-										</span>
-									</div>
+									<div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="12-02-2012"  class="input-append date dpYears">
+                                          <input type="text" id="P_BDATE" name="P_BDATE" readonly="" size="16" class="form-control">
+                                              <span class="input-group-btn add-on">
+                                                <button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
+                                              </span>
+                                      </div>
 								</div>
 							</div>
 							<div class="form-group">
@@ -243,13 +243,9 @@ require 'lib/Db.config.php';
                             </div>
 							<div class="form-group">
                                 <label class="col-md-4 control-label">Category</label>
-                                <div class="col-lg-6">
-                                    <select class="form-control" name="P_TYPE" id="P_TYPE" required>
-      									<option hidden>--Select--</option>
-      									<option>Adult</option>
-      									<option>Children</option>
-									</select>
-								</div>
+                                <div class="col-lg-4">
+                                    <input id="P_TYPE" name="P_TYPE" type="text" class="form-control" readonly>
+                                </div>
 							</div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Temperature (Celcius)</label>
@@ -808,16 +804,18 @@ require 'lib/Db.config.php';
 			document.getElementById('post_take_buttons').style.display = 'none';
 		}
 	</script>
-	<script type="text/javascript">
-
-	function getAge(){
-		var dob = document.getElementById('P_BDATE').value;
-		dob = new Date(dob);
+	<script>
+		$("#P_BDATE").change(function(){
+		var date_of_birth = new Date($(this).val());
 		var today = new Date();
-		var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-		document.getElementById('P_AGE').value=age;
-	}
-
-</script>
+		var age = Math.floor((today-date_of_birth) / (365.25 * 24 * 60 * 60 * 1000));
+		$('#P_AGE').val(age);
+		if(age > 20){
+		$('#P_TYPE').val('ADULT');
+		}else{
+		$('#P_TYPE').val('MINOR');
+		}
+		});
+	</script>
   </body>
 </html>

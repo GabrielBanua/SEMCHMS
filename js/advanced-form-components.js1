@@ -74,13 +74,11 @@
 //datetime picker start
 
 $(".form_datetime").datetimepicker({
-    format: 'yyyy-mm-dd hh:ii',
+	format: 'yyyy-mm-dd hh:ii',
     autoclose: true,
     todayBtn: true,
     pickerPosition: "bottom-left"
-
 });
-
 
 $(".form_datetime-component").datetimepicker({
     format: "dd MM yyyy - hh:ii",
@@ -94,18 +92,14 @@ $(".form_datetime-adv").datetimepicker({
     autoclose: true,
     todayBtn: true,
     startDate: "2013-02-14 10:00",
-    minuteStep: 10,
-    pickerPosition: "bottom-left"
-
+    minuteStep: 10
 });
 
 $(".form_datetime-meridian").datetimepicker({
     format: "dd MM yyyy - HH:ii P",
-    // format: 'yyyy-mm-dd hh:ii',
     showMeridian: true,
     autoclose: true,
-    todayBtn: true,
-    pickerPosition: "bottom-left"
+    todayBtn: true
 });
 
 //datetime picker end
