@@ -6,10 +6,15 @@
     $(function(){
         window.prettyPrint && prettyPrint();
         $('.default-date-picker').datepicker({
-            format: 'mm-dd-yyyy'
+            format: 'mm-dd-yyyy',
+            autoclose: true
         });
-        $('.dpYears').datepicker();
-        $('.dpMonths').datepicker();
+        $('.dpYears').datepicker({
+            autoclose: true
+        });
+        $('.dpMonths').datepicker({
+            autoclose: true
+        });
 
 
         var startDate = new Date(2012,1,20);
@@ -68,10 +73,18 @@
 
 //datetime picker start
 
-$(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+$(".form_datetime").datetimepicker({
+	format: 'yyyy-mm-dd hh:ii',
+    autoclose: true,
+    todayBtn: true,
+    pickerPosition: "bottom-left"
+});
 
 $(".form_datetime-component").datetimepicker({
-    format: "dd MM yyyy - hh:ii"
+    format: "dd MM yyyy - hh:ii",
+    autoclose: true,
+    todayBtn: true,
+    pickerPosition: "bottom-left"
 });
 
 $(".form_datetime-adv").datetimepicker({
