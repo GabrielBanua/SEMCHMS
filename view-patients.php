@@ -297,14 +297,7 @@ while($row = $stmt->fetch()){
                   <div class="form-group">
                     <label class="col-md-4 control-label">Category</label>
                       <div class="col-lg-6">
-                        <select class="form-control" name="P_TYPE" id="P_TYPE-<?php echo $row['P_ID'] ?>" required>
-                          <option hidden value="--Select--"<?php
-                            if ($row['P_TYPE'] == "--Select--") { echo " selected"; }?>>--Select--</option>
-                          <option value="Adult"<?php
-                            if ($row['P_TYPE'] == "Adult") { echo " selected"; }?>>Adult</option>
-                          <option value="Children"<?php
-                            if ($row['P_TYPE'] == "Children") { echo " selected"; }?>>Children</option>
-                        </select>
+							<input id="P_TYPE-<?php echo $row['P_ID'] ?>" name="P_TYPE" type="text" class="form-control" value="<?php echo $row['P_TYPE'] ?>" required>
                       </div>
                   </div>
                   <div class="form-group">
@@ -966,5 +959,18 @@ while($row = $stmt->fetch()){
           } 
         }
     </script>
+		<script>
+		$("#P_BDATE").change(function(){
+		var date_of_birth = new Date($(this).val());
+		var today = new Date();
+		var age = Math.floor((today-date_of_birth) / (365.25 * 24 * 60 * 60 * 1000));
+		$('#P_AGE').val(age);
+		if(age > 20){
+		$('#P_TYPE').val('ADULT');
+		}else{
+		$('#P_TYPE').val('MINOR');
+		}
+		});
+	</script>
 </body>
 </html>

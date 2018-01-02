@@ -800,14 +800,14 @@ require 'lib/Db.config.php';
 	</script>
 	<script>
 		$("#P_BDATE").change(function(){
-		var date_of_birth = new Date($(this).val());
-		var today = new Date();
-		var age = Math.floor((today-date_of_birth) / (365.25 * 24 * 60 * 60 * 1000));
+			var date_of_birth = new Date($(this).val());
+			var today = new Date();
+			var age = Math.floor((today-date_of_birth) / (365.25 * 24 * 60 * 60 * 1000));
 		$('#P_AGE').val(age);
 		if(age > 20){
-		$('#P_TYPE').val('ADULT');
+			$('#P_TYPE').val('ADULT');
 		}else{
-		$('#P_TYPE').val('MINOR');
+			$('#P_TYPE').val('MINOR');
 		}
 		});
 	</script>
