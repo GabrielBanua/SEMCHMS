@@ -225,9 +225,14 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                                 </div>                        
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
-                                  <div class="col-md-6">
-                                          <input type="date" class="form-control" id="SCHEDULE_DATE-<?php echo $row['P_ID'] ?>" size="16">
-                                      </div>
+								<div class="col-lg-6">
+									<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"  class="input-append date dpYears">
+                                        <input type="text" id="SCHEDULE_DATE-<?php echo $row['P_ID'] ?>" readonly="" size="16" class="form-control">
+                                            <span class="input-group-btn add-on">
+                                            <button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
+                                            </span>
+                                    </div>
+								</div>
                           </div>
 						  <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Time:</label>
@@ -357,6 +362,8 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
             $('#Inventory-li').hide();
         }
         });
-      </script> 
+      </script>
+	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="js/advanced-form-components.js"></script>
   </body>
 </html>
