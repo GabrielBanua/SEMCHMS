@@ -228,11 +228,11 @@ require 'lib/Db.config.php';
 								<label class="col-md-4 control-label">Birthdate</label>
 								<div class="col-lg-6">
 									<div data-date-viewmode="years" data-date-format="yyyy-mm-dd"  class="input-append date dpYears">
-                                          <input type="text" id="P_BDATE" name="P_BDATE" readonly="" size="16" class="form-control">
-                                              <span class="input-group-btn add-on">
-                                                <button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
-                                              </span>
-                                      </div>
+                                        <input type="text" id="P_BDATE" name="P_BDATE" readonly="" size="16" class="form-control">
+                                            <span class="input-group-btn add-on">
+                                            <button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
+                                            </span>
+                                    </div>
 								</div>
 							</div>
 							<div class="form-group">
@@ -298,12 +298,6 @@ require 'lib/Db.config.php';
 								<label class="col-md-4 control-label">Years of Formal Education:</label>
 								<div class="col-lg-2">
 									<input id="YEARS_FE" maxlength="2" type="text" class="form-control numdecimal" required>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-4 control-label">Marital Status:</label>
-								<div class="col-lg-6">
-									<input name="MARITAL_STAT" id="MARITAL_STAT" type="text" class="form-control" required>
 								</div>
 							</div>
 							<div class="form-group">

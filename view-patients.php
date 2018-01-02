@@ -370,12 +370,6 @@ while($row = $stmt->fetch()){
           					</div>
           				</div>
           					<div class="form-group">
-          						<label class="col-md-4 control-label">Marital Status:</label>
-          						<div class="col-lg-6">
-          							<input id="MARITAL_STAT-<?php echo $row['P_ID'] ?>" type="text" value="<?php echo $row['MARITAL_STAT']?>" class="form-control" required>
-          						</div>
-          					</div>
-          					<div class="form-group">
           						<label class="col-md-4 control-label">Current Occupation</label>
           						<div class="col-lg-6">
           							<select class="form-control" id="P_OCCU-<?php echo $row['P_ID'] ?>" required>
