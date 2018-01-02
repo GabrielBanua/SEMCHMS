@@ -23,6 +23,8 @@ else if($Position == "Volunter"){
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-datetimepicker/css/datetimepicker.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -167,7 +169,7 @@ else if($Position == "Volunter"){
                                 <div class="adv-table">
 								<a class="btn btn-success" data-toggle="modal" data-target="#AddInventory">Add Inventory</a>
 								<a class="btn btn-success" data-toggle="modal" data-target="#AddMed">Add Medicines</a>
-									<!--Start Model Add Inventory-->
+									<!--Start Modal Add Inventory-->
 									<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddInventory" class="modal fade">
 										<div class="modal-dialog">
 											<div class="modal-content">
@@ -180,7 +182,12 @@ else if($Position == "Volunter"){
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Date Arrived:</label>
 															<div class="col-lg-6">
-																<input type="date" class="form-control" required>
+																<div class="input-group date form_datetime-component">
+																  <input type="text" class="form-control" readonly="" size="16">
+																	<span class="input-group-btn">
+																	<button type="button" class="btn btn-danger date-set"><i class="icon-calendar"></i></button>
+																	</span>
+																</div>
 															</div>
 														</div>
 														<div class="form-group">
@@ -191,8 +198,8 @@ else if($Position == "Volunter"){
 														</div>
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Quantity:</label>
-															<div class="col-lg-6">
-																<input type="text" class="form-control" required>
+															<div class="col-lg-2">
+																<input type="text" class="form-control numonly" maxlength="5" required>
 															</div>
 														</div>
 														<div class="form-group">
@@ -254,7 +261,12 @@ else if($Position == "Volunter"){
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Expiration Date:</label>
 															<div class="col-lg-6">
-																<input type="date" class="form-control" required>
+																<div class="input-group date form_datetime-component">
+																  <input type="text" class="form-control" readonly="" size="16">
+																	<span class="input-group-btn">
+																	<button type="button" class="btn btn-danger date-set"><i class="icon-calendar"></i></button>
+																	</span>
+																</div>
 															</div>
 														</div>
 													</form>
@@ -284,7 +296,7 @@ else if($Position == "Volunter"){
                                           <td>100/100</td>
                                           <td class="center hidden-phone">Full</td>
                                           <td class="center hidden-phone">
-											<button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
+											<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 											<button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
 										  </td>
                                       </tr>
@@ -294,7 +306,7 @@ else if($Position == "Volunter"){
                                           <td>50/100</td>
                                           <td class="center hidden-phone">Low</td>
                                           <td class="center hidden-phone">
-											<button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
+											<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 											<button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
 										  </td>
                                       </tr>
@@ -304,7 +316,7 @@ else if($Position == "Volunter"){
                                           <td>100/100</td>
                                           <td class="center hidden-phone">Full</td>
                                           <td class="center hidden-phone">
-											<button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
+											<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 											<button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
 										  </td>
                                       </tr>
@@ -314,7 +326,7 @@ else if($Position == "Volunter"){
                                           <td>50/100</td>
                                           <td class="center hidden-phone">Low</td>
                                           <td class="center hidden-phone">
-											<button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
+											<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 											<button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
 										  </td>
                                       </tr>
@@ -324,7 +336,7 @@ else if($Position == "Volunter"){
                                           <td>100/100</td>
                                           <td class="center hidden-phone">Full</td>
                                           <td class="center hidden-phone">
-											<button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
+											<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 											<button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
 										  </td>
                                       </tr>
@@ -334,7 +346,7 @@ else if($Position == "Volunter"){
                                           <td>50/100</td>
                                           <td class="center hidden-phone">Low</td>
                                           <td class="center hidden-phone">
-											<button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
+											<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 											<button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
 										  </td>
                                       </tr>
@@ -344,7 +356,7 @@ else if($Position == "Volunter"){
                                           <td>100/100</td>
                                           <td class="center hidden-phone">Full</td>
                                           <td class="center hidden-phone">
-											<button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
+											<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 											<button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
 										  </td>
                                       </tr>
@@ -354,13 +366,68 @@ else if($Position == "Volunter"){
                                           <td>50/100r</td>
                                           <td class="center hidden-phone">Low</td>
                                           <td class="center hidden-phone">
-											<button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
+											<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 											<button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
 										  </td>
                                       </tr>
                                       </tfoot>
                           </table>
                                 </div>
+						<!--Start Model Edit Medicines-->
+							<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditMed" class="modal fade">
+								<div class="modal-dialog">
+									<div class="modal-content">
+											<div class="modal-header">
+												<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+												<h4 class="modal-title">Edit Medicines</h4>
+											</div>
+										<div class="modal-body">
+											<form class="form-horizontal" role="form">
+												<div class="form-group">
+													<label class="col-md-3 col-sm-2 control-label">Name of Medicines:</label>
+													<div class="col-lg-6">
+														<input type="text" class="form-control" required>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 col-sm-2 control-label">Category:</label>
+													<div class="col-lg-6">
+														<input type="text" class="form-control" required>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 col-sm-2 control-label">Brand:</label>
+													<div class="col-lg-6">
+														<input type="text" class="form-control" required>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 col-sm-2 control-label">Supplier:</label>
+													<div class="col-lg-6">
+														<input type="text" class="form-control" required>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 col-sm-2 control-label">Expiration Date:</label>
+													<div class="col-lg-6">
+														<div class="input-group date form_datetime-component">
+														  <input type="text" class="form-control" readonly="" size="16">
+															<span class="input-group-btn">
+															<button type="button" class="btn btn-danger date-set"><i class="icon-calendar"></i></button>
+															</span>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+											<button class="btn btn-success" type="submit" onclick="#">Save</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--MODAL END-->
                           </div>
                       </section>
                   </div>
@@ -390,12 +457,13 @@ else if($Position == "Volunter"){
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-
-
+	
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 
     <!--script for this page only-->
+	<!-- Keypress Limit -->
+	<script src="js/numbers-only.js"></script>
 
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
@@ -403,6 +471,7 @@ else if($Position == "Volunter"){
                   "aaSorting": [[ 4, "desc" ]]
               } );
           } );
+		  
 
           $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';
@@ -434,5 +503,8 @@ else if($Position == "Volunter"){
         }
         });
       </script>
+	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script src="js/advanced-form-components.js"></script>
   </body>
 </html>
