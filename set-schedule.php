@@ -21,8 +21,9 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
-	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datetimepicker/css/datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-timepicker/compiled/timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-datetimepicker/css/datetimepicker.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -237,7 +238,12 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
 						  <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Time:</label>
                                   <div class="col-md-6">
-                                          <input type="time" class="form-control" id="#" size="16">
+                                          <div class="input-group bootstrap-timepicker">
+                                              <input type="text" class="form-control timepicker-default">
+                                                <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button"><i class="icon-time"></i></button>
+                                                </span>
+                                          </div>
                                       </div>
                           </div>
                           <div class="form-group">
@@ -363,7 +369,10 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
         }
         });
       </script>
-	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
 	<script src="js/advanced-form-components.js"></script>
+	
   </body>
 </html>
