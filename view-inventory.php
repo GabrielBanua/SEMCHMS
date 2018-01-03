@@ -191,7 +191,25 @@ else if($Position == "Volunter"){
 															</div>
 														</div>
 														<div class="form-group">
-															<label class="col-md-3 col-sm-2 control-label">Name of Medicines:</label>
+															<label class="col-md-3 col-sm-2 control-label">Name of Medicines(Generic):</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Brand Name:</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Dosage Form:</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Dose:</label>
 															<div class="col-lg-6">
 																<input type="text" class="form-control" required>
 															</div>
@@ -204,12 +222,6 @@ else if($Position == "Volunter"){
 														</div>
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Supplier:</label>
-															<div class="col-lg-6">
-																<input type="text" class="form-control" required>
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-3 col-sm-2 control-label">Remarks:</label>
 															<div class="col-lg-6">
 																<input type="text" class="form-control" required>
 															</div>
@@ -235,7 +247,13 @@ else if($Position == "Volunter"){
 												<div class="modal-body">
 													<form class="form-horizontal" role="form">
 														<div class="form-group">
-															<label class="col-md-3 col-sm-2 control-label">Name of Medicines:</label>
+															<label class="col-md-3 col-sm-2 control-label">Name of Medicines(Generic):</label>
+															<div class="col-lg-6">
+																<input type="text" class="form-control" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Brand Name:</label>
 															<div class="col-lg-6">
 																<input type="text" class="form-control" required>
 															</div>
@@ -247,26 +265,15 @@ else if($Position == "Volunter"){
 															</div>
 														</div>
 														<div class="form-group">
-															<label class="col-md-3 col-sm-2 control-label">Brand:</label>
+															<label class="col-md-3 col-sm-2 control-label">Dosage Form:</label>
 															<div class="col-lg-6">
 																<input type="text" class="form-control" required>
 															</div>
 														</div>
 														<div class="form-group">
-															<label class="col-md-3 col-sm-2 control-label">Supplier:</label>
+															<label class="col-md-3 col-sm-2 control-label">Dose:</label>
 															<div class="col-lg-6">
 																<input type="text" class="form-control" required>
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-3 col-sm-2 control-label">Expiration Date:</label>
-															<div class="col-lg-6">
-																<div class="input-group date form_datetime-component">
-																  <input type="text" class="form-control" readonly="" size="16">
-																	<span class="input-group-btn">
-																	<button type="button" class="btn btn-danger date-set"><i class="icon-calendar"></i></button>
-																	</span>
-																</div>
 															</div>
 														</div>
 													</form>
