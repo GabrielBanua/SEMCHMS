@@ -138,12 +138,12 @@ else if($Position == "Volunter"){
                   </li>
 				  
 				  <li class="sub-menu" id="Maintenance-li">
-                      <a href="javascript:;" >
+                      <a href="javascript:;" class="active">
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="backup.php">Backup Database</a></li>
+                          <li class="active"><a  href="backup.php">Backup Database</a></li>
 						  <li><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
