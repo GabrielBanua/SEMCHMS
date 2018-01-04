@@ -170,7 +170,7 @@ require 'lib/Db.config.pdo.php';
                                       <thead>
                                       <tr>
                                           <th width="100">Date Schedule</th>
-                                          <th width="100">Time</th>
+                                          <th width="70">Time</th>
                                           <th width="150">Patient Name</th>
                                           <th width="100">Patient Type</th>
                                           <th width="100" class="hidden-phone">Appointment</th>
@@ -189,8 +189,8 @@ require 'lib/Db.config.pdo.php';
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
                                           <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i> Edit</a>
-										  <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
-										  <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class=" icon-share-alt"></i> Proceed</a>
+										                      <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
+										                      <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class=" icon-share-alt"></i> Proceed</a>
  <!-- Register User Start  MODAL-->
                                 <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['SCHEDULE_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['SCHEDULE_ID']?>" class="modal fade">
                                   <div class="modal-dialog">
@@ -229,7 +229,18 @@ require 'lib/Db.config.pdo.php';
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
                                   <div class="col-lg-6">
-                                        <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
+                                        <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>" id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
+                                  </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-md-3 col-sm-2 control-label">Time:</label>
+                                  <div class="col-md-6">
+                                          <div class="input-group bootstrap-timepicker">
+                                              <input type="time" value="<?php echo $row['SCHEDULE_TIME']; ?>" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control timepicker-default">
+                                                <span class="input-group-btn">
+                                                  <button class="btn btn-default" type="button"><i class="icon-time"></i></button>
+                                                </span>
+                                          </div>
                                   </div>
                           </div>
                           <div class="form-group">
@@ -346,12 +357,13 @@ require 'lib/Db.config.pdo.php';
         function UpdateSched(str){
         var Sched_Id = str;
         var SCHEDULE_DATE = $('#SCHEDULE_DATE-'+str).val();
+        var SCHEDULE_TIME = $('#SCHEDULE_TIME-'+str).val();
         var SCHEDULE_PURPOSE = $('#SCHEDULE_PURPOSE-'+str).val();
             if (confirm('Are you sure you want to update schedule for this patient?')) {
             $.ajax({
               type: "POST",
               url: "Server.php?p=UpdateSched",
-              data: "Sched_Id="+Sched_Id+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
+              data: "Sched_Id="+Sched_Id+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
               success: function(data){
                     alert('upadate successfully!');
                     window.location.reload();
@@ -379,5 +391,9 @@ require 'lib/Db.config.pdo.php';
           } 
         }
       </script> 
+      <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+  <script src="js/advanced-form-components.js"></script>
   </body>
 </html>

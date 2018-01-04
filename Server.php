@@ -221,10 +221,11 @@ $P_ID = mysql_real_escape_string($_POST['P_ID']);
 $Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
 $Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 $Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-$sqldate = date('Y-m-d',strtotime($Sched_date)); 
 $Time = date('h:i A', strtotime($Sched_time));
+$sqldate = date('Y-m-d',strtotime($Sched_date)); 
+
 	
-		$stmt = $db->prepare("insert into schedule values('',?,?,?)");
+		$stmt = $db->prepare("insert into schedule values('',?,?,?,?)");
 		$stmt->bindParam(1,$P_ID);
 		$stmt->bindParam(2,$sqldate);
 		$stmt->bindParam(3,$Time);
@@ -237,13 +238,16 @@ require 'lib/Db.config.pdo.php';
 
 $Sched_ID = mysql_real_escape_string($_POST['Sched_Id']);
 $Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
+$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 $Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
+$Time = date('h:i A', strtotime($Sched_time));
 $sqldate = date('Y-m-d',strtotime($Sched_date)); 
 	
-		$stmt = $db->prepare("Update schedule set SCHEDULE_DATE=?, SCHEDULE_PURPOSE=? where SCHEDULE_ID=?");
+		$stmt = $db->prepare("Update schedule set SCHEDULE_DATE=?, SCHEDULE_TIME=? SCHEDULE_PURPOSE=? where SCHEDULE_ID=?");
 		$stmt->bindParam(1,$sqldate);
-		$stmt->bindParam(2,$Sched_purpose);
-		$stmt->bindParam(3,$Sched_ID);
+		$stmt->bindParam(2,$Time);
+		$stmt->bindParam(3,$Sched_purpose);
+		$stmt->bindParam(4,$Sched_ID);
 		$stmt->execute();
 }
 else if($page == 'DeleteSched'){

@@ -174,6 +174,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                                           <th width="20">Patient No.</th>
                                           <th width="180">Name</th>
                                           <th width="50">Gender</th>
+                                          <th width="50">Religion</th>
                                           <th width="70" class="hidden-phone">Type</th>
                                           <th width="10" class="hidden-phone">Action</th>
                                       </tr>
@@ -186,6 +187,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                                               <td><p>P<?php echo $row['P_ID'] ?></p></td>
                                               <td><?php echo $row['FullName'] ?></td>
                                               <td><?php echo $row['P_GNDR'] ?></td>
+                                              <td><?php echo $row['P_REL'] ?></td>
                                               <td class="center hidden-phone"><?php echo $row['P_TYPE'] ?></td>
                                               <td class="center hidden-phone">
                         											<a class="btn btn-success btn-xs" data-toggle="modal" data-target="#setsched-<?php echo $row['P_ID']?>">Set Schedule</a>
@@ -226,25 +228,20 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                                 </div>                        
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
-								<div class="col-lg-6">
-									<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"  class="input-append date dpYears">
-                                        <input type="text" id="SCHEDULE_DATE-<?php echo $row['P_ID'] ?>" readonly="" size="16" class="form-control">
-                                            <span class="input-group-btn add-on">
-                                            <button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
-                                            </span>
-                                    </div>
-								</div>
+								                <div class="col-lg-6">
+                                        <input type="date" id="SCHEDULE_DATE-<?php echo $row['P_ID'] ?>" size="16" class="form-control">
+                                  </div>
                           </div>
-						  <div class="form-group">
+						              <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Time:</label>
                                   <div class="col-md-6">
                                           <div class="input-group bootstrap-timepicker">
                                               <input type="text" id="SCHEDULE_TIME-<?php echo $row['P_ID'] ?>" class="form-control timepicker-default">
                                                 <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button"><i class="icon-time"></i></button>
+                                                  <button class="btn btn-default" type="button"><i class="icon-time"></i></button>
                                                 </span>
                                           </div>
-                                      </div>
+                                  </div>
                           </div>
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>

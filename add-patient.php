@@ -342,7 +342,7 @@ require 'lib/Db.config.php';
 					   Health Issue
 					</header>
             <div class="panel-body">
-				        <form role="form" method="POST" action="#" class="form-horizontal tasi-form">
+				        <form role="form" class="form-horizontal tasi-form">
           					<div class="form-group">
           						<label class="col-md-4 control-label">A.5 Dominant Hand:</label>
 							          <div class="col-lg-4">
