@@ -23,6 +23,8 @@ require 'lib/Db.config.pdo.php';
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-datetimepicker/css/datetimepicker.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -172,15 +174,15 @@ require 'lib/Db.config.pdo.php';
                                           <th width="100">Date Schedule</th>
                                           <th width="100">Time</th>
                                           <th width="150">Patient Name</th>
-                                          <th width="100">Patient Type</th>
+                                          <th width="90">Patient Type</th>
                                           <th width="100" class="hidden-phone">Appointment</th>
-                                          <th width="60" class="hidden-phone">Action</th>
+                                          <th width="150" class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
-<?php
-      while($row = $stmt->fetch()){
-?>
+									<?php
+										  while($row = $stmt->fetch()){
+									?>
                                       <tr class="gradeX">
                                           <td><?php echo $row['SCHEDULE_DATE'] ?></td>
                                           <td><?php echo $row['SCHEDULE_TIME'] ?></td>
@@ -191,74 +193,80 @@ require 'lib/Db.config.pdo.php';
                                           <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i> Edit</a>
 										  <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
 										  <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class=" icon-share-alt"></i> Proceed</a>
- <!-- Register User Start  MODAL-->
+								<!-- Register User Start  MODAL-->
                                 <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['SCHEDULE_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['SCHEDULE_ID']?>" class="modal fade">
-                                  <div class="modal-dialog">
-                                      <div class="modal-content">
-                                          <div class="modal-header">
-                                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                              <h4 class="modal-title" id="myModalLabel-<?php echo $row['SCHEDULE_ID']?>">Edit Appointment</h4>
-                                          </div>
-                                          <div class="modal-body">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+												<h4 class="modal-title" id="myModalLabel-<?php echo $row['SCHEDULE_ID']?>">Edit Appointment</h4>
+											</div>
+											<div class="modal-body">
                                                 <form class="form-horizontal" role="form">
-                                                  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Patient Name:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" value="<?php echo $row['FullName']; ?>" class="form-control" readonly class="form_datetime form-control" disabled>
-                                                      </div>
-                                                  </div>
-                                <div class="form-group">
-                                  <label class="col-md-3 col-sm-2 control-label">Patient Type:</label>
-                                      <div class="col-lg-6">
-                                        <input type="text" value="<?php echo $row['P_TYPE']; ?>" readonly class="form_datetime form-control" disabled>
-                                      </div>
-                                </div>
-                                <div class="form-group">
-                                  <label class="col-md-3 col-sm-2 control-label">Gender:</label>
-                                      <div class="col-lg-4">
-                                        <select readonly class="form_datetime form-control" disabled>
-                                          <option value="-None-"<?php
-                                              if ($row['P_GNDR'] == "-None-") { echo " selected"; }?>>-None-</option>
-                                          <option value="Male"<?php
-                                              if ($row['P_GNDR'] == "Male") { echo " selected"; }?>>Male</option>
-                                          <option value="Female"<?php
-                                              if ($row['P_GNDR'] == "Female") { echo " selected"; }?>>Female</option>
-                                        </select>
-                                      </div>
-                                </div>                        
-                          <div class="form-group">
-                              <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
-                                  <div class="col-lg-6">
-                                        <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
-                                  </div>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
-                                  <div class="col-lg-4">
-                                      <select class="form-control" id="SCHEDULE_PURPOSE-<?php echo $row['SCHEDULE_ID'] ?>">
-                                        <option value="-None-"<?php
-                                              if ($row['SCHEDULE_PURPOSE'] == "-None-") { echo " selected"; }?>>-None-</option>
-                                        <option value="Check Up"<?php
-                                              if ($row['SCHEDULE_PURPOSE'] == "Check Up") { echo " selected"; }?>>Check Up</option>
-                                        <option value="X-ray" <?php
-                                              if ($row['SCHEDULE_PURPOSE'] == "X-ray") { echo " selected"; }?>>X-ray</option>
-                                        <option value="Dental"<?php
-                                              if ($row['SCHEDULE_PURPOSE'] == "Dental") { echo " selected"; }?>>Dental</option>
-                                        <option value="Laboratory Test"<?php
-                                              if ($row['SCHEDULE_PURPOSE'] == "Laboratory Test") { echo " selected"; }?>>Laboratory Test</option>
-                                      </select>
-                                  </div>
-                          </div>
-                          </form>
-                        </div>
-                    <div class="modal-footer">
-                      <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                      <button class="btn btn-success" type="button" onclick="UpdateSched(<?php echo $row['SCHEDULE_ID']; ?>)">Update Schedule</button>
-                    </div>
-                                      </div>
-                                  </div>
-                              </div>
-            <!--MODAL END-->
+													<div class="form-group">
+														<label class="col-md-3 col-sm-2 control-label">Patient Name:</label>
+														<div class="col-lg-6">
+															<input type="text" value="<?php echo $row['FullName']; ?>" class="form-control" readonly class="form_datetime form-control" disabled>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 col-sm-2 control-label">Patient Type:</label>
+														<div class="col-lg-6">
+															<input type="text" value="<?php echo $row['P_TYPE']; ?>" readonly class="form_datetime form-control" disabled>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 col-sm-2 control-label">Gender:</label>
+														<div class="col-lg-4">
+															<select readonly class="form_datetime form-control" disabled>
+																<option value="-None-"<?php
+																if ($row['P_GNDR'] == "-None-") { echo " selected"; }?>>-None-</option>
+																<option value="Male"<?php
+																if ($row['P_GNDR'] == "Male") { echo " selected"; }?>>Male</option>
+																<option value="Female"<?php
+																if ($row['P_GNDR'] == "Female") { echo " selected"; }?>>Female</option>
+															</select>
+														</div>
+													</div>                        
+													<div class="form-group">
+														<label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
+														<div class="col-lg-6">
+															<div data-date-viewmode="years" data-date-format="yyyy-mm-dd"  class="input-append date dpYears">
+																	<input type="text" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" 
+																		id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control" readonly>
+																	<span class="input-group-btn add-on">
+																		<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
+																	</span>
+																</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
+														<div class="col-lg-4">
+															<select class="form-control" id="SCHEDULE_PURPOSE-<?php echo $row['SCHEDULE_ID'] ?>">
+																<option value="-None-"<?php
+																if ($row['SCHEDULE_PURPOSE'] == "-None-") { echo " selected"; }?>>-None-</option>
+																<option value="Check Up"<?php
+																if ($row['SCHEDULE_PURPOSE'] == "Check Up") { echo " selected"; }?>>Check Up</option>
+																<option value="X-ray" <?php
+																if ($row['SCHEDULE_PURPOSE'] == "X-ray") { echo " selected"; }?>>X-ray</option>
+																<option value="Dental"<?php
+																if ($row['SCHEDULE_PURPOSE'] == "Dental") { echo " selected"; }?>>Dental</option>
+																<option value="Laboratory Test"<?php
+																if ($row['SCHEDULE_PURPOSE'] == "Laboratory Test") { echo " selected"; }?>>Laboratory Test</option>
+															</select>
+														</div>
+													</div>
+												</form>
+											</div>
+											<div class="modal-footer">
+												<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+												<button class="btn btn-success" type="button" onclick="UpdateSched(<?php echo $row['SCHEDULE_ID']; ?>)">Update Schedule</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--MODAL END-->
                     											
                     										  </td>
                                       </tr>
@@ -378,6 +386,9 @@ require 'lib/Db.config.pdo.php';
               // Do nothing!
           } 
         }
-      </script> 
+      </script>
+	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script src="js/advanced-form-components.js"></script>
   </body>
 </html>
