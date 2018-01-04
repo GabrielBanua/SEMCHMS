@@ -98,7 +98,7 @@ require 'lib/session.php';
                         <ul class="sub">
                             <li><a href="set-schedule.php">Set Schedule</a></li>
                             <li><a href="view-schedule.php">View Schedule</a></li>
-							<li><a href="#">Schedule Reports</a></li>
+							<li><a href="sched-reports-panel.php">Schedule Reports</a></li>
                         </ul>
                     </li>
 
@@ -109,7 +109,7 @@ require 'lib/session.php';
                       </a>
                       <ul class="sub">
                           <li><a href="view-inventory.php">View Inventory</a></li>
-                          <li><a  href="#">Inventory Reports</a></li>
+                          <li><a  href="inv-reports-panel.php">Inventory Reports</a></li>
                       </ul>
                   </li>
                   
