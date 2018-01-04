@@ -83,26 +83,26 @@ else if($Position == "Volunter"){
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" class="active">
+                      <a href="javascript:;">
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="add-patient.php">Add Patients</a></li>
                           <li><a  href="view-patients.php">View Patients</a></li>
-						  <li class="active"><a  href="patient-reports-panel.php">Patient Reports</a></li>
+						  <li><a  href="patient-reports-panel.php">Patient Reports</a></li>
                       </ul>
                   </li>
 				  
 				  <li class="sub-menu">
-                      <a href="javascript:;">
+                      <a href="javascript:;" class="active">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="set-schedule.php">Set Schedule</a></li>
                           <li><a  href="view-schedule.php">View Schedule</a></li>
-						  <li><a  href="sched-reports-panel.php">Schedule Reports</a></li>
+						  <li class="active"><a  href="sched-reports-panel.php">Schedule Reports</a></li>
                       </ul>
                   </li>
 				  
