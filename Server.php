@@ -219,13 +219,16 @@ require 'lib/Db.config.pdo.php';
 
 $P_ID = mysql_real_escape_string($_POST['P_ID']);
 $Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
+$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 $Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
 $sqldate = date('Y-m-d',strtotime($Sched_date)); 
+$Time = date('h:i A', strtotime($Sched_time));
 	
 		$stmt = $db->prepare("insert into schedule values('',?,?,?)");
 		$stmt->bindParam(1,$P_ID);
 		$stmt->bindParam(2,$sqldate);
-		$stmt->bindParam(3,$Sched_purpose);
+		$stmt->bindParam(3,$Time);
+		$stmt->bindParam(4,$Sched_purpose);
 		$stmt->execute();
 
 }

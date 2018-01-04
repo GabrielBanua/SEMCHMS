@@ -170,6 +170,7 @@ require 'lib/Db.config.pdo.php';
                                       <thead>
                                       <tr>
                                           <th width="100">Date Schedule</th>
+                                          <th width="100">Time</th>
                                           <th width="150">Patient Name</th>
                                           <th width="100">Patient Type</th>
                                           <th width="100" class="hidden-phone">Appointment</th>
@@ -182,6 +183,7 @@ require 'lib/Db.config.pdo.php';
 ?>
                                       <tr class="gradeX">
                                           <td><?php echo $row['SCHEDULE_DATE'] ?></td>
+                                          <td><?php echo $row['SCHEDULE_TIME'] ?></td>
                                           <td><?php echo $row['FullName'] ?></td>
                                           <td><?php echo $row['P_TYPE'] ?></td>
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>

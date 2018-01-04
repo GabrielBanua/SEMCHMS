@@ -239,7 +239,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                               <label class="col-md-3 col-sm-2 control-label">Time:</label>
                                   <div class="col-md-6">
                                           <div class="input-group bootstrap-timepicker">
-                                              <input type="text" class="form-control timepicker-default">
+                                              <input type="text" id="SCHEDULE_TIME-<?php echo $row['P_ID'] ?>" class="form-control timepicker-default">
                                                 <span class="input-group-btn">
                                                 <button class="btn btn-default" type="button"><i class="icon-time"></i></button>
                                                 </span>
@@ -322,12 +322,13 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
         function SetSched(str){
         var P_ID = str;
         var SCHEDULE_DATE = $('#SCHEDULE_DATE-'+str).val();
+        var SCHEDULE_TIME = $('#SCHEDULE_TIME-'+str).val();
         var SCHEDULE_PURPOSE = $('#SCHEDULE_PURPOSE-'+str).val();
             if (confirm('Are you sure you want to set schedule for this patient?')) {
             $.ajax({
               type: "POST",
               url: "Server.php?p=SetSched",
-              data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
+              data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
               success: function(data){
                     alert('Added successfully!');
                     window.location.reload();
