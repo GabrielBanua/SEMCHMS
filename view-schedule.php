@@ -232,19 +232,19 @@ require 'lib/Db.config.pdo.php';
                                 </div>                        
                                 <div class="form-group">
                                     <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-5">
                                               <div data-date-viewmode="years" data-date-format="yyyy-mm-dd"  class="input-append date dpYears">
-												<input type="text" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" 
-													id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control" readonly>
-												<span class="input-group-btn add-on">
-													<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
-												</span>
-											</div>
+                        												<input type="text" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" 
+                        													id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
+                        												<span class="input-group-btn add-on">
+                        													<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
+                        												</span>
+											                         </div>
                                         </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 col-sm-2 control-label">Time:</label>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                                 <div class="input-group bootstrap-timepicker">
                                                     <input type="text" value="<?php $date = date("H:i", strtotime($row['SCHEDULE_TIME'])); echo $date; ?>" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control timepicker-default">
                                                       <span class="input-group-btn">
