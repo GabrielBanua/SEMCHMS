@@ -20,9 +20,8 @@ require 'lib/Db.config.pdo.php';
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
-  	<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  	<link rel="stylesheet" type="text/css" href="assets/bootstrap-fileupload/bootstrap-fileupload.css" />
   	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-datetimepicker/css/datetimepicker.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -218,18 +217,9 @@ while($row = $stmt->fetch()){
                   <div class="form-group">
                     <div class="col-md-3">
                       <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
                                   <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
-                                </div>
-                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                              <div>
-                            <span class="btn btn-white btn-file">
-                            <span class="fileupload-new"><i class="icon-paper-clip"></i> Select image</span>
-                            <span class="fileupload-exists"><i class="icon-undo"></i> Change</span>
-                              <input type="file" class="default" />
-                            </span>
-                          <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="icon-trash"></i> Remove</a>
-                        </div>
+                            </div>
                       </div>
                     </div>
                   </div>
@@ -286,7 +276,7 @@ while($row = $stmt->fetch()){
                     <label class="col-md-4 control-label">Birthdate</label>
 						<div class="col-lg-6">
 							<div data-date-viewmode="years" data-date-format="yyyy-mm-dd"  class="input-append date dpYears">
-								<input type="text" id="P_BDATE-<?php echo $row['P_ID'] ?>" name="P_BDATE" value="<?php echo $row['P_BDATE'] ?>" readonly="" size="16" class="form-control">
+								<input type="text" id="P_BDATE-<?php echo $row['P_ID'] ?>" value="<?php echo $row['P_BDATE'] ?>" readonly="" size="16" class="form-control">
 									<span class="input-group-btn add-on">
 									<button class="btn btn-danger"  type="button"><i class="icon-calendar"></i></button>
 									</span>
@@ -711,10 +701,6 @@ while($row = $stmt->fetch()){
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-	
-  	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  	<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-  	<script src="js/advanced-form-components.js"></script>
 
 
   <!--common script for all pages-->
@@ -729,6 +715,9 @@ while($row = $stmt->fetch()){
               } );
           } );
       </script>
+	  <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script src="js/advanced-form-components.js"></script>
       <script>
         $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';

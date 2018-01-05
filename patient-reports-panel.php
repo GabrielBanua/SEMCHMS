@@ -13,9 +13,10 @@ else if($Position == "Volunter"){
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google" content="notranslate">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Backup Database</title>
+    <title>Patient Reports Panel</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -82,14 +83,14 @@ else if($Position == "Volunter"){
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="javascript:;" class="active">
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="add-patient.php">Add Patients</a></li>
                           <li><a  href="view-patients.php">View Patients</a></li>
-						  <li><a  href="#">Patient Reports</a></li>
+						  <li class="active"><a  href="patient-reports-panel.php">Patient Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -138,12 +139,12 @@ else if($Position == "Volunter"){
                   </li>
 				  
 				  <li class="sub-menu" id="Maintenance-li">
-                      <a href="javascript:;" class="active">
+                      <a href="javascript:;">
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
                       </a>
                       <ul class="sub">
-                          <li class="active"><a  href="backup.php">Backup Database</a></li>
+                          <li><a  href="backup.php">Backup Database</a></li>
 						  <li><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
@@ -160,14 +161,13 @@ else if($Position == "Volunter"){
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              Database Backup
+                              Patient Reports Panel
                           </header>
                           <div class="panel-body">
 								<form class="form-horizontal" role="form">
 								  <div class="form-group">
                                       <div class="col-lg-12">
-											<a class="btn btn-shadow btn-success btn-lg" href="backup/backup_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup"><i class="icon-download-alt"> </i>Backup Database</a>
-											<a class="btn btn-shadow btn-success btn-lg" href="backup/import_db.php"><i class="icon-upload-alt"> </i>Import Database</a>
+											
                                       </div>
                                   </div>
                               </form>

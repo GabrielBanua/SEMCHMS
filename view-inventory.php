@@ -25,6 +25,7 @@ else if($Position == "Volunter"){
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
     <link rel="stylesheet" type="text/css" href="assets/bootstrap-datetimepicker/css/datetimepicker.css" />
+	<link rel="stylesheet" type="text/css" href="assets/select2/css/select2.min.css"/>
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -182,12 +183,39 @@ else if($Position == "Volunter"){
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Date Arrived:</label>
 															<div class="col-lg-6">
-																<div class="input-group date form_datetime-component">
-																  <input type="text" class="form-control" readonly="" size="16">
-																	<span class="input-group-btn">
-																	<button type="button" class="btn btn-danger date-set"><i class="icon-calendar"></i></button>
+																<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"  class="input-append date dpYears">
+																	<input type="text" id="#" name="#" readonly="" size="16" class="form-control">
+																	<span class="input-group-btn add-on">
+																		<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
 																	</span>
 																</div>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Category:</label>
+															<div class="col-lg-6">
+																<select class="select2-single">
+																	<option></option><!--for placeholder-->
+																	<option>Adult</option>
+																	<option>Children</option>
+																</select>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Type:</label>
+															<div class="col-lg-6">
+																<select class="select2-single">
+																	<option></option><!--for placeholder-->
+																	<option>Analgesic</option>
+																	<option>Anti-Allergy</option>
+																	<option>Antibiotics</option>
+																	<option>Diabetics</option>
+																	<option>Hypertension</option>
+																	<option>OTROS</option>
+																	<option>Respiratory</option>
+																	<option>Stomach/Digestive</option>
+																	<option>Vitamins</option>
+																</select>
 															</div>
 														</div>
 														<div class="form-group">
@@ -221,6 +249,17 @@ else if($Position == "Volunter"){
 															</div>
 														</div>
 														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Expiration Date:</label>
+															<div class="col-lg-6">
+																<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"  class="input-append date dpYears">
+																	<input type="text" id="#" name="#" readonly="" size="16" class="form-control">
+																	<span class="input-group-btn add-on">
+																		<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
+																	</span>
+																</div>
+															</div>
+														</div>
+														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Supplier:</label>
 															<div class="col-lg-6">
 																<input type="text" class="form-control" required>
@@ -247,6 +286,33 @@ else if($Position == "Volunter"){
 												<div class="modal-body">
 													<form class="form-horizontal" role="form">
 														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Category:</label>
+															<div class="col-lg-6">
+																<select class="select2-single">
+																	<option></option><!--for placeholder-->
+																	<option>Adult</option>
+																	<option>Children</option>
+																</select>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 col-sm-2 control-label">Type:</label>
+															<div class="col-lg-6">
+																<select class="select2-single">
+																	<option></option><!--for placeholder-->
+																	<option>Analgesic</option>
+																	<option>Anti-Allergy</option>
+																	<option>Antibiotics</option>
+																	<option>Diabetics</option>
+																	<option>Hypertension</option>
+																	<option>OTROS</option>
+																	<option>Respiratory</option>
+																	<option>Stomach/Digestive</option>
+																	<option>Vitamins</option>
+																</select>
+															</div>
+														</div>
+														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Name of Medicines(Generic):</label>
 															<div class="col-lg-6">
 																<input type="text" class="form-control" required>
@@ -254,12 +320,6 @@ else if($Position == "Volunter"){
 														</div>
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Brand Name:</label>
-															<div class="col-lg-6">
-																<input type="text" class="form-control" required>
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-3 col-sm-2 control-label">Category:</label>
 															<div class="col-lg-6">
 																<input type="text" class="form-control" required>
 															</div>
@@ -469,6 +529,7 @@ else if($Position == "Volunter"){
     <script src="js/common-scripts.js"></script>
 
     <!--script for this page only-->
+	
 	<!-- Keypress Limit -->
 	<script src="js/numbers-only.js"></script>
 
@@ -513,5 +574,14 @@ else if($Position == "Volunter"){
 	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
 	<script src="js/advanced-form-components.js"></script>
+	<script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
+	<script type="text/javascript">
+
+      $(document).ready(function () {
+          $(".select2-single").select2({placeholder: 'Please select...'});
+
+          $(".select2-multiple").select2();
+      });
+  </script>
   </body>
 </html>

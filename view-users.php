@@ -145,13 +145,13 @@ else if($Position == "Volunter"){
                   </li>
 				  
 				  <li class="sub-menu" id="Maintenance-li">
-                      <a href="javascript:;" >
+                      <a href="javascript:;" class="active">
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
-						  <li><a  href="view-users.php">View Users</a></li>
+						  <li class="active"><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
               </ul>
@@ -171,7 +171,7 @@ else if($Position == "Volunter"){
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-								<a class="btn btn-success" data-toggle="modal" data-target="#AddModal">Add New User</a>
+								<a class="btn btn-success" data-toggle="modal" data-target="#AddModal"><i class="icon-plus"></i> Add New User</a>
 <!-- Register User Start  MODAL-->
               <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddModal" class="modal fade">
                                   <div class="modal-dialog">
@@ -267,8 +267,8 @@ else if($Position == "Volunter"){
                                                 <td><?php echo $row['FullName'] ?></td>
                                                 <td><?php echo $row['Position'] ?></td>
                                                 <td class="center hidden-phone">
-                                                <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#EditModal-<?php echo $row['User_id']?>">Edit</a>
-												<a class="btn btn-danger btn-sm" type="submit" onclick="DeleteUser(<?php echo $row['User_id']?>)">delete</a>
+                                                <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#EditModal-<?php echo $row['User_id']?>"><i class="icon-edit"></i> Edit</a>
+												<a class="btn btn-danger btn-sm" type="submit" onclick="DeleteUser(<?php echo $row['User_id']?>)"><i class="icon-trash"></i> Delete</a>
 <!-- Edit User MODAL-->
               <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['User_id']?>" role="dialog" tabindex="-1" id="EditModal-<?php echo $row['User_id']?>" class="modal fade">
                         <div class="modal-dialog">
