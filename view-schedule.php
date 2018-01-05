@@ -24,6 +24,7 @@ require 'lib/Db.config.pdo.php';
     <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap-timepicker/compiled/timepicker.css" />
     <link rel="stylesheet" type="text/css" href="assets/bootstrap-datetimepicker/css/datetimepicker.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
@@ -191,10 +192,9 @@ require 'lib/Db.config.pdo.php';
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
                                           <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i> Edit</a>
-
-										                      <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
-										                      <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class=" icon-share-alt"></i> Proceed</a>
-<!-- Register User Start  MODAL-->
+										  <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
+										  <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class=" icon-share-alt"></i> Proceed</a>
+									<!-- Register User Start  MODAL-->
 
                                 <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['SCHEDULE_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['SCHEDULE_ID']?>" class="modal fade">
                 									<div class="modal-dialog">
@@ -233,14 +233,20 @@ require 'lib/Db.config.pdo.php';
                                 <div class="form-group">
                                     <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
                                         <div class="col-lg-6">
-                                              <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>" id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
+                                              <div data-date-viewmode="years" data-date-format="yyyy-mm-dd"  class="input-append date dpYears">
+												<input type="text" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" 
+													id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control" readonly>
+												<span class="input-group-btn add-on">
+													<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
+												</span>
+											</div>
                                         </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 col-sm-2 control-label">Time:</label>
                                         <div class="col-md-6">
                                                 <div class="input-group bootstrap-timepicker">
-                                                    <input type="time" value="<?php $date = date("H:i", strtotime($row['SCHEDULE_TIME'])); echo $date; ?>" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control timepicker-default">
+                                                    <input type="text" value="<?php $date = date("H:i", strtotime($row['SCHEDULE_TIME'])); echo $date; ?>" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control timepicker-default">
                                                       <span class="input-group-btn">
                                                         <button class="btn btn-default" type="button"><i class="icon-time"></i></button>
                                                       </span>
@@ -396,7 +402,7 @@ require 'lib/Db.config.pdo.php';
         }
 
       </script> 
-      <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
   <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
   <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
   <script src="js/advanced-form-components.js"></script>
