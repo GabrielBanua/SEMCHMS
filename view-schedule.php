@@ -191,25 +191,20 @@ require 'lib/Db.config.pdo.php';
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
                                           <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i> Edit</a>
-<<<<<<< HEAD
+
 										                      <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
 										                      <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class=" icon-share-alt"></i> Proceed</a>
- <!-- Register User Start  MODAL-->
-=======
-										  <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
-										  <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class=" icon-share-alt"></i> Proceed</a>
-								<!-- Register User Start  MODAL-->
->>>>>>> 4524794341fe4062c82199f685ae2b39852d229e
+<!-- Register User Start  MODAL-->
+
                                 <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['SCHEDULE_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['SCHEDULE_ID']?>" class="modal fade">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-												<h4 class="modal-title" id="myModalLabel-<?php echo $row['SCHEDULE_ID']?>">Edit Appointment</h4>
-											</div>
-											<div class="modal-body">
+                									<div class="modal-dialog">
+                										<div class="modal-content">
+                											<div class="modal-header">
+                												<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                												<h4 class="modal-title" id="myModalLabel-<?php echo $row['SCHEDULE_ID']?>">Edit Appointment</h4>
+                											</div>
+                											<div class="modal-body">
                                                 <form class="form-horizontal" role="form">
-<<<<<<< HEAD
                                                   <div class="form-group">
                                                       <label class="col-md-3 col-sm-2 control-label">Patient Name:</label>
                                                       <div class="col-lg-6">
@@ -235,24 +230,24 @@ require 'lib/Db.config.pdo.php';
                                         </select>
                                       </div>
                                 </div>                        
-                          <div class="form-group">
-                              <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
-                                  <div class="col-lg-6">
-                                        <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>" id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
-                                  </div>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-md-3 col-sm-2 control-label">Time:</label>
-                                  <div class="col-md-6">
-                                          <div class="input-group bootstrap-timepicker">
-                                              <input type="time" value="<?php echo $row['SCHEDULE_TIME']; ?>" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control timepicker-default">
-                                                <span class="input-group-btn">
-                                                  <button class="btn btn-default" type="button"><i class="icon-time"></i></button>
-                                                </span>
-                                          </div>
-                                  </div>
-                          </div>
-                          <div class="form-group">
+                                <div class="form-group">
+                                    <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
+                                        <div class="col-lg-6">
+                                              <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>" id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 col-sm-2 control-label">Time:</label>
+                                        <div class="col-md-6">
+                                                <div class="input-group bootstrap-timepicker">
+                                                    <input type="time" value="<?php $date = date("H:i", strtotime($row['SCHEDULE_TIME'])); echo $date; ?>" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control timepicker-default">
+                                                      <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button"><i class="icon-time"></i></button>
+                                                      </span>
+                                                </div>
+                                        </div>
+                                </div>
+                              <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
                                   <div class="col-lg-4">
                                       <select class="form-control" id="SCHEDULE_PURPOSE-<?php echo $row['SCHEDULE_ID'] ?>">
@@ -279,81 +274,15 @@ require 'lib/Db.config.pdo.php';
                                   </div>
                               </div>
             <!--MODAL END-->
-=======
-													<div class="form-group">
-														<label class="col-md-3 col-sm-2 control-label">Patient Name:</label>
-														<div class="col-lg-6">
-															<input type="text" value="<?php echo $row['FullName']; ?>" class="form-control" readonly class="form_datetime form-control" disabled>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-md-3 col-sm-2 control-label">Patient Type:</label>
-														<div class="col-lg-6">
-															<input type="text" value="<?php echo $row['P_TYPE']; ?>" readonly class="form_datetime form-control" disabled>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-md-3 col-sm-2 control-label">Gender:</label>
-														<div class="col-lg-4">
-															<select readonly class="form_datetime form-control" disabled>
-																<option value="-None-"<?php
-																if ($row['P_GNDR'] == "-None-") { echo " selected"; }?>>-None-</option>
-																<option value="Male"<?php
-																if ($row['P_GNDR'] == "Male") { echo " selected"; }?>>Male</option>
-																<option value="Female"<?php
-																if ($row['P_GNDR'] == "Female") { echo " selected"; }?>>Female</option>
-															</select>
-														</div>
-													</div>                        
-													<div class="form-group">
-														<label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
-														<div class="col-lg-6">
-															<div data-date-viewmode="years" data-date-format="yyyy-mm-dd"  class="input-append date dpYears">
-																	<input type="text" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" 
-																		id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control" readonly>
-																	<span class="input-group-btn add-on">
-																		<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
-																	</span>
-																</div>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
-														<div class="col-lg-4">
-															<select class="form-control" id="SCHEDULE_PURPOSE-<?php echo $row['SCHEDULE_ID'] ?>">
-																<option value="-None-"<?php
-																if ($row['SCHEDULE_PURPOSE'] == "-None-") { echo " selected"; }?>>-None-</option>
-																<option value="Check Up"<?php
-																if ($row['SCHEDULE_PURPOSE'] == "Check Up") { echo " selected"; }?>>Check Up</option>
-																<option value="X-ray" <?php
-																if ($row['SCHEDULE_PURPOSE'] == "X-ray") { echo " selected"; }?>>X-ray</option>
-																<option value="Dental"<?php
-																if ($row['SCHEDULE_PURPOSE'] == "Dental") { echo " selected"; }?>>Dental</option>
-																<option value="Laboratory Test"<?php
-																if ($row['SCHEDULE_PURPOSE'] == "Laboratory Test") { echo " selected"; }?>>Laboratory Test</option>
-															</select>
-														</div>
-													</div>
-												</form>
-											</div>
-											<div class="modal-footer">
-												<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-												<button class="btn btn-success" type="button" onclick="UpdateSched(<?php echo $row['SCHEDULE_ID']; ?>)">Update Schedule</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!--MODAL END-->
->>>>>>> 4524794341fe4062c82199f685ae2b39852d229e
-                    											
-                    										  </td>
+                                          
+                                          </td>
                                       </tr>
 <?php
       }
 ?>
                                       </tbody>
                           </table>
-											
+                      
                                 </div>
                           </div>
                       </section>
@@ -465,17 +394,11 @@ require 'lib/Db.config.pdo.php';
               // Do nothing!
           } 
         }
-<<<<<<< HEAD
+
       </script> 
       <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
   <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
   <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
   <script src="js/advanced-form-components.js"></script>
-=======
-      </script>
-	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-	<script src="js/advanced-form-components.js"></script>
->>>>>>> 4524794341fe4062c82199f685ae2b39852d229e
   </body>
 </html>
