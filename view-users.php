@@ -3,12 +3,6 @@ require 'lib/session.php';
 require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
 
-if($Position == "Doctor"){
-  header('Location: index.php');
-}
-else if($Position == "Volunter"){
-  header('Location: index.php');
-}
   //This is the sql for fetching the data in the database
   $stmt = $db->prepare("Select *, CONCAT(Firstname,' ',Middlename,' ',Lastname) AS FullName from users");
   $stmt->execute();

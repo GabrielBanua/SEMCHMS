@@ -243,7 +243,7 @@ $Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
 $Time = date('h:i A', strtotime($Sched_time));
 $sqldate = date('Y-m-d',strtotime($Sched_date)); 
 	
-		$stmt = $db->prepare("Update schedule set SCHEDULE_DATE=?, SCHEDULE_TIME=? SCHEDULE_PURPOSE=? where SCHEDULE_ID=?");
+		$stmt = $db->prepare("Update schedule set SCHEDULE_DATE=?, SCHEDULE_TIME=?, SCHEDULE_PURPOSE=? where SCHEDULE_ID=?");
 		$stmt->bindParam(1,$sqldate);
 		$stmt->bindParam(2,$Time);
 		$stmt->bindParam(3,$Sched_purpose);
