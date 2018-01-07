@@ -290,13 +290,14 @@ require 'lib/Db.config.php';
 $INV_MEDTYPE = mysql_real_escape_string($_POST['INV_MEDTYPE']);
 $INV_MEDCAT = mysql_real_escape_string($_POST['INV_MEDCAT']);
 
-	$sql = "SELECT MEDICINE_GNAME FROM medicine WHERE MEDICINE_TYPE = '$INV_MEDTYPE' AND MEDICINE_CAT = '$INV_MEDCAT'";
+	$sql = "SELECT MEDICINE_GNAME FROM medicine WHERE MEDICINE_TYPE = '$INV_MEDTYPE' AND MEDICINE_CAT = '$INV_MEDCAT' GROUP BY MEDICINE_GNAME";
 	$do = mysql_query($sql);
 	$count = mysql_num_rows($do);
 
+
 	if($count > 0){
 		while($gname = mysql_fetch_array($do)){
-			echo "<option value='$gname[MEDICINE_GNAME]'>"; echo $gname['MEDICINE_GNAME']; echo "</option>";
+			echo "<option value=";echo $gname['MEDICINE_GNAME'];echo">"; echo $gname['MEDICINE_GNAME']; echo "</option>";
 		}
 	}else{
 		echo "<option>No medicine found!</option>";
@@ -307,13 +308,13 @@ require 'lib/Db.config.php';
 
 $INV_MEDGNAME = mysql_real_escape_string($_POST['INV_MEDGNAME']);
 
-	$sql = "SELECT MEDICINE_BNAME FROM medicine WHERE MEDICINE_GNAME = '$INV_MEDGNAME'";
+	$sql = "SELECT MEDICINE_BNAME FROM medicine WHERE MEDICINE_GNAME = '$INV_MEDGNAME' GROUP BY MEDICINE_BNAME";
 	$do = mysql_query($sql);
 	$count = mysql_num_rows($do);
 
 	if($count > 0){
 		while($bname = mysql_fetch_array($do)){
-			echo "<option value=\"<?php echo bname['MEDICINE_GNAME'];?>\">"; echo $bname['MEDICINE_BNAME']; echo "</option>";
+			echo "<option value=";echo $bname['MEDICINE_BNAME'];echo">"; echo $bname['MEDICINE_BNAME']; echo "</option>";
 		}
 	}else{
 		echo "<option>No medicine found!</option>";
@@ -325,14 +326,14 @@ require 'lib/Db.config.php';
 $MedCat = mysql_real_escape_string($_POST['MedCat']);
 $Medtype = mysql_real_escape_string($_POST['Medtype']);
 $MedGname = mysql_real_escape_string($_POST['Medgname']);
-$MedBname = mysql_real_escape_string($_POST['Medbname']);
 $MedDform = mysql_real_escape_string($_POST['MedDform']);
+$MedBN = mysql_real_escape_string($_POST['MedBname']);
 
-	$sql = "SELECT MEDICINE_DOSE FROM medicine WHERE MEDICINE_GNAME = '$MedGname' AND MEDICINE_CAT = '$MedCat'";
+	$sql = "SELECT MEDICINE_DOSE FROM medicine WHERE (MEDICINE_BNAME = '$MedBN' AND MEDICINE_CAT ='$MedCat' AND (MEDICINE_DFORM = '$MedDform')) GROUP BY MEDICINE_DOSE";
 	$do = mysql_query($sql);
 
 		while($DS = mysql_fetch_array($do)){
-			echo "<option value=\"<?php echo D['MEDICINE_GNAME'];?>\">"; echo $DS['MEDICINE_DOSE']; echo "</option>";
+			echo "<option value=";echo $DS['MEDICINE_DOSE'];echo">";  echo $DS['MEDICINE_DOSE']; echo "</option>";
 		}
 }
 

@@ -620,19 +620,26 @@ require 'lib/Db.config.php';
       }
   </script>
   <script type="text/javascript">
-		$(document).ready(function(){
+$(document).ready(function(){
 			$('#INV_MEDICINE_TYPE').on('change',function(){
 				var Medtype = $('#INV_MEDICINE_TYPE').val();
 				var MedCat = $('#INV_MEDICINE_CAT').val();
 				if(Medtype != '' && MedCat != ''){
 					$.ajax({
-					type: "POST",
-					url: "Server.php?p=MedicineName",
-					data: "INV_MEDTYPE="+Medtype+"&INV_MEDCAT="+MedCat,
-					success: function(data){
-						$('#INV_MEDICINE_GNAME').html(data);
-						changeit();
-					}
+						type: "POST",
+						url: "Server.php?p=MedicineName",
+						data: "INV_MEDTYPE="+Medtype+"&INV_MEDCAT="+MedCat,
+						success: function(data){
+							$('#INV_MEDICINE_GNAME').html(data);
+							changeBrand();
+						var CheckDF = $('#INV_MEDICINE_DF').val();
+							if(CheckDF == 'Tablet' || CheckDF == 'Syrup'){
+								$('#INV_MEDICINE_DF').html('<option></option>');
+								$('#INV_MEDICINE_DS').html('<option></option>');
+							}else{
+								$('#INV_MEDICINE_DF').html('<option></option><option>Tablet</option><option>Syrup</option>');
+							}
+						}
 					});
 				}else{
 				$('#INV_MEDICINE_GNAME').html('<option>Please select catergory</option>');
@@ -648,7 +655,15 @@ require 'lib/Db.config.php';
 						data: "INV_MEDTYPE="+Medtype+"&INV_MEDCAT="+MedCat,
 						success: function(data){
 							$('#INV_MEDICINE_GNAME').html(data);
-							changeit();
+							changeBrand();
+							changeDF();
+						var CheckDF = $('#INV_MEDICINE_DF').val();
+							if(CheckDF == 'Tablet' || CheckDF == 'Syrup'){
+								$('#INV_MEDICINE_DF').html('<option></option>');
+								$('#INV_MEDICINE_DS').html('<option></option>');
+							}else{
+								$('#INV_MEDICINE_DF').html('<option></option><option>Tablet</option><option>Syrup</option>');
+							}
 						}
 					});
 				}else{
@@ -664,11 +679,16 @@ require 'lib/Db.config.php';
 						data: "INV_MEDGNAME="+MedGname,
 						success: function(data){
 							$('#INV_MEDICINE_BNAME').html(data);
+							changeDF();
 						}
 					});
 				}else{
 						$('#INV_MEDICINE_BNAME').html('<option>Please select name of medicine!<option>');
+
 				}
+			});
+			$('#INV_MEDICINE_BNAME').on('change',function(){
+				changeDF();
 			});
 			$('#INV_MEDICINE_DF').on('change',function(){
 					var MedDF = $('#INV_MEDICINE_DF').val();
@@ -680,18 +700,18 @@ require 'lib/Db.config.php';
 						$.ajax({
 							type: "POST",
 							url: "Server.php?p=MedicineDF",
-							data: "MedDform="+MedDF+"&Medgname="+MedGname+"&Medbname="+MedBname+"&MedCat="+MedCat+"&Medtype="+Medtype,
+							data: "MedDform="+MedDF+"&Medgname="+MedGname+"&MedBname="+MedBname+"&MedCat="+MedCat+"&Medtype="+Medtype,
 							success: function(data){
 								$('#INV_MEDICINE_DS').html(data);
-								alert(data);
 							}
 						});
-					}else{
-							$('#INV_MEDICINE_DS').html('<option>Please select dosage form!<option>');
+					}
+					else{
+						$('#INV_MEDICINE_DS').html('<option><option>');
 					}
 				});
 			});
-			function changeit(){
+			function changeBrand(){
 				var MedGname = $('#INV_MEDICINE_GNAME').val();
 					if(MedGname){
 						$.ajax({
@@ -706,6 +726,25 @@ require 'lib/Db.config.php';
 							$('#INV_MEDICINE_BNAME').html('<option>Please select name of medicine!<option>');
 					}
 			}
-	</script>
+			function changeDF(){
+					var MedDF = $('#INV_MEDICINE_DF').val();
+					var MedCat = $('#INV_MEDICINE_CAT').val();
+					var Medtype = $('#INV_MEDICINE_TYPE').val();
+					var MedGname = $('#INV_MEDICINE_GNAME').val();
+					var MedBname = $('#INV_MEDICINE_BNAME').val();
+					if(MedDF){
+						$.ajax({
+							type: "POST",
+							url: "Server.php?p=MedicineDF",
+							data: "MedDform="+MedDF+"&Medgname="+MedGname+"&MedBname="+MedBname+"&MedCat="+MedCat+"&Medtype="+Medtype,
+							success: function(data){
+								$('#INV_MEDICINE_DS').html(data);
+							}
+						});
+					}else{
+						$('#INV_MEDICINE_DS').html('<option><option>');
+					}
+			}
+</script>
   </body>
 </html>
