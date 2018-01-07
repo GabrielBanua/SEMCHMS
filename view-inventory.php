@@ -1,11 +1,6 @@
 <?php
 require 'lib/session.php';
-if($Position == "Doctor"){
-  header('Location: index.php');
-}
-else if($Position == "Volunter"){
-  header('Location: index.php');
-}
+require 'lib/Db.config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +24,8 @@ else if($Position == "Volunter"){
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
+    
+    
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
@@ -170,7 +167,8 @@ else if($Position == "Volunter"){
                                 <div class="adv-table">
 								<a class="btn btn-success" data-toggle="modal" data-target="#AddInventory">Add Inventory</a>
 								<a class="btn btn-success" data-toggle="modal" data-target="#AddMed">Add Medicines</a>
-									<!--Start Modal Add Inventory-->
+
+<!--Start Modal Add Inventory-->
 									<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddInventory" class="modal fade">
 										<div class="modal-dialog">
 											<div class="modal-content">
@@ -194,52 +192,62 @@ else if($Position == "Volunter"){
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Category:</label>
 															<div class="col-lg-6">
-																<select class="select2-single">
+																<select class="select2-single" id="INV_MEDICINE_CAT">
 																	<option></option><!--for placeholder-->
-																	<option>Adult</option>
-																	<option>Children</option>
+																	<option value="Adult">Adult</option>
+																	<option value="Children">Children</option>
 																</select>
 															</div>
 														</div>
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Type:</label>
 															<div class="col-lg-6">
-																<select class="select2-single">
+																<select class="select2-single" id="INV_MEDICINE_TYPE">
 																	<option></option><!--for placeholder-->
-																	<option>Analgesic</option>
-																	<option>Anti-Allergy</option>
-																	<option>Antibiotics</option>
-																	<option>Diabetics</option>
-																	<option>Hypertension</option>
-																	<option>OTROS</option>
-																	<option>Respiratory</option>
-																	<option>Stomach/Digestive</option>
-																	<option>Vitamins</option>
+																	<option value="Analgesic">Analgesic</option>
+																	<option value="Anti-Allergy">Anti-Allergy</option>
+																	<option value="Antibiotics">Antibiotics</option>
+																	<option value="Diabetics">Diabetics</option>
+																	<option value="Hypertension">Hypertension</option>
+																	<option value="OTROS">OTROS</option>
+																	<option value="Respiratory">Respiratory</option>
+																	<option value="Stomach/Digestive">Stomach/Digestive</option>
+																	<option value="Vitamins">Vitamins</option>
 																</select>
 															</div>
 														</div>
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Name of Medicines(Generic):</label>
 															<div class="col-lg-6">
-																<input type="text" class="form-control" required>
+																<select class="select2-single" id="INV_MEDICINE_GNAME">
+																	<option></option><!--for placeholder-->
+																</select>
 															</div>
 														</div>
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Brand Name:</label>
 															<div class="col-lg-6">
-																<input type="text" class="form-control" required>
+																<select class="select2-single" id="INV_MEDICINE_BNAME">
+																	<option></option><!--for placeholder-->
+																</select>
 															</div>
 														</div>
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Dosage Form:</label>
 															<div class="col-lg-6">
-																<input type="text" class="form-control" required>
+																<select class="select2-single" id="INV_MEDICINE_DF">
+																	<option></option><!--for placeholder-->
+																	<option value="Tablet">Tablet</option>
+																	<option value="Syrup">Syrup</option>
+																</select>
 															</div>
 														</div>
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Dose:</label>
 															<div class="col-lg-6">
-																<input type="text" class="form-control" required>
+																<select class="select2-single" id="INV_MEDICINE_DS">
+																	<option></option><!--for placeholder-->
+																</select>
 															</div>
 														</div>
 														<div class="form-group">
@@ -274,8 +282,8 @@ else if($Position == "Volunter"){
 											</div>
 										</div>
 									</div>
-									<!--MODAL END-->
-									<!--Start Model Add Medicines-->
+<!--MODAL END-->
+<!--Start Model Add Medicines-->
 									<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddMed" class="modal fade">
 										<div class="modal-dialog">
 											<div class="modal-content">
@@ -288,7 +296,7 @@ else if($Position == "Volunter"){
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Category:</label>
 															<div class="col-lg-6">
-																<select class="select2-single">
+																<select class="select2-single" id="MEDICINE_CAT">
 																	<option></option><!--for placeholder-->
 																	<option>Adult</option>
 																	<option>Children</option>
@@ -298,7 +306,7 @@ else if($Position == "Volunter"){
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Type:</label>
 															<div class="col-lg-6">
-																<select class="select2-single">
+																<select class="select2-single" id="MEDICINE_TYPE">
 																	<option></option><!--for placeholder-->
 																	<option>Analgesic</option>
 																	<option>Anti-Allergy</option>
@@ -315,32 +323,36 @@ else if($Position == "Volunter"){
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Name of Medicines(Generic):</label>
 															<div class="col-lg-6">
-																<input type="text" class="form-control" required>
+																<input type="text" id="MEDICINE_GNAME" class="form-control" required>
 															</div>
 														</div>
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Brand Name:</label>
 															<div class="col-lg-6">
-																<input type="text" class="form-control" required>
+																<input type="text" id="MEDICINE_BNAME" class="form-control" required>
 															</div>
 														</div>
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Dosage Form:</label>
 															<div class="col-lg-6">
-																<input type="text" class="form-control" required>
+																<select class="form-control" id="MEDICINE_DFORM">
+																	<option></option><!--for placeholder-->
+																	<option>Tablet</option>
+																	<option>Syrup</option>
+																</select>
 															</div>
 														</div>
 														<div class="form-group">
 															<label class="col-md-3 col-sm-2 control-label">Dose:</label>
 															<div class="col-lg-6">
-																<input type="text" class="form-control" required>
+																<input type="text" id="MEDICINE_DOSE" class="form-control" required>
 															</div>
 														</div>
 													</form>
 												</div>
 												<div class="modal-footer">
 													<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-													<button class="btn btn-success" type="submit" onclick="#">Add</button>
+													<button class="btn btn-success" type="submit" onclick="addMedicine()">Add</button>
 												</div>
 											</div>
 										</div>
@@ -570,18 +582,130 @@ else if($Position == "Volunter"){
             $('#Inventory-li').hide();
         }
         });
-      </script>
+    </script>
 	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
 	<script src="js/advanced-form-components.js"></script>
 	<script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
+	
 	<script type="text/javascript">
 
       $(document).ready(function () {
-          $(".select2-single").select2({placeholder: 'Please select...'});
+          $(".select2-single").select2({placeholder: 'Please select option'});
 
           $(".select2-multiple").select2();
       });
+
+      function addMedicine(){
+      	var MEDICINE_CAT = $('#MEDICINE_CAT').val();
+      	var MEDICINE_TYPE = $('#MEDICINE_TYPE').val();
+      	var MEDICINE_GNAME = $('#MEDICINE_GNAME').val();
+      	var MEDICINE_BNAME = $('#MEDICINE_BNAME').val();
+      	var MEDICINE_DFORM = $('#MEDICINE_DFORM').val();
+      	var MEDICINE_DOSE = $('#MEDICINE_DOSE').val();
+
+	      	if(confirm('Are you sure you want to add this new medicine in the database?')) {
+	        $.ajax({
+	          type: "POST",
+	          url: "Server.php?p=addMedicine",
+	          data: "MEDICINE_CAT="+MEDICINE_CAT+"&MEDICINE_TYPE="+MEDICINE_TYPE+"&MEDICINE_GNAME="+MEDICINE_GNAME+"&MEDICINE_BNAME="+MEDICINE_BNAME+"&MEDICINE_DFORM="+MEDICINE_DFORM+"&MEDICINE_DOSE="+MEDICINE_DOSE,
+	          success: function(data){
+	            alert('Added successfully!');
+	            window.location.reload();
+	          }
+	        });
+	      }else{
+	        //do nothing
+	      }
+      }
   </script>
+  <script type="text/javascript">
+		$(document).ready(function(){
+			$('#INV_MEDICINE_TYPE').on('change',function(){
+				var Medtype = $('#INV_MEDICINE_TYPE').val();
+				var MedCat = $('#INV_MEDICINE_CAT').val();
+				if(Medtype != '' && MedCat != ''){
+					$.ajax({
+					type: "POST",
+					url: "Server.php?p=MedicineName",
+					data: "INV_MEDTYPE="+Medtype+"&INV_MEDCAT="+MedCat,
+					success: function(data){
+						$('#INV_MEDICINE_GNAME').html(data);
+						changeit();
+					}
+					});
+				}else{
+				$('#INV_MEDICINE_GNAME').html('<option>Please select catergory</option>');
+				}
+			});
+			$('#INV_MEDICINE_CAT').on('change',function(){
+				var Medtype = $('#INV_MEDICINE_TYPE').val();
+				var MedCat = $('#INV_MEDICINE_CAT').val();
+				if(Medtype != '' && MedCat != ''){
+					$.ajax({
+						type: "POST",
+						url: "Server.php?p=MedicineName",
+						data: "INV_MEDTYPE="+Medtype+"&INV_MEDCAT="+MedCat,
+						success: function(data){
+							$('#INV_MEDICINE_GNAME').html(data);
+							changeit();
+						}
+					});
+				}else{
+						$('#INV_MEDICINE_GNAME').html('<option>Please select type</option>');	
+				}
+			});
+			$('#INV_MEDICINE_GNAME').on('change',function(){
+				var MedGname = $('#INV_MEDICINE_GNAME').val();
+				if(MedGname){
+					$.ajax({
+						type: "POST",
+						url: "Server.php?p=MedicineBName",
+						data: "INV_MEDGNAME="+MedGname,
+						success: function(data){
+							$('#INV_MEDICINE_BNAME').html(data);
+						}
+					});
+				}else{
+						$('#INV_MEDICINE_BNAME').html('<option>Please select name of medicine!<option>');
+				}
+			});
+			$('#INV_MEDICINE_DF').on('change',function(){
+					var MedDF = $('#INV_MEDICINE_DF').val();
+					var MedCat = $('#INV_MEDICINE_CAT').val();
+					var Medtype = $('#INV_MEDICINE_TYPE').val();
+					var MedGname = $('#INV_MEDICINE_GNAME').val();
+					var MedBname = $('#INV_MEDICINE_BNAME').val();
+					if(MedDF){
+						$.ajax({
+							type: "POST",
+							url: "Server.php?p=MedicineDF",
+							data: "MedDform="+MedDF+"&Medgname="+MedGname+"&Medbname="+MedBname+"&MedCat="+MedCat+"&Medtype="+Medtype,
+							success: function(data){
+								$('#INV_MEDICINE_DS').html(data);
+								alert(data);
+							}
+						});
+					}else{
+							$('#INV_MEDICINE_DS').html('<option>Please select dosage form!<option>');
+					}
+				});
+			});
+			function changeit(){
+				var MedGname = $('#INV_MEDICINE_GNAME').val();
+					if(MedGname){
+						$.ajax({
+							type: "POST",
+							url: "Server.php?p=MedicineBName",
+							data: "INV_MEDGNAME="+MedGname,
+							success: function(data){
+								$('#INV_MEDICINE_BNAME').html(data);
+							}
+						});
+					}else{
+							$('#INV_MEDICINE_BNAME').html('<option>Please select name of medicine!<option>');
+					}
+			}
+	</script>
   </body>
 </html>

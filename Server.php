@@ -253,12 +253,87 @@ $sqldate = date('Y-m-d',strtotime($Sched_date));
 else if($page == 'DeleteSched'){
 require 'lib/Db.config.pdo.php';
 
-		$ID = mysql_real_escape_string($_POST['SCHEDULE_ID']);
+$ID = mysql_real_escape_string($_POST['SCHEDULE_ID']);
 
 		$sql = "DELETE FROM schedule WHERE SCHEDULE_ID = $ID";
 		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 
+}
+else if($page == 'addMedicine'){
+require 'lib/Db.config.pdo.php';
+
+$MED_CAT = mysql_real_escape_string($_POST['MEDICINE_CAT']);
+$MED_TYPE = mysql_real_escape_string($_POST['MEDICINE_TYPE']);
+$MED_GNAME = mysql_real_escape_string($_POST['MEDICINE_GNAME']);
+$MED_BNAME = mysql_real_escape_string($_POST['MEDICINE_BNAME']);
+$MED_DFORM = mysql_real_escape_string($_POST['MEDICINE_DFORM']);
+$MED_DOSE = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
+$date = date("Y-m-d");	
+$Year = date('Y',strtotime($date));
+$Month = date('m',strtotime($date));
+
+		$stmt = $db->prepare("insert into medicine values('',?,?,?,?,?,?,?,?)");
+		$stmt->bindParam(1,$MED_CAT);
+		$stmt->bindParam(2,$MED_TYPE);
+		$stmt->bindParam(3,$MED_GNAME);
+		$stmt->bindParam(4,$MED_BNAME);
+		$stmt->bindParam(5,$MED_DFORM);
+		$stmt->bindParam(6,$MED_DOSE);
+		$stmt->bindParam(7,$Month);
+		$stmt->bindParam(8,$Year);
+		$stmt->execute();
+}
+else if($page == 'MedicineName'){
+require 'lib/Db.config.php';
+
+$INV_MEDTYPE = mysql_real_escape_string($_POST['INV_MEDTYPE']);
+$INV_MEDCAT = mysql_real_escape_string($_POST['INV_MEDCAT']);
+
+	$sql = "SELECT MEDICINE_GNAME FROM medicine WHERE MEDICINE_TYPE = '$INV_MEDTYPE' AND MEDICINE_CAT = '$INV_MEDCAT'";
+	$do = mysql_query($sql);
+	$count = mysql_num_rows($do);
+
+	if($count > 0){
+		while($gname = mysql_fetch_array($do)){
+			echo "<option value='$gname[MEDICINE_GNAME]'>"; echo $gname['MEDICINE_GNAME']; echo "</option>";
+		}
+	}else{
+		echo "<option>No medicine found!</option>";
+	}	
+}
+else if($page == 'MedicineBName'){
+require 'lib/Db.config.php';
+
+$INV_MEDGNAME = mysql_real_escape_string($_POST['INV_MEDGNAME']);
+
+	$sql = "SELECT MEDICINE_BNAME FROM medicine WHERE MEDICINE_GNAME = '$INV_MEDGNAME'";
+	$do = mysql_query($sql);
+	$count = mysql_num_rows($do);
+
+	if($count > 0){
+		while($bname = mysql_fetch_array($do)){
+			echo "<option value=\"<?php echo bname['MEDICINE_GNAME'];?>\">"; echo $bname['MEDICINE_BNAME']; echo "</option>";
+		}
+	}else{
+		echo "<option>No medicine found!</option>";
+	}
+}
+else if($page == 'MedicineDF'){
+require 'lib/Db.config.php';
+
+$MedCat = mysql_real_escape_string($_POST['MedCat']);
+$Medtype = mysql_real_escape_string($_POST['Medtype']);
+$MedGname = mysql_real_escape_string($_POST['Medgname']);
+$MedBname = mysql_real_escape_string($_POST['Medbname']);
+$MedDform = mysql_real_escape_string($_POST['MedDform']);
+
+	$sql = "SELECT MEDICINE_DOSE FROM medicine WHERE MEDICINE_GNAME = '$MedGname' AND MEDICINE_CAT = '$MedCat'";
+	$do = mysql_query($sql);
+
+		while($DS = mysql_fetch_array($do)){
+			echo "<option value=\"<?php echo D['MEDICINE_GNAME'];?>\">"; echo $DS['MEDICINE_DOSE']; echo "</option>";
+		}
 }
 
 ?>

@@ -2,7 +2,7 @@
 require 'lib/session.php';
 require 'lib/Db.config.php';
     $rowSQL = mysql_query( "SELECT MAX( P_ID ) AS max FROM `patient`" );
-    $row = mysql_fetch_array( $rowSQL );
+    $row = mysql_fetch_array($rowSQL);
     $largestNumber = $row['max'];
     $MaxID = $largestNumber + 1;
     $date = date("Y-m-d");
