@@ -176,10 +176,9 @@ require 'lib/Db.config.php';
 										<!-- These buttons are shown after a snapshot is taken -->
 										<button type="button" class="btn btn-success" onClick="cancel_preview()"><i class="icon-undo"></i> Re-Take Snapchat</button>
 									</div>
-									<!--
 									<div>
 										<button type="button" class="btn btn-success" onClick="save_photo()"><i class="icon-save"></i> Save</button>
-									</div> -->
+									</div>
 							  </div>
 							</div>
 							<div class="form-group">
@@ -802,14 +801,9 @@ require 'lib/Db.config.php';
 			document.getElementById('post_take_buttons').style.display = 'none';
 		}
 		function save_photo(){
-			Webcam.snap( function() {
-			// the webcam image is now in your own canvas
-		}, myCanvas );
-			 var myCanvas;
-
-			Webcam.upload( myCanvas, 'upload.php', function(code, text) {
-			console.log('Save successfully');
-			 });
+			Webcam.snap( function(uri){
+				Webcam.upload(uri,'upload.php')
+			});
 		}
 	</script>
 	<script>
