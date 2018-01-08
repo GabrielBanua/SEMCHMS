@@ -212,6 +212,7 @@ while($row = $stmt->fetch()){
               </header>
             <div class="panel-body">
               <div class="tab-content">
+<!-- Basic info tab-->
                 <div id="basicinfo-<?php echo $row['P_ID'] ?>" class="tab-pane active">
                  <form action="#" class="form-horizontal tasi-form">
                   <div class="form-group">

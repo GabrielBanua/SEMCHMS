@@ -297,7 +297,7 @@ $INV_MEDCAT = mysql_real_escape_string($_POST['INV_MEDCAT']);
 
 	if($count > 0){
 		while($gname = mysql_fetch_array($do)){
-			echo "<option value=";echo $gname['MEDICINE_GNAME'];echo">"; echo $gname['MEDICINE_GNAME']; echo "</option>";
+			echo "<option value='";echo $gname['MEDICINE_GNAME'];echo "'>"; echo $gname['MEDICINE_GNAME']; echo "</option>";
 		}
 	}else{
 		echo "<option>No medicine found!</option>";
@@ -314,7 +314,7 @@ $INV_MEDGNAME = mysql_real_escape_string($_POST['INV_MEDGNAME']);
 
 	if($count > 0){
 		while($bname = mysql_fetch_array($do)){
-			echo "<option value=";echo $bname['MEDICINE_BNAME'];echo">"; echo $bname['MEDICINE_BNAME']; echo "</option>";
+			echo "<option value='";echo $bname['MEDICINE_BNAME'];echo "'>"; echo $bname['MEDICINE_BNAME']; echo "</option>";
 		}
 	}else{
 		echo "<option>No medicine found!</option>";
@@ -333,8 +333,39 @@ $MedBN = mysql_real_escape_string($_POST['MedBname']);
 	$do = mysql_query($sql);
 
 		while($DS = mysql_fetch_array($do)){
-			echo "<option value=";echo $DS['MEDICINE_DOSE'];echo">";  echo $DS['MEDICINE_DOSE']; echo "</option>";
+			echo "<option value='";echo $DS['MEDICINE_DOSE'];echo "'>";  echo $DS['MEDICINE_DOSE']; echo "</option>";
 		}
+}
+else if($page == 'AddInventory'){
+require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
+
+$MedCat = mysql_real_escape_string($_POST['MEDICINE_CAT']);
+$Medtype = mysql_real_escape_string($_POST['MEDICINE_TYPE']);
+$MedGname = mysql_real_escape_string($_POST['MEDICINE_GNAME']);
+$MedDform = mysql_real_escape_string($_POST['MEDICINE_DFORM']);
+$MedBN = mysql_real_escape_string($_POST['MEDICINE_BNAME']);
+$MedDose = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
+$Supplier = mysql_real_escape_string($_POST['SUPPLIER']);
+$EXPDATE = mysql_real_escape_string($_POST['EXPDATE']);
+$DATEAR = mysql_real_escape_string($_POST['DATEARR']);
+$Qty = mysql_real_escape_string($_POST['QTY']);
+$DateExp = date('Y-m-d',strtotime($EXPDATE)); 
+$DateArr = date('Y-m-d',strtotime($DATEAR)); 
+$QtyHistory = $Qty;
+	$sql = "SELECT MEDICINE_ID FROM medicine WHERE MEDICINE_DOSE = '$MedDose' AND MEDICINE_BNAME = '$MedBN' AND(MEDICINE_GNAME = '$MedGname' AND MEDICINE_CAT = '$MedCat') AND MEDICINE_TYPE = '$Medtype'";
+	$do = mysql_query($sql);
+	$id = mysql_fetch_array($do);
+	$MedID = $id['MEDICINE_ID'];
+
+	$stmt = $db->prepare("insert into inventory values('',?,?,?,?,?,?)");
+		$stmt->bindParam(1,$MedID);
+		$stmt->bindParam(2,$Qty);
+		$stmt->bindParam(3,$Supplier);
+		$stmt->bindParam(4,$DateExp);
+		$stmt->bindParam(5,$DateArr);
+		$stmt->bindParam(6,$QtyHistory);
+		$stmt->execute();
 }
 
 ?>

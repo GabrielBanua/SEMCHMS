@@ -812,7 +812,7 @@ require 'lib/Db.config.php';
 			var today = new Date();
 			var age = Math.floor((today-date_of_birth) / (365.25 * 24 * 60 * 60 * 1000));
 		$('#P_AGE').val(age);
-		if(age > 20){
+		if(age > 14){
 			$('#P_TYPE').val('ADULT');
 		}else{
 			$('#P_TYPE').val('MINOR');
