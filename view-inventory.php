@@ -272,6 +272,8 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 			</form>
 		</div>
 		<div class="modal-footer">
+			<span id="Error_Message" class="text-danger"></span>
+			<span id="Success_Message" class="text-success"></span>
 			<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
 			<button class="btn btn-success" onclick="addInventory()">Save</button>
 		</div>
@@ -700,15 +702,28 @@ while($row = $stmt->fetch()){
 						var ExpDate  = $('#INV_MEDICINE_EXPDATE').val();
 						var DateArr  = $('#INV_MEDICINE_DATEARR').val();
 						var Supplier  = $('#INV_MEDICINE_SUPP').val();
+
+						if(MedDform == '' || MedCat == '' || Medtype == '' || MedGname == '' || MedBname == '' || MedDose == '' || Qty == '' || ExpDate == '' || DateArr == '' || Supplier == ''){
+							$('#Error_Message').html('Please fill all fields! &nbsp;');
+						}else{
+							$('#Error_Message').html('');
+							if (confirm('Are you sure you want to add stock for this medicine?')) {
 							$.ajax({
 								type: "POST",
 								url: "Server.php?p=AddInventory",
 								data: "MEDICINE_DFORM="+MedDform+"&MEDICINE_DOSE="+MedDose+"&MEDICINE_BNAME="+MedBname+"&MEDICINE_GNAME="+MedGname+"&MEDICINE_TYPE="+Medtype+"&MEDICINE_CAT="+MedCat+"&SUPPLIER="+Supplier+"&DATEARR="+DateArr+"&QTY="+Qty+"&EXPDATE="+ExpDate,
 								success: function(data){
-									alert('Added successfully to inventory database!');
-									window.location.reload();
+									$('#Success_Message').html('Successfully Added! &nbsp;');
+									setTimeout(function() {
+										$('#Success_Message').fadeOut('slow');
+									}, 2000);
+									setTimeout(function(){
+										window.location.reload();
+									}, 4000);
 								}
-							})
+							});
+							}
+						}
 					}
 		</script>
   </body>
