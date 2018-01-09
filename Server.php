@@ -353,6 +353,7 @@ $Qty = mysql_real_escape_string($_POST['QTY']);
 $DateExp = date('Y-m-d',strtotime($EXPDATE)); 
 $DateArr = date('Y-m-d',strtotime($DATEAR)); 
 $QtyHistory = $Qty;
+
 	$sql = "SELECT MEDICINE_ID FROM medicine WHERE MEDICINE_DOSE = '$MedDose' AND MEDICINE_BNAME = '$MedBN' AND(MEDICINE_GNAME = '$MedGname' AND MEDICINE_CAT = '$MedCat') AND MEDICINE_TYPE = '$Medtype'";
 	$do = mysql_query($sql);
 	$id = mysql_fetch_array($do);
