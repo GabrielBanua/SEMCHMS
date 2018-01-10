@@ -177,12 +177,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 				<div class="form-group">
 					<label class="col-md-3 col-sm-2 control-label">Date Arrived:</label>
 						<div class="col-lg-6">
-							<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"  class="input-append date dpYears">
-								<input type="text" id="INV_MEDICINE_DATEARR" name="#" readonly="" size="16" class="form-control">
-									<span class="input-group-btn add-on">
-										<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
-									</span>
-							</div>
+							<input id="INV_MEDICINE_DATEARR"class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value="" />
 						</div>
 				</div>
 				<div class="form-group">
@@ -255,12 +250,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 				<div class="form-group">
 					<label class="col-md-3 col-sm-2 control-label">Expiration Date:</label>
 						<div class="col-lg-6">
-							<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"  class="input-append date dpYears">
-								<input type="text" id="INV_MEDICINE_EXPDATE" name="#" readonly="" size="16" class="form-control">
-									<span class="input-group-btn add-on">
-										<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
-									</span>
-							</div>
+							<input id="INV_MEDICINE_EXPDATE" type="date" class="form-control" required>
 						</div>
 				</div>
 				<div class="form-group">
@@ -359,7 +349,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 <table  class="display table table-bordered table-striped" id="example">
    	<thead>
         <tr>
-            <th width="111">Date Arrived</th>
+            <th width="10%">Date Arrived</th>
             <th width="85">Category</th>
             <th width="100">Type</th>
             <th width="120">Generic Name</th>
@@ -368,7 +358,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
             <th width="50">Dose</th>
             <th width="95">Quantity</th>
             <th width="95">Status</th>
-            <th width="100">Expiry date</th>
+            <th width="10%">Expiry date</th>
             <th width="100">Action</th>
         </tr>
     </thead>

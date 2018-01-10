@@ -230,24 +230,19 @@ require 'lib/Db.config.php';
 							<div class="form-group">
 								<label class="col-md-4 control-label">Birthdate</label>
 								<div class="col-lg-6">
-									<div data-date-viewmode="years" data-date-format="yyyy-mm-dd"  class="input-append date dpYears">
-                                        <input type="text" id="P_BDATE" name="P_BDATE" readonly="" size="16" class="form-control">
-                                            <span class="input-group-btn add-on">
-                                            <button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
-                                            </span>
-                                    </div>
+									<input id="P_BDATE" name="P_BDATE" type="date" class="form-control" data-date-format="yyyy-mm-dd" required>
 								</div>
 							</div>
 							<div class="form-group">
                                 <label class="col-md-4 control-label">Age</label>
                                 <div class="col-lg-2">
-                                    <input id="P_AGE" name="P_AGE" type="text" class="form-control" readonly>
+                                    <input tabindex="-1" id="P_AGE" name="P_AGE" type="text" class="form-control" readonly>
                                 </div>
                             </div>
 							<div class="form-group">
                                 <label class="col-md-4 control-label">Category</label>
                                 <div class="col-lg-4">
-                                    <input id="P_TYPE" name="P_TYPE" type="text" class="form-control" readonly>
+                                    <input tabindex="-1" id="P_TYPE" name="P_TYPE" type="text" class="form-control" readonly>
                                 </div>
 							</div>
                             <div class="form-group">
