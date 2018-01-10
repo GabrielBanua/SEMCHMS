@@ -230,7 +230,7 @@ require 'lib/Db.config.php';
 							<div class="form-group">
 								<label class="col-md-4 control-label">Birthdate</label>
 								<div class="col-lg-6">
-									<input id="P_BDATE" name="P_BDATE" type="date" class="form-control" data-date-format="yyyy-mm-dd" required>
+									<input id="P_BDATE" name="P_BDATE" type="date" class="form-control" required>
 								</div>
 							</div>
 							<div class="form-group">
