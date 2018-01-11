@@ -177,12 +177,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 				<div class="form-group">
 					<label class="col-md-3 col-sm-2 control-label">Date Arrived:</label>
 						<div class="col-lg-6">
-							<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"  class="input-append date dpYears">
-								<input type="text" id="INV_MEDICINE_DATEARR" name="#" readonly="" size="16" class="form-control">
-									<span class="input-group-btn add-on">
-										<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
-									</span>
-							</div>
+							<input id="INV_MEDICINE_DATEARR" type="date" class="form-control" required>
 						</div>
 				</div>
 				<div class="form-group">
@@ -255,12 +250,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 				<div class="form-group">
 					<label class="col-md-3 col-sm-2 control-label">Expiration Date:</label>
 						<div class="col-lg-6">
-							<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"  class="input-append date dpYears">
-								<input type="text" id="INV_MEDICINE_EXPDATE" name="#" readonly="" size="16" class="form-control">
-									<span class="input-group-btn add-on">
-										<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
-									</span>
-							</div>
+							<input id="INV_MEDICINE_EXPDATE" type="date" class="form-control" required>
 						</div>
 				</div>
 				<div class="form-group">
@@ -333,7 +323,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 				<div class="form-group">
 					<label class="col-md-3 col-sm-2 control-label">Dosage Form:</label>
 						<div class="col-lg-6">
-							<select class="form-control" id="MEDICINE_DFORM">
+							<select class="select2-single" id="MEDICINE_DFORM">
 								<option></option><!--for placeholder-->
 								<option>Tablet</option>
 								<option>Syrup</option>
@@ -359,7 +349,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 <table  class="display table table-bordered table-striped" id="example">
    	<thead>
         <tr>
-            <th width="111">Date Arrived</th>
+            <th width="10%">Date Arrived</th>
             <th width="85">Category</th>
             <th width="100">Type</th>
             <th width="120">Generic Name</th>
@@ -368,7 +358,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
             <th width="50">Dose</th>
             <th width="95">Quantity</th>
             <th width="95">Status</th>
-            <th width="100">Expiry date</th>
+            <th width="10%">Expiry date</th>
             <th width="100">Action</th>
         </tr>
     </thead>
@@ -397,50 +387,102 @@ while($row = $stmt->fetch()){
 		<div class="modal-content">
 			<div class="modal-header">
 				<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-					<h4 class="modal-title">Edit Inventory</h4>
+					<h4 class="modal-title">Edit Medicines</h4>
 			</div>
 		<div class="modal-body">
 			<form class="form-horizontal" role="form">
 				<div class="form-group">
-					<label class="col-md-3 col-sm-2 control-label">Name of Medicines:</label>
+					<label class="col-md-3 col-sm-2 control-label">Date Arrived:</label>
 						<div class="col-lg-6">
-							<input type="text" class="form-control" required>
+							<input id="INV_MEDICINE_DATEARR" type="date" class="form-control" required>
 						</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-3 col-sm-2 control-label">Category:</label>
 						<div class="col-lg-6">
-							<input type="text" class="form-control" required>
+							<select class="select2-single" id="INV_MEDICINE_CAT">
+								<option></option><!--for placeholder-->
+								<option value="Adult">Adult</option>
+								<option value="Children">Children</option>
+							</select>
 						</div>
 				</div>
 				<div class="form-group">
-					<label class="col-md-3 col-sm-2 control-label">Brand:</label>
+					<label class="col-md-3 col-sm-2 control-label">Type:</label>
 						<div class="col-lg-6">
-							<input type="text" class="form-control" required>
+							<select class="select2-single" id="INV_MEDICINE_TYPE">
+								<option></option><!--for placeholder-->
+								<option value="Analgesic">Analgesic</option>
+								<option value="Anti-Allergy">Anti-Allergy</option>
+								<option value="Antibiotics">Antibiotics</option>
+								<option value="Diabetics">Diabetics</option>
+								<option value="Hypertension">Hypertension</option>
+								<option value="OTROS">OTROS</option>
+								<option value="Respiratory">Respiratory</option>
+								<option value="Stomach/Digestive">Stomach/Digestive</option>
+								<option value="Vitamins">Vitamins</option>
+							</select>
+						</div>
+				</div>											
+				<div class="form-group">
+					<label class="col-md-3 col-sm-2 control-label">Name of Medicines(Generic):</label>
+						<div class="col-lg-6">
+							<select class="select2-single" id="INV_MEDICINE_GNAME">
+								<option></option><!--for placeholder-->
+							</select>
 						</div>
 				</div>
 				<div class="form-group">
-					<label class="col-md-3 col-sm-2 control-label">Supplier:</label>
+					<label class="col-md-3 col-sm-2 control-label">Brand Name:</label>
 						<div class="col-lg-6">
-							<input type="text" class="form-control" required>
+							<select class="select2-single" id="INV_MEDICINE_BNAME">
+								<option></option><!--for placeholder-->
+							</select>
+						</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 col-sm-2 control-label">Dosage Form:</label>
+						<div class="col-lg-6">
+							<select class="select2-single" id="INV_MEDICINE_DF">
+								<option></option><!--for placeholder-->
+								<option value="Tablet">Tablet</option>
+								<option value="Syrup">Syrup</option>
+							</select>
+						</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 col-sm-2 control-label">Dose:</label>
+						<div class="col-lg-6">
+							<select class="select2-single" id="INV_MEDICINE_DS">
+								<option></option><!--for placeholder-->
+							</select>
+						</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 col-sm-2 control-label">Quantity:</label>
+						<div class="col-lg-2">
+							<input type="text" id="INV_MEDICINE_QTY" class="form-control numonly" maxlength="5" required>
 						</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-3 col-sm-2 control-label">Expiration Date:</label>
 						<div class="col-lg-6">
-							<div class="input-group date form_datetime-component">
-								<input type="text" class="form-control" readonly="" size="16">
-									<span class="input-group-btn">
-										<button type="button" class="btn btn-danger date-set"><i class="icon-calendar"></i></button>
-									</span>
-							</div>
+							<input id="INV_MEDICINE_EXPDATE" type="date" class="form-control" required>
+						</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 col-sm-2 control-label">Supplier:</label>
+						<div class="col-lg-6">
+							<input type="text" id="INV_MEDICINE_SUPP" class="form-control" required>
 						</div>
 				</div>
 			</form>
 		</div>
 		<div class="modal-footer">
+			<span id="Error_Message" class="text-danger"></span>
+			<span id="Success_Message" class="text-success"></span>
 			<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-			<button class="btn btn-success" type="submit" onclick="#">Save</button>
+			<button class="btn btn-success" onclick="addInventory()">Save</button>
 		</div>
 		</div>
 	</div>
