@@ -246,7 +246,7 @@ require 'lib/Db.config.pdo.php';
                                     <label class="col-md-3 col-sm-2 control-label">Time:</label>
                                         <div class="col-md-5">
                                                 <div class="input-group bootstrap-timepicker">
-                                                    <input type="text" value="<?php $date = date("h:i A", strtotime($row['SCHEDULE_TIME'])); echo $date; ?>" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control timepicker-default">
+                                                    <input type="text" value="<?php $date = date("h:i", strtotime($row['SCHEDULE_TIME'])); echo $date; ?>" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control timepicker-default">
                                                       <span class="input-group-btn">
                                                         <button class="btn btn-default" type="button"><i class="icon-time"></i></button>
                                                       </span>

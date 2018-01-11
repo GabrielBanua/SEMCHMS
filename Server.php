@@ -17,8 +17,11 @@ $Middlename = mysql_real_escape_string($_POST['MN']);
 $Gender = mysql_real_escape_string($_POST['GN']);
 $Position = mysql_real_escape_string($_POST['PS']);
 $Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
+$date = date("Y-m-d");	
+$Year = date('Y',strtotime($date));
+$Month = date('m',strtotime($date));
 
-		$stmt = $db->prepare("insert into users values('',?,?,?,?,?,?,?)");
+		$stmt = $db->prepare("insert into users values('',?,?,?,?,?,?,?,?,?)");
 		$stmt->bindParam(1,$Username);
 		$stmt->bindParam(2,$Pass);
 		$stmt->bindParam(3,$Firstname);
@@ -26,6 +29,8 @@ $Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
 		$stmt->bindParam(4,$Middlename);
 		$stmt->bindParam(6,$Gender);
 		$stmt->bindParam(7,$Position);
+		$stmt->bindParam(8,$Month);
+		$stmt->bindParam(9,$Year);
 		$stmt->execute();
 } 
 //add new patient
@@ -53,9 +58,13 @@ if($page == 'addNewPatient'){
 		$DATE_REGISTER = $timezone;
 
 	$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
-	$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);	
+	$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);
+	$date = date("Y-m-d");	
+	$Year = date('Y',strtotime($date));
+	$Month = date('m',strtotime($date));
+
 	
-		$stmt = $db->prepare("insert into Patient values('',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$stmt = $db->prepare("insert into Patient values('',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		$stmt->bindParam(1,$Lastname);
 		$stmt->bindParam(2,$Firstname);
 		$stmt->bindParam(3,$Middlename);
@@ -73,6 +82,8 @@ if($page == 'addNewPatient'){
 		$stmt->bindParam(15,$Civil);
 		$stmt->bindParam(16,$DATE_REGISTER);
 		$stmt->bindParam(17,$OccupationFBW);
+		$stmt->bindParam(18,$Month);
+		$stmt->bindParam(19,$Year);
 		$stmt->execute();
 
 			$Last_ID = $db->lastInsertId();
@@ -82,7 +93,7 @@ if($page == 'addNewPatient'){
 			$Disease = mysql_real_escape_string($_POST['DISE_DISO']);
 			$Hospitalized = mysql_real_escape_string($_POST['HPTL']);
 
-		$sql = "INSERT INTO `patient_medical_issue` (`P_ID`, `PP_HEATH`, `TRMT`, `MEDCT`, `DISE_DISO`, `HPTL`) VALUES ('$Last_ID', '$Past_pre', '$Treatment', '$Medication', '$Disease', '$Hospitalized')";
+		$sql = "INSERT INTO `patient_medical_issue` (`P_ID`, `PP_HEATH`, `TRMT`, `MEDCT`, `DISE_DISO`, `HPTL`, `MONTH`, `YEAR`) VALUES ('$Last_ID', '$Past_pre', '$Treatment', '$Medication', '$Disease', '$Hospitalized', '$Month', '$Year')";
  		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 
@@ -100,7 +111,7 @@ if($page == 'addNewPatient'){
 			$CB_H = mysql_real_escape_string($_POST['CB_HEALTH_COND']);
 			$TU_H = mysql_real_escape_string($_POST['TU_HEALTH_COND']);
 
- 		$sql = "INSERT INTO `adult` (`PHY_HEALTH`, `MENT_EMO_HEAl`, `SIG_INJ`, `SMOKE`, `ALCO_DRUGS`, `ASSIST_DEV`, `PERS_ASSIST`, `MARITAL_STAT`, `YEARS_FE`, `DOM_HAND`, `CB_HEALTH_COND`, `TU_HEALTH_COND`, `PMI_ID`) VALUES ('$Physical', '$Mental', '$Significant', '$Smoke', '$Alcohol', '$Assistive', '$Person_Ass', '$Marital_stat', '$Formal_ed', '$Dominant', '$CB_H', '$TU_H', '$Last_PMID')";
+ 		$sql = "INSERT INTO `adult` (`PHY_HEALTH`, `MENT_EMO_HEAl`, `SIG_INJ`, `SMOKE`, `ALCO_DRUGS`, `ASSIST_DEV`, `PERS_ASSIST`, `MARITAL_STAT`, `YEARS_FE`, `DOM_HAND`, `CB_HEALTH_COND`, `TU_HEALTH_COND`, `PMI_ID`, `MONTH`, `YEAR`) VALUES ('$Physical', '$Mental', '$Significant', '$Smoke', '$Alcohol', '$Assistive', '$Person_Ass', '$Marital_stat', '$Formal_ed', '$Dominant', '$CB_H', '$TU_H', '$Last_PMID', '$Month', '$Year')";
  		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 }else if($page == 'UpdatePatient'){
@@ -124,8 +135,9 @@ if($page == 'addNewPatient'){
 	$Date_Reg = mysql_real_escape_string($_POST['DATE_REG']);
 	$Occupation = mysql_real_escape_string($_POST['P_OCCU']);
 	$OccupationFBW = mysql_real_escape_string($_POST['P_OCCU_FBW']);
-		$timezone = date("Ymd");
-		$DATE_REGISTER = $timezone;
+	$timezone = date("Ymd");
+	$Bday = date('Y-m-d',strtotime($Birthday));
+	$DATE_REGISTER = $timezone;
 
 	$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
 	$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);	
@@ -135,7 +147,7 @@ if($page == 'addNewPatient'){
 		$stmt->bindParam(2,$Firstname);
 		$stmt->bindParam(3,$Middlename);
 		$stmt->bindParam(4,$Gender);
-		$stmt->bindParam(5,$Birthday);
+		$stmt->bindParam(5,$Bday);
 		$stmt->bindParam(6,$Age);
 		$stmt->bindParam(8,$Weight);
 		$stmt->bindParam(9,$Height);
@@ -240,7 +252,7 @@ $Sched_ID = mysql_real_escape_string($_POST['Sched_Id']);
 $Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
 $Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 $Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-$Time = date('h:i A', strtotime($Sched_time));
+$Time = date('H:i:s', strtotime($Sched_time));
 $sqldate = date('Y-m-d',strtotime($Sched_date)); 
 	
 		$stmt = $db->prepare("Update schedule set SCHEDULE_DATE=?, SCHEDULE_TIME=?, SCHEDULE_PURPOSE=? where SCHEDULE_ID=?");

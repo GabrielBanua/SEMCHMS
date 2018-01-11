@@ -276,7 +276,7 @@ while($row = $stmt->fetch()){
                   <div class="form-group">
                     <label class="col-md-4 control-label">Birthdate</label>
 						<div class="col-lg-6">
-							<input type="text" id="P_BDATE-<?php echo $row['P_ID'] ?>" value="<?php echo $row['P_BDATE'] ?>" class="form-control" required>
+							<input type="date" id="P_BDATE-<?php echo $row['P_ID'] ?>" value="<?php echo $row['P_BDATE'] ?>" class="form-control" required>
 						</div>
                   </div>
                   <div class="form-group">
