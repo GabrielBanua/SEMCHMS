@@ -1,4 +1,4 @@
-#sidebar, .header, .site-footer {
+.panel-heading,#sidebar, .header, .site-footer {
     display: none ;
 }
 .header , .site-footer{

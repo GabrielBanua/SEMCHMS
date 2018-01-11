@@ -163,6 +163,9 @@ else if($Position == "Volunter"){
                       <section class="panel">
                           <header class="panel-heading">
                               Patient List Report
+							  <div class="pull-right">
+							  <a class="btn btn-success btn-sm" onclick="javascript:window.print();"><i class="icon-print"></i> Print </a>
+							  </div>
                           </header>
                           <div class="panel-body">
                           <div class="row invoice-list">
@@ -219,10 +222,6 @@ else if($Position == "Volunter"){
                                       <li><strong>Patient Total :</strong> 1</li>
                                   </ul>
                               </div>
-                          </div>
-                          <div class="text-center invoice-btn">
-                              <a class="btn btn-danger btn-lg"><i class="fa fa-check"></i> Submit Invoice </a>
-                              <a class="btn btn-info btn-lg" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print </a>
                           </div>
                       </div>
                     </section>
