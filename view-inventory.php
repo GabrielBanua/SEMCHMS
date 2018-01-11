@@ -490,7 +490,6 @@ while($row = $stmt->fetch()){
 <!--*******************************************************MODAL END**************************************************************** -->
 			</td>
         </tr>
-
 <?php
   }
 ?>       
@@ -526,15 +525,11 @@ while($row = $stmt->fetch()){
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-	
   	<!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
-
     <!--script for this page only-->
-	
 	<!-- Keypress Limit -->
 	<script src="js/numbers-only.js"></script>
-
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
