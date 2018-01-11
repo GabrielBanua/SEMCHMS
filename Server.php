@@ -221,7 +221,7 @@ $P_ID = mysql_real_escape_string($_POST['P_ID']);
 $Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
 $Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 $Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-$Time = date('h:i A', strtotime($Sched_time));
+$Time = date('H:i:s', strtotime($Sched_time));
 $sqldate = date('Y-m-d',strtotime($Sched_date)); 
 
 	

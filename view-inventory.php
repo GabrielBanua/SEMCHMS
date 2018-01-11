@@ -719,7 +719,7 @@ while($row = $stmt->fetch()){
 									}, 2000);
 									setTimeout(function(){
 										window.location.reload();
-									}, 4000);
+									}, 3000);
 								}
 							});
 							}

@@ -194,7 +194,7 @@ require 'lib/Db.config.pdo.php';
                                           <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i> Edit</a>
 										  <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
 										  <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class=" icon-share-alt"></i> Proceed</a>
-									<!-- Register User Start  MODAL-->
+									<!-- edit Schedule Start MODAL-->
 
                                 <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['SCHEDULE_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['SCHEDULE_ID']?>" class="modal fade">
                 									<div class="modal-dialog">
@@ -246,7 +246,7 @@ require 'lib/Db.config.pdo.php';
                                     <label class="col-md-3 col-sm-2 control-label">Time:</label>
                                         <div class="col-md-5">
                                                 <div class="input-group bootstrap-timepicker">
-                                                    <input type="text" value="<?php $date = date("H:i", strtotime($row['SCHEDULE_TIME'])); echo $date; ?>" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control timepicker-default">
+                                                    <input type="text" value="<?php $date = date("h:i A", strtotime($row['SCHEDULE_TIME'])); echo $date; ?>" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control timepicker-default">
                                                       <span class="input-group-btn">
                                                         <button class="btn btn-default" type="button"><i class="icon-time"></i></button>
                                                       </span>
