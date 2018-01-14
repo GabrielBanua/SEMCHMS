@@ -106,12 +106,11 @@ if($page == 'addNewPatient'){
 			$Alcohol = mysql_real_escape_string($_POST['ALCO_DRUGS']);
 			$Assistive = mysql_real_escape_string($_POST['ASSIST_DEV']);
 			$Person_Ass = mysql_real_escape_string($_POST['PERS_ASSIST']);
-			$Marital_stat = mysql_real_escape_string($_POST['MARITAL_STAT']);
 			$Formal_ed = mysql_real_escape_string($_POST['YEARS_FE']);
 			$CB_H = mysql_real_escape_string($_POST['CB_HEALTH_COND']);
 			$TU_H = mysql_real_escape_string($_POST['TU_HEALTH_COND']);
 
- 		$sql = "INSERT INTO `adult` (`PHY_HEALTH`, `MENT_EMO_HEAl`, `SIG_INJ`, `SMOKE`, `ALCO_DRUGS`, `ASSIST_DEV`, `PERS_ASSIST`, `MARITAL_STAT`, `YEARS_FE`, `DOM_HAND`, `CB_HEALTH_COND`, `TU_HEALTH_COND`, `PMI_ID`, `MONTH`, `YEAR`) VALUES ('$Physical', '$Mental', '$Significant', '$Smoke', '$Alcohol', '$Assistive', '$Person_Ass', '$Marital_stat', '$Formal_ed', '$Dominant', '$CB_H', '$TU_H', '$Last_PMID', '$Month', '$Year')";
+ 		$sql = "INSERT INTO `adult` (`PHY_HEALTH`, `MENT_EMO_HEAl`, `SIG_INJ`, `SMOKE`, `ALCO_DRUGS`, `ASSIST_DEV`, `PERS_ASSIST`, `YEARS_FE`, `DOM_HAND`, `CB_HEALTH_COND`, `TU_HEALTH_COND`, `PMI_ID`, `MONTH`, `YEAR`) VALUES ('$Physical', '$Mental', '$Significant', '$Smoke', '$Alcohol', '$Assistive', '$Person_Ass', '$Formal_ed', '$Dominant', '$CB_H', '$TU_H', '$Last_PMID', '$Month', '$Year')";
  		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 }else if($page == 'UpdatePatient'){

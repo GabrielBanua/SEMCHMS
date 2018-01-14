@@ -164,7 +164,7 @@ require 'lib/Db.config.php';
                               Basic Information
                           </header>
                           <div class="panel-body">
-							<form id="basicvalid" method="POST" action="#" class="form-horizontal tasi-form">
+							<form action="" role="form" class="form-horizontal tasi-form">
 							<div class="form-group">
 								<div class="col-md-9">
 								<div id="my_camera"></div><br>
@@ -524,9 +524,11 @@ require 'lib/Db.config.php';
             							</div>
                     </div>
           					<div class="form-group">
-          						<div class="col-sm-4 pull-right">
-          							<button class="btn btn-success" type="submit" onclick="addNewPatient()">Save</button>
-          						</div>
+                      <div class="col-sm-12 pull-right">
+                        <button class="btn btn-success" type="button" onclick="addNewPatient()">Save</button>
+                        <span id="Error_Message" class="text-danger"></span>
+                        <span id="Success_Message" class="text-success"></span>
+                      </div>
                     </div>
 				</form>
       </div>
@@ -648,7 +650,6 @@ require 'lib/Db.config.php';
             }else if(Person_assist == '--Select--'){
               Person_assist = 'No information given!';
             }
-        var Marital_stat = $('#MARITAL_STAT').val();
         var Formal_ED = $('#YEARS_FE').val();
         var CB_Health = $('#CB_HEALTH_COND').val();
             if(CB_Health == 'Yes'){
@@ -662,20 +663,32 @@ require 'lib/Db.config.php';
             }else if(TU_Health == '--Select--'){
               TU_Health = 'No information given!';
             }
-        if(confirm('Are you sure you want to add this patient record in the database?')) {
-        $.ajax({
-          type: "POST",
-          url: "Server.php?p=addNewPatient",
-          data: "P_LNAME="+Lastname+"&P_FNAME="+Firstname+"&P_MNAME="+Middlename+"&P_GNDR="+Gender+"&P_BDATE="+Birthday+"&P_AGE="+Age+"&P_TEMP="+Temperature+"&P_WGHT="+Weight+"&P_HGHT="+Height+"&P_TYPE="+Type+"&P_ADD="+Address+"&P_CN="+Contact+"&P_OCCU="+Occupation+"&P_REL="+Religion+"&P_CVL_STAT="+Civil+"&PP_HEATH="+Past_pre+"&TRMT="+Treatment+"&MEDCT="+Medication+"&DISE_DISO="+Disease+"&HPTL="+Hospitalized+"&DOM_HAND="+Dominant+"&PHY_HEALTH="+Physical_H+"&MENT_EMO_HEAl="+Mental_Emo+"&SIG_INJ="+Significant+"&SMOKE="+Smoke+"&ALCO_DRUGS="+Alcohol+"&ASSIST_DEV="+Assistive_dev+"&PERS_ASSIST="+Person_assist+"&MARITAL_STAT="+Marital_stat+"&YEARS_FE="+Formal_ED+"&CB_HEALTH_COND="+CB_Health+"&TU_HEALTH_COND="+TU_Health+"&P_OCCU_FBW="+OccupationFBW,
-          success: function(data){
-            alert('Added successfully!');
-            window.location.reload();
+
+            if(Lastname == '' || Firstname == '' || Middlename == '' || Gender == '--Select--' || Age == '' || Temperature == '' || Weight == '' || Height == '' || Type == '' || Address == '' || Contact == '' || Occupation == '--Select--' || Religion == '--Select--' || Civil == '--Select--' || Past_pre == '' || Treatment == '' || Medication == '' || Disease == '' || Hospitalized == '' || Dominant == '--Select--' || Physical_H == '--Select--' || Mental_Emo == '--Select--' || Significant == '' || Smoke == '' || Alcohol == '' || Assistive_dev == '' || Person_assist == '' || Formal_ED == '' || CB_Health == '' || TU_Health == '' || OccupationFBW == '--Select--'){
+              $('#Error_Message').html('Please fill all fields! &nbsp;');
+            }else{
+              $('#Error_Message').html('');
+                if(confirm('Are you sure you want to add this patient record in the database?')){
+                    $.ajax({
+                      type: "POST",
+                      url: "Server.php?p=addNewPatient",
+                      data: "P_LNAME="+Lastname+"&P_FNAME="+Firstname+"&P_MNAME="+Middlename+"&P_GNDR="+Gender+"&P_BDATE="+Birthday+"&P_AGE="+Age+"&P_TEMP="+Temperature+"&P_WGHT="+Weight+"&P_HGHT="+Height+"&P_TYPE="+Type+"&P_ADD="+Address+"&P_CN="+Contact+"&P_OCCU="+Occupation+"&P_REL="+Religion+"&P_CVL_STAT="+Civil+"&PP_HEATH="+Past_pre+"&TRMT="+Treatment+"&MEDCT="+Medication+"&DISE_DISO="+Disease+"&HPTL="+Hospitalized+"&DOM_HAND="+Dominant+"&PHY_HEALTH="+Physical_H+"&MENT_EMO_HEAl="+Mental_Emo+"&SIG_INJ="+Significant+"&SMOKE="+Smoke+"&ALCO_DRUGS="+Alcohol+"&ASSIST_DEV="+Assistive_dev+"&PERS_ASSIST="+Person_assist+"&YEARS_FE="+Formal_ED+"&CB_HEALTH_COND="+CB_Health+"&TU_HEALTH_COND="+TU_Health+"&P_OCCU_FBW="+OccupationFBW,
+                      success: function(data){
+                  $('#Success_Message').html('Successfully Added! &nbsp;');
+                  setTimeout(function() {
+                    $('#Success_Message').fadeOut('slow');
+                  }, 2000);
+                  setTimeout(function(){
+                    window.location.reload();
+                  }, 3000);
+                }
+              });
+              }
+              else{
+                
+              }
+            }
           }
-        });
-      }else{
-        //do nothing
-      }
-}
 	</script>
 	<script>
         $(document).ready(function(){
