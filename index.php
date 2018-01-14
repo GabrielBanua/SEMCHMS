@@ -226,7 +226,7 @@ require 'lib/session.php';
                             </ul>
                             <div class="bar">
                                 <div class="title">JAN</div>
-                                <div class="value tooltips" data-original-title="9  0%" data-toggle="tooltip" data-placement="top">90%</div>
+                                <div class="value tooltips" data-original-title="90%" data-toggle="tooltip" data-placement="top">90%</div>
                             </div>
                             <div class="bar ">
                                 <div class="title">FEB</div>
@@ -407,7 +407,6 @@ require 'lib/session.php';
     <script src="js/sparkline-chart.js"></script>
     <script src="js/easy-pie-chart.js"></script>
     <script src="js/count.js"></script>
-    <script src="lib/levelaccess.js"></script>
 
     <script>
         $(document).ready(function(){

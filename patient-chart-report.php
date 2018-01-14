@@ -16,7 +16,7 @@ else if($Position == "Volunter"){
 	<meta name="google" content="notranslate">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Patient List Report</title>
+    <title>Patient Reports Panel</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -26,7 +26,6 @@ else if($Position == "Volunter"){
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
-	<link href="css/invoice-print.css" rel="stylesheet" media="print">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
@@ -162,68 +161,40 @@ else if($Position == "Volunter"){
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              Patient List Report
+                              Patient Reports Panel
 							  <div class="pull-right">
-							  <a class="btn btn-success btn-sm" onclick="javascript:window.print();"><i class="icon-print"></i> Print </a>
-							  </div>
+								<select id="pyear" class="form-control">
+									<option hidden value="<?php 
+									if(isset($_GET['year'])){
+										$value=$_GET['year']; 
+										echo $value;
+									}
+										else{
+											echo date('Y');
+										}
+												   ?>">
+										<?php 
+										if(isset($_GET['year'])){
+											$value=$_GET['year']; 
+											echo $value;
+										}
+										else{
+											echo date('Y');
+										}
+										?></option>
+									<?php
+									for($y=2012; $y<=2025; $y++){
+									?>
+									<option value="<?php echo $y ?>"><?php echo $y; ?></option>
+									<?php
+									}
+									?>
+								</select>
+							  </div><br><br>
                           </header>
-                          <div class="panel-body">
-                          <div class="row invoice-list">
-                              <div class="text-center corporate-id">
-                                  <!--<img src="img/vector-lab.jpg" alt=""> -->
-								  <h2>Saint Ezekiel Moreno Health Center</h2>
-								  <label>Handumanan Phase III ,Bacolod City</label>
-								  <h3>Patient Master List Month of January 2018</h3>
-                              </div>
-                          </div>
-                          <table class="table table-striped table-hover">
-                              <thead>
-                              <tr>
-                                  <th>Patient No.</th>
-                                  <th>Name</th>
-                                  <th class="hidden-phone">Address</th>
-                                  <th class="">Date</th>
-                                  <th class="">Visit Number</th>
-                                  <th>Status</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Alessander Rebiato</td>
-                                  <td class="hidden-phone">Ayala North Point</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="">2</td>
-                                  <td> Killed</td>
-                              </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td>Alessander Rebiato</td>
-                                  <td class="hidden-phone">Ayala North Point</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="">2</td>
-                                  <td> Killed</td>
-                              </tr>
-							  <tr>
-                                  <td>3</td>
-                                  <td>Alessander Rebiato</td>
-                                  <td class="hidden-phone">Ayala North Point</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="">2</td>
-                                  <td> Killed</td>
-                              </tr>
-                              </tbody>
-                          </table>
-                          <div class="row">
-                              <div class="col-lg-4 invoice-block pull-right">
-                                  <ul class="unstyled amounts">
-                                      <li><strong>Male :</strong> 1</li>
-                                      <li><strong>Female :</strong> 0</li>
-                                      <li><strong>Patient Total :</strong> 1</li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
+							<div class="panel-body">
+								<div id="patient_population" style="width: 100%; height: 400px"></div>
+							</div>
                     </section>
                   </div>
               </div>
@@ -293,6 +264,68 @@ else if($Position == "Volunter"){
 	</script>
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
-
+    <script src = "js/jquery.canvasjs.min.js"></script>
+	<script type="text/javascript"> 
+		window.onload = function(){ 
+			$("#patient_population").CanvasJSChart({
+				theme: "light2",
+				zoomEnabled: true,
+				zoomType: "x",
+				panEnabled: true,
+				animationEnabled: true,
+				animationDuration: 1000,
+				exportFileName: "Monthly Population", 
+				exportEnabled: true,
+				title: { 
+					text: "Patient Population as of Year",
+					fontSize: 20
+				},
+				axisX: {		       
+					gridDashType: "dot",
+					gridThickness: 1,
+					labelFontColor: "black",
+					crosshair: {
+						enabled: true 
+					}
+				},
+				axisY: { 
+					title: "Total Population", 
+					includeZero: false,
+					labelFontColor: "black",
+					crosshair: {
+						enabled: true 
+					}
+				}, 
+				data: [ 
+					{ 
+						type: "column", 
+						toolTipContent: "{label}: {y}", 
+						dataPoints: [ 
+							{ label: "January", y: 100 },
+							 { label: "February", y: 200 },
+							{ label: "March", y: 300 },
+							 { label: "April", y: 400 },
+							{ label: "May", y: 400 },
+							 { label: "June", y: 400 },
+							{ label: "July", y: 500 },
+							 { label: "August", y: 600 },
+							{ label: "September", y: 900 },
+							 { label: "October", y: 300 },
+							{ label: "November", y: 100 },
+							 { label: "December", y: 450 }
+						] 
+					}
+				] 
+			}); 
+		}
+	</script>
+	<script>
+            $(document).ready(function(){
+                $("#pyear").on('change', function(){
+                    var year=$(this).val();
+                    window.location = 'patient-chart-report.php?year='+year;
+                });
+            });
+    </script>
   </body>
 </html>
