@@ -221,48 +221,48 @@ require 'lib/Db.config.php';
                                 <label class="col-md-4 control-label">Gender</label>
                                 <div class="col-lg-6">
                                     <select class="form-control" name="P_GNDR" id="P_GNDR" required>
-										<option hidden>--Select--</option>
-										<option>Male</option>
-										<option>Female</option>
-									</select>
+                  										<option hidden>--Select--</option>
+                  										<option>Male</option>
+                  										<option>Female</option>
+                  									</select>
                                 </div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-4 control-label">Birthdate</label>
-								<div class="col-lg-6">
-									<input id="P_BDATE" name="P_BDATE" type="date" class="form-control" required>
-								</div>
-							</div>
-							<div class="form-group">
-                                <label class="col-md-4 control-label">Age</label>
-                                <div class="col-lg-2">
-                                    <input tabindex="-1" id="P_AGE" name="P_AGE" type="text" class="form-control" readonly>
+                  							</div>
+                  							<div class="form-group">
+                  								<label class="col-md-4 control-label">Birthdate</label>
+                    								<div class="col-lg-6">
+                    									<input id="P_BDATE" name="P_BDATE" type="date" class="form-control" required>
+                    								</div>
+                  							</div>
+                  							<div class="form-group">
+                                  <label class="col-md-4 control-label">Age</label>
+                                    <div class="col-lg-3">
+                                      <input tabindex="-1" id="P_AGE" name="P_AGE" type="text" class="form-control" readonly>
+                                    </div>
                                 </div>
-                            </div>
-							<div class="form-group">
-                                <label class="col-md-4 control-label">Category</label>
-                                <div class="col-lg-4">
-                                    <input tabindex="-1" id="P_TYPE" name="P_TYPE" type="text" class="form-control" readonly>
+                  							<div class="form-group">
+                                  <label class="col-md-4 control-label">Category</label>
+                                    <div class="col-lg-3">
+                                        <input tabindex="-1" id="P_TYPE" name="P_TYPE" type="text" class="form-control" readonly>
+                                    </div>
+							                  </div>
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Temperature (Celcius)</label>
+                                  <div class="col-lg-3">
+									                 <input id="P_TEMP" name="P_TEMP" maxlength="5" type="text"class="form-control numdecimal">
+                                  </div>
                                 </div>
-							</div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Temperature (Celcius)</label>
-                                <div class="col-lg-3">
-									<input id="P_TEMP" name="P_TEMP" maxlength="5" type="text"class="form-control numdecimal">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Weight (Kg)</label>
-                                <div class="col-lg-3">
-									<input id="P_WGHT" name="P_WGHT" maxlength="5" type="text" class="form-control numdecimal" required>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-4 control-label">Height (cm)</label>
-								<div class="col-lg-3">
-									<input id="P_HGHT" name="P_HGHT" maxlength="5" type="text" class="form-control numdecimal" required>
-								</div>
-							</div>
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Weight (Kg)</label>
+                                    <div class="col-lg-3">
+									                   <input id="P_WGHT" name="P_WGHT" maxlength="5" type="text" class="form-control numdecimal" required>
+								                    </div>
+							                  </div>
+                  							<div class="form-group">
+                  								<label class="col-md-4 control-label">Height (cm)</label>
+                      								<div class="col-lg-3">
+                      									<input id="P_HGHT" name="P_HGHT" maxlength="5" type="text" class="form-control numdecimal" required>
+                      								</div>
+                  							</div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Contact Number (+639)</label>
                                 <div class="col-lg-6">
@@ -273,17 +273,17 @@ require 'lib/Db.config.php';
                                 <label class="col-md-4 control-label">Religion</label>
                                 <div class="col-lg-6">
                                     <select class="form-control" name="P_REL" id="P_REL" required>
-            							<option hidden>--Select--</option>
-            							<option>Catholic</option>
-            							<option>Muslim</option>
-        							</select>
+                          							<option hidden>--Select--</option>
+                          							<option>Catholic</option>
+                          							<option>Muslim</option>
+                      							</select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Civil Status</label>
                                 <div class="col-lg-6">
-									<select class="form-control" name="P_CVL_STAT" id="P_CVL_STAT" required>
-										<option hidden>--Select--</option>
+                    									<select class="form-control" name="P_CVL_STAT" id="P_CVL_STAT" required>
+                    										<option hidden>--Select--</option>
                                         <option>Single</option>
                                         <option>Widowed</option>
                                         <option>Married</option>
@@ -292,13 +292,13 @@ require 'lib/Db.config.php';
                                     </select>
                                 </div>
                             </div>
-							<div class="form-group">
-								<label class="col-md-4 control-label">Years of Formal Education:</label>
-								<div class="col-lg-2">
-									<input id="YEARS_FE" maxlength="2" type="text" class="form-control numdecimal" required>
-								</div>
-							</div>
-							<div class="form-group">
+              							<div class="form-group">
+              								<label class="col-md-4 control-label">Years of Formal Education:</label>
+              								<div class="col-lg-3">
+              									<input id="YEARS_FE" maxlength="2" type="text" class="form-control numdecimal" required>
+              								</div>
+              							</div>
+							              <div class="form-group">
                                 <label class="col-md-4 control-label">Current Occupation</label>
                                 <div class="col-lg-6">
                                     <select class="form-control" id="P_OCCU" required>
@@ -314,7 +314,7 @@ require 'lib/Db.config.php';
                                     </select>
                                 </div>
                             </div>
-							<div class="form-group">
+							              <div class="form-group">
                                 <label class="col-md-4 control-label">Current Occupation (Family Bread Winner)</label>
                                 <div class="col-lg-6">
                                     <select class="form-control" id="P_OCCU_FBW" required>
@@ -494,7 +494,7 @@ require 'lib/Db.config.php';
           					<div class="form-group">
           						<label class="col-md-4 control-label">A.17 Additional Significant on your past and present health?:</label>
           						<div class="col-lg-10">
-          							<textarea id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4" required></textarea>
+          							<textarea id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4" required placeholder="Input some additional information"></textarea>
           						</div>
                     </div>
 									  <div class="form-group">
@@ -524,10 +524,10 @@ require 'lib/Db.config.php';
             							</div>
                     </div>
           					<div class="form-group">
-                      <div class="col-sm-12 pull-right">
+                      <div class="col-sm-12 pull-right" style="padding-right: 100px">
                         <button class="btn btn-success" type="button" onclick="addNewPatient()">Save</button>
-                        <span id="Error_Message" class="text-danger"></span>
-                        <span id="Success_Message" class="text-success"></span>
+                        <span style="float: right;" id="Error_Message" class="text-danger"></span>
+                        <span style="float: right;" id="Success_Message" class="text-success"></span>
                       </div>
                     </div>
 				</form>
@@ -685,7 +685,7 @@ require 'lib/Db.config.php';
               });
               }
               else{
-                
+                //do nothing
               }
             }
           }
