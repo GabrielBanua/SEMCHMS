@@ -117,25 +117,19 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 						  <li><a  href="#">Inventory Reports</a></li>
                       </ul>
                   </li>
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Laboratory-li">
                       <a href="javascript:;">
-                          <i class="icon-beaker"></i><span>Lab Management</span>
+                          <i class="icon-beaker"></i>
+                          <span>Lab Management</span>
                       </a>
-                    <ul class="sub">
-                        <li class="sub-menu">
-                            <a href="javascript:;">Add Lab Results</a>
-                    <ul class="sub">
-                            <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-							<li><a href="add-lab-fecal.php">Fecalysis</a></li>
-							<li><a href="add-lab-hema.php">Hematology</a></li>
-							<li><a href="add-lab-urinal.php">Urinalysis</a></li>
-                    </ul>
-                        </li>
-						<li><a  href="lab-request.php">View Lab Request</a></li>
-						<li><a  href="#">View Lab Records</a></li>
-						<li><a  href="#">Laboratory Reports</a></li>
-                    </ul>
-                </li>
+                      <ul class="sub">
+						  <li><a  href="labtest.php">Add Lab Results</a></li>
+						  <li><a  href="lab-request.php">View Lab Request</a></li>
+						  <li><a  href="#">View Lab Records</a></li>
+						  <li><a  href="#">Laboratory Reports</a></li>
+                      </ul>
+                  </li>
+				  
 				<li class="sub-menu" id="Maintenance-li">
                     <a href="javascript:;" >
                         <i class="icon-download-alt"></i><span>Maintenance</span>

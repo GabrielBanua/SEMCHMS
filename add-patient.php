@@ -106,14 +106,16 @@ require 'lib/Db.config.php';
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu" id="Inventory-li">
-                      <a href="javascript:;" >
-                          <i class="icon-truck"></i>
-                          <span>Inventory Management</span>
+				  <li class="sub-menu" id="Laboratory-li">
+                      <a href="javascript:;">
+                          <i class="icon-beaker"></i>
+                          <span>Lab Management</span>
                       </a>
                       <ul class="sub">
-						  <li><a href="view-inventory.php">View Inventory</a></li>
-						  <li><a  href="#">Inventory Reports</a></li>
+						  <li><a  href="labtest.php">Add Lab Results</a></li>
+						  <li><a  href="lab-request.php">View Lab Request</a></li>
+						  <li><a  href="#">View Lab Records</a></li>
+						  <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
                   </li>
 				  

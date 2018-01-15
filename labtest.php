@@ -83,19 +83,19 @@ else if($Position == "Volunter"){
                       </a>
                   </li>
 
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="active">
+                  <li class="sub-menu" id="Patient-li">
+                      <a href="javascript:;">
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="add-patient.php">Add Patients</a></li>
                           <li><a  href="view-patients.php">View Patients</a></li>
-						  <li class="active"><a  href="patient-reports-panel.php">Patient Reports</a></li>
+						  <li><a  href="patient-reports-panel.php">Patient Reports</a></li>
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Schedule-li">
                       <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -107,7 +107,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Inventory-li">
                       <a href="javascript:;" >
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
@@ -118,21 +118,13 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
-                      <a href="javascript:;">
+				  <li class="sub-menu" id="Laboratory-li">
+                      <a href="javascript:;" class="active">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
                       </a>
                       <ul class="sub">
-                          <li class="sub-menu">
-                              <a href="javascript:;">Add Lab Results</a>
-                              <ul class="sub">
-                                  <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-								  <li><a href="add-lab-fecal.php">Fecalysis</a></li>
-								  <li><a href="add-lab-hema.php">Hematology</a></li>
-								  <li><a href="add-lab-urinal.php">Urinalysis</a></li>
-                              </ul>
-                          </li>
+						  <li class="active"><a  href="labtest.php">Add Lab Results</a></li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="#">View Lab Records</a></li>
 						  <li><a  href="#">Laboratory Reports</a></li>

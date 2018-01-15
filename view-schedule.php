@@ -126,20 +126,12 @@ require 'lib/Db.config.pdo.php';
                           <span>Lab Management</span>
                       </a>
                       <ul class="sub">
-                          <li class="sub-menu">
-                              <a href="javascript:;">Add Lab Results</a>
-                              <ul class="sub">
-                                <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-                <li><a href="add-lab-fecal.php">Fecalysis</a></li>
-                        <li><a href="add-lab-hema.php">Hematology</a></li>
-                        <li><a href="add-lab-urinal.php">Urinalysis</a></li>
-                              </ul>
-                          </li>
-                          <li><a  href="lab-request.php">View Lab Request</a></li>
-                          <li><a  href="#">View Lab Records</a></li>
-                <li><a  href="#">Laboratory Reports</a></li>
+						  <li><a  href="labtest.php">Add Lab Results</a></li>
+						  <li><a  href="lab-request.php">View Lab Request</a></li>
+						  <li><a  href="#">View Lab Records</a></li>
+						  <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
-        </li>
+                  </li>
           
           <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
