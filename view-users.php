@@ -125,7 +125,7 @@ require 'lib/Db.config.pdo.php';
                       <ul class="sub">
 						  <li><a  href="labtest.php">Add Lab Results</a></li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
-						  <li><a  href="#">View Lab Records</a></li>
+						  <li><a  href="labview.php">View Lab Records</a></li>
 						  <li><a  href="#">Laboratory Reports</a></li>
                       </ul>
                   </li>
