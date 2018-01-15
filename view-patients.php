@@ -25,7 +25,7 @@ require 'lib/Db.config.pdo.php';
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
-
+    <link href="css/pageloader.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -34,7 +34,7 @@ require 'lib/Db.config.pdo.php';
   </head>
 
   <body>
-
+  <div id="preloadpage"><img src="gif/flask.svg"/></div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -694,19 +694,26 @@ while($row = $stmt->fetch()){
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 
-    <!--script for this page only-->
+  <!--script for this page only-->
 
-      <script type="text/javascript" charset="utf-8">
+  <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 10, "asc" ]]
+                  "aaSorting": [[ 0, "asc" ]]
               } );
           } );
-      </script>
-	  <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  </script>
+	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
 	<script src="js/advanced-form-components.js"></script>
-      <script>
+  <script>
+        $(function(){
+          setTimeout(function(){
+            $("#preloadpage").hide();
+            $("#container").show();
+          }, 2000);
+        });
+
         $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';
         if (Auth == "Admin") 

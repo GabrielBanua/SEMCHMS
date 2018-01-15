@@ -26,7 +26,7 @@ require 'lib/Db.config.php';
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
-
+    <link href="css/pageloader.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -35,7 +35,7 @@ require 'lib/Db.config.php';
   </head>
 
   <body>
-
+  <div id="preloadpage"><img src="gif/flask.svg"/></div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -550,12 +550,17 @@ require 'lib/Db.config.php';
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 	
-	<!-- Keypress Limit -->
-	<script src="js/numbers-only.js"></script>
-	
-	<script>
-	function addNewPatient(){
-        
+  	<!-- Keypress Limit -->
+  	<script src="js/numbers-only.js"></script>
+  	<script>
+    $(function(){
+      setTimeout(function(){
+        $("#preloadpage").hide();
+        $("#container").show();
+      }, 2000);
+    });
+
+	  function addNewPatient(){ 
         var Lastname = $('#P_LNAME').val();
         var Firstname = $('#P_FNAME').val();
         var Middlename = $('#P_MNAME').val();

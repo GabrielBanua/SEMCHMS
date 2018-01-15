@@ -27,7 +27,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
-
+    <link href="css/pageloader.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -36,7 +36,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
   </head>
 
   <body>
-
+  <div id="preloadpage"><img src="gif/flask.svg"/></div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -163,13 +163,13 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th width="20">ID</th>
-                                          <th width="140">Name</th>
-                                          <th width="50">Gender</th>
-                                          <th width="50">Religion</th>
-                                          <th width="50">Occupation</th>
-                                          <th width="70" class="hidden-phone">Type</th>
-                                          <th width="10" class="hidden-phone">Action</th>
+                                          <th >ID</th>
+                                          <th >Name</th>
+                                          <th >Gender</th>
+                                          <th >Religion</th>
+                                          <th >Occupation</th>
+                                          <th  class="hidden-phone">Type</th>
+                                          <th  class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
@@ -305,11 +305,17 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 4, "desc" ]]
+                  "aaSorting": [[ 0, "asc" ]]
               } );
           } );
+          $(function(){
+          setTimeout(function(){
+            $("#preloadpage").hide();
+            $("#container").show();
+          }, 2000);
+        });
       </script>
-        <script>
+      <script>
         function SetSched(str){
         var P_ID = str;
         var SCHEDULE_DATE = $('#SCHEDULE_DATE-'+str).val();
