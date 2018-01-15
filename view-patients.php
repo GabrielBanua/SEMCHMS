@@ -156,7 +156,7 @@ require 'lib/Db.config.pdo.php';
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-                                  <a class="btn btn-success" href="add-patient.php">Add Patient</a>
+                                  <a class="btn btn-shadow btn-success" href="add-patient.php"><i class="icon-plus"></i> Add Patient</a>
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
@@ -166,7 +166,7 @@ require 'lib/Db.config.pdo.php';
                                           <th width="80">Type</th>
                                           <th width="150">Address</th>
                                           <th width="90">Contact No.</th>
-                                          <th width="80" class="hidden-phone">Action</th>
+                                          <th width="15%" class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
@@ -181,8 +181,8 @@ while($row = $stmt->fetch()){
                                           <td><?php echo $row['P_ADD'] ?></td>
                                           <td>+639<?php echo $row['P_CN'] ?></td>
                                           <td align="center">
-                                            <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class="icon-eye-open"></i></a>
-                                            <a class="btn btn-success btn-xs" data-toggle="modal" onclick="change(<?php echo $row['P_ID'] ?>)" href="#editpatient-<?php echo $row['P_ID'] ?>"><i class="icon-pencil"></i></a>
+                                            <a class="btn btn-shadow btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class="icon-eye-open"></i> View</a>
+                                            <a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" onclick="change(<?php echo $row['P_ID'] ?>)" href="#editpatient-<?php echo $row['P_ID'] ?>"><i class="icon-pencil"></i> Edit</a>
 <!-- Register User Start  MODAL-->
 <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['P_ID'] ?>" role="dialog" tabindex="-1" id="editpatient-<?php echo $row['P_ID'] ?>" class="modal fade">
   <div class="modal-dialog">
