@@ -211,7 +211,7 @@ else if($Position == "Volunter"){
 									</div>
 								</div>
 								<hr>
-								<!--- Blood Chemistry -->
+<!--- Blood Chemistry -->
 								<div class="col-sm-12 blood test">
 								  <section class="panel">
 									  <header class="panel-heading text-center">
@@ -522,8 +522,8 @@ else if($Position == "Volunter"){
 									  </table>
 								  </section>
 							  </div>
-							  <!-- Hematology End -->
-							  <!--- Urinal -->
+<!-- Hematology End -->
+<!--- Urinal -->
 								<div class="col-sm-12 urinal test">
 								  <section class="panel">
 									  <header class="panel-heading text-center">
