@@ -169,7 +169,7 @@ require 'lib/Db.config.pdo.php';
                                           <th width="150">Patient Name</th>
                                           <th width="90">Patient Type</th>
                                           <th width="100" class="hidden-phone">Appointment</th>
-                                          <th width="150" class="hidden-phone">Action</th>
+                                          <th width="100" class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
@@ -178,14 +178,14 @@ require 'lib/Db.config.pdo.php';
 									?>
                                       <tr class="gradeX">
                                           <td><?php echo $row['SCHEDULE_DATE'] ?></td>
-                                          <td><?php echo $row['SCHEDULE_TIME'] ?></td>
+                                          <td><?php $date = date("h:i A", strtotime($row['SCHEDULE_TIME'])); echo $date; ?></td>
                                           <td><?php echo $row['FullName'] ?></td>
                                           <td><?php echo $row['P_TYPE'] ?></td>
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
                                           <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i> Edit</a>
-										  <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
-										  <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class=" icon-share-alt"></i> Proceed</a>
+                    										  <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
+                    										  <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class=" icon-share-alt"></i> Proceed</a>
 									<!-- edit Schedule Start MODAL-->
 
                                 <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['SCHEDULE_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['SCHEDULE_ID']?>" class="modal fade">
