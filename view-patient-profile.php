@@ -173,52 +173,52 @@ $row = mysql_fetch_array($result);
                           <div class="panel-body bio-graph-info">
                               <div class="row">
                                   <div class="bio-row">
-                                      <p><span>Date Registered </span>: <?php echo $row['DATE_REG']?></p>
+                                      <p><b><span>Date&nbsp;Registered </span></b> : <?php echo $row['DATE_REG']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Address </span>: <?php echo $row['P_ADD']?></p>
+                                      <p><b><span>Address </span></b>: <?php echo $row['P_ADD']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>First Name</span>: <?php echo $row['P_FNAME']?></p>
+                                      <p><b><span>First Name</span></b>: <?php echo $row['P_FNAME']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Religion </span>: <?php echo $row['P_REL']?></p>
+                                      <p><b><span>Religion </span></b>: <?php echo $row['P_REL']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Middle Name </span>: <?php echo $row['P_MNAME']?></p>
+                                      <p><b><span>Middle Name </span></b>: <?php echo $row['P_MNAME']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Type </span>: <?php echo $row['P_TYPE']?></p>
+                                      <p><b><span>Type </span></b>: <?php echo $row['P_TYPE']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Last Name </span>: <?php echo $row['P_LNAME']?></p>
+                                      <p><b><span>Last Name </span></b>: <?php echo $row['P_LNAME']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Civil Status </span>: <?php echo $row['P_CVL_STAT']?></p>
+                                      <p><b><span>Civil Status </span></b>: <?php echo $row['P_CVL_STAT']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Birthday </span>: <?php echo $row['P_BDATE']?></p>
+                                      <p><b><span>Birthday </span></b>: <?php echo $row['P_BDATE']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Occupation </span>: <?php echo $row['P_OCCU']?></p>
+                                      <p><b><span>Occupation </span></b>: <?php echo $row['P_OCCU']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Age </span>: <?php echo $row['P_AGE']?></p>
+                                      <p><b><span>Age </span></b>: <?php echo $row['P_AGE']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Occupation<br>(FBW)</span>: <?php echo $row['P_OCCU_FBW']?></p>
+                                      <p><b><span>Occupation<br>(FBW)</span></b>: <?php echo $row['P_OCCU_FBW']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Gender </span>: <?php echo $row['P_GNDR']?></p>
+                                      <p><b><span>Gender </span></b>: <?php echo $row['P_GNDR']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Mobile </span>: <?php echo $row['P_CN']?></p>
+                                      <p><b><span>Mobile </span></b>: <?php echo $row['P_CN']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Weight(kg) </span>: <?php echo $row['P_WGHT']?></p>
+                                      <p><b><span>Weight(kg) </span></b>: <?php echo $row['P_WGHT']?></p>
                                   </div>
                                   <div class="bio-row">
-                                      <p><span>Height(cm) </span>: <?php echo $row['P_HGHT']?></p>
+                                      <p><b><span>Height(cm) </span></b>: <?php echo $row['P_HGHT']?></p>
                                   </div>
                               </div>
                           </div>
