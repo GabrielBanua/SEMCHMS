@@ -741,6 +741,19 @@ else if($Position == "Volunter"){
 			});
 		}).change();
 	});
+
+	function addBloodChem(){
+
+	}
+	function addFecalysis(){
+
+	}
+	function addUrinalysis(){
+
+	}
+	function addHematology(){
+		
+	}
 	</script>
   </body>
 </html>
