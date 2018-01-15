@@ -225,13 +225,8 @@ require 'lib/Db.config.pdo.php';
                                 <div class="form-group">
                                     <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
                                         <div class="col-lg-5">
-                                              <div data-date-viewmode="years" data-date-format="yyyy-mm-dd"  class="input-append date dpYears">
-                        												<input type="text" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" 
+                                              <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" 
                         													id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
-                        												<span class="input-group-btn add-on">
-                        													<button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
-                        												</span>
-											                         </div>
                                         </div>
                                 </div>
                                 <div class="form-group">
