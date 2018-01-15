@@ -1,7 +1,7 @@
 <?php
 require 'lib/session.php';
 require 'lib/Db.config.pdo.php';
-$stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");
+$stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");
   $stmt->execute();
 ?>
 <!DOCTYPE html>
@@ -171,10 +171,11 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th width="20">Patient No.</th>
-                                          <th width="180">Name</th>
+                                          <th width="20">ID</th>
+                                          <th width="140">Name</th>
                                           <th width="50">Gender</th>
                                           <th width="50">Religion</th>
+                                          <th width="50">Occupation</th>
                                           <th width="70" class="hidden-phone">Type</th>
                                           <th width="10" class="hidden-phone">Action</th>
                                       </tr>
@@ -188,6 +189,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) 
                                               <td><?php echo $row['FullName'] ?></td>
                                               <td><?php echo $row['P_GNDR'] ?></td>
                                               <td><?php echo $row['P_REL'] ?></td>
+                                              <td><?php echo $row['P_OCCU'] ?></td>
                                               <td class="center hidden-phone"><?php echo $row['P_TYPE'] ?></td>
                                               <td class="center hidden-phone">
                         											<a class="btn btn-success btn-xs" data-toggle="modal" data-target="#setsched-<?php echo $row['P_ID']?>">Set Schedule</a>
