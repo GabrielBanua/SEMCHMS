@@ -161,11 +161,7 @@ else if($Position == "Volunter"){
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Patient Name:</label>
 									<div class="col-sm-4">
-										<select class="select2-single">
-											<option></option><!--for placeholder-->
-											<option>Gabriel Banua</option>
-											<option>Alessander Rebiato</option>
-										</select>
+										<input type="text" id="#" class="form-control"required>
 									</div>
 									<label class="col-sm-2 control-label">Date Taken:</label>
 									<div class="col-sm-3">
