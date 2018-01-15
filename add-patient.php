@@ -119,27 +119,6 @@ require 'lib/Db.config.php';
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu" id="Laboratory-li">
-                      <a href="javascript:;">
-                          <i class="icon-beaker"></i>
-                          <span>Lab Management</span>
-                      </a>
-                      <ul class="sub">
-                          <li class="sub-menu">
-                              <a href="javascript:;">Add Lab Results</a>
-                              <ul class="sub">
-                                <li><a href="add-lab-blood.php">Blood Chemistry</a></li>
-								<li><a href="add-lab-fecal.php">Fecalysis</a></li>
-                				<li><a href="add-lab-hema.php">Hematology</a></li>
-                				<li><a href="add-lab-urinal.php">Urinalysis</a></li>
-                              </ul>
-                          </li>
-                    			<li><a  href="lab-request.php">View Lab Request</a></li>
-                    			<li><a  href="#">View Lab Records</a></li>
-								<li><a  href="#">Laboratory Reports</a></li>
-                      </ul>
-				</li>
-				  
 				  <li class="sub-menu" id="Maintenance-li">
                       <a href="javascript:;" >
                           <i class="icon-download-alt"></i>
@@ -527,7 +506,7 @@ require 'lib/Db.config.php';
                     </div>
           					<div class="form-group">
                       <div class="col-sm-12 pull-right" style="padding-right: 100px">
-                        <button class="btn btn-success" type="button" onclick="addNewPatient()">Save</button>
+                        <button class="btn btn-shadow btn-success" type="button" onclick="addNewPatient()">Save</button>
                         <span style="float: right;" id="Error_Message" class="text-danger"></span>
                         <span style="float: right;" id="Success_Message" class="text-success"></span>
                       </div>

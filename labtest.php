@@ -329,6 +329,11 @@ else if($Position == "Volunter"){
 										  </tbody>
 									  </table>
 								  </section>
+								  <div class="form-group pull-right">
+									  <div class="col-sm-6">
+										<a class="btn btn-shadow btn-success"><i class="icon-save"></i> Save</a>
+									  </div>
+									</div>
 							  </div>
 							  <!--- Blood Chemistry End-->
 							  <!--- Fecalysis -->
@@ -429,6 +434,11 @@ else if($Position == "Volunter"){
 										  </tbody>
 									  </table>
 								  </section>
+								  <div class="form-group pull-right">
+									  <div class="col-sm-6">
+										<a class="btn btn-shadow btn-success"><i class="icon-save"></i> Save</a>
+									  </div>
+									</div>
 							  </div>
 							  <!--- Fecalysis End-->
 							  <!--- Hematology -->
@@ -513,6 +523,11 @@ else if($Position == "Volunter"){
 										  </tbody>
 									  </table>
 								  </section>
+								  <div class="form-group pull-right">
+									  <div class="col-sm-6">
+										<a class="btn btn-shadow btn-success"><i class="icon-save"></i> Save</a>
+									  </div>
+									</div>
 							  </div>
 							  <!-- Hematology End -->
 							  <!--- Urinal -->
@@ -630,6 +645,11 @@ else if($Position == "Volunter"){
 										   </tbody>
 									  </table>
 								  </section>
+								  <div class="form-group pull-right">
+									  <div class="col-sm-6">
+										<a class="btn btn-shadow btn-success"><i class="icon-save"></i> Save</a>
+									  </div>
+									</div>
 							  </div>
 							  <!-- Urinal End -->
 							</form>
