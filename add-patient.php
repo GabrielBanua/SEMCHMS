@@ -802,9 +802,9 @@ require 'lib/Db.config.php';
 			var age = Math.floor((today-date_of_birth) / (365.25 * 24 * 60 * 60 * 1000));
 		$('#P_AGE').val(age);
 		if(age > 14){
-			$('#P_TYPE').val('ADULT');
+			$('#P_TYPE').val('Adult');
 		}else{
-			$('#P_TYPE').val('MINOR');
+			$('#P_TYPE').val('Minor');
 		}
 		});
 	</script>
