@@ -508,7 +508,7 @@ require 'lib/Db.config.php';
                       <div class="col-sm-12 pull-right" style="padding-right: 100px">
                         <button class="btn btn-shadow btn-success" type="button" onclick="addNewPatient()">Save</button>
                         <span style="float: right; font-weight: bold;" id="Error_Message" class="text-danger"></span>
-                        <span style="float: right;" id="Success_Message" class="text-success"></span>
+                        <span style="float: right; font-weight: bold;" id="Success_Message" class="text-success"></span>
                       </div>
                     </div>
 				</form>

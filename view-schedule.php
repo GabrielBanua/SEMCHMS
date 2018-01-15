@@ -177,7 +177,7 @@ require 'lib/Db.config.pdo.php';
 										  while($row = $stmt->fetch()){
 									?>
                                       <tr class="gradeX">
-                                          <td><?php echo $row['SCHEDULE_DATE'] ?></td>
+                                          <td><?php echo strftime('%m-%d-%Y', strtotime($row['SCHEDULE_DATE'])); ?></td>
                                           <td><?php $date = date("h:i A", strtotime($row['SCHEDULE_TIME'])); echo $date; ?></td>
                                           <td><?php echo $row['FullName'] ?></td>
                                           <td><?php echo $row['P_TYPE'] ?></td>
