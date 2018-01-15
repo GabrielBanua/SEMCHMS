@@ -35,7 +35,7 @@ require 'lib/Db.config.php';
   </head>
 
   <body>
-  <div id="preloadpage"><img src="gif/flask.svg"/></div>
+  <div id="preloadpage"><img src="gif/heart.svg"/><div style="position: absolute; top: 85%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);"><p style="font-size: 15px; font-weight: bold;">loading</p></div></div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">

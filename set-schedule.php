@@ -36,7 +36,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
   </head>
 
   <body>
-  <div id="preloadpage"><img src="gif/flask.svg"/></div>
+  <div id="preloadpage"><img src="gif/time.svg"/><div style="position: absolute; top: 100%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);"><p style="font-size: 15px; font-weight: bold;">loading</p></div></div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">

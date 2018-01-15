@@ -2,9 +2,15 @@
 require 'lib/session.php';
 require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
-  $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
-  $stmt->execute();
 
+if($Position == 'Doctor'){
+  $purpose = 'Check Up';
+  $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_PURPOSE = '$purpose'");
+  $stmt->execute();
+}else if($Position == 'Admin'){
+   $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
+  $stmt->execute();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +19,7 @@ require 'lib/Db.config.pdo.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="google" content="notranslate">
     <link rel="shortcut icon" href="img/favicon.ico">
-
+    <link href="css/pageloader.css" rel="stylesheet">
     <title>View Schedule</title>
 
     <!-- Bootstrap core CSS -->
@@ -38,7 +44,7 @@ require 'lib/Db.config.pdo.php';
   </head>
 
   <body onload="CheckSchedValidity()">
-
+  <div id="preloadpage"><img src="gif/time.svg"/><div style="position: absolute; top: 100%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);"><p style="font-size: 15px; font-weight: bold;">loading</p></div></div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -166,8 +172,9 @@ require 'lib/Db.config.pdo.php';
                                       <tr>
                                           <th width="100">Date Schedule</th>
                                           <th width="70">Time</th>
-                                          <th width="150">Patient Name</th>
+                                          <th width="120">Patient Name</th>
                                           <th width="90">Patient Type</th>
+                                          <th width="90">Gender</th>
                                           <th width="100" class="hidden-phone">Appointment</th>
                                           <th width="100" class="hidden-phone">Action</th>
                                       </tr>
@@ -181,6 +188,7 @@ require 'lib/Db.config.pdo.php';
                                           <td><?php $date = date("h:i A", strtotime($row['SCHEDULE_TIME'])); echo $date; ?></td>
                                           <td><?php echo $row['FullName'] ?></td>
                                           <td><?php echo $row['P_TYPE'] ?></td>
+                                          <td><?php echo $row['P_GNDR'] ?></td>
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
                                           <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i> Edit</a>
@@ -311,9 +319,15 @@ require 'lib/Db.config.pdo.php';
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 4, "asc" ]]
+                  "aaSorting": [[ 1, "asc" ]]
               } );
           } );
+          $(function(){
+          setTimeout(function(){
+            $("#preloadpage").hide();
+            $("#container").show();
+          }, 2000);
+        });
       </script>
       <script>
         $(document).ready(function(){

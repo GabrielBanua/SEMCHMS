@@ -23,7 +23,7 @@ if($Position == "Volunter"){
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
-
+    <link href="css/pageloader.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -32,7 +32,7 @@ if($Position == "Volunter"){
   </head>
 
   <body>
-
+  <div id="preloadpage"><img src="gif/flask.svg"/><div style="position: absolute; top: 105%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);"><p style="font-size: 15px; font-weight: bold;">loading</p></div></div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -238,35 +238,42 @@ if($Position == "Volunter"){
               } );
           } );
 
+          $(function(){
+            setTimeout(function(){
+              $("#preloadpage").hide();
+              $("#container").show();
+            }, 2000);
+          });
+
           $(document).ready(function(){
-        var Auth ='<?php echo $Position; ?>';
-        if (Auth == "Admin") 
-        {                       
-            $('#Patient-li').show(); 
-            $('#Schedule-li').show();
-            $('#Inventory-li').show();
-            $('#Laboratory-li').show();
-            $('#Reports-li').show();
-            $('#User-li').show();
-            $('#Maintenance-li').show();
-        }
-        else if(Auth == "Doctor") {
-            $('#User-li').hide();
-            $('#Patient-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Laboratory-li').hide();
-            $('#Inventory-li').hide();
-        }
-        else if(Auth == "Medtech") {
-            $('#User-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Patient-li').hide();
-            $('#Schedule-li').hide();
-            $('#Inventory-li').hide();
-        }
-        });
+            var Auth ='<?php echo $Position; ?>';
+            if (Auth == "Admin") 
+            {                       
+                $('#Patient-li').show(); 
+                $('#Schedule-li').show();
+                $('#Inventory-li').show();
+                $('#Laboratory-li').show();
+                $('#Reports-li').show();
+                $('#User-li').show();
+                $('#Maintenance-li').show();
+            }
+            else if(Auth == "Doctor") {
+                $('#User-li').hide();
+                $('#Patient-li').hide();
+                $('#Maintenance-li').hide();
+                $('#Reports-li').hide();
+                $('#Laboratory-li').hide();
+                $('#Inventory-li').hide();
+            }
+            else if(Auth == "Medtech") {
+                $('#User-li').hide();
+                $('#Maintenance-li').hide();
+                $('#Reports-li').hide();
+                $('#Patient-li').hide();
+                $('#Schedule-li').hide();
+                $('#Inventory-li').hide();
+            }
+            });
       </script>
   </body>
 </html>
