@@ -253,11 +253,7 @@ require 'lib/Db.config.php';
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Religion</label>
                                 <div class="col-lg-6">
-                                    <select class="form-control" name="P_REL" id="P_REL" required>
-                          							<option hidden>--Select--</option>
-                          							<option>Catholic</option>
-                          							<option>Muslim</option>
-                      							</select>
+									<input id="P_REL" name="P_REL" type="text" maxlength="11" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group">
