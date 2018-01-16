@@ -21,6 +21,7 @@ $row = mysql_fetch_array($result);
     <link href="css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="assets/select2/css/select2.min.css"/>
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -231,13 +232,13 @@ $row = mysql_fetch_array($result);
                           <header class="panel-heading tab-bg-dark-navy-blue ">
                               <ul class="nav nav-tabs">
                                   <li class="active">
-                                      <a data-toggle="tab" href="#patientinfo">Personal Information</a>
+                                      <a data-toggle="tab" href="#patientinfo"><b><i class="icon-user"></i> Personal Information</b></a>
                                   </li>
                                   <li class="">
-                                      <a data-toggle="tab" href="#medrecord">Medical Records</a>
+                                      <a data-toggle="tab" href="#medrecord"><b><i class="icon-medkit"></i> Medical Records</b></a>
                                   </li>
                                   <li class="">
-                                      <a data-toggle="tab" href="#labresult">Laboratory Result</a>
+                                      <a data-toggle="tab" href="#labresult"><b><i class="icon-beaker"></i> Laboratory Result</b></a>
                                   </li>
                               </ul>
                           </header>
@@ -343,19 +344,19 @@ $row = mysql_fetch_array($result);
                                   <div id="medrecord" class="tab-pane">
 									<div class="adv-table">
 										<header class="panel-heading">
-													<a class="btn btn-success" data-toggle="modal" href="#apointment">Add Medical Records</a>
+													<a class="btn btn-shadow btn-success" data-toggle="modal" href="#apointment"><i class="icon-plus"></i> Add Medical Records</a>
 												</header>
                                     <table class="table table-striped table-advance table-hover">
 									  <thead>
 									  <tr>
-										  <th style="width:8%;"><i class="icon-bullhorn"></i> Date</th>
+										  <th style="width:20%;"><i class="icon-calendar"></i> Date</th>
 										  <th>Illness / Ailments</th>
-										  <th><i class="icon-bookmark"></i>Blood Pressure</th>
+										  <th>Blood Pressure</th>
 										  <th>Weight</th>
 										  <th>Temperature</th>
 										  <th style="width:15%;">Follow-Up Checkup</th>
-										  <th>Remark</th>
-										  <th style="width:10%;"><i class=" icon-edit"></i> Status</th>
+										  <th>Remarks</th>
+										  <th style="width:10%;">Status</th>
 										  <th>Action</th>
 									  </tr>
 									  </thead>
@@ -370,7 +371,7 @@ $row = mysql_fetch_array($result);
 										  <td>So Hot</td>
 										  <td><span class="label label-success label-mini">Finish</span></td>
 										  <td>
-											  <a class="btn btn-primary btn-xs"><i class="icon-share-alt"></i> Proceed</a>
+											  <a class="btn btn-shadow btn-info btn-xs" data-toggle="modal" href="#treatment"><i class="icon-share-alt"></i> Proceed</a>
 										  </td>
 									  </tr>
 									  
@@ -417,7 +418,7 @@ $row = mysql_fetch_array($result);
                                           <td>12/12/2017</td>
                                           <td class="center hidden-phone">Uric Acid</td>
                                           <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
+											<a class="btn btn-primary btn-xs" href="#treatment">Proceed</a>
 										  </td>
                                       </tr>
                                       </tfoot>
@@ -429,7 +430,7 @@ $row = mysql_fetch_array($result);
 				</div>
                       </section>
                   </aside>
-				  <!-- Modal -->
+				  <!-- Modal Medical Records-->
           <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="apointment" class="modal fade">
               <div class="modal-dialog">
                   <div class="modal-content">
@@ -442,13 +443,13 @@ $row = mysql_fetch_array($result);
                                   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Date Schedule</label>
                                       <div class="col-lg-6">
-                                          <input type="text" class="form-control" placeholder=" "autofocus required>
+                                          <input type="date" class="form-control" placeholder=" "autofocus required>
                                       </div>
                                   </div>
 								  <div class="form-group">
                                       <label  class="col-lg-3 control-label">Time</label>
                                       <div class="col-lg-6">
-                                          <input type="text" class="form-control" placeholder=" " required>
+                                          <input type="time" class="form-control" placeholder=" "autofocus required>
                                       </div>
                                   </div>
                                   <div class="form-group">
@@ -459,54 +460,120 @@ $row = mysql_fetch_array($result);
                                   </div>
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Blood Pressure</label>
-                                      <div class="col-lg-6">
+                                      <div class="col-lg-2">
                                           <input type="text" class="form-control" placeholder=" ">
                                       </div>
                                   </div>
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Weight</label>
-                                      <div class="col-lg-6">
+                                      <div class="col-lg-2">
                                           <input type="text" class="form-control" placeholder=" ">
                                       </div>
                                   </div>
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Temperature</label>
-                                      <div class="col-lg-6">
+                                      <div class="col-lg-2">
                                           <input type="text" class="form-control" placeholder=" ">
-                                      </div>
-                                  </div>
-								  <div class="form-group">
-                                      <label  class="col-lg-3 control-label">Follow-up Check up Date</label>
-                                      <div class="col-lg-6">
-                                          <input type="text" class="form-control" placeholder=" ">
-                                      </div>
-                                  </div>
-								  <div class="form-group">
-                                      <label  class="col-lg-3 control-label">Remarks</label>
-                                      <div class="col-lg-6">
-										  <textarea name="" id="" style="resize:none" class="form-control" cols="2" rows="4"></textarea>
-                                      </div>
-                                  </div>
-								  <div class="form-group">
-                                      <label  class="col-lg-3 control-label">Status</label>
-                                      <div class="col-lg-6">
-                                          <input type="text" class="form-control" placeholder=" ">
-                                      </div>
-                                  </div>
-								  <div class="form-group">
-                                      <label  class="col-lg-3 control-label">Appointment Reason</label>
-                                      <div class="col-lg-6">
-                                          <select class="form-control">
-												<option hidden>-None-</option>
-												<option>Consultation</option>
-												<option>Follow up Checkup</option>
-										</select>
                                       </div>
                                   </div>
                               </form>
                       </div>
                       <div class="modal-footer">
-                          <button data-dismiss="modal" class="btn btn-success" type="button">Add</button>
+						  <a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
+						  <a data-dismiss="modal" class="btn btn-success" type="button">Add</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- modal -->
+		   <!-- Treatment Records-->
+          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="treatment" class="modal fade">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title">Treatment</h4>
+                      </div>
+                      <div class="modal-body">
+                          <form class="form-horizontal" role="form">
+                                  <div class="form-group">
+                                      <label  class="col-lg-2 control-label">MRID</label>
+                                      <div class="col-lg-4">
+                                          <input type="text" class="form-control" required>
+                                      </div>
+									  <label  class="col-lg-2 control-label">Date</label>
+                                      <div class="col-lg-4">
+                                          <input type="date" class="form-control" required>
+                                      </div>
+                                  </div>
+								  <div class="form-group">
+                                      <label  class="col-lg-2 control-label">Illness/Ailments</label>
+                                      <div class="col-lg-4">
+                                          <input type="text" class="form-control"required>
+                                      </div>
+									  <label  class="col-lg-2 control-label">Bp</label>
+                                      <div class="col-lg-4">
+                                          <input type="text" class="form-control"required>
+                                      </div>
+                                  </div>
+								  <div class="form-group">
+                                      <label  class="col-lg-2 control-label">Weight</label>
+                                      <div class="col-lg-4">
+                                          <input type="text" class="form-control"required>
+                                      </div>
+									  <label  class="col-lg-2 control-label">Temperature</label>
+                                      <div class="col-lg-4">
+                                          <input type="text" class="form-control"required>
+                                      </div>
+                                  </div>
+								  <div class="form-group">
+                                      <label  class="col-lg-2 control-label">Doctor</label>
+                                      <div class="col-lg-4">
+                                          <select class="select2-single">
+											<option></option><!--for placeholder-->
+											<option>Gabriel Banua</option>
+											<option>Alessander Rebiato</option>
+										  </select>
+                                      </div>
+									  <label  class="col-lg-2 control-label">Status</label>
+                                      <div class="col-lg-4">
+                                          <select class="select2-single">
+											<option></option><!--for placeholder-->
+											<option>On-Going</option>
+											<option>Cancelled</option>
+											<option>Completed</option>
+										  </select>
+                                      </div>
+                                  </div>
+								  <div class="form-group">
+									  <label  class="col-lg-2 control-label">Follow-Up Checkup</label>
+                                      <div class="col-lg-4">
+                                          <input type="date" class="form-control"required>
+                                      </div>
+                                  </div>
+								  <div class="form-group">
+                                      <label  class="col-lg-2 control-label">Diagnosis:</label>
+									  <div class="col-lg-12">
+                                       <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
+									   </div>
+                                  </div>
+								  <div class="form-group">
+                                      <label  class="col-lg-2 control-label">Treatment:</label>
+									  <div class="col-lg-12">
+                                       <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
+									   </div>
+                                  </div>
+								  <div class="form-group">
+                                      <label  class="col-lg-2 control-label">Remarks:</label>
+									  <div class="col-lg-12">
+                                       <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
+									   </div>
+                                  </div>
+                              </form>
+                      </div>
+                      <div class="modal-footer">
+                          <a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
+						  <a data-dismiss="modal" class="btn btn-success" type="button">Add</a>
                       </div>
                   </div>
               </div>
@@ -631,5 +698,13 @@ $row = mysql_fetch_array($result);
       });
         
     </script>
+	<script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
+	<script type="text/javascript">
+	  $(document).ready(function () {
+		  $(".select2-single").select2({placeholder: 'Please select option'});
+
+		  $(".select2-multiple").select2();
+	  });
+	</script>
   </body>
 </html>
