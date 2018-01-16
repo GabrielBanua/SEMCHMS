@@ -341,16 +341,16 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 <table  class="display table table-bordered table-striped" id="example">
    	<thead>
         <tr>
-            <th width="10%">Date Arrived</th>
+            <th width="100">Date Arrived</th>
             <th width="85">Category</th>
             <th width="100">Type</th>
             <th width="120">Generic Name</th>
-            <th width="100">Brand</th>
+            <th width="80">Brand</th>
             <th width="115">Dosage Form</th>
-            <th width="50">Dose</th>
+            <th width="80">Dose</th>
             <th width="95">Quantity</th>
             <th width="95">Status</th>
-            <th width="10%">Expiry date</th>
+            <th width="100">Expiry Date</th>
             <th width="100">Action</th>
         </tr>
     </thead>
