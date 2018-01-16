@@ -75,12 +75,10 @@ $query = $db->prepare("INSERT INTO users(name, email, username, password) VALUES
       
 
 
-       $Last_ID = $conn->lastInsertId();      
+       $Last_ID = $conn->lastInsertId();
 
 
-<a class="btn btn-success btn-xs" >Edit</a>
-<a class="btn btn-danger btn-xs" >delete</a>
-	?>
+?>
 
 
 
