@@ -26,8 +26,11 @@ require 'lib/Db.config.php';
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
+<<<<<<< HEAD
     <link href="css/pageloader.css" rel="stylesheet">
     <link href="css/pageloader.css" rel="stylesheet">
+=======
+>>>>>>> 63157e407ca12af333eef57aa0dacdd39375cb91
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -36,6 +39,7 @@ require 'lib/Db.config.php';
   </head>
 
   <body>
+<<<<<<< HEAD
   <div class="preloader-wrapper">
     <div class="preloader">
         <img src="gif/heart.svg" alt="SEMHCMS">
@@ -44,6 +48,8 @@ require 'lib/Db.config.php';
         </div>
     </div>
   </div>
+=======
+>>>>>>> 63157e407ca12af333eef57aa0dacdd39375cb91
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -263,11 +269,7 @@ require 'lib/Db.config.php';
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Religion</label>
                                 <div class="col-lg-6">
-                                    <select class="form-control" name="P_REL" id="P_REL" required>
-                          							<option hidden>--Select--</option>
-                          							<option>Catholic</option>
-                          							<option>Muslim</option>
-                      							</select>
+									<input id="P_REL" name="P_REL" type="text" maxlength="11" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group">
