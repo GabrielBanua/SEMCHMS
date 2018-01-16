@@ -154,8 +154,8 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
                     </header>
             <div class="panel-body">
                 <div class="adv-table">
-					<a class="btn btn-success" data-toggle="modal" data-target="#AddInventory">Add Inventory</a>
-					<a class="btn btn-success" data-toggle="modal" data-target="#AddMed">Add Medicines</a>
+					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddInventory"><i class="icon-plus"></i> Add Inventory</a>
+					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddMed"><i class="icon-plus"></i> Add Medicines</a>
 <!-- Start Modal Add Inventory-->
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddInventory" class="modal fade">
 	<div class="modal-dialog">
