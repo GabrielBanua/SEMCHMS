@@ -166,7 +166,7 @@ require 'lib/Db.config.pdo.php';
                                           <th width="80">Type</th>
                                           <th width="150">Address</th>
                                           <th width="90">Contact No.</th>
-                                          <th width="15%" class="hidden-phone">Action</th>
+                                          <th width="100" class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
@@ -182,7 +182,7 @@ while($row = $stmt->fetch()){
                                           <td>+639<?php echo $row['P_CN'] ?></td>
                                           <td align="center">
                                             <a class="btn btn-shadow btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class="icon-eye-open"></i> View</a>
-                                            <a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" onclick="change(<?php echo $row['P_ID'] ?>)" href="#editpatient-<?php echo $row['P_ID'] ?>"><i class="icon-pencil"></i> Edit</a>
+                                            <a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" onclick="change(<?php echo $row['P_ID'] ?>)" href="#editpatient-<?php echo $row['P_ID'] ?>"><i class="icon-pencil"></i>&nbsp;&nbsp;Edit</a>
 <!-- Register User Start  MODAL-->
 <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['P_ID'] ?>" role="dialog" tabindex="-1" id="editpatient-<?php echo $row['P_ID'] ?>" class="modal fade">
   <div class="modal-dialog">
