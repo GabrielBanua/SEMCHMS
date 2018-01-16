@@ -36,7 +36,14 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
   </head>
 
   <body>
-  <div id="preloadpage"><img src="gif/time.svg"/><div style="position: absolute; top: 100%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);"><p style="font-size: 15px; font-weight: bold;">loading</p></div></div>
+  <div class="preloader-wrapper">
+    <div class="preloader">
+        <img src="gif/time.svg" alt="SEMHCMS">
+        <div style="position: absolute; top: 100%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
+          <p style="font-size: 15px; font-weight: bold;">loading</p>
+        </div>
+    </div>
+  </div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -296,6 +303,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+    <script src="js/preloader.js"></script>
 
 
   <!--common script for all pages-->
@@ -308,12 +316,6 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                   "aaSorting": [[ 0, "asc" ]]
               } );
           } );
-          $(function(){
-          setTimeout(function(){
-            $("#preloadpage").hide();
-            $("#container").show();
-          }, 2000);
-        });
       </script>
       <script>
         function SetSched(str){

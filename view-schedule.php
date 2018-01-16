@@ -29,22 +29,29 @@ if($Position == 'Doctor'){
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
-	<link rel="stylesheet" type="text/css" href="assets/bootstrap-timepicker/compiled/timepicker.css" />
+	  <link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-timepicker/compiled/timepicker.css" />
     <link rel="stylesheet" type="text/css" href="assets/bootstrap-datetimepicker/css/datetimepicker.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
-
+    <link href="css/pageloader.css" rel="stylesheet">
+    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
   </head>
-
-  <body onload="CheckSchedValidity()">
-  <div id="preloadpage"><img src="gif/time.svg"/><div style="position: absolute; top: 100%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);"><p style="font-size: 15px; font-weight: bold;">loading</p></div></div>
+  <body>
+  <div class="preloader-wrapper">
+    <div class="preloader">
+        <img src="gif/time.svg" alt="SEMHCMS">
+        <div style="position: absolute; top: 100%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
+          <p style="font-size: 15px; font-weight: bold;">loading</p>
+        </div>
+    </div>
+  </div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -309,6 +316,7 @@ if($Position == 'Doctor'){
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+    <script src="js/preloader.js" ></script>
 
 
   <!--common script for all pages-->
@@ -322,12 +330,6 @@ if($Position == 'Doctor'){
                   "aaSorting": [[ 1, "asc" ]]
               } );
           } );
-          $(function(){
-          setTimeout(function(){
-            $("#preloadpage").hide();
-            $("#container").show();
-          }, 2000);
-        });
       </script>
       <script>
         $(document).ready(function(){

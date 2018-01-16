@@ -3,6 +3,7 @@
 require 'lib/session.php';
 require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
+
   $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM ((patient INNER JOIN patient_medical_issue ON patient.P_ID = patient_medical_issue.P_ID) INNER JOIN adult ON patient_medical_issue.PMI_ID = adult.PMI_ID)");
   $stmt->execute();
 ?>
@@ -34,7 +35,14 @@ require 'lib/Db.config.pdo.php';
   </head>
 
   <body>
-  <div id="preloadpage"><img src="gif/heartRed.svg"/><div style="position: absolute; top: 90%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);"><p style="font-size: 15px; font-weight: bold;">loading</p></div></div>
+  <div class="preloader-wrapper">
+    <div class="preloader">
+        <img src="gif/heartRed.svg" alt="SEMHCMS">
+        <div style="position: absolute; top: 100%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
+          <p style="font-size: 15px; font-weight: bold;">loading</p>
+        </div>
+    </div>
+  </div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -160,13 +168,13 @@ require 'lib/Db.config.pdo.php';
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th width="90">Patient No.</th>
-                                          <th width="150">Full Name</th>
-                                          <th width="100">Gender</th>
-                                          <th width="80">Type</th>
-                                          <th width="150">Address</th>
-                                          <th width="90">Contact No.</th>
-                                          <th width="100" class="hidden-phone">Action</th>
+                                          <th>Patient No.</th>
+                                          <th>Full Name</th>
+                                          <th>Gender</th>
+                                          <th>Type</th>
+                                          <th>Address</th>
+                                          <th>Contact No.</th>
+                                          <th>Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
@@ -689,6 +697,7 @@ while($row = $stmt->fetch()){
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+    <script src="js/preloader.js" ></script>
 
 
   <!--common script for all pages-->
@@ -707,12 +716,7 @@ while($row = $stmt->fetch()){
 	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
 	<script src="js/advanced-form-components.js"></script>
   <script>
-        $(function(){
-          setTimeout(function(){
-            $("#preloadpage").hide();
-            $("#container").show();
-          }, 2000);
-        });
+        
 
         $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';

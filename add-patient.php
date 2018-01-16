@@ -27,6 +27,7 @@ require 'lib/Db.config.php';
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
     <link href="css/pageloader.css" rel="stylesheet">
+    <link href="css/pageloader.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -35,7 +36,14 @@ require 'lib/Db.config.php';
   </head>
 
   <body>
-  <div id="preloadpage"><img src="gif/heart.svg"/><div style="position: absolute; top: 85%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);"><p style="font-size: 15px; font-weight: bold;">loading</p></div></div>
+  <div class="preloader-wrapper">
+    <div class="preloader">
+        <img src="gif/heart.svg" alt="SEMHCMS">
+        <div style="position: absolute; top: 90%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
+          <p style="font-size: 15px; font-weight: bold;">loading</p>
+        </div>
+    </div>
+  </div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -534,6 +542,7 @@ require 'lib/Db.config.php';
       <!--footer end-->
   </section>
 
+
     <!-- js placed at the end of the document so the pages load faster -->
     <!--<script src="js/jquery.js"></script>-->
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
@@ -551,16 +560,10 @@ require 'lib/Db.config.php';
 	
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
-	
+	  <script src="js/preloader.js" ></script>
   	<!-- Keypress Limit -->
   	<script src="js/numbers-only.js"></script>
   	<script>
-    $(function(){
-      setTimeout(function(){
-        $("#preloadpage").hide();
-        $("#container").show();
-      }, 2000);
-    });
 
 	  function addNewPatient(){ 
         var Lastname = $('#P_LNAME').val();

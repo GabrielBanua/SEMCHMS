@@ -37,7 +37,14 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
   </head>
 
   <body>
-  <div id="preloadpage"><img src="gif/loading.svg"/><div style="position: absolute; top: 70%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);"><p style="font-size: 15px; font-weight: bold;">loading</p></div></div>
+  <div class="preloader-wrapper">
+    <div class="preloader">
+        <img src="gif/loading.svg" alt="SEMHCMS">
+        <div style="position: absolute; top: 85%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
+          <p style="font-size: 15px; font-weight: bold;">loading</p>
+        </div>
+    </div>
+  </div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -517,6 +524,7 @@ while($row = $stmt->fetch()){
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+    <script src="js/preloader.js" ></script>
   	<!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
     <!--script for this page only-->
@@ -528,12 +536,6 @@ while($row = $stmt->fetch()){
                   "aaSorting": [[ 0, "desc" ]]
               } );
           } );
-          $(function(){
-	      setTimeout(function(){
-	        $("#preloadpage").hide();
-	        $("#container").show();
-	      }, 2000);
-	    });
 		  
           $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';
