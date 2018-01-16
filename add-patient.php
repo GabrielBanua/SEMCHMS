@@ -148,17 +148,19 @@ require 'lib/Db.config.php';
 							<form action="" role="form" class="form-horizontal tasi-form">
 							<div class="form-group">
 								<div class="col-md-9">
-								<div id="my_camera"></div><br>
+									<div id="my_camera"></div><br>
+									<div class="col-lg-8">
 									<div id="pre_take_buttons">
 										<!-- This button is shown before the user takes a snapshot -->
-										<button type="button" class="btn btn-success" onClick="preview_snapshot()"><i class="icon-camera"></i> Take Snapchat</button>
+										<button type="button" class="btn btn-shadow btn-success btn-block" onClick="preview_snapshot()"><i class="icon-camera"></i> Take Snapchat</button>
 									</div>
 									<div id="post_take_buttons" style="display:none">
 										<!-- These buttons are shown after a snapshot is taken -->
-										<button type="button" class="btn btn-success" onClick="cancel_preview()"><i class="icon-undo"></i> Re-Take Snapchat</button>
+										<button type="button" class="btn btn-shadow btn-success btn-block" onClick="cancel_preview()"><i class="icon-undo"></i> Re-Take Snapchat</button>
+										<br><button type="button" class="btn btn-shadow btn-success btn-block" onClick="save_photo()"><i class="icon-save"></i> Save</button>
 									</div>
 									<div>
-										<button type="button" class="btn btn-success" onClick="save_photo()"><i class="icon-save"></i> Save</button>
+									</div>
 									</div>
 							  </div>
 							</div>
