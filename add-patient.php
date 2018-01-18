@@ -651,7 +651,7 @@ require 'lib/Db.config.php';
             }
 
             if(Lastname == '' || Firstname == '' || Middlename == '' || Gender == '--Select--' || Age == '' || Temperature == '' || Weight == '' || Height == '' || Type == '' || Address == '' || Contact == '' || Occupation == '--Select--' || Religion == '--Select--' || Civil == '--Select--' || Past_pre == '' || Treatment == '' || Medication == '' || Disease == '' || Hospitalized == '' || Dominant == '--Select--' || Physical_H == '--Select--' || Mental_Emo == '--Select--' || Significant == '' || Smoke == '' || Alcohol == '' || Assistive_dev == '' || Person_assist == '' || Formal_ED == '' || CB_Health == '' || TU_Health == '' || OccupationFBW == '--Select--'){
-              $('#Error_Message').html('Please fill all fields! &nbsp;');
+              $('#Error_Message').html('Please fill in all fields! &nbsp;');
             }else{
               $('#Error_Message').html('');
                 if(confirm('Are you sure you want to add this patient record in the database?')){

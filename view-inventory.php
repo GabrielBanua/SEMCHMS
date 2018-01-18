@@ -376,11 +376,11 @@ while($row = $stmt->fetch()){
         	<td><?php echo $row['INV_QTY'];echo "/"; echo $row['INV_QTY_HIST']; ?></td>
         	<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty){ echo "<span class='label label-danger label-mini'>Low</span>";} ?></td>
         	<td><?php echo $row['INV_EXPD'] ?></td>
-        	<td class="center hidden-phone">
+        	<td class="hidden-phone">
 				<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 				<a class="btn btn-danger btn-xs"><i class="icon-trash"></i></a>
 
-				<!-- ******************************************Start Model Edit Medicines*********************************************************** -->
+<!-- ******************************************Start Model Edit Medicines*********************************************************** -->
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditMed" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -650,7 +650,7 @@ while($row = $stmt->fetch()){
 								}
 							});
 						}else{
-								$('#INV_MEDICINE_GNAME').html('<option>Please select type</option>');	
+								$('#INV_MEDICINE_GNAME').html('<option></option>');	
 						}
 					});
 					$('#INV_MEDICINE_GNAME').on('change',function(){

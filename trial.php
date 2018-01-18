@@ -96,3 +96,30 @@ $query = $db->prepare("INSERT INTO users(name, email, username, password) VALUES
               }
         }
       </script>
+
+
+
+
+      <script type="text/javascript">
+        
+        function addMedicalRecord(){
+          var MedRillness = $('#').val(); 
+          var MedRBP =  $('#').val();
+          var MedRWeight = $('#').val();
+          var MedRTemp = $('#').val();
+          var MedRDate = $('#').val();
+          var MedRTime = $('#').val();
+          var Sched_ID = $('#').val();
+
+          $.ajax({
+                type: "POST",
+                url: "Server.php?p=addMedicalRecord",
+                data: "MedRillness="+MedRillness+"&MedRBP="+MedRBP+"&MedRWeight="+MedRWeight+"&MedRTemp="+MedRTemp+"&MedRDate="+MedRDate+"&MedRTime="+MedRTime+"&Sched_ID="+Sched_ID,
+                success: function(data){
+                  alert('Added successfully!');
+                  window.location.reload();
+                }
+              });
+
+        }
+      </script>
