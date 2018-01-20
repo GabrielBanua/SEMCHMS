@@ -348,16 +348,16 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 <table  class="display table table-bordered table-striped" id="example">
    	<thead>
         <tr>
-            <th width="100">Date Arrived</th>
-            <th width="85">Category</th>
-            <th width="100">Type</th>
+            <th width="120">Date Arrived</th>
+            <th width="70">Category</th>
+            <th width="80">Type</th>
             <th width="120">Generic Name</th>
             <th width="80">Brand</th>
             <th width="115">Dosage Form</th>
-            <th width="80">Dose</th>
+            <th width="90">Dose</th>
             <th width="95">Quantity</th>
-            <th width="95">Status</th>
-            <th width="100">Expiry Date</th>
+            <th width="70">Status</th>
+            <th width="110">Expiry Date</th>
             <th width="100">Action</th>
         </tr>
     </thead>
@@ -376,9 +376,10 @@ while($row = $stmt->fetch()){
         	<td><?php echo $row['INV_QTY'];echo "/"; echo $row['INV_QTY_HIST']; ?></td>
         	<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty){ echo "<span class='label label-danger label-mini'>Low</span>";} ?></td>
         	<td><?php echo $row['INV_EXPD'] ?></td>
-        	<td class="hidden-phone">
+        	<td class="hidden-phone center">
 				<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 				<a class="btn btn-danger btn-xs"><i class="icon-trash"></i></a>
+			</td>
 
 <!-- ******************************************Start Model Edit Medicines*********************************************************** -->
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditMed" class="modal fade">
