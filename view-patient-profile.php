@@ -608,6 +608,8 @@ $row = mysql_fetch_array($result);
 
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
+    <script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
+    
     <script>
       $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';
@@ -698,13 +700,32 @@ $row = mysql_fetch_array($result);
       });
         
     </script>
-	<script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
-	<script type="text/javascript">
+	  <script type="text/javascript">
 	  $(document).ready(function () {
 		  $(".select2-single").select2({placeholder: 'Please select option'});
 
 		  $(".select2-multiple").select2();
 	  });
+
+    function addMedicalRecord(){
+          var MedRillness = $('#').val(); 
+          var MedRBP =  $('#').val();
+          var MedRWeight = $('#').val();
+          var MedRTemp = $('#').val();
+          var MedRDate = $('#').val();
+          var MedRTime = $('#').val();
+          var Sched_ID = $('#').val();
+
+          $.ajax({
+                type: "POST",
+                url: "Server.php?p=addMedicalRecord",
+                data: "MedRillness="+MedRillness+"&MedRBP="+MedRBP+"&MedRWeight="+MedRWeight+"&MedRTemp="+MedRTemp+"&MedRDate="+MedRDate+"&MedRTime="+MedRTime+"&Sched_ID="+Sched_ID,
+                success: function(data){
+                  alert('Added successfully!');
+                  window.location.reload();
+                }
+              });
+        }
 	</script>
   </body>
 </html>

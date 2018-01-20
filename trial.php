@@ -120,6 +120,5 @@ $query = $db->prepare("INSERT INTO users(name, email, username, password) VALUES
                   window.location.reload();
                 }
               });
-
         }
       </script>
