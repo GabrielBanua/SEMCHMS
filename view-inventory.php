@@ -37,7 +37,14 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
   </head>
 
   <body>
-  <div id="preloadpage"><img src="gif/loading.svg"/><div style="position: absolute; top: 70%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);"><p style="font-size: 15px; font-weight: bold;">loading</p></div></div>
+  <div class="preloader-wrapper">
+    <div class="preloader">
+        <img src="gif/loading.svg" alt="SEMHCMS">
+        <div style="position: absolute; top: 85%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
+          <p style="font-size: 15px; font-weight: bold;">loading</p>
+        </div>
+    </div>
+  </div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -154,8 +161,8 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
                     </header>
             <div class="panel-body">
                 <div class="adv-table">
-					<a class="btn btn-success" data-toggle="modal" data-target="#AddInventory">Add Inventory</a>
-					<a class="btn btn-success" data-toggle="modal" data-target="#AddMed">Add Medicines</a>
+					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddInventory"><i class="icon-plus"></i> Add Inventory</a>
+					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddMed"><i class="icon-plus"></i> Add Medicines</a>
 <!-- Start Modal Add Inventory-->
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddInventory" class="modal fade">
 	<div class="modal-dialog">
@@ -341,16 +348,16 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 <table  class="display table table-bordered table-striped" id="example">
    	<thead>
         <tr>
-            <th width="10%">Date Arrived</th>
+            <th width="100">Date Arrived</th>
             <th width="85">Category</th>
             <th width="100">Type</th>
             <th width="120">Generic Name</th>
-            <th width="100">Brand</th>
+            <th width="80">Brand</th>
             <th width="115">Dosage Form</th>
-            <th width="50">Dose</th>
+            <th width="80">Dose</th>
             <th width="95">Quantity</th>
             <th width="95">Status</th>
-            <th width="10%">Expiry date</th>
+            <th width="100">Expiry Date</th>
             <th width="100">Action</th>
         </tr>
     </thead>
@@ -367,13 +374,13 @@ while($row = $stmt->fetch()){
         	<td><?php echo $row['MEDICINE_DFORM'] ?></td>
         	<td><?php echo $row['MEDICINE_DOSE'] ?></td>
         	<td><?php echo $row['INV_QTY'];echo "/"; echo $row['INV_QTY_HIST']; ?></td>
-        	<td><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($row['INV_QTY'] > $QtyStatus){ echo "Full";}if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "Average";}else if($row['INV_QTY'] < $Qty){ echo "Low";} ?></td>
+        	<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty){ echo "<span class='label label-danger label-mini'>Low</span>";} ?></td>
         	<td><?php echo $row['INV_EXPD'] ?></td>
-        	<td class="center hidden-phone">
+        	<td class="hidden-phone">
 				<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 				<a class="btn btn-danger btn-xs"><i class="icon-trash"></i></a>
 
-				<!-- ******************************************Start Model Edit Medicines*********************************************************** -->
+<!-- ******************************************Start Model Edit Medicines*********************************************************** -->
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditMed" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -517,6 +524,7 @@ while($row = $stmt->fetch()){
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+    <script src="js/preloader.js" ></script>
   	<!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
     <!--script for this page only-->
@@ -528,12 +536,6 @@ while($row = $stmt->fetch()){
                   "aaSorting": [[ 0, "desc" ]]
               } );
           } );
-          $(function(){
-	      setTimeout(function(){
-	        $("#preloadpage").hide();
-	        $("#container").show();
-	      }, 2000);
-	    });
 		  
           $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';
@@ -648,7 +650,7 @@ while($row = $stmt->fetch()){
 								}
 							});
 						}else{
-								$('#INV_MEDICINE_GNAME').html('<option>Please select type</option>');	
+								$('#INV_MEDICINE_GNAME').html('<option></option>');	
 						}
 					});
 					$('#INV_MEDICINE_GNAME').on('change',function(){

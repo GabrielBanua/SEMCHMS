@@ -35,7 +35,14 @@ require 'lib/Db.config.php';
   </head>
 
   <body>
-  <div id="preloadpage"><img src="gif/heart.svg"/><div style="position: absolute; top: 85%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);"><p style="font-size: 15px; font-weight: bold;">loading</p></div></div>
+  <div class="preloader-wrapper">
+    <div class="preloader">
+        <img src="gif/heart.svg" alt="SEMHCMS">
+        <div style="position: absolute; top: 90%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
+          <p style="font-size: 15px; font-weight: bold;">loading</p>
+        </div>
+    </div>
+  </div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -255,11 +262,7 @@ require 'lib/Db.config.php';
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Religion</label>
                                 <div class="col-lg-6">
-                                    <select class="form-control" name="P_REL" id="P_REL" required>
-                          							<option hidden>--Select--</option>
-                          							<option>Catholic</option>
-                          							<option>Muslim</option>
-                      							</select>
+									<input id="P_REL" name="P_REL" type="text" maxlength="11" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -534,6 +537,7 @@ require 'lib/Db.config.php';
       <!--footer end-->
   </section>
 
+
     <!-- js placed at the end of the document so the pages load faster -->
     <!--<script src="js/jquery.js"></script>-->
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
@@ -551,16 +555,10 @@ require 'lib/Db.config.php';
 	
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
-	
+	  <script src="js/preloader.js" ></script>
   	<!-- Keypress Limit -->
   	<script src="js/numbers-only.js"></script>
   	<script>
-    $(function(){
-      setTimeout(function(){
-        $("#preloadpage").hide();
-        $("#container").show();
-      }, 2000);
-    });
 
 	  function addNewPatient(){ 
         var Lastname = $('#P_LNAME').val();
@@ -653,7 +651,7 @@ require 'lib/Db.config.php';
             }
 
             if(Lastname == '' || Firstname == '' || Middlename == '' || Gender == '--Select--' || Age == '' || Temperature == '' || Weight == '' || Height == '' || Type == '' || Address == '' || Contact == '' || Occupation == '--Select--' || Religion == '--Select--' || Civil == '--Select--' || Past_pre == '' || Treatment == '' || Medication == '' || Disease == '' || Hospitalized == '' || Dominant == '--Select--' || Physical_H == '--Select--' || Mental_Emo == '--Select--' || Significant == '' || Smoke == '' || Alcohol == '' || Assistive_dev == '' || Person_assist == '' || Formal_ED == '' || CB_Health == '' || TU_Health == '' || OccupationFBW == '--Select--'){
-              $('#Error_Message').html('Please fill all fields! &nbsp;');
+              $('#Error_Message').html('Please fill in all fields! &nbsp;');
             }else{
               $('#Error_Message').html('');
                 if(confirm('Are you sure you want to add this patient record in the database?')){

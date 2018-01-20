@@ -36,7 +36,14 @@ else if($Position == "Volunter"){
   </head>
 
   <body>
-  <div id="preloadpage"><img src="gif/flask.svg"/><div style="position: absolute; top: 105%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);"><p style="font-size: 15px; font-weight: bold;">loading</p></div></div>
+  <div class="preloader-wrapper">
+    <div class="preloader">
+        <img src="gif/flask.svg" alt="SEMHCMS">
+        <div style="position: absolute; top: 110%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
+          <p style="font-size: 15px; font-weight: bold;">loading</p>
+        </div>
+    </div>
+  </div>
   <section id="container" class="">
       <!--header start-->
       <header class="header white-bg">
@@ -678,6 +685,8 @@ else if($Position == "Volunter"){
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+    <script src="js/preloader.js" ></script>
+    
 	<script>
 		$('.btn').on('click', function() {
 			var $this = $(this);

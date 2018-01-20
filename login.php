@@ -94,6 +94,7 @@ if(isset($_POST['login'])){
             </label>
             <button class="btn btn-lg btn-login btn-block" name="login" type="submit">Sign in</button>
         </div>
+
       </form>
 
           <!-- Modal -->

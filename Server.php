@@ -9,82 +9,82 @@ $page = isset($_GET['p'])?$_GET['p']:'';
 if($page == 'addNewUser'){
 require 'lib/Db.config.pdo.php';
 require 'lib/password.php';
-$Username = mysql_real_escape_string($_POST['UN']);
-$Password = mysql_real_escape_string($_POST['PW']);
-$Firstname = mysql_real_escape_string($_POST['FN']);
-$Lastname = mysql_real_escape_string($_POST['LN']);
-$Middlename = mysql_real_escape_string($_POST['MN']);
-$Gender = mysql_real_escape_string($_POST['GN']);
-$Position = mysql_real_escape_string($_POST['PS']);
-$Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
-$date = date("Y-m-d");	
-$Year = date('Y',strtotime($date));
-$Month = date('m',strtotime($date));
+			$Username = mysql_real_escape_string($_POST['UN']);
+			$Password = mysql_real_escape_string($_POST['PW']);
+			$Firstname = mysql_real_escape_string($_POST['FN']);
+			$Lastname = mysql_real_escape_string($_POST['LN']);
+			$Middlename = mysql_real_escape_string($_POST['MN']);
+			$Gender = mysql_real_escape_string($_POST['GN']);
+			$Position = mysql_real_escape_string($_POST['PS']);
+			$Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
+			$date = date("Y-m-d");	
+			$Year = date('Y',strtotime($date));
+			$Month = date('m',strtotime($date));
 
 		$stmt = $db->prepare("insert into users values('',?,?,?,?,?,?,?,?,?)");
-		$stmt->bindParam(1,$Username);
-		$stmt->bindParam(2,$Pass);
-		$stmt->bindParam(3,$Firstname);
-		$stmt->bindParam(5,$Lastname);
-		$stmt->bindParam(4,$Middlename);
-		$stmt->bindParam(6,$Gender);
-		$stmt->bindParam(7,$Position);
-		$stmt->bindParam(8,$Month);
-		$stmt->bindParam(9,$Year);
-		$stmt->execute();
+			$stmt->bindParam(1,$Username);
+			$stmt->bindParam(2,$Pass);
+			$stmt->bindParam(3,$Firstname);
+			$stmt->bindParam(5,$Lastname);
+			$stmt->bindParam(4,$Middlename);
+			$stmt->bindParam(6,$Gender);
+			$stmt->bindParam(7,$Position);
+			$stmt->bindParam(8,$Month);
+			$stmt->bindParam(9,$Year);
+			$stmt->execute();
 } 
 //add new patient
 if($page == 'addNewPatient'){
 	require 'lib/Db.config.pdo.php';
 
-	$Lastname = mysql_real_escape_string($_POST['P_LNAME']);
-	$Firstname = mysql_real_escape_string($_POST['P_FNAME']);
-	$Middlename = mysql_real_escape_string($_POST['P_MNAME']);
-	$Gender = mysql_real_escape_string($_POST['P_GNDR']);
-	$Birthday = mysql_real_escape_string($_POST['P_BDATE']);
-	$Age = mysql_real_escape_string($_POST['P_AGE']);
-	$Temperature = mysql_real_escape_string($_POST['P_TEMP']);
-	$Weight = mysql_real_escape_string($_POST['P_WGHT']);
-	$Height = mysql_real_escape_string($_POST['P_HGHT']);
-	$Type = mysql_real_escape_string($_POST['P_TYPE']);
-	$Address = mysql_real_escape_string($_POST['P_ADD']);
-	$Contact = mysql_real_escape_string($_POST['P_CN']);
-	$Religion = mysql_real_escape_string($_POST['P_REL']);
-	$Civil = mysql_real_escape_string($_POST['P_CVL_STAT']);
-	$Date_Reg = mysql_real_escape_string($_POST['DATE_REG']);
-	$Occupation = mysql_real_escape_string($_POST['P_OCCU']);
-	$OccupationFBW = mysql_real_escape_string($_POST['P_OCCU_FBW']);
-		$timezone = date("Ymd");
-		$DATE_REGISTER = $timezone;
+			$Lastname = mysql_real_escape_string($_POST['P_LNAME']);
+			$Firstname = mysql_real_escape_string($_POST['P_FNAME']);
+			$Middlename = mysql_real_escape_string($_POST['P_MNAME']);
+			$Gender = mysql_real_escape_string($_POST['P_GNDR']);
+			$Birthday = mysql_real_escape_string($_POST['P_BDATE']);
+			$Age = mysql_real_escape_string($_POST['P_AGE']);
+			$Temperature = mysql_real_escape_string($_POST['P_TEMP']);
+			$Weight = mysql_real_escape_string($_POST['P_WGHT']);
+			$Height = mysql_real_escape_string($_POST['P_HGHT']);
+			$Type = mysql_real_escape_string($_POST['P_TYPE']);
+			$Address = mysql_real_escape_string($_POST['P_ADD']);
+			$Contact = mysql_real_escape_string($_POST['P_CN']);
+			$Religion = mysql_real_escape_string($_POST['P_REL']);
+			$Civil = mysql_real_escape_string($_POST['P_CVL_STAT']);
+			$Date_Reg = mysql_real_escape_string($_POST['DATE_REG']);
+			$Occupation = mysql_real_escape_string($_POST['P_OCCU']);
+			$OccupationFBW = mysql_real_escape_string($_POST['P_OCCU_FBW']);
+				$timezone = date("Ymd");
+				$DATE_REGISTER = $timezone;
 
-	$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
-	$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);
-	$date = date("Y-m-d");	
-	$Year = date('Y',strtotime($date));
-	$Month = date('m',strtotime($date));
+			$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
+			$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);
+			$date = date("Y-m-d");	
+			$Year = date('Y',strtotime($date));
+			$Month = date('m',strtotime($date));
 
 	
 		$stmt = $db->prepare("insert into Patient values('',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-		$stmt->bindParam(1,$Lastname);
-		$stmt->bindParam(2,$Firstname);
-		$stmt->bindParam(3,$Middlename);
-		$stmt->bindParam(4,$Gender);
-		$stmt->bindParam(5,$Birthday);
-		$stmt->bindParam(6,$Age);
-		$stmt->bindParam(8,$Weight);
-		$stmt->bindParam(9,$Height);
-		$stmt->bindParam(7,$Temperature);
-		$stmt->bindParam(10,$Type);
-		$stmt->bindParam(11,$Address);
-		$stmt->bindParam(12,$Contact);
-		$stmt->bindParam(13,$Occupation);
-		$stmt->bindParam(14,$Religion);
-		$stmt->bindParam(15,$Civil);
-		$stmt->bindParam(16,$DATE_REGISTER);
-		$stmt->bindParam(17,$OccupationFBW);
-		$stmt->bindParam(18,$Month);
-		$stmt->bindParam(19,$Year);
-		$stmt->execute();
+			$stmt->bindParam(1,$Lastname);
+			$stmt->bindParam(2,$Firstname);
+			$stmt->bindParam(3,$Middlename);
+			$stmt->bindParam(4,$Gender);
+			$stmt->bindParam(5,$Birthday);
+			$stmt->bindParam(6,$Age);
+			$stmt->bindParam(8,$Weight);
+			$stmt->bindParam(9,$Height);
+			$stmt->bindParam(7,$Temperature);
+			$stmt->bindParam(10,$Type);
+			$stmt->bindParam(11,$Address);
+			$stmt->bindParam(12,$Contact);
+			$stmt->bindParam(13,$Occupation);
+			$stmt->bindParam(14,$Religion);
+			$stmt->bindParam(15,$Civil);
+			$stmt->bindParam(16,$DATE_REGISTER);
+			$stmt->bindParam(17,$OccupationFBW);
+			$stmt->bindParam(18,$Month);
+			$stmt->bindParam(19,$Year);
+			$stmt->execute();
 
 			$Last_ID = $db->lastInsertId();
 			$Past_pre = mysql_real_escape_string($_POST['PP_HEATH']);
@@ -113,54 +113,55 @@ if($page == 'addNewPatient'){
  		$sql = "INSERT INTO `adult` (`PHY_HEALTH`, `MENT_EMO_HEAl`, `SIG_INJ`, `SMOKE`, `ALCO_DRUGS`, `ASSIST_DEV`, `PERS_ASSIST`, `YEARS_FE`, `DOM_HAND`, `CB_HEALTH_COND`, `TU_HEALTH_COND`, `PMI_ID`, `MONTH`, `YEAR`) VALUES ('$Physical', '$Mental', '$Significant', '$Smoke', '$Alcohol', '$Assistive', '$Person_Ass', '$Formal_ed', '$Dominant', '$CB_H', '$TU_H', '$Last_PMID', '$Month', '$Year')";
  		$stmt = $db->prepare($sql);
  		$stmt -> execute();
+
 }else if($page == 'UpdatePatient'){
 	require 'lib/Db.config.pdo.php';
 
-	$P_ID = mysql_real_escape_string($_POST['P_ID']);
-	$Lastname = mysql_real_escape_string($_POST['P_LNAME']);
-	$Firstname = mysql_real_escape_string($_POST['P_FNAME']);
-	$Middlename = mysql_real_escape_string($_POST['P_MNAME']);
-	$Gender = mysql_real_escape_string($_POST['P_GNDR']);
-	$Birthday = mysql_real_escape_string($_POST['P_BDATE']);
-	$Age = mysql_real_escape_string($_POST['P_AGE']);
-	$Temperature = mysql_real_escape_string($_POST['P_TEMP']);
-	$Weight = mysql_real_escape_string($_POST['P_WGHT']);
-	$Height = mysql_real_escape_string($_POST['P_HGHT']);
-	$Type = mysql_real_escape_string($_POST['P_TYPE']);
-	$Address = mysql_real_escape_string($_POST['P_ADD']);
-	$Contact = mysql_real_escape_string($_POST['P_CN']);
-	$Religion = mysql_real_escape_string($_POST['P_REL']);
-	$Civil = mysql_real_escape_string($_POST['P_CVL_STAT']);
-	$Date_Reg = mysql_real_escape_string($_POST['DATE_REG']);
-	$Occupation = mysql_real_escape_string($_POST['P_OCCU']);
-	$OccupationFBW = mysql_real_escape_string($_POST['P_OCCU_FBW']);
-	$timezone = date("Ymd");
-	$Bday = date('Y-m-d',strtotime($Birthday));
-	$DATE_REGISTER = $timezone;
+			$P_ID = mysql_real_escape_string($_POST['P_ID']);
+			$Lastname = mysql_real_escape_string($_POST['P_LNAME']);
+			$Firstname = mysql_real_escape_string($_POST['P_FNAME']);
+			$Middlename = mysql_real_escape_string($_POST['P_MNAME']);
+			$Gender = mysql_real_escape_string($_POST['P_GNDR']);
+			$Birthday = mysql_real_escape_string($_POST['P_BDATE']);
+			$Age = mysql_real_escape_string($_POST['P_AGE']);
+			$Temperature = mysql_real_escape_string($_POST['P_TEMP']);
+			$Weight = mysql_real_escape_string($_POST['P_WGHT']);
+			$Height = mysql_real_escape_string($_POST['P_HGHT']);
+			$Type = mysql_real_escape_string($_POST['P_TYPE']);
+			$Address = mysql_real_escape_string($_POST['P_ADD']);
+			$Contact = mysql_real_escape_string($_POST['P_CN']);
+			$Religion = mysql_real_escape_string($_POST['P_REL']);
+			$Civil = mysql_real_escape_string($_POST['P_CVL_STAT']);
+			$Date_Reg = mysql_real_escape_string($_POST['DATE_REG']);
+			$Occupation = mysql_real_escape_string($_POST['P_OCCU']);
+			$OccupationFBW = mysql_real_escape_string($_POST['P_OCCU_FBW']);
+			$timezone = date("Ymd");
+			$Bday = date('Y-m-d',strtotime($Birthday));
+			$DATE_REGISTER = $timezone;
 
-	$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
-	$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);	
+			$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
+			$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);	
 	
 		$stmt = $db->prepare("Update Patient set P_LNAME=?, P_FNAME=?, P_MNAME=?, P_GNDR=?, P_BDATE=?, P_AGE=?, P_TEMP=?, P_WGHT=?, P_HGHT=?, P_TYPE=?, P_ADD=?, P_CN=?, P_OCCU=?, P_REL=?, P_CVL_STAT=?, DATE_REG=?, P_OCCU_FBW=? where P_ID = ?");
-		$stmt->bindParam(1,$Lastname);
-		$stmt->bindParam(2,$Firstname);
-		$stmt->bindParam(3,$Middlename);
-		$stmt->bindParam(4,$Gender);
-		$stmt->bindParam(5,$Bday);
-		$stmt->bindParam(6,$Age);
-		$stmt->bindParam(8,$Weight);
-		$stmt->bindParam(9,$Height);
-		$stmt->bindParam(7,$Temperature);
-		$stmt->bindParam(10,$Type);
-		$stmt->bindParam(11,$Address);
-		$stmt->bindParam(12,$Contact);
-		$stmt->bindParam(13,$Occupation);
-		$stmt->bindParam(14,$Religion);
-		$stmt->bindParam(15,$Civil);
-		$stmt->bindParam(16,$DATE_REGISTER);
-		$stmt->bindParam(17,$OccupationFBW);
-		$stmt->bindParam(18,$P_ID);
-		$stmt->execute();
+			$stmt->bindParam(1,$Lastname);
+			$stmt->bindParam(2,$Firstname);
+			$stmt->bindParam(3,$Middlename);
+			$stmt->bindParam(4,$Gender);
+			$stmt->bindParam(5,$Bday);
+			$stmt->bindParam(6,$Age);
+			$stmt->bindParam(8,$Weight);
+			$stmt->bindParam(9,$Height);
+			$stmt->bindParam(7,$Temperature);
+			$stmt->bindParam(10,$Type);
+			$stmt->bindParam(11,$Address);
+			$stmt->bindParam(12,$Contact);
+			$stmt->bindParam(13,$Occupation);
+			$stmt->bindParam(14,$Religion);
+			$stmt->bindParam(15,$Civil);
+			$stmt->bindParam(16,$DATE_REGISTER);
+			$stmt->bindParam(17,$OccupationFBW);
+			$stmt->bindParam(18,$P_ID);
+			$stmt->execute();
 
 			$Past_pre = mysql_real_escape_string($_POST['PP_HEATH']);
 			$Treatment = mysql_real_escape_string($_POST['TRMT']);
@@ -203,107 +204,109 @@ require 'lib/Db.config.pdo.php';
 else if($page == 'UpdateUser'){
 require 'lib/Db.config.pdo.php';
 
-	$ID = mysql_real_escape_string($_POST['User_id']);
-	$Username = mysql_real_escape_string($_POST['UN']);
-	$Password = mysql_real_escape_string($_POST['PW']);
-	$Firstname = mysql_real_escape_string($_POST['FN']);
-	$Lastname = mysql_real_escape_string($_POST['LN']);
-	$Middlename = mysql_real_escape_string($_POST['MN']);
-	$Gender = mysql_real_escape_string($_POST['GN']);
-	$Position = mysql_real_escape_string($_POST['PS']);
-	$Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
-	
-	$stmt = $db->prepare("update users set Username=?, Password=?, Firstname=?, Middlename=?, Lastname=?, Gender=?, Position=? where User_id=?");
-	$stmt->bindParam(1,$Username);
-	$stmt->bindParam(2,$Pass);
-	$stmt->bindParam(3,$Firstname);
-	$stmt->bindParam(5,$Lastname);
-	$stmt->bindParam(4,$Middlename);
-	$stmt->bindParam(6,$Gender);
-	$stmt->bindParam(7,$Position);
-	$stmt->bindParam(8,$ID);
-	$stmt->execute();
+			$ID = mysql_real_escape_string($_POST['User_id']);
+			$Username = mysql_real_escape_string($_POST['UN']);
+			$Password = mysql_real_escape_string($_POST['PW']);
+			$Firstname = mysql_real_escape_string($_POST['FN']);
+			$Lastname = mysql_real_escape_string($_POST['LN']);
+			$Middlename = mysql_real_escape_string($_POST['MN']);
+			$Gender = mysql_real_escape_string($_POST['GN']);
+			$Position = mysql_real_escape_string($_POST['PS']);
+			$Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
+			
+			$stmt = $db->prepare("update users set Username=?, Password=?, Firstname=?, Middlename=?, Lastname=?, Gender=?, Position=? where User_id=?");
+			$stmt->bindParam(1,$Username);
+			$stmt->bindParam(2,$Pass);
+			$stmt->bindParam(3,$Firstname);
+			$stmt->bindParam(5,$Lastname);
+			$stmt->bindParam(4,$Middlename);
+			$stmt->bindParam(6,$Gender);
+			$stmt->bindParam(7,$Position);
+			$stmt->bindParam(8,$ID);
+			$stmt->execute();
 		
 }
 else if($page == 'SetSched'){
 require 'lib/Db.config.pdo.php';
 
-$P_ID = mysql_real_escape_string($_POST['P_ID']);
-$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
-$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
-$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-$Time = date('H:i', strtotime($Sched_time. ' +15 minutes'));
-$sqldate = date('Y-m-d',strtotime($Sched_date)); 
+			$P_ID = mysql_real_escape_string($_POST['P_ID']);
+			$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
+			$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
+			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
+			$Time = date('H:i', strtotime($Sched_time. ' +15 minutes'));
+			$sqldate = date('Y-m-d',strtotime($Sched_date)); 
 
 	
 		$stmt = $db->prepare("insert into schedule values('',?,?,?,?)");
-		$stmt->bindParam(1,$P_ID);
-		$stmt->bindParam(2,$sqldate);
-		$stmt->bindParam(3,$Time);
-		$stmt->bindParam(4,$Sched_purpose);
-		$stmt->execute();
+			$stmt->bindParam(1,$P_ID);
+			$stmt->bindParam(2,$sqldate);
+			$stmt->bindParam(3,$Time);
+			$stmt->bindParam(4,$Sched_purpose);
+			$stmt->execute();
 
 }
 else if($page == 'UpdateSched'){
 require 'lib/Db.config.pdo.php';
 
-$Sched_ID = mysql_real_escape_string($_POST['Sched_Id']);
-$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
-$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
-$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-$Time = date('H:i:s', strtotime($Sched_time));
-$sqldate = date('Y-m-d',strtotime($Sched_date)); 
+			$Sched_ID = mysql_real_escape_string($_POST['Sched_Id']);
+			$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
+			$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
+			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
+			$Time = date('H:i:s', strtotime($Sched_time));
+			$sqldate = date('Y-m-d',strtotime($Sched_date)); 
 	
 		$stmt = $db->prepare("Update schedule set SCHEDULE_DATE=?, SCHEDULE_TIME=?, SCHEDULE_PURPOSE=? where SCHEDULE_ID=?");
-		$stmt->bindParam(1,$sqldate);
-		$stmt->bindParam(2,$Time);
-		$stmt->bindParam(3,$Sched_purpose);
-		$stmt->bindParam(4,$Sched_ID);
-		$stmt->execute();
+			$stmt->bindParam(1,$sqldate);
+			$stmt->bindParam(2,$Time);
+			$stmt->bindParam(3,$Sched_purpose);
+			$stmt->bindParam(4,$Sched_ID);
+			$stmt->execute();
+
 }
 else if($page == 'DeleteSched'){
 require 'lib/Db.config.pdo.php';
 
-$ID = mysql_real_escape_string($_POST['SCHEDULE_ID']);
+			$ID = mysql_real_escape_string($_POST['SCHEDULE_ID']);
 
 		$sql = "DELETE FROM schedule WHERE SCHEDULE_ID = $ID";
-		$stmt = $db->prepare($sql);
- 		$stmt -> execute();
+			$stmt = $db->prepare($sql);
+	 		$stmt -> execute();
 
 }
 else if($page == 'addMedicine'){
 require 'lib/Db.config.pdo.php';
 
-$MED_CAT = mysql_real_escape_string($_POST['MEDICINE_CAT']);
-$MED_TYPE = mysql_real_escape_string($_POST['MEDICINE_TYPE']);
-$MED_GNAME = mysql_real_escape_string($_POST['MEDICINE_GNAME']);
-$MED_BNAME = mysql_real_escape_string($_POST['MEDICINE_BNAME']);
-$MED_DFORM = mysql_real_escape_string($_POST['MEDICINE_DFORM']);
-$MED_DOSE = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
-$date = date("Y-m-d");	
-$Year = date('Y',strtotime($date));
-$Month = date('m',strtotime($date));
+			$MED_CAT = mysql_real_escape_string($_POST['MEDICINE_CAT']);
+			$MED_TYPE = mysql_real_escape_string($_POST['MEDICINE_TYPE']);
+			$MED_GNAME = mysql_real_escape_string($_POST['MEDICINE_GNAME']);
+			$MED_BNAME = mysql_real_escape_string($_POST['MEDICINE_BNAME']);
+			$MED_DFORM = mysql_real_escape_string($_POST['MEDICINE_DFORM']);
+			$MED_DOSE = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
+			$date = date("Y-m-d");	
+			$Year = date('Y',strtotime($date));
+			$Month = date('m',strtotime($date));
 
 		$stmt = $db->prepare("insert into medicine values('',?,?,?,?,?,?,?,?)");
-		$stmt->bindParam(1,$MED_CAT);
-		$stmt->bindParam(2,$MED_TYPE);
-		$stmt->bindParam(3,$MED_GNAME);
-		$stmt->bindParam(4,$MED_BNAME);
-		$stmt->bindParam(5,$MED_DFORM);
-		$stmt->bindParam(6,$MED_DOSE);
-		$stmt->bindParam(7,$Month);
-		$stmt->bindParam(8,$Year);
-		$stmt->execute();
+			$stmt->bindParam(1,$MED_CAT);
+			$stmt->bindParam(2,$MED_TYPE);
+			$stmt->bindParam(3,$MED_GNAME);
+			$stmt->bindParam(4,$MED_BNAME);
+			$stmt->bindParam(5,$MED_DFORM);
+			$stmt->bindParam(6,$MED_DOSE);
+			$stmt->bindParam(7,$Month);
+			$stmt->bindParam(8,$Year);
+			$stmt->execute();
+
 }
 else if($page == 'MedicineName'){
 require 'lib/Db.config.php';
 
-$INV_MEDTYPE = mysql_real_escape_string($_POST['INV_MEDTYPE']);
-$INV_MEDCAT = mysql_real_escape_string($_POST['INV_MEDCAT']);
+			$INV_MEDTYPE = mysql_real_escape_string($_POST['INV_MEDTYPE']);
+			$INV_MEDCAT = mysql_real_escape_string($_POST['INV_MEDCAT']);
 
 	$sql = "SELECT MEDICINE_GNAME FROM medicine WHERE MEDICINE_TYPE = '$INV_MEDTYPE' AND MEDICINE_CAT = '$INV_MEDCAT' GROUP BY MEDICINE_GNAME";
-	$do = mysql_query($sql);
-	$count = mysql_num_rows($do);
+			$do = mysql_query($sql);
+			$count = mysql_num_rows($do);
 
 
 	if($count > 0){
@@ -312,16 +315,17 @@ $INV_MEDCAT = mysql_real_escape_string($_POST['INV_MEDCAT']);
 		}
 	}else{
 		echo "<option>No medicine found!</option>";
-	}	
+	}
+
 }
 else if($page == 'MedicineBName'){
 require 'lib/Db.config.php';
 
-$INV_MEDGNAME = mysql_real_escape_string($_POST['INV_MEDGNAME']);
+			$INV_MEDGNAME = mysql_real_escape_string($_POST['INV_MEDGNAME']);
 
 	$sql = "SELECT MEDICINE_BNAME FROM medicine WHERE MEDICINE_GNAME = '$INV_MEDGNAME' GROUP BY MEDICINE_BNAME";
-	$do = mysql_query($sql);
-	$count = mysql_num_rows($do);
+			$do = mysql_query($sql);
+			$count = mysql_num_rows($do);
 
 	if($count > 0){
 		while($bname = mysql_fetch_array($do)){
@@ -330,54 +334,86 @@ $INV_MEDGNAME = mysql_real_escape_string($_POST['INV_MEDGNAME']);
 	}else{
 		echo "<option>No medicine found!</option>";
 	}
+
 }
 else if($page == 'MedicineDF'){
 require 'lib/Db.config.php';
 
-$MedCat = mysql_real_escape_string($_POST['MedCat']);
-$Medtype = mysql_real_escape_string($_POST['Medtype']);
-$MedGname = mysql_real_escape_string($_POST['Medgname']);
-$MedDform = mysql_real_escape_string($_POST['MedDform']);
-$MedBN = mysql_real_escape_string($_POST['MedBname']);
+			$MedCat = mysql_real_escape_string($_POST['MedCat']);
+			$Medtype = mysql_real_escape_string($_POST['Medtype']);
+			$MedGname = mysql_real_escape_string($_POST['Medgname']);
+			$MedDform = mysql_real_escape_string($_POST['MedDform']);
+			$MedBN = mysql_real_escape_string($_POST['MedBname']);
 
 	$sql = "SELECT MEDICINE_DOSE FROM medicine WHERE (MEDICINE_BNAME = '$MedBN' AND MEDICINE_CAT ='$MedCat' AND (MEDICINE_DFORM = '$MedDform')) GROUP BY MEDICINE_DOSE";
-	$do = mysql_query($sql);
+			$do = mysql_query($sql);
 
 		while($DS = mysql_fetch_array($do)){
 			echo "<option value='";echo $DS['MEDICINE_DOSE'];echo "'>";  echo $DS['MEDICINE_DOSE']; echo "</option>";
 		}
+
 }
 else if($page == 'AddInventory'){
 require 'lib/Db.config.pdo.php';
 require 'lib/Db.config.php';
 
-$MedCat = mysql_real_escape_string($_POST['MEDICINE_CAT']);
-$Medtype = mysql_real_escape_string($_POST['MEDICINE_TYPE']);
-$MedGname = mysql_real_escape_string($_POST['MEDICINE_GNAME']);
-$MedDform = mysql_real_escape_string($_POST['MEDICINE_DFORM']);
-$MedBN = mysql_real_escape_string($_POST['MEDICINE_BNAME']);
-$MedDose = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
-$Supplier = mysql_real_escape_string($_POST['SUPPLIER']);
-$EXPDATE = mysql_real_escape_string($_POST['EXPDATE']);
-$DATEAR = mysql_real_escape_string($_POST['DATEARR']);
-$Qty = mysql_real_escape_string($_POST['QTY']);
-$DateExp = date('Y-m-d',strtotime($EXPDATE)); 
-$DateArr = date('Y-m-d',strtotime($DATEAR)); 
-$QtyHistory = $Qty;
+			$MedCat = mysql_real_escape_string($_POST['MEDICINE_CAT']);
+			$Medtype = mysql_real_escape_string($_POST['MEDICINE_TYPE']);
+			$MedGname = mysql_real_escape_string($_POST['MEDICINE_GNAME']);
+			$MedDform = mysql_real_escape_string($_POST['MEDICINE_DFORM']);
+			$MedBN = mysql_real_escape_string($_POST['MEDICINE_BNAME']);
+			$MedDose = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
+			$Supplier = mysql_real_escape_string($_POST['SUPPLIER']);
+			$EXPDATE = mysql_real_escape_string($_POST['EXPDATE']);
+			$DATEAR = mysql_real_escape_string($_POST['DATEARR']);
+			$Qty = mysql_real_escape_string($_POST['QTY']);
+			$DateExp = date('Y-m-d',strtotime($EXPDATE)); 
+			$DateArr = date('Y-m-d',strtotime($DATEAR)); 
+			$QtyHistory = $Qty;
 
 	$sql = "SELECT MEDICINE_ID FROM medicine WHERE MEDICINE_DOSE = '$MedDose' AND MEDICINE_BNAME = '$MedBN' AND(MEDICINE_GNAME = '$MedGname' AND MEDICINE_CAT = '$MedCat') AND MEDICINE_TYPE = '$Medtype'";
-	$do = mysql_query($sql);
-	$id = mysql_fetch_array($do);
-	$MedID = $id['MEDICINE_ID'];
+			$do = mysql_query($sql);
+			$id = mysql_fetch_array($do);
+			$MedID = $id['MEDICINE_ID'];
 
 	$stmt = $db->prepare("insert into inventory values('',?,?,?,?,?,?)");
-		$stmt->bindParam(1,$MedID);
-		$stmt->bindParam(2,$Qty);
-		$stmt->bindParam(3,$Supplier);
-		$stmt->bindParam(4,$DateExp);
-		$stmt->bindParam(5,$DateArr);
-		$stmt->bindParam(6,$QtyHistory);
-		$stmt->execute();
+			$stmt->bindParam(1,$MedID);
+			$stmt->bindParam(2,$Qty);
+			$stmt->bindParam(3,$Supplier);
+			$stmt->bindParam(4,$DateExp);
+			$stmt->bindParam(5,$DateArr);
+			$stmt->bindParam(6,$QtyHistory);
+			$stmt->execute();
 }
+else if($page == 'addMedicalRecord'){
+require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
+			$MedRillness = mysql_real_escape_string($_POST['MEDICINE_CAT']);
+			$MedRBP = mysql_real_escape_string($_POST['MEDICINE_TYPE']);
+			$MedRWeight = mysql_real_escape_string($_POST['MEDICINE_GNAME']);
+			$MedRTemp = mysql_real_escape_string($_POST['MEDICINE_DFORM']);
+			$MedRDate = mysql_real_escape_string($_POST['MEDICINE_BNAME']);
+			$MedRTime = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
+			$Sched_ID = mysql_real_escape_string($_POST['SUPPLIER']);
+			$date = date("Y-m-d");
+			$Year = date('Y',strtotime($date));
+			$Month = date('m',strtotime($date));
+			$sqldate = date('Y-m-d',strtotime($MedRDate));
+			$Time = date('H:i', strtotime($MedRTime));
+			$Status = 'Pending';
 
+	$stmt = $db->prepare("insert into medical_record values('',?,?,?,?,?,?,?,?,?,?)");
+			$stmt->bindParam(1,$MedRillness);
+			$stmt->bindParam(2,$MedRBP);
+			$stmt->bindParam(3,$MedRWeight);
+			$stmt->bindParam(4,$MedRTemp);
+			$stmt->bindParam(5,$sqldate);
+			$stmt->bindParam(6,$Time);
+			$stmt->bindParam(7,$Sched_ID);
+			$stmt->bindParam(8,$Month);
+			$stmt->bindParam(9,$Year);
+			$stmt->bindParam(10,$Status);
+			$stmt->execute();
+
+}
 ?>
