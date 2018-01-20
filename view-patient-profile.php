@@ -443,13 +443,7 @@ $row = mysql_fetch_array($result);
                                   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Date Schedule</label>
                                       <div class="col-lg-6">
-                                          <input type="date" class="form-control" placeholder=" "autofocus required>
-                                      </div>
-                                  </div>
-								  <div class="form-group">
-                                      <label  class="col-lg-3 control-label">Time</label>
-                                      <div class="col-lg-6">
-                                          <input type="time" class="form-control" placeholder=" "autofocus required>
+                                          <input type="datetime-local" class="form-control" placeholder=" "autofocus required>
                                       </div>
                                   </div>
                                   <div class="form-group">
