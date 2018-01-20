@@ -157,7 +157,7 @@ require 'lib/Db.config.pdo.php';
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-								<a class="btn btn-success" data-toggle="modal" data-target="#AddModal"><i class="icon-plus"></i> Add New User</a>
+								<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddModal"><i class="icon-plus"></i> Add New User</a>
 <!-- Register User Start  MODAL-->
               <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddModal" class="modal fade">
                                   <div class="modal-dialog">
@@ -222,11 +222,33 @@ require 'lib/Db.config.pdo.php';
                               </select>
                                                       </div>
                                                   </div>
+							<div class="form-group">
+											<label class="col-md-3 col-sm-2 control-label">License No.:</label>
+											<div class="col-lg-6">
+												<input type="text" class="form-control">
+											</div>
+									  </div>
+									  <div class="form-group">
+											<label class="col-md-3 col-sm-2 control-label">Date End:</label>
+											<div class="col-lg-4">
+												<input type="date" class="form-control">
+											</div>
+									  </div>
+									  <div class="form-group">
+											<label class="col-md-3 col-sm-2 control-label">Status:</label>
+											<div class="col-lg-4">
+												<select class="form-control">
+													<option hidden>-- Select Option --</option>
+													<option>Active</option>
+													<option>Inactive</option>
+												</select>
+											</div>
+									  </div>
                                               </form>
                                           </div>
                     <div class="modal-footer">
-                      <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                      <button class="btn btn-success" type="submit" onclick="addNewUser()">Register</button>
+                      <a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Cancel</a>
+                      <a class="btn btn-shadow btn-success"  onclick="addNewUser()"><i class="icon-save"></i> Register</a>
                     </div>
                                       </div>
                                   </div>
@@ -253,8 +275,8 @@ require 'lib/Db.config.pdo.php';
                                                 <td><?php echo $row['FullName'] ?></td>
                                                 <td><?php echo $row['Position'] ?></td>
                                                 <td class="center hidden-phone">
-                                                <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#EditModal-<?php echo $row['User_id']?>"><i class="icon-edit"></i> Edit</a>
-												<a class="btn btn-danger btn-sm" type="submit" onclick="DeleteUser(<?php echo $row['User_id']?>)"><i class="icon-trash"></i> Delete</a>
+                                                <a class="btn btn-shadow btn-success btn-sm" data-toggle="modal" data-target="#EditModal-<?php echo $row['User_id']?>"><i class="icon-edit"></i> Edit</a>
+												<a class="btn btn-shadow btn-danger btn-sm" type="submit" onclick="DeleteUser(<?php echo $row['User_id']?>)"><i class="icon-trash"></i> Delete</a>
 <!-- Edit User MODAL-->
               <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['User_id']?>" role="dialog" tabindex="-1" id="EditModal-<?php echo $row['User_id']?>" class="modal fade">
                         <div class="modal-dialog">
@@ -268,7 +290,7 @@ require 'lib/Db.config.pdo.php';
                                 <form class="form-horizontal" role="form">
                                       <div class="form-group">
                                             <label class="col-md-3 col-sm-2 control-label">ID:</label>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-2">
                                                     <input type="text" class="form-control" value="<?php echo $row['User_id'] ?>" readonly class="form_datetime form-control">
                                                 </div>
                                       </div>
@@ -334,11 +356,33 @@ require 'lib/Db.config.pdo.php';
                                                     </select>
                                                 </div>
                                       </div>
+									  <div class="form-group">
+											<label class="col-md-3 col-sm-2 control-label">License No.:</label>
+											<div class="col-lg-6">
+												<input type="text" class="form-control">
+											</div>
+									  </div>
+									  <div class="form-group">
+											<label class="col-md-3 col-sm-2 control-label">Date End:</label>
+											<div class="col-lg-4">
+												<input type="date" class="form-control">
+											</div>
+									  </div>
+									  <div class="form-group">
+											<label class="col-md-3 col-sm-2 control-label">Status:</label>
+											<div class="col-lg-4">
+												<select class="form-control">
+													<option hidden>-- Select Option --</option>
+													<option>Active</option>
+													<option>Inactive</option>
+												</select>
+											</div>
+									  </div>
                                 </form>
                                 </div>
                                                   <div class="modal-footer">
-                                                      <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                                                      <button class="btn btn-success" type="submit" onclick="UpdateUser(<?php echo $row['User_id'] ?>)">Update</button>
+                                                      <a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
+                                                      <a class="btn btn-shadow btn-success" onclick="UpdateUser(<?php echo $row['User_id'] ?>)"><i class="icon-plus"></i> Update</a>
                                                   </div>
                           </div>
                     </div>
