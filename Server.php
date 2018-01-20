@@ -388,32 +388,34 @@ require 'lib/Db.config.php';
 else if($page == 'addMedicalRecord'){
 require 'lib/Db.config.pdo.php';
 require 'lib/Db.config.php';
-			$MedRillness = mysql_real_escape_string($_POST['MEDICINE_CAT']);
-			$MedRBP = mysql_real_escape_string($_POST['MEDICINE_TYPE']);
-			$MedRWeight = mysql_real_escape_string($_POST['MEDICINE_GNAME']);
-			$MedRTemp = mysql_real_escape_string($_POST['MEDICINE_DFORM']);
-			$MedRDate = mysql_real_escape_string($_POST['MEDICINE_BNAME']);
-			$MedRTime = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
-			$Sched_ID = mysql_real_escape_string($_POST['SUPPLIER']);
+			$MedRillness = mysql_real_escape_string($_POST['MedRillness']);
+			$MedRBP = mysql_real_escape_string($_POST['MedRBP']);
+			$MedRWeight = mysql_real_escape_string($_POST['MedRWeight']);
+			$MedRTemp = mysql_real_escape_string($_POST['MedRTemp']);
+			$MedRDate = mysql_real_escape_string($_POST['MedRDate']);
+			$Sched_ID = mysql_real_escape_string($_POST['Sched_ID']);
+			$sqldate = date('Y-m-d H:i:s',strtotime($MedRDate));
 			$date = date("Y-m-d");
 			$Year = date('Y',strtotime($date));
 			$Month = date('m',strtotime($date));
-			$sqldate = date('Y-m-d',strtotime($MedRDate));
-			$Time = date('H:i', strtotime($MedRTime));
-			$Status = 'Pending';
+			$Status = "Pending";
 
-	$stmt = $db->prepare("insert into medical_record values('',?,?,?,?,?,?,?,?,?,?)");
+			
+			echo $Sched_ID;
+			
+	$stmt = $db->prepare("insert into medical_record values('',?,?,?,?,?,?,?,?,?)");
 			$stmt->bindParam(1,$MedRillness);
 			$stmt->bindParam(2,$MedRBP);
 			$stmt->bindParam(3,$MedRWeight);
 			$stmt->bindParam(4,$MedRTemp);
 			$stmt->bindParam(5,$sqldate);
-			$stmt->bindParam(6,$Time);
-			$stmt->bindParam(7,$Sched_ID);
-			$stmt->bindParam(8,$Month);
-			$stmt->bindParam(9,$Year);
-			$stmt->bindParam(10,$Status);
+			$stmt->bindParam(6,$Month);
+			$stmt->bindParam(7,$Year);
+			$stmt->bindParam(8,$Sched_ID);
+			$stmt->bindParam(9,$Status);
 			$stmt->execute();
+
+			
 
 }
 ?>
