@@ -181,9 +181,9 @@ if($Position == 'Doctor'){
                                           <th width="70">Time</th>
                                           <th width="120">Patient Name</th>
                                           <th width="90">Patient Type</th>
-                                          <th width="90">Gender</th>
-                                          <th width="100" class="hidden-phone">Appointment</th>
-                                          <th width="100" class="hidden-phone">Action</th>
+                                          <th width="70">Gender</th>
+                                          <th width="80" class="hidden-phone">Appointment</th>
+                                          <th width="100" class="hidden-phone text-center">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
