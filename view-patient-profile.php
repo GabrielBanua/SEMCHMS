@@ -426,31 +426,6 @@ while($MR = $medicalrecord->fetch()){
                                                         </div>
                                                     </div>
                                     <div class="form-group">
-                                                        <label  class="col-lg-2 control-label">Doctor</label>
-                                                        <div class="col-lg-4">
-                                                            <select class="select2-single">
-                                        <option></option><!--for placeholder-->
-                                        <option>Gabriel Banua</option>
-                                        <option>Alessander Rebiato</option>
-                                        </select>
-                                                        </div>
-                                      <label  class="col-lg-2 control-label">Status</label>
-                                                        <div class="col-lg-4">
-                                                            <select class="select2-single">
-                                        <option></option><!--for placeholder-->
-                                        <option>On-Going</option>
-                                        <option>Cancelled</option>
-                                        <option>Completed</option>
-                                        </select>
-                                                        </div>
-                                                    </div>
-                                    <div class="form-group">
-                                      <label  class="col-lg-2 control-label">Follow-Up Checkup</label>
-                                                        <div class="col-lg-4">
-                                                            <input type="date" class="form-control"required>
-                                                        </div>
-                                                    </div>
-                                    <div class="form-group">
                                                         <label  class="col-lg-2 control-label">Diagnosis:</label>
                                       <div class="col-lg-12">
                                                          <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
@@ -468,11 +443,33 @@ while($MR = $medicalrecord->fetch()){
                                                          <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
                                        </div>
                                                     </div>
+									<div class="form-group">
+										<label  class="col-lg-2 control-label">Follow-Up Checkup</label>
+                                                        <div class="col-lg-4">
+                                                            <input type="date" class="form-control"required>
+                                                        </div>
+                                        <label  class="col-lg-2 control-label">Doctor</label>
+                                         <div class="col-lg-4">
+                                        <select class="select2-single">
+                                        <option></option><!--for placeholder-->
+                                        <option>Gabriel Banua</option>
+                                        <option>Alessander Rebiato</option>
+                                        </select>
+                                                        </div>
+                                    </div>
+									<div class="form-group">
+										<div class="checkbox-inline pull-left">
+                                              <label class="control-label">
+                                                  <input type="checkbox" value="">
+												  Referral
+                                              </label>
+                                        </div>
+									</div>
                                                 </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
-                                <a data-dismiss="modal" class="btn btn-success" type="button">Add</a>
+                                            <a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
+											<a class="btn btn-shadow btn-success"><i class="icon-plus"></i> Add</a>
                                         </div>
                                     </div>
                                 </div>
