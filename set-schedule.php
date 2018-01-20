@@ -192,7 +192,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                                               <td class="center hidden-phone"><?php echo $row['P_TYPE'] ?></td>
                                               <td class="center hidden-phone">
                         		<a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#setsched-<?php echo $row['P_ID']?>"><i class="icon-calendar"></i> Set Schedule</a>
-<!-- Register User Start  MODAL-->
+<!-- Register set Schedule MODAL-->
                                 <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['P_ID']?>" role="dialog" tabindex="-1" id="setsched-<?php echo $row['P_ID']?>" class="modal fade">
                                   <div class="modal-dialog">
                                       <div class="modal-content">
@@ -259,6 +259,8 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                           </form>
                         </div>
                     <div class="modal-footer">
+                      <span id="Error_Message" class="text-danger"></span>
+                      <span id="Success_Message" class="text-success"></span>
                       <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
                       <button class="btn btn-success" type="button" onclick="SetSched(<?php echo $row['P_ID'] ?>)">Set Schedule</button>
                     </div>
@@ -323,6 +325,9 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
         var SCHEDULE_DATE = $('#SCHEDULE_DATE-'+str).val();
         var SCHEDULE_TIME = $('#SCHEDULE_TIME-'+str).val();
         var SCHEDULE_PURPOSE = $('#SCHEDULE_PURPOSE-'+str).val();
+          if(SCHEDULE_DATE == '' || SCHEDULE_TIME == '' || SCHEDULE_PURPOSE == ''){
+            $('#Error_Message').html('Please fill all fields! &nbsp;');
+          }else{
             if (confirm('Are you sure you want to set schedule for this patient?')) {
             $.ajax({
               type: "POST",
@@ -337,6 +342,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
               //do nothing
           }
         }
+      }
       </script>
       <script>
         $(document).ready(function(){
