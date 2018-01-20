@@ -379,7 +379,6 @@ while($row = $stmt->fetch()){
         	<td class="hidden-phone center">
 				<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 				<a class="btn btn-danger btn-xs"><i class="icon-trash"></i></a>
-			</td>
 
 <!-- ******************************************Start Model Edit Medicines*********************************************************** -->
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditMed" class="modal fade">
