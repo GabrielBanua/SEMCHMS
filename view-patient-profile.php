@@ -361,7 +361,7 @@ $medicalrecord->execute();
 										  <th style="width:20%; text-align: center;"><i class="icon-calendar"></i> Date</th>
 										  <th style="text-align: center;">Illness / Ailments</th>
 										  <th style="text-align: center;">Blood Pressure</th>
-										  <th style="text-align: center;">Weight</th>
+										  <th style="text-align: center;">Weight<br>(Kg)</th>
 										  <th style="text-align: center;">Temperature<br>(Celcius)</th>
 										  <th style="width:15%; text-align: center;">Follow-Up Checkup</th>
 										  <th style="text-align: center;">Remarks</th>
@@ -375,14 +375,14 @@ while($MR = $medicalrecord->fetch()){
 ?>
 
 									  <tr>
-										  <td style="text-align: center;"><?php echo $MR['DATE'] ?></td>
+										  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
 										  <td style="text-align: center;"><?php echo $MR['MR_ILL'] ?></td>
 										  <td style="text-align: center;"><?php echo $MR['MR_BP'] ?></td>
 										  <td style="text-align: center;"><?php echo $MR['MR_WEIGHT'] ?></td>
 										  <td style="text-align: center;"><?php echo $MR['MR_TEMP'] ?></td>
-										  <td style="text-align: center;"><?php echo $MR['MR_TEMP'] ?></td>
-										  <td style="text-align: center;"><?php echo $MR['MR_TEMP'] ?></td>
-										  <td style="text-align: center;"><span class="label label-success label-mini">Finish</span></td>
+										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo '';} ?></td>
+										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo '';} ?></td>
+										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
 										  <td style="text-align: center;">
 											  <a class="btn btn-shadow btn-info btn-xs" data-toggle="modal" href="#treatment"><i class="icon-share-alt"></i> Proceed</a>
 <!-- Treatment Records-->
@@ -498,15 +498,15 @@ while($MR = $medicalrecord->fetch()){
                 </tr>
               </thead>
               <tbody>
-                                      <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Urinalysis</td>
-                                          <td>12/12/2017</td>
-                                          <td class="center hidden-phone">Uric Acid</td>
-                                          <td class="center hidden-phone">
-											                       <a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
-										                      </td>
-                                      </tr>
+                  <tr class="gradeX">
+                  <td>000001</td>
+                  <td>Urinalysis</td>
+                  <td>12/12/2017</td>
+                  <td class="center hidden-phone">Uric Acid</td>
+                  <td class="center hidden-phone">
+									<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
+									</td>
+                  </tr>
               </tbody>
 						</table>
 					</div>
@@ -540,27 +540,29 @@ while($MR = $medicalrecord->fetch()){
                                   </div>
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Blood Pressure</label>
-                                      <div class="col-lg-2">
+                                      <div class="col-lg-3">
                                           <input type="text" id="MedRBP" class="form-control" placeholder=" ">
                                       </div>
                                   </div>
 								   <div class="form-group">
-                                      <label  class="col-lg-3 control-label">Weight</label>
-                                      <div class="col-lg-2">
+                                      <label  class="col-lg-3 control-label">Weight (kg)</label>
+                                      <div class="col-lg-3">
                                           <input type="text" id="MedRWeight" class="form-control" placeholder=" ">
                                       </div>
                                   </div>
 								   <div class="form-group">
-                                      <label  class="col-lg-3 control-label">Temperature</label>
-                                      <div class="col-lg-2">
+                                      <label  class="col-lg-3 control-label">Temperature (℃)</label>
+                                      <div class="col-lg-3">
                                           <input type="text" id="MedRTemp" class="form-control" placeholder=" ">
                                       </div>
                                   </div>
                               </form>
                       </div>
                       <div class="modal-footer">
-						  <a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
-						  <a data-dismiss="modal" class="btn btn-success" onclick="addMedicalRecord()" type="button">Save</a>
+                        <span id="Error_Message" class="text-danger"></span>
+                        <span id="Success_Message" class="text-success"></span>
+          						  <a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
+          						  <a data-dismiss="modal" class="btn btn-success" onclick="addMedicalRecord()" type="button">Save</a>
                       </div>
                   </div>
               </div>
@@ -703,15 +705,29 @@ while($MR = $medicalrecord->fetch()){
           var MedDate = $('#MedRDate').val();
           var Sched_id = '<?php echo $SCHED_ID; ?>';
 
-          $.ajax({
-                type: "POST",
-                url: "Server.php?p=addMedicalRecord",
-                data: "MedRillness="+Medillness+"&MedRBP="+MedBP+"&MedRWeight="+MedWeight+"&MedRTemp="+MedTemp+"&MedRDate="+MedDate+"&Sched_ID="+Sched_id,
-                success: function(data){
-                  alert(data);
-                }
-              });
-        }
+          if(Medillness == '' || MedBP == '' || MedWeight == '' || MedTemp == ''){
+             $('#Error_Message').html('Please fill all fields! &nbsp;');
+          }
+          else{
+             $('#Error_Message').html('');
+              if (confirm('Are you sure you want to set schedule for this patient?')) {
+                $.ajax({
+                      type: "POST",
+                      url: "Server.php?p=addMedicalRecord",
+                      data: "MedRillness="+Medillness+"&MedRBP="+MedBP+"&MedRWeight="+MedWeight+"&MedRTemp="+MedTemp+"&MedRDate="+MedDate+"&Sched_ID="+Sched_id,
+                      success: function(data){
+                       $('#Success_Message').html('Successfully Added! &nbsp;');
+                        setTimeout(function() {
+                          $('#Success_Message').fadeOut('slow');
+                        }, 2000);
+                        setTimeout(function(){
+                          window.location.reload();
+                        }, 3000);
+                      }
+                    });
+              }
+          }
+      }
 	</script>
   </body>
 </html>

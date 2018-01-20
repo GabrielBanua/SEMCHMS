@@ -192,7 +192,7 @@ if($Position == 'Doctor'){
 									?>
                                       <tr class="gradeX">
                                           <td><?php echo strftime('%m-%d-%Y', strtotime($row['SCHEDULE_DATE'])); ?></td>
-                                          <td><?php $date = date("h:i A", strtotime($row['SCHEDULE_TIME'])); echo $date; ?></td>
+                                          <td><?php $date = date("h:i A", strtotime($row['SCHEDULE_TIME']. ' -15 minutes')); echo $date; ?></td>
                                           <td><?php echo $row['FullName'] ?></td>
                                           <td><?php echo $row['P_TYPE'] ?></td>
                                           <td><?php echo $row['P_GNDR'] ?></td>

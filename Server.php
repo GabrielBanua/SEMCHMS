@@ -114,7 +114,9 @@ if($page == 'addNewPatient'){
  		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 
-}else if($page == 'UpdatePatient'){
+}
+//update patient code
+else if($page == 'UpdatePatient'){
 	require 'lib/Db.config.pdo.php';
 
 			$P_ID = mysql_real_escape_string($_POST['P_ID']);
@@ -191,6 +193,7 @@ if($page == 'addNewPatient'){
  		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 }
+//delete user code
 else if($page == 'DeleteUser'){
 require 'lib/Db.config.pdo.php';
 
@@ -201,6 +204,7 @@ require 'lib/Db.config.pdo.php';
  		$stmt -> execute();
 
 }
+//update user code
 else if($page == 'UpdateUser'){
 require 'lib/Db.config.pdo.php';
 
@@ -226,6 +230,7 @@ require 'lib/Db.config.pdo.php';
 			$stmt->execute();
 		
 }
+//set schedule code
 else if($page == 'SetSched'){
 require 'lib/Db.config.pdo.php';
 
@@ -233,17 +238,25 @@ require 'lib/Db.config.pdo.php';
 			$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
 			$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-			$Time = date('H:i', strtotime($Sched_time. ' +15 minutes'));
+			$Time = date('H:i:s', strtotime($Sched_time. ' +15 minutes'));
 			$sqldate = date('Y-m-d',strtotime($Sched_date)); 
 
-	
-		$stmt = $db->prepare("insert into schedule values('',?,?,?,?)");
-			$stmt->bindParam(1,$P_ID);
-			$stmt->bindParam(2,$sqldate);
-			$stmt->bindParam(3,$Time);
-			$stmt->bindParam(4,$Sched_purpose);
-			$stmt->execute();
+		$check = $db->prepare("select * from schedule");
+		$check->execute();
+		$checkif = $check->fetch(PDO::FETCH_ASSOC);
 
+			if($checkif['SCHEDULE_TIME'] == $Time && $checkif['SCHEDULE_PURPOSE'] == $Sched_purpose && $checkif['SCHEDULE_DATE'] == $sqldate){
+			echo "Taken";
+			}
+			else{
+				$stmt = $db->prepare("insert into schedule values('',?,?,?,?)");
+					$stmt->bindParam(1,$P_ID);
+					$stmt->bindParam(2,$sqldate);
+					$stmt->bindParam(3,$Time);
+					$stmt->bindParam(4,$Sched_purpose);
+					$stmt->execute();
+			}
+			
 }
 else if($page == 'UpdateSched'){
 require 'lib/Db.config.pdo.php';

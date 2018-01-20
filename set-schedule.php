@@ -259,8 +259,8 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                           </form>
                         </div>
                     <div class="modal-footer">
-                      <span id="Error_Message" class="text-danger"></span>
-                      <span id="Success_Message" class="text-success"></span>
+                      <span style="float: left;" id="Error_Message" class="text-danger"></span>
+                      <span style="float: left;" id="Success_Message" class="text-success"></span>
                       <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
                       <button class="btn btn-success" type="button" onclick="SetSched(<?php echo $row['P_ID'] ?>)">Set Schedule</button>
                     </div>
@@ -328,15 +328,26 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
           if(SCHEDULE_DATE == '' || SCHEDULE_TIME == '' || SCHEDULE_PURPOSE == ''){
             $('#Error_Message').html('Please fill all fields! &nbsp;');
           }else{
+            $('#Error_Message').html('');
             if (confirm('Are you sure you want to set schedule for this patient?')) {
             $.ajax({
               type: "POST",
               url: "Server.php?p=SetSched",
               data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
               success: function(data){
-                    alert('Added successfully!');
-                    window.location.reload();
+                if(data == 'Taken'){
+                    $('#Error_Message').html('This time is taken already!');
+                }
+                else{
+                    $('#Success_Message').html('Successfully Added! &nbsp;');
+                    setTimeout(function() {
+                      $('#Success_Message').fadeOut('slow');
+                    }, 2000);
+                    setTimeout(function(){
+                      window.location.reload();
+                    }, 3000);
                   }
+                 } 
               });
             }else{
               //do nothing
