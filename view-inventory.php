@@ -373,10 +373,10 @@ while($row = $stmt->fetch()){
         	<td><?php echo $row['MEDICINE_BNAME'] ?></td>
         	<td><?php echo $row['MEDICINE_DFORM'] ?></td>
         	<td><?php echo $row['MEDICINE_DOSE'] ?></td>
+        	<td><?php echo $row['INV_EXPD'] ?></td>
         	<td><?php echo $row['INV_QTY'];echo "/"; echo $row['INV_QTY_HIST']; ?></td>
         	<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty){ echo "<span class='label label-danger label-mini'>Low</span>";} ?></td>
-        	<td><?php echo $row['INV_EXPD'] ?></td>
-        	<td class="hidden-phone center">
+        	<td class="hidden-phone" style="padding-left: 25px;">
 				<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 				<a class="btn btn-danger btn-xs"><i class="icon-trash"></i></a>
 
