@@ -4,7 +4,7 @@ require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
 date_default_timezone_set('Asia/Manila');
 $d = strtotime("now");
-
+$datetreatment = date("Y-m-d");
 $VIEW_ID = isset($_GET['VID'])?$_GET['VID']:'';
 $SCHED_ID = isset($_GET['Sched_ID'])?$_GET['Sched_ID']:'';
 
@@ -384,110 +384,108 @@ $medicalrecord->execute();
 										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo '';} ?></td>
 										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
 										  <td style="text-align: center;">
-											  <a class="btn btn-shadow btn-info btn-xs" data-toggle="modal" href="#treatment"><i class="icon-share-alt"></i> Proceed</a>
+											  <a class="btn btn-shadow btn-info btn-xs" onclick="RetrieveDoctor()" data-toggle="modal" data-target="#treatment-<?php echo $MR['MR_ID']; ?>"><i class="icon-share-alt"></i> Proceed</a>
 							<!-- Treatment Records-->
-                            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="treatment" class="modal fade">
+                            <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $MR['MR_ID']; ?>" role="dialog" tabindex="-1" id="treatment-<?php echo $MR['MR_ID']; ?>" class="modal fade">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title">Treatment</h4>
+                                            <h4 class="modal-title" id="myModalLabel-<?php echo $MR['MR_ID']; ?>">Treatment</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form class="form-horizontal" role="form">
                                                 <div class="form-group">
-													<label  class="col-lg-2 control-label">Date</label>
-													<div class="col-lg-4">
-														<input type="date" class="form-control" required>
-													</div>
+                          													<label  class="col-lg-2 control-label">Date</label>
+                          													<div class="col-lg-4">
+                          														<input type="date" value="<?php echo $datetreatment ?>" class="form-control" readonly>
+                          													</div>
                                                 </div>
-											<div class="form-group">
-                                                <label  class="col-lg-2 control-label">Illness/Ailments</label>
-												<div class="col-lg-4">
-													<input type="text" class="form-control"required>
-												</div>
-												<label  class="col-lg-2 control-label">Bp</label>
-												<div class="col-lg-4">
-													<input type="text" class="form-control"required>
-												</div>
+                          											<div class="form-group">
+                                                  <label  class="col-lg-2 control-label">Illness/Ailments</label>
+                          												<div class="col-lg-4">
+                          													<input type="text" value="<?php echo $MR['MR_ILL']; ?>" class="form-control">
+                          												</div>
+                          												<label  class="col-lg-2 control-label">BP</label>
+                          												<div class="col-lg-4">
+                          													<input type="text" value="<?php echo $MR['MR_BP']; ?>" class="form-control">
+                          												</div>
+                                                </div>
+                          											<div class="form-group">
+                          												<label  class="col-lg-2 control-label">Weight</label>
+                          												<div class="col-lg-4">
+                          													<input type="text" value="<?php echo $MR['MR_WEIGHT']; ?>" class="form-control">
+                          												</div>
+                          												<label  class="col-lg-2 control-label">Temperature</label>
+                          												<div class="col-lg-4">
+                          													<input type="text" value="<?php echo $MR['MR_TEMP']; ?>" class="form-control">
+                          												</div>
+                                                  </div>
+                          											<div class="form-group">
+                                                  <label  class="col-lg-2 control-label">Diagnosis:</label>
+                          												<div class="col-lg-12">
+                                                    <textarea style="resize:none" id="DIAG_DTLS" class="form-control" cols="2" rows="4"></textarea>
+                          												</div>
+                                                </div>
+                          											<div class="form-group">
+                                                  <label  class="col-lg-2 control-label">Treatment:</label>
+                          												<div class="col-lg-12">
+                                                     <textarea style="resize:none" id="TREATMENT" class="form-control" cols="2" rows="4"></textarea>
+                          												</div>
+                                                </div>
+                          											<div class="form-group">
+                                                  <label  class="col-lg-2 control-label">Remarks:</label>
+                          												<div class="col-lg-12">
+                          													<textarea style="resize:none" id="REMARKS" class="form-control" cols="2" rows="4"></textarea>
+                          												</div>
+                                                </div>
+                          											<div class="form-group">
+                          												<label  class="col-lg-2 control-label">Follow-Up Checkup</label>
+                          												<div class="col-lg-4">
+                          													<input type="date" id="F_CHECKUP" class="form-control" required>
+                          												</div>
+                          												<label  class="col-lg-2 control-label">Doctor</label>
+                          												<div class="col-lg-4">
+                          													<select class="select2-single" id="listofDoctor">
+                          														<option></option><!--for placeholder-->
+                          													</select>
+                          												</div>
+                          											</div>
+                          											<div class="form-group">
+                          												<div class="checkbox-inline pull-left">
+                          													<label class="control-label">
+                          														<input type="checkbox" value="">
+                          														Referral
+                          													</label>
+                          												</div>
+                          											</div><hr>
+                          											<div class="form-group">
+                          												<label  class="col-lg-4 control-label">Doctor Name</label>
+                          												<div class="col-lg-6">
+                          													<input type="text" class="form-control" required>
+                          												</div>
+                          											</div>
+                          											<div class="form-group">
+                          												<label  class="col-lg-4 control-label">Contact No.</label>
+                          												<div class="col-lg-6">
+                          													<input type="text" class="form-control" required>
+                          												</div>
+                          											</div>
+                          											<div class="form-group">
+                          												<label  class="col-lg-4 control-label">Address</label>
+                          												<div class="col-lg-6">
+                          													<input type="text" class="form-control" required>
+                          												</div>
+                          											</div>
+                          											</form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                <a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
+                          											<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-plus"></i>Add</a>
                                             </div>
-											<div class="form-group">
-												<label  class="col-lg-2 control-label">Weight</label>
-												<div class="col-lg-4">
-													<input type="text" class="form-control"required>
-												</div>
-												<label  class="col-lg-2 control-label">Temperature</label>
-												<div class="col-lg-4">
-													<input type="text" class="form-control"required>
-												</div>
-                                            </div>
-											<div class="form-group">
-                                                <label  class="col-lg-2 control-label">Diagnosis:</label>
-												<div class="col-lg-12">
-                                                    <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
-												</div>
-                                            </div>
-											<div class="form-group">
-                                                <label  class="col-lg-2 control-label">Treatment:</label>
-												<div class="col-lg-12">
-                                                    <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
-												</div>
-                                            </div>
-											<div class="form-group">
-                                                <label  class="col-lg-2 control-label">Remarks:</label>
-												<div class="col-lg-12">
-													<textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
-												</div>
-                                            </div>
-											<div class="form-group">
-												<label  class="col-lg-2 control-label">Follow-Up Checkup</label>
-												<div class="col-lg-4">
-													<input type="date" class="form-control"required>
-												</div>
-												<label  class="col-lg-2 control-label">Doctor</label>
-												<div class="col-lg-4">
-													<select class="select2-single">
-														<option></option><!--for placeholder-->
-														<option>Gabriel Banua</option>
-														<option>Alessander Rebiato</option>
-													</select>
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="checkbox-inline pull-left">
-													<label class="control-label">
-														<input type="checkbox" value="">
-														Referral
-													</label>
-												</div>
-											</div><hr>
-											<div class="form-group">
-												<label  class="col-lg-4 control-label">Doctor Name</label>
-												<div class="col-lg-6">
-													<input type="text" class="form-control" required>
-												</div>
-											</div>
-											<div class="form-group">
-												<label  class="col-lg-4 control-label">Contact No.</label>
-												<div class="col-lg-6">
-													<input type="text" class="form-control" required>
-												</div>
-											</div>
-											<div class="form-group">
-												<label  class="col-lg-4 control-label">Address</label>
-												<div class="col-lg-6">
-													<input type="text" class="form-control" required>
-												</div>
-											</div>
-											</form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
-											<a class="btn btn-shadow btn-success"><i class="icon-plus"></i> Add</a>
-                                        </div>
+                                         </div>
+                                      </div>
                                     </div>
-                                </div>
-                            </div>
 <!-- modal -->
 										  </td>
 									  </tr>
@@ -733,15 +731,41 @@ $medicalrecord->execute();
                        $('#Success_Message').html('Successfully Added! &nbsp;');
                         setTimeout(function() {
                           $('#Success_Message').fadeOut('slow');
-                        }, 2000);
+                        }, 1800);
                         setTimeout(function(){
                           window.location.reload();
-                        }, 3000);
+                        }, 2200);
                       }
                     });
               }
           }
       }
+    function RetrieveDoctor(){
+      $.ajax({
+                type: "GET",
+                url: "Server.php?p=DoctorList",
+                success: function(data){
+                  $('#listofDoctor').html(data);
+                }
+      });
+    }
+    function addTreatment(str){
+          var Med_RID = str;
+          var Diagnosis = $('#DIAG_DTLS').val(); 
+          var Treatment =  $('#TREATMENT').val();
+          var Remarks = $('#REMARKS').val();
+          var FollowUp = $('#F_CHECKUP').val();
+          var Doctor = $('#listofDoctor').val();
+          
+           $.ajax({
+                type: "POST",
+                url: "Server.php?p=addTreatment",
+                data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID,
+                success: function(data){
+                  window.location.reload();
+                }
+      });
+    }
 	</script>
   </body>
 </html>

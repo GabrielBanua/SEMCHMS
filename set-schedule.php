@@ -339,7 +339,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                       $('#Error_Message').html('This schedule is taken!');
                   }
                   else if(data == 'Success'){
-                    $('#Error_Message').html('');
+                    
                         $.ajax({
                           type: "POST",
                           url: "Server.php?p=SetSched",
