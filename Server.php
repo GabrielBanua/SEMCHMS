@@ -241,9 +241,9 @@ require 'lib/Db.config.pdo.php';
 			$Time = date('H:i:s', strtotime($Sched_time. ' +15 minutes'));
 			$sqldate = date('Y-m-d',strtotime($Sched_date)); 
 
-		$check = $db->prepare("select * from schedule");
-		$check->execute();
-		$checkif = $check->fetch(PDO::FETCH_ASSOC);
+				$check = $db->prepare("select * from schedule");
+				$check->execute();
+				$checkif = $check->fetch(PDO::FETCH_ASSOC);
 
 			if($checkif['SCHEDULE_TIME'] == $Time && $checkif['SCHEDULE_PURPOSE'] == $Sched_purpose && $checkif['SCHEDULE_DATE'] == $sqldate){
 			echo "Taken";
