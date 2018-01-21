@@ -175,7 +175,7 @@ else if($page == 'UpdatePatient'){
  		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 
- 			$Last_PMID = $db->lastInsertId();
+ 			
 			$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
 			$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);
 			$Mental = mysql_real_escape_string($_POST['MENT_EMO_HEAl']);
@@ -428,13 +428,13 @@ require 'lib/Db.config.php';
 				$row = mysql_fetch_array($doc);
 				$User_id = $row['User_id'];
 
-				$stmt = $db->prepare("insert into treatment values('',?,?,?,?,?,?)");
-						$stmt->bindParam(1,$MedicalRec_ID);
-						$stmt->bindParam(2,$Diagnosis);
-						$stmt->bindParam(3,$Treatment);
-						$stmt->bindParam(4,$Remarks);
-						$stmt->bindParam(5,$sqldate);
-						$stmt->bindParam(6,$User_id);
+				$stmt = $db->prepare("update treatment set DIAG_DTLS=?, TREATMENT=?, REMARKS=?, F_CHECKUP=?, User_id=? where MR_ID=?");
+						$stmt->bindParam(6,$MedicalRec_ID);
+						$stmt->bindParam(1,$Diagnosis);
+						$stmt->bindParam(2,$Treatment);
+						$stmt->bindParam(3,$Remarks);
+						$stmt->bindParam(4,$sqldate);
+						$stmt->bindParam(5,$User_id);
 						$stmt->execute();
 
 				$MR = $db->prepare("Update medical_record set MR_STATUS=? where MR_ID=?");
@@ -469,6 +469,16 @@ require 'lib/Db.config.php';
 			$stmt->bindParam(8,$Sched_ID);
 			$stmt->bindParam(9,$Status);
 			$stmt->execute();
+
+	$ID = $db->lastInsertId();
+	$Diagnosis = '';
+	$Treatment = '';
+	$Remarks = '';
+	$date = date("Y-m-d");
+	$sql = "INSERT INTO `treatment` (`MR_ID`, `DIAG_DTLS`, `TREATMENT`, `REMARKS`, `F_CHECKUP`, `User_id`) VALUES ('$ID', '$Diagnosis', '$Treatment', '$Remarks', '$date', '4')";
+ 		$stmt = $db->prepare($sql);
+ 		$stmt -> execute();
+
 }
 else if($page == 'DoctorList'){
 require 'lib/Db.config.pdo.php';
