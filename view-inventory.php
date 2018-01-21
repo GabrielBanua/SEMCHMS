@@ -98,7 +98,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
                       <ul class="sub">
                           <li><a  href="add-patient.php">Add Patients</a></li>
                           <li><a  href="view-patients.php">View Patients</a></li>
-						  <li><a  href="#">Patient Reports</a></li>
+						  <li><a  href="patient-reports-panel.php">Patient Reports</a></li>
                       </ul>
                   </li>
 				  <li class="sub-menu">

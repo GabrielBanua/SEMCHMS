@@ -89,7 +89,7 @@ else if($Position == "Volunter"){
                       <ul class="sub">
                           <li><a  href="add-patient.php">Add Patients</a></li>
                           <li><a  href="view-patients.php">View Patients</a></li
-						  <li><a  href="#">Patient Reports</a></li>
+						  <li><a  href="patient-reports-panel.php">Patient Reports</a></li>
                       </ul>
                   </li>
 				  
