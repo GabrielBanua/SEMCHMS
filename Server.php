@@ -277,8 +277,6 @@ require 'lib/Db.config.php';
 				}else{
 					echo "Success";
 				}
-
-				
 }
 else if($page == 'UpdateSched'){
 require 'lib/Db.config.pdo.php';
