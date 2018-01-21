@@ -162,10 +162,7 @@ else if($Position == "Volunter"){
                           <div class="panel-body">
                           <div class="row invoice-list">
                               <div class="text-center corporate-id">
-                                  <!--<img src="img/vector-lab.jpg" alt=""> -->
-								  <h2>Saint Ezekiel Moreno Health Center</h2>
-								  <label>Handumanan Phase III ,Bacolod City</label>
-								  <h3>Patient Master List Month of January 2018</h3>
+                                  <img src="img/form-header.jpg" alt="" style="height:100px">
                               </div>
                           </div>
                           <table class="table table-striped table-hover">
