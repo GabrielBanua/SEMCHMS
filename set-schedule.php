@@ -259,8 +259,8 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                           </form>
                         </div>
                     <div class="modal-footer">
-                      <span style="float: left;" id="Error_Message" class="text-danger"></span>
-                      <span style="float: left;" id="Success_Message" class="text-success"></span>
+                      <span style="float: left; font-weight: bold;" id="Error_Message" class="text-danger"></span>
+                      <span style="float: left; font-weight: bold;" id="Success_Message" class="text-success"></span>
                       <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
                       <button class="btn btn-success" type="button" onclick="SetSched(<?php echo $row['P_ID'] ?>)">Set Schedule</button>
                     </div>
@@ -330,29 +330,38 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
           }else{
             $('#Error_Message').html('');
             if (confirm('Are you sure you want to set schedule for this patient?')) {
-            $.ajax({
-              type: "POST",
-              url: "Server.php?p=SetSched",
-              data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
-              success: function(data){
-                if(data == 'Taken'){
-                    $('#Error_Message').html('This time is taken already!');
-                }
-                else{
-                    $('#Success_Message').html('Successfully Added! &nbsp;');
-                    setTimeout(function() {
-                      $('#Success_Message').fadeOut('slow');
-                    }, 2000);
-                    setTimeout(function(){
-                      window.location.reload();
-                    }, 3000);
+              $.ajax({
+                type: "POST",
+                url: "Server.php?p=CheckSched",
+                data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
+                success: function(data){
+                  if(data == 'Taken'){
+                      $('#Error_Message').html('This schedule is taken!');
                   }
+                  else if(data == 'Success'){
+                    $('#Error_Message').html('');
+                        $.ajax({
+                          type: "POST",
+                          url: "Server.php?p=SetSched",
+                          data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
+                          success: function(data){
+                                $('#Success_Message').html('Successfully Added! &nbsp;');
+                                setTimeout(function() {
+                                  $('#Success_Message').fadeOut('slow');
+                                }, 2000);
+                                setTimeout(function(){
+                                  window.location.reload();
+                                }, 2500);
+                             } 
+                          });
+                    }
                  } 
-              });
-            }else{
-              //do nothing
-          }
+              });    
         }
+        else{
+            //do nothing
+            }
+          }
       }
       </script>
       <script>

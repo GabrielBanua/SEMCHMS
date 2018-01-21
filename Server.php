@@ -258,6 +258,28 @@ require 'lib/Db.config.pdo.php';
 			}
 			
 }
+else if($page == 'CheckSched'){
+require 'lib/Db.config.php';
+
+			$P_ID = mysql_real_escape_string($_POST['P_ID']);
+			$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
+			$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
+			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
+			$Time = date('H:i:s', strtotime($Sched_time. ' +15 minutes'));
+			$sqldate = date('Y-m-d',strtotime($Sched_date)); 
+
+				$sql = "SELECT SCHEDULE_DATE, SCHEDULE_TIME, SCHEDULE_PURPOSE FROM schedule WHERE SCHEDULE_DATE = '$sqldate' AND (SCHEDULE_TIME = '$Time') AND SCHEDULE_PURPOSE = '$Sched_purpose'";
+				$Check = mysql_query($sql);
+				$count = mysql_num_rows($Check);
+
+				if($count > 0){
+					echo "Taken";
+				}else{
+					echo "Success";
+				}
+
+				
+}
 else if($page == 'UpdateSched'){
 require 'lib/Db.config.pdo.php';
 
@@ -414,7 +436,7 @@ require 'lib/Db.config.php';
 			$Status = "Pending";
 
 			
-			echo $Sched_ID;
+			
 			
 	$stmt = $db->prepare("insert into medical_record values('',?,?,?,?,?,?,?,?,?)");
 			$stmt->bindParam(1,$MedRillness);
