@@ -355,10 +355,10 @@ $medicalrecord->execute();
 													<a class="btn btn-shadow btn-success" data-toggle="modal" href="#apointment"><i class="icon-plus"></i> Add Medical Records</a>
 												</header>
 
-                <table class="table table-striped table-advance table-hover">
+										<table class="table table-striped table-advance table-hover">
 									  <thead>
 									  <tr>
-										  <th style="width:20%; text-align: center;"><i class="icon-calendar"></i> Date</th>
+										  <th style="width:50%; text-align: center;"><i class="icon-calendar"></i> Date</th>
 										  <th style="text-align: center;">Illness / Ailments</th>
 										  <th style="text-align: center;">Blood Pressure</th>
 										  <th style="text-align: center;">Weight<br>(Kg)</th>
@@ -370,9 +370,9 @@ $medicalrecord->execute();
 									  </tr>
 									  </thead>
 									  <tbody>
-<?php
-while($MR = $medicalrecord->fetch()){
-?>
+										<?php
+										while($MR = $medicalrecord->fetch()){
+										?>
 
 									  <tr>
 										  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
@@ -385,7 +385,7 @@ while($MR = $medicalrecord->fetch()){
 										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
 										  <td style="text-align: center;">
 											  <a class="btn btn-shadow btn-info btn-xs" data-toggle="modal" href="#treatment"><i class="icon-share-alt"></i> Proceed</a>
-<!-- Treatment Records-->
+							<!-- Treatment Records-->
                             <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="treatment" class="modal fade">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -395,77 +395,91 @@ while($MR = $medicalrecord->fetch()){
                                         </div>
                                         <div class="modal-body">
                                             <form class="form-horizontal" role="form">
-                                                    <div class="form-group">
-                                                        <label  class="col-lg-2 control-label">MRID</label>
-                                                        <div class="col-lg-4">
-                                                            <input type="text" class="form-control" required>
-                                                        </div>
-                                      <label  class="col-lg-2 control-label">Date</label>
-                                                        <div class="col-lg-4">
-                                                            <input type="date" class="form-control" required>
-                                                        </div>
-                                                    </div>
-                                    <div class="form-group">
-                                                        <label  class="col-lg-2 control-label">Illness/Ailments</label>
-                                                        <div class="col-lg-4">
-                                                            <input type="text" class="form-control"required>
-                                                        </div>
-                                      <label  class="col-lg-2 control-label">Bp</label>
-                                                        <div class="col-lg-4">
-                                                            <input type="text" class="form-control"required>
-                                                        </div>
-                                                    </div>
-                                    <div class="form-group">
-                                                        <label  class="col-lg-2 control-label">Weight</label>
-                                                        <div class="col-lg-4">
-                                                            <input type="text" class="form-control"required>
-                                                        </div>
-                                      <label  class="col-lg-2 control-label">Temperature</label>
-                                                        <div class="col-lg-4">
-                                                            <input type="text" class="form-control"required>
-                                                        </div>
-                                                    </div>
-                                    <div class="form-group">
-                                                        <label  class="col-lg-2 control-label">Diagnosis:</label>
-                                      <div class="col-lg-12">
-                                                         <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
-                                       </div>
-                                                    </div>
-                                    <div class="form-group">
-                                                        <label  class="col-lg-2 control-label">Treatment:</label>
-                                      <div class="col-lg-12">
-                                                         <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
-                                      </div>
-                                                    </div>
-                                    <div class="form-group">
-                                                        <label  class="col-lg-2 control-label">Remarks:</label>
-                                      <div class="col-lg-12">
-                                                         <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
-                                       </div>
-                                                    </div>
-									<div class="form-group">
-										<label  class="col-lg-2 control-label">Follow-Up Checkup</label>
-                                                        <div class="col-lg-4">
-                                                            <input type="date" class="form-control"required>
-                                                        </div>
-                                        <label  class="col-lg-2 control-label">Doctor</label>
-                                         <div class="col-lg-4">
-                                        <select class="select2-single">
-                                        <option></option><!--for placeholder-->
-                                        <option>Gabriel Banua</option>
-                                        <option>Alessander Rebiato</option>
-                                        </select>
-                                                        </div>
-                                    </div>
-									<div class="form-group">
-										<div class="checkbox-inline pull-left">
-                                              <label class="control-label">
-                                                  <input type="checkbox" value="">
-												  Referral
-                                              </label>
-                                        </div>
-									</div>
-                                                </form>
+                                                <div class="form-group">
+													<label  class="col-lg-2 control-label">Date</label>
+													<div class="col-lg-4">
+														<input type="date" class="form-control" required>
+													</div>
+                                                </div>
+											<div class="form-group">
+                                                <label  class="col-lg-2 control-label">Illness/Ailments</label>
+												<div class="col-lg-4">
+													<input type="text" class="form-control"required>
+												</div>
+												<label  class="col-lg-2 control-label">Bp</label>
+												<div class="col-lg-4">
+													<input type="text" class="form-control"required>
+												</div>
+                                            </div>
+											<div class="form-group">
+												<label  class="col-lg-2 control-label">Weight</label>
+												<div class="col-lg-4">
+													<input type="text" class="form-control"required>
+												</div>
+												<label  class="col-lg-2 control-label">Temperature</label>
+												<div class="col-lg-4">
+													<input type="text" class="form-control"required>
+												</div>
+                                            </div>
+											<div class="form-group">
+                                                <label  class="col-lg-2 control-label">Diagnosis:</label>
+												<div class="col-lg-12">
+                                                    <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
+												</div>
+                                            </div>
+											<div class="form-group">
+                                                <label  class="col-lg-2 control-label">Treatment:</label>
+												<div class="col-lg-12">
+                                                    <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
+												</div>
+                                            </div>
+											<div class="form-group">
+                                                <label  class="col-lg-2 control-label">Remarks:</label>
+												<div class="col-lg-12">
+													<textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
+												</div>
+                                            </div>
+											<div class="form-group">
+												<label  class="col-lg-2 control-label">Follow-Up Checkup</label>
+												<div class="col-lg-4">
+													<input type="date" class="form-control"required>
+												</div>
+												<label  class="col-lg-2 control-label">Doctor</label>
+												<div class="col-lg-4">
+													<select class="select2-single">
+														<option></option><!--for placeholder-->
+														<option>Gabriel Banua</option>
+														<option>Alessander Rebiato</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="checkbox-inline pull-left">
+													<label class="control-label">
+														<input type="checkbox" value="">
+														Referral
+													</label>
+												</div>
+											</div><hr>
+											<div class="form-group">
+												<label  class="col-lg-4 control-label">Doctor Name</label>
+												<div class="col-lg-6">
+													<input type="text" class="form-control" required>
+												</div>
+											</div>
+											<div class="form-group">
+												<label  class="col-lg-4 control-label">Contact No.</label>
+												<div class="col-lg-6">
+													<input type="text" class="form-control" required>
+												</div>
+											</div>
+											<div class="form-group">
+												<label  class="col-lg-4 control-label">Address</label>
+												<div class="col-lg-6">
+													<input type="text" class="form-control" required>
+												</div>
+											</div>
+											</form>
                                         </div>
                                         <div class="modal-footer">
                                             <a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
