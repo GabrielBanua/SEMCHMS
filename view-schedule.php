@@ -173,7 +173,7 @@ if($Position == 'Doctor'){
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-                                    <a class="btn btn-success" href="set-schedule.php">Set Appointment</a>
+                                    <a class="btn btn-shadow btn-success" href="set-schedule.php"><i class="icon-calendar"></i> Set Appointment</a>
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
@@ -198,9 +198,9 @@ if($Position == 'Doctor'){
                                           <td><?php echo $row['P_GNDR'] ?></td>
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
-                                          <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i> Edit</a>
-                    										  <a class="btn btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
-                    										  <a class="btn btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID']; ?>&Sched_ID=<?php echo $row['SCHEDULE_ID']; ?>"><i class=" icon-share-alt"></i> Proceed</a>
+                                          <a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i> Edit</a>
+                    					  <a class="btn btn-shadow btn-danger btn-xs" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i> Delete</a>
+                    					  <a class="btn btn-shadow btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID']; ?>&Sched_ID=<?php echo $row['SCHEDULE_ID']; ?>"><i class=" icon-share-alt"></i> Proceed</a>
 									<!-- edit Schedule Start MODAL-->
 
                                 <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['SCHEDULE_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['SCHEDULE_ID']?>" class="modal fade">
