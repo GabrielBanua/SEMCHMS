@@ -419,21 +419,29 @@ require 'lib/Db.config.php';
 			$Follow = mysql_real_escape_string($_POST['FPCHK']);
 			$Doctor = mysql_real_escape_string($_POST['DOC']);
 			$MedicalRec_ID = mysql_real_escape_string($_POST['MRID']);
-				$sqldate = date('Y-m-d',strtotime($Follow));
 				
-	$sql = "SELECT * FROM users WHERE User_id = '$Doctor'";
-	$doc = mysql_query($sql);
-	$row = mysql_fetch_array($doc);
-	$User_id = $row['User_id'];
+				$sqldate = date('Y-m-d',strtotime($Follow));
+				$Status = "Completed";
 
-	$stmt = $db->prepare("insert into treatment values('',?,?,?,?,?,?)");
-			$stmt->bindParam(1,$MedicalRec_ID);
-			$stmt->bindParam(2,$Diagnosis);
-			$stmt->bindParam(3,$Treatment);
-			$stmt->bindParam(4,$Remarks);
-			$stmt->bindParam(5,$sqldate);
-			$stmt->bindParam(6,$User_id);
-			$stmt->execute();
+				$sql = "SELECT * FROM users WHERE User_id = '$Doctor'";
+				$doc = mysql_query($sql);
+				$row = mysql_fetch_array($doc);
+				$User_id = $row['User_id'];
+
+				$stmt = $db->prepare("insert into treatment values('',?,?,?,?,?,?)");
+						$stmt->bindParam(1,$MedicalRec_ID);
+						$stmt->bindParam(2,$Diagnosis);
+						$stmt->bindParam(3,$Treatment);
+						$stmt->bindParam(4,$Remarks);
+						$stmt->bindParam(5,$sqldate);
+						$stmt->bindParam(6,$User_id);
+						$stmt->execute();
+
+				$MR = $db->prepare("Update medical_record set MR_STATUS=? where MR_ID=?");
+						$MR->bindParam(1,$Status);
+						$MR->bindParam(2,$MedicalRec_ID);
+						$MR->execute();
+
 }
 else if($page == 'addMedicalRecord'){
 require 'lib/Db.config.pdo.php';

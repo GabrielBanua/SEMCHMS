@@ -169,16 +169,16 @@ $medicalrecord->execute();
 
                           <ul class="nav nav-pills nav-stacked">
                               <li class="active"><a> <i class="icon-user"></i> Profile</a></li>
-							  <li><a href="add-patient.html"> <i class="icon-pencil"></i>Edit Profile</a></li>
+							                <li><a href="add-patient.html"> <i class="icon-pencil"></i>Edit Profile</a></li>
                           </ul>
 
                       </section>
                   </aside>
                   <aside class="profile-info col-lg-9">
                       <section class="panel">
-							<header class="panel-heading ">
-                              Patient Profile:
-							</header>
+          							<header class="panel-heading ">
+                                        Patient Profile:
+          							</header>
                           <div class="panel-body bio-graph-info">
                               <div class="row">
                                   <div class="bio-row">
@@ -234,8 +234,8 @@ $medicalrecord->execute();
                       </section>
                       <section>
                           <div class="row">
-                  <div class="col-lg-12">
-                      <section class="panel">
+         <div class="col-lg-12">
+          <section class="panel">
 						<section class="panel">
                           <header class="panel-heading tab-bg-dark-navy-blue ">
                               <ul class="nav nav-tabs">
@@ -352,7 +352,7 @@ $medicalrecord->execute();
                 <div id="medrecord" class="tab-pane">
 									<div class="adv-table">
 										<header class="panel-heading">
-													<a class="btn btn-shadow btn-success" data-toggle="modal" href="#apointment"><i class="icon-plus"></i> Add Medical Records</a>
+													<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#apointment"><i class="icon-plus"></i> Add Medical Records</a>
 												</header>
 
 										<table class="table table-striped table-advance table-hover">
@@ -370,10 +370,9 @@ $medicalrecord->execute();
 									  </tr>
 									  </thead>
 									  <tbody>
-										<?php
-										while($MR = $medicalrecord->fetch()){
-										?>
-
+<?php
+while($MR = $medicalrecord->fetch()){
+?>
 									  <tr>
 										  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
 										  <td style="text-align: center;"><?php echo $MR['MR_ILL'] ?></td>
@@ -384,8 +383,9 @@ $medicalrecord->execute();
 										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo '';} ?></td>
 										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
 										  <td style="text-align: center;">
-											  <a class="btn btn-shadow btn-info btn-xs" onclick="RetrieveDoctor()" data-toggle="modal" data-target="#treatment-<?php echo $MR['MR_ID']; ?>"><i class="icon-share-alt"></i> Proceed</a>
-							<!-- Treatment Records-->
+											  <a class="btn btn-shadow btn-info btn-xs" onclick="RetrieveDoctor(<?php echo $MR['MR_ID'];?>)" data-toggle="modal" data-target="#treatment-<?php echo $MR['MR_ID']; ?>"><i class="icon-share-alt"></i> Proceed</a>
+
+<!-- Treatment Records-->
                             <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $MR['MR_ID']; ?>" role="dialog" tabindex="-1" id="treatment-<?php echo $MR['MR_ID']; ?>" class="modal fade">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -424,29 +424,29 @@ $medicalrecord->execute();
                           											<div class="form-group">
                                                   <label  class="col-lg-2 control-label">Diagnosis:</label>
                           												<div class="col-lg-12">
-                                                    <textarea style="resize:none" id="DIAG_DTLS" class="form-control" cols="2" rows="4"></textarea>
+                                                    <textarea style="resize:none" id="DIAG_DTLS-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"></textarea>
                           												</div>
                                                 </div>
                           											<div class="form-group">
                                                   <label  class="col-lg-2 control-label">Treatment:</label>
                           												<div class="col-lg-12">
-                                                     <textarea style="resize:none" id="TREATMENT" class="form-control" cols="2" rows="4"></textarea>
+                                                     <textarea style="resize:none" id="TREATMENT-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"></textarea>
                           												</div>
                                                 </div>
                           											<div class="form-group">
                                                   <label  class="col-lg-2 control-label">Remarks:</label>
                           												<div class="col-lg-12">
-                          													<textarea style="resize:none" id="REMARKS" class="form-control" cols="2" rows="4"></textarea>
+                          													<textarea style="resize:none" id="REMARKS-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"></textarea>
                           												</div>
                                                 </div>
                           											<div class="form-group">
                           												<label  class="col-lg-2 control-label">Follow-Up Checkup</label>
                           												<div class="col-lg-4">
-                          													<input type="date" id="F_CHECKUP" class="form-control" required>
+                          													<input type="date" id="F_CHECKUP-<?php echo $MR['MR_ID']; ?>" class="form-control" required>
                           												</div>
                           												<label  class="col-lg-2 control-label">Doctor</label>
                           												<div class="col-lg-4">
-                          													<select class="select2-single" id="listofDoctor">
+                          													<select class="select2-single" id="listofDoctor-<?php echo $MR['MR_ID']; ?>">
                           														<option></option><!--for placeholder-->
                           													</select>
                           												</div>
@@ -480,6 +480,8 @@ $medicalrecord->execute();
                           											</form>
                                                 </div>
                                                 <div class="modal-footer">
+                                                <span id="Error_Message-TRMT" class="text-danger"></span>
+                                                <span id="Success_Message-TRMT" class="text-success"></span>
                                                 <a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
                           											<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-plus"></i>Add</a>
                                             </div>
@@ -497,7 +499,7 @@ $medicalrecord->execute();
 							</div>
 						</div>
 
-          <div id="labresult" class="tab-pane">
+      <div id="labresult" class="tab-pane">
 				<div class="adv-table">
             <table  class="display table table-bordered table-striped" id="example">
               <thead>
@@ -547,34 +549,34 @@ $medicalrecord->execute();
                                   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Illness/Ailments</label>
                                       <div class="col-lg-6">
-                                          <input type="text" id="MedRillness" class="form-control" placeholder=" ">
+                                          <input type="text" id="MedRillness" class="form-control" placeholder=" " required>
                                       </div>
                                   </div>
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Blood Pressure</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRBP" class="form-control" placeholder=" ">
+                                          <input type="text" id="MedRBP" class="form-control" placeholder=" " required>
                                       </div>
                                   </div>
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Weight (kg)</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRWeight" class="form-control" placeholder=" ">
+                                          <input type="text" id="MedRWeight" class="form-control" placeholder=" " required>
                                       </div>
                                   </div>
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Temperature (℃)</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRTemp" class="form-control" placeholder=" ">
+                                          <input type="text" id="MedRTemp" class="form-control" placeholder=" " required>
                                       </div>
                                   </div>
-                              </form>
-                      </div>
+                  </form>
+                </div>
                       <div class="modal-footer">
                         <span id="Error_Message" class="text-danger"></span>
                         <span id="Success_Message" class="text-success"></span>
           						  <a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
-          						  <a data-dismiss="modal" class="btn btn-success" onclick="addMedicalRecord()" type="button">Save</a>
+          						  <a  class="btn btn-success" onclick="addMedicalRecord()">Save</a>
                       </div>
                   </div>
               </div>
@@ -731,41 +733,57 @@ $medicalrecord->execute();
                        $('#Success_Message').html('Successfully Added! &nbsp;');
                         setTimeout(function() {
                           $('#Success_Message').fadeOut('slow');
-                        }, 1800);
+                        }, 2000);
                         setTimeout(function(){
                           window.location.reload();
-                        }, 2200);
+                        }, 3000);
                       }
                     });
+              }else{
+
               }
           }
       }
-    function RetrieveDoctor(){
+    function RetrieveDoctor(str){
+      var id = str;
+   
       $.ajax({
                 type: "GET",
                 url: "Server.php?p=DoctorList",
                 success: function(data){
-                  $('#listofDoctor').html(data);
+                  $('#listofDoctor-'+id).html(data);
                 }
       });
+
     }
     function addTreatment(str){
           var Med_RID = str;
-          var Diagnosis = $('#DIAG_DTLS').val(); 
-          var Treatment =  $('#TREATMENT').val();
-          var Remarks = $('#REMARKS').val();
-          var FollowUp = $('#F_CHECKUP').val();
-          var Doctor = $('#listofDoctor').val();
-          
+          var Diagnosis = $('#DIAG_DTLS-'+Med_RID).val(); 
+          var Treatment =  $('#TREATMENT-'+Med_RID).val();
+          var Remarks = $('#REMARKS-'+Med_RID).val();
+          var FollowUp = $('#F_CHECKUP-'+Med_RID).val();
+          var Doctor = $('#listofDoctor-'+Med_RID).val();
+          if(Diagnosis == '' || Treatment == '' || Remarks == '' || FollowUp == ''){
+             $('#Error_Message-TRMT').html('Please fill all fields! &nbsp;');
+          }
+          else{
+            $('#Error_Message-TRMT').html('');
            $.ajax({
                 type: "POST",
                 url: "Server.php?p=addTreatment",
                 data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID,
                 success: function(data){
-                  window.location.reload();
-                }
-      });
-    }
+                  $('#Success_Message-TRMT').html('Successfully Added! &nbsp;');
+                        setTimeout(function() {
+                          $('#Success_Message-TRMT').fadeOut('slow');
+                        }, 1800);
+                        setTimeout(function(){
+                          window.location.reload();
+                        }, 2200);
+                      }
+          });
+        }
+      }
 	</script>
   </body>
 </html>
