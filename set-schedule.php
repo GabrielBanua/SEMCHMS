@@ -348,10 +348,10 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                                 $('#Success_Message').html('Successfully Added! &nbsp;');
                                 setTimeout(function() {
                                   $('#Success_Message').fadeOut('slow');
-                                }, 2000);
+                                }, 1500);
                                 setTimeout(function(){
                                   window.location.reload();
-                                }, 2500);
+                                }, 1700);
                              } 
                           });
                     }

@@ -1,5 +1,6 @@
 <?php
 require 'lib/session.php';
+require 'lib/chartSQL.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,8 +153,7 @@ require 'lib/session.php';
                                 <i class="icon-user"></i>
                             </div>
                             <div class="value">
-                                <h1 class="counter" data-count="150">
-                                    0
+                                <h1 class="counter" data-count="<?php echo $NewPatient; ?>">
                                 </h1>
                                 <p>New Patients</p>
                             </div>
