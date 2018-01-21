@@ -160,55 +160,120 @@ else if($Position == "Volunter"){
 							  </div>
                           </header>
                           <div class="panel-body">
-                          <div class="row invoice-list">
+                          <div class="#">
                               <div class="text-center corporate-id">
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
+								  <h3>List of Patient 2018</h3>
                               </div>
                           </div>
                           <table class="table table-striped table-hover">
                               <thead>
-                              <tr>
-                                  <th>Patient No.</th>
-                                  <th>Name</th>
+                              <tr><hr>
+                                  <th>#</th>
+                                  <th>Patient Name</th>
                                   <th class="hidden-phone">Address</th>
                                   <th class="">Date</th>
-                                  <th class="">Visit Number</th>
+                                  <th class="text-center">Visits</th>
                                   <th>Status</th>
                               </tr>
                               </thead>
                               <tbody>
                               <tr>
-                                  <td>1</td>
-                                  <td>Alessander Rebiato</td>
-                                  <td class="hidden-phone">Ayala North Point</td>
+                                  <td>P1</td>
+                                  <td>Gabriel Banua</td>
+                                  <td class="hidden-phone">Canlaon City</td>
                                   <td class="">1-1-2018</td>
-                                  <td class="">2</td>
-                                  <td> Killed</td>
+                                  <td class="text-center">2</td>
+                                  <td>Active</td>
                               </tr>
                               <tr>
-                                  <td>2</td>
-                                  <td>Alessander Rebiato</td>
-                                  <td class="hidden-phone">Ayala North Point</td>
+                                  <td>P2</td>
+                                  <td>Alessander Neal Rubiato</td>
+                                  <td class="hidden-phone">Sta. Clara, Bacolod City</td>
                                   <td class="">1-1-2018</td>
-                                  <td class="">2</td>
-                                  <td> Killed</td>
+                                  <td class="text-center">1</td>
+                                  <td>Inactive</td>
                               </tr>
 							  <tr>
-                                  <td>3</td>
-                                  <td>Alessander Rebiato</td>
-                                  <td class="hidden-phone">Ayala North Point</td>
+                                  <td>P3</td>
+                                  <td>Alson John Bayon-on</td>
+                                  <td class="hidden-phone">Bacolod City</td>
                                   <td class="">1-1-2018</td>
-                                  <td class="">2</td>
-                                  <td> Killed</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P4</td>
+                                  <td>Alvin Yanson</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P5</td>
+                                  <td>Carl Betio</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P6</td>
+                                  <td>Alvin Galoyo</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P7</td>
+                                  <td>Erul John Grapes</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P8</td>
+                                  <td>Daniel Molabin</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P9</td>
+                                  <td>Mercy Dohinog</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P10</td>
+                                  <td>Entes Leonel</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P11</td>
+                                  <td>Vicent Suyo</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
                               </tr>
                               </tbody>
                           </table>
                           <div class="row">
                               <div class="col-lg-4 invoice-block pull-right">
                                   <ul class="unstyled amounts">
-                                      <li><strong>Male :</strong> 1</li>
-                                      <li><strong>Female :</strong> 0</li>
-                                      <li><strong>Patient Total :</strong> 1</li>
+                                      <li><strong>Male :</strong> 10</li>
+                                      <li><strong>Female :</strong> 1</li>
+                                      <li><strong>Patient Total :</strong> 11</li>
                                   </ul>
                               </div>
                           </div>

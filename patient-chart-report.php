@@ -154,38 +154,116 @@ else if($Position == "Volunter"){
                       <section class="panel">
                           <header class="panel-heading">
                               Patient Reports Panel
-							  <div class="pull-right">
-								<select id="pyear" class="form-control">
-									<option hidden value="<?php 
-									if(isset($_GET['year'])){
-										$value=$_GET['year']; 
-										echo $value;
-									}
-										else{
-											echo date('Y');
-										}
-												   ?>">
-										<?php 
-										if(isset($_GET['year'])){
-											$value=$_GET['year']; 
-											echo $value;
-										}
-										else{
-											echo date('Y');
-										}
-										?></option>
-									<?php
-									for($y=2012; $y<=2025; $y++){
-									?>
-									<option value="<?php echo $y ?>"><?php echo $y; ?></option>
-									<?php
-									}
-									?>
-								</select>
-							  </div><br><br>
                           </header>
 							<div class="panel-body">
-								<div id="patient_population" style="width: 100%; height: 400px"></div>
+								<section class="panel">
+								  <header class="panel-heading tab-bg-dark-navy-blue ">
+									  <ul class="nav nav-tabs">
+										  <li class="active">
+											  <a data-toggle="tab" href="#graph"><i class="icon-bar-chart"></i><b> Graphical Form</b></a>
+										  </li>
+										  <li class="">
+											  <a data-toggle="tab" href="#tabular"><i class="icon-table"></i><b> Tabular Form</b></a>
+										  </li>
+									  </ul>
+								  </header>
+								  <div class="panel-body">
+									  <div class="tab-content">
+										  <div id="graph" class="tab-pane active">
+												<div class="col-lg-2 pull-right">
+													<select id="pyear" class="form-control">
+														<option hidden value="<?php 
+														if(isset($_GET['year'])){
+															$value=$_GET['year']; 
+															echo $value;
+														}
+															else{
+																echo date('Y');
+															}
+																	   ?>">
+															<?php 
+															if(isset($_GET['year'])){
+																$value=$_GET['year']; 
+																echo $value;
+															}
+															else{
+																echo date('Y');
+															}
+															?></option>
+														<?php
+														for($y=2012; $y<=2025; $y++){
+														?>
+														<option value="<?php echo $y ?>"><?php echo $y; ?></option>
+														<?php
+														}
+														?>
+													</select>
+												</div><br><br>
+											  <div id="patient_population" style="width: 100%; height: 400px"></div>
+										  </div>
+										  <div id="tabular" class="tab-pane">
+												<table class="table table-striped table-advance table-hover">
+												  <thead>
+												  <tr>
+													  <th class="text-center"><i class="icon-calendar icon-2x"></i><br> Month</th>
+													  <th class="text-center"><i class="icon-group icon-2x"></i><br> Patient Per Month</th>
+												  </tr>
+												  </thead>
+												  <tbody>
+												  <tr>
+													  <td class="text-center"><b>January</b></td>
+													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>February</b></td>
+													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>March</b></td>
+													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>April</b></td>
+													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>May</b></td>
+													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>June</b></td>
+													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>July</b></td>
+													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>August</b></td>
+													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>September</b></td>
+													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>October</b></td>
+													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>November</b></td>
+													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>December</b></td>
+													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
+												  </tr>
+												  </tbody>
+											  </table>
+										  </div>
+									  </div>
+								  </div>
+							  </section>
 							</div>
                     </section>
                   </div>
