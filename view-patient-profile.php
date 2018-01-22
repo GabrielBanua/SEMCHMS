@@ -12,7 +12,7 @@ $sql = "SELECT *, CONCAT(patient.P_FNAME,' ', patient.P_LNAME) AS FullName FROM 
 $result = mysql_query($sql);
 $row = mysql_fetch_array($result);
 
-$medicalrecord = $db->prepare("Select * FROM (((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.TRMT_ID) WHERE patient.P_ID = $VIEW_ID");
+$medicalrecord = $db->prepare("Select * FROM (((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) WHERE patient.P_ID = $VIEW_ID");
 $medicalrecord->execute();
 ?>
 <!DOCTYPE html>
@@ -358,15 +358,14 @@ $medicalrecord->execute();
 										<table class="table table-striped table-advance table-hover">
 									  <thead>
 									  <tr>
-										  <th style="width:50%; text-align: center;"><i class="icon-calendar"></i> Date</th>
-										  <th style="text-align: center;">Illness / Ailments</th>
-										  <th style="text-align: center;">Blood Pressure</th>
-										  <th style="text-align: center;">Weight<br>(Kg)</th>
-										  <th style="text-align: center;">Temperature<br>(Celcius)</th>
+										  <th style="width:15%; text-align: center;"><i class="icon-calendar"></i> Date</th>
+										  <th style="width:15%; text-align: center;">Illness / Ailments</th>
+										  <th style="width:15%; text-align: center;">Blood Pressure</th>
+										  <th style="width:15%; text-align: center;">Weight<br>(Kg)</th>
+										  <th style="width:15%; text-align: center;">Temperature<br>(Celcius)</th>
 										  <th style="width:15%; text-align: center;">Follow-Up Checkup</th>
-										  <th style="text-align: center;">Remarks</th>
-										  <th style="width:10%; text-align: center;">Status</th>
-										  <th style="text-align: center;">Action</th>
+										  <th style="width:15%; text-align: center;">Status</th>
+										  <th style="width:15%; text-align: center;">Action</th>
 									  </tr>
 									  </thead>
 									  <tbody>
@@ -380,7 +379,6 @@ while($MR = $medicalrecord->fetch()){
 										  <td style="text-align: center;"><?php echo $MR['MR_WEIGHT'] ?></td>
 										  <td style="text-align: center;"><?php echo $MR['MR_TEMP'] ?></td>
 										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo $MR['F_CHECKUP'];} ?></td>
-										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo $MR['REMARKS'];} ?></td>
 										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
 										  <td style="text-align: center;">
 											  <a class="btn btn-shadow btn-info btn-xs" onclick="RetrieveDoctor(<?php echo $MR['MR_ID'];?>)" data-toggle="modal" data-target="#treatment-<?php echo $MR['MR_ID']; ?>"><i class="icon-share-alt"></i> Proceed</a>
