@@ -349,7 +349,7 @@ $medicalrecord->execute();
 										</form>
 									</div>
 											<!--Medical Records start-->
-                <div id="medrecord" class="tab-pane">
+									<div id="medrecord" class="tab-pane">
 									<div class="adv-table">
 										<header class="panel-heading">
 													<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#apointment"><i class="icon-plus"></i> Add Medical Records</a>
@@ -369,9 +369,9 @@ $medicalrecord->execute();
 									  </tr>
 									  </thead>
 									  <tbody>
-<?php
-while($MR = $medicalrecord->fetch()){
-?>
+										<?php
+										while($MR = $medicalrecord->fetch()){
+										?>
 									  <tr>
 										  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
 										  <td style="text-align: center;"><?php echo $MR['MR_ILL'] ?></td>
@@ -481,7 +481,7 @@ while($MR = $medicalrecord->fetch()){
                                                 <span id="Error_Message-TRMT" class="text-danger"></span>
                                                 <span id="Success_Message-TRMT" class="text-success"></span>
                                                 <a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
-                          											<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-plus"></i>Add</a>
+                          						<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-plus"></i>Add</a>
                                             </div>
                                          </div>
                                       </div>
