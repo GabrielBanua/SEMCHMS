@@ -230,103 +230,103 @@ else if($Position == "Volunter"){
 										  </tr>
 										   <tr>
 											  <td class="text-center"><b>BUN</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">2.5-6.4 mmol/L</td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">7-8 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Cholesterol</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center">3.87-6.71 mmol/L</td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">150-230 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Creatinine</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center">44.2-150.28 mmol/L</td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
 											  <td class="text-center">0.5-1.7 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>FBS</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">3.85-6.05 mmol/L</td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">70-100 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>HDL-Cholesterol</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center">M: 0.78-1.55 mmol/L</td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">M:30-60 mg/dl</td>
 										  </tr>
 										  <tr>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">F:1.03 mmol/L</td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">F:40-70 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>LDL-Cholesterol</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">1.56 mmol/L</td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">60-210 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>2 Hrs Post-Prandial</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><6.60 mmol/L</td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center"><120 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>RBS</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"> mmol/L</td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"> mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>SGOT/AST</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">M: 0-40 U/L</td>
 											  <td rowspan="4"></td>
 										  </tr>
 										  <tr>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">F: 0-40 U/L</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>SGPT/ALT</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">M: 0-38 U/L</td>
 										  </tr>
 										  <tr>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">F: 0-38 U/L</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Triglyceride</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
 											  <td class="text-center">0.7-2.8 mmol/L</td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="5" size="5"></td>
 											  <td class="text-center">61.0-248.5 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>Uric Acid</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">F: 143-357 mmol/L</td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
 											  <td class="text-center">2.4-6.0 mg/dl</td>
 										  </tr>
 										  <tr>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">M:202-416 mmol/L</td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">3.4-7.0 mg/dl</td>
 										  </tr>
 										  </tbody>
@@ -356,33 +356,33 @@ else if($Position == "Volunter"){
 										  <tbody>
 										  <tr>
 											  <td class="text-center"><b>Color</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Ascans</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>G.lambia<b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Consistency</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Hookworm</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>T.hominis<b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Heinths</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Trinchuris</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-center"><b>Hookworm</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
@@ -395,43 +395,43 @@ else if($Position == "Volunter"){
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>Occult Blood</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>E.histolylica:</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Pus Cells<b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-right"><b>Cyst</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>RBC<b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-right"><b>Troup</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-center"><b>E.coil:</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-right"><b>Cyst</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-right"><b>Troup</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  </tbody>
@@ -464,60 +464,60 @@ else if($Position == "Volunter"){
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>HEMATOCRIT:</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(M: 0.40-0.60)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5">(M: 0.40-0.60)</td>
 											  <td class="text-center"><b>WBC</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(5-10.0 X 10/L)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(5-10.0 X 10/L)</td>
 										  </tr>
 										  <tr>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(F: 0.36-0.40)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(F: 0.36-0.40)</td>
 											  <td class="text-center"><b>RCB</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(4-5X 10/L)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5">(4-5X 10/L)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>HEMOGLOBIN:</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(M: 140-170)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numonly" maxlength="3" size="5">(M: 140-170)</td>
 										  </tr>
 										  <tr>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(F: 120-150)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="3" size="5">(F: 120-150)</td>
 										  </tr>
 										  <tr>
 											  <th>DIFFERENTIAL COUNT:</th>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Segmeters</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(0.35-0.65)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5">(0.35-0.65)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Stab:</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(0.02-0.04)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(0.02-0.04)</td>
 										  </tr>
 										   <tr>
 											  <td class="text-center"><b>Eosinophils:</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(0-02)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(0-02)</td>
 											  <td class="text-center"><b>Platelete Count:</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(150-400x10^9/L)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(150-400x10^9/L)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Lymphocytes:</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(0.20-0.35)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(0.20-0.35)</td>
 											  <td class="text-center"><b>Blood Type:</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5"></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Monocytes:</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(0.02-0.04)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="3" size="5">(0.02-0.04)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Basophils</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(0-0.01)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="3" size="5">(0-0.01)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Myelocytes:</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(0)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(0)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Juveniles:</b></td>
-											  <td class="text-center"><input id="#" type="text" class="form-control" size="5">(0-1)</td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(0-1)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Remarks:</b></td>
@@ -550,52 +550,52 @@ else if($Position == "Volunter"){
 										  <tbody>
 										  <tr>
 											  <td class="text-center"><b>Color</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Pus</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Amorphous Urates<b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Transparency</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>RBC</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Amorphous Pos<b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Pit</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Reast</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Uric Acid<b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Specific Gravity</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Squamous</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Calcium Ceslate<b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"</td>
 											  <td class="text-center"><b>Renal</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Triple PO4<b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"</td>
 											  <td class="text-center"><b>Bacteria</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
@@ -605,44 +605,44 @@ else if($Position == "Volunter"){
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Reducing Sugar</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>DESA</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Mucus Thread<b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Protein</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Course Granular</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Remarks</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-center"><b>Fine Granular</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										   <tr>
 											  <td colspan="2"></td>
 											  <td class="text-center"><b>Pus</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										   <tr>
 											  <td colspan="2"></td>
 											  <td class="text-center"><b>RBC</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										   <tr>
 											  <td colspan="2"></td>
 											  <td class="text-center"><b>Waty</b></td>
-											  <td><input id="#" type="text" class="form-control" size="5"></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										   </tbody>
@@ -686,6 +686,7 @@ else if($Position == "Volunter"){
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
     <script src="js/preloader.js" ></script>
+	<script src="js/numbers-only.js"></script>
 
 	<script>
 		$('.btn').on('click', function() {
