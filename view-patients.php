@@ -282,7 +282,7 @@ while($row = $stmt->fetch()){
                   <div class="form-group">
                     <label class="col-md-4 control-label">Age</label>
                       <div class="col-lg-2">
-                        <input id="P_AGE-<?php echo $row['P_ID'] ?>" name="P_AGE" type="text" class="form-control" value="<?php echo $row['P_AGE'] ?>" required>
+                        <input id="P_AGE-<?php echo $row['P_ID'] ?>" name="P_AGE" type="text" class="form-control numonly" maxlength="2" value="<?php echo $row['P_AGE'] ?>" required>
                       </div>
                   </div>
                   <div class="form-group">
@@ -294,25 +294,25 @@ while($row = $stmt->fetch()){
                   <div class="form-group">
                     <label class="col-md-4 control-label">Temperature (Celcius)</label>
                       <div class="col-lg-6">
-                        <input id="P_TEMP-<?php echo $row['P_ID'] ?>" name="P_TEMP" type="text" class="form-control" value="<?php echo $row['P_TEMP'] ?>" required>
+                        <input id="P_TEMP-<?php echo $row['P_ID'] ?>" name="P_TEMP" type="text" class="form-control numdecimal" maxlength="5" value="<?php echo $row['P_TEMP'] ?>" required>
                       </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Weight (Kg)</label>
                       <div class="col-lg-6">
-                        <input id="P_WGHT-<?php echo $row['P_ID'] ?>" name="P_WGHT" type="text" class="form-control" value="<?php echo $row['P_WGHT'] ?>">
+                        <input id="P_WGHT-<?php echo $row['P_ID'] ?>" name="P_WGHT" type="text" class="form-control numonly" maxlength="4" value="<?php echo $row['P_WGHT'] ?>">
                       </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Height (cm)</label>
                       <div class="col-lg-6">
-                        <input id="P_HGHT-<?php echo $row['P_ID'] ?>" name="P_HGHT" type="text" class="form-control" value="<?php echo $row['P_HGHT'] ?>">
+                        <input id="P_HGHT-<?php echo $row['P_ID'] ?>" name="P_HGHT" type="text" class="form-control numonly" maxlength="4" value="<?php echo $row['P_HGHT'] ?>">
                       </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Contact Number (+639)</label>
                       <div class="col-lg-6">
-                        <input id="P_CN-<?php echo $row['P_ID'] ?>" name="P_CN" type="text" class="form-control" value="<?php echo $row['P_CN'] ?>" required>
+                        <input id="P_CN-<?php echo $row['P_ID'] ?>" name="P_CN" type="text" class="form-control numonly" maxlength="11" value="<?php echo $row['P_CN'] ?>" required>
                       </div>
                   </div>
                   <div class="form-group">
@@ -698,6 +698,7 @@ while($row = $stmt->fetch()){
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
     <script src="js/preloader.js" ></script>
+	<script src="js/numbers-only.js"></script>
 
 
   <!--common script for all pages-->
