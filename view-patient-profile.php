@@ -169,7 +169,6 @@ $medicalrecord->execute();
 
                           <ul class="nav nav-pills nav-stacked">
                               <li class="active"><a> <i class="icon-user"></i> Profile</a></li>
-							                <li><a href="add-patient.html"> <i class="icon-pencil"></i>Edit Profile</a></li>
                           </ul>
 
                       </section>
