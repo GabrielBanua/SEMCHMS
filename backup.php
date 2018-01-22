@@ -159,7 +159,6 @@ else if($Position == "Volunter"){
 								  <div class="form-group">
                                       <div class="col-lg-12">
 											<a class="btn btn-shadow btn-success btn-lg" href="backup/backup_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup"><i class="icon-download-alt"> </i>Backup Database</a>
-											<a class="btn btn-shadow btn-success btn-lg" href="backup/import_db.php"><i class="icon-upload-alt"> </i>Import Database</a>
                                       </div>
                                   </div>
                               </form>
