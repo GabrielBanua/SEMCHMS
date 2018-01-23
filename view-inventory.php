@@ -281,7 +281,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 		<div class="modal-body">
 			<form class="form-horizontal" role="form">
 				<div class="form-group">
-					<label class="col-md-3 col-sm-2 control-label">Category:</label>
+					<label class="col-md-3 col-sm-2 control-label">Category(Age):</label>
 						<div class="col-lg-6">
 							<select class="select2-single" id="MEDICINE_CAT">
 								<option></option><!--for placeholder-->
