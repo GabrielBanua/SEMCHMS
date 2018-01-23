@@ -199,7 +199,7 @@ if($Position == 'Doctor'){
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
                                               <a class="btn btn-shadow btn-success btn-xs" style="width:30px" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i></a>
-                                  			  <a class="btn btn-shadow btn-danger btn-xs" style="width:30px" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID'] ?>)"><i class="icon-trash"></i></a>
+                                  			  <a class="btn btn-shadow btn-danger btn-xs" style="width:30px" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID']; ?>)"><i class="icon-trash"></i></a>
                                   			  <a class="btn btn-shadow btn-primary btn-xs" style="width:30px" href="view-patient-profile.php?VID=<?php echo $row['P_ID']; ?>&Sched_ID=<?php echo $row['SCHEDULE_ID']; ?>"><i class=" icon-share-alt"></i></a>
 <!-- edit Schedule Start MODAL-->
                                <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['SCHEDULE_ID']?>" role="dialog" tabindex="-1" id="EditSched-<?php echo $row['SCHEDULE_ID']?>" class="modal fade">
@@ -239,7 +239,7 @@ if($Position == 'Doctor'){
                                 <div class="form-group">
                                     <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
                                         <div class="col-lg-5">
-                                              <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>"" 
+                                              <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>" 
                         													id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
                                         </div>
                                 </div>
@@ -372,7 +372,7 @@ if($Position == 'Doctor'){
               url: "Server.php?p=UpdateSched",
               data: "Sched_Id="+Sched_Id+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
               success: function(data){
-                    alert('upadate successfully!');
+                    alert('Update successfully!');
                     window.location.reload();
                   }
               });
@@ -380,7 +380,6 @@ if($Position == 'Doctor'){
               //do nothing
           }
         }
-
         function DeleteSched(str){
           var id = str;
           if (confirm('Are you sure you want to delete this schedule in the database?')) {
@@ -397,8 +396,8 @@ if($Position == 'Doctor'){
               // Do nothing!
           } 
         }
-
-      </script> 
+      </script>
+       
   <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
   <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
   <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>

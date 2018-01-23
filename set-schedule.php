@@ -328,7 +328,6 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
           if(SCHEDULE_DATE == '' || SCHEDULE_TIME == '' || SCHEDULE_PURPOSE == ''){
             $('#Error_Message').html('Please fill all fields! &nbsp;');
           }else{
-            $('#Error_Message').html('');
             if (confirm('Are you sure you want to set schedule for this patient?')) {
               $.ajax({
                 type: "POST",
@@ -345,6 +344,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                           url: "Server.php?p=SetSched",
                           data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
                           success: function(data){
+                            $('#Error_Message').html('');
                                 $('#Success_Message').html('Successfully Added! &nbsp;');
                                 setTimeout(function() {
                                   $('#Success_Message').fadeOut('slow');
