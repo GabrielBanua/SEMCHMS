@@ -451,29 +451,31 @@ $medicalrecord->execute();
                           											<div class="form-group">
                           												<div class="checkbox-inline pull-left">
                           													<label class="control-label">
-                          														<input type="checkbox" value="">
+                          														<input type="checkbox" name="c1" onclick="showMe('referral')">
                           														Referral
                           													</label>
                           												</div>
                           											</div><hr>
-                          											<div class="form-group">
-                          												<label  class="col-lg-4 control-label">Doctor Name</label>
-                          												<div class="col-lg-6">
-                          													<input type="text" class="form-control" required>
-                          												</div>
-                          											</div>
-                          											<div class="form-group">
-                          												<label  class="col-lg-4 control-label">Contact No.</label>
-                          												<div class="col-lg-6">
-                          													<input type="text" class="form-control" required>
-                          												</div>
-                          											</div>
-                          											<div class="form-group">
-                          												<label  class="col-lg-4 control-label">Address</label>
-                          												<div class="col-lg-6">
-                          													<input type="text" class="form-control" required>
-                          												</div>
-                          											</div>
+																	<div id="referral" style="display:none">
+																		<div class="form-group">
+																			<label  class="col-lg-4 control-label">Doctor Name</label>
+																			<div class="col-lg-6">
+																				<input type="text" class="form-control" required>
+																			</div>
+																		</div>
+																		<div class="form-group">
+																			<label  class="col-lg-4 control-label">Contact No.</label>
+																			<div class="col-lg-6">
+																				<input type="text" class="form-control" required>
+																			</div>
+																		</div>
+																		<div class="form-group">
+																			<label  class="col-lg-4 control-label">Address</label>
+																			<div class="col-lg-6">
+																				<input type="text" class="form-control" required>
+																			</div>
+																		</div>
+																	</div>
                           											</form>
                                                 </div>
                                                 <div class="modal-footer">
@@ -610,6 +612,7 @@ $medicalrecord->execute();
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
     <script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
+	<script src="js/checkboxhide.js"></script>
     
     <script>
       $(document).ready(function(){
