@@ -229,7 +229,16 @@ require 'lib/Db.config.pdo.php';
 			$stmt->bindParam(8,$ID);
 			$stmt->execute();
 		
-}
+}else if($page == 'DeleteSched'){
+require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
+	
+			$ID = mysql_real_escape_string($_POST['SCHEDULE_ID']);
+			$sql = "DELETE FROM schedule WHERE `SCHEDULE_ID` = '$ID'";
+			$stmt = $db->prepare($sql);
+			$stmt ->execute();
+	
+	}
 //set schedule code
 else if($page == 'SetSched'){
 require 'lib/Db.config.pdo.php';
@@ -287,16 +296,7 @@ require 'lib/Db.config.pdo.php';
 			$stmt->execute();
 
 }
-else if($page == 'DeleteSched'){
-require 'lib/Db.config.pdo.php';
 
-			$ID = mysql_real_escape_string($_POST['SCHEDULE_ID']);
-
-		$sql = "DELETE FROM schedule WHERE SCHEDULE_ID = $ID";
-			$stmt = $db->prepare($sql);
-	 		$stmt -> execute();
-
-}
 else if($page == 'addMedicine'){
 require 'lib/Db.config.pdo.php';
 
