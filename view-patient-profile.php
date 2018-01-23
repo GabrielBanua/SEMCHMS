@@ -382,9 +382,11 @@ $medicalrecord->execute();
 													  <td style="text-align: center;"><?php echo $MR['MR_TEMP'] ?></td>
 													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo $MR['F_CHECKUP'];} ?></td>
 													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
-													  <td style="text-align: center;">
-														  <a class="btn btn-shadow btn-info btn-xs" onclick="RetrieveDoctor(<?php echo $MR['MR_ID'];?>)" data-toggle="modal" data-target="#treatment-<?php echo $MR['MR_ID']; ?>"><i class="icon-share-alt"></i> Proceed</a>
-														  <a class="btn btn-shadow btn-success btn-xs"" data-toggle="modal" data-target="#edit-treatment-<?php echo $MR['MR_ID']; ?>"><i class="icon-eye-open"></i> View</a>
+                                                      <td style="text-align: center;"><?php
+                                                      if($MR['MR_STATUS'] == 'Pending'){ echo "<a class='btn btn-shadow btn-info btn-xs' onclick='RetrieveDoctor(";?><?php echo $MR['MR_ID'];?><?php echo ")' data-toggle='modal' data-target='#treatment-";?><?php echo $MR['MR_ID']; ?><?php echo "'><i class='icon-share-alt'></i> Proceed</a>";}else{ echo "<a class='btn btn-shadow btn-success btn-xs' data-toggle='modal' data-target='#edit-treatment-";?><?php echo $MR['MR_ID']; ?><?php echo "'><i class='icon-eye-open'></i> View</a>";}
+                                                      ?>
+														  
+														  
 														<?php
 														include 'lib/modals/Treatment.php';
 														include 'lib/modals/edit-treatment.php';
@@ -519,7 +521,7 @@ $medicalrecord->execute();
 	<script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 4, "desc" ]]
+                  "aaSorting": [[ 0, "desc" ]]
               } );
           } );
       </script>

@@ -37,7 +37,7 @@
 				<label  class="col-lg-2 control-label">Lab Test</label>
 				<div class="col-lg-4">
 					<select class="form-control">
-						<option hidden>-- None --</option>
+						<option hidden>--None--</option>
 						<option>Blood Chemistry</option>
 						<option>Fecalisys </option>
 						<option>Hematology</option>
@@ -78,11 +78,11 @@
 			<div class="form-group">
 				<div class="checkbox-inline pull-left">
 					<label class="control-label">
-						<input type="checkbox" name="c1" onclick="showMe('referral')">Referral
+						<input type="checkbox" name="c1" onclick="showMe('referral')">&nbsp;Referral
 					</label>
 				</div>
 			</div><hr>
-			<div id="referral" style="display:none">
+			<div id="referral" style="display:none;">
 				<div class="form-group">
 					<label  class="col-lg-4 control-label">Doctor Name</label>
 					<div class="col-lg-6">
@@ -108,7 +108,7 @@
 		<span id="Error_Message-TRMT" class="text-danger"></span>
 		<span id="Success_Message-TRMT" class="text-success"></span>
 		<a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
-		<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-plus"></i>Add</a>
+		<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-plus"></i>&nbsp;Add</a>
 	</div>
 	</div>
 	</div>

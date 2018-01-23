@@ -37,7 +37,7 @@
 				<label  class="col-lg-2 control-label">Lab Test</label>
 				<div class="col-lg-4">
 					<select class="form-control">
-						<option hidden>-- None --</option>
+						<option hidden>--None--</option>
 						<option>Blood Chemistry</option>
 						<option>Fecalisys </option>
 						<option>Hematology</option>
