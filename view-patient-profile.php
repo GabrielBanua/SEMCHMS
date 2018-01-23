@@ -381,6 +381,7 @@ $medicalrecord->execute();
 										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
 										  <td style="text-align: center;">
 											  <a class="btn btn-shadow btn-info btn-xs" onclick="RetrieveDoctor(<?php echo $MR['MR_ID'];?>)" data-toggle="modal" data-target="#treatment-<?php echo $MR['MR_ID']; ?>"><i class="icon-share-alt"></i> Proceed</a>
+											  <a class="btn btn-shadow btn-success btn-xs"" data-toggle="modal" data-target="#apointment"><i class="icon-open"></i> View</a>
 
 <!-- Treatment Records-->
                             <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $MR['MR_ID']; ?>" role="dialog" tabindex="-1" id="treatment-<?php echo $MR['MR_ID']; ?>" class="modal fade">
@@ -517,8 +518,8 @@ $medicalrecord->execute();
                   <td>12/12/2017</td>
                   <td class="center hidden-phone">Uric Acid</td>
                   <td class="center hidden-phone">
-									<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
-									</td>
+					<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
+				  </td>
                   </tr>
               </tbody>
 						</table>
