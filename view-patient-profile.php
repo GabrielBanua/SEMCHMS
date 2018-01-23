@@ -384,9 +384,10 @@ $medicalrecord->execute();
 													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
 													  <td style="text-align: center;">
 														  <a class="btn btn-shadow btn-info btn-xs" onclick="RetrieveDoctor(<?php echo $MR['MR_ID'];?>)" data-toggle="modal" data-target="#treatment-<?php echo $MR['MR_ID']; ?>"><i class="icon-share-alt"></i> Proceed</a>
-														  <a class="btn btn-shadow btn-success btn-xs"" data-toggle="modal" data-target="#apointment"><i class="icon-eye-open"></i> View</a>
+														  <a class="btn btn-shadow btn-success btn-xs"" data-toggle="modal" data-target="#edit-treatment-<?php echo $MR['MR_ID']; ?>"><i class="icon-eye-open"></i> View</a>
 														<?php
-														include 'lib/modals/Treatment.php';                                            
+														include 'lib/modals/Treatment.php';
+														include 'lib/modals/edit-treatment.php';
 														?>
 													  </td>
 												  </tr>
@@ -399,38 +400,38 @@ $medicalrecord->execute();
 										</div>
 									</div>
 								</div>
-      <div id="labresult" class="tab-pane">
-				<div class="adv-table">
-            <table  class="display table table-bordered table-striped" id="example">
-              <thead>
-                <tr>
-                  <th>Laboratory No.</th>
-                  <th>Lab Test Type</th>
-                  <th>Date Taken</th>
-                  <th class="hidden-phone">Test Requested</th>
-                  <th class="hidden-phone">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <tr class="gradeX">
-                  <td>000001</td>
-                  <td>Urinalysis</td>
-                  <td>12/12/2017</td>
-                  <td class="center hidden-phone">Uric Acid</td>
-                  <td class="center hidden-phone">
-					<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
-				  </td>
-                  </tr>
-              </tbody>
-						</table>
-					</div>
-        </div>
-      </div>
-		</div>
-	</div>
-  </section>
-  </aside>
-<!-- Modal Medical Records-->
+								<div id="labresult" class="tab-pane">
+									<div class="adv-table">
+										<table  class="display table table-bordered table-striped" id="example">
+										  <thead>
+											<tr>
+											  <th>Laboratory No.</th>
+											  <th>Lab Test Type</th>
+											  <th>Date Taken</th>
+											  <th class="hidden-phone">Test Requested</th>
+											  <th class="hidden-phone">Action</th>
+											</tr>
+										  </thead>
+										  <tbody>
+											  <tr class="gradeX">
+											  <td>000001</td>
+											  <td>Urinalysis</td>
+											  <td>12/12/2017</td>
+											  <td class="center hidden-phone">Uric Acid</td>
+											  <td class="center hidden-phone">
+												<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
+											  </td>
+											  </tr>
+										  </tbody>
+										</table>
+									</div>
+								</div>
+						  </div>
+							</div>
+						</div>
+					  </section>
+					  </aside>
+		  <!-- Modal Medical Records-->
           <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="apointment" class="modal fade">
               <div class="modal-dialog">
                   <div class="modal-content">

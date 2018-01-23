@@ -1,10 +1,10 @@
-<!-- Treatment Records-->
-<div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $MR['MR_ID']; ?>" role="dialog" tabindex="-1" id="treatment-<?php echo $MR['MR_ID']; ?>" class="modal fade">
+<!--Edit Treatment Records-->
+<div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $MR['MR_ID']; ?>" role="dialog" tabindex="-1" id="edit-treatment-<?php echo $MR['MR_ID']; ?>" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel-<?php echo $MR['MR_ID']; ?>">Treatment</h4>
+				<h4 class="modal-title" id="myModalLabel-<?php echo $MR['MR_ID']; ?>">Edit Treatment</h4>
 			</div>
 		<div class="modal-body">
 		<form class="form-horizontal" role="form">
