@@ -29,6 +29,8 @@ $medicalrecord->execute();
     <link href="css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+    <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="assets/select2/css/select2.min.css"/>
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
@@ -351,51 +353,52 @@ $medicalrecord->execute();
 									<div id="medrecord" class="tab-pane">
 									<div class="adv-table">
 										<header class="panel-heading">
-													<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#apointment"><i class="icon-plus"></i> Add Medical Records</a>
-												</header>
-
-										<table class="table table-striped table-advance table-hover">
-									  <thead>
-									  <tr>
-										  <th style="width:15%; text-align: center;"><i class="icon-calendar"></i> Date</th>
-										  <th style="width:15%; text-align: center;">Illness / Ailments</th>
-										  <th style="width:15%; text-align: center;">Blood Pressure</th>
-										  <th style="width:15%; text-align: center;">Weight<br>(Kg)</th>
-										  <th style="width:15%; text-align: center;">Temperature<br>(Celcius)</th>
-										  <th style="width:15%; text-align: center;">Follow-Up Checkup</th>
-										  <th style="width:15%; text-align: center;">Status</th>
-										  <th style="width:15%; text-align: center;">Action</th>
-									  </tr>
-									  </thead>
-									  <tbody>
-										<?php
-										while($MR = $medicalrecord->fetch()){
-										?>
-									  <tr>
-										  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
-										  <td style="text-align: center;"><?php echo $MR['MR_ILL'] ?></td>
-										  <td style="text-align: center;"><?php echo $MR['MR_BP'] ?></td>
-										  <td style="text-align: center;"><?php echo $MR['MR_WEIGHT'] ?></td>
-										  <td style="text-align: center;"><?php echo $MR['MR_TEMP'] ?></td>
-										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo $MR['F_CHECKUP'];} ?></td>
-										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
-										  <td style="text-align: center;">
-											  <a class="btn btn-shadow btn-info btn-xs" onclick="RetrieveDoctor(<?php echo $MR['MR_ID'];?>)" data-toggle="modal" data-target="#treatment-<?php echo $MR['MR_ID']; ?>"><i class="icon-share-alt"></i> Proceed</a>
-											  <a class="btn btn-shadow btn-success btn-xs"" data-toggle="modal" data-target="#apointment"><i class="icon-open"></i> View</a>
-
-<?php
-include 'lib/modals/Treatment.php';                                            
-?>
-										  </td>
-									  </tr>
-<?php
-}
-?>
-									  </tbody>
-								</table>
-							</div>
-						</div>
-
+											<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#apointment"><i class="icon-plus"></i> Add Medical Records</a>
+										</header>
+										<div class="panel-body">
+											<div class="adv-table">
+												<table  class="display table table-bordered table-striped" id="example">
+												  <thead>
+												  <tr>
+													  <th style="width:100%; text-align: center;"><i class="icon-calendar"></i> Date</th>
+													  <th style="width:15%; text-align: center;">Illness / Ailments</th>
+													  <th style="width:15%; text-align: center;">Blood Pressure</th>
+													  <th style="width:15%; text-align: center;">Weight<br>(Kg)</th>
+													  <th style="width:15%; text-align: center;">Temp<br>(Celcius)</th>
+													  <th style="width:100%; text-align: center;">Follow-Up Checkup</th>
+													  <th style="width:15%; text-align: center;">Status</th>
+													  <th style="width:15%; text-align: center;">Action</th>
+												  </tr>
+												  </thead>
+												  <tbody>
+													<?php
+													while($MR = $medicalrecord->fetch()){
+													?>
+												  <tr>
+													  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
+													  <td style="text-align: center;"><?php echo $MR['MR_ILL'] ?></td>
+													  <td style="text-align: center;"><?php echo $MR['MR_BP'] ?></td>
+													  <td style="text-align: center;"><?php echo $MR['MR_WEIGHT'] ?></td>
+													  <td style="text-align: center;"><?php echo $MR['MR_TEMP'] ?></td>
+													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo $MR['F_CHECKUP'];} ?></td>
+													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
+													  <td style="text-align: center;">
+														  <a class="btn btn-shadow btn-info btn-xs" onclick="RetrieveDoctor(<?php echo $MR['MR_ID'];?>)" data-toggle="modal" data-target="#treatment-<?php echo $MR['MR_ID']; ?>"><i class="icon-share-alt"></i> Proceed</a>
+														  <a class="btn btn-shadow btn-success btn-xs"" data-toggle="modal" data-target="#apointment"><i class="icon-eye-open"></i> View</a>
+														<?php
+														include 'lib/modals/Treatment.php';                                            
+														?>
+													  </td>
+												  </tr>
+													<?php
+													}
+													?>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
       <div id="labresult" class="tab-pane">
 				<div class="adv-table">
             <table  class="display table table-bordered table-striped" id="example">
@@ -506,11 +509,19 @@ include 'lib/modals/Treatment.php';
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="assets/jquery-knob/js/jquery.knob.js"></script>
     <script src="js/respond.min.js" ></script>
+	<script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
 
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
     <script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
 	<script src="js/checkboxhide.js"></script>
+	<script type="text/javascript" charset="utf-8">
+          $(document).ready(function() {
+              $('#example').dataTable( {
+                  "aaSorting": [[ 4, "desc" ]]
+              } );
+          } );
+      </script>
     
     <script>
       $(document).ready(function(){
