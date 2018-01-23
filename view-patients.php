@@ -254,7 +254,7 @@ include 'lib/modals/view-patients-editmodal.php';
 	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
 	<script src="js/advanced-form-components.js"></script>
 <?php
-include 'lib/fucntions/view-patients-scripts.php';
+include 'lib/functions/view-patients-scripts.php';
 ?>
 </body>
 </html>
