@@ -48,25 +48,25 @@
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Diagnosis:</label>
 				<div class="col-lg-12">
-				<textarea style="resize:none" id="DIAG_DTLS-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"></textarea>
+				<textarea style="resize:none" id="DIAG_DTLS-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"><?php echo $MR['DIAG_DTLS']; ?></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Treatment:</label>
 				<div class="col-lg-12">
-					<textarea style="resize:none" id="TREATMENT-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"></textarea>
+					<textarea style="resize:none" id="TREATMENT-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"><?php echo $MR['TREATMENT']; ?></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Remarks:</label>
 				<div class="col-lg-12">
-					<textarea style="resize:none" id="REMARKS-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"></textarea>
+					<textarea style="resize:none" id="REMARKS-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"><?php echo $MR['REMARKS']; ?></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Follow-Up Checkup</label>
 				<div class="col-lg-4">
-					<input type="date" id="F_CHECKUP-<?php echo $MR['MR_ID']; ?>" class="form-control" required>
+					<input type="date" id="F_CHECKUP-<?php echo $MR['MR_ID']; ?>" value="<?php echo strftime('%Y-%m-%d', strtotime($MR['F_CHECKUP'])); ?>" class="form-control" required>
 				</div>
 				<label  class="col-lg-2 control-label">Doctor</label>
 				<div class="col-lg-4">
@@ -78,13 +78,13 @@
 			<div class="form-group">
 				<div class="checkbox-inline pull-left">
 					<label class="control-label">
-						<input type="checkbox" name="c1" onclick="showMe('referral')">Referral
+						<input type="checkbox" name="c2-<?php echo $MR['MR_ID']; ?>" onclick="ShowRefedit('editreferral-<?php echo $MR['MR_ID']; ?>', <?php echo $MR['MR_ID']; ?>)"> Referral
 					</label>
 				</div>
 			</div><hr>
-			<div id="referral" style="display:none">
+			<div id="editreferral-<?php echo $MR['MR_ID']; ?>">
 				<div class="form-group">
-					<label  class="col-lg-4 control-label">Doctor Name</label>
+					<label class="col-lg-4 control-label">Doctor Name</label>
 					<div class="col-lg-6">
 						<input type="text" class="form-control" required>
 					</div>
@@ -108,7 +108,7 @@
 		<span id="Error_Message-TRMT" class="text-danger"></span>
 		<span id="Success_Message-TRMT" class="text-success"></span>
 		<a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
-		<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-plus"></i>&nbsp;Add</a>
+		<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)">Edit</a>
 	</div>
 	</div>
 	</div>

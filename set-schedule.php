@@ -301,9 +301,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
     <script src="js/preloader.js"></script>
-
-
-  <!--common script for all pages-->
+    <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 
     <!--script for this page only-->
@@ -334,7 +332,10 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                     $('#Error_Message-'+str).html('This schedule is taken!');
                   }
                   else if(data == 'Late'){
-                    $('#Error_Message-'+str).html('Time unavailable!');
+                    $('#Error_Message-'+str).html('Time is late!');
+                  }
+                  else if(data == 'DateLate'){
+                    $('#Error_Message-'+str).html('Date is late!');
                   }
                   else if(data == 'Success'){
                         $.ajax({

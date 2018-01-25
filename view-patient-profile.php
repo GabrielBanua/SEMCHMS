@@ -14,6 +14,9 @@ $row = mysql_fetch_array($result);
 
 $medicalrecord = $db->prepare("Select * FROM (((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) WHERE patient.P_ID = $VIEW_ID");
 $medicalrecord->execute();
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -281,7 +284,7 @@ $medicalrecord->execute();
 													<input type="text" id="SIG_INJ" class="form-control" <?php if ($row['SIG_INJ'] == "No"){echo "value=\"No\"";}else if($row['SIG_INJ'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
 													<br>
 													<textarea name="" id="SIG_INJ_TXTA" style="resize:none" class="form-control" cols="2" rows="4" disabled><?php if($row['SIG_INJ'] == "No"){ echo "";}else if($row['SIG_INJ'] == 'No information given!'){ echo "No information given!";}else{ echo $row['SIG_INJ'];}?></textarea>
-                        </div>
+                                                </div>
 												<div class="col-sm-4">
 													<p class="help-block">A.10 have you been hospitalized in the last year?:<p>
 													<input type="text" class="form-control" id="HPTL" <?php if ($row['HPTL'] == "No"){echo "value=\"No\"";}else if($row['HPTL'] == "No information given!"){ echo "value=\"--Select--\""; }else{ echo "value=\"Yes\"";}?>>
@@ -371,9 +374,14 @@ $medicalrecord->execute();
 												  </tr>
 												  </thead>
 												  <tbody>
-													<?php
-													while($MR = $medicalrecord->fetch()){
-													?>
+<?php
+	while($MR = $medicalrecord->fetch()){
+    $TRMNT_ID = $MR['TRMT_ID'];
+        $treatment = $db->prepare("Select * FROM referral WHERE TRMTMNT_ID = '$TRMNT_ID'");
+        $treatment->execute();
+        $treatment = mysql_fetch_array();
+        
+?>
 												  <tr>
 													  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
 													  <td style="text-align: center;"><?php echo $MR['MR_ILL'] ?></td>
@@ -384,18 +392,16 @@ $medicalrecord->execute();
 													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
                                                       <td style="text-align: center;"><?php
                                                       if($MR['MR_STATUS'] == 'Pending'){ echo "<a class='btn btn-shadow btn-info btn-xs' onclick='RetrieveDoctor(";?><?php echo $MR['MR_ID'];?><?php echo ")' data-toggle='modal' data-target='#treatment-";?><?php echo $MR['MR_ID']; ?><?php echo "'><i class='icon-share-alt'></i> Proceed</a>";}else{ echo "<a class='btn btn-shadow btn-success btn-xs' data-toggle='modal' data-target='#edit-treatment-";?><?php echo $MR['MR_ID']; ?><?php echo "'><i class='icon-eye-open'></i> View</a>";}
-                                                      ?>
-														  
-														  
-														<?php
-														include 'lib/modals/Treatment.php';
-														include 'lib/modals/edit-treatment.php';
-														?>
+                                                      ?> 
+<?php
+    require 'lib/modals/Treatment.php';
+	require 'lib/modals/edit-treatment.php';
+?>
 													  </td>
 												  </tr>
-													<?php
-													}
-													?>
+<?php   
+}
+?>
 													</tbody>
 												</table>
 											</div>
@@ -518,184 +524,8 @@ $medicalrecord->execute();
     <script src="js/common-scripts.js"></script>
     <script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
 	<script src="js/checkboxhide.js"></script>
-	<script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#example').dataTable( {
-                  "aaSorting": [[ 0, "desc" ]]
-              } );
-          } );
-      </script>
-    
-    <script>
-      $(document).ready(function(){
-        var Auth ='<?php echo $Position; ?>';
-        if (Auth == "Admin") 
-        {                       
-            $('#Patient-li').show(); 
-            $('#Schedule-li').show();
-            $('#Inventory-li').show();
-            $('#Laboratory-li').show();
-            $('#Reports-li').show();
-            $('#User-li').show();
-            $('#Maintenance-li').show();
-        }
-        else if(Auth == "Doctor") {
-            $('#User-li').hide();
-            $('#Patient-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Laboratory-li').hide();
-            $('#Inventory-li').hide();
-        }
-        else if(Auth == "Medtech") {
-            $('#User-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Patient-li').hide();
-            $('#Schedule-li').hide();
-            $('#Inventory-li').hide();
-        }
-        });
-
-      $(document).ready(function(){
-          var Disease = $('#DISE_DISO').val();
-          var Significant = $('#SIG_INJ').val(); 
-          var Alcohol = $('#ALCO_DRUGS').val();
-          var Medication = $('#MEDCT').val();
-          var Assistive_dev = $('#ASSIST_DEV').val();
-          var Treatment = $('#TRMT').val();
-          var Hospitalized = $('#HPTL').val();
-          var Person_Assist = $('#PERS_ASSIST').val();
-          var Smoke = $('#SMOKE').val();
-          var CB_Health = $('#CB_HEALTH_COND').val();
-          var TU_Health = $('#TU_HEALTH_COND').val();   
-          $('#DISE_DISO_TXTA').attr('disabled',true);
-          $('#SIG_INJ_TXTA').attr('disabled',true);
-          $('#ALCO_DRUGS_TXTA').attr('disabled',true);
-          $('#MEDCT_TXTA').attr('disabled',true);
-          $('#ASSIST_DEV_TXTA').attr('disabled',true);
-          $('#HPTL_TXTA').attr('disabled',true);
-          $('#TRMT_TXTA').attr('disabled',true);
-          $('#SMOKE_TXTA').attr('disabled',true);
-          $('#PERS_ASSIST_TXTA').attr('disabled',true);
-          $('#CB_HEALTH_COND_TXTA').attr('disabled',true);
-          $('#TU_HEALTH_COND_TXTA').attr('disabled',true);
-          if(Disease == "Yes"){
-            $('#DISE_DISO_TXTA').attr('disabled',false);
-          }
-          if(Significant == "Yes"){
-            $('#SIG_INJ_TXTA').attr('disabled',false);
-          }
-          if(Alcohol == "Yes"){
-            $('#ALCO_DRUGS_TXTA').attr('disabled',false);
-          }
-          if(Medication == "Yes"){
-            $('#MEDCT_TXTA').attr('disabled',false);
-          }
-          if(Assistive_dev == "Yes"){
-            $('#ASSIST_DEV_TXTA').attr('disabled',false);
-          }
-          if(Treatment == "Yes"){
-            $('#TRMT_TXTA').attr('disabled',false);
-          }
-          if(Person_Assist == "Yes"){
-            $('#PERS_ASSIST_TXTA').attr('disabled',false);
-          }
-          if(Hospitalized == "Yes"){
-            $('#HPTL_TXTA').attr('disabled',false);
-          }
-          if(Smoke == "Yes"){
-            $('#SMOKE_TXTA').attr('disabled',false);
-          }
-          if(CB_Health == "Yes"){
-            $('#CB_HEALTH_COND_TXTA').attr('disabled',false);
-          }
-          if(TU_Health == "Yes"){
-            $('#TU_HEALTH_COND_TXTA').attr('disabled',false);
-          }
-      });
-        
-    </script>
-	  <script type="text/javascript">
-	  $(document).ready(function () {
-		  $(".select2-single").select2({placeholder: 'Please select option'});
-
-		  $(".select2-multiple").select2();
-	  });
-
-    function addMedicalRecord(){
-          var Medillness = $('#MedRillness').val(); 
-          var MedBP =  $('#MedRBP').val();
-          var MedWeight = $('#MedRWeight').val();
-          var MedTemp = $('#MedRTemp').val();
-          var MedDate = $('#MedRDate').val();
-          var Sched_id = '<?php echo $SCHED_ID; ?>';
-
-          if(Medillness == '' || MedBP == '' || MedWeight == '' || MedTemp == ''){
-             $('#Error_Message').html('Please fill all fields! &nbsp;');
-          }
-          else{
-             $('#Error_Message').html('');
-              if (confirm('Are you sure you want to set schedule for this patient?')) {
-                $.ajax({
-                      type: "POST",
-                      url: "Server.php?p=addMedicalRecord",
-                      data: "MedRillness="+Medillness+"&MedRBP="+MedBP+"&MedRWeight="+MedWeight+"&MedRTemp="+MedTemp+"&MedRDate="+MedDate+"&Sched_ID="+Sched_id,
-                      success: function(data){
-                       $('#Success_Message').html('Successfully Added! &nbsp;');
-                        setTimeout(function() {
-                          $('#Success_Message').fadeOut('slow');
-                        }, 2000);
-                        setTimeout(function(){
-                          window.location.reload();
-                        }, 3000);
-                      }
-                    });
-              }else{
-
-              }
-          }
-      }
-    function RetrieveDoctor(str){
-      var id = str;
-   
-      $.ajax({
-                type: "GET",
-                url: "Server.php?p=DoctorList",
-                success: function(data){
-                  $('#listofDoctor-'+id).html(data);
-                }
-      });
-
-    }
-    function addTreatment(str){
-          var Med_RID = str;
-          var Diagnosis = $('#DIAG_DTLS-'+Med_RID).val(); 
-          var Treatment =  $('#TREATMENT-'+Med_RID).val();
-          var Remarks = $('#REMARKS-'+Med_RID).val();
-          var FollowUp = $('#F_CHECKUP-'+Med_RID).val();
-          var Doctor = $('#listofDoctor-'+Med_RID).val();
-          if(Diagnosis == '' || Treatment == '' || Remarks == '' || FollowUp == ''){
-             $('#Error_Message-TRMT').html('Please fill all fields! &nbsp;');
-          }
-          else{
-            $('#Error_Message-TRMT').html('');
-           $.ajax({
-                type: "POST",
-                url: "Server.php?p=addTreatment",
-                data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID,
-                success: function(data){
-                  $('#Success_Message-TRMT').html('Successfully Added! &nbsp;');
-                        setTimeout(function() {
-                          $('#Success_Message-TRMT').fadeOut('slow');
-                        }, 1800);
-                        setTimeout(function(){
-                          window.location.reload();
-                        }, 2200);
-                      }
-          });
-        }
-      }
-	</script>
+    <?php
+        include 'lib/functions/view-patients-profile-script.php';
+    ?>
   </body>
 </html>

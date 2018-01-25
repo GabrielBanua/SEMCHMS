@@ -270,9 +270,13 @@ date_default_timezone_set('Asia/Manila');
 			$sqldate = date('Y-m-d',strtotime($Sched_date));
 			$Timedel = date('H:i:s', strtotime($Sched_time));
 			$CheckTime = date('H:i:s');
+			$CheckDate = date('Y-m-d');
 			
 			if($Timedel < $CheckTime){
 				echo "Late";
+			}
+			else if($CheckDate > $sqldate){
+				echo "DateLate";
 			}else{
 				$sql = "SELECT SCHEDULE_DATE, SCHEDULE_PURPOSE, SCHEDULE_TIME FROM schedule WHERE SCHEDULE_DATE = '$sqldate' AND SCHEDULE_PURPOSE = '$Sched_purpose'";
 				$Check = mysql_query($sql);

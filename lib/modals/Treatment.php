@@ -78,7 +78,7 @@
 			<div class="form-group">
 				<div class="checkbox-inline pull-left">
 					<label class="control-label">
-						<input type="checkbox" name="c1" onclick="showMe('referral')">&nbsp;Referral
+						<input type="checkbox" name="c1" id="c1" onclick="showMe('referral')">&nbsp;Referral
 					</label>
 				</div>
 			</div><hr>
@@ -86,19 +86,19 @@
 				<div class="form-group">
 					<label  class="col-lg-4 control-label">Doctor Name</label>
 					<div class="col-lg-6">
-						<input type="text" class="form-control" required>
+						<input type="text" id="Ref_Doc_name-<?php echo $MR['MR_ID']; ?>" class="form-control" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label  class="col-lg-4 control-label">Contact No.</label>
 					<div class="col-lg-6">
-						<input type="text" class="form-control" required>
+						<input type="text" id="Ref_Doc_CN-<?php echo $MR['MR_ID']; ?>" class="form-control" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label  class="col-lg-4 control-label">Address</label>
 					<div class="col-lg-6">
-						<input type="text" class="form-control" required>
+						<input type="text" id="Ref_Doc_Add-<?php echo $MR['MR_ID']; ?>" class="form-control" required>
 					</div>
 				</div>
 			</div>

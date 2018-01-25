@@ -168,13 +168,13 @@ require 'lib/Db.config.pdo.php';
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th>Patient No.</th>
-                                          <th>Full Name</th>
-                                          <th>Gender</th>
-                                          <th>Type</th>
-                                          <th>Address</th>
-                                          <th>Contact No.</th>
-                                          <th>Action</th>
+                                        <th style="width: 10%;">Patient No.</th>
+                                        <th style="width: 20%;">Full Name</th>
+                                        <th style="width: 7%;">Gender</th>
+                                        <th style="width: 7%;">Type</th>
+                                        <th style="width: 20%;">Address</th>
+                                        <th style="width: 10%;">Contact No.</th>
+                                        <th style="width: 13%;">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
@@ -191,6 +191,7 @@ while($row = $stmt->fetch()){
                                           <td align="center">
                                             <a class="btn btn-shadow btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class="icon-eye-open"></i> View</a>
                                             <a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" onclick="change(<?php echo $row['P_ID'] ?>)" href="#editpatient-<?php echo $row['P_ID'] ?>"><i class="icon-pencil"></i>&nbsp;&nbsp;Edit</a>
+<!--Call the View patient edit modal-->
 <?php
 include 'lib/modals/view-patients-editmodal.php';
 ?>
