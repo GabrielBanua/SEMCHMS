@@ -16,7 +16,7 @@ else if($Position == "Volunter"){
 	<meta name="google" content="notranslate">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Inventory Reports Panel</title>
+    <title>Patient Reports Panel</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -102,7 +102,7 @@ else if($Position == "Volunter"){
                       <ul class="sub">
                           <li><a  href="set-schedule.php">Set Schedule</a></li>
                           <li><a  href="view-schedule.php">View Schedule</a></li>
-						  <li><a  href="#">Schedule Reports</a></li>
+						  <li><a  href="sched-reports-panel.php">Schedule Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -126,7 +126,7 @@ else if($Position == "Volunter"){
 						  <li><a  href="labtest.php">Add Lab Results</a></li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="labview.php">View Lab Records</a></li>
-						  <li><a  href="#">Laboratory Reports</a></li>
+						  <li><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -156,13 +156,40 @@ else if($Position == "Volunter"){
                               Inventory Reports Panel
                           </header>
                           <div class="panel-body">
-								<form class="form-horizontal" role="form">
-								  <div class="form-group">
-                                      <div class="col-lg-12">
-											
-                                      </div>
-                                  </div>
-                              </form>
+								<div class="row state-overview">
+								  <div class="col-lg-3 col-sm-6">
+									  <section class="panel">
+											<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="patient-list-report.php">
+												<i class="icon-group icon-3x"></i><br>
+												List of<br>Patient
+											</a>
+									  </section>
+								  </div>
+								  <div class="col-lg-3 col-sm-6">
+									  <section class="panel">
+											<a class="btn btn-shadow btn-primary btn-lg" style="width:200px" href="patient-chart-report.php">
+												<i class="icon-bar-chart icon-3x"></i><br>
+												Patient<br>Population
+											</a>
+									  </section>
+								  </div>
+								  <div class="col-lg-3 col-sm-6">
+									  <section class="panel">
+											<a class="btn btn-shadow btn-success btn-lg" style="width:200px">
+												<i class="icon-user icon-3x"></i><br>
+												List of<br>Patient
+											</a>
+									  </section>
+								  </div>
+								  <div class="col-lg-3 col-sm-6">
+									  <section class="panel">
+											<a class="btn btn-shadow btn-success btn-lg" style="width:200px">
+												<i class="icon-user icon-3x"></i><br>
+												List of<br>Patient
+											</a>
+									  </section>
+								  </div>
+							  </div>
 						</div>
                     </section>
                   </div>
