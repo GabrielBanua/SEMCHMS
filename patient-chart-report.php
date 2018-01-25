@@ -329,60 +329,120 @@ require 'lib/session.php';
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
     <script src = "js/jquery.canvasjs.min.js"></script>
-	<script type="text/javascript"> 
-		window.onload = function(){ 
-			$("#patient_population").CanvasJSChart({
-				theme: "light2",
-				zoomEnabled: true,
-				zoomType: "x",
-				panEnabled: true,
-				animationEnabled: true,
-				animationDuration: 1000,
-				exportFileName: "Monthly Population", 
-				exportEnabled: true,
-				title: { 
-					text: "Patient Population as of Year",
-					fontSize: 20
+	
+<script type="text/javascript"> 
+	window.onload = function(){ 
+		$("#patient_population").CanvasJSChart({
+			theme: "light2",
+			zoomEnabled: true,
+			zoomType: "x",
+			panEnabled: true,
+			animationEnabled: true,
+			animationDuration: 1000,
+			exportFileName: "Monthly Population", 
+			exportEnabled: true,
+			toolTip: {
+                shared: true  
+            },
+			title: { 
+				text: "Patient Population as of Year ",
+				fontSize: 20
+			},
+			legend: {
+				cursor: "pointer",
+				itemclick: function (e) {
+					if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+						e.dataSeries.visible = false;
+					} else {
+						e.dataSeries.visible = true;
+					}
+					e.chart.render();
+				}
+			},
+			axisX: {		       
+				gridDashType: "dot",
+				gridThickness: 1,
+				labelFontColor: "black",
+				crosshair: {
+					enabled: true 
+				}
+			},
+			axisY: { 
+				title: "Total Population", 
+				includeZero: false,
+				labelFontColor: "black",
+				crosshair: {
+					enabled: true 
+				}
+			}, 
+			data: [ 
+				{ 
+					type: "column", 
+					showInLegend: true, 
+					legendText: "Total",
+					name: "Total", 
+					toolTipContent: "{label}: {y}", 
+					dataPoints: [ 
+						{ label: "January", y: 200 },
+						 { label: "February", y: 100 },
+						{ label: "March", y: 20 },
+						 { label: "April", y: 50 },
+						{ label: "May", y: 100 },
+						 { label: "June", y: 300 },
+						{ label: "July", y: 250 },
+						 { label: "August", y: 159 },
+						{ label: "September", y: 20 },
+						 { label: "October", y: 70 },
+						{ label: "November", y: 90 },
+						 { label: "December", y: 120 }
+					] 
 				},
-				axisX: {		       
-					gridDashType: "dot",
-					gridThickness: 1,
-					labelFontColor: "black",
-					crosshair: {
-						enabled: true 
-					}
+
+
+				{ 
+					type: "splineArea", 
+					showInLegend: true, 
+					legendText: "Children",
+					name: "Children", 
+					dataPoints: [ 
+						{ label: "January", y: 120 },
+						 { label: "February", y: 60 },
+						{ label: "March", y: 20 },
+						 { label: "April", y: 50 },
+						{ label: "May", y: 104 },
+						 { label: "June", y: 310 },
+						{ label: "July", y: 280 },
+						 { label: "August", y: 259 },
+						{ label: "September", y: 200 },
+						 { label: "October", y: 73 },
+						{ label: "November", y: 91 },
+						 { label: "December", y: 10 }
+					] 
 				},
-				axisY: { 
-					title: "Total Population", 
-					includeZero: false,
-					labelFontColor: "black",
-					crosshair: {
-						enabled: true 
-					}
-				}, 
-				data: [ 
-					{ 
-						type: "column", 
-						toolTipContent: "{label}: {y}", 
-						dataPoints: [ 
-							{ label: "January", y: 100 },
-							 { label: "February", y: 200 },
-							{ label: "March", y: 300 },
-							 { label: "April", y: 400 },
-							{ label: "May", y: 400 },
-							 { label: "June", y: 400 },
-							{ label: "July", y: 500 },
-							 { label: "August", y: 600 },
-							{ label: "September", y: 900 },
-							 { label: "October", y: 300 },
-							{ label: "November", y: 100 },
-							 { label: "December", y: 450 }
-						] 
-					}
-				] 
-			}); 
-		}
-	</script>
+				{ 
+					type: "spline", 
+					showInLegend: true, 
+					legendText: "Adult",
+					name: "Adult", 
+					dataPoints: [ 
+						{ label: "January", y: 100 },
+						 { label: "February", y: 160 },
+						{ label: "March", y: 205 },
+						 { label: "April", y: 80 },
+						{ label: "May", y: 14 },
+						 { label: "June", y: 31 },
+						{ label: "July", y: 28 },
+						 { label: "August", y: 59 },
+						{ label: "September", y: 100 },
+						 { label: "October", y: 13 },
+						{ label: "November", y: 31 },
+						 { label: "December", y: 90 }
+					] 
+				}
+			] 
+		}); 
+	}
+</script>
 	<script>
             $(document).ready(function(){
                 $("#pyear").on('change', function(){
