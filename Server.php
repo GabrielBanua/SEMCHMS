@@ -175,7 +175,7 @@ else if($page == 'UpdatePatient'){
  		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 
- 			$Last_PMID = $db->lastInsertId();
+ 			
 			$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
 			$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);
 			$Mental = mysql_real_escape_string($_POST['MENT_EMO_HEAl']);
@@ -229,7 +229,16 @@ require 'lib/Db.config.pdo.php';
 			$stmt->bindParam(8,$ID);
 			$stmt->execute();
 		
-}
+}else if($page == 'DeleteSched'){
+require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
+	
+			$ID = mysql_real_escape_string($_POST['SCHEDULE_ID']);
+			$sql = "DELETE FROM schedule WHERE `SCHEDULE_ID` = '$ID'";
+			$stmt = $db->prepare($sql);
+			$stmt ->execute();
+	
+	}
 //set schedule code
 else if($page == 'SetSched'){
 require 'lib/Db.config.pdo.php';
@@ -238,45 +247,50 @@ require 'lib/Db.config.pdo.php';
 			$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
 			$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-			$Time = date('H:i:s', strtotime($Sched_time. ' +15 minutes'));
+			$Time = date('H:i:s', strtotime($Sched_time. ' +7 minutes'));
 			$sqldate = date('Y-m-d',strtotime($Sched_date)); 
-
-				$check = $db->prepare("select * from schedule");
-				$check->execute();
-				$checkif = $check->fetch(PDO::FETCH_ASSOC);
-
-			if($checkif['SCHEDULE_TIME'] == $Time && $checkif['SCHEDULE_PURPOSE'] == $Sched_purpose && $checkif['SCHEDULE_DATE'] == $sqldate){
-			echo "Taken";
-			}
-			else{
+			
 				$stmt = $db->prepare("insert into schedule values('',?,?,?,?)");
 					$stmt->bindParam(1,$P_ID);
 					$stmt->bindParam(2,$sqldate);
 					$stmt->bindParam(3,$Time);
 					$stmt->bindParam(4,$Sched_purpose);
 					$stmt->execute();
-			}
 			
 }
 else if($page == 'CheckSched'){
 require 'lib/Db.config.php';
+date_default_timezone_set('Asia/Manila');
 
 			$P_ID = mysql_real_escape_string($_POST['P_ID']);
 			$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
 			$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-			$Time = date('H:i:s', strtotime($Sched_time. ' +15 minutes'));
-			$sqldate = date('Y-m-d',strtotime($Sched_date)); 
-
-				$sql = "SELECT SCHEDULE_DATE, SCHEDULE_TIME, SCHEDULE_PURPOSE FROM schedule WHERE SCHEDULE_DATE = '$sqldate' AND (SCHEDULE_TIME = '$Time') AND SCHEDULE_PURPOSE = '$Sched_purpose'";
+			$Time = date('H:i:s', strtotime($Sched_time));
+			$sqldate = date('Y-m-d',strtotime($Sched_date));
+			$Timedel = date('H:i:s', strtotime($Sched_time));
+			$CheckTime = date('H:i:s');
+			
+			if($Timedel < $CheckTime){
+				echo "Late";
+			}else{
+				$sql = "SELECT SCHEDULE_DATE, SCHEDULE_PURPOSE, SCHEDULE_TIME FROM schedule WHERE SCHEDULE_DATE = '$sqldate' AND SCHEDULE_PURPOSE = '$Sched_purpose'";
 				$Check = mysql_query($sql);
 				$count = mysql_num_rows($Check);
 
-				if($count > 0){
+				$TimeDelay;
+				$TimeInterval;
+				while($row = mysql_fetch_array($Check)){
+					$TimeDelay = date("H:i:s", strtotime($row['SCHEDULE_TIME']. ' -7 minutes'));
+					$TimeInterval = $row['SCHEDULE_TIME'];
+				}
+				if($TimeDelay <= $Time && $TimeInterval >= $Time){
 					echo "Taken";
 				}else{
 					echo "Success";
 				}
+			}
+			
 }
 else if($page == 'UpdateSched'){
 require 'lib/Db.config.pdo.php';
@@ -296,16 +310,7 @@ require 'lib/Db.config.pdo.php';
 			$stmt->execute();
 
 }
-else if($page == 'DeleteSched'){
-require 'lib/Db.config.pdo.php';
 
-			$ID = mysql_real_escape_string($_POST['SCHEDULE_ID']);
-
-		$sql = "DELETE FROM schedule WHERE SCHEDULE_ID = $ID";
-			$stmt = $db->prepare($sql);
-	 		$stmt -> execute();
-
-}
 else if($page == 'addMedicine'){
 require 'lib/Db.config.pdo.php';
 
@@ -418,6 +423,40 @@ require 'lib/Db.config.php';
 			$stmt->bindParam(6,$QtyHistory);
 			$stmt->execute();
 }
+else if($page == 'addTreatment'){
+require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
+
+			$Diagnosis = mysql_real_escape_string($_POST['DGN']);
+			$Treatment = mysql_real_escape_string($_POST['TRMT']);
+			$Remarks = mysql_real_escape_string($_POST['RMKS']);
+			$Follow = mysql_real_escape_string($_POST['FPCHK']);
+			$Doctor = mysql_real_escape_string($_POST['DOC']);
+			$MedicalRec_ID = mysql_real_escape_string($_POST['MRID']);
+				
+				$sqldate = date('Y-m-d',strtotime($Follow));
+				$Status = "Completed";
+
+				$sql = "SELECT * FROM users WHERE User_id = '$Doctor'";
+				$doc = mysql_query($sql);
+				$row = mysql_fetch_array($doc);
+				$User_id = $row['User_id'];
+
+				$stmt = $db->prepare("update treatment set DIAG_DTLS=?, TREATMENT=?, REMARKS=?, F_CHECKUP=?, User_id=? where MR_ID=?");
+						$stmt->bindParam(6,$MedicalRec_ID);
+						$stmt->bindParam(1,$Diagnosis);
+						$stmt->bindParam(2,$Treatment);
+						$stmt->bindParam(3,$Remarks);
+						$stmt->bindParam(4,$sqldate);
+						$stmt->bindParam(5,$User_id);
+						$stmt->execute();
+
+				$MR = $db->prepare("Update medical_record set MR_STATUS=? where MR_ID=?");
+						$MR->bindParam(1,$Status);
+						$MR->bindParam(2,$MedicalRec_ID);
+						$MR->execute();
+
+}
 else if($page == 'addMedicalRecord'){
 require 'lib/Db.config.pdo.php';
 require 'lib/Db.config.php';
@@ -433,9 +472,6 @@ require 'lib/Db.config.php';
 			$Month = date('m',strtotime($date));
 			$Status = "Pending";
 
-			
-			
-			
 	$stmt = $db->prepare("insert into medical_record values('',?,?,?,?,?,?,?,?,?)");
 			$stmt->bindParam(1,$MedRillness);
 			$stmt->bindParam(2,$MedRBP);
@@ -448,7 +484,31 @@ require 'lib/Db.config.php';
 			$stmt->bindParam(9,$Status);
 			$stmt->execute();
 
-			
+	$ID = $db->lastInsertId();
+	$Diagnosis = '';
+	$Treatment = '';
+	$Remarks = '';
+	$date = date("Y-m-d");
+	$sql = "INSERT INTO `treatment` (`MR_ID`, `DIAG_DTLS`, `TREATMENT`, `REMARKS`, `F_CHECKUP`, `User_id`) VALUES ('$ID', '$Diagnosis', '$Treatment', '$Remarks', '$date', '4')";
+ 		$stmt = $db->prepare($sql);
+ 		$stmt -> execute();
 
 }
+else if($page == 'DoctorList'){
+require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
+
+	$sql = "SELECT *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users WHERE Position = 'Doctor'";
+			$do = mysql_query($sql);
+			$count = mysql_num_rows($do);
+
+	if($count > 0){
+		while($doc = mysql_fetch_array($do)){
+			echo "<option value='";echo $doc['User_id'];echo "'>"; echo $doc['Fullname']; echo "</option>";
+		}
+	}else{
+		echo "<option>No registered doctor</option>";
+	}			
+}
+
 ?>

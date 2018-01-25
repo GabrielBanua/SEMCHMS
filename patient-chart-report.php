@@ -1,12 +1,6 @@
 <?php
 require 'lib/session.php';
 
-if($Position == "Doctor"){
-  header('Location: index.php');
-}
-else if($Position == "Volunter"){
-  header('Location: index.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

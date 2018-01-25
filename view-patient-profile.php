@@ -4,7 +4,7 @@ require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
 date_default_timezone_set('Asia/Manila');
 $d = strtotime("now");
-
+$datetreatment = date("Y-m-d");
 $VIEW_ID = isset($_GET['VID'])?$_GET['VID']:'';
 $SCHED_ID = isset($_GET['Sched_ID'])?$_GET['Sched_ID']:'';
 
@@ -12,7 +12,7 @@ $sql = "SELECT *, CONCAT(patient.P_FNAME,' ', patient.P_LNAME) AS FullName FROM 
 $result = mysql_query($sql);
 $row = mysql_fetch_array($result);
 
-$medicalrecord = $db->prepare("Select * FROM ((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) WHERE patient.P_ID = $VIEW_ID");
+$medicalrecord = $db->prepare("Select * FROM (((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) WHERE patient.P_ID = $VIEW_ID");
 $medicalrecord->execute();
 ?>
 <!DOCTYPE html>
@@ -29,6 +29,8 @@ $medicalrecord->execute();
     <link href="css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+    <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="assets/select2/css/select2.min.css"/>
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
@@ -169,16 +171,15 @@ $medicalrecord->execute();
 
                           <ul class="nav nav-pills nav-stacked">
                               <li class="active"><a> <i class="icon-user"></i> Profile</a></li>
-							  <li><a href="add-patient.html"> <i class="icon-pencil"></i>Edit Profile</a></li>
                           </ul>
 
                       </section>
                   </aside>
                   <aside class="profile-info col-lg-9">
                       <section class="panel">
-							<header class="panel-heading ">
-                              Patient Profile:
-							</header>
+          							<header class="panel-heading ">
+                                        Patient Profile:
+          							</header>
                           <div class="panel-body bio-graph-info">
                               <div class="row">
                                   <div class="bio-row">
@@ -234,8 +235,8 @@ $medicalrecord->execute();
                       </section>
                       <section>
                           <div class="row">
-                  <div class="col-lg-12">
-                      <section class="panel">
+         <div class="col-lg-12">
+          <section class="panel">
 						<section class="panel">
                           <header class="panel-heading tab-bg-dark-navy-blue ">
                               <ul class="nav nav-tabs">
@@ -349,188 +350,90 @@ $medicalrecord->execute();
 										</form>
 									</div>
 											<!--Medical Records start-->
-                <div id="medrecord" class="tab-pane">
+									<div id="medrecord" class="tab-pane">
 									<div class="adv-table">
 										<header class="panel-heading">
-													<a class="btn btn-shadow btn-success" data-toggle="modal" href="#apointment"><i class="icon-plus"></i> Add Medical Records</a>
-												</header>
-
-										<table class="table table-striped table-advance table-hover">
-									  <thead>
-									  <tr>
-										  <th style="width:50%; text-align: center;"><i class="icon-calendar"></i> Date</th>
-										  <th style="text-align: center;">Illness / Ailments</th>
-										  <th style="text-align: center;">Blood Pressure</th>
-										  <th style="text-align: center;">Weight<br>(Kg)</th>
-										  <th style="text-align: center;">Temperature<br>(Celcius)</th>
-										  <th style="width:15%; text-align: center;">Follow-Up Checkup</th>
-										  <th style="text-align: center;">Remarks</th>
-										  <th style="width:10%; text-align: center;">Status</th>
-										  <th style="text-align: center;">Action</th>
-									  </tr>
-									  </thead>
-									  <tbody>
-										<?php
-										while($MR = $medicalrecord->fetch()){
-										?>
-
-									  <tr>
-										  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
-										  <td style="text-align: center;"><?php echo $MR['MR_ILL'] ?></td>
-										  <td style="text-align: center;"><?php echo $MR['MR_BP'] ?></td>
-										  <td style="text-align: center;"><?php echo $MR['MR_WEIGHT'] ?></td>
-										  <td style="text-align: center;"><?php echo $MR['MR_TEMP'] ?></td>
-										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo '';} ?></td>
-										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo '';} ?></td>
-										  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
-										  <td style="text-align: center;">
-											  <a class="btn btn-shadow btn-info btn-xs" data-toggle="modal" href="#treatment"><i class="icon-share-alt"></i> Proceed</a>
-							<!-- Treatment Records-->
-                            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="treatment" class="modal fade">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title">Treatment</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form class="form-horizontal" role="form">
-                                                <div class="form-group">
-													<label  class="col-lg-2 control-label">Date</label>
-													<div class="col-lg-4">
-														<input type="date" class="form-control" required>
-													</div>
-                                                </div>
-											<div class="form-group">
-                                                <label  class="col-lg-2 control-label">Illness/Ailments</label>
-												<div class="col-lg-4">
-													<input type="text" class="form-control"required>
-												</div>
-												<label  class="col-lg-2 control-label">Bp</label>
-												<div class="col-lg-4">
-													<input type="text" class="form-control"required>
-												</div>
-                                            </div>
-											<div class="form-group">
-												<label  class="col-lg-2 control-label">Weight</label>
-												<div class="col-lg-4">
-													<input type="text" class="form-control"required>
-												</div>
-												<label  class="col-lg-2 control-label">Temperature</label>
-												<div class="col-lg-4">
-													<input type="text" class="form-control"required>
-												</div>
-                                            </div>
-											<div class="form-group">
-                                                <label  class="col-lg-2 control-label">Diagnosis:</label>
-												<div class="col-lg-12">
-                                                    <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
-												</div>
-                                            </div>
-											<div class="form-group">
-                                                <label  class="col-lg-2 control-label">Treatment:</label>
-												<div class="col-lg-12">
-                                                    <textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
-												</div>
-                                            </div>
-											<div class="form-group">
-                                                <label  class="col-lg-2 control-label">Remarks:</label>
-												<div class="col-lg-12">
-													<textarea style="resize:none" id="#" class="form-control" cols="2" rows="4"></textarea>
-												</div>
-                                            </div>
-											<div class="form-group">
-												<label  class="col-lg-2 control-label">Follow-Up Checkup</label>
-												<div class="col-lg-4">
-													<input type="date" class="form-control"required>
-												</div>
-												<label  class="col-lg-2 control-label">Doctor</label>
-												<div class="col-lg-4">
-													<select class="select2-single">
-														<option></option><!--for placeholder-->
-														<option>Gabriel Banua</option>
-														<option>Alessander Rebiato</option>
-													</select>
-												</div>
+											<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#apointment"><i class="icon-plus"></i> Add Medical Records</a>
+										</header>
+										<div class="panel-body">
+											<div class="adv-table">
+												<table  class="display table table-bordered table-striped" id="example">
+												  <thead>
+												  <tr>
+													  <th style="width:100%; text-align: center;"><i class="icon-calendar"></i> Date</th>
+													  <th style="width:15%; text-align: center;">Illness / Ailments</th>
+													  <th style="width:15%; text-align: center;">Blood Pressure</th>
+													  <th style="width:15%; text-align: center;">Weight<br>(Kg)</th>
+													  <th style="width:15%; text-align: center;">Temp<br>(Celcius)</th>
+													  <th style="width:100%; text-align: center;">Follow-Up Checkup</th>
+													  <th style="width:15%; text-align: center;">Status</th>
+													  <th style="width:15%; text-align: center;">Action</th>
+												  </tr>
+												  </thead>
+												  <tbody>
+													<?php
+													while($MR = $medicalrecord->fetch()){
+													?>
+												  <tr>
+													  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
+													  <td style="text-align: center;"><?php echo $MR['MR_ILL'] ?></td>
+													  <td style="text-align: center;"><?php echo $MR['MR_BP'] ?></td>
+													  <td style="text-align: center;"><?php echo $MR['MR_WEIGHT'] ?></td>
+													  <td style="text-align: center;"><?php echo $MR['MR_TEMP'] ?></td>
+													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo $MR['F_CHECKUP'];} ?></td>
+													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
+                                                      <td style="text-align: center;"><?php
+                                                      if($MR['MR_STATUS'] == 'Pending'){ echo "<a class='btn btn-shadow btn-info btn-xs' onclick='RetrieveDoctor(";?><?php echo $MR['MR_ID'];?><?php echo ")' data-toggle='modal' data-target='#treatment-";?><?php echo $MR['MR_ID']; ?><?php echo "'><i class='icon-share-alt'></i> Proceed</a>";}else{ echo "<a class='btn btn-shadow btn-success btn-xs' data-toggle='modal' data-target='#edit-treatment-";?><?php echo $MR['MR_ID']; ?><?php echo "'><i class='icon-eye-open'></i> View</a>";}
+                                                      ?>
+														  
+														  
+														<?php
+														include 'lib/modals/Treatment.php';
+														include 'lib/modals/edit-treatment.php';
+														?>
+													  </td>
+												  </tr>
+													<?php
+													}
+													?>
+													</tbody>
+												</table>
 											</div>
-											<div class="form-group">
-												<div class="checkbox-inline pull-left">
-													<label class="control-label">
-														<input type="checkbox" value="">
-														Referral
-													</label>
-												</div>
-											</div><hr>
-											<div class="form-group">
-												<label  class="col-lg-4 control-label">Doctor Name</label>
-												<div class="col-lg-6">
-													<input type="text" class="form-control" required>
-												</div>
-											</div>
-											<div class="form-group">
-												<label  class="col-lg-4 control-label">Contact No.</label>
-												<div class="col-lg-6">
-													<input type="text" class="form-control" required>
-												</div>
-											</div>
-											<div class="form-group">
-												<label  class="col-lg-4 control-label">Address</label>
-												<div class="col-lg-6">
-													<input type="text" class="form-control" required>
-												</div>
-											</div>
-											</form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
-											<a class="btn btn-shadow btn-success"><i class="icon-plus"></i> Add</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-<!-- modal -->
-										  </td>
-									  </tr>
-<?php
-}
-?>
-									  </tbody>
-								</table>
+										</div>
+									</div>
+								</div>
+								<div id="labresult" class="tab-pane">
+									<div class="adv-table">
+										<table  class="display table table-bordered table-striped" id="example">
+										  <thead>
+											<tr>
+											  <th>Laboratory No.</th>
+											  <th>Lab Test Type</th>
+											  <th>Date Taken</th>
+											  <th class="hidden-phone">Test Requested</th>
+											  <th class="hidden-phone">Action</th>
+											</tr>
+										  </thead>
+										  <tbody>
+											  <tr class="gradeX">
+											  <td>000001</td>
+											  <td>Urinalysis</td>
+											  <td>12/12/2017</td>
+											  <td class="center hidden-phone">Uric Acid</td>
+											  <td class="center hidden-phone">
+												<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
+											  </td>
+											  </tr>
+										  </tbody>
+										</table>
+									</div>
+								</div>
+						  </div>
 							</div>
 						</div>
-
-          <div id="labresult" class="tab-pane">
-				<div class="adv-table">
-            <table  class="display table table-bordered table-striped" id="example">
-              <thead>
-                <tr>
-                  <th>Laboratory No.</th>
-                  <th>Lab Test Type</th>
-                  <th>Date Taken</th>
-                  <th class="hidden-phone">Test Requested</th>
-                  <th class="hidden-phone">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <tr class="gradeX">
-                  <td>000001</td>
-                  <td>Urinalysis</td>
-                  <td>12/12/2017</td>
-                  <td class="center hidden-phone">Uric Acid</td>
-                  <td class="center hidden-phone">
-									<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
-									</td>
-                  </tr>
-              </tbody>
-						</table>
-					</div>
-        </div>
-      </div>
-		</div>
-	</div>
-  </section>
-  </aside>
-<!-- Modal Medical Records-->
+					  </section>
+					  </aside>
+		  <!-- Modal Medical Records-->
           <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="apointment" class="modal fade">
               <div class="modal-dialog">
                   <div class="modal-content">
@@ -549,34 +452,34 @@ $medicalrecord->execute();
                                   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Illness/Ailments</label>
                                       <div class="col-lg-6">
-                                          <input type="text" id="MedRillness" class="form-control" placeholder=" ">
+                                          <input type="text" id="MedRillness" class="form-control" placeholder=" " required>
                                       </div>
                                   </div>
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Blood Pressure</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRBP" class="form-control" placeholder=" ">
+                                          <input type="text" id="MedRBP" class="form-control" placeholder=" " required>
                                       </div>
                                   </div>
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Weight (kg)</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRWeight" class="form-control" placeholder=" ">
+                                          <input type="text" id="MedRWeight" class="form-control" placeholder=" " required>
                                       </div>
                                   </div>
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Temperature (℃)</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRTemp" class="form-control" placeholder=" ">
+                                          <input type="text" id="MedRTemp" class="form-control" placeholder=" " required>
                                       </div>
                                   </div>
-                              </form>
-                      </div>
+                  </form>
+                </div>
                       <div class="modal-footer">
-                        <span id="Error_Message" class="text-danger"></span>
-                        <span id="Success_Message" class="text-success"></span>
+                        <span id="Error_Message" style="float: left; font-family: bold;" class="text-danger"></span>
+                        <span id="Success_Message" style="float: left; font-family: bold;" class="text-success"></span>
           						  <a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
-          						  <a data-dismiss="modal" class="btn btn-success" onclick="addMedicalRecord()" type="button">Save</a>
+          						  <a  class="btn btn-success" onclick="addMedicalRecord()">Save</a>
                       </div>
                   </div>
               </div>
@@ -609,10 +512,19 @@ $medicalrecord->execute();
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="assets/jquery-knob/js/jquery.knob.js"></script>
     <script src="js/respond.min.js" ></script>
+	<script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
 
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
     <script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
+	<script src="js/checkboxhide.js"></script>
+	<script type="text/javascript" charset="utf-8">
+          $(document).ready(function() {
+              $('#example').dataTable( {
+                  "aaSorting": [[ 0, "desc" ]]
+              } );
+          } );
+      </script>
     
     <script>
       $(document).ready(function(){
@@ -739,8 +651,50 @@ $medicalrecord->execute();
                         }, 3000);
                       }
                     });
+              }else{
+
               }
           }
+      }
+    function RetrieveDoctor(str){
+      var id = str;
+   
+      $.ajax({
+                type: "GET",
+                url: "Server.php?p=DoctorList",
+                success: function(data){
+                  $('#listofDoctor-'+id).html(data);
+                }
+      });
+
+    }
+    function addTreatment(str){
+          var Med_RID = str;
+          var Diagnosis = $('#DIAG_DTLS-'+Med_RID).val(); 
+          var Treatment =  $('#TREATMENT-'+Med_RID).val();
+          var Remarks = $('#REMARKS-'+Med_RID).val();
+          var FollowUp = $('#F_CHECKUP-'+Med_RID).val();
+          var Doctor = $('#listofDoctor-'+Med_RID).val();
+          if(Diagnosis == '' || Treatment == '' || Remarks == '' || FollowUp == ''){
+             $('#Error_Message-TRMT').html('Please fill all fields! &nbsp;');
+          }
+          else{
+            $('#Error_Message-TRMT').html('');
+           $.ajax({
+                type: "POST",
+                url: "Server.php?p=addTreatment",
+                data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID,
+                success: function(data){
+                  $('#Success_Message-TRMT').html('Successfully Added! &nbsp;');
+                        setTimeout(function() {
+                          $('#Success_Message-TRMT').fadeOut('slow');
+                        }, 1800);
+                        setTimeout(function(){
+                          window.location.reload();
+                        }, 2200);
+                      }
+          });
+        }
       }
 	</script>
   </body>

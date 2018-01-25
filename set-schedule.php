@@ -233,16 +233,11 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                                         <input type="date" id="SCHEDULE_DATE-<?php echo $row['P_ID'] ?>" size="16" class="form-control">
                                   </div>
                           </div>
-						              <div class="form-group">
+						  <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Time:</label>
-                                  <div class="col-md-6">
-                                          <div class="input-group bootstrap-timepicker">
-                                              <input type="text" id="SCHEDULE_TIME-<?php echo $row['P_ID'] ?>" class="form-control timepicker-default">
-                                                <span class="input-group-btn">
-                                                  <button class="btn btn-default" type="button"><i class="icon-time"></i></button>
-                                                </span>
-                                          </div>
-                                  </div>
+                                <div class="col-md-6">
+                                    <input type="time" id="SCHEDULE_TIME-<?php echo $row['P_ID'] ?>" class="form-control">
+                                </div>
                           </div>
                           <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Appointment Reason:</label>
@@ -259,8 +254,8 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                           </form>
                         </div>
                     <div class="modal-footer">
-                      <span style="float: left; font-weight: bold;" id="Error_Message" class="text-danger"></span>
-                      <span style="float: left; font-weight: bold;" id="Success_Message" class="text-success"></span>
+                      <span style="float: left; font-weight: bold;" id="Error_Message-<?php echo $row['P_ID'] ?>" class="text-danger"></span>
+                      <span style="float: left; font-weight: bold;" id="Success_Message-<?php echo $row['P_ID'] ?>" class="text-success"></span>
                       <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
                       <button class="btn btn-success" type="button" onclick="SetSched(<?php echo $row['P_ID'] ?>)">Set Schedule</button>
                     </div>
@@ -325,33 +320,36 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
         var SCHEDULE_DATE = $('#SCHEDULE_DATE-'+str).val();
         var SCHEDULE_TIME = $('#SCHEDULE_TIME-'+str).val();
         var SCHEDULE_PURPOSE = $('#SCHEDULE_PURPOSE-'+str).val();
-          if(SCHEDULE_DATE == '' || SCHEDULE_TIME == '' || SCHEDULE_PURPOSE == ''){
-            $('#Error_Message').html('Please fill all fields! &nbsp;');
+          if(SCHEDULE_DATE == '' || SCHEDULE_TIME == '' || SCHEDULE_PURPOSE == '-None-'){
+            $('#Error_Message-'+str).html('Please fill all fields! &nbsp;');
           }else{
-            $('#Error_Message').html('');
-            if (confirm('Are you sure you want to set schedule for this patient?')) {
+            if (confirm('Are you sure you want to set schedule for this patient?')) {   
               $.ajax({
                 type: "POST",
                 url: "Server.php?p=CheckSched",
                 data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
                 success: function(data){
+                    alert(data);
                   if(data == 'Taken'){
-                      $('#Error_Message').html('This schedule is taken!');
+                    $('#Error_Message-'+str).html('This schedule is taken!');
+                  }
+                  else if(data == 'Late'){
+                    $('#Error_Message-'+str).html('Time unavailable!');
                   }
                   else if(data == 'Success'){
-                    $('#Error_Message').html('');
                         $.ajax({
                           type: "POST",
                           url: "Server.php?p=SetSched",
                           data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
                           success: function(data){
-                                $('#Success_Message').html('Successfully Added! &nbsp;');
+                                $('#Error_Message-'+str).html('');
+                                $('#Success_Message-'+str).html('Successfully Added! &nbsp;');
                                 setTimeout(function() {
-                                  $('#Success_Message').fadeOut('slow');
-                                }, 1500);
+                                  $('#Success_Message-'+str).fadeOut('slow');
+                                }, 1000);
                                 setTimeout(function(){
                                   window.location.reload();
-                                }, 1700);
+                                }, 1200);
                              } 
                           });
                     }
