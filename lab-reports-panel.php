@@ -95,19 +95,19 @@ else if($Position == "Volunter"){
                   </li>
 				  
 				  <li class="sub-menu">
-                      <a href="javascript:;" class="active">
+                      <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="set-schedule.php">Set Schedule</a></li>
                           <li><a  href="view-schedule.php">View Schedule</a></li>
-						  <li class="active"><a  href="sched-reports-panel.php">Schedule Reports</a></li>
+						  <li><a  href="sched-reports-panel.php">Schedule Reports</a></li>
                       </ul>
                   </li>
 				  
 				  <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="javascript:;">
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
                       </a>
@@ -118,7 +118,7 @@ else if($Position == "Volunter"){
                   </li>
 				  
 				  <li class="sub-menu" id="Laboratory-li">
-                      <a href="javascript:;">
+                      <a href="javascript:;" class="active">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
                       </a>
@@ -126,7 +126,7 @@ else if($Position == "Volunter"){
 						  <li><a  href="labtest.php">Add Lab Results</a></li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="labview.php">View Lab Records</a></li>
-						  <li><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
+						  <li class="active"><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -153,7 +153,7 @@ else if($Position == "Volunter"){
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              Schedule Reports Panel
+                              Laboratory Reports Panel
                           </header>
                           <div class="panel-body">
 								<div class="row state-overview">
