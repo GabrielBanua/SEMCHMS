@@ -108,7 +108,7 @@
 		<span id="Error_Message-TRMT" class="text-danger"></span>
 		<span id="Success_Message-TRMT" class="text-success"></span>
 		<a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
-		<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-plus"></i>Add</a>
+		<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-plus"></i>&nbsp;Add</a>
 	</div>
 	</div>
 	</div>
