@@ -10,7 +10,7 @@ require 'lib/chartSQL.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Healthcare Management</title>
+    <title>Laboratory Reports</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -73,7 +73,7 @@ require 'lib/chartSQL.php';
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <li>
-                        <a class="active" href="index.php">
+                        <a href="index.php">
                           <i class="icon-dashboard"></i>
                           <span>Home</span>
                       </a>
@@ -115,7 +115,7 @@ require 'lib/chartSQL.php';
                   </li>
                   
                   <li class="sub-menu" id="Laboratory-li">
-                      <a href="javascript:;">
+                      <a href="javascript:;" class="active">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
                       </a>
@@ -123,7 +123,7 @@ require 'lib/chartSQL.php';
 						  <li><a  href="labtest.php">Add Lab Results</a></li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="labview.php">View Lab Records</a></li>
-						  <li><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
+						  <li class="active"><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
                       </ul>
                   </li>
                   
@@ -150,51 +150,51 @@ require 'lib/chartSQL.php';
                     <div class="col-lg-3 col-sm-6">
                         <section class="panel">
                             <div class="symbol terques">
-                                <i class="icon-user"></i>
+                                <i class="icon-beaker"></i>
                             </div>
                             <div class="value">
-                                <h1 class="counter" data-count="<?php echo $NewPatient; ?>">
+                                <h1 class="counter" data-count="150">
                                 </h1>
-                                <p>New Patients</p>
+                                <b><p>Blood Chemistry</p></b>
                             </div>
                         </section>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <section class="panel">
                             <div class="symbol red">
-                                <i class="icon-stethoscope"></i>
+                                <i class="icon-beaker"></i>
                             </div>
                             <div class="value">
                                 <h1 class="counter" data-count="150">
                                     0
                                 </h1>
-                                <p>Patient Care</p>
+                                <b><p>Fecalysis</p></b>
                             </div>
                         </section>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <section class="panel">
                             <div class="symbol yellow">
-                                <i class="icon-user-md"></i>
+                                <i class="icon-beaker"></i>
                             </div>
                             <div class="value">
                                 <h1 class="counter" data-count="150">
                                     0
                                 </h1>
-                                <p>Users & Physicians</p>
+                                <b><p>Hemotology</p></b>
                             </div>
                         </section>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <section class="panel">
                             <div class="symbol blue">
-                                <i class=" icon-group"></i>
+                                <i class="icon-beaker"></i>
                             </div>
                             <div class="value">
                                 <h1 class="counter" data-count="150">
                                     0
                                 </h1>
-                                <p>Total Patients</p>
+                                <b><p>Urinalysis</p></b>
                             </div>
                         </section>
                     </div>
@@ -203,163 +203,38 @@ require 'lib/chartSQL.php';
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <!--custom chart start-->
-                        <div class="border-head">
-                            <h3>Number of Patients Graph</h3>
-                        </div>
-                        <div class="custom-bar-chart">
-                            <ul class="y-axis">
-                                <li><span>100</span></li>
-                                <li><span>80</span></li>
-                                <li><span>60</span></li>
-                                <li><span>40</span></li>
-                                <li><span>20</span></li>
-                                <li><span>0</span></li>
-                            </ul>
-                            <div class="bar">
-                                <div class="title">JAN</div>
-                                <div class="value tooltips" data-original-title="90%" data-toggle="tooltip" data-placement="top">90%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">FEB</div>
-                                <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">MAR</div>
-                                <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">APR</div>
-                                <div class="value tooltips" data-original-title="55%" data-toggle="tooltip" data-placement="top">55%</div>
-                            </div>
-                            <div class="bar">
-                                <div class="title">MAY</div>
-                                <div class="value tooltips" data-original-title="20%" data-toggle="tooltip" data-placement="top">20%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">JUN</div>
-                                <div class="value tooltips" data-original-title="39%" data-toggle="tooltip" data-placement="top">39%</div>
-                            </div>
-                            <div class="bar">
-                                <div class="title">JUL</div>
-                                <div class="value tooltips" data-original-title="75%" data-toggle="tooltip" data-placement="top">75%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">AUG</div>
-                                <div class="value tooltips" data-original-title="45%" data-toggle="tooltip" data-placement="top">45%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">SEP</div>
-                                <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">OCT</div>
-                                <div class="value tooltips" data-original-title="42%" data-toggle="tooltip" data-placement="top">42%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">NOV</div>
-                                <div class="value tooltips" data-original-title="60%" data-toggle="tooltip" data-placement="top">60%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">DEC</div>
-                                <div class="value tooltips" data-original-title="90%" data-toggle="tooltip" data-placement="top">90%</div>
-                            </div>
+                        <div class="col-lg-2 pull-right">
+													<select id="pyear" class="form-control">
+														<option hidden value="<?php 
+														if(isset($_GET['year'])){
+															$value=$_GET['year']; 
+															echo $value;
+														}
+															else{
+																echo date('Y');
+															}
+																	   ?>">
+															<?php 
+															if(isset($_GET['year'])){
+																$value=$_GET['year']; 
+																echo $value;
+															}
+															else{
+																echo date('Y');
+															}
+															?></option>
+														<?php
+														for($y=2012; $y<=2025; $y++){
+														?>
+														<option value="<?php echo $y ?>"><?php echo $y; ?></option>
+														<?php
+														}
+														?>
+													</select>
+												</div><br><br>
+											  <div id="patient_population" style="width: 100%; height: 350px"></div>
                         </div>
                         <!--custom chart end-->
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!--Health Trend Issue Start-->
-                        <section class="panel">
-                            <div class="panel-body progress-panel">
-                                <div class="task-progress">
-                                    <h1>Health Issue Trend</h1>
-                                    <p></p>
-                                </div>
-                                <div class="task-option">
-                                    <select class="styled">
-                                      <option>JAN</option>
-                                      <option>FEB</option>
-									  <option>MAR</option>
-									  <option>APR</option>
-									  <option>MAY</option>
-									  <option>JUN</option>
-									  <option>JUL</option>
-									  <option>AUG</option>
-									  <option>SEP</option>
-									  <option>OCT</option>
-									  <option>NOV</option>
-									  <option>DEC</option>
-                                  </select>
-                                </div>
-                            </div>
-                            <table class="table table-hover personal-task">
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            Cold
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-important">75%</span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress1"></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>
-                                            Cough
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-success">43%</span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress2"></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>
-                                            Tooth ache
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-info">67%</span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress3"></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>
-                                            Lbm
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-warning">30%</span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress4"></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>
-                                            Aids
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-primary">15%</span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress5"></div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </section>
-                        <!--Health Trend Issue end-->
                     </div>
                 </div>
             </section>
@@ -451,6 +326,128 @@ require 'lib/chartSQL.php';
             $('select.styled').customSelect();
         });
 
+    </script>
+	<script src = "js/jquery.canvasjs.min.js"></script>
+	<script type="text/javascript"> 
+		window.onload = function(){ 
+			$("#patient_population").CanvasJSChart({
+				theme: "light2",
+				zoomEnabled: true,
+				zoomType: "x",
+				panEnabled: true,
+				animationEnabled: true,
+				animationDuration: 1000,
+				exportFileName: "Monthly Population", 
+				exportEnabled: true,
+				toolTip: {
+					shared: true  
+				},
+				title: { 
+					text: "Total Laboratory Result Year of",
+					fontSize: 20
+				},
+				legend: {
+					cursor: "pointer",
+					itemclick: function (e) {
+						if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+							e.dataSeries.visible = false;
+						} else {
+							e.dataSeries.visible = true;
+						}
+						e.chart.render();
+					}
+				},
+				axisX: {		       
+					gridDashType: "dot",
+					gridThickness: 1,
+					labelFontColor: "black",
+					crosshair: {
+						enabled: true 
+					}
+				},
+				axisY: { 
+					title: "Total Records", 
+					includeZero: false,
+					labelFontColor: "black",
+					crosshair: {
+						enabled: true 
+					}
+				}, 
+				data: [ 
+					{ 
+						type: "column", 
+						showInLegend: true, 
+						legendText: "Total",
+						name: "Total", 
+						toolTipContent: "{label}: {y}", 
+						dataPoints: [ 
+							{ label: "January", y: 200 },
+							 { label: "February", y: 100 },
+							{ label: "March", y: 20 },
+							 { label: "April", y: 50 },
+							{ label: "May", y: 100 },
+							 { label: "June", y: 300 },
+							{ label: "July", y: 250 },
+							 { label: "August", y: 159 },
+							{ label: "September", y: 20 },
+							 { label: "October", y: 70 },
+							{ label: "November", y: 90 },
+							 { label: "December", y: 120 }
+						] 
+					},
+
+
+					{ 
+						type: "splineArea", 
+						showInLegend: true, 
+						legendText: "Blood Chemistry",
+						name: "Blood Chemistry", 
+						dataPoints: [ 
+							{ label: "January", y: 120 },
+							 { label: "February", y: 60 },
+							{ label: "March", y: 20 },
+							 { label: "April", y: 50 },
+							{ label: "May", y: 104 },
+							 { label: "June", y: 310 },
+							{ label: "July", y: 280 },
+							 { label: "August", y: 259 },
+							{ label: "September", y: 200 },
+							 { label: "October", y: 73 },
+							{ label: "November", y: 91 },
+							 { label: "December", y: 10 }
+						] 
+					},
+					{ 
+						type: "spline", 
+						showInLegend: true, 
+						legendText: "Fecalysis",
+						name: "Fecalysis", 
+						dataPoints: [ 
+							{ label: "January", y: 100 },
+							 { label: "February", y: 160 },
+							{ label: "March", y: 205 },
+							 { label: "April", y: 80 },
+							{ label: "May", y: 14 },
+							 { label: "June", y: 31 },
+							{ label: "July", y: 28 },
+							 { label: "August", y: 59 },
+							{ label: "September", y: 100 },
+							 { label: "October", y: 13 },
+							{ label: "November", y: 31 },
+							 { label: "December", y: 90 }
+						] 
+					}
+				] 
+			}); 
+		}
+	</script>
+	<script>
+            $(document).ready(function(){
+                $("#pyear").on('change', function(){
+                    var year=$(this).val();
+                    window.location = 'lab-total-reports.php?year='+year;
+                });
+            });
     </script>
 </body>
 
