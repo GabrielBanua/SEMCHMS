@@ -105,8 +105,8 @@
 		</form>
 	</div>
 	<div class="modal-footer">
-		<span id="Error_Message-TRMT" class="text-danger"></span>
-		<span id="Success_Message-TRMT" class="text-success"></span>
+		<span id="Error_Message-TRMT-<?php echo $MR['MR_ID']; ?>" style="float: left; font-weight: bold;" class="text-danger"></span>
+		<span id="Success_Message-TRMT-<?php echo $MR['MR_ID']; ?>" style="float: left; font-weight: bold;" class="text-success"></span>
 		<a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
 		<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-plus"></i>&nbsp;Add</a>
 	</div>

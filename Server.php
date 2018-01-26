@@ -448,6 +448,10 @@ require 'lib/Db.config.php';
 				$doc = mysql_query($sql);
 				$row = mysql_fetch_array($doc);
 				$User_id = $row['User_id'];
+				$Last_updated_id = "SELECT * FROM treatment WHERE MR_ID = '$MedicalRec_ID'";
+				$Up_ID = mysql_query($Last_updated_id);
+				$Updated_ID_fetch = mysql_fetch_array($Up_ID);		
+				$updated_TR_id = $Updated_ID_fetch['TRMT_ID'];
 
 				$stmt = $db->prepare("update treatment set DIAG_DTLS=?, TREATMENT=?, REMARKS=?, F_CHECKUP=?, User_id=? where MR_ID=?");
 						$stmt->bindParam(6,$MedicalRec_ID);
@@ -457,19 +461,20 @@ require 'lib/Db.config.php';
 						$stmt->bindParam(4,$sqldate);
 						$stmt->bindParam(5,$User_id);
 						$stmt->execute();
-
+				
 				$MR = $db->prepare("Update medical_record set MR_STATUS=? where MR_ID=?");
 						$MR->bindParam(1,$Status);
 						$MR->bindParam(2,$MedicalRec_ID);
 						$MR->execute();
-				if($DocName != '' || $DocCN != '' || $DocADD != ''){
-					$ref = $db->prepare("insert into medical_record values('',?,?,?,?,?,?,?,?,?)");
-						$ref->bindParam(1,$MedRillness);
-						$ref->bindParam(2,$MedRBP);
-						$ref->bindParam(3,$MedRWeight);
-						$ref->bindParam(4,$MedRTemp);
+				
+				$ref = $db->prepare("insert into referral values('',?,?,?,?)");
+						$ref->bindParam(1,$DocName);
+						$ref->bindParam(2,$DocCN);
+						$ref->bindParam(3,$DocADD);
+						$ref->bindParam(4,$updated_TR_id);
 					$ref->execute();
-				}
+				
+				
 
 }
 else if($page == 'addMedicalRecord'){

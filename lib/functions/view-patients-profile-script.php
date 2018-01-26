@@ -110,7 +110,7 @@
           var Sched_id = '<?php echo $SCHED_ID; ?>';
 
           if(Medillness == '' || MedBP == '' || MedWeight == '' || MedTemp == ''){
-             $('#Error_Message').html('Please fill all fields! &nbsp;');
+             $('#Error_Message').html('Please fill in all fields! &nbsp;');
           }
           else{
              $('#Error_Message').html('');
@@ -130,7 +130,7 @@
                       }
                     });
               }else{
-
+                //do nothing
               }
           }
       }
@@ -157,24 +157,23 @@
           var RefDoc_CN = $('#Ref_Doc_CN-'+Med_RID).val();
           var RefDoc_Add = $('#Ref_Doc_Add-'+Med_RID).val();
           var checkbox = $('#c1-'+Med_RID+':checked').val();
-          
-          
+
           if(Diagnosis == '' || Treatment == '' || Remarks == '' || FollowUp == ''){
-             $('#Error_Message-TRMT').html('Please fill all fields! &nbsp;');
+             $('#Error_Message-TRMT-'+Med_RID).html('Please fill all fields! &nbsp;');
           }else{
-            $('#Error_Message-TRMT').html('');
+            $('#Error_Message-TRMT-'+Med_RID).html('');
            $.ajax({
                 type: "POST",
                 url: "Server.php?p=addTreatment",
                 data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID+"&REFDN="+RefDoc+"&REF_CN="+RefDoc_CN+"&REF_ADD="+RefDoc_Add,
                 success: function(data){
-                  $('#Success_Message-TRMT').html('Successfully Added! &nbsp;');
+                  $('#Success_Message-TRMT-'+Med_RID).html('Successfully Added! &nbsp;');
                         setTimeout(function() {
-                          $('#Success_Message-TRMT').fadeOut('slow');
-                        }, 1800);
+                          $('#Success_Message-TRMT-'+Med_RID).fadeOut('slow');
+                        }, 1500);
                         setTimeout(function(){
                           window.location.reload();
-                        }, 2200);
+                        }, 2000);
                       }
           });
         }
