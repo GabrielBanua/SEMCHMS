@@ -45,6 +45,12 @@
 					</select>
 				</div>
 			</div>
+			<div class="form-group pull-right">
+				<label  class="col-lg-6 control-label">Test Requested</label>
+				<div class="col-lg-6">
+					<input type="text" class="form-control">
+				</div>
+			</div><br>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Diagnosis:</label>
 				<div class="col-lg-12">
@@ -70,9 +76,7 @@
 				</div>
 				<label  class="col-lg-2 control-label">Doctor</label>
 				<div class="col-lg-4">
-					<select class="select2-single" id="listofDoctor-<?php echo $MR['MR_ID']; ?>">
-						<option></option><!--for placeholder-->
-					</select>
+					<input type="text" class="form-control">
 				</div>
 			</div>
 			<div class="form-group">
@@ -108,7 +112,7 @@
 		<span id="Error_Message-TRMT" class="text-danger"></span>
 		<span id="Success_Message-TRMT" class="text-success"></span>
 		<a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
-		<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)">Edit</a>
+		<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-pencil"></i> Edit</a>
 	</div>
 	</div>
 	</div>
