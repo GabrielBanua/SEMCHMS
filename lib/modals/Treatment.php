@@ -78,11 +78,11 @@
 			<div class="form-group">
 				<div class="checkbox-inline pull-left">
 					<label class="control-label">
-						<input type="checkbox" name="c1" id="c1" onclick="showMe('referral')">&nbsp;Referral
+						<input type="checkbox" name="c1-<?php echo $MR['MR_ID']; ?>" id="c1-<?php echo $MR['MR_ID']; ?>" onclick="showMe('referral-<?php echo $MR['MR_ID']; ?>', <?php echo $MR['MR_ID']; ?>)">&nbsp;Referral
 					</label>
 				</div>
 			</div><hr>
-			<div id="referral" style="display:none;">
+			<div id='referral-<?php echo $MR['MR_ID']; ?>' style="display:none;">
 				<div class="form-group">
 					<label  class="col-lg-4 control-label">Doctor Name</label>
 					<div class="col-lg-6">

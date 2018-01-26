@@ -1,5 +1,6 @@
-function showMe(box) {
-    var chboxs = document.getElementsByName("c1");
+function showMe(box, b_id) {
+    var box_id = b_id;
+    var chboxs = document.getElementsByName("c1-" + box_id);
     var vis = "none";
     for (var i = 0; i < chboxs.length; i++) {
         if (chboxs[i].checked) {

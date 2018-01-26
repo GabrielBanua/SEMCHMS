@@ -123,10 +123,10 @@
                        $('#Success_Message').html('Successfully Added! &nbsp;');
                         setTimeout(function() {
                           $('#Success_Message').fadeOut('slow');
-                        }, 2000);
+                        }, 1000);
                         setTimeout(function(){
                           window.location.reload();
-                        }, 3000);
+                        }, 2000);
                       }
                     });
               }else{
@@ -155,19 +155,18 @@
           var Doctor = $('#listofDoctor-'+Med_RID).val();
           var RefDoc = $('#Ref_Doc_name-'+Med_RID).val();
           var RefDoc_CN = $('#Ref_Doc_CN-'+Med_RID).val();
-          var RedDoc_Add = $('#Ref_Doc_Add-'+Med_RID).val();
-          var checkbox = $('#c1').val();
+          var RefDoc_Add = $('#Ref_Doc_Add-'+Med_RID).val();
+          var checkbox = $('#c1-'+Med_RID+':checked').val();
+          
           
           if(Diagnosis == '' || Treatment == '' || Remarks == '' || FollowUp == ''){
              $('#Error_Message-TRMT').html('Please fill all fields! &nbsp;');
-             alert(checkbox);
-          }
-          else{
+          }else{
             $('#Error_Message-TRMT').html('');
            $.ajax({
                 type: "POST",
                 url: "Server.php?p=addTreatment",
-                data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID,
+                data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID+"&REFDN="+RefDoc+"&REF_CN="+RefDoc_CN+"&REF_ADD="+RefDoc_Add,
                 success: function(data){
                   $('#Success_Message-TRMT').html('Successfully Added! &nbsp;');
                         setTimeout(function() {

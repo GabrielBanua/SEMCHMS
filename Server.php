@@ -437,6 +437,9 @@ require 'lib/Db.config.php';
 			$Follow = mysql_real_escape_string($_POST['FPCHK']);
 			$Doctor = mysql_real_escape_string($_POST['DOC']);
 			$MedicalRec_ID = mysql_real_escape_string($_POST['MRID']);
+			$DocName = mysql_real_escape_string($_POST['REFDN']);
+			$DocCN = mysql_real_escape_string($_POST['REF_CN']);
+			$DocADD = mysql_real_escape_string($_POST['REF_ADD']);
 				
 				$sqldate = date('Y-m-d',strtotime($Follow));
 				$Status = "Completed";
@@ -459,6 +462,14 @@ require 'lib/Db.config.php';
 						$MR->bindParam(1,$Status);
 						$MR->bindParam(2,$MedicalRec_ID);
 						$MR->execute();
+				if($DocName != '' || $DocCN != '' || $DocADD != ''){
+					$ref = $db->prepare("insert into medical_record values('',?,?,?,?,?,?,?,?,?)");
+						$ref->bindParam(1,$MedRillness);
+						$ref->bindParam(2,$MedRBP);
+						$ref->bindParam(3,$MedRWeight);
+						$ref->bindParam(4,$MedRTemp);
+					$ref->execute();
+				}
 
 }
 else if($page == 'addMedicalRecord'){
