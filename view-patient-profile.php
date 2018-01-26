@@ -14,9 +14,6 @@ $row = mysql_fetch_array($result);
 
 $medicalrecord = $db->prepare("Select * FROM (((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) WHERE patient.P_ID = $VIEW_ID");
 $medicalrecord->execute();
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -380,7 +377,6 @@ $medicalrecord->execute();
         $treatment = ("Select * FROM referral WHERE TRMTMNT_ID = '$TRMNT_ID'");
         $TR_ID = mysql_query($treatment);
         $TR = mysql_fetch_array($TR_ID);
-        
 ?>
 												  <tr>
 													  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
