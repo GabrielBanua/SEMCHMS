@@ -377,6 +377,12 @@ $medicalrecord->execute();
         $treatment = ("Select * FROM referral WHERE TRMTMNT_ID = '$TRMNT_ID'");
         $TR_ID = mysql_query($treatment);
         $TR = mysql_fetch_array($TR_ID);
+
+        $UserDoctor = ("Select *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS FullName FROM users WHERE Username = '$UserN'");
+        $UserList = mysql_query($UserDoctor);
+        $Doctorname = mysql_fetch_array($UserList);
+
+
 ?>
 												  <tr>
 													  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>

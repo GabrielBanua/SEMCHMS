@@ -134,18 +134,7 @@
               }
           }
       }
-    function RetrieveDoctor(str){
-      var id = str;
-   
-      $.ajax({
-                type: "GET",
-                url: "Server.php?p=DoctorList",
-                success: function(data){
-                  $('#listofDoctor-'+id).html(data);
-                }
-      });
-
-    }
+    
     function addTreatment(str){
           var Med_RID = str;
           var Diagnosis = $('#DIAG_DTLS-'+Med_RID).val(); 

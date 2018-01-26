@@ -76,7 +76,7 @@
 				</div>
 				<label  class="col-lg-2 control-label">Doctor</label>
 				<div class="col-lg-4">
-					<input type="text" class="form-control">
+					<input type="text" id="listofDoctor-<?php echo $MR['MR_ID']; ?>" value="<?php echo $Doctorname['FullName']; ?>" class="form-control">
 				</div>
 			</div>
 			<div class="form-group">

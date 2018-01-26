@@ -45,12 +45,12 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group pull-right">
-				<label  class="col-lg-6 control-label">Test Requested</label>
-				<div class="col-lg-6">
+			<div class="form-group">
+				<label  class="col-lg-2 control-label">Requested</label>
+				<div class="col-lg-4">
 					<input type="text" class="form-control">
 				</div>
-			</div><br>
+			</div>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Diagnosis:</label>
 				<div class="col-lg-12">
@@ -76,7 +76,7 @@
 				</div>
 				<label  class="col-lg-2 control-label">Doctor</label>
 				<div class="col-lg-4">
-					<input type="text" class="form-control">
+					<input type="text" id="listofDoctor-<?php echo $MR['MR_ID']; ?>" value="<?php echo $Doctorname['FullName']; ?>" class="form-control">
 				</div>
 			</div>
 			<div class="form-group">
