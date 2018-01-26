@@ -101,7 +101,7 @@ else if($Position == "Volunter"){
                       <ul class="sub">
                           <li><a  href="set-schedule.php">Set Schedule</a></li>
                           <li><a  href="view-schedule.php">View Schedule</a></li>
-						  <li><a  href="#">Schedule Reports</a></li>
+						  <li><a  href="sched-reports-panel.php">Schedule Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -112,7 +112,7 @@ else if($Position == "Volunter"){
                       </a>
                       <ul class="sub">
 						  <li><a href="view-inventory.php">View Inventory</a></li>
-						  <li><a href="#">Inventory Reports</a></li>
+						  <li><a href="inv-reports-panel.php">Inventory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -125,7 +125,7 @@ else if($Position == "Volunter"){
 						  <li><a  href="labtest.php">Add Lab Results</a></li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="labview.php">View Lab Records</a></li>
-						  <li><a  href="#">Laboratory Reports</a></li>
+						  <li><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
                       </ul>
                   </li>
 				  
