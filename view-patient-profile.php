@@ -377,9 +377,9 @@ $medicalrecord->execute();
 <?php
 	while($MR = $medicalrecord->fetch()){
     $TRMNT_ID = $MR['TRMT_ID'];
-        $treatment = $db->prepare("Select * FROM referral WHERE TRMTMNT_ID = '$TRMNT_ID'");
-        $treatment->execute();
-        $treatment = mysql_fetch_array();
+        $treatment = ("Select * FROM referral WHERE TRMTMNT_ID = '$TRMNT_ID'");
+        $TR_ID = mysql_query($treatment);
+        $TR = mysql_fetch_array($TR_ID);
         
 ?>
 												  <tr>

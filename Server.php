@@ -448,6 +448,7 @@ require 'lib/Db.config.php';
 				$doc = mysql_query($sql);
 				$row = mysql_fetch_array($doc);
 				$User_id = $row['User_id'];
+
 				$Last_updated_id = "SELECT * FROM treatment WHERE MR_ID = '$MedicalRec_ID'";
 				$Up_ID = mysql_query($Last_updated_id);
 				$Updated_ID_fetch = mysql_fetch_array($Up_ID);		
@@ -467,14 +468,16 @@ require 'lib/Db.config.php';
 						$MR->bindParam(2,$MedicalRec_ID);
 						$MR->execute();
 				
-				$ref = $db->prepare("insert into referral values('',?,?,?,?)");
+				if(empty($DocName) || empty($DocCN) || empty($DocADD)){
+					//do nothing
+				}else{
+					$ref = $db->prepare("insert into referral values('',?,?,?,?)");
 						$ref->bindParam(1,$DocName);
 						$ref->bindParam(2,$DocCN);
 						$ref->bindParam(3,$DocADD);
 						$ref->bindParam(4,$updated_TR_id);
 					$ref->execute();
-				
-				
+				}
 
 }
 else if($page == 'addMedicalRecord'){

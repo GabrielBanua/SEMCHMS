@@ -78,27 +78,27 @@
 			<div class="form-group">
 				<div class="checkbox-inline pull-left">
 					<label class="control-label">
-						<input type="checkbox" name="c2-<?php echo $MR['MR_ID']; ?>" onclick="ShowRefedit('editreferral-<?php echo $MR['MR_ID']; ?>', <?php echo $MR['MR_ID']; ?>)"> Referral
+						<input type="checkbox" name="c2-<?php echo $MR['MR_ID']; ?>" <?php if(!empty($TR['RF_DOCNAME']) || !empty($TR['RF_CN']) || !empty($TR['RF_ADD'])){echo "checked";}?> onclick="ShowRefedit('editreferral-<?php echo $MR['MR_ID']; ?>', <?php echo $MR['MR_ID']; ?>)"> Referral
 					</label>
 				</div>
 			</div><hr>
-			<div id="editreferral-<?php echo $MR['MR_ID']; ?>">
+			<div id="editreferral-<?php echo $MR['MR_ID'];?>" <?php if(!empty($TR['RF_DOCNAME']) || !empty($TR['RF_CN']) || !empty($TR['RF_ADD'])){echo "style='display: block;'";}else{ echo "style='display: none;'";}?> >
 				<div class="form-group">
 					<label class="col-lg-4 control-label">Doctor Name</label>
 					<div class="col-lg-6">
-						<input type="text" class="form-control" required>
+						<input type="text" id="Ref_Doc_name-<?php echo $MR['MR_ID']; ?>" value="<?php echo $TR['RF_DOCNAME']; ?>" class="form-control" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label  class="col-lg-4 control-label">Contact No.</label>
 					<div class="col-lg-6">
-						<input type="text" class="form-control" required>
+						<input type="text" id="Ref_Doc_CN-<?php echo $MR['MR_ID']; ?>"  value="<?php echo $TR['RF_CN']; ?>" class="form-control" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label  class="col-lg-4 control-label">Address</label>
 					<div class="col-lg-6">
-						<input type="text" class="form-control" required>
+						<input type="text" id="Ref_Doc_Add-<?php echo $MR['MR_ID']; ?>"  value="<?php echo $TR['RF_ADD']; ?>" class="form-control" required>
 					</div>
 				</div>
 			</div>
