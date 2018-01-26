@@ -1,12 +1,5 @@
 <?php
 require 'lib/session.php';
-
-if($Position == "Doctor"){
-  header('Location: index.php');
-}
-else if($Position == "Volunter"){
-  header('Location: index.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +15,8 @@ else if($Position == "Volunter"){
     <link href="css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+    <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -81,7 +76,7 @@ else if($Position == "Volunter"){
                       </a>
                   </li>
 
-                  <li class="sub-menu">
+                  <li class="sub-menu" id="Patient-li">
                       <a href="javascript:;" >
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
@@ -93,7 +88,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Schedule-li">
                       <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -105,7 +100,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Inventory-li">
                       <a href="javascript:;" >
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
@@ -152,18 +147,33 @@ else if($Position == "Volunter"){
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              Database Backup
+                              Users
                           </header>
                           <div class="panel-body">
-								<form class="form-horizontal" role="form">
-								  <div class="form-group">
-                                      <div class="col-lg-12">
-											<a class="btn btn-shadow btn-success btn-lg" href="backup/backup_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup"><i class="icon-download-alt"> </i>Backup Database</a>
-                                      </div>
-                                  </div>
-                              </form>
-						</div>
-                    </section>
+                                <div class="adv-table">
+								<a class="btn btn-shadow btn-success" href="backup/backup_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
+								<i class="icon-download-alt"> </i> Backup Database</a>
+                                    <table  class="display table table-bordered table-striped" id="example">
+                                      <thead>
+                                      <tr>
+                                          <th width="15%" class="text-center"><i class="icon-calendar icon-2x"></i><br>Date</th>
+                                          <th width="90">Status</th>
+                                          <th width="150">Fullname</th>
+                                          <th width="90" class="hidden-phone">Position</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr class="gradeX">
+											<td class="text-center">2018-1-26</td>
+											<td>b</td>
+											<td>c</td>
+											<td>d</td>
+                                          </tr>
+                                      </tbody>
+									</table>
+                                </div>
+                          </div>
+                      </section>
                   </div>
               </div>
               <!-- page end-->
@@ -191,16 +201,22 @@ else if($Position == "Volunter"){
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-	<script>
-		$('.btn').on('click', function() {
-			var $this = $(this);
-		  $this.button('loading');
-			setTimeout(function() {
-			   $this.button('reset');
-		   }, 8000);
-		});
 
-    $(document).ready(function(){
+
+  <!--common script for all pages-->
+    <script src="js/common-scripts.js"></script>
+
+    <!--script for this page only-->
+
+      <script type="text/javascript" charset="utf-8">
+          $(document).ready(function() {
+              $('#example').dataTable( {
+                  "aaSorting": [[ 10, "desc" ]]
+              } );
+          } );
+      </script>
+     <script>
+        $(document).ready(function(){
         var Auth ='<?php echo $Position; ?>';
         if (Auth == "Admin") 
         {                       
@@ -229,9 +245,6 @@ else if($Position == "Volunter"){
             $('#Inventory-li').hide();
         }
         });
-	</script>
-  <!--common script for all pages-->
-    <script src="js/common-scripts.js"></script>
-
+      </script>
   </body>
 </html>
