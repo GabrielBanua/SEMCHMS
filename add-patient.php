@@ -113,6 +113,17 @@ require 'lib/Db.config.php';
                       </ul>
                   </li>
 				  
+				  <li class="sub-menu">
+                      <a href="javascript:;">
+                          <i class="icon-truck"></i>
+                          <span>Inventory Management</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="view-inventory.php">View Inventory</a></li>
+						  <li><a  href="inv-reports-panel.php">Inventory Reports</a></li>
+                      </ul>
+                  </li>
+				  
 				  <li class="sub-menu" id="Laboratory-li">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
