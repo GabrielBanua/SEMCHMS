@@ -151,23 +151,21 @@ require 'lib/session.php';
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-								<a class="btn btn-shadow btn-success" href="backup/backup_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
-								<i class="icon-download-alt"> </i> Backup Database</a>
-                                    <table  class="display table table-bordered table-striped" id="example">
+									<a class="btn btn-shadow btn-success" href="backup/backup_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
+									<i class="icon-download-alt"> </i> Backup Database</a>
+									<a class="btn btn-shadow btn-info" href="backup/import_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
+									<i class="icon-upload-alt"> </i> Import Database</a>
+                                    <table  class="table table-striped table-advance table-hover" id="example">
                                       <thead>
                                       <tr>
-                                          <th width="15%" class="text-center"><i class="icon-calendar icon-2x"></i><br>Date</th>
-                                          <th width="90">Status</th>
-                                          <th width="150">Fullname</th>
-                                          <th width="90" class="hidden-phone">Position</th>
+                                          <th class="text-center"><i class="icon-calendar"></i> Date</th>
+                                          <th class="text-center"><i class="icon-book"></i> History</th>
                                       </tr>
                                       </thead>
                                       <tbody>
                                           <tr class="gradeX">
 											<td class="text-center">2018-1-26</td>
-											<td>b</td>
-											<td>c</td>
-											<td>d</td>
+											<td class="text-center"><span class="label label-success label-mini"> Successfully Backup Database</span></td>
                                           </tr>
                                       </tbody>
 									</table>
