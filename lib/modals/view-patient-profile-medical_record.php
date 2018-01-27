@@ -43,8 +43,8 @@
                       <div class="modal-footer">
                         <span id="Error_Message" style="float: left; font-weight: bold;" class="text-danger"></span>
                         <span id="Success_Message" style="float: left; font-weight: bold;" class="text-success"></span>
-          						  <a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
-          						  <a  class="btn btn-success" onclick="addMedicalRecord()">Save</a>
+          						  <a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Cancel</a>
+          						  <a  class="btn btn-shadow btn-success" onclick="addMedicalRecord()"><i class="icon-plus"></i> Save</a>
                       </div>
                   </div>
               </div>
