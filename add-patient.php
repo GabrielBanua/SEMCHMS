@@ -301,13 +301,13 @@ require 'lib/Db.config.php';
                                     <select class="form-control" id="P_OCCU" required>
                                         <option hidden>--Select--</option>
                                         <option>Paid Employment</option>
-                    										<option>Self-Employment</option>
-                    										<option>Non-paid work(Volunteer/Charity)</option>
-                    										<option>Student</option>
-                    										<option>Keeping house(for others)</option>
-                    										<option>House-maker(Own House)</option>
-                    										<option>Retired</option>
-                    										<option>Unemployed</option>
+										<option>Self-Employment</option>
+										<option>Non-paid work(Volunteer/Charity)</option>
+										<option>Student</option>
+										<option>Keeping house(for others)</option>
+										<option>House-maker(Own House)</option>
+										<option>Retired</option>
+										<option>Unemployed</option>
                                     </select>
                                 </div>
                             </div>
