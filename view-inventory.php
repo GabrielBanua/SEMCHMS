@@ -345,7 +345,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 	</div>
 </div>
 <!-- ****************************************************MODAL END****************************************************************** -->
-<table  class="display table table-bordered table-striped" id="example">
+<table  class="table table-striped table-advance table-hover" id="example">
    	<thead>
         <tr>
             <th width="120">Date Arrived</th>
