@@ -264,13 +264,18 @@ require 'lib/Db.config.pdo.php';
 			$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
 			$Time = date('H:i:s', strtotime($Sched_time. ' +7 minutes'));
-			$sqldate = date('Y-m-d',strtotime($Sched_date)); 
+			$sqldate = date('Y-m-d',strtotime($Sched_date));
+			$date = date("Y-m-d");	
+			$Year = date('Y',strtotime($date));
+			$Month = date('m',strtotime($date));
 			
-				$stmt = $db->prepare("insert into schedule values('',?,?,?,?)");
+				$stmt = $db->prepare("insert into schedule values('',?,?,?,?,?,?)");
 					$stmt->bindParam(1,$P_ID);
 					$stmt->bindParam(2,$sqldate);
 					$stmt->bindParam(3,$Time);
 					$stmt->bindParam(4,$Sched_purpose);
+					$stmt->bindParam(5,$Month);
+					$stmt->bindParam(6,$Year);
 					$stmt->execute();
 			
 }
@@ -428,19 +433,24 @@ require 'lib/Db.config.php';
 			$DateExp = date('Y-m-d',strtotime($EXPDATE)); 
 			$DateArr = date('Y-m-d',strtotime($DATEAR)); 
 			$QtyHistory = $Qty;
+			$date = date("Y-m-d");
+			$Year = date('Y',strtotime($date));
+			$Month = date('m',strtotime($date));
 
 	$sql = "SELECT MEDICINE_ID FROM medicine WHERE MEDICINE_DOSE = '$MedDose' AND MEDICINE_BNAME = '$MedBN' AND(MEDICINE_GNAME = '$MedGname' AND MEDICINE_CAT = '$MedCat') AND MEDICINE_TYPE = '$Medtype'";
 			$do = mysql_query($sql);
 			$id = mysql_fetch_array($do);
 			$MedID = $id['MEDICINE_ID'];
 
-	$stmt = $db->prepare("insert into inventory values('',?,?,?,?,?,?)");
+	$stmt = $db->prepare("insert into inventory values('',?,?,?,?,?,?,?,?)");
 			$stmt->bindParam(1,$MedID);
 			$stmt->bindParam(2,$Qty);
 			$stmt->bindParam(3,$Supplier);
 			$stmt->bindParam(4,$DateExp);
 			$stmt->bindParam(5,$DateArr);
 			$stmt->bindParam(6,$QtyHistory);
+			$stmt->bindParam(7,$Month);
+			$stmt->bindParam(8,$Year);
 			$stmt->execute();
 }
 else if($page == 'addTreatment'){
@@ -491,11 +501,13 @@ require 'lib/Db.config.php';
 				if(empty($DocName) || empty($DocCN) || empty($DocADD)){
 					//do nothing
 				}else{
-					$ref = $db->prepare("insert into referral values('',?,?,?,?)");
+					$ref = $db->prepare("insert into referral values('',?,?,?,?,?,?)");
 						$ref->bindParam(1,$DocName);
 						$ref->bindParam(2,$DocCN);
 						$ref->bindParam(3,$DocADD);
 						$ref->bindParam(4,$updated_TR_id);
+						$ref->bindParam(5,$Month);
+						$ref->bindParam(6,$Year);
 					$ref->execute();
 				}
 				if($LabRequest == '--None--'){
@@ -508,7 +520,6 @@ require 'lib/Db.config.php';
 						$Lab->bindParam(4,$updated_TR_id);
 						$Lab->bindParam(5,$Month);
 						$Lab->bindParam(6,$Year);
-
 					$Lab->execute();
 				}
 }
@@ -546,7 +557,7 @@ require 'lib/Db.config.php';
 	$Treatment = '';
 	$Remarks = '';
 	$date = date("Y-m-d");
-	$sql = "INSERT INTO `treatment` (`MR_ID`, `DIAG_DTLS`, `TREATMENT`, `REMARKS`, `F_CHECKUP`, `User_id`) VALUES ('$ID', '$Diagnosis', '$Treatment', '$Remarks', '$date', '$Doc_id')";
+	$sql = "INSERT INTO `treatment` (`MR_ID`, `DIAG_DTLS`, `TREATMENT`, `REMARKS`, `F_CHECKUP`, `User_id`, `MONTH`, `YEAR`) VALUES ('$ID', '$Diagnosis', '$Treatment', '$Remarks', '$date', '$Doc_id', '$Month', '$Year')";
  		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 
