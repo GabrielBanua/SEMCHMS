@@ -8,15 +8,16 @@ require 'lib/session.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Backup Database</title>
+    <title>User Profile</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+	<link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="assets/select2/css/select2.min.css"/>
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -37,7 +38,7 @@ require 'lib/session.php';
               <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
           </div>
           <!--logo start-->
-          <a href="index.html" class="logo" >St. Ezekiel Moreno<span>|Healthcare Management System</span></a>
+          <a href="index.php" class="logo" >St.Ezekiel Moreno<span>|Healthcare Management System</span></a>
           <!--logo end-->
           <div class="top-nav ">
               <ul class="nav pull-right top-menu">
@@ -77,7 +78,7 @@ require 'lib/session.php';
                   </li>
 
                   <li class="sub-menu" id="Patient-li">
-                      <a href="javascript:;" >
+                      <a href="javascript:;">
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
                       </a>
@@ -89,7 +90,7 @@ require 'lib/session.php';
                   </li>
 				  
 				  <li class="sub-menu" id="Schedule-li">
-                      <a href="javascript:;">
+                      <a href="javascript:;" >
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
                       </a>
@@ -106,8 +107,8 @@ require 'lib/session.php';
                           <span>Inventory Management</span>
                       </a>
                       <ul class="sub">
-						  <li><a href="view-inventory.php">View Inventory</a></li>
-						  <li><a href="inv-reports-panel.php">Inventory Reports</a></li>
+                            <li><a href="view-inventory.php">View Inventory</a></li>
+							<li><a  href="inv-reports-panel.php">Inventory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -123,15 +124,15 @@ require 'lib/session.php';
 						  <li><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
                       </ul>
                   </li>
-				  
+
 				  <li class="sub-menu" id="Maintenance-li">
-                      <a href="javascript:;" class="active">
+                      <a href="javascript:;" class="active" >
                           <i class="icon-download-alt"></i>
                           <span>Maintenance</span>
                       </a>
                       <ul class="sub">
-                          <li class="active"><a  href="backup.php">Backup Database</a></li>
-						  <li><a  href="view-users.php">View Users</a></li>
+                          <li><a  href="backup.php">Backup Database</a></li>
+						  <li class="active" ><a  href="view-users.php">View Users</a></li>
                       </ul>
                   </li>
               </ul>
@@ -144,36 +145,89 @@ require 'lib/session.php';
           <section class="wrapper">
               <!-- page start-->
               <div class="row">
-                  <div class="col-lg-12">
+                  <aside class="profile-nav col-lg-3">
                       <section class="panel">
-                          <header class="panel-heading">
-                              Users
-                          </header>
-                          <div class="panel-body">
-                                <div class="adv-table">
-									<a class="btn btn-shadow btn-success" href="backup/backup_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
-									<i class="icon-download-alt"> </i> Backup Database</a>
-									<a class="btn btn-shadow btn-info" href="backup/import_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
-									<i class="icon-upload-alt"> </i> Import Database</a>
-                                    <table  class="table table-striped table-advance table-hover" id="example">
-                                      <thead>
-                                      <tr>
-                                          <th class="text-center"><i class="icon-calendar"></i> Date</th>
-                                          <th class="text-center"><i class="icon-book"></i> History</th>
-                                      </tr>
-                                      </thead>
-                                      <tbody>
-                                          <tr class="gradeX">
-											<td class="text-center">2018-1-26</td>
-											<td class="text-center"><span class="label label-success label-mini"> Successfully Backup Database</span></td>
-                                          </tr>
-                                      </tbody>
-									</table>
-                                </div>
+                          <div class="user-heading round">
+                              <a href="#">
+                                  <img src="patientpics/pic_20180125192317.jpeg" alt="">
+                              </a>
+                              <h3></h3>
+                              <p></p>
+                          </div>
+
+                          <ul class="nav nav-pills nav-stacked">
+                              <li class="active"><a> <i class="icon-user"></i> Profile</a></li>
+                          </ul>
+
+                      </section>
+                  </aside>
+                  <aside class="profile-info col-lg-9">
+                      <section class="panel">
+          							<header class="panel-heading ">
+                                        User Profile:
+          							</header>
+                          <div class="panel-body bio-graph-info">
+                              <div class="row">
+                                  <div class="bio-row">
+                                      <p><b><span>Date&nbsp;Registered </span></b> : </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Address </span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>First Name</span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Religion </span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Middle Name </span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Type </span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Last Name </span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Civil Status </span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Birthday </span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Occupation </span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Age </span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Occupation<br>(FBW)</span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Gender </span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Mobile </span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Weight(kg) </span></b>: </p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><b><span>Height(cm) </span></b>: </p>
+                                  </div>
+                              </div>
                           </div>
                       </section>
-                  </div>
+                      <section>
+                          <div class="row">
+							 <div class="col-lg-12">
+							 
+							  </div>
+                      </section>
+					  </aside>
               </div>
+
               <!-- page end-->
           </section>
       </section>
@@ -191,30 +245,21 @@ require 'lib/session.php';
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <!--<script src="js/jquery.js"></script>-->
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    <script src="assets/jquery-knob/js/jquery.knob.js"></script>
     <script src="js/respond.min.js" ></script>
+	<script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
 
-
-  <!--common script for all pages-->
+    <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
-
-    <!--script for this page only-->
-
-      <script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#example').dataTable( {
-                  "aaSorting": [[ 10, "desc" ]]
-              } );
-          } );
-      </script>
-<?php
-include 'lib/User-Accesslvl.php';
-?>
+    <script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
+	<script src="js/checkboxhide.js"></script>
+    <?php
+        include 'lib/functions/view-patients-profile-script.php';
+    ?>
   </body>
 </html>

@@ -379,18 +379,15 @@ $medicalrecord->execute();
 												  </tr>
 												  </thead>
 												  <tbody>
-<?php
-	while($MR = $medicalrecord->fetch()){
+													<?php
+while($MR = $medicalrecord->fetch()){
     $TRMNT_ID = $MR['TRMT_ID'];
-        $treatment = ("Select * FROM referral WHERE TRMTMNT_ID = '$TRMNT_ID'");
-        $TR_ID = mysql_query($treatment);
-        $TR = mysql_fetch_array($TR_ID);
-
+	$treatment = ("Select * FROM referral WHERE TRMTMNT_ID = '$TRMNT_ID'");
+	$TR_ID = mysql_query($treatment);
+	$TR = mysql_fetch_array($TR_ID);
         $UserDoctor = ("SELECT *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users WHERE Position = 'Doctor' AND STATUS = 'Active'");
         $UserList = mysql_query($UserDoctor);
         $Doctor = mysql_fetch_array($UserList);
-
-
 ?>
 												  <tr>
 													  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>

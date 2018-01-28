@@ -10,10 +10,10 @@
               <header class="panel-heading tab-bg-dark-navy-blue ">
                   <ul class="nav nav-tabs">
                     <li class="active">
-                      <a data-toggle="tab" href="#basicinfo-<?php echo $row['P_ID'] ?>">Patient Basic Info</a>
+                      <a data-toggle="tab" href="#basicinfo-<?php echo $row['P_ID'] ?>"><i class="icon-user"></i> <b>Patient Basic Info</b></a>
                     </li>
                     <li class="">
-                      <a data-toggle="tab" href="#healthissue-<?php echo $row['P_ID'] ?>">Health Issue</a>
+                      <a data-toggle="tab" href="#healthissue-<?php echo $row['P_ID'] ?>"><i class="icon-medkit"></i> <b>Health Issue</b></a>
                     </li>
                   </ul>
               </header>

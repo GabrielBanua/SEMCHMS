@@ -132,6 +132,17 @@ require 'lib/Db.config.php';
                       </ul>
                   </li>
 				  
+				  <li class="sub-menu">
+                      <a href="javascript:;">
+                          <i class="icon-truck"></i>
+                          <span>Inventory Management</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="view-inventory.php">View Inventory</a></li>
+						  <li><a  href="inv-reports-panel.php">Inventory Reports</a></li>
+                      </ul>
+                  </li>
+				  
 				  <li class="sub-menu" id="Laboratory-li">
                       <a href="javascript:;">
                           <i class="icon-beaker"></i>
@@ -309,13 +320,13 @@ require 'lib/Db.config.php';
                                     <select class="form-control" id="P_OCCU" required>
                                         <option hidden>--Select--</option>
                                         <option>Paid Employment</option>
-                    										<option>Self-Employment</option>
-                    										<option>Non-paid work(Volunteer/Charity)</option>
-                    										<option>Student</option>
-                    										<option>Keeping house(for others)</option>
-                    										<option>House-maker(Own House)</option>
-                    										<option>Retired</option>
-                    										<option>Unemployed</option>
+										<option>Self-Employment</option>
+										<option>Non-paid work(Volunteer/Charity)</option>
+										<option>Student</option>
+										<option>Keeping house(for others)</option>
+										<option>House-maker(Own House)</option>
+										<option>Retired</option>
+										<option>Unemployed</option>
                                     </select>
                                 </div>
                             </div>
@@ -530,7 +541,7 @@ require 'lib/Db.config.php';
                     </div>
           					<div class="form-group">
                       <div class="col-sm-12 pull-right" style="padding-right: 100px">
-                        <button class="btn btn-shadow btn-success" type="button" onclick="addNewPatient()">Save</button>
+                        <a class="btn btn-shadow btn-success" type="button" onclick="addNewPatient()"><i class="icon-plus"></i> Save</a>
                         <span style="float: right; font-weight: bold;" id="Error_Message" class="text-danger"></span>
                         <span style="float: right; font-weight: bold;" id="Success_Message" class="text-success"></span>
                       </div>
