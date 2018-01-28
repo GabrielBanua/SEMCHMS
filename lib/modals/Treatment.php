@@ -11,7 +11,7 @@
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Illness/Ailments</label>
 				<div class="col-lg-4">
-					<input type="text" value="<?php echo $MR['MR_ILL']; ?>" class="form-control">
+					<input type="text" value="<?php echo $MR['MR_ILL']; ?>" class="form-control" readonly>
 				</div>
 				<label  class="col-lg-2 control-label">Date</label>
 				<div class="col-lg-4">
@@ -21,25 +21,25 @@
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Weight</label>
 				<div class="col-lg-4">
-					<input type="text" value="<?php echo $MR['MR_WEIGHT']; ?>" class="form-control">
+					<input type="text" value="<?php echo $MR['MR_WEIGHT']; ?>" class="form-control" readonly>
 				</div>
 				<label  class="col-lg-2 control-label">BP
 				</label>
 				<div class="col-lg-4">
-					<input type="text" value="<?php echo $MR['MR_BP']; ?>" class="form-control">
+					<input type="text" value="<?php echo $MR['MR_BP']; ?>" class="form-control" readonly>
 				</div>
 			</div>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Temperature</label>
 				<div class="col-lg-4">
-					<input type="text" value="<?php echo $MR['MR_TEMP']; ?>" class="form-control">
+					<input type="text" value="<?php echo $MR['MR_TEMP']; ?>" class="form-control" readonly>
 				</div>
 				<label  class="col-lg-2 control-label">Lab Test</label>
 				<div class="col-lg-4">
-					<select class="form-control">
+					<select class="form-control" id="Lab_Req-<?php echo $MR['MR_ID']; ?>">
 						<option hidden>--None--</option>
 						<option>Blood Chemistry</option>
-						<option>Fecalisys </option>
+						<option>Fecalisys</option>
 						<option>Hematology</option>
 						<option>Urinalysis</option>
 					</select>
@@ -48,7 +48,7 @@
 			<div class="form-group pull-right">
 				<label  class="col-lg-6 control-label">Test Requested</label>
 				<div class="col-lg-6">
-					<input type="text" class="form-control">
+					<input type="text" id="TestR-<?php echo $MR['MR_ID']; ?>" class="form-control">
 				</div>
 			</div><br>
 			<div class="form-group">
@@ -114,7 +114,7 @@
 		<span id="Error_Message-TRMT-<?php echo $MR['MR_ID']; ?>" style="float: left; font-weight: bold;" class="text-danger"></span>
 		<span id="Success_Message-TRMT-<?php echo $MR['MR_ID']; ?>" style="float: left; font-weight: bold;" class="text-success"></span>
 		<a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
-		<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-plus"></i>&nbsp;Add</a>
+		<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-plus"></i>&nbsp; Add</a>
 	</div>
 	</div>
 	</div>

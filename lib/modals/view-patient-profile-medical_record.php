@@ -45,7 +45,6 @@
                         <span id="Success_Message" style="float: left; font-weight: bold;" class="text-success"></span>
           					<a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Cancel</a>
           					<a  class="btn btn-shadow btn-success" onclick="addMedicalRecord(<?php echo $Doctor['User_id']?>)"><i class="icon-check">&nbsp;</i>Save</a>
-
                       </div>
                   </div>
               </div>

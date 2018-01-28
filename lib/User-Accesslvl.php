@@ -18,6 +18,7 @@
             $('#Reports-li').hide();
             $('#Laboratory-li').hide();
             $('#Inventory-li').hide();
+            $('#Medicalrecord_btn').hide();
         }
         else if(Auth == "Medtech") {
             $('#User-li').hide();

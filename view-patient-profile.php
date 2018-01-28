@@ -174,7 +174,7 @@ $medicalrecord->execute();
                                   <img src="img/profile-avatar.jpg" alt="">
                               </a>
                               <h3><?php echo $row['FullName']?></h3>
-                              <p>P000<?php echo $row['P_ID']?></p>
+                              <p>P<?php echo $row['P_ID']?></p>
                           </div>
 
                           <ul class="nav nav-pills nav-stacked">
@@ -360,7 +360,7 @@ $medicalrecord->execute();
 											<!--Medical Records start-->
 									<div id="medrecord" class="tab-pane">
 									<div class="adv-table">
-										<header class="panel-heading">
+										<header class="panel-heading" id="Medicalrecord_btn">
 											<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#apointment"><i class="icon-plus"></i> Add Medical Records</a>
 										</header>
 										<div class="panel-body">
@@ -384,10 +384,15 @@ while($MR = $medicalrecord->fetch()){
     $TRMNT_ID = $MR['TRMT_ID'];
 	$treatment = ("Select * FROM referral WHERE TRMTMNT_ID = '$TRMNT_ID'");
 	$TR_ID = mysql_query($treatment);
-	$TR = mysql_fetch_array($TR_ID);
+    $TR = mysql_fetch_array($TR_ID);
+    
         $UserDoctor = ("SELECT *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users WHERE Position = 'Doctor' AND STATUS = 'Active'");
         $UserList = mysql_query($UserDoctor);
         $Doctor = mysql_fetch_array($UserList);
+
+        $LAB_R = ("SELECT * FROM lab_request WHERE TRMNT_ID = '$TRMNT_ID'");
+        $LAB_QUERY = mysql_query($LAB_R);
+        $LAB_RES = mysql_fetch_array($LAB_QUERY);
 ?>
 												  <tr>
 													  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
@@ -447,6 +452,9 @@ while($MR = $medicalrecord->fetch()){
 					  </section>
 					  </aside>
 <?php
+$UserDoctor = ("SELECT *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users WHERE Position = 'Doctor' AND STATUS = 'Active'");
+$UserList = mysql_query($UserDoctor);
+$Doctor = mysql_fetch_array($UserList);
 include 'lib/modals/view-patient-profile-medical_record.php';
 ?>
 

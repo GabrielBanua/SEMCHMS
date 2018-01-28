@@ -52,7 +52,7 @@ require 'lib/Db.config.pdo.php';
   <body>
   <div class="preloader-wrapper">
     <div class="preloader">
-        <img src="gif/Facebook.gif" alt="SEMHCMS">
+        <img src="gif/loading.svg" alt="SEMHCMS">
         <div style="position: absolute; top: 100%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
           <p style="font-size: 15px; font-weight: bold;">loading</p>
         </div>
@@ -210,13 +210,11 @@ while($row = $stmt->fetch()){
 <?php
 include 'lib/modals/view-patients-editmodal.php';
 ?>
-      </td>
-    </tr>
+                                        </td>
+                                    </tr>
 <?php
   }
 ?>
-
-
                                       </tbody>
                                     </table>
                                 </div>

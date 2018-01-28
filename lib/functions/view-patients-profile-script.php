@@ -79,7 +79,6 @@
           var MedTemp = $('#MedRTemp').val();
           var MedDate = $('#MedRDate').val();
           var Sched_id = '<?php echo $SCHED_ID; ?>';
-
           if(Medillness == '' || MedBP == '' || MedWeight == '' || MedTemp == ''){
              $('#Error_Message').html('Please fill in all fields! &nbsp;');
           }
@@ -109,6 +108,8 @@
 function addTreatment(str){
           var Med_RID = str;
           var Diagnosis = $('#DIAG_DTLS-'+Med_RID).val(); 
+          var Lab_Req = $('#Lab_Req-'+Med_RID).val();
+          var Test_Req = $('#TestR-'+Med_RID).val(); 
           var Treatment =  $('#TREATMENT-'+Med_RID).val();
           var Remarks = $('#REMARKS-'+Med_RID).val();
           var FollowUp = $('#F_CHECKUP-'+Med_RID).val();
@@ -124,7 +125,7 @@ function addTreatment(str){
            $.ajax({
                 type: "POST",
                 url: "Server.php?p=addTreatment",
-                data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID+"&REFDN="+RefDoc+"&REF_CN="+RefDoc_CN+"&REF_ADD="+RefDoc_Add,
+                data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID+"&REFDN="+RefDoc+"&REF_CN="+RefDoc_CN+"&REF_ADD="+RefDoc_Add+"&LAB_REQ="+Lab_Req+"&TEST_REQ="+Test_Req,
                 success: function(data){
                   $('#Success_Message-TRMT-'+Med_RID).html('Successfully Added! &nbsp;');
                         setTimeout(function() {
