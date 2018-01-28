@@ -405,7 +405,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 		</div>
 		<div class="modal-footer">
 			<a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Cancel</a>
-			<a class="btn btn-shadow btn-success" type="submit" onclick="#"> Dispense</a>
+			<a class="btn btn-shadow btn-success" type="submit" onclick="#"><i class="icon-minus"></i> Dispense</a>
 		</div>
 		</div>
 	</div>
@@ -424,7 +424,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 			<th width="110">Expiry Date</th>
             <th width="95">Quantity</th>
             <th width="70">Status</th>
-            <th width="100">Action</th>
+            <th width="110">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -547,8 +547,8 @@ while($row = $stmt->fetch()){
 		<div class="modal-footer">
 			<span id="Error_Message" class="text-danger"></span>
 			<span id="Success_Message" class="text-success"></span>
-			<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-			<button class="btn btn-success" onclick="addInventory()">Save</button>
+			<a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
+			<a class="btn btn-success" onclick="addInventory()"><i class="icon-save"></i> Save</a>
 		</div>
 		</div>
 	</div>
