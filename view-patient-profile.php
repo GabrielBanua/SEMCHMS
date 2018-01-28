@@ -23,7 +23,15 @@ $medicalrecord->execute();
     <link rel="shortcut icon" href="img/favicon.ico">
 
     <title>Patient Profile</title>
-
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/jquery-knob/js/jquery.knob.js"></script>
+    <script src="js/respond.min.js" ></script>
+	<script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -378,9 +386,9 @@ $medicalrecord->execute();
         $TR_ID = mysql_query($treatment);
         $TR = mysql_fetch_array($TR_ID);
 
-        $UserDoctor = ("Select *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS FullName FROM users WHERE Username = '$UserN'");
+        $UserDoctor = ("SELECT *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users WHERE Position = 'Doctor' AND STATUS = 'Active'");
         $UserList = mysql_query($UserDoctor);
-        $Doctorname = mysql_fetch_array($UserList);
+        $Doctor = mysql_fetch_array($UserList);
 
 
 ?>
@@ -393,7 +401,7 @@ $medicalrecord->execute();
 													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo $MR['F_CHECKUP'];} ?></td>
 													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
                                                       <td style="text-align: center;"><?php
-                                                      if($MR['MR_STATUS'] == 'Pending'){ echo "<a class='btn btn-shadow btn-info btn-xs' onclick='RetrieveDoctor(";?><?php echo $MR['MR_ID'];?><?php echo ")' data-toggle='modal' data-target='#treatment-";?><?php echo $MR['MR_ID']; ?><?php echo "'><i class='icon-share-alt'></i> Proceed</a>";}else{ echo "<a class='btn btn-shadow btn-success btn-xs' data-toggle='modal' data-target='#edit-treatment-";?><?php echo $MR['MR_ID']; ?><?php echo "'><i class='icon-eye-open'></i> View</a>";}
+                                                      if($MR['MR_STATUS'] == 'Pending'){ echo "<a class='btn btn-shadow btn-info btn-xs' onclick='RetrieveDoctor(";?><?php echo $MR['MR_ID'];?><?php echo ")' data-toggle='modal' data-target='#treatment-";?><?php echo $MR['MR_ID']; ?><?php echo "'><i class='icon-share-alt'></i> Proceed</a>";}else{ echo "<a class='btn btn-shadow btn-success btn-xs' onclick='RetrieveSaveDoctor(";?><?php echo $MR['MR_ID'];?><?php echo ")' data-toggle='modal' data-target='#edit-treatment-";?><?php echo $MR['MR_ID']; ?><?php echo "'><i class='icon-eye-open'></i> View</a>";}
                                                       ?> 
 <?php
     require 'lib/modals/Treatment.php';
@@ -462,23 +470,13 @@ include 'lib/modals/view-patient-profile-medical_record.php';
       </footer>
       <!--footer end-->
   </section>
-
-    <!-- js placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="assets/jquery-knob/js/jquery.knob.js"></script>
-    <script src="js/respond.min.js" ></script>
-	<script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
-
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
     <script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
 	<script src="js/checkboxhide.js"></script>
-    <?php
-        include 'lib/functions/view-patients-profile-script.php';
-    ?>
+<?php
+    include 'lib/functions/view-patients-profile-script.php';
+    include 'lib/User-Accesslvl.php';
+?>
   </body>
 </html>

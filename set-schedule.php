@@ -13,7 +13,20 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
     <link rel="shortcut icon" href="img/favicon.ico">
 
     <title>Set Schedule</title>
-
+    <!-- js placed at the end of the document so the pages load faster -->
+    <!--<script src="js/jquery.js"></script>-->
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    <script src="js/respond.min.js" ></script>
+    <script src="js/preloader.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="js/advanced-form-components.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -180,7 +193,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                                       </tr>
                                       </thead>
                                       <tbody>
- <?php
+<?php
       while($row = $stmt->fetch()){
 ?>                                     
                                           <tr class="gradeX">
@@ -290,114 +303,14 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
       </footer>
       <!--footer end-->
   </section>
-
-    <!-- js placed at the end of the document so the pages load faster -->
-    <!--<script src="js/jquery.js"></script>-->
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
-    <script src="js/respond.min.js" ></script>
-    <script src="js/preloader.js"></script>
+    
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 
     <!--script for this page only-->
-      <script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#example').dataTable( {
-                  "aaSorting": [[ 0, "asc" ]]
-              } );
-          } );
-      </script>
-      <script>
-        function SetSched(str){
-        var P_ID = str;
-        var SCHEDULE_DATE = $('#SCHEDULE_DATE-'+str).val();
-        var SCHEDULE_TIME = $('#SCHEDULE_TIME-'+str).val();
-        var SCHEDULE_PURPOSE = $('#SCHEDULE_PURPOSE-'+str).val();
-          if(SCHEDULE_DATE == '' || SCHEDULE_TIME == '' || SCHEDULE_PURPOSE == '-None-'){
-            $('#Error_Message-'+str).html('Please fill all fields! &nbsp;');
-          }else{
-            if (confirm('Are you sure you want to set schedule for this patient?')) {   
-              $.ajax({
-                type: "POST",
-                url: "Server.php?p=CheckSched",
-                data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
-                success: function(data){
-                    alert(data);
-                  if(data == 'Taken'){
-                    $('#Error_Message-'+str).html('This schedule is taken!');
-                  }
-                  else if(data == 'Late'){
-                    $('#Error_Message-'+str).html('Time is late!');
-                  }
-                  else if(data == 'DateLate'){
-                    $('#Error_Message-'+str).html('Date is late!');
-                  }
-                  else if(data == 'Success'){
-                        $.ajax({
-                          type: "POST",
-                          url: "Server.php?p=SetSched",
-                          data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
-                          success: function(data){
-                                $('#Error_Message-'+str).html('');
-                                $('#Success_Message-'+str).html('Successfully Added! &nbsp;');
-                                setTimeout(function() {
-                                  $('#Success_Message-'+str).fadeOut('slow');
-                                }, 1000);
-                                setTimeout(function(){
-                                  window.location.reload();
-                                }, 1200);
-                             } 
-                          });
-                    }
-                 } 
-              });    
-        }
-        else{
-            //do nothing
-            }
-          }
-      }
-      </script>
-      <script>
-        $(document).ready(function(){
-        var Auth ='<?php echo $Position; ?>';
-        if (Auth == "Admin") 
-        {                       
-            $('#Patient-li').show(); 
-            $('#Schedule-li').show();
-            $('#Inventory-li').show();
-            $('#Laboratory-li').show();
-            $('#Reports-li').show();
-            $('#User-li').show();
-            $('#Maintenance-li').show();
-        }
-        else if(Auth == "Doctor") {
-            $('#User-li').hide();
-            $('#Patient-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Laboratory-li').hide();
-            $('#Inventory-li').hide();
-        }
-        else if(Auth == "Medtech") {
-            $('#User-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Patient-li').hide();
-            $('#Schedule-li').hide();
-            $('#Inventory-li').hide();
-        }
-        });
-      </script>
-  <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-  <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-	<script src="js/advanced-form-components.js"></script>
-	
-  </body>
+<?php
+include 'lib/functions/set-schedule-script.php';
+include 'lib/User-Accesslvl.php';
+?>
+</body>
 </html>

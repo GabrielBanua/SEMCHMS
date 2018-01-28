@@ -1,6 +1,7 @@
 <?php
 require 'lib/session.php';
 require 'lib/chartSQL.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -376,7 +377,6 @@ require 'lib/chartSQL.php';
         </footer>
         <!--footer end-->
     </section>
-
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/jquery-1.8.3.min.js"></script>
@@ -389,51 +389,15 @@ require 'lib/chartSQL.php';
     <script src="js/owl.carousel.js"></script>
     <script src="js/jquery.customSelect.min.js"></script>
     <script src="js/respond.min.js"></script>
-
     <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
-
     <!--script for this page-->
     <script src="js/sparkline-chart.js"></script>
     <script src="js/easy-pie-chart.js"></script>
     <script src="js/count.js"></script>
-
-    <script>
-        $(document).ready(function(){
-        var Auth ='<?php echo $Position; ?>';
-        if (Auth == "Admin") 
-        {                       
-            $('#Patient-li').show(); 
-            $('#Schedule-li').show();
-            $('#Inventory-li').show();
-            $('#Laboratory-li').show();
-            $('#Reports-li').show();
-            $('#User-li').show();
-            $('#Maintenance-li').show();
-        }
-        else if(Auth == "Doctor") {
-            $('#User-li').hide();
-            $('#Patient-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Laboratory-li').hide();
-            $('#Inventory-li').hide();
-        }
-        else if(Auth == "Medtech") {
-            $('#User-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Patient-li').hide();
-            $('#Schedule-li').hide();
-            $('#Inventory-li').hide();
-        }
-        });
-    </script>
-    <script>
-        //owl carousel
-
+    <script>  
+    //owl carousel
         $(document).ready(function() {
             $("#owl-demo").owlCarousel({
                 navigation: true,
@@ -441,17 +405,16 @@ require 'lib/chartSQL.php';
                 paginationSpeed: 400,
                 singleItem: true,
                 autoPlay: true
-
             });
         });
-
-        //custom select box
-
+    //custom select box
         $(function() {
             $('select.styled').customSelect();
         });
-
     </script>
+<?php
+include 'lib/User-Accesslvl.php';
+?>
 </body>
 
 </html>

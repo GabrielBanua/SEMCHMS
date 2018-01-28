@@ -11,7 +11,15 @@ require 'lib/session.php';
     <link rel="shortcut icon" href="img/favicon.ico">
 
     <title>Patient Reports Panel</title>
-
+	<!-- js placed at the end of the document so the pages load faster -->
+    <!--<script src="js/jquery.js"></script>-->
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    <script src="js/respond.min.js" ></script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -291,15 +299,10 @@ require 'lib/session.php';
       <!--footer end-->
   </section>
 
-    <!-- js placed at the end of the document so the pages load faster -->
-    <!--<script src="js/jquery.js"></script>-->
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
-    <script src="js/respond.min.js" ></script>
+    
+<?php
+include 'lib/User-Accesslvl.php';
+?>
 	<script>
 		$('.btn').on('click', function() {
 			var $this = $(this);
@@ -308,36 +311,6 @@ require 'lib/session.php';
 			   $this.button('reset');
 		   }, 8000);
 		});
-
-    $(document).ready(function(){
-        var Auth ='<?php echo $Position; ?>';
-        if (Auth == "Admin") 
-        {                       
-            $('#Patient-li').show(); 
-            $('#Schedule-li').show();
-            $('#Inventory-li').show();
-            $('#Laboratory-li').show();
-            $('#Reports-li').show();
-            $('#User-li').show();
-            $('#Maintenance-li').show();
-        }
-        else if(Auth == "Doctor") {
-            $('#User-li').hide();
-            $('#Patient-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Laboratory-li').hide();
-            $('#Inventory-li').hide();
-        }
-        else if(Auth == "Medtech") {
-            $('#User-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Patient-li').hide();
-            $('#Schedule-li').hide();
-            $('#Inventory-li').hide();
-        }
-        });
 	</script>
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>

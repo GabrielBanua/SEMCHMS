@@ -11,7 +11,7 @@
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Illness/Ailments</label>
 				<div class="col-lg-4">
-					<input type="text" value="<?php echo $MR['MR_ILL']; ?>" class="form-control">
+					<input type="text" value="<?php echo $MR['MR_ILL']; ?>" class="form-control" readonly>
 				</div>
 				<label  class="col-lg-2 control-label">Date</label>
 				<div class="col-lg-4">
@@ -21,22 +21,22 @@
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Weight</label>
 				<div class="col-lg-4">
-					<input type="text" value="<?php echo $MR['MR_WEIGHT']; ?>" class="form-control">
+					<input type="text" value="<?php echo $MR['MR_WEIGHT']; ?>" class="form-control" readonly>
 				</div>
 				<label  class="col-lg-2 control-label">BP
 				</label>
 				<div class="col-lg-4">
-					<input type="text" value="<?php echo $MR['MR_BP']; ?>" class="form-control">
+					<input type="text" value="<?php echo $MR['MR_BP']; ?>" class="form-control" readonly>
 				</div>
 			</div>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Temperature</label>
 				<div class="col-lg-4">
-					<input type="text" value="<?php echo $MR['MR_TEMP']; ?>" class="form-control">
+					<input type="text" value="<?php echo $MR['MR_TEMP']; ?>" class="form-control" readonly>
 				</div>
 				<label  class="col-lg-2 control-label">Lab Test</label>
 				<div class="col-lg-4">
-					<select class="form-control">
+					<select class="form-control" id="Labtest">
 						<option hidden>--None--</option>
 						<option>Blood Chemistry</option>
 						<option>Fecalisys </option>
@@ -48,35 +48,35 @@
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Requested</label>
 				<div class="col-lg-4">
-					<input type="text" class="form-control">
+					<input type="text" id="Request" class="form-control">
 				</div>
 			</div>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Diagnosis:</label>
 				<div class="col-lg-12">
-				<textarea style="resize:none" id="DIAG_DTLS-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"><?php echo $MR['DIAG_DTLS']; ?></textarea>
+				<textarea style="resize:none" id="DIAG-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"><?php echo $MR['DIAG_DTLS']; ?></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Treatment:</label>
 				<div class="col-lg-12">
-					<textarea style="resize:none" id="TREATMENT-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"><?php echo $MR['TREATMENT']; ?></textarea>
+					<textarea style="resize:none" id="TREAT-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"><?php echo $MR['TREATMENT']; ?></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Remarks:</label>
 				<div class="col-lg-12">
-					<textarea style="resize:none" id="REMARKS-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"><?php echo $MR['REMARKS']; ?></textarea>
+					<textarea style="resize:none" id="REMARK-<?php echo $MR['MR_ID']; ?>" class="form-control" cols="2" rows="4"><?php echo $MR['REMARKS']; ?></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Follow-Up Checkup</label>
 				<div class="col-lg-4">
-					<input type="date" id="F_CHECKUP-<?php echo $MR['MR_ID']; ?>" value="<?php echo strftime('%Y-%m-%d', strtotime($MR['F_CHECKUP'])); ?>" class="form-control" required>
+					<input type="date" id="FO_CHECKUP-<?php echo $MR['MR_ID']; ?>" value="<?php echo strftime('%Y-%m-%d', strtotime($MR['F_CHECKUP'])); ?>" class="form-control" required>
 				</div>
 				<label  class="col-lg-2 control-label">Doctor</label>
 				<div class="col-lg-4">
-					<input type="text" id="listofDoctor-<?php echo $MR['MR_ID']; ?>" value="<?php echo $Doctorname['FullName']; ?>" class="form-control">
+					<input type="text" id="listDoctor-<?php echo $MR['MR_ID']; ?>" value="<?php echo $Doctorname['FullName']; ?>" class="form-control">
 				</div>
 			</div>
 			<div class="form-group">
@@ -90,29 +90,29 @@
 				<div class="form-group">
 					<label class="col-lg-4 control-label">Doctor Name</label>
 					<div class="col-lg-6">
-						<input type="text" id="Ref_Doc_name-<?php echo $MR['MR_ID']; ?>" value="<?php echo $TR['RF_DOCNAME']; ?>" class="form-control" required>
+						<input type="text" id="RefDoc_name-<?php echo $MR['MR_ID']; ?>" value="<?php echo $TR['RF_DOCNAME']; ?>" class="form-control" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label  class="col-lg-4 control-label">Contact No.</label>
 					<div class="col-lg-6">
-						<input type="text" id="Ref_Doc_CN-<?php echo $MR['MR_ID']; ?>"  value="<?php echo $TR['RF_CN']; ?>" class="form-control" required>
+						<input type="text" id="RefDoc_CN-<?php echo $MR['MR_ID']; ?>"  value="<?php echo $TR['RF_CN']; ?>" class="form-control" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label  class="col-lg-4 control-label">Address</label>
 					<div class="col-lg-6">
-						<input type="text" id="Ref_Doc_Add-<?php echo $MR['MR_ID']; ?>"  value="<?php echo $TR['RF_ADD']; ?>" class="form-control" required>
+						<input type="text" id="RefDoc_Add-<?php echo $MR['MR_ID']; ?>"  value="<?php echo $TR['RF_ADD']; ?>" class="form-control" required>
 					</div>
 				</div>
 			</div>
 		</form>
 	</div>
 	<div class="modal-footer">
-		<span id="Error_Message-TRMT" class="text-danger"></span>
-		<span id="Success_Message-TRMT" class="text-success"></span>
+		<span style="font-weight: bold; float: left;" id="Error_Message-ETRMT-<?php echo $MR['MR_ID']; ?>" class="text-danger"></span>
+		<span style="font-weight: bold; float: left;" id="Success_Message-ETRMT-<?php echo $MR['MR_ID']; ?>" class="text-success"></span>
 		<a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
-		<a class="btn btn-shadow btn-success" onclick="addTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-pencil"></i> Edit</a>
+		<a class="btn btn-shadow btn-success" onclick="editTreatment(<?php echo $MR['MR_ID']; ?>)"><i class="icon-pencil"></i> Edit</a>
 	</div>
 	</div>
 	</div>

@@ -16,12 +16,16 @@ require 'lib/password.php';
 			$Middlename = mysql_real_escape_string($_POST['MN']);
 			$Gender = mysql_real_escape_string($_POST['GN']);
 			$Position = mysql_real_escape_string($_POST['PS']);
+			$License = mysql_real_escape_string($_POST['LCN']);
+			$Date_end = mysql_real_escape_string($_POST['DE']);
+			$Status = 'Active';
+			$DateEnd_con = date('Y-m-d',strtotime($Date_end)); 
 			$Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
 			$date = date("Y-m-d");	
 			$Year = date('Y',strtotime($date));
 			$Month = date('m',strtotime($date));
 
-		$stmt = $db->prepare("insert into users values('',?,?,?,?,?,?,?,?,?)");
+		$stmt = $db->prepare("insert into users values('',?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			$stmt->bindParam(1,$Username);
 			$stmt->bindParam(2,$Pass);
 			$stmt->bindParam(3,$Firstname);
@@ -29,8 +33,12 @@ require 'lib/password.php';
 			$stmt->bindParam(4,$Middlename);
 			$stmt->bindParam(6,$Gender);
 			$stmt->bindParam(7,$Position);
-			$stmt->bindParam(8,$Month);
-			$stmt->bindParam(9,$Year);
+			$stmt->bindParam(8,$License);
+			$stmt->bindParam(9,$date);
+			$stmt->bindParam(10,$DateEnd_con);
+			$stmt->bindParam(11,$Status);
+			$stmt->bindParam(12,$Month);
+			$stmt->bindParam(13,$Year);
 			$stmt->execute();
 } 
 //add new patient
@@ -196,6 +204,7 @@ else if($page == 'UpdatePatient'){
 //delete user code
 else if($page == 'DeleteUser'){
 require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
 
 		$ID = mysql_real_escape_string($_POST['User_id']);
 
@@ -216,9 +225,13 @@ require 'lib/Db.config.pdo.php';
 			$Middlename = mysql_real_escape_string($_POST['MN']);
 			$Gender = mysql_real_escape_string($_POST['GN']);
 			$Position = mysql_real_escape_string($_POST['PS']);
+			$License = mysql_real_escape_string($_POST['LCN']);
+			$Status = mysql_real_escape_string($_POST['STS']);
+			$Date_end = mysql_real_escape_string($_POST['DE']);
+			$DateEnd_con = date('Y-m-d',strtotime($Date_end));
 			$Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
 			
-			$stmt = $db->prepare("update users set Username=?, Password=?, Firstname=?, Middlename=?, Lastname=?, Gender=?, Position=? where User_id=?");
+			$stmt = $db->prepare("update users set Username=?, Password=?, Firstname=?, Middlename=?, Lastname=?, Gender=?, Position=?, License_No=?, DATE_END=?, STATUS=? where User_id=?");
 			$stmt->bindParam(1,$Username);
 			$stmt->bindParam(2,$Pass);
 			$stmt->bindParam(3,$Firstname);
@@ -226,7 +239,10 @@ require 'lib/Db.config.pdo.php';
 			$stmt->bindParam(4,$Middlename);
 			$stmt->bindParam(6,$Gender);
 			$stmt->bindParam(7,$Position);
-			$stmt->bindParam(8,$ID);
+			$stmt->bindParam(8,$License);
+			$stmt->bindParam(9,$DateEnd_con);
+			$stmt->bindParam(10,$Status);
+			$stmt->bindParam(11,$ID);
 			$stmt->execute();
 		
 }else if($page == 'DeleteSched'){
@@ -303,7 +319,7 @@ require 'lib/Db.config.pdo.php';
 			$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
 			$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-			$Time = date('H:i:s', strtotime($Sched_time));
+			$Time = date('H:i:s', strtotime($Sched_time. ' +7 minutes'));
 			$sqldate = date('Y-m-d',strtotime($Sched_date)); 
 	
 		$stmt = $db->prepare("Update schedule set SCHEDULE_DATE=?, SCHEDULE_TIME=?, SCHEDULE_PURPOSE=? where SCHEDULE_ID=?");
@@ -483,6 +499,8 @@ require 'lib/Db.config.php';
 else if($page == 'addMedicalRecord'){
 require 'lib/Db.config.pdo.php';
 require 'lib/Db.config.php';
+
+			$Doc_id = mysql_real_escape_string($_POST['DOC_ID']);
 			$MedRillness = mysql_real_escape_string($_POST['MedRillness']);
 			$MedRBP = mysql_real_escape_string($_POST['MedRBP']);
 			$MedRWeight = mysql_real_escape_string($_POST['MedRWeight']);
@@ -512,7 +530,7 @@ require 'lib/Db.config.php';
 	$Treatment = '';
 	$Remarks = '';
 	$date = date("Y-m-d");
-	$sql = "INSERT INTO `treatment` (`MR_ID`, `DIAG_DTLS`, `TREATMENT`, `REMARKS`, `F_CHECKUP`, `User_id`) VALUES ('$ID', '$Diagnosis', '$Treatment', '$Remarks', '$date', '4')";
+	$sql = "INSERT INTO `treatment` (`MR_ID`, `DIAG_DTLS`, `TREATMENT`, `REMARKS`, `F_CHECKUP`, `User_id`) VALUES ('$ID', '$Diagnosis', '$Treatment', '$Remarks', '$date', '$Doc_id')";
  		$stmt = $db->prepare($sql);
  		$stmt -> execute();
 
@@ -521,7 +539,7 @@ else if($page == 'DoctorList'){
 require 'lib/Db.config.pdo.php';
 require 'lib/Db.config.php';
 
-	$sql = "SELECT *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users WHERE Position = 'Doctor'";
+	$sql = "SELECT *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users WHERE Position = 'Doctor' AND STATUS = 'Active'";
 			$do = mysql_query($sql);
 			$count = mysql_num_rows($do);
 
@@ -533,5 +551,6 @@ require 'lib/Db.config.php';
 		echo "<option>No registered doctor</option>";
 	}			
 }
+
 
 ?>

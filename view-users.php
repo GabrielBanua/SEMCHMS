@@ -15,6 +15,15 @@ require 'lib/Db.config.pdo.php';
     <link rel="shortcut icon" href="img/favicon.ico">
 
     <title>Users</title>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <!--<script src="js/jquery.js"></script>-->
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    <script src="js/respond.min.js" ></script>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -158,111 +167,20 @@ require 'lib/Db.config.pdo.php';
                           <div class="panel-body">
                                 <div class="adv-table">
 								<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddModal"><i class="icon-plus"></i> Add New User</a>
-<!-- Register User Start  MODAL-->
-              <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddModal" class="modal fade">
-                                  <div class="modal-dialog">
-                                      <div class="modal-content">
-                                          <div class="modal-header">
-                                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                              <h4 class="modal-title">User Registration</h4>
-                                          </div>
-                                          <div class="modal-body">
-
-                                              <form class="form-horizontal" role="form">
-                                                  <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Username:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" id="UN" class="form-control" required>
-                                                      </div>
-                                                  </div>
-                          <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Password:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="Password" id="PW" class="form-control" required>
-                                                      </div>
-                                                  </div>
-                          <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">First Name:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" id="FN" class="form-control" required>
-                                                      </div>
-                                                  </div>
-                          <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Middle Name:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" id="MN" class="form-control" required>
-                                                      </div>
-                                                  </div>
-                          <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Last Name:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" id="LN" class="form-control" required>
-                                                      </div>
-                                                  </div>
-                          <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Gender:</label>
-                                                      <div class="col-lg-4">
-                                                          <select class="form-control" id="GN" required>
-                                                            <option hidden>-None-</option>
-                                                            <option>Male</option>
-                                                            <option>Female</option>
-                                                          </select>
-                                                      </div>
-                                                  </div>
-                          <div class="form-group">
-                                                      <label class="col-md-3 col-sm-2 control-label">Position:</label>
-                                                      <div class="col-lg-4">
-                              <select class="form-control" id="PS" required>
-                                <option hidden>-None-</option>
-                                <option>Admin</option>
-                                <option>Doctor</option>
-                                <option>Medtech</option>
-                                <option>Pharmacy</option>
-                                <option>Pathlogist</option>
-                              </select>
-                                                      </div>
-                                                  </div>
-							<div class="form-group">
-											<label class="col-md-3 col-sm-2 control-label">License No.:</label>
-											<div class="col-lg-6">
-												<input type="text" class="form-control">
-											</div>
-									  </div>
-									  <div class="form-group">
-											<label class="col-md-3 col-sm-2 control-label">Date End:</label>
-											<div class="col-lg-4">
-												<input type="date" class="form-control">
-											</div>
-									  </div>
-									  <div class="form-group">
-											<label class="col-md-3 col-sm-2 control-label">Status:</label>
-											<div class="col-lg-4">
-												<select class="form-control">
-													<option hidden>-- Select Option --</option>
-													<option>Active</option>
-													<option>Inactive</option>
-												</select>
-											</div>
-									  </div>
-                                              </form>
-                                          </div>
-                    <div class="modal-footer">
-                      <a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Cancel</a>
-                      <a class="btn btn-shadow btn-success"  onclick="addNewUser()"><i class="icon-save"></i> Register</a>
-                    </div>
-                                      </div>
-                                  </div>
-                              </div>
-<!--MODAL END-->
+<?php
+include 'lib/modals/register_user_modal.php';
+?>
 
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th width="30">ID</th>
-                                          <th width="90">Username</th>
-                                          <th width="150">Fullname</th>
-                                          <th width="90" class="hidden-phone">Position</th>
-                                          <th width="60" class="hidden-phone">Action</th>
+                                          <th style="text-align: center;" width="6%">ID</th>
+                                          <th width="10%">Username</th>
+                                          <th width="20%">Fullname</th>
+                                          <th width="10%" class="hidden-phone">Position</th>
+                                          <th width="15%" class="hidden-phone">License No.</th>
+                                          <th width="15%" class="hidden-phone">Status</th>
+                                          <th width="15%" class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
@@ -270,131 +188,25 @@ require 'lib/Db.config.pdo.php';
       while($row = $stmt->fetch()){
 ?>
                                           <tr class="gradeX">
-                                                <td><?php echo $row['User_id'] ?></td>
+                                                <td style="text-align: center;"><?php echo $row['User_id'] ?></td>
                                                 <td><?php echo $row['Username'] ?></td>
                                                 <td><?php echo $row['FullName'] ?></td>
                                                 <td><?php echo $row['Position'] ?></td>
+                                                <td><?php echo $row['License_No'] ?></td>
+                                                <td><?php echo $row['STATUS'] ?></td>
                                                 <td class="center hidden-phone">
                                                 <a class="btn btn-shadow btn-success btn-sm" data-toggle="modal" data-target="#EditModal-<?php echo $row['User_id']?>"><i class="icon-edit"></i> Edit</a>
 												<a class="btn btn-shadow btn-danger btn-sm" type="submit" onclick="DeleteUser(<?php echo $row['User_id']?>)"><i class="icon-trash"></i> Delete</a>
-<!-- Edit User MODAL-->
-              <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $row['User_id']?>" role="dialog" tabindex="-1" id="EditModal-<?php echo $row['User_id']?>" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                    <h4 class="modal-title" id="myModalLabel-<?php echo $row['User_id']?>">Edit User</h4>
-                                </div>
-                                <div class="modal-body">
-
-                                <form class="form-horizontal" role="form">
-                                      <div class="form-group">
-                                            <label class="col-md-3 col-sm-2 control-label">ID:</label>
-                                                <div class="col-lg-2">
-                                                    <input type="text" class="form-control" value="<?php echo $row['User_id'] ?>" readonly class="form_datetime form-control">
-                                                </div>
-                                      </div>
-                                      <div class="form-group">
-                                            <label class="col-md-3 col-sm-2 control-label">Username:</label>
-                                                <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="UN-<?php echo $row['User_id'] ?>" value="<?php echo $row['Username']; ?>">
-                                                </div>
-                                      </div>
-                                      <div class="form-group">
-                                            <label class="col-md-3 col-sm-2 control-label">Password:</label>
-                                                <div class="col-lg-6">
-                                                    <input type="password" class="form-control" id="PW-<?php echo $row['User_id'] ?>" value="<?php echo $row['Password']; ?>">
-                                                </div>
-                                      </div>
-                                      <div class="form-group">
-                                            <label class="col-md-3 col-sm-2 control-label">First Name:</label>
-                                                <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="FN-<?php echo $row['User_id'] ?>" value="<?php echo $row['Firstname']; ?>">
-                                                </div>
-                                      </div>
-                                      <div class="form-group">
-                                            <label class="col-md-3 col-sm-2 control-label">Middle Name:</label>
-                                                <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="MN-<?php echo $row['User_id'] ?>" value="<?php echo $row['Middlename']; ?>">
-                                                </div>
-                                      </div>
-                                      <div class="form-group">
-                                            <label class="col-md-3 col-sm-2 control-label">Last Name:</label>
-                                                <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="LN-<?php echo $row['User_id'] ?>" value="<?php echo $row['Lastname']; ?>">
-                                                </div>
-                                      </div>
-                                      <div class="form-group">
-                                            <label class="col-md-3 col-sm-2 control-label">Gender:</label>
-                                                <div class="col-lg-4">
-                                                    <select class="form-control" id="GN-<?php echo $row['User_id'] ?>">
-                                                      <option value="-None-" <?php
-                                                      if ($row['Gender'] == "-None-") { echo " selected"; }?>>-None-</option>
-                                                      <option value="Male" <?php
-                                                      if ($row['Gender'] == "Male") { echo " selected"; }?>>Male</option>
-                                                      <option value="Female" <?php
-                                                      if ($row['Gender'] == "Female") { echo " selected"; }?>>Female</option>
-                                                    </select>
-                                                </div>
-                                      </div>
-                                      <div class="form-group">
-                                            <label class="col-md-3 col-sm-2 control-label">Position:</label>
-                                                <div class="col-lg-4">
-                                                    <select class="form-control" id="PS-<?php echo $row['User_id'] ?>">
-                                                      <option value="-None-" <?php
-                                                      if ($row['Position'] == "-None-") { echo " selected"; }?>>-None-</option>
-                                                      <option value="Admin" <?php
-                                                      if ($row['Position'] == "Admin") { echo " selected"; }?>>Admin</option>
-                                                      <option value="Doctor" <?php
-                                                      if ($row['Position'] == "Doctor") { echo " selected"; }?>>Doctor</option>
-                                                      <option value="Medtech" <?php
-                                                      if ($row['Position'] == "Medtech") { echo " selected"; }?>>Medtech</option>
-                                                      <option value="Pharmacist" <?php
-                                                      if ($row['Position'] == "Pharmacist") { echo " selected"; }?>>Pharmacist</option>
-                                                      <option value="Pathologist" <?php
-                                                      if ($row['Position'] == "Pathologist") { echo " selected"; }?>>Pathlogist</option>
-                                                    </select>
-                                                </div>
-                                      </div>
-									  <div class="form-group">
-											<label class="col-md-3 col-sm-2 control-label">License No.:</label>
-											<div class="col-lg-6">
-												<input type="text" class="form-control">
-											</div>
-									  </div>
-									  <div class="form-group">
-											<label class="col-md-3 col-sm-2 control-label">Date End:</label>
-											<div class="col-lg-4">
-												<input type="date" class="form-control">
-											</div>
-									  </div>
-									  <div class="form-group">
-											<label class="col-md-3 col-sm-2 control-label">Status:</label>
-											<div class="col-lg-4">
-												<select class="form-control">
-													<option hidden>-- Select Option --</option>
-													<option>Active</option>
-													<option>Inactive</option>
-												</select>
-											</div>
-									  </div>
-                                </form>
-                                </div>
-                                                  <div class="modal-footer">
-                                                      <a data-dismiss="modal" class="btn btn-shadow btn-default">Cancel</a>
-                                                      <a class="btn btn-shadow btn-success" onclick="UpdateUser(<?php echo $row['User_id'] ?>)"><i class="icon-plus"></i> Update</a>
-                                                  </div>
-                          </div>
-                    </div>
-              </div>
-<!--MODAL END-->
+<?php
+include 'lib/modals/edit_user_modal.php';
+?>
                                                 </td>
                                           </tr>
 <?php
       }
 ?>
                                       </tbody>
-									                  </table>
+								    </table>
                                 </div>
                           </div>
 
@@ -417,124 +229,12 @@ require 'lib/Db.config.pdo.php';
       </footer>
       <!--footer end-->
   </section>
+<!--common script for all pages-->
+<script src="js/common-scripts.js"></script>
 
-    <!-- js placed at the end of the document so the pages load faster -->
-    <!--<script src="js/jquery.js"></script>-->
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
-    <script src="js/respond.min.js" ></script>
-
-
-  <!--common script for all pages-->
-    <script src="js/common-scripts.js"></script>
-
-    <!--script for this page only-->
-
-      <script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#example').dataTable( {
-                  "aaSorting": [[ 10, "desc" ]]
-              } );
-          } );
-      </script>
-     <script>
-        function DeleteUser(str){
-          var id = str;
-          if (confirm('Are you sure you want to delete this user in the database?')) {
-              $.ajax({
-              type: "POST",
-              url: "Server.php?p=DeleteUser",
-              data: "User_id="+id,
-              success: function(data){
-                alert('Deleted successfully!');
-                window.location.reload();
-              }
-          });
-          } else {
-              // Do nothing!
-          } 
-        }
-
-        function UpdateUser(str){
-          var User_id = str;
-          var Username = $('#UN-'+str).val();
-          var Password = $('#PW-'+str).val();
-          var Firstname = $('#FN-'+str).val();
-          var Lastname= $('#LN-'+str).val();
-          var Middlename= $('#MN-'+str).val();
-          var Gender= $('#GN-'+str).val();
-          var Position= $('#PS-'+str).val();
-          if (confirm('Are you sure you want to update this user in the database?')) {
-          $.ajax({
-            type: "POST",
-            url: "Server.php?p=UpdateUser",
-            data: "UN="+Username+"&PW="+Password+"&FN="+Firstname+"&LN="+Lastname+"&MN="+Middlename+"&GN="+Gender+"&PS="+Position+"&User_id="+User_id,
-            success: function(data){
-                alert('Updated successfully!');
-                window.location.reload();
-              }
-          });
-          } else {
-              // Do nothing!
-          } 
-        }
-
-        function addNewUser(){
-          var Username = $('#UN').val();
-          var Password = $('#PW').val();
-          var Firstname = $('#FN').val();
-          var Lastname= $('#LN').val();
-          var Middlename= $('#MN').val();
-          var Gender= $('#GN').val();
-          var Position= $('#PS').val();
-          if (confirm('Are you sure you want to add this user in the database?')) {
-          $.ajax({
-            type: "POST",
-            url: "Server.php?p=addNewUser",
-            data: "UN="+Username+"&PW="+Password+"&FN="+Firstname+"&LN="+Lastname+"&MN="+Middlename+"&GN="+Gender+"&PS="+Position,
-            success: function(data){
-                alert('Added successfully!');
-                window.location.reload();
-              }
-          });
-          } else {
-              // Do nothing!
-          }
-        }
-
-        $(document).ready(function(){
-        var Auth ='<?php echo $Position; ?>';
-        if (Auth == "Admin") 
-        {                       
-            $('#Patient-li').show(); 
-            $('#Schedule-li').show();
-            $('#Inventory-li').show();
-            $('#Laboratory-li').show();
-            $('#Reports-li').show();
-            $('#User-li').show();
-            $('#Maintenance-li').show();
-        }
-        else if(Auth == "Doctor") {
-            $('#User-li').hide();
-            $('#Patient-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Laboratory-li').hide();
-            $('#Inventory-li').hide();
-        }
-        else if(Auth == "Medtech") {
-            $('#User-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Patient-li').hide();
-            $('#Schedule-li').hide();
-            $('#Inventory-li').hide();
-        }
-        });
-      </script>
+<?php
+include 'lib/functions/view-user-script.php';
+include 'lib/User-Accesslvl.php';
+?>
   </body>
 </html>

@@ -14,7 +14,19 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
     <link rel="shortcut icon" href="img/favicon.ico">
 
     <title>Inventory</title>
-
+	<!-- js placed at the end of the document so the pages load faster -->
+    <!--<script src="js/jquery.js"></script>-->
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    <script src="js/respond.min.js" ></script>
+    <script src="js/preloader.js" ></script>
+	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script src="js/advanced-form-components.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -39,7 +51,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
   <body>
   <div class="preloader-wrapper">
     <div class="preloader">
-        <img src="gif/loading.svg" alt="SEMHCMS">
+        <img src="gif/Ellipsis1.gif" alt="SEMHCMS">
         <div style="position: absolute; top: 85%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
           <p style="font-size: 15px; font-weight: bold;">loading</p>
         </div>
@@ -378,7 +390,7 @@ while($row = $stmt->fetch()){
         	<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty){ echo "<span class='label label-danger label-mini'>Low</span>";} ?></td>
         	<td class="hidden-phone" style="padding-left: 20px;">
 				<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
-				<a class="btn btn-shadow btn-danger btn-xs"><i class="icon-trash"></i></a>
+				<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
 
 <!-- ******************************************Start Model Edit Medicines*********************************************************** -->
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditMed" class="modal fade">
@@ -515,253 +527,16 @@ while($row = $stmt->fetch()){
 <!--footer end-->
 </section>
 
-    <!-- js placed at the end of the document so the pages load faster -->
-    <!--<script src="js/jquery.js"></script>-->
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
-    <script src="js/respond.min.js" ></script>
-    <script src="js/preloader.js" ></script>
+    
   	<!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
-    <!--script for this page only-->
-	<!-- Keypress Limit -->
-	<script src="js/numbers-only.js"></script>
-      <script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#example').dataTable( {
-                  "aaSorting": [[ 0, "desc" ]]
-              } );
-          } );
-		  
-          $(document).ready(function(){
-        var Auth ='<?php echo $Position; ?>';
-        if (Auth == "Admin") 
-        {                       
-            $('#Patient-li').show(); 
-            $('#Schedule-li').show();
-            $('#Inventory-li').show();
-            $('#Laboratory-li').show();
-            $('#Reports-li').show();
-            $('#User-li').show();
-            $('#Maintenance-li').show();
-        }
-        else if(Auth == "Doctor") {
-            $('#User-li').hide();
-            $('#Patient-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Laboratory-li').hide();
-            $('#Inventory-li').hide();
-        }
-        else if(Auth == "Medtech") {
-            $('#User-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Patient-li').hide();
-            $('#Schedule-li').hide();
-            $('#Inventory-li').hide();
-        }
-        });
-    </script>
-	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-	<script src="js/advanced-form-components.js"></script>
 	<script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
-	
-			<script type="text/javascript">
-		      $(document).ready(function () {
-		          $(".select2-single").select2({placeholder: 'Please select option'});
-
-		          $(".select2-multiple").select2();
-		      });
-
-		      function addMedicine(){
-		      	var MEDICINE_CAT = $('#MEDICINE_CAT').val();
-		      	var MEDICINE_TYPE = $('#MEDICINE_TYPE').val();
-		      	var MEDICINE_GNAME = $('#MEDICINE_GNAME').val();
-		      	var MEDICINE_BNAME = $('#MEDICINE_BNAME').val();
-		      	var MEDICINE_DFORM = $('#MEDICINE_DFORM').val();
-		      	var MEDICINE_DOSE = $('#MEDICINE_DOSE').val();
-
-			      	if(confirm('Are you sure you want to add this new medicine in the database?')) {
-			        $.ajax({
-			          type: "POST",
-			          url: "Server.php?p=addMedicine",
-			          data: "MEDICINE_CAT="+MEDICINE_CAT+"&MEDICINE_TYPE="+MEDICINE_TYPE+"&MEDICINE_GNAME="+MEDICINE_GNAME+"&MEDICINE_BNAME="+MEDICINE_BNAME+"&MEDICINE_DFORM="+MEDICINE_DFORM+"&MEDICINE_DOSE="+MEDICINE_DOSE,
-			          success: function(data){
-			            alert('Added successfully!');
-			            window.location.reload();
-			          }
-			        });
-			      }else{
-			        //do nothing
-			      }
-		      }
-		  </script>
-		  <script type="text/javascript">
-					$(document).ready(function(){
-					$('#INV_MEDICINE_TYPE').on('change',function(){
-						var Medtype = $('#INV_MEDICINE_TYPE').val();
-						var MedCat = $('#INV_MEDICINE_CAT').val();
-						if(Medtype != '' && MedCat != ''){
-							$.ajax({
-								type: "POST",
-								url: "Server.php?p=MedicineName",
-								data: "INV_MEDTYPE="+Medtype+"&INV_MEDCAT="+MedCat,
-								success: function(data){
-									$('#INV_MEDICINE_GNAME').html(data);
-									changeBrand();
-								var CheckDF = $('#INV_MEDICINE_DF').val();
-									if(CheckDF == 'Tablet' || CheckDF == 'Syrup'){
-										$('#INV_MEDICINE_DF').html('<option></option>');
-										$('#INV_MEDICINE_DS').html('<option></option>');
-									}else{
-										$('#INV_MEDICINE_DF').html('<option></option><option>Tablet</option><option>Syrup</option>');
-									}
-								}
-							});
-						}else{
-						$('#INV_MEDICINE_GNAME').html('<option>Please select catergory</option>');
-						}
-					});
-					$('#INV_MEDICINE_CAT').on('change',function(){
-						var Medtype = $('#INV_MEDICINE_TYPE').val();
-						var MedCat = $('#INV_MEDICINE_CAT').val();
-						if(Medtype != '' && MedCat != ''){
-							$.ajax({
-								type: "POST",
-								url: "Server.php?p=MedicineName",
-								data: "INV_MEDTYPE="+Medtype+"&INV_MEDCAT="+MedCat,
-								success: function(data){
-									$('#INV_MEDICINE_GNAME').html(data);
-									changeBrand();
-									changeDF();
-								var CheckDF = $('#INV_MEDICINE_DF').val();
-									if(CheckDF == 'Tablet' || CheckDF == 'Syrup'){
-										$('#INV_MEDICINE_DF').html('<option></option>');
-										$('#INV_MEDICINE_DS').html('<option></option>');
-									}else{
-										$('#INV_MEDICINE_DF').html('<option></option><option>Tablet</option><option>Syrup</option>');
-									}
-								}
-							});
-						}else{
-								$('#INV_MEDICINE_GNAME').html('<option></option>');	
-						}
-					});
-					$('#INV_MEDICINE_GNAME').on('change',function(){
-						var MedGname = $('#INV_MEDICINE_GNAME').val();
-						if(MedGname){
-							$.ajax({
-								type: "POST",
-								url: "Server.php?p=MedicineBName",
-								data: "INV_MEDGNAME="+MedGname,
-								success: function(data){
-									$('#INV_MEDICINE_BNAME').html(data);
-									changeDF();
-								}
-							});
-						}else{
-								$('#INV_MEDICINE_BNAME').html('<option>Please select name of medicine!<option>');
-
-						}
-					});
-					$('#INV_MEDICINE_BNAME').on('change',function(){
-						changeDF();
-					});
-					$('#INV_MEDICINE_DF').on('change',function(){
-							var MedDF = $('#INV_MEDICINE_DF').val();
-							var MedCat = $('#INV_MEDICINE_CAT').val();
-							var Medtype = $('#INV_MEDICINE_TYPE').val();
-							var MedGname = $('#INV_MEDICINE_GNAME').val();
-							var MedBname = $('#INV_MEDICINE_BNAME').val();
-							if(MedDF){
-								$.ajax({
-									type: "POST",
-									url: "Server.php?p=MedicineDF",
-									data: "MedDform="+MedDF+"&Medgname="+MedGname+"&MedBname="+MedBname+"&MedCat="+MedCat+"&Medtype="+Medtype,
-									success: function(data){
-										$('#INV_MEDICINE_DS').html(data);
-									}
-								});
-							}
-							else{
-								$('#INV_MEDICINE_DS').html('<option><option>');
-							}
-						});
-					});
-					function changeBrand(){
-						var MedGname = $('#INV_MEDICINE_GNAME').val();
-							if(MedGname){
-								$.ajax({
-									type: "POST",
-									url: "Server.php?p=MedicineBName",
-									data: "INV_MEDGNAME="+MedGname,
-									success: function(data){
-										$('#INV_MEDICINE_BNAME').html(data);
-									}
-								});
-							}else{
-									$('#INV_MEDICINE_BNAME').html('<option>Please select name of medicine!<option>');
-							}
-					}
-					function changeDF(){
-							var MedDF = $('#INV_MEDICINE_DF').val();
-							var MedCat = $('#INV_MEDICINE_CAT').val();
-							var Medtype = $('#INV_MEDICINE_TYPE').val();
-							var MedGname = $('#INV_MEDICINE_GNAME').val();
-							var MedBname = $('#INV_MEDICINE_BNAME').val();
-							if(MedDF){
-								$.ajax({
-									type: "POST",
-									url: "Server.php?p=MedicineDF",
-									data: "MedDform="+MedDF+"&Medgname="+MedGname+"&MedBname="+MedBname+"&MedCat="+MedCat+"&Medtype="+Medtype,
-									success: function(data){
-										$('#INV_MEDICINE_DS').html(data);
-									}
-								});
-							}else{
-								$('#INV_MEDICINE_DS').html('<option><option>');
-							}
-					}
-					function addInventory(){
-						var MedDform = $('#INV_MEDICINE_DF').val();
-						var MedCat = $('#INV_MEDICINE_CAT').val();
-						var Medtype = $('#INV_MEDICINE_TYPE').val();
-						var MedGname = $('#INV_MEDICINE_GNAME').val();
-						var MedBname = $('#INV_MEDICINE_BNAME').val();
-						var MedDose  = $('#INV_MEDICINE_DS').val();
-						var Qty  = $('#INV_MEDICINE_QTY').val();
-						var ExpDate  = $('#INV_MEDICINE_EXPDATE').val();
-						var DateArr  = $('#INV_MEDICINE_DATEARR').val();
-						var Supplier  = $('#INV_MEDICINE_SUPP').val();
-
-						if(MedDform == '' || MedCat == '' || Medtype == '' || MedGname == '' || MedBname == '' || MedDose == '' || Qty == '' || ExpDate == '' || DateArr == '' || Supplier == ''){
-							$('#Error_Message').html('Please fill all fields! &nbsp;');
-						}else{
-							$('#Error_Message').html('');
-							if (confirm('Are you sure you want to add stock for this medicine?')) {
-							$.ajax({
-								type: "POST",
-								url: "Server.php?p=AddInventory",
-								data: "MEDICINE_DFORM="+MedDform+"&MEDICINE_DOSE="+MedDose+"&MEDICINE_BNAME="+MedBname+"&MEDICINE_GNAME="+MedGname+"&MEDICINE_TYPE="+Medtype+"&MEDICINE_CAT="+MedCat+"&SUPPLIER="+Supplier+"&DATEARR="+DateArr+"&QTY="+Qty+"&EXPDATE="+ExpDate,
-								success: function(data){
-									$('#Success_Message').html('Successfully Added! &nbsp;');
-									setTimeout(function() {
-										$('#Success_Message').fadeOut('slow');
-									}, 2000);
-									setTimeout(function(){
-										window.location.reload();
-									}, 3000);
-								}
-							});
-							}
-						}
-					}
-		</script>
-  </body>
+    <!--script for this page only-->
+	<!--key press limit-->
+	<script src="js/numbers-only.js"></script>
+<?php
+include 'lib/functions/view-inventory-script.php';
+include 'lib/User-Accesslvl.php';
+?>
+</body>
 </html>

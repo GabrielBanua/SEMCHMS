@@ -12,7 +12,7 @@ if(isset($_POST['login'])){
     $password = $_POST['password'];
 
     //Retrieve the user account information for the given username.
-    $sql = "SELECT User_id, Username, Password, Position FROM users WHERE Username = :username";
+    $sql = "SELECT User_id, Username, Password, Position FROM users WHERE STATUS = 'Active' AND Username = :username";
     $stmt = $db->prepare($sql);
     
     //Bind value.
@@ -27,7 +27,7 @@ if(isset($_POST['login'])){
     //If $row is FALSE.
     if($user === false){
         //Could not find a user
-        echo "<script>alert('incorrect username')</script>";
+        echo "<script>alert('Incorrect username')</script>";
     } else{
         $valid = password_verify($password, $user['Password']);
         

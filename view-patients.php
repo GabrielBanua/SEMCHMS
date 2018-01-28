@@ -14,6 +14,21 @@ require 'lib/Db.config.pdo.php';
     <link rel="shortcut icon" href="img/favicon.ico">
 
     <title>Patient List</title>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <!--<script src="js/jquery.js"></script>-->
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="js/respond.min.js" ></script>
+    <script src="js/preloader.js"></script>
+	<script src="js/numbers-only.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script src="js/advanced-form-components.js"></script>
+    
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -37,7 +52,7 @@ require 'lib/Db.config.pdo.php';
   <body>
   <div class="preloader-wrapper">
     <div class="preloader">
-        <img src="gif/heartRed.svg" alt="SEMHCMS">
+        <img src="gif/Facebook.gif" alt="SEMHCMS">
         <div style="position: absolute; top: 100%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
           <p style="font-size: 15px; font-weight: bold;">loading</p>
         </div>
@@ -226,36 +241,11 @@ include 'lib/modals/view-patients-editmodal.php';
       <!--footer end-->
   </section>
 
-    <!-- js placed at the end of the document so the pages load faster -->
-    <!--<script src="js/jquery.js"></script>-->
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
-    <script src="js/respond.min.js" ></script>
-    <script src="js/preloader.js" ></script>
-	<script src="js/numbers-only.js"></script>
-
-
-  <!--common script for all pages-->
-    <script src="js/common-scripts.js"></script>
-
-  <!--script for this page only-->
-
-  <script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#example').dataTable( {
-                  "aaSorting": [[ 0, "asc" ]]
-              } );
-          } );
-  </script>
-	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-	<script src="js/advanced-form-components.js"></script>
+<!--script for this page only-->
+<script src="js/common-scripts.js"></script>
 <?php
 include 'lib/functions/view-patients-scripts.php';
+include 'lib/User-Accesslvl.php';
 ?>
 </body>
 </html>

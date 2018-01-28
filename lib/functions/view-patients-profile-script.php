@@ -4,37 +4,7 @@
                   "aaSorting": [[ 0, "desc" ]]
               } );
           } );
-          
-      $(document).ready(function(){
-        var Auth ='<?php echo $Position; ?>';
-        if (Auth == "Admin") 
-        {                       
-            $('#Patient-li').show(); 
-            $('#Schedule-li').show();
-            $('#Inventory-li').show();
-            $('#Laboratory-li').show();
-            $('#Reports-li').show();
-            $('#User-li').show();
-            $('#Maintenance-li').show();
-        }
-        else if(Auth == "Doctor") {
-            $('#User-li').hide();
-            $('#Patient-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Laboratory-li').hide();
-            $('#Inventory-li').hide();
-        }
-        else if(Auth == "Medtech") {
-            $('#User-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Patient-li').hide();
-            $('#Schedule-li').hide();
-            $('#Inventory-li').hide();
-        }
-        });
-
+      
       $(document).ready(function(){
           var Disease = $('#DISE_DISO').val();
           var Significant = $('#SIG_INJ').val(); 
@@ -101,7 +71,8 @@
 		  $(".select2-multiple").select2();
 	  });
 
-    function addMedicalRecord(){
+    function addMedicalRecord(str){
+          var Doctor_id = str;
           var Medillness = $('#MedRillness').val(); 
           var MedBP =  $('#MedRBP').val();
           var MedWeight = $('#MedRWeight').val();
@@ -118,7 +89,7 @@
                 $.ajax({
                       type: "POST",
                       url: "Server.php?p=addMedicalRecord",
-                      data: "MedRillness="+Medillness+"&MedRBP="+MedBP+"&MedRWeight="+MedWeight+"&MedRTemp="+MedTemp+"&MedRDate="+MedDate+"&Sched_ID="+Sched_id,
+                      data: "MedRillness="+Medillness+"&MedRBP="+MedBP+"&MedRWeight="+MedWeight+"&MedRTemp="+MedTemp+"&MedRDate="+MedDate+"&Sched_ID="+Sched_id+"&DOC_ID="+Doctor_id,
                       success: function(data){
                        $('#Success_Message').html('Successfully Added! &nbsp;');
                         setTimeout(function() {
@@ -135,7 +106,7 @@
           }
       }
     
-    function addTreatment(str){
+function addTreatment(str){
           var Med_RID = str;
           var Diagnosis = $('#DIAG_DTLS-'+Med_RID).val(); 
           var Treatment =  $('#TREATMENT-'+Med_RID).val();
@@ -145,7 +116,6 @@
           var RefDoc = $('#Ref_Doc_name-'+Med_RID).val();
           var RefDoc_CN = $('#Ref_Doc_CN-'+Med_RID).val();
           var RefDoc_Add = $('#Ref_Doc_Add-'+Med_RID).val();
-          var checkbox = $('#c1-'+Med_RID+':checked').val();
 
           if(Diagnosis == '' || Treatment == '' || Remarks == '' || FollowUp == ''){
              $('#Error_Message-TRMT-'+Med_RID).html('Please fill all fields! &nbsp;');
@@ -167,4 +137,48 @@
           });
         }
       }
+function editTreatment(id){
+          var Update_ID = id;
+          var Diagnosis = $('#DIAG-'+Update_ID).val(); 
+          var Treatment =  $('#TREAT-'+Update_ID).val();
+          var Remarks = $('#REMARK-'+Update_ID).val();
+          var FollowUp = $('#FO_CHECKUP-'+Update_ID).val();
+          var Doctor = $('#listDoctor-'+Update_ID).val();
+          var RefDoc = $('#RefDoc_name-'+Update_ID).val();
+          var RefDoc_CN = $('#RefDoc_CN-'+Update_ID).val();
+          var RefDoc_Add = $('#RefDoc_Add-'+Update_ID).val();
+
+
+          if(Diagnosis == '' || Treatment == '' || Remarks == '' || FollowUp == ''){
+             $('#Error_Message-ETRMT-'+Update_ID).html('Please fill all fields! &nbsp;');
+          }else{
+            $('#Error_Message-ETRMT-'+Update_ID).html('');
+           $.ajax({
+                type: "POST",
+                url: "Server.php?p=editTreatment",
+                data: "DGNE="+Diagnosis+"&TRMTE="+Treatment+"&RMKSE="+Remarks+"&FPCHKE="+FollowUp+"&DOCE="+Doctor+"&MRIDE="+Med_RID+"&REFDNE="+RefDoc+"&REF_CNE="+RefDoc_CN+"&REF_ADDE="+RefDoc_Add,
+                success: function(data){
+                  $('#Success_Message-ETRMT-'+Update_ID).html('Successfully Added! &nbsp;');
+                        setTimeout(function() {
+                          $('#Success_Message-ETRMT-'+Update_ID).fadeOut('slow');
+                        }, 1500);
+                        setTimeout(function(){
+                          window.location.reload();
+                        }, 2000);
+                      }
+          });
+        }
+      }
+      function RetrieveDoctor(str){
+      var id = str;
+   
+      $.ajax({
+                type: "GET",
+                url: "Server.php?p=DoctorList",
+                success: function(data){
+                  $('#listofDoctor-'+id).html(data);
+                }
+      });
+
+    }
 	</script>

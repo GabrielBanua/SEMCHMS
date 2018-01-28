@@ -42,7 +42,7 @@
                                 <div class="form-group">
                                     <label class="col-md-3 col-sm-2 control-label">Time:</label>
                                         <div class="col-md-5">
-                                                    <input type="time" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control" value="<?php $date = date("H:i", strtotime($row['SCHEDULE_TIME'])); echo $date; ?>">
+                                                    <input type="time" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control" value="<?php $date = date("H:i", strtotime($row['SCHEDULE_TIME']. ' -7 minutes')); echo $date; ?>">
                                         </div>
                                 </div>
                               <div class="form-group">
@@ -65,6 +65,8 @@
                           </form>
                         </div>
                     <div class="modal-footer">
+                    <span style="float: left; font-weight: bold;" id="Error_Message-<?php echo $row['SCHEDULE_ID'] ?>" class="text-danger"></span>
+                      <span style="float: left; font-weight: bold;" id="Success_Message-<?php echo $row['SCHEDULE_ID'] ?>" class="text-success"></span>
                       <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
                       <button class="btn btn-success" type="button" onclick="UpdateSched(<?php echo $row['SCHEDULE_ID']; ?>)">Update Schedule</button>
                     </div>

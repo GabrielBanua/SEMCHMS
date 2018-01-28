@@ -44,7 +44,7 @@
                         <span id="Error_Message" style="float: left; font-weight: bold;" class="text-danger"></span>
                         <span id="Success_Message" style="float: left; font-weight: bold;" class="text-success"></span>
           						  <a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
-          						  <a  class="btn btn-success" onclick="addMedicalRecord()">Save</a>
+          						  <a  class="btn btn-success" onclick="addMedicalRecord(<?php echo $Doctor['User_id']?>)">Save</a>
                       </div>
                   </div>
               </div>

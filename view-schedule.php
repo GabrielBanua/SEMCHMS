@@ -21,7 +21,20 @@ if($Position == 'Doctor'){
     <link rel="shortcut icon" href="img/favicon.ico">
     <link href="css/pageloader.css" rel="stylesheet">
     <title>View Schedule</title>
-
+     <!-- js placed at the end of the document so the pages load faster -->
+    <!--<script src="js/jquery.js"></script>-->
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
+    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/respond.min.js" ></script>
+    <script src="js/preloader.js" ></script>
+    <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="js/advanced-form-components.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -234,102 +247,12 @@ include 'lib/modals/view_schedule-modal.php';
       </footer>
       <!--footer end-->
   </section>
-
-    <!-- js placed at the end of the document so the pages load faster -->
-    <!--<script src="js/jquery.js"></script>-->
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
-    <script src="js/respond.min.js" ></script>
-    <script src="js/preloader.js" ></script>
-
-
-  <!--common script for all pages-->
+    <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
-
     <!--script for this page only-->
-
-      <script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#example').dataTable( {
-                  "aaSorting": [[ 1, "asc" ]]
-              } );
-          } );
-      </script>
-      <script>
-        $(document).ready(function(){
-        var Auth ='<?php echo $Position; ?>';
-        if (Auth == "Admin") 
-        {                       
-            $('#Patient-li').show(); 
-            $('#Schedule-li').show();
-            $('#Inventory-li').show();
-            $('#Laboratory-li').show();
-            $('#Reports-li').show();
-            $('#User-li').show();
-            $('#Maintenance-li').show();
-        }
-        else if(Auth == "Doctor") {
-            $('#User-li').hide();
-            $('#Patient-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Laboratory-li').hide();
-            $('#Inventory-li').hide();
-        }
-        else if(Auth == "Medtech") {
-            $('#User-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Patient-li').hide();
-            $('#Schedule-li').hide();
-            $('#Inventory-li').hide();
-        }
-        });
-
-        function UpdateSched(str){
-        var Sched_Id = str;
-        var SCHEDULE_DATE = $('#SCHEDULE_DATE-'+str).val();
-        var SCHEDULE_TIME = $('#SCHEDULE_TIME-'+str).val();
-        var SCHEDULE_PURPOSE = $('#SCHEDULE_PURPOSE-'+str).val();
-            if (confirm('Are you sure you want to update schedule for this patient?')) {
-            $.ajax({
-              type: "POST",
-              url: "Server.php?p=UpdateSched",
-              data: "Sched_Id="+Sched_Id+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
-              success: function(data){
-                    alert('Update successfully!');
-                    window.location.reload();
-                  }
-              });
-            }else{
-              //do nothing
-          }
-        }
-        function DeleteSched(str){
-          var id = str;
-          if (confirm('Are you sure you want to delete this schedule in the database?')) {
-              $.ajax({
-              type: "POST",
-              url: "Server.php?p=DeleteSched",
-              data: "SCHEDULE_ID="+id,
-              success: function(data){
-                alert('Deleted successfully!');
-                window.location.reload();
-              }
-          });
-          } else {
-              // Do nothing!
-          } 
-        }
-      </script>
-       
-  <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-  <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-  <script src="js/advanced-form-components.js"></script>
+<?php
+include 'lib/User-Accesslvl.php';
+include 'lib/functions/view-schedule-script.php';
+?>
   </body>
 </html>
