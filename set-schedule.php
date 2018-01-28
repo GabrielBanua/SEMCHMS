@@ -258,9 +258,8 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                                       <select class="form-control" id="SCHEDULE_PURPOSE-<?php echo $row['P_ID'] ?>">
                                         <option hidden>-None-</option>
                                         <option>Check Up</option>
+										<option>Dental</option>
                                         <option>X-ray</option>
-                                        <option>Dental</option>
-                                        <option>Laboratory Test</option>
                                       </select>
                                   </div>
                           </div>
@@ -269,8 +268,8 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                     <div class="modal-footer">
                       <span style="float: left; font-weight: bold;" id="Error_Message-<?php echo $row['P_ID'] ?>" class="text-danger"></span>
                       <span style="float: left; font-weight: bold;" id="Success_Message-<?php echo $row['P_ID'] ?>" class="text-success"></span>
-                      <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                      <button class="btn btn-success" type="button" onclick="SetSched(<?php echo $row['P_ID'] ?>)">Set Schedule</button>
+                      <a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Cancel</a>
+                      <a class="btn btn-shadow btn-success" type="button" onclick="SetSched(<?php echo $row['P_ID'] ?>)"><i class="icon-calendar"></i> Set Schedule</a>
                     </div>
                                       </div>
                                   </div>
