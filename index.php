@@ -135,7 +135,7 @@ require 'lib/chartSQL.php';
                       </a>
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
-                                      <li><a  href="view-users.php">View Users</a></li>
+                                      <li><a  href="view-users.php">Manage Users</a></li>
                       </ul>
                   </li>
                 </ul>
@@ -206,7 +206,7 @@ require 'lib/chartSQL.php';
                     <div class="col-lg-12">
                         <!--custom chart start-->
                         <div class="border-head">
-                            <h3>Number of Patients Graph</h3>
+                            <h3>Number of Patients Graph 2018</h3>
                         </div>
                         <div class="custom-bar-chart">
                             <ul class="y-axis">

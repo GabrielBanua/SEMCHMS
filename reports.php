@@ -148,7 +148,7 @@ else if($Position == "Volunter"){
                         </a>
                         <ul class="sub">
                             <li><a href="add-user.php">Add New User</a></li>
-                            <li><a href="view-users.php">View Users</a></li>
+                            <li><a href="view-users.php">Manage Users</a></li>
                         </ul>
                     </li>
 

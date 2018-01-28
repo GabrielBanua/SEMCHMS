@@ -153,7 +153,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
                     </a>
                 <ul class="sub">
                     <li><a  href="backup.php">Backup Database</a></li>
-					<li><a  href="view-users.php">View Users</a></li>
+					<li><a  href="view-users.php">Manage Users</a></li>
                 </ul>
             </li>
         </ul>
