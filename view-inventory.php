@@ -163,6 +163,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
                 <div class="adv-table">
 					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddInventory"><i class="icon-plus"></i> Add Inventory</a>
 					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddMed"><i class="icon-plus"></i> Add Medicines</a>
+					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#DispenseMed"><i class="icon-minus"></i> Dispense Medicines</a>
 <!-- Start Modal Add Inventory-->
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddInventory" class="modal fade">
 	<div class="modal-dialog">
@@ -263,8 +264,8 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 		<div class="modal-footer">
 			<span id="Error_Message" class="text-danger"></span>
 			<span id="Success_Message" class="text-success"></span>
-			<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-			<button class="btn btn-success" onclick="addInventory()">Save</button>
+			<a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
+			<a class="btn btn-success" onclick="addInventory()"><i class="icon-save"></i> Save</a>
 		</div>
 		</div>
 	</div>
@@ -338,8 +339,62 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 			</form>
 		</div>
 		<div class="modal-footer">
-			<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-			<button class="btn btn-success" type="submit" onclick="addMedicine()">Add</button>
+			<a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Cancel</a>
+			<a class="btn btn-shadow btn-success" type="submit" onclick="addMedicine()"><i class="icon-plus"></i> Add</a>
+		</div>
+		</div>
+	</div>
+</div>
+<!-- ****************************************************MODAL END****************************************************************** -->
+<!-- *******************************************Start Model Add Medicines*********************************************************** -->
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="DispenseMed" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+					<h4 class="modal-title">Dispense Medicines</h4>
+			</div>
+		<div class="modal-body">
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label class="col-md-3 col-sm-2 control-label">Name of Medicines(Generic):</label>
+						<div class="col-lg-6">
+							<input type="text" id="#" class="form-control" required>
+						</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 col-sm-2 control-label">Brand Name:</label>
+						<div class="col-lg-6">
+							<input type="text" id="#" class="form-control" required>
+						</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 col-sm-2 control-label">Dosage Form:</label>
+						<div class="col-lg-6">
+							<select class="select2-single" id="#">
+								<option></option><!--for placeholder-->
+								<option>Tablet</option>
+								<option>Syrup</option>
+							</select>
+						</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 col-sm-2 control-label">Quantity:</label>
+						<div class="col-lg-2">
+							<input type="text" id="#" class="form-control numonly" maxlength="5" required>
+						</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 col-sm-2 control-label">Dose:</label>
+						<div class="col-lg-6">
+							<input type="text" id="#" class="form-control" required>
+						</div>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Cancel</a>
+			<a class="btn btn-shadow btn-success" type="submit" onclick="#"> Dispense</a>
 		</div>
 		</div>
 	</div>
