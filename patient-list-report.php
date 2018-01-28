@@ -161,14 +161,16 @@ else if($Position == "Volunter"){
                           </header>
                           <div class="panel-body">
                           <div class="#">
-                              <div class="text-center corporate-id">
+								<div class="pull-right"><span>Date Printed: 1/28/2018</span></div><br>
+								  <div class="pull-right"><span>Printed By: Gabriel1011</span></div><br>
+							  <div class="text-center corporate-id">
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
 								  <h3>List of Patient 2018</h3>
                               </div>
                           </div>
                           <table class="table table-striped table-hover">
                               <thead>
-                              <tr><hr>
+                              <tr>
                                   <th>#</th>
                                   <th>Patient Name</th>
                                   <th class="hidden-phone">Address</th>
