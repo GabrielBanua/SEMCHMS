@@ -175,7 +175,6 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
                 <div class="adv-table">
 					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddInventory"><i class="icon-plus"></i> Add Inventory</a>
 					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddMed"><i class="icon-plus"></i> Add Medicines</a>
-					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#DispenseMed"><i class="icon-minus"></i> Dispense Medicines</a>
 <!-- Start Modal Add Inventory-->
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddInventory" class="modal fade">
 	<div class="modal-dialog">
@@ -443,9 +442,10 @@ while($row = $stmt->fetch()){
         	<td><?php echo $row['INV_EXPD'] ?></td>
         	<td><?php echo $row['INV_QTY'];echo "/"; echo $row['INV_QTY_HIST']; ?></td>
         	<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty){ echo "<span class='label label-danger label-mini'>Low</span>";} ?></td>
-        	<td class="hidden-phone" style="padding-left: 20px;">
+        	<td class="hidden-phone">
 				<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 				<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
+				<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed"><i class="icon-minus"></i></a>
 
 <!-- ******************************************Start Model Edit Medicines*********************************************************** -->
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditMed" class="modal fade">
