@@ -249,7 +249,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
 						  <div class="form-group">
                               <label class="col-md-3 col-sm-2 control-label">Time:</label>
                                 <div class="col-md-6">
-                                    <input type="time" id="SCHEDULE_TIME-<?php echo $row['P_ID'] ?>" class="form-control">
+                                    <input type="time" id="SCHEDULE_TIME-<?php date_default_timezone_set('Asia/Manila'); echo $row['P_ID'] ?>" value="<?php echo $CheckTime = date('H:i');?>" class="form-control">
                                 </div>
                           </div>
                           <div class="form-group">
