@@ -80,8 +80,8 @@ if(isset($_POST['login'])){
   <body class="login-body">
 
     <div class="container">
-    <div class = "system_title">
-        <h4>SAINT EZEKIEL MORENO HEALTHCARE MANAGEMENT SYSTEM</h4>
+    <div class = "text-center" >
+        <h2 style = "color:white;" >SAINT EZEKIEL MORENO <br><span style = "color:yellow;">HEALTHCARE MANAGEMENT SYSTEM</span></h2>
       </div>
       <form class="form-signin" action="login.php" method="POST">
         <h2 class="form-signin-heading"><strong>LOGIN</strong></h2>
