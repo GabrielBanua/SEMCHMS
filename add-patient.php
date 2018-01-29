@@ -163,7 +163,7 @@ require 'lib/Db.config.php';
                       </a>
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
-						  <li><a  href="view-users.php">View Users</a></li>
+						  <li><a  href="view-users.php">Manage Users</a></li>
                       </ul>
                   </li>
               </ul>

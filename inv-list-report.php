@@ -16,7 +16,7 @@ else if($Position == "Volunter"){
 	<meta name="google" content="notranslate">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Patient Reports Panel</title>
+    <title>Inventory List Report</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,7 @@ else if($Position == "Volunter"){
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
+	<link href="css/invoice-print.css" rel="stylesheet" media="print">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
@@ -102,7 +103,7 @@ else if($Position == "Volunter"){
                       <ul class="sub">
                           <li><a  href="set-schedule.php">Set Schedule</a></li>
                           <li><a  href="view-schedule.php">View Schedule</a></li>
-						  <li><a  href="sched-reports-panel.php">Schedule Reports</a></li>
+						  <li><a  href="sched-reports-panel">Schedule Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -153,44 +154,156 @@ else if($Position == "Volunter"){
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              Inventory Reports Panel
+                              Inventory List Report
+							  <div class="pull-right">
+							  <a class="btn btn-success btn-sm" onclick="javascript:window.print();"><i class="icon-print"></i> Print </a>
+							  </div>
                           </header>
                           <div class="panel-body">
-								<div class="row state-overview">
-								  <div class="col-lg-3 col-sm-6">
-									  <section class="panel">
-											<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="inv-list-report.php">
-												<i class="icon-truck icon-3x"></i><br>
-												List of<br>Inventory
-											</a>
-									  </section>
-								  </div>
-								  <div class="col-lg-3 col-sm-6">
-									  <section class="panel">
-											<a class="btn btn-shadow btn-primary btn-lg" style="width:200px" href="#">
-												<i class="icon-bar-chart icon-3x"></i><br>
-												Inventory<br>Population
-											</a>
-									  </section>
-								  </div>
-								  <div class="col-lg-3 col-sm-6">
-									  <section class="panel">
-											<a class="btn btn-shadow btn-success btn-lg" style="width:200px">
-												<i class="icon-truck icon-3x"></i><br>
-												List of<br>Inventory
-											</a>
-									  </section>
-								  </div>
-								  <div class="col-lg-3 col-sm-6">
-									  <section class="panel">
-											<a class="btn btn-shadow btn-success btn-lg" style="width:200px">
-												<i class="icon-truck icon-3x"></i><br>
-												List of<br>Inventory
-											</a>
-									  </section>
-								  </div>
-							  </div>
-						</div>
+                          <div class="#">
+								<div class="pull-right"><span>Date Printed: 1/28/2018</span></div><br>
+								  <div class="pull-right"><span>Printed By: Gabriel1011</span></div><br>
+							  <div class="text-center corporate-id">
+                                  <img src="img/form-header.jpg" alt="" style="height:100px">
+								  <h3>Inventory List of 2018</h3>
+                              </div>
+                          </div>
+                          <table class="table table-striped table-hover">
+                              <thead>
+                              <tr>
+                                  <th>Date Arrived</th>
+                                  <th>Category</th>
+                                  <th>Type</th>
+                                  <th>Generic Name</th>
+                                  <th>Brand</th>
+                                  <th>Dosage Form</th>
+								  <th>Dose</th>
+								  <th>Expiry Date</th>
+								  <th>Quantity</th>
+								  <th>Status</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                  <td>2018-1-11</td>
+                                  <td>Adult</td>
+                                  <td>Antibiotics</td>
+                                  <td>Paracetamol</td>
+                                  <td>Tempra</td>
+                                  <td>Tablet</td>
+								  <td>600 mg</td>
+								  <td>2019-1-11</td>
+								  <td>100/100</td>
+								  <td>Full</td>
+                              </tr>
+							  <tr>
+                                  <td>2018-1-11</td>
+                                  <td>Adult</td>
+                                  <td>Antibiotics</td>
+                                  <td>Paracetamol</td>
+                                  <td>Tempra</td>
+                                  <td>Tablet</td>
+								  <td>600 mg</td>
+								  <td>2019-1-11</td>
+								  <td>100/100</td>
+								  <td>Full</td>
+                              </tr>
+							  <tr>
+                                  <td>2018-1-11</td>
+                                  <td>Adult</td>
+                                  <td>Antibiotics</td>
+                                  <td>Paracetamol</td>
+                                  <td>Tempra</td>
+                                  <td>Tablet</td>
+								  <td>600 mg</td>
+								  <td>2019-1-11</td>
+								  <td>100/100</td>
+								  <td>Full</td>
+                              </tr>
+							  <tr>
+                                  <td>2018-1-11</td>
+                                  <td>Adult</td>
+                                  <td>Antibiotics</td>
+                                  <td>Paracetamol</td>
+                                  <td>Tempra</td>
+                                  <td>Tablet</td>
+								  <td>600 mg</td>
+								  <td>2019-1-11</td>
+								  <td>100/100</td>
+								  <td>Full</td>
+                              </tr>
+							  <tr>
+                                  <td>2018-1-11</td>
+                                  <td>Adult</td>
+                                  <td>Antibiotics</td>
+                                  <td>Paracetamol</td>
+                                  <td>Tempra</td>
+                                  <td>Tablet</td>
+								  <td>600 mg</td>
+								  <td>2019-1-11</td>
+								  <td>100/100</td>
+								  <td>Full</td>
+                              </tr>
+							  <tr>
+                                  <td>2018-1-11</td>
+                                  <td>Adult</td>
+                                  <td>Antibiotics</td>
+                                  <td>Paracetamol</td>
+                                  <td>Tempra</td>
+                                  <td>Tablet</td>
+								  <td>600 mg</td>
+								  <td>2019-1-11</td>
+								  <td>100/100</td>
+								  <td>Full</td>
+                              </tr>
+							  <tr>
+                                  <td>2018-1-11</td>
+                                  <td>Adult</td>
+                                  <td>Antibiotics</td>
+                                  <td>Paracetamol</td>
+                                  <td>Tempra</td>
+                                  <td>Tablet</td>
+								  <td>600 mg</td>
+								  <td>2019-1-11</td>
+								  <td>100/100</td>
+								  <td>Full</td>
+                              </tr>
+							  <tr>
+                                  <td>2018-1-11</td>
+                                  <td>Adult</td>
+                                  <td>Antibiotics</td>
+                                  <td>Paracetamol</td>
+                                  <td>Tempra</td>
+                                  <td>Tablet</td>
+								  <td>600 mg</td>
+								  <td>2019-1-11</td>
+								  <td>100/100</td>
+								  <td>Full</td>
+                              </tr>
+							  <tr>
+                                  <td>2018-1-11</td>
+                                  <td>Adult</td>
+                                  <td>Antibiotics</td>
+                                  <td>Paracetamol</td>
+                                  <td>Tempra</td>
+                                  <td>Tablet</td>
+								  <td>600 mg</td>
+								  <td>2019-1-11</td>
+								  <td>100/100</td>
+								  <td>Full</td>
+                              </tr>
+                              </tbody>
+                          </table>
+                          <div class="row">
+                              <div class="col-lg-4 invoice-block pull-right">
+                                  <ul class="unstyled amounts">
+                                      <li><strong>Tablet :</strong> 11</li>
+                                      <li><strong>Syrup :</strong> 1</li>
+                                      <li><strong>Inventory Total:</strong> 12</li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
                     </section>
                   </div>
               </div>
@@ -227,10 +340,37 @@ else if($Position == "Volunter"){
 			   $this.button('reset');
 		   }, 8000);
 		});
+
+    $(document).ready(function(){
+        var Auth ='<?php echo $Position; ?>';
+        if (Auth == "Admin") 
+        {                       
+            $('#Patient-li').show(); 
+            $('#Schedule-li').show();
+            $('#Inventory-li').show();
+            $('#Laboratory-li').show();
+            $('#Reports-li').show();
+            $('#User-li').show();
+            $('#Maintenance-li').show();
+        }
+        else if(Auth == "Doctor") {
+            $('#User-li').hide();
+            $('#Patient-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+        else if(Auth == "Medtech") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Patient-li').hide();
+            $('#Schedule-li').hide();
+            $('#Inventory-li').hide();
+        }
+        });
 	</script>
-<?php
-include 'lib/User-Accesslvl.php';
-?>
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 

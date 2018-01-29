@@ -153,7 +153,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
                     </a>
                 <ul class="sub">
                     <li><a  href="backup.php">Backup Database</a></li>
-					<li><a  href="view-users.php">View Users</a></li>
+					<li><a  href="view-users.php">Manage Users</a></li>
                 </ul>
             </li>
         </ul>
@@ -175,7 +175,6 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
                 <div class="adv-table">
 					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddInventory"><i class="icon-plus"></i> Add Inventory</a>
 					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddMed"><i class="icon-plus"></i> Add Medicines</a>
-					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#DispenseMed"><i class="icon-minus"></i> Dispense Medicines</a>
 <!-- Start Modal Add Inventory-->
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="AddInventory" class="modal fade">
 	<div class="modal-dialog">
@@ -406,7 +405,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 		</div>
 		<div class="modal-footer">
 			<a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Cancel</a>
-			<a class="btn btn-shadow btn-success" type="submit" onclick="#"> Dispense</a>
+			<a class="btn btn-shadow btn-success" type="submit" onclick="#"><i class="icon-minus"></i> Dispense</a>
 		</div>
 		</div>
 	</div>
@@ -425,7 +424,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 			<th width="110">Expiry Date</th>
             <th width="95">Quantity</th>
             <th width="70">Status</th>
-            <th width="100">Action</th>
+            <th width="110">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -443,9 +442,10 @@ while($row = $stmt->fetch()){
         	<td><?php echo $row['INV_EXPD'] ?></td>
         	<td><?php echo $row['INV_QTY'];echo "/"; echo $row['INV_QTY_HIST']; ?></td>
         	<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty){ echo "<span class='label label-danger label-mini'>Low</span>";} ?></td>
-        	<td class="hidden-phone" style="padding-left: 20px;">
+        	<td class="hidden-phone">
 				<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 				<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
+				<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed"><i class="icon-minus"></i></a>
 
 <!-- ******************************************Start Model Edit Medicines*********************************************************** -->
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditMed" class="modal fade">
@@ -547,8 +547,8 @@ while($row = $stmt->fetch()){
 		<div class="modal-footer">
 			<span id="Error_Message" class="text-danger"></span>
 			<span id="Success_Message" class="text-success"></span>
-			<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-			<button class="btn btn-success" onclick="addInventory()">Save</button>
+			<a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
+			<a class="btn btn-success" onclick="addInventory()"><i class="icon-save"></i> Save</a>
 		</div>
 		</div>
 	</div>

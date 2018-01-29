@@ -135,7 +135,7 @@ require 'lib/chartSQL.php';
                       </a>
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
-                                      <li><a  href="view-users.php">View Users</a></li>
+                                      <li><a  href="view-users.php">Manage Users</a></li>
                       </ul>
                   </li>
                 </ul>
@@ -151,12 +151,12 @@ require 'lib/chartSQL.php';
                     <div class="col-lg-3 col-sm-6">
                         <section class="panel">
                             <div class="symbol terques">
-                                <i class="icon-user"></i>
+                                <i class="icon-group"></i>
                             </div>
                             <div class="value">
                                 <h1 class="counter" data-count="<?php echo $NewPatient; ?>">
                                 </h1>
-                                <p>New Patients</p>
+                                <p><b>Total Patients</b></p>
                             </div>
                         </section>
                     </div>
@@ -169,33 +169,33 @@ require 'lib/chartSQL.php';
                                 <h1 class="counter" data-count="150">
                                     0
                                 </h1>
-                                <p>Patient Care</p>
+                                <p><b>Patient With Follow-up Checkup</b></p>
                             </div>
                         </section>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <section class="panel">
                             <div class="symbol yellow">
-                                <i class="icon-user-md"></i>
+                                <i class="icon-truck"></i>
                             </div>
                             <div class="value">
                                 <h1 class="counter" data-count="150">
                                     0
                                 </h1>
-                                <p>Users & Physicians</p>
+                                <p><b>Inventory Stocks</b></p>
                             </div>
                         </section>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <section class="panel">
                             <div class="symbol blue">
-                                <i class=" icon-group"></i>
+                                <i class=" icon-beaker"></i>
                             </div>
                             <div class="value">
                                 <h1 class="counter" data-count="150">
                                     0
                                 </h1>
-                                <p>Total Patients</p>
+                                <p><b>Laboratory Records</b></p>
                             </div>
                         </section>
                     </div>
@@ -206,7 +206,7 @@ require 'lib/chartSQL.php';
                     <div class="col-lg-12">
                         <!--custom chart start-->
                         <div class="border-head">
-                            <h3>Number of Patients Graph</h3>
+                            <h3>Number of Patients Graph 2018</h3>
                         </div>
                         <div class="custom-bar-chart">
                             <ul class="y-axis">
