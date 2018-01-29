@@ -36,7 +36,7 @@
                                     <label class="col-md-3 col-sm-2 control-label">Date of Appointment:</label>
                                         <div class="col-lg-5">
                                               <input type="date" value="<?php echo strftime('%Y-%m-%d', strtotime($row['SCHEDULE_DATE'])); ?>" 
-                        													id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
+                        						id="SCHEDULE_DATE-<?php echo $row['SCHEDULE_ID'] ?>" size="16" class="form-control">
                                         </div>
                                 </div>
                                 <div class="form-group">
