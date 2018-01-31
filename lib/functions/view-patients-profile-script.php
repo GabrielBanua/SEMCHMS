@@ -144,7 +144,7 @@ function editTreatment(id){
           var Treatment =  $('#TREAT-'+Update_ID).val();
           var Remarks = $('#REMARK-'+Update_ID).val();
           var FollowUp = $('#FO_CHECKUP-'+Update_ID).val();
-          var Doctor = $('#listDoctor-'+Update_ID).val();
+          var Doctor = $('#RlistofDoctor-'+Update_ID).val();
           var RefDoc = $('#RefDoc_name-'+Update_ID).val();
           var RefDoc_CN = $('#RefDoc_CN-'+Update_ID).val();
           var RefDoc_Add = $('#RefDoc_Add-'+Update_ID).val();
@@ -156,8 +156,8 @@ function editTreatment(id){
             $('#Error_Message-ETRMT-'+Update_ID).html('');
            $.ajax({
                 type: "POST",
-                url: "Server.php?p=editTreatment",
-                data: "DGNE="+Diagnosis+"&TRMTE="+Treatment+"&RMKSE="+Remarks+"&FPCHKE="+FollowUp+"&DOCE="+Doctor+"&MRIDE="+Med_RID+"&REFDNE="+RefDoc+"&REF_CNE="+RefDoc_CN+"&REF_ADDE="+RefDoc_Add,
+                url: "Server2.php?p=editTreatment",
+                data: "DGNE="+Diagnosis+"&TRMTE="+Treatment+"&RMKSE="+Remarks+"&FPCHKE="+FollowUp+"&DOCE="+Doctor+"&MRIDE="+Update_ID+"&REFDNE="+RefDoc+"&REF_CNE="+RefDoc_CN+"&REF_ADDE="+RefDoc_Add,
                 success: function(data){
                   $('#Success_Message-ETRMT-'+Update_ID).html('Successfully Added! &nbsp;');
                         setTimeout(function() {
@@ -173,13 +173,24 @@ function editTreatment(id){
       function RetrieveDoctor(str){
       var id = str;
    
-      $.ajax({
-                type: "GET",
-                url: "Server.php?p=DoctorList",
-                success: function(data){
-                  $('#listofDoctor-'+id).html(data);
-                }
-      });
-
-    }
+        $.ajax({
+                  type: "GET",
+                  url: "Server.php?p=DoctorList",
+                  success: function(data){
+                    $('#listofDoctor-'+id).html(data);
+                  }
+        });
+      }
+      function RetrieveSaveDoctor(str){
+      var id = str;
+   
+        $.ajax({
+                  type: "GET",
+                  url: "Server.php?p=RDoctorList",
+                  data: "MR_ID="+id,
+                  success: function(data){
+                    $('#RlistofDoctor-'+id).html(data);
+                  }
+        });
+      }
 	</script>
