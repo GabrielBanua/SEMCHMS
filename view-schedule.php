@@ -211,9 +211,9 @@ if($Position == 'Doctor'){
                                           <td><?php echo $row['P_GNDR'] ?></td>
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
-                                              <a class="btn btn-shadow btn-success btn-xs" style="width:30px" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i></a>
+                                              <a class="btn btn-shadow btn-success btn-xs" style="width:30px" data-toggle="modal" onclick="schedChange(<?php echo $row['SCHEDULE_ID']; ?>)" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i></a>
                                   			  <a class="btn btn-shadow btn-danger btn-xs" style="width:30px" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID']; ?>)"><i class="icon-trash"></i></a>
-                                  			  <a class="btn btn-shadow btn-primary btn-xs" style="width:30px" onclick="schedChange(<?php echo $row['SCHEDULE_ID']; ?>)" href="view-patient-profile.php?VID=<?php echo $row['P_ID']; ?>&Sched_ID=<?php echo $row['SCHEDULE_ID']; ?>"><i class=" icon-share-alt"></i></a>
+                                  			  <a class="btn btn-shadow btn-primary btn-xs" style="width:30px" href="view-patient-profile.php?VID=<?php echo $row['P_ID']; ?>&Sched_ID=<?php echo $row['SCHEDULE_ID']; ?>"><i class=" icon-share-alt"></i></a>
 <!-- edit Schedule Start MODAL-->
 <?php
 include 'lib/modals/view_schedule-modal.php';

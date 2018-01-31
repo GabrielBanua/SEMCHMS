@@ -19,7 +19,7 @@ CREATE TABLE `adult` (
   PRIMARY KEY (`ADULT_ID`),
   KEY `PMI_ID` (`PMI_ID`),
   CONSTRAINT `adult_ibfk_1` FOREIGN KEY (`PMI_ID`) REFERENCES `patient_medical_issue` (`PMI_ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
 
 INSERT INTO adult VALUES("2","Good","Good","Alson","Alson","Alson","Alson","Alson","15","Left","Fever","Fever","2","0","0"); 
 INSERT INTO adult VALUES("3","Good","--Select--","Yes","No","Yes","Yes","undefined","16","Left","fever","fever","3","0","0"); 
@@ -85,6 +85,7 @@ INSERT INTO adult VALUES("62","Good","Good","Bone injury","No","yes","Ues","No",
 INSERT INTO adult VALUES("63","Good","Good","No","Permi","Permi","No","Mama","3","Left","No","No","63","1","2018"); 
 INSERT INTO adult VALUES("64","Very Good","Very Good","No","25 times a day","Drugs","No","Mother","4","Right","No","No","64","1","2018"); 
 INSERT INTO adult VALUES("65","Poor","Good","No","No","No","No","No","4","Right","No","No","65","1","2018"); 
+INSERT INTO adult VALUES("66","Good","Poor","No","sadda","No","No","AERA","16","Left","No","we","66","1","2018"); 
 
 
 
@@ -103,7 +104,7 @@ CREATE TABLE `inventory` (
   PRIMARY KEY (`INV_ID`),
   KEY `MEDICINE_ID` (`MEDICINE_ID`),
   CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`MEDICINE_ID`) REFERENCES `medicine` (`MEDICINE_ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 INSERT INTO inventory VALUES("2","14","100","PhilippineDrug","2018-01-20","2018-01-11","100","0","0"); 
 INSERT INTO inventory VALUES("4","18","100","AlecDrugNation","2018-01-17","2018-01-17","100","0","0"); 
@@ -145,10 +146,12 @@ CREATE TABLE `medical_record` (
   PRIMARY KEY (`MR_ID`),
   KEY `SCHED_ID` (`SCHED_ID`),
   CONSTRAINT `medical_record_ibfk_1` FOREIGN KEY (`SCHED_ID`) REFERENCES `schedule` (`SCHEDULE_ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 INSERT INTO medical_record VALUES("1","hypertension","110/80","64.50","37.80","2018-01-29 13:58:51","1","2018","1","Completed"); 
-INSERT INTO medical_record VALUES("2","hypertension","110/80","64.50","37.80","2018-01-29 14:46:07","1","2018","2","Pending"); 
+INSERT INTO medical_record VALUES("2","hypertension","110/80","64.50","37.80","2018-01-29 14:46:07","1","2018","2","Completed"); 
+INSERT INTO medical_record VALUES("3","Hypertension","110/80","67.30","37.50","2018-01-29 19:16:32","1","2018","1","Completed"); 
+INSERT INTO medical_record VALUES("4","hypertension","110/80","67.00","37.80","2018-01-31 17:05:49","1","2018","10","Completed"); 
 
 
 
@@ -165,7 +168,7 @@ CREATE TABLE `medicine` (
   `Month` int(11) NOT NULL,
   `Year` int(11) NOT NULL,
   PRIMARY KEY (`MEDICINE_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 INSERT INTO medicine VALUES("11","Adult","Antibiotics","Paracetamol","Biogesic","Tablet","500 mg","1","2018"); 
 INSERT INTO medicine VALUES("12","Adult","Antibiotics","Paracetamol","Dolan","Tablet","500 mg","1","2018"); 
@@ -176,6 +179,7 @@ INSERT INTO medicine VALUES("18","Adult","Antibiotics","Paracetamol","Tempra","T
 INSERT INTO medicine VALUES("19","Adult","Antibiotics","Paracetamol","Tempra_Forte","Tablet","50 mg","1","2018"); 
 INSERT INTO medicine VALUES("20","Adult","Antibiotics","Paracetamol","Tempra_Forte","Tablet","100 mg","1","2018"); 
 INSERT INTO medicine VALUES("21","Adult","Antibiotics","Paracetamol","Calpol","Tablet","1000mg","1","2018"); 
+INSERT INTO medicine VALUES("22","Adult","Antibiotics","paracetamol","neozep","Tablet","300 mg","1","2018"); 
 
 
 
@@ -203,7 +207,7 @@ CREATE TABLE `patient` (
   `MONTH` int(11) NOT NULL,
   `YEAR` int(11) NOT NULL,
   PRIMARY KEY (`P_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
 
 INSERT INTO patient VALUES("2","Bayon-on","Alson John","R","Male","1997-07-12","20","36.00","180.00","179","Adult","Banago Bacolod City","091230298","Student","Catholic","Single","2018-01-14","Self-Employment","0","0"); 
 INSERT INTO patient VALUES("3","Molabin","Daniel","V","Male","1997-11-11","20","38.00","82.00","163","Adult","La carlota City","091242265","Student","Catholic","Single","2017-12-31","Self-Employment","0","0"); 
@@ -269,6 +273,7 @@ INSERT INTO patient VALUES("62","Child","Julia","Medo","Female","1998-05-05","19
 INSERT INTO patient VALUES("63","China Man","Confucius","The","Male","1992-06-02","25","34.00","70.00","170","Adult","China","95344641231","Student","Catholic","Married","2018-01-21","Paid Employment","1","2018"); 
 INSERT INTO patient VALUES("64","Geduriagao","Decebel","Am","Female","1997-06-06","20","45.00","72.00","174","Adult","Sa Balay","98756453245","Self-Employment","Catholic","Single","2018-01-21","Self-Employment","1","2018"); 
 INSERT INTO patient VALUES("65","Dimon","Leki","Lad","Male","1997-05-11","20","20.00","67.00","169","Adult","Dimon Land","99545432432","Student","Born Again","Single","2018-01-21","Non-paid work(Volunteer/Charity)","1","2018"); 
+INSERT INTO patient VALUES("66","Banua","Gab","M","Male","1997-10-11","20","37.80","56.00","168","Adult","Kanlaon","09096771375","Paid Employment","Catholic","Single","2018-01-31","Paid Employment","1","2018"); 
 
 
 
@@ -287,7 +292,7 @@ CREATE TABLE `patient_medical_issue` (
   PRIMARY KEY (`PMI_ID`),
   KEY `P_ID` (`P_ID`),
   CONSTRAINT `patient_medical_issue_ibfk_1` FOREIGN KEY (`P_ID`) REFERENCES `patient` (`P_ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
 
 INSERT INTO patient_medical_issue VALUES("2","Back Pain","No","No","No","No","2","0","0"); 
 INSERT INTO patient_medical_issue VALUES("3","none","Yes","No","No","Yes","3","0","0"); 
@@ -353,6 +358,7 @@ INSERT INTO patient_medical_issue VALUES("62","Yiz","No","No","No","No","62","1"
 INSERT INTO patient_medical_issue VALUES("63","None","Ako","No","Yiz","No","63","1","2018"); 
 INSERT INTO patient_medical_issue VALUES("64","None","No","No","Heart :( ","sang ligad","64","1","2018"); 
 INSERT INTO patient_medical_issue VALUES("65","None","No","No","YIZ","No","65","1","2018"); 
+INSERT INTO patient_medical_issue VALUES("66","wer","sad","No","asdnlaknsd","sada","66","1","2018"); 
 
 
 
@@ -369,8 +375,9 @@ CREATE TABLE `referral` (
   PRIMARY KEY (`RF_ID`),
   KEY `TRMTMNT_ID` (`TRMTMNT_ID`),
   CONSTRAINT `referral_ibfk_1` FOREIGN KEY (`TRMTMNT_ID`) REFERENCES `treatment` (`TRMT_ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
+INSERT INTO referral VALUES("1","Dr alec","0909989797","buno banago","3","1","2018"); 
 
 
 
@@ -387,10 +394,14 @@ CREATE TABLE `schedule` (
   PRIMARY KEY (`SCHEDULE_ID`),
   KEY `P_ID` (`P_ID`),
   CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`P_ID`) REFERENCES `patient` (`P_ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 INSERT INTO schedule VALUES("1","10","2018-01-29","14:07:00","Check Up","1","2018"); 
 INSERT INTO schedule VALUES("2","10","2018-01-29","14:53:00","Check Up","1","2018"); 
+INSERT INTO schedule VALUES("7","10","2018-01-30","19:40:00","Laboratory Test","1","2018"); 
+INSERT INTO schedule VALUES("8","10","2018-01-29","19:42:00","Check Up","1","2018"); 
+INSERT INTO schedule VALUES("9","10","2018-01-29","18:42:00","Laboratory Test","1","2018"); 
+INSERT INTO schedule VALUES("10","66","2018-01-31","17:07:00","Check Up","1","2018"); 
 
 
 
@@ -411,10 +422,12 @@ CREATE TABLE `treatment` (
   KEY `User_id` (`User_id`),
   CONSTRAINT `treatment_ibfk_1` FOREIGN KEY (`MR_ID`) REFERENCES `medical_record` (`MR_ID`) ON UPDATE CASCADE,
   CONSTRAINT `treatment_ibfk_2` FOREIGN KEY (`User_id`) REFERENCES `users` (`User_id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 INSERT INTO treatment VALUES("1","1","hgvjhbkhgkh","mhbkjgjbkj","kkjhjkbljblj","2018-01-31","11","1","2018"); 
-INSERT INTO treatment VALUES("2","2","","","","2018-01-29","3","1","2018"); 
+INSERT INTO treatment VALUES("2","2","asdfgh","asdfgh","asdfghj","2018-01-31","3","1","2018"); 
+INSERT INTO treatment VALUES("3","3","alknlknaslkv lak clk ;","a v;ak v;ka scla vak v;m;m",";anv;anv;kanv;anv;","2018-01-29","3","1","2018"); 
+INSERT INTO treatment VALUES("4","4","Tonsil","Antibiotics","Needs follow-up checkup","2018-02-01","3","1","2018"); 
 
 
 
@@ -437,12 +450,13 @@ CREATE TABLE `users` (
   `YEAR` int(11) NOT NULL,
   PRIMARY KEY (`User_id`),
   UNIQUE KEY `User_id` (`User_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 INSERT INTO users VALUES("1","Admin","$2y$12$Cbzw6Sp1xiJlVPB01TXBB.zLGr4VaHmNjGqXLvOC82PEM4xNOB1UG","ADMIN","ADMIN","ADMIN","-None-","Admin","ADMIN","2018-01-26","1970-01-01","Active","1","2018"); 
 INSERT INTO users VALUES("2","Gabriel1011","$2y$12$47jkt5YXJ2EnZfjXBC5wbeAswQP.l3tWlgsAmhTBydnpoWpHB6EQy","Gabriel Francis","M.","Banua","Male","Admin","#LCN542682A","2018-01-27","1970-01-16","Active","1","2018"); 
 INSERT INTO users VALUES("3","Alec","$2y$12$0SJSrf0YeDwGd5TY4Jd7V.3uRUu2MY1fIxXaAT5fweuxIfblIY4jm","Alec","Legaspi","Rubz","Male","Doctor","#LCN123516HA","0000-00-00","2018-03-27","Active","1","2018"); 
 INSERT INTO users VALUES("11","Alson","$2y$12$Xn79XxGcsrtI3BsfBdu2gevx4PcynjXWn9mMyawZSzhfRvmhfQxSy","Alson John","R.","Bayon-on","Male","Doctor","#LCN1234ASD4","2018-01-28","2018-12-31","Active","1","2018"); 
+INSERT INTO users VALUES("12","Carl","$2y$12$XbYd6n5cGRnC.ii9jRhlnODbD4iXJNRb0HEe9aTEfFX5UW8bBpCmG","Carl","B","Betio","Male","Admin","LCN12312515","2018-01-29","2018-01-29","Active","1","2018"); 
 
 
 

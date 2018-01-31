@@ -4,6 +4,30 @@
                   "aaSorting": [[ 0, "asc" ]]
               } );
           } );
+
+        function schedChange(str){
+        var id = str;
+        load(id);
+        $('#SCHEDULE_PURPOSE-'+id).change(function(){
+          $('#SCHEDULE_TIME-'+id).prop('disabled', !($(this).val() == "Laboratory Test") && !($(this).val() == "X-ray"));
+          $('#SCHEDULE_DATE-'+id).prop('disabled', !($(this).val() == "Laboratory Test") && !($(this).val() == "X-ray"));
+        });
+        }
+        function load(str){
+          var id = str;
+          var Purpose = $('#SCHEDULE_PURPOSE-'+id).val(); 
+          $('#SCHEDULE_TIME-'+id).attr('disabled',true);
+          $('#SCHEDULE_DATE-'+id).attr('disabled',true);
+
+          if(Purpose == "Laboratory Test"){
+            $('#SCHEDULE_TIME-'+id).attr('disabled',false);
+            $('#SCHEDULE_DATE-'+id).attr('disabled',false);
+          }
+          if(Purpose == "X-ray"){
+            $('#SCHEDULE_TIME-'+id).attr('disabled',false);
+            $('#SCHEDULE_DATE-'+id).attr('disabled',false);
+          }
+        }  
      
         function SetSched(str){
         var P_ID = str;
@@ -19,15 +43,11 @@
                 url: "Server.php?p=CheckSched",
                 data: "P_ID="+P_ID+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
                 success: function(data){
-                    alert(data);
                   if(data == 'Taken'){
                     $('#Error_Message-'+str).html('This schedule is taken!');
                   }
                   else if(data == 'Late'){
-                    $('#Error_Message-'+str).html('Time is late!');
-                  }
-                  else if(data == 'DateLate'){
-                    $('#Error_Message-'+str).html('Date is late!');
+                    $('#Error_Message-'+str).html('Time or date is late');
                   }
                   else if(data == 'Success'){
                         $.ajax({

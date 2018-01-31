@@ -289,16 +289,14 @@ date_default_timezone_set('Asia/Manila');
 			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
 			$Time = date('H:i:s', strtotime($Sched_time));
 			$sqldate = date('Y-m-d',strtotime($Sched_date));
-			$Timedel = date('H:i:s', strtotime($Sched_time));
+			$Timedel = date('H:i:s', strtotime($Sched_time. ' +1 seconds'));
 			$CheckTime = date('H:i:s');
 			$CheckDate = date('Y-m-d');
 			
-			if($Timedel < $CheckTime){
+			if($Timedel < $CheckTime && $CheckDate > $sqldate){
 				echo "Late";
 			}
-			else if($CheckDate > $sqldate){
-				echo "DateLate";
-			}else{
+			else{
 				$sql = "SELECT SCHEDULE_DATE, SCHEDULE_PURPOSE, SCHEDULE_TIME FROM schedule WHERE SCHEDULE_DATE = '$sqldate' AND SCHEDULE_PURPOSE = '$Sched_purpose'";
 				$Check = mysql_query($sql);
 				$count = mysql_num_rows($Check);
