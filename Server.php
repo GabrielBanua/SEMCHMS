@@ -582,21 +582,15 @@ require 'lib/Db.config.php';
 
 $id = mysql_real_escape_string($_POST['MR_ID']);
 
-	$retrieve = "SELECT * FROM treatment WHERE MR_ID = '$id'";
+	$retrieve = "SELECT * FROM `treatment` WHERE `MR_ID` = '$id'";
 	$res = mysql_query($retrieve);
 	$Result = mysql_fetch_array($res);
 
+	echo $Result;
 	$sql = "SELECT *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users WHERE Position = 'Doctor' AND STATUS = 'Active'";
-			$do = mysql_query($sql);
-			$count = mysql_num_rows($do);
-
-	if($count > 0){
+	$do = mysql_query($sql);
 		while($doc = mysql_fetch_array($do)){
-			echo "<option value='";echo $doc['User_id'];echo "'"; if($Result['User_id'] == $doc['User_id']){echo "selected";} echo "'>"; echo $doc['Fullname']; echo "</option>";
-		}
-	}else{
-		echo "<option>No registered doctor</option>";
-	}			
+			echo "<option value='";echo $doc['User_id']; echo "'"; if($Result['User_id'] == $doc['User_id']){echo "selected";} echo ">"; echo $doc['Fullname']; echo "</option>";
+		}			
 }
-
 ?>

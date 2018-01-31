@@ -185,10 +185,11 @@ function editTreatment(id){
       var id = str;
    
         $.ajax({
-                  type: "GET",
+                  type: "POST",
                   url: "Server.php?p=RDoctorList",
                   data: "MR_ID="+id,
                   success: function(data){
+                    alert(data);
                     $('#RlistofDoctor-'+id).html(data);
                   }
         });
