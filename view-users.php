@@ -186,6 +186,10 @@ include 'lib/modals/register_user_modal.php';
                                       <tbody>
 <?php
       while($row = $stmt->fetch()){
+        $User = $row['User_id'];
+        $DateEnd = ("Select * FROM ended_user WHERE User_end_id = '$User'");
+        $DTEND = mysql_query($DateEnd);
+        $DE = mysql_fetch_array($DTEND);
 ?>
                                           <tr class="gradeX">
                                                 <td style="text-align: center;"><?php echo $row['User_id'] ?></td>

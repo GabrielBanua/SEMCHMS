@@ -63,8 +63,8 @@
                                 <option>Admin</option>
                                 <option>Doctor</option>
                                 <option>Medtech</option>
-                                <option>Pharmacy</option>
-                                <option>Pathlogist</option>
+                                <option>Pharmacist</option>
+                                <option>Pathologist</option>
                               </select>
                                                       </div>
                                                   </div>
@@ -72,12 +72,6 @@
 											<label class="col-md-3 col-sm-2 control-label">License No.:</label>
 											<div class="col-lg-6">
 												<input type="text" id="LCN" class="form-control">
-											</div>
-									  </div>
-									  <div class="form-group">
-											<label class="col-md-3 col-sm-2 control-label">Date End:</label>
-											<div class="col-lg-4">
-												<input type="date" id="DE" class="form-control">
 											</div>
 									  </div>
                                               </form>

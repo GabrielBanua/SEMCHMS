@@ -86,7 +86,7 @@
                                                       <option value="Pharmacist" <?php
                                                       if ($row['Position'] == "Pharmacist") { echo " selected"; }?>>Pharmacist</option>
                                                       <option value="Pathologist" <?php
-                                                      if ($row['Position'] == "Pathologist") { echo " selected"; }?>>Pathlogist</option>
+                                                      if ($row['Position'] == "Pathologist") { echo " selected"; }?>>Pathologist</option>
                                                     </select>
                                                 </div>
                                       </div>
@@ -99,7 +99,7 @@
 									  <div class="form-group">
 											<label class="col-md-3 col-sm-2 control-label">Date End:</label>
 											<div class="col-lg-4">
-												<input type="date" id="DE-<?php echo $row['User_id'] ?>"  value="<?php echo strftime('%Y-%m-%d', strtotime($row['DATE_END'])); ?>" class="form-control">
+												<input type="date" id="DE-<?php echo $row['User_id'] ?>" <?php if(empty($DE['END_DATE'])){echo "placeholder='mm/dd/yyyy'";}else{ echo "value='";?><?php echo strftime('%Y-%m-%d', strtotime($DE['END_DATE']));?><?php echo"'";}?>  class="form-control">
 											</div>
 									  </div>
                                       <div class="form-group">

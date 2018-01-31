@@ -36,7 +36,7 @@ if($Position == "Volunter"){
     <div class="preloader">
         <img src="gif/flask.svg" alt="SEMHCMS">
         <div style="position: absolute; top: 110%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
-          <p style="font-size: 15px; font-weight: bold;">loading</p>
+          <p style="font-size: 15px; font-weight: bold;">Please Wait</p>
         </div>
     </div>
   </div>
@@ -86,7 +86,7 @@ if($Position == "Volunter"){
                       </a>
                   </li>
 
-                  <li class="sub-menu">
+                  <li class="sub-menu" id="Patient-li">
                       <a href="javascript:;" >
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
@@ -98,7 +98,7 @@ if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Schedule-li">
                       <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -110,7 +110,7 @@ if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Inventory-li">
                       <a href="javascript:;" >
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
@@ -244,36 +244,9 @@ if($Position == "Volunter"){
                   "aaSorting": [[ 4, "desc" ]]
               } );
           } );
-
-          $(document).ready(function(){
-            var Auth ='<?php echo $Position; ?>';
-            if (Auth == "Admin") 
-            {                       
-                $('#Patient-li').show(); 
-                $('#Schedule-li').show();
-                $('#Inventory-li').show();
-                $('#Laboratory-li').show();
-                $('#Reports-li').show();
-                $('#User-li').show();
-                $('#Maintenance-li').show();
-            }
-            else if(Auth == "Doctor") {
-                $('#User-li').hide();
-                $('#Patient-li').hide();
-                $('#Maintenance-li').hide();
-                $('#Reports-li').hide();
-                $('#Laboratory-li').hide();
-                $('#Inventory-li').hide();
-            }
-            else if(Auth == "Medtech") {
-                $('#User-li').hide();
-                $('#Maintenance-li').hide();
-                $('#Reports-li').hide();
-                $('#Patient-li').hide();
-                $('#Schedule-li').hide();
-                $('#Inventory-li').hide();
-            }
-            });
       </script>
+<?php
+include 'lib/User-Accesslvl.php';
+?>
   </body>
 </html>

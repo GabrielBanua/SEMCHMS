@@ -49,6 +49,7 @@
             url: "Server.php?p=UpdateUser",
             data: "UN="+Username+"&PW="+Password+"&FN="+Firstname+"&LN="+Lastname+"&MN="+Middlename+"&GN="+Gender+"&PS="+Position+"&User_id="+User_id+"&LCN="+License+"&DE="+DateEnd+"&STS="+status,
             success: function(data){
+                alert(data);
                 $('#Error_Message-'+str).html('');
                 $('#Success_Message-'+str).html('Updated successfully! &nbsp;');
                     setTimeout(function() {
@@ -76,14 +77,13 @@
           var Gender= $('#GN').val();
           var Position= $('#PS').val();
           var License= $('#LCN').val();
-          var DateEnd= $('#DE').val();
           var Verify_Pass= $('#VP').val();
           if (confirm('Are you sure you want to add this user in the database?')) {
             if(Verify_Pass == Password){
           $.ajax({
             type: "POST",
             url: "Server.php?p=addNewUser",
-            data: "UN="+Username+"&PW="+Password+"&FN="+Firstname+"&LN="+Lastname+"&MN="+Middlename+"&GN="+Gender+"&PS="+Position+"&LCN="+License+"&DE="+DateEnd,
+            data: "UN="+Username+"&PW="+Password+"&FN="+Firstname+"&LN="+Lastname+"&MN="+Middlename+"&GN="+Gender+"&PS="+Position+"&LCN="+License,
             success: function(data){
                 $('#Error_Message').html('');
                 $('#Success_Message').html('Successfully Added! &nbsp;');

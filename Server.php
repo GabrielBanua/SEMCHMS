@@ -25,7 +25,7 @@ require 'lib/password.php';
 			$Year = date('Y',strtotime($date));
 			$Month = date('m',strtotime($date));
 
-		$stmt = $db->prepare("insert into users values('',?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$stmt = $db->prepare("insert into users values('',?,?,?,?,?,?,?,?,?,?,?,?)");
 			$stmt->bindParam(1,$Username);
 			$stmt->bindParam(2,$Pass);
 			$stmt->bindParam(3,$Firstname);
@@ -35,10 +35,9 @@ require 'lib/password.php';
 			$stmt->bindParam(7,$Position);
 			$stmt->bindParam(8,$License);
 			$stmt->bindParam(9,$date);
-			$stmt->bindParam(10,$DateEnd_con);
-			$stmt->bindParam(11,$Status);
-			$stmt->bindParam(12,$Month);
-			$stmt->bindParam(13,$Year);
+			$stmt->bindParam(10,$Status);
+			$stmt->bindParam(11,$Month);
+			$stmt->bindParam(12,$Year);
 			$stmt->execute();
 } 
 //add new patient
@@ -216,6 +215,7 @@ require 'lib/Db.config.php';
 //update user code
 else if($page == 'UpdateUser'){
 require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
 
 			$ID = mysql_real_escape_string($_POST['User_id']);
 			$Username = mysql_real_escape_string($_POST['UN']);
@@ -230,8 +230,11 @@ require 'lib/Db.config.pdo.php';
 			$Date_end = mysql_real_escape_string($_POST['DE']);
 			$DateEnd_con = date('Y-m-d',strtotime($Date_end));
 			$Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
+			$date = date("Y-m-d");	
+			$Year = date('Y',strtotime($date));
+			$Month = date('m',strtotime($date));
 			
-			$stmt = $db->prepare("update users set Username=?, Password=?, Firstname=?, Middlename=?, Lastname=?, Gender=?, Position=?, License_No=?, DATE_END=?, STATUS=? where User_id=?");
+			$stmt = $db->prepare("update users set Username=?, Password=?, Firstname=?, Middlename=?, Lastname=?, Gender=?, Position=?, License_No=?, STATUS=? where User_id=?");
 			$stmt->bindParam(1,$Username);
 			$stmt->bindParam(2,$Pass);
 			$stmt->bindParam(3,$Firstname);
@@ -240,11 +243,34 @@ require 'lib/Db.config.pdo.php';
 			$stmt->bindParam(6,$Gender);
 			$stmt->bindParam(7,$Position);
 			$stmt->bindParam(8,$License);
-			$stmt->bindParam(9,$DateEnd_con);
-			$stmt->bindParam(10,$Status);
-			$stmt->bindParam(11,$ID);
+			$stmt->bindParam(9,$Status);
+			$stmt->bindParam(10,$ID);
 			$stmt->execute();
-		
+
+						$EndDate_check = mysql_query("SELECT * FROM ended_user WHERE User_end_id = '$ID'");
+						$count_arr = mysql_fetch_array($EndDate_check);
+						$count_EndDate = mysql_num_rows($EndDate_check);
+						$End_ID = $count_arr['End_user_id'];
+
+						if($count_EndDate > 0){	
+							$Date_T = $db->prepare("Update ended_user set END_DATE=? where End_user_id=?");								
+								$Date_T->bindParam(1,$DateEnd_con);
+								$Date_T->bindParam(2,$End_ID);
+								$Date_T->execute();
+						}else if($count_EndDate == 0){
+							if(empty($Date_end)){
+								//do nothing
+							}
+							else{
+								$Date_T = $db->prepare("insert into ended_user values('',?,?,?,?)");
+								$Date_T->bindParam(1,$ID);
+								$Date_T->bindParam(2,$DateEnd_con);
+								$Date_T->bindParam(3,$Month);
+								$Date_T->bindParam(4,$Year);
+								$Date_T->execute();
+							}
+						}			
+
 }else if($page == 'DeleteSched'){
 require 'lib/Db.config.pdo.php';
 require 'lib/Db.config.php';
