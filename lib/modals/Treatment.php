@@ -7,6 +7,19 @@
 				<h4 class="modal-title" id="myModalLabel-<?php echo $MR['MR_ID']; ?>">Treatment</h4>
 			</div>
 		<div class="modal-body">
+		<header class="panel-heading tab-bg-dark-navy-blue ">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a data-toggle="tab" href="#medrec"><i class="icon-medkit"></i> <b>Medical Record</b></a>
+                    </li>
+                    <li class="">
+                      <a data-toggle="tab" href="#labrec"><i class="icon-beaker"></i> <b>Lab Record</b></a>
+                    </li>
+                  </ul>
+              </header>
+            <div class="panel-body">
+              <div class="tab-content">
+			<div id="medrec" class="tab-pane active">
 		<form class="form-horizontal" role="form">
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Illness/Ailments</label>
@@ -30,10 +43,6 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label  class="col-lg-2 control-label">Temperature</label>
-				<div class="col-lg-4">
-					<input type="text" value="<?php echo $MR['MR_TEMP']; ?>" class="form-control" readonly>
-				</div>
 				<label  class="col-lg-2 control-label">Lab Test</label>
 				<div class="col-lg-4">
 					<select class="form-control" id="Lab_Req-<?php echo $MR['MR_ID']; ?>">
@@ -44,10 +53,14 @@
 						<option>Urinalysis</option>
 					</select>
 				</div>
+				<label  class="col-lg-2 control-label">Temperature</label>
+				<div class="col-lg-4">
+					<input type="text" value="<?php echo $MR['MR_TEMP']; ?>" class="form-control" readonly>
+				</div>
 			</div>
-			<div class="form-group pull-right">
-				<label  class="col-lg-6 control-label">Test Requested</label>
-				<div class="col-lg-6">
+			<div class="form-group">
+				<label  class="col-lg-2 control-label">Test Req.</label>
+				<div class="col-lg-4">
 					<input type="text" id="TestR-<?php echo $MR['MR_ID']; ?>" class="form-control">
 				</div>
 			</div><br>
@@ -109,6 +122,23 @@
 				</div>
 			</div>
 		</form>
+		</div>
+		<div id="labrec" class="tab-pane">
+			<table  class="table table-striped table-advance table-hover" id="example">
+			  <thead>
+			  <tr>
+				  <th class="text-center"><i class="icon-beaker"></i> Lab Test</th>
+				  <th class="text-center"><i class="icon-stethoscope"></i> Test Requested</th>
+			  </tr>
+			  </thead>
+			  <tbody>
+				  <tr class="gradeX">
+					<td class="text-center">Urinalysis</td>
+					<td class="text-center"><span class="label label-success label-mini"> Urinalysis Test</span></td>
+				  </tr>
+			  </tbody>
+			</table>
+		</div>
 	</div>
 	<div class="modal-footer">
 		<span id="Error_Message-TRMT-<?php echo $MR['MR_ID']; ?>" style="float: left; font-weight: bold;" class="text-danger"></span>
