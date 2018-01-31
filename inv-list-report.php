@@ -184,115 +184,27 @@ else if($Position == "Volunter"){
                               </tr>
                               </thead>
                               <tbody>
+                              <?php
+                                $query = "SELECT * FROM `medicine`,`inventory` WHERE medicine.MEDICINE_ID = inventory.MEDICINE_ID ";
+                                $result = mysql_query($query);
+                                
+                                while($r = $row = mysql_fetch_array($result)){
+                                ?>
                               <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
+                                  <td><?php echo $r['INV_DATE_ARV'];?></td>
+                                  <td><?php echo $r['MEDICINE_CAT'];?></td>
+                                  <td><?php echo $r['MEDICINE_TYPE'];?></td>
+                                  <td><?php echo $r['MEDICINE_GNAME'];?></td>
+                                  <td><?php echo $r['MEDICINE_BNAME'];?></td>
+                                  <td><?php echo $r['MEDICINE_DFORM'];?></td>
+								  <td><?php echo $r['MEDICINE_DOSE'];?></td>
+								  <td><?php echo $r['INV_EXPD'];?></td>
+							      <td><?php echo $row['INV_QTY'];echo "/"; echo $row['INV_QTY_HIST'];?></td>
+								  <td><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty){ echo "<span class='label label-danger label-mini'>Low</span>";} ?></td>
                               </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-                              </tbody>
+                                <?php
+                                }
+                                ?>
                           </table>
                           <div class="row">
                               <div class="col-lg-4 invoice-block pull-right">
