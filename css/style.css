@@ -20,6 +20,7 @@ body {
     -moz-font-smoothing: antialiased;
 }
  
+
 ul li {
     list-style: none;
 }
@@ -175,6 +176,19 @@ a, a:hover, a:focus {
     float:left;
 }
 
+
+.system_title {
+    background-color: #f1f2f7;
+	background: url(../img/login.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+    background-size: cover;
+    float:left;
+    font-color:white;
+   
+
+}
 
 /*sidebar navigation*/
 

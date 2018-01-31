@@ -125,7 +125,31 @@ CREATE TABLE `lab_request` (
   CONSTRAINT `lab_request_ibfk_1` FOREIGN KEY (`TRMNT_ID`) REFERENCES `treatment` (`TRMT_ID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
 INSERT INTO lab_request VALUES("1","Fecalisys","asdasd","2018-01-28","1","1","2018"); 
+=======
+INSERT INTO inventory VALUES("2","14","100","PhilippineDrug","2018-01-20","2018-01-11","100","0","0"); 
+INSERT INTO inventory VALUES("4","18","100","AlecDrugNation","2018-01-17","2018-01-17","100","0","0"); 
+INSERT INTO inventory VALUES("5","17","300","hjgjhbkjb","2018-05-31","2018-01-29","300","1","2018"); 
+
+
+
+DROP TABLE lab_request;
+
+CREATE TABLE `lab_request` (
+  `LBR_ID` int(5) NOT NULL AUTO_INCREMENT,
+  `LBR_TYPE` text NOT NULL,
+  `LBR_REQ` text NOT NULL,
+  `LBR_DATE` date NOT NULL,
+  `TRMNT_ID` int(5) NOT NULL,
+  `MONTH` int(11) NOT NULL,
+  `YEAR` int(4) NOT NULL,
+  PRIMARY KEY (`LBR_ID`),
+  KEY `TRMNT_ID` (`TRMNT_ID`),
+  CONSTRAINT `lab_request_ibfk_1` FOREIGN KEY (`TRMNT_ID`) REFERENCES `treatment` (`TRMT_ID`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+>>>>>>> 74820e457ed9feb1d24e7f541cc71cbf4563fec2
 
 
 
@@ -145,10 +169,17 @@ CREATE TABLE `medical_record` (
   PRIMARY KEY (`MR_ID`),
   KEY `SCHED_ID` (`SCHED_ID`),
   CONSTRAINT `medical_record_ibfk_1` FOREIGN KEY (`SCHED_ID`) REFERENCES `schedule` (`SCHEDULE_ID`) ON UPDATE CASCADE
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 INSERT INTO medical_record VALUES("2","palupok","111/11","111.00","111.00","2018-01-28 23:21:59","1","2018","1","Completed"); 
 INSERT INTO medical_record VALUES("4","Agitoy","1111/11","1111.00","11111.00","2018-01-29 18:27:04","1","2018","1","Pending"); 
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+INSERT INTO medical_record VALUES("1","hypertension","110/80","64.50","37.80","2018-01-29 13:58:51","1","2018","1","Completed"); 
+INSERT INTO medical_record VALUES("2","hypertension","110/80","64.50","37.80","2018-01-29 14:46:07","1","2018","2","Pending"); 
+>>>>>>> 74820e457ed9feb1d24e7f541cc71cbf4563fec2
 
 
 
@@ -387,9 +418,16 @@ CREATE TABLE `schedule` (
   PRIMARY KEY (`SCHEDULE_ID`),
   KEY `P_ID` (`P_ID`),
   CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`P_ID`) REFERENCES `patient` (`P_ID`) ON UPDATE CASCADE
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO schedule VALUES("1","17","2018-01-28","23:30:00","X-ray","1","2018"); 
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+INSERT INTO schedule VALUES("1","10","2018-01-29","14:07:00","Check Up","1","2018"); 
+INSERT INTO schedule VALUES("2","10","2018-01-29","14:53:00","Check Up","1","2018"); 
+>>>>>>> 74820e457ed9feb1d24e7f541cc71cbf4563fec2
 
 
 
@@ -412,8 +450,13 @@ CREATE TABLE `treatment` (
   CONSTRAINT `treatment_ibfk_2` FOREIGN KEY (`User_id`) REFERENCES `users` (`User_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
 INSERT INTO treatment VALUES("1","2","fsdfsd","sdfds","sdfsd","2017-12-31","3","1","2018"); 
 INSERT INTO treatment VALUES("2","4","","","","2018-01-29","3","1","2018"); 
+=======
+INSERT INTO treatment VALUES("1","1","hgvjhbkhgkh","mhbkjgjbkj","kkjhjkbljblj","2018-01-31","11","1","2018"); 
+INSERT INTO treatment VALUES("2","2","","","","2018-01-29","3","1","2018"); 
+>>>>>>> 74820e457ed9feb1d24e7f541cc71cbf4563fec2
 
 
 
@@ -440,7 +483,11 @@ CREATE TABLE `users` (
 
 INSERT INTO users VALUES("1","Admin","$2y$12$Cbzw6Sp1xiJlVPB01TXBB.zLGr4VaHmNjGqXLvOC82PEM4xNOB1UG","ADMIN","ADMIN","ADMIN","-None-","Admin","ADMIN","2018-01-26","1970-01-01","Active","1","2018"); 
 INSERT INTO users VALUES("2","Gabriel1011","$2y$12$47jkt5YXJ2EnZfjXBC5wbeAswQP.l3tWlgsAmhTBydnpoWpHB6EQy","Gabriel Francis","M.","Banua","Male","Admin","#LCN542682A","2018-01-27","1970-01-16","Active","1","2018"); 
+<<<<<<< HEAD
 INSERT INTO users VALUES("3","Alec","$2y$12$lroka61URHhwj87VLeDDI.h5vPbLoNwbLilShhgVpFiEeyb9jQUNq","Alec","Legaspi","Rubz","Male","Doctor","#LCN123516HA","0000-00-00","2018-03-27","Active","1","2018"); 
+=======
+INSERT INTO users VALUES("3","Alec","$2y$12$0SJSrf0YeDwGd5TY4Jd7V.3uRUu2MY1fIxXaAT5fweuxIfblIY4jm","Alec","Legaspi","Rubz","Male","Doctor","#LCN123516HA","0000-00-00","2018-03-27","Active","1","2018"); 
+>>>>>>> 74820e457ed9feb1d24e7f541cc71cbf4563fec2
 INSERT INTO users VALUES("11","Alson","$2y$12$Xn79XxGcsrtI3BsfBdu2gevx4PcynjXWn9mMyawZSzhfRvmhfQxSy","Alson John","R.","Bayon-on","Male","Doctor","#LCN1234ASD4","2018-01-28","2018-12-31","Active","1","2018"); 
 
 

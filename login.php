@@ -80,9 +80,11 @@ if(isset($_POST['login'])){
   <body class="login-body">
 
     <div class="container">
-
+    <div class = "text-center" >
+        <h2 style = "color:white;" >SAINT EZEKIEL MORENO <br><span style = "color:yellow;">HEALTHCARE MANAGEMENT SYSTEM</span></h2>
+      </div>
       <form class="form-signin" action="login.php" method="POST">
-        <h2 class="form-signin-heading"><strong>semhcms</strong></h2>
+        <h2 class="form-signin-heading"><strong>LOGIN</strong></h2>
         <div class="login-wrap">
             <input type="text" name="username" id="username" class="form-control" placeholder="Username" required="" autofocus>
             <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="">
