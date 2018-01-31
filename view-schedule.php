@@ -126,12 +126,12 @@ if($Position == 'Doctor'){
           <li class="sub-menu" id="Schedule-li">
                       <a href="javascript:;" class="active">
                           <i class="icon-calendar"></i>
-                          <span>Schedule Management</span>
+                          <span id="span-schedule-management">Schedule Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a href="set-schedule.php">Set Schedule</a></li>
+                          <li><a id="set-sched-id" href="set-schedule.php">Set Schedule</a></li>
                           <li class="active"><a href="view-schedule.php">View Schedule</a></li>
-                          <li><a href="sched-reports-panel.php">Schedule Reports</a></li>
+                          <li><a id="sched-reports-id" href="sched-reports-panel.php">Schedule Reports</a></li>
                       </ul>
                   </li>
           
@@ -205,14 +205,14 @@ if($Position == 'Doctor'){
 									?>
                                       <tr class="gradeX">
                                           <td><?php echo strftime('%m-%d-%Y', strtotime($row['SCHEDULE_DATE'])); ?></td>
-                                          <td><?php $date = date("h:i A", strtotime($row['SCHEDULE_TIME']. ' -2 minutes')); echo $date; ?></td>
+                                          <td><?php $date = date("h:i:s A", strtotime($row['SCHEDULE_TIME']. ' -1 minutes')); echo $date; ?></td>
                                           <td><?php echo $row['FullName'] ?></td>
                                           <td><?php echo $row['P_TYPE'] ?></td>
                                           <td><?php echo $row['P_GNDR'] ?></td>
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
-                                              <a class="btn btn-shadow btn-success btn-xs" style="width:30px" data-toggle="modal" onclick="schedChange(<?php echo $row['SCHEDULE_ID']; ?>)" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i></a>
-                                  			  <a class="btn btn-shadow btn-danger btn-xs" style="width:30px" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID']; ?>)"><i class="icon-trash"></i></a>
+                                              <a class="btn btn-shadow btn-success btn-xs" <?php if($Position == 'Doctor'){echo "style='display: none;'";}?> style="width:30px" data-toggle="modal" onclick="schedChange(<?php echo $row['SCHEDULE_ID']; ?>)" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i></a>
+                                  			  <a class="btn btn-shadow btn-danger btn-xs" <?php if($Position == 'Doctor'){echo "style='display: none;'";}?> style="width:30px" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID']; ?>)"><i class="icon-trash"></i></a>
                                   			  <a class="btn btn-shadow btn-primary btn-xs" style="width:30px" href="view-patient-profile.php?VID=<?php echo $row['P_ID']; ?>&Sched_ID=<?php echo $row['SCHEDULE_ID']; ?>"><i class=" icon-share-alt"></i></a>
 <!-- edit Schedule Start MODAL-->
 <?php

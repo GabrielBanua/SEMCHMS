@@ -263,7 +263,7 @@ require 'lib/Db.config.pdo.php';
 			$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
 			$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-			$Time = date('H:i:s', strtotime($Sched_time. ' +2 minutes'));
+			$Time = date('H:i:s', strtotime($Sched_time. ' +1 minutes'));
 			$sqldate = date('Y-m-d',strtotime($Sched_date));
 			$date = date("Y-m-d");	
 			$Year = date('Y',strtotime($date));
@@ -287,13 +287,13 @@ date_default_timezone_set('Asia/Manila');
 			$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
 			$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-			$Time = date('H:i:s', strtotime($Sched_time));
-			$sqldate = date('Y-m-d',strtotime($Sched_date));
-			$Timedel = date('H:i:s', strtotime($Sched_time. ' +1 seconds'));
-			$CheckTime = date('H:i:s');
-			$CheckDate = date('Y-m-d');
+				$Time = date('H:i:s', strtotime($Sched_time));
+				$sqldate = date('Y-m-d',strtotime($Sched_date));
+				$Timedel = date('H:i:s', strtotime($Sched_time. ' +1 minutes'));
+				$CheckDateTime = date('Y-m-d H:i:s');
+				$MergeDateTime = date('Y-m-d H:i:s', strtotime("$sqldate $Timedel"));
 			
-			if($Timedel < $CheckTime && $CheckDate > $sqldate){
+			if($MergeDateTime < $CheckDateTime){
 				echo "Late";
 			}
 			else{
@@ -304,7 +304,7 @@ date_default_timezone_set('Asia/Manila');
 				$TimeDelay;
 				$TimeInterval;
 				while($row = mysql_fetch_array($Check)){
-					$TimeDelay = date("H:i:s", strtotime($row['SCHEDULE_TIME']. ' -2 minutes'));
+					$TimeDelay = date("H:i:s", strtotime($row['SCHEDULE_TIME']. ' -1 minutes'));
 					$TimeInterval = $row['SCHEDULE_TIME'];
 				}
 				if($TimeDelay <= $Time && $TimeInterval >= $Time){
@@ -322,7 +322,7 @@ require 'lib/Db.config.pdo.php';
 			$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
 			$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-			$Time = date('H:i:s', strtotime($Sched_time. ' +7 minutes'));
+			$Time = date('H:i:s', strtotime($Sched_time. ' +1 minutes'));
 			$sqldate = date('Y-m-d',strtotime($Sched_date)); 
 	
 		$stmt = $db->prepare("Update schedule set SCHEDULE_DATE=?, SCHEDULE_TIME=?, SCHEDULE_PURPOSE=? where SCHEDULE_ID=?");

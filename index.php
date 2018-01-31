@@ -95,12 +95,12 @@ require 'lib/chartSQL.php';
                     <li class="sub-menu" id="Schedule-li">
                         <a href="javascript:;">
                           <i class="icon-calendar"></i>
-                          <span>Schedule Management</span>
+                          <span id="span-schedule-management">Schedule Management</span>
                       </a>
                         <ul class="sub">
-                            <li><a href="set-schedule.php">Set Schedule</a></li>
+                            <li><a id="set-sched-id" href="set-schedule.php">Set Schedule</a></li>
                             <li><a href="view-schedule.php">View Schedule</a></li>
-							<li><a href="sched-reports-panel.php">Schedule Reports</a></li>
+							<li><a id="sched-reports-id" href="sched-reports-panel.php">Schedule Reports</a></li>
                         </ul>
                     </li>
 

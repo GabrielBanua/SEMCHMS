@@ -40,7 +40,6 @@
                 url: "Server.php?p=CheckSched",
                 data: "P_ID="+Sched_Id+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
                 success: function(data){
-                    alert(data);
                   if(data == 'Taken'){
                     $('#Error_Message-'+str).html('This schedule is taken!');
                   }

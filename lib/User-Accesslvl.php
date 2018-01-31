@@ -19,6 +19,10 @@
             $('#Laboratory-li').hide();
             $('#Inventory-li').hide();
             $('#Medicalrecord_btn').hide();
+            $('#set-sched-id').hide();
+            $('#sched-reports-id').hide();
+            $('#span-schedule-management').html("Consoltation schedule");
+            
         }
         else if(Auth == "Medtech") {
             $('#User-li').hide();
