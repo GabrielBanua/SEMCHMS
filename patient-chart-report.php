@@ -222,56 +222,69 @@ require 'lib/session.php';
 												  <tr>
 													  <th class="text-center"><i class="icon-calendar icon-2x"></i><br> Month</th>
 													  <th class="text-center"><i class="icon-group icon-2x"></i><br> Patient Per Month</th>
+													  <th class="text-center"><i class="icon-wrench icon-2x"></i><br> Action</th>
 												  </tr>
 												  </thead>
 												  <tbody>
 												  <tr>
 													  <td class="text-center"><b>January</b></td>
 													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  <tr>
 													  <td class="text-center"><b>February</b></td>
 													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  <tr>
 													  <td class="text-center"><b>March</b></td>
 													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  <tr>
 													  <td class="text-center"><b>April</b></td>
 													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  <tr>
 													  <td class="text-center"><b>May</b></td>
 													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  <tr>
 													  <td class="text-center"><b>June</b></td>
 													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  <tr>
 													  <td class="text-center"><b>July</b></td>
 													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  <tr>
 													  <td class="text-center"><b>August</b></td>
 													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  <tr>
 													  <td class="text-center"><b>September</b></td>
 													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  <tr>
 													  <td class="text-center"><b>October</b></td>
 													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  <tr>
 													  <td class="text-center"><b>November</b></td>
 													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  <tr>
 													  <td class="text-center"><b>December</b></td>
 													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  </tbody>
 											  </table>
