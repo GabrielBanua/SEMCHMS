@@ -34,27 +34,6 @@
 				<div class="col-lg-4">
 					<input type="text" value="<?php echo $MR['MR_TEMP']; ?>" class="form-control" readonly>
 				</div>
-				<label  class="col-lg-2 control-label">Lab Test</label>
-				<div class="col-lg-4">
-					<select class="form-control" id="Lab_Req-<?php echo $MR['MR_ID']; ?>">
-						<option value="--None--" <?php
-                        if ($LAB_RES['LBR_TYPE'] == "--None--") { echo " selected"; }?>>--None--</option>
-                        <option value="Blood Chemistry" <?php
-                        if ($LAB_RES['LBR_TYPE'] == "Blood Chemistry") { echo " selected"; }?>>Blood Chemistry</option>
-                        <option value="Fecalisys" <?php
-                        if ($LAB_RES['LBR_TYPE'] == "Fecalisys") { echo " selected"; }?>>Fecalisys</option>
-						<option value="Hematology" <?php
-                        if ($LAB_RES['LBR_TYPE'] == "Hematology") { echo " selected"; }?>>Hematology</option>
-						<option value="Urinalysis" <?php
-                        if ($LAB_RES['LBR_TYPE'] == "Urinalysis") { echo " selected"; }?>>Urinalysis</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group">
-				<label  class="col-lg-2 control-label">Requested</label>
-				<div class="col-lg-4">
-					<input type="text" id="TestR-<?php echo $MR['MR_ID']; ?>" value="<?php echo $LAB_RES['LBR_REQ']; ?>" class="form-control">
-				</div>
 			</div>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Diagnosis:</label>

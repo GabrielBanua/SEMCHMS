@@ -34,23 +34,7 @@
 				<div class="col-lg-4">
 					<input type="text" value="<?php echo $MR['MR_TEMP']; ?>" class="form-control" readonly>
 				</div>
-				<label  class="col-lg-2 control-label">Lab Test</label>
-				<div class="col-lg-4">
-					<select class="form-control" id="Lab_Req-<?php echo $MR['MR_ID']; ?>">
-						<option hidden>--None--</option>
-						<option>Blood Chemistry</option>
-						<option>Fecalisys</option>
-						<option>Hematology</option>
-						<option>Urinalysis</option>
-					</select>
-				</div>
 			</div>
-			<div class="form-group pull-right">
-				<label  class="col-lg-6 control-label">Test Requested</label>
-				<div class="col-lg-6">
-					<input type="text" id="TestR-<?php echo $MR['MR_ID']; ?>" class="form-control">
-				</div>
-			</div><br>
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Diagnosis:</label>
 				<div class="col-lg-12">
