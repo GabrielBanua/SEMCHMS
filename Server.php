@@ -576,5 +576,27 @@ require 'lib/Db.config.php';
 		echo "<option>No registered doctor</option>";
 	}			
 }
+else if($page == 'RDoctorList'){
+require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
+
+$id = mysql_real_escape_string($_POST['MR_ID']);
+
+	$retrieve = "SELECT * FROM treatment WHERE MR_ID = '$id'";
+	$res = mysql_query($retrieve);
+	$Result = mysql_fetch_array($res);
+
+	$sql = "SELECT *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users WHERE Position = 'Doctor' AND STATUS = 'Active'";
+			$do = mysql_query($sql);
+			$count = mysql_num_rows($do);
+
+	if($count > 0){
+		while($doc = mysql_fetch_array($do)){
+			echo "<option value='";echo $doc['User_id'];echo "'"; if($Result['User_id'] == $doc['User_id']){echo "selected";} echo "'>"; echo $doc['Fullname']; echo "</option>";
+		}
+	}else{
+		echo "<option>No registered doctor</option>";
+	}			
+}
 
 ?>

@@ -37,15 +37,16 @@ require 'lib/Db.config.php';
                         $stmt->bindParam(5,$User_id);
                         $stmt->bindParam(6,$MedicalRec_ID);
 						$stmt->execute();
-				
-				$ref = $db->prepare("update referral set RF_DOCNAME=?, 	RF_CN=?, RF_ADD=? where TRMTMNT_ID=?");
+				if(!empty($DocName) || !empty($DocCN) || !empty($DocADD)){
+					$ref = $db->prepare("update referral set RF_DOCNAME=?, RF_CN=?, RF_ADD=? where TRMTMNT_ID=?");
 						$ref->bindParam(1,$DocName);
 						$ref->bindParam(2,$DocCN);
 						$ref->bindParam(3,$DocADD);
 						$ref->bindParam(4,$updated_TR_id);
                 $ref->execute();
-                
-                echo "wala";
+				}else{
+					//do nothing
+				}
 				
 }
 else if($page == 'DeleteInventory'){

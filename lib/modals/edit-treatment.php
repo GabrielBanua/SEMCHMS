@@ -81,7 +81,9 @@
 				</div>
 				<label  class="col-lg-2 control-label">Doctor</label>
 				<div class="col-lg-4">
-					<input type="text" id="listDoctor-<?php echo $MR['MR_ID']; ?>" value="<?php echo $Doctorname['FullName']; ?>" class="form-control">
+					<select class="select2-single" id="RlistofDoctor-<?php echo $MR['MR_ID']; ?>">
+						<option></option><!--for placeholder-->
+					</select>
 				</div>
 			</div>
 			<div class="form-group">
