@@ -386,7 +386,7 @@ include 'lib/User-Accesslvl.php';
 
 
 				{ 
-					type: "splineArea", 
+					type: "spline", 
 					showInLegend: true, 
 					legendText: "Children",
 					name: "Children", 
