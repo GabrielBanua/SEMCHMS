@@ -204,6 +204,10 @@ else if($Position == "Volunter"){
 											<option value="urinal">Urinalysis</option>
 										</select>
 									</div>
+									<label class="col-sm-2 control-label">Last Meal:</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control">
+									</div>
 								</div>
 								<hr>
 <!--- Blood Chemistry -->
