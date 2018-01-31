@@ -454,8 +454,7 @@ require 'lib/Db.config.php';
 else if($page == 'addTreatment'){
 require 'lib/Db.config.pdo.php';
 require 'lib/Db.config.php';
-			$TestRequest = mysql_real_escape_string($_POST['TEST_REQ']);
-			$LabRequest = mysql_real_escape_string($_POST['LAB_REQ']);
+			
 			$Diagnosis = mysql_real_escape_string($_POST['DGN']);
 			$Treatment = mysql_real_escape_string($_POST['TRMT']);
 			$Remarks = mysql_real_escape_string($_POST['RMKS']);
@@ -507,18 +506,6 @@ require 'lib/Db.config.php';
 						$ref->bindParam(5,$Month);
 						$ref->bindParam(6,$Year);
 					$ref->execute();
-				}
-				if($LabRequest == '--None--'){
-					//do nothing
-				}else{
-					$Lab = $db->prepare("insert into lab_request values('',?,?,?,?,?,?)");
-						$Lab->bindParam(1,$LabRequest);
-						$Lab->bindParam(2,$TestRequest);
-						$Lab->bindParam(3,$date);
-						$Lab->bindParam(4,$updated_TR_id);
-						$Lab->bindParam(5,$Month);
-						$Lab->bindParam(6,$Year);
-					$Lab->execute();
 				}
 }
 else if($page == 'addMedicalRecord'){

@@ -108,8 +108,6 @@
 function addTreatment(str){
           var Med_RID = str;
           var Diagnosis = $('#DIAG_DTLS-'+Med_RID).val(); 
-          var Lab_Req = $('#Lab_Req-'+Med_RID).val();
-          var Test_Req = $('#TestR-'+Med_RID).val(); 
           var Treatment =  $('#TREATMENT-'+Med_RID).val();
           var Remarks = $('#REMARKS-'+Med_RID).val();
           var FollowUp = $('#F_CHECKUP-'+Med_RID).val();
@@ -125,7 +123,7 @@ function addTreatment(str){
            $.ajax({
                 type: "POST",
                 url: "Server.php?p=addTreatment",
-                data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID+"&REFDN="+RefDoc+"&REF_CN="+RefDoc_CN+"&REF_ADD="+RefDoc_Add+"&LAB_REQ="+Lab_Req+"&TEST_REQ="+Test_Req,
+                data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID+"&REFDN="+RefDoc+"&REF_CN="+RefDoc_CN+"&REF_ADD="+RefDoc_Add,
                 success: function(data){
                   $('#Success_Message-TRMT-'+Med_RID).html('Successfully Added! &nbsp;');
                         setTimeout(function() {
@@ -159,7 +157,7 @@ function editTreatment(id){
                 url: "Server2.php?p=editTreatment",
                 data: "DGNE="+Diagnosis+"&TRMTE="+Treatment+"&RMKSE="+Remarks+"&FPCHKE="+FollowUp+"&DOCE="+Doctor+"&MRIDE="+Update_ID+"&REFDNE="+RefDoc+"&REF_CNE="+RefDoc_CN+"&REF_ADDE="+RefDoc_Add,
                 success: function(data){
-                  $('#Success_Message-ETRMT-'+Update_ID).html('Successfully Added! &nbsp;');
+                  $('#Success_Message-ETRMT-'+Update_ID).html('Successfully updated! &nbsp;');
                         setTimeout(function() {
                           $('#Success_Message-ETRMT-'+Update_ID).fadeOut('slow');
                         }, 1500);
@@ -183,13 +181,11 @@ function editTreatment(id){
       }
       function RetrieveSaveDoctor(str){
       var id = str;
-   
         $.ajax({
                   type: "POST",
                   url: "Server.php?p=RDoctorList",
                   data: "MR_ID="+id,
                   success: function(data){
-                    alert(data);
                     $('#RlistofDoctor-'+id).html(data);
                   }
         });

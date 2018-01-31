@@ -17,6 +17,9 @@ require 'lib/Db.config.php';
 			$DocCN = mysql_real_escape_string($_POST['REF_CNE']);
 			$DocADD = mysql_real_escape_string($_POST['REF_ADDE']);				
 			$sqldate = date('Y-m-d',strtotime($Follow));
+			$date = date("Y-m-d");
+			$Year = date('Y',strtotime($date));
+			$Month = date('m',strtotime($date));
 
             //sql to fetch user_id of doctor
 				$sql = "SELECT * FROM users WHERE User_id = '$Doctor'";
@@ -37,16 +40,28 @@ require 'lib/Db.config.php';
                         $stmt->bindParam(5,$User_id);
                         $stmt->bindParam(6,$MedicalRec_ID);
 						$stmt->execute();
-				if(!empty($DocName) || !empty($DocCN) || !empty($DocADD)){
+
+						$referral_check = "SELECT * FROM referral WHERE TRMTMNT_ID = '$updated_TR_id'";
+						$retrive_referral = mysql_query($referral_check);
+						$count_ref = mysql_num_rows($retrive_referral);
+			
+				if($count_ref > 0){
 					$ref = $db->prepare("update referral set RF_DOCNAME=?, RF_CN=?, RF_ADD=? where TRMTMNT_ID=?");
 						$ref->bindParam(1,$DocName);
 						$ref->bindParam(2,$DocCN);
 						$ref->bindParam(3,$DocADD);
 						$ref->bindParam(4,$updated_TR_id);
-                $ref->execute();
+						$ref->execute();
 				}else{
-					//do nothing
-				}
+					$ref = $db->prepare("insert into referral values('',?,?,?,?,?,?)");
+						$ref->bindParam(1,$DocName);
+						$ref->bindParam(2,$DocCN);
+						$ref->bindParam(3,$DocADD);
+						$ref->bindParam(4,$updated_TR_id);
+						$ref->bindParam(5,$Month);
+						$ref->bindParam(6,$Year);
+					$ref->execute();
+				}			
 				
 }
 else if($page == 'DeleteInventory'){
