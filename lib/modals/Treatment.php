@@ -33,8 +33,8 @@
 				<label  class="col-lg-2 control-label">Temperature</label>
 				<div class="col-lg-4">
 					<input type="text" value="<?php echo $MR['MR_TEMP']; ?>" class="form-control" readonly>
-				</div>
-			</div>
+				</div>	
+			</div>		
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Diagnosis:</label>
 				<div class="col-lg-12">
