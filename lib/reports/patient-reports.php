@@ -1,12 +1,16 @@
 <?php
-require 'lib/session.php';
+require 'lib/Db.config.php';
 
-if($Position == "Doctor"){
-  header('Location: index.php');
-}
-else if($Position == "Volunter"){
-  header('Location: index.php');
-}
+
+$query = "SELECT * FROM P_ID WHERE `P_TYPE` = `ADULT` ";
+<!-- <? while($fetch = $query->fetch_array()){
+    $id = $fetch['p_id'];
+    $query2 = query("SELECT * FROM `add_patient` WHERE `p_id` = '$id'") or die (mysqli_error());
+    } 
+    -->
+
+?>
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +87,7 @@ else if($Position == "Volunter"){
                       </a>
                   </li>
 
-                  <li class="sub-menu" id="Patient-li">
+                  <li class="sub-menu">
                       <a href="javascript:;" class="active">
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
@@ -95,7 +99,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu" id="Schedule-li">
+				  <li class="sub-menu">
                       <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -107,7 +111,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu" id="Inventory-li">
+				  <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
@@ -165,7 +169,7 @@ else if($Position == "Volunter"){
 								  <div class="pull-right"><span>Printed By: Gabriel1011</span></div><br>
 							  <div class="text-center corporate-id">
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
-								  <h3>List of Patient 2018</h3>
+								  <h3>List of Patient for 2018</h3>
                               </div>
                           </div>
                           <table class="table table-striped table-hover">
@@ -181,10 +185,10 @@ else if($Position == "Volunter"){
                               </thead>
                               <tbody>
                               <tr>
-                                  <td>P1</td>
-                                  <td>Gabriel Banua</td>
-                                  <td class="hidden-phone">Canlaon City</td>
-                                  <td class="">1-1-2018</td>
+                                  <td><?php echo $P_ID?></td>
+                                  <td><?php echo $P_FNAME && $P_LNAME?></td>
+                                  <td class="hidden-phone"><?php echo $P_ADD?></td>
+                                  <td class=""><?php echo $DATE_REG?></td>
                                   <td class="text-center">2</td>
                                   <td>Active</td>
                               </tr>
@@ -316,12 +320,40 @@ else if($Position == "Volunter"){
 			   $this.button('reset');
 		   }, 8000);
 		});
+
+    $(document).ready(function(){
+        var Auth ='<?php echo $Position; ?>';
+        if (Auth == "Admin") 
+        {                       
+            $('#Patient-li').show(); 
+            $('#Schedule-li').show();
+            $('#Inventory-li').show();
+            $('#Laboratory-li').show();
+            $('#Reports-li').show();
+            $('#User-li').show();
+            $('#Maintenance-li').show();
+        }
+        else if(Auth == "Doctor") {
+            $('#User-li').hide();
+            $('#Patient-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Laboratory-li').hide();
+            $('#Inventory-li').hide();
+        }
+        else if(Auth == "Medtech") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Patient-li').hide();
+            $('#Schedule-li').hide();
+            $('#Inventory-li').hide();
+        }
+        });
 	</script>
-<?php
-include 'lib/User-Accesslvl.php';
-?>
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 
   </body>
 </html>
+
