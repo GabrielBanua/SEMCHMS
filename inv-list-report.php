@@ -163,12 +163,14 @@ else if($Position == "Volunter"){
                           <div class="#">
 
                                 <?php
-                                    $query = "SELECT CONCAT (`Position`, ':' ,`Firstname`, ' ' ,`Lastname`) AS Rank FROM `users`";
+                                    $query = mysql_query("SELECT *, CONCAT(Position,' ',Firstname,' ',Lastname) AS Rank FROM users Where User_id = '$ID'");
+                                    $result = mysql_fetch_array($query);
 
-                                    ?> 
-
+                                    
+                                ?>
 								<div class="pull-right"><span>Date Printed: <?php echo date('Y-m-d');?></span></div><br> <!--current date is based on server, must be set up correctly -->
-								  <div class="pull-right"><span class = "username">Printed By: <?php echo $r['Rank'];?></span></div><br>
+								  <div class="pull-right"><span class = "username">Printed By: <?php echo $result['Rank'];?></span></div><br>
+                    
 							  <div class="text-center corporate-id">
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
 								  <h3>Inventory List of 2018</h3>
