@@ -293,7 +293,7 @@ require 'lib/Db.config.pdo.php';
 			$sqldate = date('Y-m-d',strtotime($Sched_date));
 			$date = date("Y-m-d");	
 			$Year = date('Y',strtotime($date));
-			$Month = date('m',strtotime($date));
+			$Month = date('M',strtotime($date));
 			
 				$stmt = $db->prepare("insert into schedule values('',?,?,?,?,?,?)");
 					$stmt->bindParam(1,$P_ID);
@@ -371,7 +371,7 @@ require 'lib/Db.config.pdo.php';
 			$MED_DOSE = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
 			$date = date("Y-m-d");	
 			$Year = date('Y',strtotime($date));
-			$Month = date('m',strtotime($date));
+			$Month = date('M',strtotime($date));
 
 		$stmt = $db->prepare("insert into medicine values('',?,?,?,?,?,?,?,?)");
 			$stmt->bindParam(1,$MED_CAT);
@@ -459,7 +459,7 @@ require 'lib/Db.config.php';
 			$QtyHistory = $Qty;
 			$date = date("Y-m-d");
 			$Year = date('Y',strtotime($date));
-			$Month = date('m',strtotime($date));
+			$Month = date('M',strtotime($date));
 
 	$sql = "SELECT MEDICINE_ID FROM medicine WHERE MEDICINE_DOSE = '$MedDose' AND MEDICINE_BNAME = '$MedBN' AND(MEDICINE_GNAME = '$MedGname' AND MEDICINE_CAT = '$MedCat') AND MEDICINE_TYPE = '$Medtype'";
 			$do = mysql_query($sql);
@@ -492,7 +492,7 @@ require 'lib/Db.config.php';
 			$DocADD = mysql_real_escape_string($_POST['REF_ADD']);
 			$date = date("Y-m-d");
 			$Year = date('Y',strtotime($date));
-			$Month = date('m',strtotime($date));
+			$Month = date('M',strtotime($date));
 				
 				$sqldate = date('Y-m-d',strtotime($Follow));
 				$Status = "Completed";
@@ -548,7 +548,7 @@ require 'lib/Db.config.php';
 			$sqldate = date('Y-m-d H:i:s',strtotime($MedRDate));
 			$date = date("Y-m-d");
 			$Year = date('Y',strtotime($date));
-			$Month = date('m',strtotime($date));
+			$Month = date('M',strtotime($date));
 			$Status = "Pending";
 
 	$stmt = $db->prepare("insert into medical_record values('',?,?,?,?,?,?,?,?,?)");
