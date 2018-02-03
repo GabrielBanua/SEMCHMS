@@ -19,7 +19,7 @@ require 'lib/Db.config.php';
 			$sqldate = date('Y-m-d',strtotime($Follow));
 			$date = date("Y-m-d");
 			$Year = date('Y',strtotime($date));
-			$Month = date('m',strtotime($date));
+			$Month = date('M',strtotime($date));
 
             //sql to fetch user_id of doctor
 				$sql = "SELECT * FROM users WHERE User_id = '$Doctor'";
@@ -73,5 +73,48 @@ require 'lib/Db.config.php';
 	$sql = "DELETE FROM inventory WHERE INV_ID = $ID";
 		$stmt = $db->prepare($sql);
  		$stmt -> execute();
+}
+else if($page == 'DispenseMedicine'){
+	require 'lib/Db.config.pdo.php';
+	require 'lib/Db.config.php';
+			$inv_id = mysql_real_escape_string($_POST['INV_ID']);
+			$sub_qty = mysql_real_escape_string($_POST['DES_QTY']);
+			$date = date("Y-m-d");
+			$Year = date('Y',strtotime($date));
+			$Month = date('M',strtotime($date));
+
+			$DispenseSql = mysql_query("SELECT * FROM inventory WHERE INV_ID = '$inv_id'");
+			$DispneseRes = mysql_fetch_array($DispenseSql);
+
+			$DisQty = $DispneseRes['INV_QTY'];
+			
+			if($DisQty < $sub_qty){
+				$Lacking = $sub_qty - $DisQty;
+				$Lacking_sol = $sub_qty - $Lacking;
+				$Dis_QtyRes = $DisQty - $Lacking_sol;
+				echo $Lacking_sol;
+
+					$ResultDis = $db->prepare("update inventory set INV_QTY=? where INV_ID=?");
+					$ResultDis->bindParam(1,$Dis_QtyRes);
+					$ResultDis->bindParam(2,$inv_id);
+					$ResultDis->execute();
+
+					$RecordDis = $db->prepare("insert into dispense values('',?)");
+					$RecordDis->bindParam(1,$Dis_QtyRes);
+					$RecordDis->bindParam(2,$inv_id);
+					$RecordDis->execute();
+				
+
+				
+			}
+			else if($DisQty >= $sub_qty){
+				$DisResult = $DisQty - $sub_qty;
+			
+					$ResultDis = $db->prepare("update inventory set INV_QTY=? where INV_ID=?");
+					$ResultDis->bindParam(1,$DisResult);
+					$ResultDis->bindParam(2,$inv_id);
+					$ResultDis->execute();
+			}
+			
 }
 ?>

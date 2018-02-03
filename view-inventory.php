@@ -215,7 +215,7 @@ while($row = $stmt->fetch()){
         	<td class="hidden-phone">
 				<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
 				<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
-				<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed"><i class="icon-minus"></i></a>
+				<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><i class="icon-minus"></i></a>
 <?php
 include 'lib/modals/Dispense-medicine-modal.php';
 include 'lib/modals/Edit-inventory-modal.php';

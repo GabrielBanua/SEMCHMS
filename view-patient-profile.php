@@ -407,7 +407,8 @@ while($MR = $medicalrecord->fetch()){
                                                       ?> 
 <?php
     require 'lib/modals/Treatment.php';
-	require 'lib/modals/edit-treatment.php';
+    require 'lib/modals/edit-treatment.php';
+    require 'lib/modals/add-lab-record.php';
 ?>
 													  </td>
 												  </tr>

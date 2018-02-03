@@ -154,7 +154,7 @@ require 'lib/chartSQL.php';
                                 <i class="icon-group"></i>
                             </div>
                             <div class="value">
-                                <h1 class="counter" data-count="<?php echo $NewPatient; ?>">
+                                <h1 class="counter" data-count="<?php echo $NewPatient;?>">
                                 </h1>
                                 <p><b>Total Patients</b></p>
                             </div>
@@ -167,7 +167,6 @@ require 'lib/chartSQL.php';
                             </div>
                             <div class="value">
                                 <h1 class="counter" data-count="150">
-                                    0
                                 </h1>
                                 <p><b>Patient With Follow-up Checkup</b></p>
                             </div>
