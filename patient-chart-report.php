@@ -333,6 +333,14 @@ include 'lib/User-Accesslvl.php';
       </script>
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
+	<script>
+			$(document).ready(function(){
+				$("#pyear").on('change', function(){
+					var year=$(this).val();
+					window.location = 'patient-chart-report.php?year='+year;
+				});
+			});
+		</script>
     <script src = "js/jquery.canvasjs.min.js"></script>
 	<?php require 'reports/charts/patient_population.php'?>
 		
