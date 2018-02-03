@@ -194,7 +194,7 @@ else if($Position == "Volunter"){
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 control-label">Laboratory Type:</label>
+									<label class="col-sm-2 control-label">Test Requested:</label>
 									<div class="col-sm-4">
 										<select id="labtype" class="select2-single">
 											<option></option><!--for placeholder-->
