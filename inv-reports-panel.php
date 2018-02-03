@@ -82,7 +82,7 @@ else if($Position == "Volunter"){
                       </a>
                   </li>
 
-                  <li class="sub-menu">
+                  <li class="sub-menu" id="Patient-li">
                       <a href="javascript:;">
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
@@ -94,7 +94,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Schedule-li">
                       <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -106,7 +106,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Inventory-li">
                       <a href="javascript:;" class="active">
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>

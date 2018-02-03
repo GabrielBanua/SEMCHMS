@@ -58,7 +58,7 @@ require 'lib/Db.config.php';
     <div class="preloader">
         <img src="gif/Ellipsis1.gif" alt="SEMHCMS">
         <div style="position: absolute; top: 100%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
-          <p style="font-size: 15px; font-weight: bold;">loading</p>
+          <p style="font-size: 15px; font-weight: bold;">Please Wait</p>
         </div>
     </div>
   </div>

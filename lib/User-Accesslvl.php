@@ -24,13 +24,21 @@
             $('#span-schedule-management').html("Consoltation schedule");
             
         }
-        else if(Auth == "Medtech") {
+        else if(Auth == "Medtech" || Auth == "Pathologist") {
             $('#User-li').hide();
             $('#Maintenance-li').hide();
             $('#Reports-li').hide();
             $('#Patient-li').hide();
             $('#Schedule-li').hide();
             $('#Inventory-li').hide();
+        }
+        else if(Auth == "Pharmacist") {
+            $('#User-li').hide();
+            $('#Maintenance-li').hide();
+            $('#Reports-li').hide();
+            $('#Patient-li').hide();
+            $('#Schedule-li').hide();
+            $('#Laboratory-li').hide();
         }
         });
 </script>

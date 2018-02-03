@@ -83,7 +83,7 @@ else if($Position == "Volunter"){
                       </a>
                   </li>
 
-                  <li class="sub-menu">
+                  <li class="sub-menu" id="Patient-li"> 
                       <a href="javascript:;">
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
@@ -95,7 +95,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Schedule-li">
                       <a href="javascript:;">
                           <i class="icon-calendar"></i>
                           <span>Schedule Management</span>
@@ -107,7 +107,7 @@ else if($Position == "Volunter"){
                       </ul>
                   </li>
 				  
-				  <li class="sub-menu">
+				  <li class="sub-menu" id="Inventory-li">
                       <a href="javascript:;" class="active">
                           <i class="icon-truck"></i>
                           <span>Inventory Management</span>
@@ -340,37 +340,10 @@ else if($Position == "Volunter"){
 			   $this.button('reset');
 		   }, 8000);
 		});
-
-    $(document).ready(function(){
-        var Auth ='<?php echo $Position; ?>';
-        if (Auth == "Admin") 
-        {                       
-            $('#Patient-li').show(); 
-            $('#Schedule-li').show();
-            $('#Inventory-li').show();
-            $('#Laboratory-li').show();
-            $('#Reports-li').show();
-            $('#User-li').show();
-            $('#Maintenance-li').show();
-        }
-        else if(Auth == "Doctor") {
-            $('#User-li').hide();
-            $('#Patient-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Laboratory-li').hide();
-            $('#Inventory-li').hide();
-        }
-        else if(Auth == "Medtech") {
-            $('#User-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Patient-li').hide();
-            $('#Schedule-li').hide();
-            $('#Inventory-li').hide();
-        }
-        });
 	</script>
+    <?php
+    include "lib/User-Accesslvl.php";
+    ?>
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 

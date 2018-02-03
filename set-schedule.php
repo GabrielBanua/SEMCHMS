@@ -55,7 +55,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
     <div class="preloader">
         <img src="gif/time.svg" alt="SEMHCMS">
         <div style="position: absolute; top: 100%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
-          <p style="font-size: 15px; font-weight: bold;">loading</p>
+          <p style="font-size: 15px; font-weight: bold;">Please Wait</p>
         </div>
     </div>
   </div>
