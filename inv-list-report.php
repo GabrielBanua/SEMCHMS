@@ -170,7 +170,7 @@ else if($Position == "Volunter"){
                     
 							  <div class="text-center corporate-id">
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
-								  <h3>Inventory List of 2018</h3>
+								  <h3>Inventory List of 2018</h3>   
                               </div>
                           </div>
                           <table class="table table-striped table-hover">
