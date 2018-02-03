@@ -234,13 +234,13 @@ require 'lib/Db.config.php';
 							<div class="form-group">
                                 <label class="col-md-4 control-label">Purok</label>
                                 <div class="col-lg-6">
-                                    <input id="#" name="#" type="text" class="form-control" required>
+                                    <input id="P_PUROK" name="P_PUROK" type="text" class="form-control" required>
                                 </div>
                             </div>
 							<div class="form-group">
                                 <label class="col-md-4 control-label">Baranggay</label>
                                 <div class="col-lg-6">
-                                    <input id="#" name="#" type="text" class="form-control" required>
+                                    <input id="P_BRGY" name="P_BRGY" type="text" class="form-control" required>
                                 </div>
                             </div>
 							<div class="form-group">

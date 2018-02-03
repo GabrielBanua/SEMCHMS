@@ -1,5 +1,8 @@
 <script>
-	  function addNewPatient(){ 
+	  function addNewPatient(){
+
+        var Brgy = $('#P_BRGY').val();
+        var Purok = $('#P_PUROK').val(); 
         var Lastname = $('#P_LNAME').val();
         var Firstname = $('#P_FNAME').val();
         var Middlename = $('#P_MNAME').val();
@@ -89,7 +92,7 @@
               TU_Health = 'No information given!';
             }
 
-            if(Lastname == '' || Firstname == '' || Middlename == '' || Gender == '--Select--' || Age == '' || Temperature == '' || Weight == '' || Height == '' || Type == '' || Address == '' || Contact == '' || Occupation == '--Select--' || Religion == '--Select--' || Civil == '--Select--' || Past_pre == '' || Treatment == '' || Medication == '' || Disease == '' || Hospitalized == '' || Dominant == '--Select--' || Physical_H == '--Select--' || Mental_Emo == '--Select--' || Significant == '' || Smoke == '' || Alcohol == '' || Assistive_dev == '' || Person_assist == '' || Formal_ED == '' || CB_Health == '' || TU_Health == '' || OccupationFBW == '--Select--'){
+            if(Brgy == '' || Purok == '' || Lastname == '' || Firstname == '' || Middlename == '' || Gender == '--Select--' || Age == '' || Temperature == '' || Weight == '' || Height == '' || Type == '' || Address == '' || Contact == '' || Occupation == '--Select--' || Religion == '--Select--' || Civil == '--Select--' || Past_pre == '' || Treatment == '' || Medication == '' || Disease == '' || Hospitalized == '' || Dominant == '--Select--' || Physical_H == '--Select--' || Mental_Emo == '--Select--' || Significant == '' || Smoke == '' || Alcohol == '' || Assistive_dev == '' || Person_assist == '' || Formal_ED == '' || CB_Health == '' || TU_Health == '' || OccupationFBW == '--Select--'){
               $('#Error_Message').html('Please fill in all fields! &nbsp;');
             }else{
               $('#Error_Message').html('');
@@ -97,7 +100,7 @@
                     $.ajax({
                       type: "POST",
                       url: "Server.php?p=addNewPatient",
-                      data: "P_LNAME="+Lastname+"&P_FNAME="+Firstname+"&P_MNAME="+Middlename+"&P_GNDR="+Gender+"&P_BDATE="+Birthday+"&P_AGE="+Age+"&P_TEMP="+Temperature+"&P_WGHT="+Weight+"&P_HGHT="+Height+"&P_TYPE="+Type+"&P_ADD="+Address+"&P_CN="+Contact+"&P_OCCU="+Occupation+"&P_REL="+Religion+"&P_CVL_STAT="+Civil+"&PP_HEATH="+Past_pre+"&TRMT="+Treatment+"&MEDCT="+Medication+"&DISE_DISO="+Disease+"&HPTL="+Hospitalized+"&DOM_HAND="+Dominant+"&PHY_HEALTH="+Physical_H+"&MENT_EMO_HEAl="+Mental_Emo+"&SIG_INJ="+Significant+"&SMOKE="+Smoke+"&ALCO_DRUGS="+Alcohol+"&ASSIST_DEV="+Assistive_dev+"&PERS_ASSIST="+Person_assist+"&YEARS_FE="+Formal_ED+"&CB_HEALTH_COND="+CB_Health+"&TU_HEALTH_COND="+TU_Health+"&P_OCCU_FBW="+OccupationFBW,
+                      data: "P_LNAME="+Lastname+"&P_FNAME="+Firstname+"&P_MNAME="+Middlename+"&P_GNDR="+Gender+"&P_BDATE="+Birthday+"&P_AGE="+Age+"&P_TEMP="+Temperature+"&P_WGHT="+Weight+"&P_HGHT="+Height+"&P_TYPE="+Type+"&P_ADD="+Address+"&P_CN="+Contact+"&P_OCCU="+Occupation+"&P_REL="+Religion+"&P_CVL_STAT="+Civil+"&PP_HEATH="+Past_pre+"&TRMT="+Treatment+"&MEDCT="+Medication+"&DISE_DISO="+Disease+"&HPTL="+Hospitalized+"&DOM_HAND="+Dominant+"&PHY_HEALTH="+Physical_H+"&MENT_EMO_HEAl="+Mental_Emo+"&SIG_INJ="+Significant+"&SMOKE="+Smoke+"&ALCO_DRUGS="+Alcohol+"&ASSIST_DEV="+Assistive_dev+"&PERS_ASSIST="+Person_assist+"&YEARS_FE="+Formal_ED+"&CB_HEALTH_COND="+CB_Health+"&TU_HEALTH_COND="+TU_Health+"&P_OCCU_FBW="+OccupationFBW+"&P_BRGY="+Brgy+"&P_PUROK="+Purok,
                       success: function(data){
                   $('#Success_Message').html('Successfully Added! &nbsp;');
                   setTimeout(function() {

@@ -44,6 +44,8 @@ require 'lib/password.php';
 if($page == 'addNewPatient'){
 	require 'lib/Db.config.pdo.php';
 
+			$BRGY = mysql_real_escape_string($_POST['P_BRGY']);
+			$PUROK = mysql_real_escape_string($_POST['P_PUROK']);
 			$Lastname = mysql_real_escape_string($_POST['P_LNAME']);
 			$Firstname = mysql_real_escape_string($_POST['P_FNAME']);
 			$Middlename = mysql_real_escape_string($_POST['P_MNAME']);
@@ -71,7 +73,7 @@ if($page == 'addNewPatient'){
 			$Month = date('M',strtotime($date));
 
 	
-		$stmt = $db->prepare("insert into Patient values('',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$stmt = $db->prepare("insert into Patient values('',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			$stmt->bindParam(1,$Lastname);
 			$stmt->bindParam(2,$Firstname);
 			$stmt->bindParam(3,$Middlename);
@@ -91,6 +93,8 @@ if($page == 'addNewPatient'){
 			$stmt->bindParam(17,$OccupationFBW);
 			$stmt->bindParam(18,$Month);
 			$stmt->bindParam(19,$Year);
+			$stmt->bindParam(20,$BRGY);
+			$stmt->bindParam(21,$PUROK);
 			$stmt->execute();
 
 			$Last_ID = $db->lastInsertId();
