@@ -114,7 +114,7 @@ else if($Position == "Volunter"){
                       </a>
                       <ul class="sub">
 						  <li><a href="view-inventory.php">View Inventory</a></li>
-						  <li><a href="#">Inventory Reports</a></li>
+						  <li><a href="inv-reports-panel.php">Inventory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -174,98 +174,26 @@ else if($Position == "Volunter"){
                                   <th class="hidden-phone">Address</th>
                                   <th class="">Date</th>
                                   <th class="text-center">Visits</th>
-                                  <th>Status</th>
                               </tr>
                               </thead>
                               <tbody>
+                              <?php
+                                $query = mysql_query("SELECT *, CONCAT(P_FNAME, ' ',P_MNAME,' ',P_LNAME) 
+                                AS Fullname FROM patient, schedule");
+                                
+                                
+                                while($r = mysql_fetch_array($query)){
+                                ?>
                               <tr>
-                                  <td>P1</td>
-                                  <td>Gabriel Banua</td>
-                                  <td class="hidden-phone">Canlaon City</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="text-center">2</td>
-                                  <td>Active</td>
+                                  <td><?php echo $r['P_ID']?></td>
+                                  <td><?php echo $r['Fullname']?></td>
+                                  <td class="hidden-phone"><?php echo $r['P_ADD']?></td>
+                                  <td class=""><?php echo $r['P_ADD']?></td>
+                                  <td class="text-center"><?php echo $r['Schedule_ID']?></td>
                               </tr>
-                              <tr>
-                                  <td>P2</td>
-                                  <td>Alessander Neal Rubiato</td>
-                                  <td class="hidden-phone">Sta. Clara, Bacolod City</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="text-center">1</td>
-                                  <td>Inactive</td>
-                              </tr>
-							  <tr>
-                                  <td>P3</td>
-                                  <td>Alson John Bayon-on</td>
-                                  <td class="hidden-phone">Bacolod City</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="text-center">3</td>
-                                  <td>Active</td>
-                              </tr>
-							  <tr>
-                                  <td>P4</td>
-                                  <td>Alvin Yanson</td>
-                                  <td class="hidden-phone">Bacolod City</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="text-center">3</td>
-                                  <td>Active</td>
-                              </tr>
-							  <tr>
-                                  <td>P5</td>
-                                  <td>Carl Betio</td>
-                                  <td class="hidden-phone">Bacolod City</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="text-center">3</td>
-                                  <td>Active</td>
-                              </tr>
-							  <tr>
-                                  <td>P6</td>
-                                  <td>Alvin Galoyo</td>
-                                  <td class="hidden-phone">Bacolod City</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="text-center">3</td>
-                                  <td>Active</td>
-                              </tr>
-							  <tr>
-                                  <td>P7</td>
-                                  <td>Erul John Grapes</td>
-                                  <td class="hidden-phone">Bacolod City</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="text-center">3</td>
-                                  <td>Active</td>
-                              </tr>
-							  <tr>
-                                  <td>P8</td>
-                                  <td>Daniel Molabin</td>
-                                  <td class="hidden-phone">Bacolod City</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="text-center">3</td>
-                                  <td>Active</td>
-                              </tr>
-							  <tr>
-                                  <td>P9</td>
-                                  <td>Mercy Dohinog</td>
-                                  <td class="hidden-phone">Bacolod City</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="text-center">3</td>
-                                  <td>Active</td>
-                              </tr>
-							  <tr>
-                                  <td>P10</td>
-                                  <td>Entes Leonel</td>
-                                  <td class="hidden-phone">Bacolod City</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="text-center">3</td>
-                                  <td>Active</td>
-                              </tr>
-							  <tr>
-                                  <td>P11</td>
-                                  <td>Vicent Suyo</td>
-                                  <td class="hidden-phone">Bacolod City</td>
-                                  <td class="">1-1-2018</td>
-                                  <td class="text-center">3</td>
-                                  <td>Active</td>
-                              </tr>
+                            <?php
+                                }
+                            ?>
                               </tbody>
                           </table>
                           <div class="row">
