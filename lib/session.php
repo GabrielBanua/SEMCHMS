@@ -15,5 +15,10 @@ $sql = "SELECT * FROM users where User_id = $ID";
 $result = mysql_query($sql);
 $row = mysql_fetch_array($result);
 $UserN = $row['Username'];
+$Fname = $row['Firstname'];
+$Lname = $row['Lastname'];
+$Pos = $row['Position'];
+
+
 ?>
  
