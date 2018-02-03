@@ -161,138 +161,47 @@ else if($Position == "Volunter"){
                           </header>
                           <div class="panel-body">
                           <div class="#">
-								<div class="pull-right"><span>Date Printed: 1/28/2018</span></div><br>
-								  <div class="pull-right"><span>Printed By: Gabriel1011</span></div><br>
+                                <?php
+                                    $query = mysql_query("SELECT *, CONCAT(Position,' ',Firstname,' ',Lastname) AS Rank FROM users Where User_id = '$ID'");
+                                    $result = mysql_fetch_array($query);
+                                ?>
+								<div class="pull-right"><span>Date : <?php echo date('Y-m-d');?></span></div><br> <!--current date is based on server, main unit must be set up correctly -->
+								  <div class="pull-right"><span class = "username">Printed By: <?php echo $result['Rank'];?></span></div><br>
+                    
 							  <div class="text-center corporate-id">
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
-								  <h3>Inventory List of 2018</h3>
+								  <h3>Inventory List of 2018</h3>   
                               </div>
                           </div>
                           <table class="table table-striped table-hover">
                               <thead>
                               <tr>
-                                  <th>Date Arrived</th>
-                                  <th>Category</th>
                                   <th>Type</th>
                                   <th>Generic Name</th>
                                   <th>Brand</th>
                                   <th>Dosage Form</th>
-								  <th>Dose</th>
-								  <th>Expiry Date</th>
-								  <th>Quantity</th>
+                                  <th>Expiry Date</th>
 								  <th>Status</th>
                               </tr>
                               </thead>
                               <tbody>
+                              <?php
+                                $query = "SELECT * FROM `medicine`,`inventory` WHERE medicine.MEDICINE_ID = inventory.MEDICINE_ID ";
+                                $result = mysql_query($query);
+                                
+                                while($r = $row = mysql_fetch_array($result)){
+                                ?>
                               <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
+                                  <td><?php echo $r['MEDICINE_TYPE'];?></td>
+                                  <td><?php echo $r['MEDICINE_GNAME'];?></td>
+                                  <td><?php echo $r['MEDICINE_BNAME'];?></td>
+                                  <td><?php echo $r['MEDICINE_DFORM'];?></td>
+								  <td><?php echo $r['INV_EXPD'];?></td>
+								  <td><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty){ echo "<span class='label label-danger label-mini'>Low</span>";} ?></td>
                               </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-							  <tr>
-                                  <td>2018-1-11</td>
-                                  <td>Adult</td>
-                                  <td>Antibiotics</td>
-                                  <td>Paracetamol</td>
-                                  <td>Tempra</td>
-                                  <td>Tablet</td>
-								  <td>600 mg</td>
-								  <td>2019-1-11</td>
-								  <td>100/100</td>
-								  <td>Full</td>
-                              </tr>
-                              </tbody>
+                                <?php
+                                }
+                                ?>
                           </table>
                           <div class="row">
                               <div class="col-lg-4 invoice-block pull-right">

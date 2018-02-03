@@ -1,12 +1,16 @@
 <?php
-require 'lib/session.php';
+require 'lib/Db.config.php';
 
-if($Position == "Doctor"){
-  header('Location: index.php');
-}
-else if($Position == "Volunter"){
-  header('Location: index.php');
-}
+
+$query = "SELECT * FROM P_ID WHERE `P_TYPE` = `ADULT` ";
+<!-- <? while($fetch = $query->fetch_array()){
+    $id = $fetch['p_id'];
+    $query2 = query("SELECT * FROM `add_patient` WHERE `p_id` = '$id'") or die (mysqli_error());
+    } 
+    -->
+
+?>
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +107,7 @@ else if($Position == "Volunter"){
                       <ul class="sub">
                           <li><a  href="set-schedule.php">Set Schedule</a></li>
                           <li><a  href="view-schedule.php">View Schedule</a></li>
-						  <li><a  href="#">Schedule Reports</a></li>
+						  <li><a  href="sched-reports-panel">Schedule Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -127,7 +131,7 @@ else if($Position == "Volunter"){
 						  <li><a  href="labtest.php">Add Lab Results</a></li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="labview.php">View Lab Records</a></li>
-						  <li><a  href="#">Laboratory Reports</a></li>
+						  <li><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -138,7 +142,7 @@ else if($Position == "Volunter"){
                       </a>
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
-						  <li><a  href="view-users.php">View Users</a></li>
+						  <li><a  href="view-users.php">Manage Users</a></li>
                       </ul>
                   </li>
               </ul>
@@ -161,39 +165,113 @@ else if($Position == "Volunter"){
                           </header>
                           <div class="panel-body">
                           <div class="#">
-                              <div class="text-center corporate-id">
+								<div class="pull-right"><span>Date Printed: 1/28/2018</span></div><br>
+								  <div class="pull-right"><span>Printed By: Gabriel1011</span></div><br>
+							  <div class="text-center corporate-id">
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
-								  <h3>List of Patient 2018</h3>
+								  <h3>List of Patient for 2018</h3>
                               </div>
                           </div>
                           <table class="table table-striped table-hover">
                               <thead>
-                              <tr><hr>
+                              <tr>
                                   <th>#</th>
                                   <th>Patient Name</th>
                                   <th class="hidden-phone">Address</th>
                                   <th class="">Date</th>
                                   <th class="text-center">Visits</th>
+                                  <th>Status</th>
                               </tr>
                               </thead>
                               <tbody>
-                              <?php
-                                $query = mysql_query("SELECT *, CONCAT(P_FNAME, ' ',P_MNAME,' ',P_LNAME) 
-                                AS Fullname FROM patient, schedule");
-                                
-                                
-                                while($r = mysql_fetch_array($query)){
-                                ?>
                               <tr>
-                                  <td><?php echo $r['P_ID']?></td>
-                                  <td><?php echo $r['Fullname']?></td>
-                                  <td class="hidden-phone"><?php echo $r['P_ADD']?></td>
-                                  <td class=""><?php echo $r['P_ADD']?></td>
-                                  <td class="text-center"><?php echo $r['Schedule_ID']?></td>
+                                  <td><?php echo $P_ID?></td>
+                                  <td><?php echo $P_FNAME && $P_LNAME?></td>
+                                  <td class="hidden-phone"><?php echo $P_ADD?></td>
+                                  <td class=""><?php echo $DATE_REG?></td>
+                                  <td class="text-center">2</td>
+                                  <td>Active</td>
                               </tr>
-                            <?php
-                                }
-                            ?>
+                              <tr>
+                                  <td>P2</td>
+                                  <td>Alessander Neal Rubiato</td>
+                                  <td class="hidden-phone">Sta. Clara, Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">1</td>
+                                  <td>Inactive</td>
+                              </tr>
+							  <tr>
+                                  <td>P3</td>
+                                  <td>Alson John Bayon-on</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P4</td>
+                                  <td>Alvin Yanson</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P5</td>
+                                  <td>Carl Betio</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P6</td>
+                                  <td>Alvin Galoyo</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P7</td>
+                                  <td>Erul John Grapes</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P8</td>
+                                  <td>Daniel Molabin</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P9</td>
+                                  <td>Mercy Dohinog</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P10</td>
+                                  <td>Entes Leonel</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
+							  <tr>
+                                  <td>P11</td>
+                                  <td>Vicent Suyo</td>
+                                  <td class="hidden-phone">Bacolod City</td>
+                                  <td class="">1-1-2018</td>
+                                  <td class="text-center">3</td>
+                                  <td>Active</td>
+                              </tr>
                               </tbody>
                           </table>
                           <div class="row">
@@ -278,3 +356,4 @@ else if($Position == "Volunter"){
 
   </body>
 </html>
+
