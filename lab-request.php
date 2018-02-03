@@ -166,8 +166,7 @@ if($Position == "Volunter"){
                                       <tr>
                                           <th>Patient No.</th>
                                           <th>Name</th>
-                                          <th>Lab Test Type</th>
-                                          <th class="hidden-phone">Test Requested</th>
+                                          <th>Test Requested</th>
                                           <th class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
@@ -176,7 +175,6 @@ if($Position == "Volunter"){
                                           <td>000001</td>
                                           <td>Alec Rebuiato</td>
                                           <td>Urinalysis</td>
-                                          <td class="center hidden-phone">Uric Acid</td>
                                           <td class="center hidden-phone">
 											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
 										  </td>
@@ -185,7 +183,6 @@ if($Position == "Volunter"){
                                           <td>000002</td>
                                           <td>Alson John Bayon-on</td>
                                           <td>Urinalysis</td>
-                                          <td class="center hidden-phone">RBC</td>
                                           <td class="center hidden-phone">
 											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
 										  </td>
@@ -194,7 +191,6 @@ if($Position == "Volunter"){
                                           <td>000003</td>
                                           <td>Gabriel Francis Banua</td>
                                           <td>Blood Chemistry</td>
-                                          <td class="center hidden-phone">Cholesterol</td>
                                           <td class="center hidden-phone">
 											<a class="btn btn-primary btn-xs" href="add-lab-blood.html">Proceed</a>
 										  </td>
