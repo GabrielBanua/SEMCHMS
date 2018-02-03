@@ -23,7 +23,7 @@ require 'lib/password.php';
 			$Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
 			$date = date("Y-m-d");	
 			$Year = date('Y',strtotime($date));
-			$Month = date('m',strtotime($date));
+			$Month = date('M',strtotime($date));
 
 		$stmt = $db->prepare("insert into users values('',?,?,?,?,?,?,?,?,?,?,?,?)");
 			$stmt->bindParam(1,$Username);
@@ -61,14 +61,14 @@ if($page == 'addNewPatient'){
 			$Date_Reg = mysql_real_escape_string($_POST['DATE_REG']);
 			$Occupation = mysql_real_escape_string($_POST['P_OCCU']);
 			$OccupationFBW = mysql_real_escape_string($_POST['P_OCCU_FBW']);
-				$timezone = date("Ymd");
+				$timezone = date("Y-m-d");
 				$DATE_REGISTER = $timezone;
 
 			$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
 			$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);
 			$date = date("Y-m-d");	
 			$Year = date('Y',strtotime($date));
-			$Month = date('m',strtotime($date));
+			$Month = date('M',strtotime($date));
 
 	
 		$stmt = $db->prepare("insert into Patient values('',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -144,7 +144,7 @@ else if($page == 'UpdatePatient'){
 			$Date_Reg = mysql_real_escape_string($_POST['DATE_REG']);
 			$Occupation = mysql_real_escape_string($_POST['P_OCCU']);
 			$OccupationFBW = mysql_real_escape_string($_POST['P_OCCU_FBW']);
-			$timezone = date("Ymd");
+			$timezone = date("Y-m-d");
 			$Bday = date('Y-m-d',strtotime($Birthday));
 			$DATE_REGISTER = $timezone;
 
@@ -207,9 +207,9 @@ require 'lib/Db.config.php';
 
 		$ID = mysql_real_escape_string($_POST['User_id']);
 
-		$sql = "DELETE FROM users WHERE User_id = $ID";
-		$stmt = $db->prepare($sql);
- 		$stmt -> execute();
+			$sql = "DELETE FROM users WHERE User_id = $ID";
+			$stmt = $db->prepare($sql);
+			$stmt -> execute();
 
 }
 //update user code
@@ -232,7 +232,7 @@ require 'lib/Db.config.php';
 			$Pass = password_hash($Password, PASSWORD_BCRYPT, array("cost" => 12));
 			$date = date("Y-m-d");	
 			$Year = date('Y',strtotime($date));
-			$Month = date('m',strtotime($date));
+			$Month = date('M',strtotime($date));
 			
 			$stmt = $db->prepare("update users set Username=?, Password=?, Firstname=?, Middlename=?, Lastname=?, Gender=?, Position=?, License_No=?, STATUS=? where User_id=?");
 			$stmt->bindParam(1,$Username);

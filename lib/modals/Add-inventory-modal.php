@@ -96,8 +96,8 @@
 			</form>
 		</div>
 		<div class="modal-footer">
-			<span id="Error_Message" class="text-danger"></span>
-			<span id="Success_Message" class="text-success"></span>
+			<span id="Error_Message" style="float: left; font-weight: bold;" class="text-danger"></span>
+			<span id="Success_Message" style="float: left; font-weight: bold;" class="text-success"></span>
 			<a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
 			<a class="btn btn-success" onclick="addInventory()"><i class="icon-save"></i> Save</a>
 		</div>

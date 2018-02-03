@@ -185,10 +185,10 @@
 									$('#Success_Message').html('Successfully Added! &nbsp;');
 									setTimeout(function() {
 										$('#Success_Message').fadeOut('slow');
-									}, 2000);
+									}, 1500);
 									setTimeout(function(){
 										window.location.reload();
-									}, 3000);
+									}, 2000);
 								}
 							});
 							}
@@ -209,4 +209,37 @@
 							});
 							}
                     }
+					function DispenseMed(str){
+						var id = str;
+						var Dispense_Qty = $('#INV_QTY-'+id).val();
+						if(Dispense_Qty == ''){
+							$('#Error_Message-Dis-'+id).html('Please input quantity');
+						}else{
+							$('#Error_Message-Dis-'+id).html('');
+						$.ajax({
+							type: "POST",
+							url: "Server2.php?p=DispenseMedicine",
+							data: "INV_ID="+id+"&DES_QTY="+Dispense_Qty,
+							success: function(data){
+								if(data != ''){
+									$('#Warning_Message-Dis-'+id).html('Insufficient supply, only '+data+' is Subtracted')
+								setTimeout(function() {
+									$('#Success_Message-Dis-'+id).fadeOut('slow');
+									}, 1000);
+									setTimeout(function(){
+										window.location.reload();
+									}, 1500);
+								}else{
+									$('#Success_Message-Dis-'+id).html('Subtracted')
+									setTimeout(function() {
+									$('#Success_Message-Dis-'+id).fadeOut('slow');
+									}, 1000);
+									setTimeout(function(){
+										window.location.reload();
+									}, 1500);
+								}
+							}
+						});
+					}
+				}
 		</script>
