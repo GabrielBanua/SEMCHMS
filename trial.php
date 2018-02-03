@@ -121,4 +121,29 @@ $query = $db->prepare("INSERT INTO users(name, email, username, password) VALUES
                 }
               });
         }
+
+
+        function schedChange(str){
+        var id = str;
+        load(id);
+        $('#SCHEDULE_PURPOSE-'+id).change(function(){
+          $('#SCHEDULE_TIME-'+id).prop('disabled', !($(this).val() == "Laboratory Test") && !($(this).val() == "X-ray"));
+          $('#SCHEDULE_DATE-'+id).prop('disabled', !($(this).val() == "Laboratory Test") && !($(this).val() == "X-ray"));
+        });
+        }
+        function load(str){
+          var id = str;
+          var Purpose = $('#SCHEDULE_PURPOSE-'+id).val(); 
+          $('#SCHEDULE_TIME-'+id).attr('disabled',true);
+          $('#SCHEDULE_DATE-'+id).attr('disabled',true);
+
+          if(Purpose == "Laboratory Test"){
+            $('#SCHEDULE_TIME-'+id).attr('disabled',false);
+            $('#SCHEDULE_DATE-'+id).attr('disabled',false);
+          }
+          if(Purpose == "X-ray"){
+            $('#SCHEDULE_TIME-'+id).attr('disabled',false);
+            $('#SCHEDULE_DATE-'+id).attr('disabled',false);
+          }
+        }  
       </script>

@@ -11,6 +11,14 @@ if($Position == 'Doctor'){
    $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
   $stmt->execute();
 }
+if($Position == 'Doctor'){
+    $purpose = 'Check Up';
+    $stmtn = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_PURPOSE = '$purpose'");
+    $stmtn->execute();
+  }else if($Position == 'Admin'){
+     $stmtn = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
+    $stmtn->execute();
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -187,6 +195,13 @@ if($Position == 'Doctor'){
                           <div class="panel-body">
                                 <div class="adv-table">
                                     <a class="btn btn-shadow btn-success" href="set-schedule.php"><i class="icon-calendar"></i> Set Appointment</a>
+                                    <div class="col-lg-2 pull-right">
+													<select id="Sched_filter" class="form-control">
+														<option value="Current">Current</option>
+                                                        <option value="All">All</option>
+													</select>
+                                    </div>
+                                    
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
@@ -211,7 +226,46 @@ if($Position == 'Doctor'){
                                           <td><?php echo $row['P_GNDR'] ?></td>
                                           <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
                                           <td class="center hidden-phone">
-                                              <a class="btn btn-shadow btn-success btn-xs" <?php if($Position == 'Doctor'){echo "style='display: none;'";}?> style="width:30px" data-toggle="modal" onclick="schedChange(<?php echo $row['SCHEDULE_ID']; ?>)" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i></a>
+                                              <a class="btn btn-shadow btn-success btn-xs" <?php if($Position == 'Doctor'){echo "style='display: none;'";}?> style="width:30px" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i></a>
+                                  			  <a class="btn btn-shadow btn-danger btn-xs" <?php if($Position == 'Doctor'){echo "style='display: none;'";}?> style="width:30px" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID']; ?>)"><i class="icon-trash"></i></a>
+                                  			  <a class="btn btn-shadow btn-primary btn-xs" style="width:30px" href="view-patient-profile.php?VID=<?php echo $row['P_ID']; ?>&Sched_ID=<?php echo $row['SCHEDULE_ID']; ?>"><i class=" icon-share-alt"></i></a>
+<!-- edit Schedule Start MODAL-->
+<?php
+include 'lib/modals/view_schedule-modal.php';
+?>
+                                          
+                                          </td>
+                                      </tr>
+<?php
+      }
+?>
+                                      </tbody>
+                          </table>
+                          <table  class="display table table-bordered table-striped" id="example2">
+                                      <thead>
+                                      <tr>
+                                          <th width="100">Date Schedule</th>
+                                          <th width="70">Time</th>
+                                          <th width="120">Patient Name</th>
+                                          <th width="90">Patient Type</th>
+                                          <th width="70">Gender</th>
+                                          <th width="80" class="hidden-phone">Appointment</th>
+                                          <th width="100" class="hidden-phone text-center">Action</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody>
+									<?php
+										  while($row = $stmtn->fetch()){
+									?>
+                                      <tr class="gradeX">
+                                          <td><?php echo strftime('%m-%d-%Y', strtotime($row['SCHEDULE_DATE'])); ?></td>
+                                          <td><?php $date = date("h:i:s A", strtotime($row['SCHEDULE_TIME']. ' -1 minutes')); echo $date; ?></td>
+                                          <td><?php echo $row['FullName'] ?></td>
+                                          <td><?php echo $row['P_TYPE'] ?></td>
+                                          <td><?php echo $row['P_GNDR'] ?></td>
+                                          <td><?php echo $row['SCHEDULE_PURPOSE'] ?></td>
+                                          <td class="center hidden-phone">
+                                              <a class="btn btn-shadow btn-success btn-xs" <?php if($Position == 'Doctor'){echo "style='display: none;'";}?> style="width:30px" data-toggle="modal" data-target="#EditSched-<?php echo $row['SCHEDULE_ID']?>"><i class="icon-pencil"></i></a>
                                   			  <a class="btn btn-shadow btn-danger btn-xs" <?php if($Position == 'Doctor'){echo "style='display: none;'";}?> style="width:30px" onclick="DeleteSched(<?php echo $row['SCHEDULE_ID']; ?>)"><i class="icon-trash"></i></a>
                                   			  <a class="btn btn-shadow btn-primary btn-xs" style="width:30px" href="view-patient-profile.php?VID=<?php echo $row['P_ID']; ?>&Sched_ID=<?php echo $row['SCHEDULE_ID']; ?>"><i class=" icon-share-alt"></i></a>
 <!-- edit Schedule Start MODAL-->

@@ -181,6 +181,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                           <div class="panel-body">
                                 <div class="adv-table">
 								<a class="btn btn-shadow btn-success" href="add-patient.php"><i class="icon-plus"></i> Add Patient</a>
+                                
 <!-- Table part of the code-->
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
@@ -206,7 +207,7 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                                               <td><?php echo $row['P_OCCU'] ?></td>
                                               <td class="center hidden-phone"><?php echo $row['P_TYPE'] ?></td>
                                               <td class="center hidden-phone">
-                        		<a class="btn btn-shadow btn-success btn-xs" onclick="schedChange(<?php echo $row['P_ID']; ?>)" data-toggle="modal" data-target="#setsched-<?php echo $row['P_ID']?>"><i class="icon-calendar"></i> Set Schedule</a>
+                        		<a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#setsched-<?php echo $row['P_ID']?>"><i class="icon-calendar"></i> Set Schedule</a>
 <?php
 include 'lib/modals/set-schedule-modal.php';
 ?>
