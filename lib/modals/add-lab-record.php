@@ -9,7 +9,7 @@
 		<div class="modal-body">
 		<form class="form-horizontal" role="form">
 			<div class="form-group">
-					<label  class="col-lg-4 control-label">Laboratory Test</label>
+					<label  class="col-lg-4 control-label">Test Requested</label>
 					<div class="col-lg-4">
 						<select class="form-control">
 							<option hidden>Select</option>
@@ -19,24 +19,23 @@
 							<option>Urinalysis</option>
 						</select>
 					</div>
-				</div>
-				<div class="form-group">
-				<label  class="col-lg-4 control-label">Test Requested</label>
-					<div class="col-lg-4">
-						<input type="text"  class="form-control" >
+					<div class="col-md-2">
+						<a class="btn btn-shadow btn-success btn-xs"><i class="icon-plus"></i> Add</a>
 					</div>
 				</div>
 				<table  class="table table-striped table-advance table-hover" id="example">
 					<thead>
 					<tr>
-						<th class="text-center"><i class="icon-beaker"></i> Laboratory Type</th>
-						<th class="text-center"><i class="icon-medkit"></i> Test Requested</th>
+						<th class="text-center"><i class="icon-calendar"></i> Date</th>
+						<th class="text-center"><i class="icon-beaker"></i> Test Requested</th>
+						<th class="text-center"> Action</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr class="gradeX">
-						<td class="text-center">Hemtology</td>
-						<td class="text-center">CBC</td>
+						<td class="text-center">2018-1-1</td>
+						<td class="text-center">Fecalysis</td>
+						<td class="text-center"><a class="btn btn-shadow btn-danger btn-xs"><i class="icon-trash"></i> Delete</a></td>
 						</tr>
 					</tbody>
 			</table>
