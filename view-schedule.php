@@ -1,24 +1,40 @@
 <?php
 require 'lib/session.php';
+
 require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
-
-if($Position == 'Doctor'){
-  $purpose = 'Check Up';
-  $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_PURPOSE = '$purpose'");
-  $stmt->execute();
-}else if($Position == 'Admin'){
-   $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
-  $stmt->execute();
-}
 if($Position == 'Doctor'){
     $purpose = 'Check Up';
-    $stmtn = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_PURPOSE = '$purpose'");
-    $stmtn->execute();
+    $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_PURPOSE = '$purpose'");
+    $stmt->execute();
   }else if($Position == 'Admin'){
-     $stmtn = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
-    $stmtn->execute();
+     $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
+    $stmt->execute();
   }
+if(isset($_POST['Sched_filter'])){
+    $filtering = $_POST['Sched_filter'];
+    $DateToday = date('Y-m-d');
+    
+    if($filtering == 'Current'){
+        if($Position == 'Doctor'){
+            $purpose = 'Check Up';
+            $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_PURPOSE = '$purpose' AND schedule.SCHEDULE_DATE = '$DateToday'");
+            $stmt->execute();
+          }else if($Position == 'Admin'){
+             $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_DATE = '$DateToday'");
+            $stmt->execute();
+          }
+    }else if($filtering == 'All'){
+        if($Position == 'Doctor'){
+            $purpose = 'Check Up';
+            $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_PURPOSE = '$purpose'");
+            $stmt->execute();
+          }else if($Position == 'Admin'){
+             $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
+            $stmt->execute();
+          }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -196,10 +212,13 @@ if($Position == 'Doctor'){
                                 <div class="adv-table">
                                     <a class="btn btn-shadow btn-success" href="set-schedule.php"><i class="icon-calendar"></i> Set Appointment</a>
                                     <div class="col-lg-2 pull-right">
-													<select id="Sched_filter" class="form-control">
-														<option value="Current">Current</option>
+                                        <form id="Filtered" action="view-schedule.php" method="POST">
+													<select id="Sched_filter" name="Sched_filter" class="form-control" onchange="this.form.submit()">
+                                                        <option>Choose</option>
+                                                        <option value="Current">Current</option>
                                                         <option value="All">All</option>
 													</select>
+                                        </form>
                                     </div>
                                     
                                     <table  class="display table table-bordered table-striped" id="example">
