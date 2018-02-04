@@ -61,6 +61,18 @@
                         <input id="P_LNAME-<?php echo $row['P_ID'] ?>" name="P_LNAME" type="text" class="form-control" value="<?php echo $row['P_LNAME'] ?>" required>
                       </div>
                   </div>
+				  <div class="form-group">
+					<label class="col-md-4 control-label">Purok</label>
+					<div class="col-lg-6">
+						<input id="P_PUROK" name="P_PUROK" type="text" class="form-control" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label">Baranggay</label>
+					<div class="col-lg-6">
+						<input id="P_BRGY" name="P_BRGY" type="text" class="form-control" required>
+					</div>
+				</div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Address</label>
                       <div class="col-lg-6">
