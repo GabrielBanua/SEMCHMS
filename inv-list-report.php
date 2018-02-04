@@ -167,7 +167,6 @@ else if($Position == "Volunter"){
                                 ?>
 								<div class="pull-right"><span>Date : <?php echo date('Y-m-d');?></span></div><br> <!--current date is based on server, main unit must be set up correctly -->
 								  <div class="pull-right"><span class = "username">Printed By: <?php echo $result['Rank'];?></span></div><br>
-                    
 							  <div class="text-center corporate-id">
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
 								  <h3>Inventory List of 2018</h3>   
@@ -186,7 +185,7 @@ else if($Position == "Volunter"){
                               </thead>
                               <tbody>
                               <?php
-                                $query = "SELECT * FROM `medicine`,`inventory` WHERE medicine.MEDICINE_ID = inventory.MEDICINE_ID ";
+                                $query = "SELECT * FROM `medicine`,`inventory` WHERE medicine.MEDICINE_ID = inventory.MEDICINE_ID";
                                 $result = mysql_query($query);
                                 
                                 while($r = $row = mysql_fetch_array($result)){
@@ -202,14 +201,20 @@ else if($Position == "Volunter"){
                                 <?php
                                 }
                                 ?>
+                                </tbody>
                           </table>
                           <div class="row">
+                          <?php
+                                    $total = "SELECT COUNT(INV_QTY) AS Total_Tabs FROM `inventory` , `medicine` WHERE medicine.MEDICINE_ID = inventory.MEDICINE_ID GROUP BY MEDICINE_DFORM";
+                                    $tmeds = mysql_fetch_array($total);
+                                 ?>
                               <div class="col-lg-4 invoice-block pull-right">
+                               
                                   <ul class="unstyled amounts">
-                                      <li><strong>Tablet :</strong> 11</li>
+                                      <li><strong>Tablets:</strong><?php echo $tmeds['Total_Tabs']?></li>
                                       <li><strong>Syrup :</strong> 1</li>
                                       <li><strong>Inventory Total:</strong> 12</li>
-                                  </ul>
+                                     </ul>
                               </div>
                           </div>
                       </div>
