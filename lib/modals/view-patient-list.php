@@ -7,6 +7,7 @@
                           <h4 class="modal-title">Patient List Month of January</h4>
                       </div>
                       <div class="modal-body">
+					  <a class="btn btn-shadow btn-success btn-xs pull-right"><i class="icon-print"></i> Print</a>
 					  <div class="adv-table">
 								<table  class="display table table-bordered table-striped" id="example">
 								  <thead>
