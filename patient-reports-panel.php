@@ -167,9 +167,9 @@ else if($Position == "Volunter"){
 								  </div>
 								  <div class="col-lg-3 col-sm-6">
 									  <section class="panel">
-											<a class="btn btn-shadow btn-success btn-lg" style="width:200px">
-												<i class="icon-user icon-3x"></i><br>
-												List of<br>Patient
+											<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="patient-health-report.php">
+												<i class="icon-medkit icon-3x"></i><br>
+												Patient Health<br>Issue
 											</a>
 									  </section>
 								  </div>
