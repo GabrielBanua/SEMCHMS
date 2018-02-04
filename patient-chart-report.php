@@ -286,7 +286,7 @@ require 'lib/session.php';
 											 
 										  </div>
 										  <?php
-													include 'lib/modals/view-patient-list.php';
+													include 'lib/modals/modal-patient-list.php';
 												?>
 									  </div>
 								  </div>
