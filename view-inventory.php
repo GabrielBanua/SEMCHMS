@@ -2,8 +2,8 @@
 require 'lib/session.php';
 require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
-
-$stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID");
+$current_date = date('Y-m-d');
+$stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
   $stmt->execute();
 ?>
 <!DOCTYPE html>
@@ -211,11 +211,16 @@ while($row = $stmt->fetch()){
         	<td><?php echo $row['MEDICINE_DOSE'] ?></td>
         	<td><?php echo $row['INV_EXPD'] ?></td>
         	<td><?php echo $row['INV_QTY'];echo "/"; echo $row['INV_QTY_HIST']; ?></td>
-        	<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty){ echo "<span class='label label-danger label-mini'>Low</span>";} ?></td>
+            <td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; 
+            if($row['INV_EXPD'] == $current_date){echo "<span class='label label-info label-mini'>Expired</span>";}else{
+            if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}
+            if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty && $row['INV_QTY'] > $QtyInitial){ echo "<span class='label label-warning label-mini'>Low</span>";
+            }else if($row['INV_QTY'] < $QtyInitial){ echo "<span class='label label-danger label-mini'>Re-order</span>";}} ?></td>
         	<td class="hidden-phone">
 				<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
+                <a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><i class="icon-minus"></i></a>
 				<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
-				<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><i class="icon-minus"></i></a>
+				
 <?php
 include 'lib/modals/Dispense-medicine-modal.php';
 include 'lib/modals/Edit-inventory-modal.php';
