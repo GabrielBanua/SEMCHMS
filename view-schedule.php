@@ -213,11 +213,12 @@ if(isset($_POST['Sched_filter'])){
                                     <a class="btn btn-shadow btn-success" href="set-schedule.php"><i class="icon-calendar"></i> Set Appointment</a>
                                     <div class="col-lg-2 pull-right">
                                         <form id="Filtered" action="view-schedule.php" method="POST">
-													<select id="Sched_filter" name="Sched_filter" class="form-control" onchange="this.form.submit()">
-                                                        <option>Choose</option>
-                                                        <option value="Current">Current</option>
-                                                        <option value="All">All</option>
-													</select>
+                                        <select id="Sched_filter" name="Sched_filter" class="form-control" onchange="this.form.submit()">
+                                            <option value="All" <?php
+                                            if ($filtering == "All") { echo " selected"; }?>>All</option>
+                                            <option value="Current" <?php
+                                            if ($filtering == "Current") { echo " selected"; }?>>Current</option>
+                                        </select>
                                         </form>
                                     </div>
                                     
