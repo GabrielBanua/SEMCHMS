@@ -165,11 +165,11 @@ else if($Position == "Volunter"){
                                     $query = mysql_query("SELECT *, CONCAT(Position,' ',Firstname,' ',Lastname) AS Rank FROM users Where User_id = '$ID'");
                                     $result = mysql_fetch_array($query);
                                 ?>
-								<div class="pull-right"><span>Date : <?php echo date('Y-m-d');?></span></div><br> <!--current date is based on server, main unit must be set up correctly -->
+								<div class="pull-right"><span>Date : <?php echo date('m-d-y');?></span></div><br> <!--current date is based on server, main unit must be set up correctly -->
 								  <div class="pull-right"><span class = "username">Printed By: <?php echo $result['Rank'];?></span></div><br>
 							  <div class="text-center corporate-id">
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
-								  <h3>Inventory List of 2018</h3>   
+								  <h3>Inventory List of <?php echo date("Y");?></h3>   
                               </div>
                           </div>
                           <table class="table table-striped table-hover">
@@ -205,11 +205,10 @@ else if($Position == "Volunter"){
                           </table>
                           <div class="row">
                           <?php
-                                    $total = "SELECT COUNT(INV_QTY) AS Total_Tabs FROM `inventory` , `medicine` WHERE medicine.MEDICINE_ID = inventory.MEDICINE_ID GROUP BY MEDICINE_DFORM";
-                                    $tmeds = mysql_fetch_array($total);
-                                 ?>
+                            $total = "SELECT COUNT(INV_QTY) AS Total_Tabs FROM `inventory` , `medicine` WHERE medicine.MEDICINE_ID = inventory.MEDICINE_ID GROUP BY MEDICINE_DFORM";
+                            $tmeds = mysql_fetch_array($total);
+                            ?>
                               <div class="col-lg-4 invoice-block pull-right">
-                               
                                   <ul class="unstyled amounts">
                                       <li><strong>Tablets:</strong><?php echo $tmeds['Total_Tabs']?></li>
                                       <li><strong>Syrup :</strong> 1</li>
