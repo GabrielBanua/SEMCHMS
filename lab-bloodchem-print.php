@@ -16,7 +16,7 @@ else if($Position == "Volunter"){
 	<meta name="google" content="notranslate">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Patient List Report</title>
+    <title>Laboratory Report</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -84,14 +84,14 @@ else if($Position == "Volunter"){
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" class="active">
+                      <a href="javascript:;">
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="add-patient.php">Add Patients</a></li>
                           <li><a  href="view-patients.php">View Patients</a></li>
-						  <li class="active"><a  href="patient-reports-panel.php">Patient Reports</a></li>
+						  <li><a  href="patient-reports-panel.php">Patient Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -119,7 +119,7 @@ else if($Position == "Volunter"){
                   </li>
 				  
 				  <li class="sub-menu" id="Laboratory-li">
-                      <a href="javascript:;">
+                      <a href="javascript:;" class="active">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
                       </a>
@@ -127,7 +127,7 @@ else if($Position == "Volunter"){
 						  <li><a  href="labtest.php">Add Lab Results</a></li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="labview.php">View Lab Records</a></li>
-						  <li><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
+						  <li class="active"><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -154,7 +154,7 @@ else if($Position == "Volunter"){
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              Patient List Report
+                              Laboratory Report
 							  <div class="pull-right">
 							  <a class="btn btn-success btn-sm" onclick="javascript:window.print();"><i class="icon-print"></i> Print </a>
 							  </div>
@@ -169,48 +169,171 @@ else if($Position == "Volunter"){
 								  <div class="pull-right"><span class = "username">Printed By: <?php echo $result['Rank'];?></span></div><br>
                               <div class="text-center corporate-id">
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
-								  <h3>List of Patient 2018</h3>
+								  <h3><u><b>Blood Chemistry</b></u></h3>
                               </div>
                           </div>
-                          <table class="table table-striped table-hover">
-                              <thead>
-                              <tr><hr>
-                                  <th>#</th>
-                                  <th>Patient Name</th>
-                                  <th class="hidden-phone">Address</th>
-                                  <th class="">Date</th>
-                                  <th class="text-center">Visits</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <?php
-                                $query = mysql_query("SELECT *, CONCAT(P_FNAME, ' ',P_MNAME,' ',P_LNAME) 
-                                AS Fullname FROM patient, schedule");
-                                
-                                
-                                while($r = mysql_fetch_array($query)){
-                                ?>
-                              <tr>
-                                  <td><?php echo $r['P_ID']?></td>
-                                  <td><?php echo $r['Fullname']?></td>
-                                  <td class="hidden-phone"><?php echo $r['P_ADD']?></td>
-                                  <td class=""><?php echo $r['P_ADD']?></td>
-                                  <td class="text-center"><?php echo $r['Schedule_ID']?></td>
-                              </tr>
-                            <?php
-                                }
-                            ?>
-                              </tbody>
-                          </table>
-                          <div class="row">
-                              <div class="col-lg-4 invoice-block pull-right">
+							<!--- Blood Chemistry -->
+							<div class="col-sm-12">
+							  <section class="panel">
+								  <header class="panel-heading text-center">
+								  </header>
+								  <table class="table table-bordered" border="0">
+									  <thead>
+									  <tr>
+										  <td class="text-center"><b>Name</b></td>
+										  <td colspan="2"><input id="#" type="text" class="form-control" size="15"></td>
+										  <td class="text-center"><b>Date</b></td>
+										  <td><input id="#" type="text" class="form-control"size="5"></td>
+									  </tr>
+									  <tr>
+										  <td class="text-center"><b>Address</b></td>
+										  <td colspan="2"><input id="#" type="text" class="form-control" size="15"></td>
+										  <td class="text-center"><b>Age</b></td>
+										  <td><input id="#" type="text" class="form-control"size="5"></td>
+									  </tr>
+									  <tr>
+										  <td class="text-center"><b>Physician</b></td>
+										  <td colspan="2"><input id="#" type="text" class="form-control" size="15"></td>
+										  <td class="text-center"><b>Gender</b></td>
+										  <td><input id="#" type="text" class="form-control"size="5"></td>
+									  </tr>
+									   <tr>
+										  <td class="text-center"><b>Time Taken</b></td>
+										  <td><input id="#" type="text" class="form-control" size="15"></td>
+									  </tr>
+									  </thead>
+									  <tbody>
+									  <tr>
+										  <th class="text-center">Examination:</th>
+										  <th class="text-center" colspan="2">International Units:</th>
+										  <th class="text-center" colspan="2">Conventional Units:</th>
+									  </tr>
+									  <tr>
+										  <td></td>
+										  <td class="text-center"><b>RESULT</b></td>
+										  <td class="text-center"><b>Reference Value<b></td>
+										  <td class="text-center"><b>RESULT</b></td>
+										  <td class="text-center"><b>Reference Value<b></td>
+									  </tr>
+									   <tr>
+										  <td class="text-center"><b>BUN</b></td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+										  <td class="text-center">2.5-6.4 mmol/L</td>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="2" size="5"></td>
+										  <td class="text-center">7-8 mg/dl</td>
+									  </tr>
+									  <tr>
+										  <td class="text-center"><b>Cholesterol</b></td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+										  <td class="text-center">3.87-6.71 mmol/L</td>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+										  <td class="text-center">150-230 mg/dl</td>
+									  </tr>
+									  <tr>
+										  <td class="text-center"><b>Creatinine</b></td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+										  <td class="text-center">44.2-150.28 mmol/L</td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
+										  <td class="text-center">0.5-1.7 mg/dl</td>
+									  </tr>
+									  <tr>
+										  <td class="text-center"><b>FBS</b></td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+										  <td class="text-center">3.85-6.05 mmol/L</td>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+										  <td class="text-center">70-100 mg/dl</td>
+									  </tr>
+									  <tr>
+										  <td class="text-center" rowspan="2"><b>HDL-Cholesterol</b></td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+										  <td class="text-center">M: 0.78-1.55 mmol/L</td>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="2" size="5"></td>
+										  <td class="text-center">M:30-60 mg/dl</td>
+									  </tr>
+									  <tr>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+										  <td class="text-center">F:1.03 mmol/L</td>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="2" size="5"></td>
+										  <td class="text-center">F:40-70 mg/dl</td>
+									  </tr>
+									  <tr>
+										  <td class="text-center"><b>LDL-Cholesterol</b></td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+										  <td class="text-center">1.56 mmol/L</td>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+										  <td class="text-center">60-210 mg/dl</td>
+									  </tr>
+									  <tr>
+										  <td class="text-center"><b>2 Hrs Post-Prandial</b></td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+										  <td class="text-center"><6.60 mmol/L</td>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+										  <td class="text-center"><120 mg/dl</td>
+									  </tr>
+									  <tr>
+										  <td class="text-center"><b>RBS</b></td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+										  <td class="text-center"> mmol/L</td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+										  <td class="text-center"> mg/dl</td>
+									  </tr>
+									  <tr>
+										  <td class="text-center" rowspan="2"><b>SGOT/AST</b></td>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+										  <td class="text-center">M: 0-40 U/L</td>
+										  <td rowspan="4"></td>
+									  </tr>
+									  <tr>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="2" size="5"></td>
+										  <td class="text-center">F: 0-40 U/L</td>
+									  </tr>
+									  <tr>
+										  <td class="text-center" rowspan="2"><b>SGPT/ALT</b></td>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="2" size="5"></td>
+										  <td class="text-center">M: 0-38 U/L</td>
+									  </tr>
+									  <tr>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+										  <td class="text-center">F: 0-38 U/L</td>
+									  </tr>
+									  <tr>
+										  <td class="text-center"><b>Triglyceride</b></td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
+										  <td class="text-center">0.7-2.8 mmol/L</td>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="5" size="5"></td>
+										  <td class="text-center">61.0-248.5 mg/dl</td>
+									  </tr>
+									  <tr>
+										  <td class="text-center" rowspan="2"><b>Uric Acid</b></td>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+										  <td class="text-center">F: 143-357 mmol/L</td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
+										  <td class="text-center">2.4-6.0 mg/dl</td>
+									  </tr>
+									  <tr>
+										  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+										  <td class="text-center">M:202-416 mmol/L</td>
+										  <td><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+										  <td class="text-center">3.4-7.0 mg/dl</td>
+									  </tr>
+									  </tbody>
+								  </table>
+							  </section>
+							  <div class="row">
+                              <div class="col-lg-4 text-center pull-left">
                                   <ul class="unstyled amounts">
-                                      <li><strong>Male :</strong> 10</li>
-                                      <li><strong>Female :</strong> 1</li>
-                                      <li><strong>Patient Total :</strong> 11</li>
+                                      <li><strong>Alec Rubiato</strong></li>
+                                      <li><strong>#LC3249234908</strong></li>
+                                  </ul>
+                              </div>
+							  <div class="col-lg-4 text-center pull-right">
+                                  <ul class="unstyled amounts">
+                                      <li><strong>Gabriel Banua</strong></li>
+                                      <li><strong>#LC429803492</strong></li>
                                   </ul>
                               </div>
                           </div>
+						  </div>
                       </div>
                     </section>
                   </div>

@@ -16,7 +16,7 @@ else if($Position == "Volunter"){
 	<meta name="google" content="notranslate">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Patient List Report</title>
+    <title>Laboratory Report</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -84,14 +84,14 @@ else if($Position == "Volunter"){
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" class="active">
+                      <a href="javascript:;">
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="add-patient.php">Add Patients</a></li>
                           <li><a  href="view-patients.php">View Patients</a></li>
-						  <li class="active"><a  href="patient-reports-panel.php">Patient Reports</a></li>
+						  <li><a  href="patient-reports-panel.php">Patient Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -119,7 +119,7 @@ else if($Position == "Volunter"){
                   </li>
 				  
 				  <li class="sub-menu" id="Laboratory-li">
-                      <a href="javascript:;">
+                      <a href="javascript:;" class="active">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
                       </a>
@@ -127,7 +127,7 @@ else if($Position == "Volunter"){
 						  <li><a  href="labtest.php">Add Lab Results</a></li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="labview.php">View Lab Records</a></li>
-						  <li><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
+						  <li class="active"><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -154,7 +154,7 @@ else if($Position == "Volunter"){
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              Patient List Report
+                              Laboratory Report
 							  <div class="pull-right">
 							  <a class="btn btn-success btn-sm" onclick="javascript:window.print();"><i class="icon-print"></i> Print </a>
 							  </div>
@@ -169,48 +169,144 @@ else if($Position == "Volunter"){
 								  <div class="pull-right"><span class = "username">Printed By: <?php echo $result['Rank'];?></span></div><br>
                               <div class="text-center corporate-id">
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
-								  <h3>List of Patient 2018</h3>
+								  <h3><u><b>Fecalisys</b></u></h3>
                               </div>
                           </div>
-                          <table class="table table-striped table-hover">
-                              <thead>
-                              <tr><hr>
-                                  <th>#</th>
-                                  <th>Patient Name</th>
-                                  <th class="hidden-phone">Address</th>
-                                  <th class="">Date</th>
-                                  <th class="text-center">Visits</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <?php
-                                $query = mysql_query("SELECT *, CONCAT(P_FNAME, ' ',P_MNAME,' ',P_LNAME) 
-                                AS Fullname FROM patient, schedule");
-                                
-                                
-                                while($r = mysql_fetch_array($query)){
-                                ?>
-                              <tr>
-                                  <td><?php echo $r['P_ID']?></td>
-                                  <td><?php echo $r['Fullname']?></td>
-                                  <td class="hidden-phone"><?php echo $r['P_ADD']?></td>
-                                  <td class=""><?php echo $r['P_ADD']?></td>
-                                  <td class="text-center"><?php echo $r['Schedule_ID']?></td>
-                              </tr>
-                            <?php
-                                }
-                            ?>
-                              </tbody>
-                          </table>
-                          <div class="row">
-                              <div class="col-lg-4 invoice-block pull-right">
-                                  <ul class="unstyled amounts">
-                                      <li><strong>Male :</strong> 10</li>
-                                      <li><strong>Female :</strong> 1</li>
-                                      <li><strong>Patient Total :</strong> 11</li>
-                                  </ul>
-                              </div>
-                          </div>
+							<!--- Fecalysis -->
+								<div class="col-sm-12 fecal test">
+								  <section class="panel">
+									  <header class="panel-heading text-center">
+									  </header>
+									  <table class="table table-bordered">
+										  <thead>
+										  <tr>
+										  <td class="text-center"><b>Name</b></td>
+										  <td colspan="2"><input id="#" type="text" class="form-control" size="15"></td>
+										  <td class="text-center"><b>Date</b></td>
+										  <td><input id="#" type="text" class="form-control"size="5"></td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Address</b></td>
+											  <td colspan="2"><input id="#" type="text" class="form-control" size="15"></td>
+											  <td class="text-center"><b>Age</b></td>
+											  <td><input id="#" type="text" class="form-control"size="5"></td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Physician</b></td>
+											  <td colspan="2"><input id="#" type="text" class="form-control" size="15"></td>
+											  <td class="text-center"><b>Gender</b></td>
+											  <td><input id="#" type="text" class="form-control"size="5"></td>
+										  </tr>
+										   <tr>
+											  <td class="text-center"><b>Time Taken</b></td>
+											  <td><input id="#" type="text" class="form-control" size="15"></td>
+										  </tr>
+										  </thead>
+										  <tbody>
+										  <tr>
+											  <th class="text-center" colspan="2">Microscopic Examination:</th>
+											  <th class="text-center" colspan="3">Parasite:</th>
+											  <th class="text-center" colspan="2">Flagellates:</th>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Color</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td class="text-center"><b>Ascans</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td>/LPF</td>
+											  <td class="text-center"><b>G.lambia<b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Consistency</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td class="text-center"><b>Hookworm</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td>/LPF</td>
+											  <td class="text-center"><b>T.hominis<b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Heinths</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td class="text-center"><b>Trinchuris</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td>/LPF</td>
+										  </tr>
+										  <tr>
+											  <td colspan="2"></td>
+											  <td class="text-center"><b>Hookworm</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td>/LPF</td>
+										  </tr>
+										  <tr>
+											  <td colspan="7"></td>
+										  </tr>
+										  <tr>
+											  <th class="text-center" colspan="2">Chemical Test</th>
+											  <th class="text-center" colspan="3">Amoba:</th>
+											  <th class="text-center" colspan="2">Microscopic Examination</th>
+										  </tr>
+										  <tr>
+											  <td class="text-center" rowspan="2"><b>Occult Blood</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td class="text-center"><b>E.histolylica:</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td>/LPF</td>
+											  <td class="text-center"><b>Pus Cells<b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+										  </tr>
+										  <tr>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td class="text-right"><b>Cyst</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td>/LPF</td>
+											  <td class="text-center"><b>RBC<b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+										  </tr>
+										  <tr>
+											  <td colspan="2"></td>
+											  <td class="text-right"><b>Troup</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td>/LPF</td>
+										  </tr>
+										  <tr>
+											  <td colspan="2"></td>
+											  <td class="text-center"><b>E.coil:</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td>/LPF</td>
+										  </tr>
+										  <tr>
+											  <td colspan="2"></td>
+											  <td class="text-right"><b>Cyst</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td>/LPF</td>
+										  </tr>
+										  <tr>
+											  <td colspan="2"></td>
+											  <td class="text-right"><b>Troup</b></td>
+											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td>/LPF</td>
+										  </tr>
+										  </tbody>
+									  </table>
+								  </section>
+								  <div class="row">
+									  <div class="col-lg-4 text-center pull-left">
+										  <ul class="unstyled amounts">
+											  <li><strong>Alec Rubiato</strong></li>
+											  <li><strong>#LC3249234908</strong></li>
+										  </ul>
+									  </div>
+									  <div class="col-lg-4 text-center pull-right">
+										  <ul class="unstyled amounts">
+											  <li><strong>Gabriel Banua</strong></li>
+											  <li><strong>#LC429803492</strong></li>
+										  </ul>
+									  </div>
+								  </div>
+							  </div>
+							  <!--- Fecalysis End-->
                       </div>
                     </section>
                   </div>

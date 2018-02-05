@@ -23,19 +23,19 @@
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Blood Pressure</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRBP" class="form-control" placeholder=" " required>
+                                          <input type="text" id="MedRBP" class="form-control" placeholder=""data-mask="999/99">
                                       </div>
                                   </div>
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Weight (kg)</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRWeight" class="form-control" placeholder=" " required>
+                                          <input type="text" id="MedRWeight" class="form-control numdecimal" maxlength="5" required>
                                       </div>
                                   </div>
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Temperature (℃)</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRTemp" class="form-control" placeholder=" " required>
+                                          <input type="text" id="MedRTemp" class="form-control numdecimal" maxlength="5">
                                       </div>
                                   </div>
                   </form>

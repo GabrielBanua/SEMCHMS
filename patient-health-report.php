@@ -166,17 +166,6 @@ require 'lib/session.php';
 								  <div class="panel-body">
 									  <div class="tab-content">
 										  <div id="graph" class="tab-pane active">
-												<div class="btn-group pull-left">
-													<div class="btn-group">
-														<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Filter By <span class="caret"></span></a>
-														<ul class="dropdown-menu" role="menu">
-															<li><a href="#" onclick="openWin()">Patient Type</a></li>
-															<li><a href="#" onclick="oGender()">Patient Gender</a></li>
-															<li><a href="#" onclick="oAge()">Patient Age</a></li>
-															<li><a href="#" onclick="oQuarter()">Population Quarterly</a></li>   
-														</ul>
-													</div>
-												</div>
 												<div class="col-lg-2 pull-right">
 													<select id="pyear" class="form-control">
 														<option hidden value="<?php 
@@ -206,7 +195,7 @@ require 'lib/session.php';
 														?>
 													</select>
 												</div><br><br>
-											  <div id="patient_population" style="width: 100%; height: 400px"></div>
+											  <div id="health_issue" style="width: 100%; height: 400px"></div>
 										  </div>
 										  <div id="tabular" class="tab-pane">
 												<div class="col-lg-2 pull-right">
@@ -348,17 +337,11 @@ include 'lib/User-Accesslvl.php';
 			$(document).ready(function(){
 				$("#pyear").on('change', function(){
 					var year=$(this).val();
-					window.location = 'patient-chart-report.php?year='+year;
+					window.location = 'patient-health-report.php?year='+year;
 				});
 			});
 		</script>
     <script src = "js/jquery.canvasjs.min.js"></script>
-	<?php require 'reports/charts/patient_population.php'?>
-	<script>
-		function oGender() {
-			myWindow = window.open("reports/filter_gender_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
-		}
-    </script>
-		
+	<?php require 'reports/charts/health_issue.php'?>
   </body>
 </html>

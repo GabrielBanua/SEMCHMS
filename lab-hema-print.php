@@ -16,7 +16,7 @@ else if($Position == "Volunter"){
 	<meta name="google" content="notranslate">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Patient List Report</title>
+    <title>Laboratory Report</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -84,14 +84,14 @@ else if($Position == "Volunter"){
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" class="active">
+                      <a href="javascript:;">
                           <i class="icon-user"></i>
                           <span>Patient Management</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="add-patient.php">Add Patients</a></li>
                           <li><a  href="view-patients.php">View Patients</a></li>
-						  <li class="active"><a  href="patient-reports-panel.php">Patient Reports</a></li>
+						  <li><a  href="patient-reports-panel.php">Patient Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -119,7 +119,7 @@ else if($Position == "Volunter"){
                   </li>
 				  
 				  <li class="sub-menu" id="Laboratory-li">
-                      <a href="javascript:;">
+                      <a href="javascript:;" class="active">
                           <i class="icon-beaker"></i>
                           <span>Lab Management</span>
                       </a>
@@ -127,7 +127,7 @@ else if($Position == "Volunter"){
 						  <li><a  href="labtest.php">Add Lab Results</a></li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="labview.php">View Lab Records</a></li>
-						  <li><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
+						  <li class="active"><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
                       </ul>
                   </li>
 				  
@@ -154,7 +154,7 @@ else if($Position == "Volunter"){
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              Patient List Report
+                              Laboratory Report
 							  <div class="pull-right">
 							  <a class="btn btn-success btn-sm" onclick="javascript:window.print();"><i class="icon-print"></i> Print </a>
 							  </div>
@@ -169,48 +169,128 @@ else if($Position == "Volunter"){
 								  <div class="pull-right"><span class = "username">Printed By: <?php echo $result['Rank'];?></span></div><br>
                               <div class="text-center corporate-id">
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
-								  <h3>List of Patient 2018</h3>
+								  <h3><u><b>Hematology</b></u></h3>
                               </div>
                           </div>
-                          <table class="table table-striped table-hover">
-                              <thead>
-                              <tr><hr>
-                                  <th>#</th>
-                                  <th>Patient Name</th>
-                                  <th class="hidden-phone">Address</th>
-                                  <th class="">Date</th>
-                                  <th class="text-center">Visits</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <?php
-                                $query = mysql_query("SELECT *, CONCAT(P_FNAME, ' ',P_MNAME,' ',P_LNAME) 
-                                AS Fullname FROM patient, schedule");
-                                
-                                
-                                while($r = mysql_fetch_array($query)){
-                                ?>
-                              <tr>
-                                  <td><?php echo $r['P_ID']?></td>
-                                  <td><?php echo $r['Fullname']?></td>
-                                  <td class="hidden-phone"><?php echo $r['P_ADD']?></td>
-                                  <td class=""><?php echo $r['P_ADD']?></td>
-                                  <td class="text-center"><?php echo $r['Schedule_ID']?></td>
-                              </tr>
-                            <?php
-                                }
-                            ?>
-                              </tbody>
-                          </table>
-                          <div class="row">
-                              <div class="col-lg-4 invoice-block pull-right">
-                                  <ul class="unstyled amounts">
-                                      <li><strong>Male :</strong> 10</li>
-                                      <li><strong>Female :</strong> 1</li>
-                                      <li><strong>Patient Total :</strong> 11</li>
-                                  </ul>
-                              </div>
-                          </div>
+							<!--- Hematology -->
+							  <div class="col-sm-12 hema test">
+								  <section class="panel">
+									  <header class="panel-heading text-center">
+									  </header>
+									  <table class="table table-bordered">
+										  <thead>
+										  <tr>
+										  <td class="text-center"><b>Name</b></td>
+										  <td colspan="2"><input id="#" type="text" class="form-control" size="15"></td>
+										  <td class="text-center"><b>Date</b></td>
+										  <td><input id="#" type="text" class="form-control"size="5"></td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Address</b></td>
+											  <td colspan="2"><input id="#" type="text" class="form-control" size="15"></td>
+											  <td class="text-center"><b>Age</b></td>
+											  <td><input id="#" type="text" class="form-control"size="5"></td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Physician</b></td>
+											  <td colspan="2"><input id="#" type="text" class="form-control" size="15"></td>
+											  <td class="text-center"><b>Gender</b></td>
+											  <td><input id="#" type="text" class="form-control"size="5"></td>
+										  </tr>
+										   <tr>
+											  <td class="text-center"><b>Time Taken</b></td>
+											  <td><input id="#" type="text" class="form-control" size="15"></td>
+										  </tr>
+										  </thead>
+										  <tr>
+											  <th>CBC:</th>
+										  </tr>
+										  <tr>
+											  <th></th>
+											  <th class="text-center">Results:</th>
+											  <th></th>
+											  <th class="text-center">Results:</th>
+										  </tr>
+										  <tr>
+											  <td class="text-center" rowspan="2"><b>HEMATOCRIT:</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5">(M: 0.40-0.60)</td>
+											  <td class="text-center"><b>WBC</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(5-10.0 X 10/L)</td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(F: 0.36-0.40)</td>
+											  <td class="text-center"><b>RCB</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5">(4-5X 10/L)</td>
+										  </tr>
+										  <tr>
+											  <td class="text-center" rowspan="2"><b>HEMOGLOBIN:</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numonly" maxlength="3" size="5">(M: 140-170)</td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="3" size="5">(F: 120-150)</td>
+										  </tr>
+										  <tr>
+											  <th>DIFFERENTIAL COUNT:</th>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Segmeters</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="4" size="5">(0.35-0.65)</td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Stab:</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(0.02-0.04)</td>
+										  </tr>
+										   <tr>
+											  <td class="text-center"><b>Eosinophils:</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(0-02)</td>
+											  <td class="text-center"><b>Platelete Count:</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(150-400x10^9/L)</td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Lymphocytes:</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(0.20-0.35)</td>
+											  <td class="text-center"><b>Blood Type:</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Monocytes:</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="3" size="5">(0.02-0.04)</td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Basophils</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="3" size="5">(0-0.01)</td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Myelocytes:</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(0)</td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Juveniles:</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5">(0-1)</td>
+										  </tr>
+										  <tr>
+											  <td class="text-center"><b>Remarks:</b></td>
+											  <td class="text-center"><input id="#" type="text" class="form-control" size="5"></td>
+										  </tr>
+										  </tbody>
+									  </table>
+								  </section>
+								  <div class="row">
+									  <div class="col-lg-4 text-center pull-left">
+										  <ul class="unstyled amounts">
+											  <li><strong>Alec Rubiato</strong></li>
+											  <li><strong>#LC3249234908</strong></li>
+										  </ul>
+									  </div>
+									  <div class="col-lg-4 text-center pull-right">
+										  <ul class="unstyled amounts">
+											  <li><strong>Gabriel Banua</strong></li>
+											  <li><strong>#LC429803492</strong></li>
+										  </ul>
+									  </div>
+								  </div>
+							  </div>
+<!-- Hematology End -->
                       </div>
                     </section>
                   </div>

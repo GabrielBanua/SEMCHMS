@@ -82,7 +82,7 @@
 				<div class="form-group">
 					<label  class="col-lg-4 control-label">Contact No.</label>
 					<div class="col-lg-6">
-						<input type="text" id="Ref_Doc_CN-<?php echo $MR['MR_ID']; ?>" class="form-control" required>
+						<input type="text" id="Ref_Doc_CN-<?php echo $MR['MR_ID']; ?>" class="form-control numonly" maxlength="11">
 					</div>
 				</div>
 				<div class="form-group">

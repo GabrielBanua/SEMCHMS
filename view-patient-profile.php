@@ -480,6 +480,10 @@ include 'lib/modals/view-patient-profile-medical_record.php';
     <script src="js/common-scripts.js"></script>
     <script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
 	<script src="js/checkboxhide.js"></script>
+	<!--key press limit-->
+	<script src="js/numbers-only.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+	<script src="js/respond.min.js" ></script>
 <?php
     include 'lib/functions/view-patients-profile-script.php';
     include 'lib/User-Accesslvl.php';
