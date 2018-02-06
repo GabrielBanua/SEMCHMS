@@ -3,8 +3,11 @@ require 'lib/session.php';
 require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
 $current_date = date('Y-m-d');
-$stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
+  $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
   $stmt->execute();
+
+  $Medicine = $db->prepare("Select * FROM medicine");
+  $Medicine->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +26,11 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-    <script src="js/preloader.js" ></script>
+    <script src="js/preloader.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="js/advanced-form-components.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -260,23 +267,29 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 													<th>Action</th>
 												</tr>
 											</thead>
-											<tbody>                               
+											<tbody>  
+                                            <?php
+                                            while($Med = $Medicine->fetch()){
+                                            ?>                                
 												<tr class="gradeX">
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td class="text-center">
-														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
-														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
+													<td><?php echo $Med['MEDICINE_CAT']; ?></td>
+													<td><?php echo $Med['MEDICINE_TYPE']; ?></td>
+													<td><?php echo $Med['MEDICINE_GNAME']; ?></td>
+													<td><?php echo $Med['MEDICINE_BNAME']; ?></td>
+													<td><?php echo $Med['MEDICINE_DFORM']; ?></td>
+													<td><?php echo $Med['MEDICINE_DOSE']; ?></td>
+													<td>
+														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMed-<?php echo $Med['MEDICINE_ID']; ?>"><i class="icon-pencil"></i></a>
+														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteMed(<?php echo $Med['MEDICINE_ID']; ?>)"><i class="icon-trash"></i></a>
 														
 													<?php
 													include 'lib/modals/Edit-med-modal.php';
 													?>
 													</td>
-												</tr>      
+												</tr> 
+                                            <?php
+											}
+											?>    
 											</tbody>
 										</table>
 									</div>
@@ -314,13 +327,6 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
     <!--script for this page only-->
 	<!--key press limit-->
 	<script src="js/numbers-only.js"></script>
-	<script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#editmedtable').dataTable( {
-                  "aaSorting": [[ 4, "desc" ]]
-              } );
-          } );
-      </script>
 <?php
 include 'lib/functions/view-inventory-script.php';
 include 'lib/User-Accesslvl.php';

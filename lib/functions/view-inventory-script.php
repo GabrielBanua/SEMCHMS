@@ -4,6 +4,11 @@
                   "aaSorting": [[ 0, "desc" ]]
               } );
           } );
+          $(document).ready(function() {
+              $('#editmedtable').dataTable( {
+                  "aaSorting": [[ 4, "desc" ]]
+              } );
+          } );
 		  
 		$(document).ready(function () {
 		          $(".select2-single").select2({placeholder: 'Please select option'});
@@ -242,4 +247,5 @@
 						});
 					}
 				}
+				
 		</script>
