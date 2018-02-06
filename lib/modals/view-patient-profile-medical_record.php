@@ -23,7 +23,7 @@
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Blood Pressure</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRBP" class="form-control" placeholder=""data-mask="999/99">
+                                          <input type="text" id="MedRBP" class="form-control" placeholder="" data-mask="999/99*" data-mask-reverse="true">
                                       </div>
                                   </div>
 								   <div class="form-group">
@@ -35,7 +35,7 @@
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Temperature (℃)</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRTemp" class="form-control numdecimal" maxlength="5">
+                                          <input type="text" id="MedRTemp" class="form-control numdecimal" maxlength="4">
                                       </div>
                                   </div>
                   </form>

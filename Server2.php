@@ -103,9 +103,7 @@ else if($page == 'DispenseMedicine'){
 					$RecordDis->bindParam(1,$Dis_QtyRes);
 					$RecordDis->bindParam(2,$inv_id);
 					$RecordDis->execute();
-				
 
-				
 			}
 			else if($DisQty >= $sub_qty){
 				$DisResult = $DisQty - $sub_qty;
@@ -116,5 +114,44 @@ else if($page == 'DispenseMedicine'){
 					$ResultDis->execute();
 			}
 			
+}
+else if($page == 'Addlabrequest'){
+	require 'lib/Db.config.pdo.php';
+	require 'lib/Db.config.php';
+
+	$Test_Requested = mysql_real_escape_string($_POST['T_REQ']);
+	$TREAT_ID = mysql_real_escape_string($_POST['T_ID']);
+	$Test_Date = date('Y-m-d');
+	$date = date("Y-m-d");
+	$Year = date('Y',strtotime($date));
+	$Month = date('M',strtotime($date));
+
+	$LabReq = $db->prepare("insert into lab_request values('',?,?,?,?,?)");
+	$LabReq->bindParam(1,$Test_Requested);
+	$LabReq->bindParam(2,$Test_Date);
+	$LabReq->bindParam(3,$TREAT_ID);
+	$LabReq->bindParam(4,$Month);
+	$LabReq->bindParam(5,$Year);
+	$LabReq->execute();
+
+}
+else if($page == 'Loadlabrequest'){
+	require 'lib/Db.config.pdo.php';
+	require 'lib/Db.config.php';
+	
+		$MED_RID = mysql_real_escape_string($_POST['MR_ID']);
+		$TREMNT_ID = mysql_real_escape_string($_POST['TR_ID']);
+	
+		$labstmt = $db->prepare("Select * FROM ((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID) WHERE treatment.TRMT_ID = '$TREMNT_ID' AND medical_record.MR_ID = ' $MED_RID'");
+		$labstmt->execute();
+		while($LR = $labstmt->fetch()){
+?>
+		<tr>
+			<td class="text-center"><?php echo $LR['LBR_DATE'];?></td>
+			<td class="text-center"><?php echo $LR['LBR_TYPE'];?></td>
+			<td class="text-center"><a class="btn btn-shadow btn-danger btn-xs"><i class="icon-trash"></i> Delete</a></td>
+		</tr>
+<?php
+		}
 }
 ?>

@@ -381,6 +381,7 @@ $medicalrecord->execute();
 												  <tbody>
 													<?php
 while($MR = $medicalrecord->fetch()){
+    $MED_ID = $MR['MR_ID'];
     $TRMNT_ID = $MR['TRMT_ID'];
 	$treatment = ("Select * FROM referral WHERE TRMTMNT_ID = '$TRMNT_ID'");
 	$TR_ID = mysql_query($treatment);
@@ -390,9 +391,6 @@ while($MR = $medicalrecord->fetch()){
         $UserList = mysql_query($UserDoctor);
         $Doctor = mysql_fetch_array($UserList);
 
-        $LAB_R = ("SELECT * FROM lab_request WHERE TRMNT_ID = '$TRMNT_ID'");
-        $LAB_QUERY = mysql_query($LAB_R);
-        $LAB_RES = mysql_fetch_array($LAB_QUERY);
 ?>
 												  <tr>
 													  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
