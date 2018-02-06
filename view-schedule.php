@@ -239,8 +239,8 @@ if(isset($_POST['Sched_filter'])){
 										  while($row = $stmt->fetch()){
 									?>
                                       <tr class="gradeX">
-                                          <td><?php echo strftime('%m-%d-%Y', strtotime($row['SCHEDULE_DATE'])); ?></td>
-                                          <td><?php $date = date("h:i:s A", strtotime($row['SCHEDULE_TIME']. ' -1 minutes')); echo $date; ?></td>
+                                          <td><?php echo date("F j, Y", strtotime($row['SCHEDULE_DATE'])); ?></td>
+                                          <td><?php $date = date("g:i A", strtotime($row['SCHEDULE_TIME']. ' -1 minutes')); echo $date; ?></td>
                                           <td><?php echo $row['FullName'] ?></td>
                                           <td><?php echo $row['P_TYPE'] ?></td>
                                           <td><?php echo $row['P_GNDR'] ?></td>
