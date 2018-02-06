@@ -238,7 +238,7 @@ require 'lib/Db.config.php';
                                 </div>
                             </div>
 							<div class="form-group">
-                                <label class="col-md-4 control-label">Baranggay</label>
+                                <label class="col-md-4 control-label">Barangay</label>
                                 <div class="col-lg-6">
                                     <input id="P_BRGY" name="P_BRGY" type="text" class="form-control" required>
                                 </div>
