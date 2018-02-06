@@ -234,103 +234,103 @@ else if($Position == "Volunter"){
 										  </tr>
 										   <tr>
 											  <td class="text-center"><b>BUN</b></td>
-											  <td><input id="BUN_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+											  <td><input id="BUN_ETYPE_INT" name="BUN_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">2.5-6.4 mmol/L</td>
-											  <td><input id="BUN_ETYPE_COM" type="text" class="form-control numonly" maxlength="2" size="5"></td>
+											  <td><input id="BUN_ETYPE_CON" name="BUN_ETYPE_CON"type="text" class="form-control numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">7-8 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Cholesterol</b></td>
-											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="CHSTRL_INT" name = "CHSTRL_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center">3.87-6.71 mmol/L</td>
-											  <td><input id="#" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="CHSTRL_CON" name = "CHSTRL_CON"type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">150-230 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Creatinine</b></td>
-											  <td><input id="CRTN_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="CRTN_ETYPE_INT" name = "CRTN_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center">44.2-150.28 mmol/L</td>
-											  <td><input id="CRTN_ETYPE_CON	" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
+											  <td><input id="CRTN_ETYPE_CON" name = "CRTN_ETYPE_CON" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
 											  <td class="text-center">0.5-1.7 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>FBS</b></td>
-											  <td><input id="FBS_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+											  <td><input id="FBS_ETYPE_INT" name = "FBS_ETYPE_INT"type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">3.85-6.05 mmol/L</td>
-											  <td><input id="FBS_ETYPE_CON" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="FBS_ETYPE_CON" name = "FBS_ETYPE_CON"type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">70-100 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>HDL-Cholesterol</b></td>
-											  <td><input id="HDL_M_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="HDL_M_ETYPE_INT" name = "HDL_M_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center">M: 0.78-1.55 mmol/L</td>
-											  <td><input id="HDL_M_ETYPE_CON" type="text" class="form-control numonly" maxlength="2" size="5"></td>
+											  <td><input id="HDL_M_ETYPE_CON" name = "HDL_M_ETYPE_CON" type="text" class="form-control numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">M:30-60 mg/dl</td>
 										  </tr>
 										  <tr>
-											  <td><input id="HDL_F_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+											  <td><input id="HDL_F_ETYPE_INT" name = "HDL_F_ETYPE_INT"type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">F:1.03 mmol/L</td>
-											  <td><input id="HDL_F_ETYPE_CON" type="text" class="form-control numonly" maxlength="2" size="5"></td>
+											  <td><input id="HDL_F_ETYPE_CON" name = "HDL_F_ETYPE_CON"type="text" class="form-control numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">F:40-70 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>LDL-Cholesterol</b></td>
-											  <td><input id="LDL_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+											  <td><input id="LDL_ETYPE_INT" name ="LDL_ETYPE_INT"type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">1.56 mmol/L</td>
-											  <td><input id="LDL_ETYPE_CON" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="LDL_ETYPE_CON" name="LDL_ETYPE_CON" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">60-210 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>2 Hrs Post-Prandial</b></td>
-											  <td><input id="PO_PR_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PO_PR_ETYPE_INT" name ="PO_PR_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><6.60 mmol/L</td>
-											  <td><input id="PO_PR_ETYPE_CON" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="PO_PR_ETYPE_CON" name ="PO_PR_ETYPE_CON" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center"><120 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>RBS</b></td>
-											  <td><input id="RBS_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="RBS_ETYPE_INT" name="RBS_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"> mmol/L</td>
-											  <td><input id="RBS_ETYPE_CON" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="RBS_ETYPE_CON" name="RBS_ETYPE_CON" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"> mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>SGOT/AST</b></td>
-											  <td><input id="SGOT_M_ETYPE_INT" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="SGOT_M_ETYPE_INT" name="SGOT_M_ETYPE_INT" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">M: 0-40 U/L</td>
 											  <td rowspan="4"></td>
 										  </tr>
 										  <tr>
-											  <td><input id="SGOT_F_ETYPE_INT" type="text" class="form-control numonly" maxlength="2" size="5"></td>
+											  <td><input id="SGOT_F_ETYPE_INT" name="SGOT_F_ETYPE_INT"type="text" class="form-control numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">F: 0-40 U/L</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>SGPT/ALT</b></td>
-											  <td><input id="SGPT_M_ETYPE_INT" type="text" class="form-control numonly" maxlength="2" size="5"></td>
+											  <td><input id="SGPT_M_ETYPE_INT" name="SGPT_M_ETYPE_INT"type="text" class="form-control numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">M: 0-38 U/L</td>
 										  </tr>
 										  <tr>
-											  <td><input id="SGPT_F_ETYPE_INT" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="SGPT_F_ETYPE_INT" name="SGPT_F_ETYPE_INT" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">F: 0-38 U/L</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Triglyceride</b></td>
-											  <td><input id="TRYLYDE_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
+											  <td><input id="TRYLYDE_ETYPE_INT" name="TRYLYDE_ETYPE_INT"type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
 											  <td class="text-center">0.7-2.8 mmol/L</td>
-											  <td><input id="TRYLYDE_ETYPE_CON" type="text" class="form-control numonly" maxlength="5" size="5"></td>
+											  <td><input id="TRYLYDE_ETYPE_CON" name="TRYLYDE_ETYPE_CON" type="text" class="form-control numonly" maxlength="5" size="5"></td>
 											  <td class="text-center">61.0-248.5 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>Uric Acid</b></td>
-											  <td><input id="URIC_F_ETYPE_INT" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="URIC_F_ETYPE_INT" name="URIC_F_ETYPE_INT" type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">F: 143-357 mmol/L</td>
-											  <td><input id="URIC_F_ETYPE_CON" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
+											  <td><input id="URIC_F_ETYPE_CON" name="URIC_F_ETYPE_CON" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
 											  <td class="text-center">2.4-6.0 mg/dl</td>
 										  </tr>
 										  <tr>
-											  <td><input id="URIC_M_ETYPE_INT" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="URIC_M_ETYPE_INT" name="URIC_M_ETYPE_INT"type="text" class="form-control numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">M:202-416 mmol/L</td>
-											  <td><input id="URIC_M_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+											  <td><input id="URIC_M_ETYPE_CON" name="URIC_M_ETYPE_CON" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">3.4-7.0 mg/dl</td>
 										  </tr>
 										  </tbody>
@@ -360,33 +360,33 @@ else if($Position == "Volunter"){
 										  <tbody>
 										  <tr>
 											  <td class="text-center"><b>Color</b></td>
-											  <td><input id="CLR_MCRO_EXM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="CLR_MCRO_EXM" name="CLR_MCRO_EXM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Ascans</b></td>
-											  <td><input id="PARA_ASCARIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PARA_ASCARIS" name="PARA_ASCARIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>G.lambia<b></td>
-											  <td><input id="FLAG_G_LAMBIA" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="FLAG_G_LAMBIA" name="FLAG_G_LAMBIA" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Consistency</b></td>
-											  <td><input id="CONS_MCRO_EXM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="CONS_MCRO_EXM" name ="CONS_MCRO_EXM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Hookworm</b></td>
-											  <td><input id="PARA_HKWORM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PARA_HKWORM" name="PARA_HKWORM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>T.hominis<b></td>
-											  <td><input id="FLAG_T_HOMINIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="FLAG_T_HOMINIS" name="FLAG_T_HOMINIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Heinths</b></td>
-											  <td><input id="HLMT_MCRO_EXM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="HLMT_MCRO_EXM" name="HLMT_MCRO_EXM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Trinchuris</b></td>
-											  <td><input id="PARA_TRHRIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PARA_TRHRIS" name="PARA_TRHRIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"></td>
-											  <td class="text-center"><b>Hookworm</b></td>
-											  <td><input id="PARA_HKWORM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td class="text-center"><b>Strongyloides</b></td>
+											  <td><input id="PARA_STRGLOIDES" name="PARA_STRGLOIDES" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
@@ -394,30 +394,29 @@ else if($Position == "Volunter"){
 										  </tr>
 										  <tr>
 											  <th class="text-center" colspan="2">Chemical Test</th>
-											  <th class="text-center" colspan="3">Amoba:</th>
+											  <th class="text-center" colspan="3">Amoeba:</th>
 											  <th class="text-center" colspan="2">Microscopic Examination</th>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>Occult Blood</b></td>
 											  <td><input id="CT_OB" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>E.histolylica:</b></td>
-											  <td><input id="E_AMOEBA_HISTOL" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="E_AMOEBA_HISTOL" name="E_AMOEBA_HISTOL"type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Pus Cells<b></td>
-											  <td><input id="PCELLS_MICRO_EXM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PCELLS_MICRO_EXM" name="PCELLS_MICRO_EXM"type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-right"><b>ECyst</b></td>
-											  <td><input id="E_AMOEBA_HISTOL" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="E_HISTOL_CYST" name="E_HISTOL_CYST" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>RBC<b></td>
-											  <td><input id="RBC_MCRO_EXM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
-										  </tr>
+											  <td><input id="RBC_MCRO_EXM" name ="RBC_MCRO_EXM"type="text" class="form-control numdecimal" maxlength="5" size="5"></td> 
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-right"><b>Troph</b></td>
-											  <td><input id="E_HISTOL_TROPH" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="E_HISTOL_TROPH" name="E_HISTOL_TROPH" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
@@ -513,7 +512,7 @@ else if($Position == "Volunter"){
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Basophils</b></td>
-											  <td class="text-center"><input id="	BASO_DCOUNT" type="text" class="form-control numdecimal" maxlength="3" size="5">(0-0.01)</td>
+											  <td class="text-center"><input id="BASO_DCOUNT" type="text" class="form-control numdecimal" maxlength="3" size="5">(0-0.01)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Myelocytes:</b></td>
@@ -571,13 +570,13 @@ else if($Position == "Volunter"){
 											  <td><input id="APO_CRYSTALS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
-											  <td class="text-center"><b>Pit</b></td>
-											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td class="text-center"><b>pH</b></td>
+											  <td><input id="PH_PHY_PRO" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Yeast</b></td>
 											  <td><input id="YEAST_CELL" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Uric Acid<b></td>
-											  <td><input id="URIC_ACID_CRYSTALS	" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="URIC_ACID_CRYSTALS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Specific Gravity</b></td>
