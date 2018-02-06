@@ -5,9 +5,6 @@ require 'lib/Db.config.pdo.php';
 $current_date = date('Y-m-d');
   $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
   $stmt->execute();
-
-  $Medicine = $db->prepare("Select * FROM medicine");
-  $Medicine->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,11 +23,10 @@ $current_date = date('Y-m-d');
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-    <script src="js/preloader.js"></script>
-    <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-    <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-    <script src="js/advanced-form-components.js"></script>
+    <script src="js/preloader.js" ></script>
+	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script src="js/advanced-form-components.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -255,7 +251,7 @@ $current_date = date('Y-m-d');
 										<?php
 										include 'lib/modals/Add-medicine-modal.php';
 										?>
-										<table  class="table table-striped table-advance table-hover" id="editmedtable">
+										<table class="table table-striped table-advance table-hover" id="editmedtable">
 											<thead>
 												<tr>
 													<th>Category(Age)</th>
@@ -269,22 +265,23 @@ $current_date = date('Y-m-d');
 											</thead>
 											<tbody>  
                                             <?php
-                                            while($Med = $Medicine->fetch()){
+                                              $Medicine = $db->prepare("Select * FROM medicine");
+                                              $Medicine->execute();
+                                            while($Medi = $Medicine->fetch()){
                                             ?>                                
 												<tr class="gradeX">
-													<td><?php echo $Med['MEDICINE_CAT']; ?></td>
-													<td><?php echo $Med['MEDICINE_TYPE']; ?></td>
-													<td><?php echo $Med['MEDICINE_GNAME']; ?></td>
-													<td><?php echo $Med['MEDICINE_BNAME']; ?></td>
-													<td><?php echo $Med['MEDICINE_DFORM']; ?></td>
-													<td><?php echo $Med['MEDICINE_DOSE']; ?></td>
-													<td>
-														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMed-<?php echo $Med['MEDICINE_ID']; ?>"><i class="icon-pencil"></i></a>
-														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteMed(<?php echo $Med['MEDICINE_ID']; ?>)"><i class="icon-trash"></i></a>
-														
-													<?php
-													include 'lib/modals/Edit-med-modal.php';
-													?>
+													<td><?php echo $Medi['MEDICINE_CAT']; ?></td>
+													<td><?php echo $Medi['MEDICINE_TYPE']; ?></td>
+													<td><?php echo $Medi['MEDICINE_GNAME']; ?></td>
+													<td><?php echo $Medi['MEDICINE_BNAME']; ?></td>
+													<td><?php echo $Medi['MEDICINE_DFORM']; ?></td>
+													<td><?php echo $Medi['MEDICINE_DOSE']; ?></td>
+													<td class="hidden-phone">
+														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMedInfo-<?php echo $Medi['MEDICINE_ID']; ?>"><i class="icon-pencil"></i></a>
+                                                        <?php 
+                                                        include 'lib/modals/Edit-med-modal.php';
+                                                        ?>
+														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteMed(<?php echo $Medi['MEDICINE_ID']; ?>)"><i class="icon-trash"></i></a>
 													</td>
 												</tr> 
                                             <?php
@@ -294,8 +291,6 @@ $current_date = date('Y-m-d');
 										</table>
 									</div>
 								  </div>
-                                  <div id="profile" class="tab-pane">Profile</div>
-                                  <div id="contact" class="tab-pane">Contact</div>
                               </div>
                           </div>
                       </section>

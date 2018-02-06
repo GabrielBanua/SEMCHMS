@@ -24,22 +24,31 @@
 		      	var MEDICINE_DFORM = $('#MEDICINE_DFORM').val();
 		      	var MEDICINE_DOSE = $('#MEDICINE_DOSE').val();
 
+				if(MEDICINE_CAT == '' || MEDICINE_TYPE == '' || MEDICINE_GNAME == '' || MEDICINE_BNAME == '' || MEDICINE_DFORM == '' || MEDICINE_DOSE == ''){
+					$('#Error_Message_AMED').html('Please fill in all fields! &nbsp;');
+				}else{
+					$('#Error_Message_AMED').html('');
 			      	if(confirm('Are you sure you want to add this new medicine in the database?')) {
 			        $.ajax({
 			          type: "POST",
 			          url: "Server.php?p=addMedicine",
 			          data: "MEDICINE_CAT="+MEDICINE_CAT+"&MEDICINE_TYPE="+MEDICINE_TYPE+"&MEDICINE_GNAME="+MEDICINE_GNAME+"&MEDICINE_BNAME="+MEDICINE_BNAME+"&MEDICINE_DFORM="+MEDICINE_DFORM+"&MEDICINE_DOSE="+MEDICINE_DOSE,
 			          success: function(data){
-			            alert('Added successfully!');
-			            window.location.reload();
+						$('#Success_Message_AMED').html('Successfully added new medicine!');
+			            setTimeout(function() {
+							$('#Success_Message_AMED').fadeOut('slow');
+							}, 1000);
+							setTimeout(function(){
+							window.location.reload();
+							}, 1500);
 			          }
 			        });
 			      }else{
 			        //do nothing
 			      }
+				}
 		      }
-		  </script>
-		  <script type="text/javascript">
+
 					$(document).ready(function(){
 					$('#INV_MEDICINE_TYPE').on('change',function(){
 						var Medtype = $('#INV_MEDICINE_TYPE').val();
@@ -247,5 +256,36 @@
 						});
 					}
 				}
-				
+				function UpdateMedicine(M_id){
+					var MEDICINE_CAT = $('#MEDICINE_CAT-'+M_id).val();
+					var MEDICINE_TYPE = $('#MEDICINE_TYPE-'+M_id).val();
+					var MEDICINE_GNAME = $('#MEDICINE_GNAME-'+M_id).val();
+					var MEDICINE_BNAME = $('#MEDICINE_BNAME-'+M_id).val();
+					var MEDICINE_DFORM = $('#MEDICINE_DFORM-'+M_id).val();
+					var MEDICINE_DOSE = $('#MEDICINE_DOSE-'+M_id).val();
+					var MDCINE_ID = M_id;
+					if(MEDICINE_CAT == '' || MEDICINE_TYPE == '' || MEDICINE_GNAME == '' || MEDICINE_BNAME == '' || MEDICINE_DFORM == '' || MEDICINE_DOSE == ''){
+						$('#Error_Message_EDMED-'+M_id).html('Please fill in all fields! &nbsp;');
+					}else{
+						$('#Error_Message_EDMED-'+M_id).html('');
+						if(confirm('Are you sure you want to update this medicine in the database?')) {
+							$.ajax({
+								type: "POST",
+								url: "Server2.php?p=EditMedicineInfo",
+								data: "MEDICINE_CAT="+MEDICINE_CAT+"&MEDICINE_TYPE="+MEDICINE_TYPE+"&MEDICINE_GNAME="+MEDICINE_GNAME+"&MEDICINE_BNAME="+MEDICINE_BNAME+"&MEDICINE_DFORM="+MEDICINE_DFORM+"&MEDICINE_DOSE="+MEDICINE_DOSE+"&MED_ID="+MDCINE_ID,
+								success: function(data){
+									$('#Success_Message_EDMED-'+M_id).html('Successfully updated medicine!');
+									setTimeout(function() {
+										$('#Success_Message_EDMED-'+M_id).fadeOut('slow');
+										}, 1000);
+										setTimeout(function(){
+										window.location.reload();
+										}, 1500);
+								}
+							});
+						}else{
+							//do nothing
+						}
+					}
+				}
 		</script>

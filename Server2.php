@@ -154,4 +154,26 @@ else if($page == 'Loadlabrequest'){
 <?php
 		}
 }
+else if($page == 'EditMedicineInfo'){
+	require 'lib/Db.config.pdo.php';
+	require 'lib/Db.config.php';
+
+			$MED_ID = mysql_real_escape_string($_POST['MED_ID']);
+			$MED_CAT = mysql_real_escape_string($_POST['MEDICINE_CAT']);
+			$MED_TYPE = mysql_real_escape_string($_POST['MEDICINE_TYPE']);
+			$MED_GNAME = mysql_real_escape_string($_POST['MEDICINE_GNAME']);
+			$MED_BNAME = mysql_real_escape_string($_POST['MEDICINE_BNAME']);
+			$MED_DFORM = mysql_real_escape_string($_POST['MEDICINE_DFORM']);
+			$MED_DOSE = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
+
+			$MedStmt = $db->prepare("Update medicine set MEDICINE_CAT=?, MEDICINE_TYPE=?, MEDICINE_GNAME=?, MEDICINE_BNAME=?, MEDICINE_DFORM=?, MEDICINE_DOSE=? where MEDICINE_ID=?");
+			$MedStmt->bindParam(1,$MED_CAT);
+			$MedStmt->bindParam(2,$MED_TYPE);
+			$MedStmt->bindParam(3,$MED_GNAME);
+			$MedStmt->bindParam(4,$MED_BNAME);
+			$MedStmt->bindParam(5,$MED_DFORM);
+			$MedStmt->bindParam(6,$MED_DOSE);
+			$MedStmt->bindParam(7,$MED_ID);
+			$MedStmt->execute();
+}
 ?>

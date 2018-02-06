@@ -66,6 +66,8 @@
 			</form>
 		</div>
 		<div class="modal-footer">
+			<span id="Error_Message_AMED" style="float: left; font-weight: bold;" class="text-danger"></span>
+            <span id="Success_Message_AMED" style="float: left; font-weight: bold;" class="text-success"></span>
 			<a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Cancel</a>
 			<a class="btn btn-shadow btn-success" type="submit" onclick="addMedicine()"><i class="icon-plus"></i> Add</a>
 		</div>
