@@ -24,9 +24,6 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
     <script src="js/preloader.js" ></script>
-	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-	<script src="js/advanced-form-components.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -172,69 +169,126 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
                         Inventory 
                     </header>
             <div class="panel-body">
-                <div class="adv-table">
-					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddInventory"><i class="icon-plus"></i> Add Inventory</a>
-					<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddMed"><i class="icon-plus"></i> Add Medicines</a>
-<?php
-include 'lib/modals/Add-inventory-modal.php';
-include 'lib/modals/Add-medicine-modal.php';
-?>
-
-
-<table  class="table table-striped table-advance table-hover" id="example">
-   	<thead>
-        <tr>
-            <th width="120">Date Arrived</th>
-            <th width="70">Category</th>
-            <th width="80">Type</th>
-            <th width="120">Generic Name</th>
-            <th width="80">Brand</th>
-            <th width="115">Dosage Form</th>
-            <th width="90">Dose</th>
-			<th width="110">Expiry Date</th>
-            <th width="95">Quantity</th>
-            <th width="70">Status</th>
-            <th width="110">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-<?php
-while($row = $stmt->fetch()){
-?>                               
-        <tr class="gradeX">
-        	<td><?php echo $row['INV_DATE_ARV'] ?></td>
-        	<td><?php echo $row['MEDICINE_CAT'] ?></td>
-        	<td><?php echo $row['MEDICINE_TYPE'] ?></td>
-        	<td><?php echo $row['MEDICINE_GNAME'] ?></td>
-        	<td><?php echo $row['MEDICINE_BNAME'] ?></td>
-        	<td><?php echo $row['MEDICINE_DFORM'] ?></td>
-        	<td><?php echo $row['MEDICINE_DOSE'] ?></td>
-        	<td><?php echo $row['INV_EXPD'] ?></td>
-        	<td><?php echo $row['INV_QTY'];echo "/"; echo $row['INV_QTY_HIST']; ?></td>
-            <td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; 
-            if($row['INV_EXPD'] == $current_date){echo "<span class='label label-info label-mini'>Expired</span>";}else{
-            if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}
-            if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty && $row['INV_QTY'] > $QtyInitial){ echo "<span class='label label-warning label-mini'>Low</span>";
-            }else if($row['INV_QTY'] < $QtyInitial){ echo "<span class='label label-danger label-mini'>Re-order</span>";}} ?></td>
-        	<td class="hidden-phone">
-				<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
-                <a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><i class="icon-minus"></i></a>
-				<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
-				
-<?php
-include 'lib/modals/Dispense-medicine-modal.php';
-include 'lib/modals/Edit-inventory-modal.php';
-?>
-			</td>
-        </tr>
-<?php
-  }
-?>       
-    </tbody>
-</table>
-            </div>
-</div>
-</section>
+			<!--tab nav start-->
+                      <section class="panel">
+                          <header class="panel-heading tab-bg-dark-navy-blue ">
+                              <ul class="nav nav-tabs">
+                                  <li class="active">
+                                      <a data-toggle="tab" href="#inventorytab"><b><i class="icon-truck"></i> Inventory</b></a>
+                                  </li>
+                                  <li class="">
+                                      <a data-toggle="tab" href="#medtab"><b><i class="icon-medkit"></i> Medicines</b></a>
+                                  </li>
+                              </ul>
+                          </header>
+                          <div class="panel-body">
+                              <div class="tab-content">
+                                  <div id="inventorytab" class="tab-pane active">
+                                      <div class="adv-table">
+										<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddInventory"><i class="icon-plus"></i> Add Inventory</a>
+										<?php
+										include 'lib/modals/Add-inventory-modal.php';
+										?>
+										<table  class="table table-striped table-advance table-hover" id="example">
+											<thead>
+												<tr>
+													<th width="120">Date Arrived</th>
+													<th width="70">Category</th>
+													<th width="80">Type</th>
+													<th width="120">Generic Name</th>
+													<th width="80">Brand</th>
+													<th width="115">Dosage Form</th>
+													<th width="90">Dose</th>
+													<th width="120">Expiry Date</th>
+													<th width="95">Quantity</th>
+													<th width="70">Status</th>
+													<th width="120">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+										<?php
+										while($row = $stmt->fetch()){
+										?>                               
+												<tr class="gradeX">
+													<td><?php echo $row['INV_DATE_ARV'] ?></td>
+													<td><?php echo $row['MEDICINE_CAT'] ?></td>
+													<td><?php echo $row['MEDICINE_TYPE'] ?></td>
+													<td><?php echo $row['MEDICINE_GNAME'] ?></td>
+													<td><?php echo $row['MEDICINE_BNAME'] ?></td>
+													<td><?php echo $row['MEDICINE_DFORM'] ?></td>
+													<td><?php echo $row['MEDICINE_DOSE'] ?></td>
+													<td><?php echo $row['INV_EXPD'] ?></td>
+													<td><?php echo $row['INV_QTY'];echo "/"; echo $row['INV_QTY_HIST']; ?></td>
+													<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; 
+													if($row['INV_EXPD'] == $current_date){echo "<span class='label label-info label-mini'>Expired</span>";}else{
+													if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}
+													if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty && $row['INV_QTY'] > $QtyInitial){ echo "<span class='label label-warning label-mini'>Low</span>";
+													}else if($row['INV_QTY'] < $QtyInitial){ echo "<span class='label label-danger label-mini'>Re-order</span>";}} ?></td>
+													<td class="hidden-phone">
+														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditInv"><i class="icon-pencil"></i></a>
+														<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><i class="icon-minus"></i></a>
+														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
+														
+													<?php
+													include 'lib/modals/Dispense-medicine-modal.php';
+													include 'lib/modals/Edit-inventory-modal.php';
+													?>
+													</td>
+												</tr>
+												<?php
+												  }
+												?>       
+											</tbody>
+										</table>
+									</div>
+                                  </div>
+                                  <div id="medtab" class="tab-pane">
+										<div class="adv-table">
+										<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddMed"><i class="icon-plus"></i> Add Medicines</a>
+										<?php
+										include 'lib/modals/Add-medicine-modal.php';
+										?>
+										<table  class="table table-striped table-advance table-hover" id="editmedtable">
+											<thead>
+												<tr>
+													<th>Category(Age)</th>
+													<th>Type</th>
+													<th>Generic Name</th>
+													<th>Brand Name</th>
+													<th>Dosage Form</th>
+													<th>Dose</th>
+													<th>Action</th>
+												</tr>
+											</thead>
+											<tbody>                               
+												<tr class="gradeX">
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td class="text-center">
+														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
+														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
+														
+													<?php
+													include 'lib/modals/Edit-med-modal.php';
+													?>
+													</td>
+												</tr>      
+											</tbody>
+										</table>
+									</div>
+								  </div>
+                                  <div id="profile" class="tab-pane">Profile</div>
+                                  <div id="contact" class="tab-pane">Contact</div>
+                              </div>
+                          </div>
+                      </section>
+                      <!--tab nav start-->
+			</div>
+		</section>
 </div>
 </div>
 <!-- page end-->
@@ -260,6 +314,13 @@ include 'lib/modals/Edit-inventory-modal.php';
     <!--script for this page only-->
 	<!--key press limit-->
 	<script src="js/numbers-only.js"></script>
+	<script type="text/javascript" charset="utf-8">
+          $(document).ready(function() {
+              $('#editmedtable').dataTable( {
+                  "aaSorting": [[ 4, "desc" ]]
+              } );
+          } );
+      </script>
 <?php
 include 'lib/functions/view-inventory-script.php';
 include 'lib/User-Accesslvl.php';
