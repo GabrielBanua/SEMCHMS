@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label class="col-md-3 col-sm-2 control-label">Time:</label>
                                         <div class="col-md-5">
-                                            <input type="time" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control" value="<?php $date = date("H:i", strtotime($row['SCHEDULE_TIME']. ' -7 minutes')); echo $date; ?>">
+                                            <input type="time" id="SCHEDULE_TIME-<?php echo $row['SCHEDULE_ID'] ?>" class="form-control" value="<?php $date = date("H:i", strtotime($row['SCHEDULE_TIME'])); echo $date; ?>">
                                         </div>
                                 </div>
                           </form>

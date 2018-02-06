@@ -190,4 +190,39 @@ function editTreatment(id){
                   }
         });
       }
+      function loadLabResult(MR_id, TR_id){
+        var Mr_id = MR_id;
+        var Tr_id = TR_id;
+        $.ajax({
+                  type: "POST",
+                  url: "Server2.php?p=Loadlabrequest",
+                  data: "MR_ID="+Mr_id+"&TR_ID="+Tr_id,
+                  success: function(data){
+                    $('#labreq-'+Mr_id).html(data);
+                  }
+        });
+
+      }
+      function addLabrequest(MR_id, TR_id){
+        var Mr_id = MR_id;
+        var TestReq = $('#TRequested-'+Mr_id).val();
+        var Treatment_id = TR_id;
+        if(TestReq == 'Select'){
+          $('#Error_Message-LABRQ-'+Mr_id).html('Please select a request');
+        }else{
+          $('#Error_Message-LABRQ-'+Mr_id).html('');
+        $.ajax({
+          type: "POST",
+          url:  "Server2.php?p=Addlabrequest",
+          data: "T_REQ="+TestReq+"&T_ID="+Treatment_id,
+          success: function(data){
+            $('#Success_Message-LABRQ-'+Mr_id).html('Successfully requested! &nbsp;');
+            setTimeout(function(){
+              $('#Success_Message-LABRQ-'+Mr_id).fadeOut('slow');
+              }, 1500);
+              loadLabResult(Mr_id, Treatment_id);
+          }
+        });
+        }
+      }
 	</script>

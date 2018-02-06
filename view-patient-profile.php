@@ -193,23 +193,29 @@ $medicalrecord->execute();
                                   <div class="bio-row">
                                       <p><b><span>Date&nbsp;Registered </span></b> : <?php echo $row['DATE_REG']?></p>
                                   </div>
-                                  <div class="bio-row">
-                                      <p><b><span>Address </span></b>: <?php echo $row['P_ADD']?></p>
+								  <div class="bio-row">
+                                      <p><b><span>Purok </span></b>: </p>
                                   </div>
-                                  <div class="bio-row">
+								  <div class="bio-row">
                                       <p><b><span>First Name</span></b>: <?php echo $row['P_FNAME']?></p>
-                                  </div>
-                                  <div class="bio-row">
-                                      <p><b><span>Religion </span></b>: <?php echo $row['P_REL']?></p>
+                                  </div>								  
+								  <div class="bio-row">
+                                      <p><b><span>Barangay </span></b>: </p>
                                   </div>
                                   <div class="bio-row">
                                       <p><b><span>Middle Name </span></b>: <?php echo $row['P_MNAME']?></p>
                                   </div>
+								  <div class="bio-row">
+                                      <p><b><span>Address </span></b>: <?php echo $row['P_ADD']?></p>
+                                  </div>
+								  <div class="bio-row">
+                                      <p><b><span>Last Name </span></b>: <?php echo $row['P_LNAME']?></p>
+                                  </div>
                                   <div class="bio-row">
                                       <p><b><span>Type </span></b>: <?php echo $row['P_TYPE']?></p>
                                   </div>
-                                  <div class="bio-row">
-                                      <p><b><span>Last Name </span></b>: <?php echo $row['P_LNAME']?></p>
+								  <div class="bio-row">
+                                      <p><b><span>Religion </span></b>: <?php echo $row['P_REL']?></p>
                                   </div>
                                   <div class="bio-row">
                                       <p><b><span>Civil Status </span></b>: <?php echo $row['P_CVL_STAT']?></p>
@@ -381,6 +387,7 @@ $medicalrecord->execute();
 												  <tbody>
 													<?php
 while($MR = $medicalrecord->fetch()){
+    $MED_ID = $MR['MR_ID'];
     $TRMNT_ID = $MR['TRMT_ID'];
 	$treatment = ("Select * FROM referral WHERE TRMTMNT_ID = '$TRMNT_ID'");
 	$TR_ID = mysql_query($treatment);
@@ -390,9 +397,6 @@ while($MR = $medicalrecord->fetch()){
         $UserList = mysql_query($UserDoctor);
         $Doctor = mysql_fetch_array($UserList);
 
-        $LAB_R = ("SELECT * FROM lab_request WHERE TRMNT_ID = '$TRMNT_ID'");
-        $LAB_QUERY = mysql_query($LAB_R);
-        $LAB_RES = mysql_fetch_array($LAB_QUERY);
 ?>
 												  <tr>
 													  <td style="text-align: center;"><?php echo strftime('%Y-%m-%d', strtotime($MR['DATE'])); ?></td>
