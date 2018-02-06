@@ -33,7 +33,7 @@ require 'lib/Db.config.php';
     <!--common script for all pages-->
 	  <script src="js/preloader.js" ></script>
   	<!-- Keypress Limit -->
-  	<script src="js/numbers-only.js"></script>
+  	
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -210,7 +210,7 @@ require 'lib/Db.config.php';
 							<div class="form-group">
                                 <label class="col-md-4 control-label">Date Registered:</label>
                                 <div class="col-lg-5">
-                                    <input id=" DATE_REG" name="DATE_REG" type="date" class="form-control">
+                                    <input id="DATE_REG" name="DATE_REG" type="date" class="form-control">
                                 </div>
                             </div>
 							<div class="form-group">
@@ -520,7 +520,7 @@ require 'lib/Db.config.php';
                   			</div>
                     </div>
           					<div class="form-group">
-          						<label class="col-md-4 control-label">A.17 Additional Significant on your past and present health?:</label>
+          						<label class="col-md-4 control-label">A.17 Additional Significant on your past and present health? (Enter "none" if there is no information given):</label>
           						<div class="col-lg-10">
           							<textarea id="PP_HEATH" style="resize:none" class="form-control" cols="2" rows="4" required placeholder="Input some additional information"></textarea>
           						</div>
@@ -553,7 +553,7 @@ require 'lib/Db.config.php';
                     </div>
           					<div class="form-group">
                       <div class="col-sm-12 pull-right" style="padding-right: 100px">
-                        <a class="btn btn-shadow btn-success" type="button" onclick="addNewPatient()"><i class="icon-plus"></i> Save</a>
+                        <button class="btn btn-shadow btn-success" type="button" onclick="addNewPatient()"><i class="icon-plus"></i> Save</button>
                         <span style="float: right; font-weight: bold;" id="Error_Message" class="text-danger"></span>
                         <span style="float: right; font-weight: bold;" id="Success_Message" class="text-success"></span>
                       </div>
@@ -579,9 +579,11 @@ require 'lib/Db.config.php';
       <!--footer end-->
   </section>
 <script src="js/common-scripts.js"></script>
+<script src="js/numbers-only.js"></script>
 <?php
 include 'lib/functions/Add-patient-script.php';
 include 'lib/User-Accesslvl.php';
+
 ?>
   </body>
 </html>
