@@ -1,10 +1,10 @@
 <!-- ******************************************Start Model Edit Medicines*********************************************************** -->
-<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditMed" class="modal fade">
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditInv" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-					<h4 class="modal-title">Edit Medicines</h4>
+					<h4 class="modal-title">Edit Inventory</h4>
 			</div>
 		<div class="modal-body">
 			<form class="form-horizontal" role="form">

@@ -209,15 +209,15 @@ require 'lib/Db.config.php';
                             </div>
 							<div class="form-group">
                                 <label class="col-md-4 control-label">Date Registered:</label>
-                                <div class="col-lg-4">
-                                    <input id=" DATE_REG" name="DATE_REG" type="text" value="<?php echo $date ?>" readonly class="form_datetime form-control">
+                                <div class="col-lg-5">
+                                    <input id=" DATE_REG" name="DATE_REG" type="date" class="form-control">
                                 </div>
                             </div>
 							<div class="form-group">
                                 <label class="col-md-4 control-label">First Name</label>
                                 <div class="col-lg-6">
-                                    <input id="P_FNAME" name="P_FNAME" type="text" class="form-control" autofocus required>
-                                </div>
+                                    <input id="P_FNAME" name="P_FNAME" type="text" pattern = "[a-zA-Z]*" class="form-control" autofocus required >
+                                </div> 
                             </div>
 							<div class="form-group">
                                 <label class="col-md-4 control-label">Middle Name</label>
