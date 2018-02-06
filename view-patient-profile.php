@@ -367,7 +367,7 @@ $medicalrecord->execute();
 									<div id="medrecord" class="tab-pane">
 									<div class="adv-table">
 										<header class="panel-heading" id="Medicalrecord_btn">
-											<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#medrecmodal"><i class="icon-plus"></i> Add Medical Records</a>
+											<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#medrecmodal"><i class="icon-plus"></i> Add Consultation Details</a>
 										</header>
 										<div class="panel-body">
 											<div class="adv-table">

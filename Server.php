@@ -63,14 +63,13 @@ if($page == 'addNewPatient'){
 			$Date_Reg = mysql_real_escape_string($_POST['DATE_REG']);
 			$Occupation = mysql_real_escape_string($_POST['P_OCCU']);
 			$OccupationFBW = mysql_real_escape_string($_POST['P_OCCU_FBW']);
-				$timezone = date("Y-m-d");
-				$DATE_REGISTER = $timezone;
+				$DATE_REGISTER = date('Y-m-d',strtotime($Date_Reg));
 
 			$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
 			$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);
 			$date = date("Y-m-d");	
-			$Year = date('Y',strtotime($date));
-			$Month = date('M',strtotime($date));
+			$Year = date('Y',strtotime($Date_Reg));
+			$Month = date('M',strtotime($Date_Reg));
 
 	
 		$stmt = $db->prepare("insert into Patient values('',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
