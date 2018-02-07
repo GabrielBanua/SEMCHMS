@@ -176,4 +176,122 @@ else if($page == 'EditMedicineInfo'){
 			$MedStmt->bindParam(7,$MED_ID);
 			$MedStmt->execute();
 }
+else if($page == 'RetrieveInventoryCAT'){
+	require 'lib/Db.config.php';
+	require 'lib/Db.config.pdo.php';
+
+	$id = mysql_real_escape_string($_POST['INV_ID']);
+
+	$retrieveCat = "Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_ID = '$id'";
+	$res = mysql_query($retrieveCat);
+	$Result = mysql_fetch_array($res);
+
+		echo "<option value='";echo "Adult"; echo "'"; if($Result['MEDICINE_CAT'] == 'Adult'){echo "selected";} echo">"; echo "Tablet"; echo "</option>";
+		echo "<option value='";echo "Children"; echo "'"; if($Result['MEDICINE_CAT'] == 'Children'){echo "selected";} echo">"; echo "Children"; echo "</option>";
+}
+else if($page == 'RetrieveInventoryTYPE'){
+	require 'lib/Db.config.php';
+	require 'lib/Db.config.pdo.php';
+
+	$id = mysql_real_escape_string($_POST['INV_ID']);
+
+	$retrieveCat = "Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_ID = '$id'";
+	$res = mysql_query($retrieveCat);
+	$Result = mysql_fetch_array($res);
+
+		echo "<option value='";echo "Analgesic"; echo "'"; if($Result['MEDICINE_TYPE'] == 'Analgesic'){echo "selected";} echo">"; echo "Analgesic"; echo "</option>";
+		echo "<option value='";echo "Anti-Allergy"; echo "'"; if($Result['MEDICINE_TYPE'] == 'Anti-Allergy'){echo "selected";} echo">"; echo "Anti-Allergy"; echo "</option>";
+		echo "<option value='";echo "Antibiotics"; echo "'"; if($Result['MEDICINE_TYPE'] == 'Antibiotics'){echo "selected";} echo">"; echo "Antibiotics"; echo "</option>";
+		echo "<option value='";echo "Diabetics"; echo "'"; if($Result['MEDICINE_TYPE'] == 'Diabetics'){echo "selected";} echo">"; echo "Diabetics"; echo "</option>";
+		echo "<option value='";echo "Hypertension"; echo "'"; if($Result['MEDICINE_TYPE'] == 'Hypertension'){echo "selected";} echo">"; echo "Hypertension"; echo "</option>";
+		echo "<option value='";echo "OTROS"; echo "'"; if($Result['MEDICINE_TYPE'] == 'OTROS'){echo "selected";} echo">"; echo "OTROS"; echo "</option>";
+		echo "<option value='";echo "Respiratory"; echo "'"; if($Result['MEDICINE_TYPE'] == 'Respiratory'){echo "selected";} echo">"; echo "Respiratory"; echo "</option>";
+		echo "<option value='";echo "Stomach/Digestive"; echo "'"; if($Result['MEDICINE_TYPE'] == 'Stomach/Digestive'){echo "selected";} echo">"; echo "Stomach/Digestive"; echo "</option>";
+		echo "<option value='";echo "Vitamins"; echo "'"; if($Result['MEDICINE_TYPE'] == 'Vitamins'){echo "selected";} echo">"; echo "Vitamins"; echo "</option>";	
+}
+else if($page == 'RetrieveInventoryGNAME'){
+	require 'lib/Db.config.php';
+	require 'lib/Db.config.pdo.php';
+
+	$id = mysql_real_escape_string($_POST['INV_ID']);
+
+	$retrieveCat = "Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_ID = '$id'";
+	$res = mysql_query($retrieveCat);
+	$Result = mysql_fetch_array($res);
+
+		$INV_MEDTYPE = mysql_real_escape_string($_POST['INV_TYPE']);
+		$INV_MEDCAT = mysql_real_escape_string($_POST['INV_CAT']);
+	
+		$sql = "SELECT MEDICINE_GNAME FROM medicine WHERE MEDICINE_TYPE = '$INV_MEDTYPE' AND MEDICINE_CAT = '$INV_MEDCAT' GROUP BY MEDICINE_GNAME";
+				$do = mysql_query($sql);
+				$count = mysql_num_rows($do);
+
+		if($count > 0){
+			while($gname = mysql_fetch_array($do)){
+				echo "<option value='";echo $gname['MEDICINE_GNAME']; echo "'"; if($gname['MEDICINE_GNAME'] == $Result['MEDICINE_GNAME']){echo "selected";} echo">"; echo $gname['MEDICINE_GNAME']; echo "</option>";
+			}
+		}else{
+			echo "<option>No medicine found!</option>";
+		}
+}
+else if($page == 'RetrieveInventoryBNAME'){
+	require 'lib/Db.config.php';
+	require 'lib/Db.config.pdo.php';
+
+	$id = mysql_real_escape_string($_POST['INV_ID']);
+
+	$retrieveCat = "Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_ID = '$id'";
+	$res = mysql_query($retrieveCat);
+	$Result = mysql_fetch_array($res);
+
+	$INV_MEDGNAME = mysql_real_escape_string($_POST['INV_GNAME']);
+
+	$sql = "SELECT MEDICINE_BNAME FROM medicine WHERE MEDICINE_GNAME = '$INV_MEDGNAME' GROUP BY MEDICINE_BNAME";
+			$do = mysql_query($sql);
+			$count = mysql_num_rows($do);
+
+	if($count > 0){
+		while($bname = mysql_fetch_array($do)){
+			echo "<option value='";echo $bname['MEDICINE_BNAME']; echo "'"; if($bname['MEDICINE_BNAME'] == $Result['MEDICINE_BNAME']){echo "selected";} echo">"; echo $bname['MEDICINE_BNAME']; echo "</option>";
+		}
+	}else{
+		echo "<option>No medicine found!</option>";
+	}
+}
+else if($page == 'RetrieveInventoryDFORM'){
+	require 'lib/Db.config.php';
+	require 'lib/Db.config.pdo.php';
+
+	$id = mysql_real_escape_string($_POST['INV_ID']);
+
+	$retrieveCat = "Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_ID = '$id'";
+	$res = mysql_query($retrieveCat);
+	$Result = mysql_fetch_array($res);
+	
+	echo "<option value='";echo "Tablet"; echo "'"; if($Result['MEDICINE_DFORM'] == 'Tablet'){echo "selected";} echo">"; echo "Tablet"; echo "</option>";
+	echo "<option value='";echo "Syrup"; echo "'"; if($Result['MEDICINE_DFORM'] == 'Syrup'){echo "selected";} echo">"; echo "Syrup"; echo "</option>";
+}
+else if($page == 'RetrieveInventoryDS'){
+	require 'lib/Db.config.php';
+	require 'lib/Db.config.pdo.php';
+
+	$id = mysql_real_escape_string($_POST['INV_ID']);
+
+	$retrieveCat = "Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_ID = '$id'";
+	$res = mysql_query($retrieveCat);
+	$Result = mysql_fetch_array($res);
+	
+			$MedCat = mysql_real_escape_string($_POST['CAT']);
+			$Medtype = mysql_real_escape_string($_POST['TYPE']);
+			$MedGname = mysql_real_escape_string($_POST['GNAME']);
+			$MedDform = mysql_real_escape_string($_POST['DF']);
+			$MedBN = mysql_real_escape_string($_POST['BNAME']);
+
+	$sql = "SELECT MEDICINE_DOSE FROM medicine WHERE (MEDICINE_BNAME = '$MedBN' AND MEDICINE_CAT ='$MedCat' AND (MEDICINE_DFORM = '$MedDform')) GROUP BY MEDICINE_DOSE";
+			$do = mysql_query($sql);
+
+		while($DS = mysql_fetch_array($do)){
+			echo "<option value='";echo $DS['MEDICINE_DOSE']; echo "'"; if($DS['MEDICINE_DOSE'] == $Result['MEDICINE_DOSE']){echo "selected";} echo">"; echo $DS['MEDICINE_DOSE']; echo "</option>";
+		}
+}
 ?>

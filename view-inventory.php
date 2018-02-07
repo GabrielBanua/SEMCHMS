@@ -228,7 +228,7 @@ $current_date = date('Y-m-d');
 													if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty && $row['INV_QTY'] > $QtyInitial){ echo "<span class='label label-warning label-mini'>Low</span>";
 													}else if($row['INV_QTY'] < $QtyInitial){ echo "<span class='label label-danger label-mini'>Re-order</span>";}} ?></td>
 													<td class="hidden-phone">
-														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditInv"><i class="icon-pencil"></i></a>
+														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" onclick="RetrieveInventory(<?php echo $row['INV_ID'] ?>)" data-target="#EditInv-<?php echo $row['INV_ID'] ?>"><i class="icon-pencil"></i></a>
 														<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><i class="icon-minus"></i></a>
 														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
 														

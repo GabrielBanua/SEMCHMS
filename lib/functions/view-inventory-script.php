@@ -288,4 +288,214 @@
 						}
 					}
 				}
+				function RetrieveInventory(INV_id){
+					var Inv_ID = INV_id;
+					editmedvalue(Inv_ID);
+					$.ajax({
+						type: "POST",
+						url: "Server2.php?p=RetrieveInventoryCAT",
+						data: "INV_ID="+Inv_ID,
+						success: function(data){
+						$('#INV_MEDICINE_CAT-'+Inv_ID).html(data);
+						Type(Inv_ID);
+						}
+        			});
+					
+				}
+				function Type(T_id){
+					var T_ID = T_id;
+					$.ajax({
+						type: "POST",
+						url: "Server2.php?p=RetrieveInventoryTYPE",
+						data: "INV_ID="+T_ID,
+						success: function(data){
+						$('#INV_MEDICINE_TYPE-'+T_ID).html(data);
+						Gname(T_ID);
+						}
+        			});
+				}
+				function Gname(GN_id){
+					var GN_ID = GN_id;
+					var INV_CAT = $('#INV_MEDICINE_CAT-'+GN_ID).val();
+					var INV_TYPE = $('#INV_MEDICINE_TYPE-'+GN_ID).val();
+					$.ajax({
+						type: "POST",
+						url: "Server2.php?p=RetrieveInventoryGNAME",
+						data: "INV_ID="+GN_ID+"&INV_CAT="+INV_CAT+"&INV_TYPE="+INV_TYPE,
+						success: function(data){
+                    	$('#INV_MEDICINE_GNAME-'+GN_ID).html(data);
+						Bname(GN_ID);
+                  		}
+        			});
+				}
+				function Bname(BN_id){
+					var BN_ID = BN_id;
+					var INV_GNAME = $('#INV_MEDICINE_GNAME-'+BN_ID).val();
+					$.ajax({
+						type: "POST",
+						url: "Server2.php?p=RetrieveInventoryBNAME",
+						data: "INV_ID="+BN_ID+"&INV_GNAME="+INV_GNAME,
+						success: function(data){
+                    	$('#INV_MEDICINE_BNAME-'+BN_ID).html(data);
+						DForm(BN_ID);
+                  	}
+        			});
+				}
+				function DForm(DF_id){
+					var DF_ID = DF_id;
+					$.ajax({
+						type: "POST",
+						url: "Server2.php?p=RetrieveInventoryDFORM",
+						data: "INV_ID="+DF_ID,
+						success: function(data){
+                    	$('#INV_MEDICINE_DF-'+DF_ID).html(data);
+						Dose(DF_ID);
+                  	}
+        			});
+				}
+				function Dose(D_id){
+					var D_ID = D_id;
+					var MedDF = $('#INV_MEDICINE_DF-'+D_ID).val();
+					var MedCat = $('#INV_MEDICINE_CAT-'+D_ID).val();
+					var Medtype = $('#INV_MEDICINE_TYPE-'+D_ID).val();
+					var MedGname = $('#INV_MEDICINE_GNAME-'+D_ID).val();
+					var MedBname = $('#INV_MEDICINE_BNAME-'+D_ID).val();
+					$.ajax({
+						type: "POST",
+						url: "Server2.php?p=RetrieveInventoryDS",
+						data: "INV_ID="+D_ID+"&DF="+MedDF+"&CAT="+MedCat+"&TYPE="+Medtype+"&GNAME="+MedGname+"&BNAME="+MedBname,
+						success: function(data){
+                    	$('#INV_MEDICINE_DS-'+D_ID).html(data);
+                  	}
+        			});
+				}
+
+				function editmedvalue(mv_id){
+					var MV_ID = mv_id;
+					$('#INV_MEDICINE_TYPE-'+MV_ID).on('change',function(){
+						var Medtype = $('#INV_MEDICINE_TYPE-'+MV_ID).val();
+						var MedCat = $('#INV_MEDICINE_CAT-'+MV_ID).val();
+						if(Medtype != '' && MedCat != ''){
+							$.ajax({
+								type: "POST",
+								url: "Server.php?p=MedicineName",
+								data: "INV_MEDTYPE="+Medtype+"&INV_MEDCAT="+MedCat,
+								success: function(data){
+									$('#INV_MEDICINE_GNAME-'+MV_ID).html(data);
+									changeBrandval(MV_ID);
+								var CheckDF = $('#INV_MEDICINE_DF-'+MV_ID).val();
+									if(CheckDF == 'Tablet' || CheckDF == 'Syrup'){
+										$('#INV_MEDICINE_DF-'+MV_ID).html('<option></option>');
+										$('#INV_MEDICINE_DS-'+MV_ID).html('<option></option>');
+									}else{
+										$('#INV_MEDICINE_DF-'+MV_ID).html('<option></option><option>Tablet</option><option>Syrup</option>');
+									}
+								}
+							});
+						}else{
+						$('#INV_MEDICINE_GNAME-'+MV_ID).html('<option>Please select catergory</option>');
+						}
+					});
+					$('#INV_MEDICINE_CAT-'+MV_ID).on('change',function(){
+						var Medtype = $('#INV_MEDICINE_TYPE-'+MV_ID).val();
+						var MedCat = $('#INV_MEDICINE_CAT-'+MV_ID).val();
+						if(Medtype != '' && MedCat != ''){
+							$.ajax({
+								type: "POST",
+								url: "Server.php?p=MedicineName",
+								data: "INV_MEDTYPE="+Medtype+"&INV_MEDCAT="+MedCat,
+								success: function(data){
+									$('#INV_MEDICINE_GNAME-'+MV_ID).html(data);
+									changeBrandval(MV_ID);
+									changeDFval(MV_ID);
+								var CheckDF = $('#INV_MEDICINE_DF-'+MV_ID).val();
+									if(CheckDF == 'Tablet' || CheckDF == 'Syrup'){
+										$('#INV_MEDICINE_DF-'+MV_ID).html('<option></option>');
+										$('#INV_MEDICINE_DS-'+MV_ID).html('<option></option>');
+									}else{
+										$('#INV_MEDICINE_DF-'+MV_ID).html('<option></option><option>Tablet</option><option>Syrup</option>');
+									}
+								}
+							});
+						}else{
+								$('#INV_MEDICINE_GNAME-'+MV_ID).html('<option></option>');	
+						}
+					});
+					$('#INV_MEDICINE_GNAME-'+MV_ID).on('change',function(){
+						var MedGname = $('#INV_MEDICINE_GNAME-'+MV_ID).val();
+						if(MedGname){
+							$.ajax({
+								type: "POST",
+								url: "Server.php?p=MedicineBName",
+								data: "INV_MEDGNAME="+MedGname,
+								success: function(data){
+									$('#INV_MEDICINE_BNAME-'+MV_ID).html(data);
+									changeDFval(MV_ID);
+								}
+							});
+						}else{
+								$('#INV_MEDICINE_BNAME-'+MV_ID).html('<option>Please select name of medicine!<option>');
+
+						}
+					});
+					$('#INV_MEDICINE_BNAME-'+MV_ID).on('change',function(){
+						changeDFval(MV_ID);
+					});
+					$('#INV_MEDICINE_DF-'+MV_ID).on('change',function(){
+							var MedDF = $('#INV_MEDICINE_DF-'+MV_ID).val();
+							var MedCat = $('#INV_MEDICINE_CAT-'+MV_ID).val();
+							var Medtype = $('#INV_MEDICINE_TYPE-'+MV_ID).val();
+							var MedGname = $('#INV_MEDICINE_GNAME-'+MV_ID).val();
+							var MedBname = $('#INV_MEDICINE_BNAME-'+MV_ID).val();
+							if(MedDF){
+								$.ajax({
+									type: "POST",
+									url: "Server.php?p=MedicineDF",
+									data: "MedDform="+MedDF+"&Medgname="+MedGname+"&MedBname="+MedBname+"&MedCat="+MedCat+"&Medtype="+Medtype,
+									success: function(data){
+										$('#INV_MEDICINE_DS-'+MV_ID).html(data);
+									}
+								});
+							}
+							else{
+								$('#INV_MEDICINE_DS-'+MV_ID).html('<option><option>');
+							}
+						});
+				}
+					function changeBrandval(Brand_id){
+						var BRND_ID = Brand_id;
+						var MedGname = $('#INV_MEDICINE_GNAME-'+BRND_ID).val();
+							if(MedGname){
+								$.ajax({
+									type: "POST",
+									url: "Server.php?p=MedicineBName",
+									data: "INV_MEDGNAME="+MedGname,
+									success: function(data){
+										$('#INV_MEDICINE_BNAME-'+BRND_ID).html(data);
+									}
+								});
+							}else{
+									$('#INV_MEDICINE_BNAME-'+BRND_ID).html('<option>Please select name of medicine!<option>');
+							}
+					}
+					function changeDFval(DF_ID){
+							var DFORM_ID = DF_ID;
+							var MedDF = $('#INV_MEDICINE_DF-'+DFORM_ID).val();
+							var MedCat = $('#INV_MEDICINE_CAT-'+DFORM_ID).val();
+							var Medtype = $('#INV_MEDICINE_TYPE-'+DFORM_ID).val();
+							var MedGname = $('#INV_MEDICINE_GNAME-'+DFORM_ID).val();
+							var MedBname = $('#INV_MEDICINE_BNAME-'+DFORM_ID).val();
+							if(MedDF){
+								$.ajax({
+									type: "POST",
+									url: "Server.php?p=MedicineDF",
+									data: "MedDform="+MedDF+"&Medgname="+MedGname+"&MedBname="+MedBname+"&MedCat="+MedCat+"&Medtype="+Medtype,
+									success: function(data){
+										$('#INV_MEDICINE_DS-'+DFORM_ID).html(data);
+									}
+								});
+							}else{
+								$('#INV_MEDICINE_DS-'+DFORM_ID).html('<option><option>');
+							}
+					}
 		</script>

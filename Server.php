@@ -391,8 +391,8 @@ require 'lib/Db.config.pdo.php';
 else if($page == 'MedicineName'){
 require 'lib/Db.config.php';
 
-			$INV_MEDTYPE = mysql_real_escape_string($_POST['INV_MEDTYPE']);
-			$INV_MEDCAT = mysql_real_escape_string($_POST['INV_MEDCAT']);
+	$INV_MEDTYPE = mysql_real_escape_string($_POST['INV_MEDTYPE']);
+	$INV_MEDCAT = mysql_real_escape_string($_POST['INV_MEDCAT']);
 
 	$sql = "SELECT MEDICINE_GNAME FROM medicine WHERE MEDICINE_TYPE = '$INV_MEDTYPE' AND MEDICINE_CAT = '$INV_MEDCAT' GROUP BY MEDICINE_GNAME";
 			$do = mysql_query($sql);
