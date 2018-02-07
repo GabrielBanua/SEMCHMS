@@ -96,7 +96,7 @@
                         }, 1000);
                         setTimeout(function(){
                           window.location.reload();
-                        }, 2000);
+                        }, 1500);
                       }
                     });
               }else{
@@ -128,10 +128,10 @@ function addTreatment(str){
                   $('#Success_Message-TRMT-'+Med_RID).html('Successfully Added! &nbsp;');
                         setTimeout(function() {
                           $('#Success_Message-TRMT-'+Med_RID).fadeOut('slow');
-                        }, 1500);
+                        }, 1000);
                         setTimeout(function(){
                           window.location.reload();
-                        }, 2000);
+                        }, 1500);
                       }
           });
         }

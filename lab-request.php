@@ -167,7 +167,8 @@ require 'lib/Db.config.php';
                                       <thead>
                                       <tr>
                                           <th>ID</th>
-                                          <th>Patient name</th>
+                                          <th>Date Requested</th>
+                                          <th>Patient fullname</th>
                                           <th>Test Requested</th>
                                           <th class="hidden-phone">Action</th>
                                       </tr>
@@ -178,6 +179,7 @@ require 'lib/Db.config.php';
                                     ?>
                                       <tr class="gradeX">
                                           <td><?php echo $LBR['LBR_ID'];?></td>
+                                          <td><?php echo $LBR['LBR_DATE'];?></td>
                                           <td><?php echo $LBR['Fullname'];?></td>
                                           <td><?php echo $LBR['LBR_TYPE'];?></td>
                                           <td class="center hidden-phone">
