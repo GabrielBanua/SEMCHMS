@@ -188,7 +188,7 @@ $current_date = date('Y-m-d');
                               <div class="tab-content">
                                   <div id="inventorytab" class="tab-pane active">
                                       <div class="adv-table">
-										<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddInventory"><i class="icon-plus"></i> Add Inventory</a>
+										<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddInventory"><i class="icon-plus"></i> Add Stocks</a>
 										<?php
 										include 'lib/modals/Add-inventory-modal.php';
 										?>

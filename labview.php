@@ -167,35 +167,31 @@ if($Position == "Volunter"){
                                           <th>Patient No.</th>
                                           <th>Name</th>
                                           <th>Test Requested</th>
+                                          <th>Status</th>   
                                           <th class="hidden-phone">Action</th>
+                                          
                                       </tr>
                                       </thead>
                                       <tbody>
+                                      <?php
+                                      $query = "SELECT *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM ((((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) treatment INNER JOIN schedule on schedule.SCHEDULE_ID = medical_record.SCHED_ID)) medical_record INNER JOIN treatment on medical_record.MR_ID = treatment.MR_ID) 
+                                                [laboratory record] INNER JOIN lab_request on `laboratory record`.LAB_ID = lab_request.LAB_ID) `laboratory record` INNER JOIN treatment ON `laboratory record`.LAB_ID = treatment   WHERE P_ID ='$ID'";
+                                      $result = mysql_fetch_array($query);
+                                      while($row = mysql_fetch_array($result)) {
+                                      ?>
                                       <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Urinalysis</td>
+                                          <td>000001<?php echo $result['P_ID'];?></td>
+                                          <td>Alec Rebuiato<?php echo $result['Fullname'];?></td>
+                                          <td>Urinalysis <?php echo $result[''];?></td>
+                                          <td>Pending<?php echo $r['Pending'];?></td>
                                           <td class="center hidden-phone">
 											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
 										  </td>
                                       </tr>
-									  <tr class="gradeX">
-                                          <td>000002</td>
-                                          <td>Alson John Bayon-on</td>
-                                          <td>Urinalysis</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000003</td>
-                                          <td>Gabriel Francis Banua</td>
-                                          <td>Blood Chemistry</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs" href="add-lab-blood.html">Proceed</a>
-										  </td>
-                                      </tr>
-                                      </tfoot>
+                                        <?php
+                                         }
+                                        ?>
+                                      </tbody>
 									</table>
                                 </div>
                           </div>

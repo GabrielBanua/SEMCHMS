@@ -167,7 +167,7 @@ else if($Position == "Volunter"){
 								  </div>
 								  <div class="col-lg-3 col-sm-6">
 									  <section class="panel">
-											<a class="btn btn-shadow btn-primary btn-lg" style="width:200px" href="#">
+											<a class="btn btn-shadow btn-primary btn-lg" style="width:200px" href="inv-chart-report.php">
 												<i class="icon-bar-chart icon-3x"></i><br>
 												Inventory<br>Population
 											</a>

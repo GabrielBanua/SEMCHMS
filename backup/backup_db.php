@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Manila');
 $connection = mysqli_connect('localhost', 'root', '', 'semhcms');
 
 $tables = array();
@@ -7,17 +8,20 @@ while ($row = mysqli_fetch_row($result)){
     $tables[] = $row[0];
 
 }
-
 $return = '';
+
+
+
 
 foreach ($tables as $table) {
     $result = mysqli_query($connection, "SELECT * FROM ". $table);
     $num_fields = mysqli_num_fields($result);
-
+    
     $return .= 'DROP TABLE '.$table.';';
     $row2 = mysqli_fetch_row(mysqli_query($connection, 'SHOW CREATE TABLE '.$table));
     $return .= "\n\n".$row2[1].";\n\n";
 
+   
     for ($i=0;$i<$num_fields;$i++){
         while ($row = mysqli_fetch_row($result)){
             $return .= 'INSERT INTO '.$table.' VALUES(';
@@ -29,14 +33,18 @@ foreach ($tables as $table) {
             $return .="); \n";
         }
     }
-
-    $return .="\n\n\n";
 }
 
 
-$handle = fopen('semhcms.sql', 'w+');
+    $return .="\n\n\n";
+
+if( 'time(H:i:s)' == 'time(H:i:s)') {
+$handle = fopen('semhcms('.date('m-d-Y').').sql', 'w+');
+} else {
+    echo "<script> alert ('Failed to create backup')</script>";
+}
 fwrite($handle, $return);
 fclose($handle);
-echo "<script> alert ('Successfully Back up the Database')</script>";
-echo "<script>document.location='../backup.php'</script>";  
+echo "<script> alert ('Successfully created a backup of the database!')</script>";
+echo "<script>document.location='../backup.php'</script>". $date;  
 ?>
