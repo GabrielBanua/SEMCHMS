@@ -18,6 +18,7 @@ $UserN = $row['Username'];
 $Fname = $row['Firstname'];
 $Lname = $row['Lastname'];
 $Pos = $row['Position'];
+$Status = $row['Status'];
 
 
 ?>

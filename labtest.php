@@ -157,12 +157,17 @@ require 'lib/session.php';
                           <header class="panel-heading">
                               Laboratory Test
                           </header>
+						  <?php
+						  $query = "SELECT *, CONCAT (P_FNAME,' ',P_MNAME,' ',P_LNAME FROM patient WHERE P_ID = '$ID'";
+						  $result = mysql_fetch_array($query);
+						  ?>
+
                           <div class="panel-body">
 							<form class="form-horizontal" role="form">
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Patient Name:</label>
 									<div class="col-sm-4">
-										<input type="text" id="#" class="form-control"required>
+										<input type="text" id="Fullname" class="form-control"required>
 									</div>
 									<label class="col-sm-2 control-label">Date Taken:</label>
 									<div class="col-sm-3">
