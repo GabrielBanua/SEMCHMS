@@ -1,8 +1,12 @@
 <?php
 require 'lib/session.php';
-if($Position == "Volunter"){
-  header('Location: index.php');
-}
+require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
+
+$lab_stmt = "SELECT *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM (((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID)INNER JOIN laboratory_record ON lab_request.LBR_ID = laboratory_record.LBR_ID)";
+$result = mysql_query($lab_stmt);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -174,16 +178,13 @@ if($Position == "Volunter"){
                                       </thead>
                                       <tbody>
                                       <?php
-                                      $query = "SELECT *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM ((((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) treatment INNER JOIN schedule on schedule.SCHEDULE_ID = medical_record.SCHED_ID)) medical_record INNER JOIN treatment on medical_record.MR_ID = treatment.MR_ID) 
-                                                [laboratory record] INNER JOIN lab_request on `laboratory record`.LAB_ID = lab_request.LAB_ID) `laboratory record` INNER JOIN treatment ON `laboratory record`.LAB_ID = treatment   WHERE P_ID ='$ID'";
-                                      $result = mysql_fetch_array($query);
-                                      while($row = mysql_fetch_array($result)) {
+                                      while($LAB_REC = mysql_fetch_array($result)) {
                                       ?>
                                       <tr class="gradeX">
-                                          <td>000001<?php echo $result['P_ID'];?></td>
-                                          <td>Alec Rebuiato<?php echo $result['Fullname'];?></td>
-                                          <td>Urinalysis <?php echo $result[''];?></td>
-                                          <td>Pending<?php echo $r['Pending'];?></td>
+                                          <td></td><?php echo $LAB_REC['P_ID'];?></td>
+                                          <td><?php echo $LAB_REC['Fullname'];?></td>
+                                          <td><?php echo $LAB_REC['LBR_TYPE'];?></td>
+                                          <td><?php echo $LAB_REC['DATE_TAKEN'];?></td>
                                           <td class="center hidden-phone">
 											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
 										  </td>
