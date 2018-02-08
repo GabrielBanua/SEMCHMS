@@ -104,9 +104,6 @@ INSERT INTO adult VALUES("82","Good","Good","No","No","No","No","No","4","Left",
 INSERT INTO adult VALUES("83","Good","Good","No","No","No","No","Mother","4","Right","No","No","83","Jul","2016"); 
 INSERT INTO adult VALUES("84","Good","Good","No","No","No","Correction glasses","Father","3","Right","No","No","84","Jan","2016"); 
 INSERT INTO adult VALUES("85","Good","Poor","No","No","No","No","Nanny","4","Right","No","No","85","Feb","2018"); 
-
-
-
 DROP TABLE blood_examination;
 
 CREATE TABLE `blood_examination` (
@@ -148,9 +145,6 @@ CREATE TABLE `blood_examination` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO blood_examination VALUES("1","","","","","","","","","","","","","","","","","","","","","","","","","","","","","1","Jan","1970"); 
-
-
-
 DROP TABLE dispense;
 
 CREATE TABLE `dispense` (
@@ -162,9 +156,6 @@ CREATE TABLE `dispense` (
   PRIMARY KEY (`DISP_ID`),
   KEY `INV_ID` (`INV_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
 
 DROP TABLE ended_user;
 
@@ -179,9 +170,6 @@ CREATE TABLE `ended_user` (
   KEY `User_end_id` (`User_end_id`),
   CONSTRAINT `ended_user_ibfk_1` FOREIGN KEY (`User_end_id`) REFERENCES `users` (`User_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
 
 DROP TABLE fecalysis;
 
@@ -213,9 +201,6 @@ CREATE TABLE `fecalysis` (
   CONSTRAINT `fecalysis_ibfk_1` FOREIGN KEY (`LAB_ID`) REFERENCES `laboratory_record` (`LAB_ID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
-
 DROP TABLE hematology;
 
 CREATE TABLE `hematology` (
@@ -243,9 +228,6 @@ CREATE TABLE `hematology` (
   CONSTRAINT `hematology_ibfk_1` FOREIGN KEY (`LAB_ID`) REFERENCES `laboratory_record` (`LAB_ID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
-
 DROP TABLE inventory;
 
 CREATE TABLE `inventory` (
@@ -264,9 +246,6 @@ CREATE TABLE `inventory` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO inventory VALUES("1","15","20","Unilab Drugstore","2018-02-07","2018-02-07","20","Feb","2018"); 
-
-
-
 DROP TABLE lab_request;
 
 CREATE TABLE `lab_request` (
@@ -287,9 +266,6 @@ INSERT INTO lab_request VALUES("8","Fecalysis","2018-02-08","1","Feb","2018");
 INSERT INTO lab_request VALUES("10","Blood Chemistry","2018-02-08","1","Feb","2018"); 
 INSERT INTO lab_request VALUES("11","Hematology","2018-02-08","1","Feb","2018"); 
 INSERT INTO lab_request VALUES("12","Urinalysis","2018-02-08","1","Feb","2018"); 
-
-
-
 DROP TABLE laboratory_record;
 
 CREATE TABLE `laboratory_record` (
@@ -311,9 +287,6 @@ CREATE TABLE `laboratory_record` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO laboratory_record VALUES("1","8","15","14","2018-02-08","undefined","Jan","1970"); 
-
-
-
 DROP TABLE medical_record;
 
 CREATE TABLE `medical_record` (
@@ -335,9 +308,6 @@ CREATE TABLE `medical_record` (
 INSERT INTO medical_record VALUES("1","Allergy","100/80","64.50","37.50","2018-02-07 07:55:54","Feb","2018","1","Completed"); 
 INSERT INTO medical_record VALUES("2","Hypertension","100/80","67.50","37.50","2018-02-07 08:57:46","Feb","2018","2","Completed"); 
 INSERT INTO medical_record VALUES("3","Hypertention","100/80","60.00","37.50","2018-02-08 14:48:59","Feb","2018","1","Pending"); 
-
-
-
 DROP TABLE medicine;
 
 CREATE TABLE `medicine` (
@@ -366,9 +336,6 @@ INSERT INTO medicine VALUES("23","Adult","Analgesic","Paracetamol","Calpol","Syr
 INSERT INTO medicine VALUES("24","Children","Antibiotics","Paracetamol","calpol","Syrup","250 mL","Feb","2018"); 
 INSERT INTO medicine VALUES("25","Children","Antibiotics","asdasd","asdasd","Syrup","100mg","Feb","2018"); 
 INSERT INTO medicine VALUES("26","Children","Antibiotics","asdasdad","asdasd","Tablet","123","Feb","2018"); 
-
-
-
 DROP TABLE patient;
 
 CREATE TABLE `patient` (
@@ -481,9 +448,6 @@ INSERT INTO patient VALUES("82","Sovl","Sonny","Javire","Male","2014-07-29","3",
 INSERT INTO patient VALUES("83","Dela Cruz","Sharon","Maribelle","Female","2001-09-29","16","34.00","60.00","169","Adult","Bacolod City","88976543214","Student","Catholic","Single","2016-07-27","Paid Employment","Jul","2016","Handumanan","Zone 2"); 
 INSERT INTO patient VALUES("84","Bailey","Hannah","Sharon","Female","2014-11-27","3","34.00","50.00","150","Minor","Bacolod City","99954354354","Student","Catholic","Single","2016-01-29","Paid Employment","Jan","2016","Handumanan","Zone 5"); 
 INSERT INTO patient VALUES("85","Johnson","Leki","Carl","Male","2002-01-30","16","34.00","60.00","160","Adult","Bacolod City","99875346543","Student","Catholic","Single","2018-02-07","Non-paid work(Volunteer/Charity)","Feb","2018","Banago","Zone 12"); 
-
-
-
 DROP TABLE patient_medical_issue;
 
 CREATE TABLE `patient_medical_issue` (
@@ -585,9 +549,6 @@ INSERT INTO patient_medical_issue VALUES("82","None","Anti rabies","Biogesic","N
 INSERT INTO patient_medical_issue VALUES("83","None","No","No","No","No","83","Jul","2016"); 
 INSERT INTO patient_medical_issue VALUES("84","None","No","Neozep","No","Vaccination","84","Jan","2016"); 
 INSERT INTO patient_medical_issue VALUES("85","None","Vaccination","Biogesic","Asthma","No","85","Feb","2018"); 
-
-
-
 DROP TABLE referral;
 
 CREATE TABLE `referral` (
@@ -604,9 +565,6 @@ CREATE TABLE `referral` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO referral VALUES("1","Dr. Barcelona PhD.","09096771375","Riverside Hospital 2nd floor","1","Feb","2018"); 
-
-
-
 DROP TABLE schedule;
 
 CREATE TABLE `schedule` (
@@ -624,9 +582,6 @@ CREATE TABLE `schedule` (
 
 INSERT INTO schedule VALUES("1","19","2018-02-07","07:18:00","Check Up","Feb","2018"); 
 INSERT INTO schedule VALUES("2","16","2018-02-07","07:19:00","Check Up","Feb","2018"); 
-
-
-
 DROP TABLE treatment;
 
 CREATE TABLE `treatment` (
@@ -649,9 +604,6 @@ CREATE TABLE `treatment` (
 INSERT INTO treatment VALUES("1","1","You have a Family History of high cholesterol, depression. Allergies: Allergies noted: dust, food - gluten. Illnesses: chicken pox, migraine. Operations: No operations were identified. Prosthesis: No Prosthetic Devices were noted. Blood Transfusions: No history of Blood Transfusion(s). Bones Broken: You have broken your left middle femur.","Health Supplements: You are taking vitamin B, vitamin D, multivitamins, calcium, celery and juniper.","Please keep your vaccinations up to date and ask your doctor if they are current.","2018-02-10","3","Feb","2018"); 
 INSERT INTO treatment VALUES("2","2","ako ni sa","ako ni sa","ako ni sa","2018-02-15","11","Feb","2018"); 
 INSERT INTO treatment VALUES("3","3","","","","2018-02-08","3","Feb","2018"); 
-
-
-
 DROP TABLE urinalysis;
 
 CREATE TABLE `urinalysis` (
@@ -686,9 +638,6 @@ CREATE TABLE `urinalysis` (
   KEY `LAB_ID` (`LAB_ID`),
   CONSTRAINT `urinalysis_ibfk_1` FOREIGN KEY (`LAB_ID`) REFERENCES `laboratory_record` (`LAB_ID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
 
 DROP TABLE users;
 
