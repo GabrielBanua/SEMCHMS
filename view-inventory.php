@@ -3,7 +3,7 @@ require 'lib/session.php';
 require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
 $current_date = date('Y-m-d');
-$stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
+  $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
   $stmt->execute();
 ?>
 <!DOCTYPE html>
@@ -24,6 +24,9 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
     <script src="js/preloader.js" ></script>
+	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script src="js/advanced-form-components.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -225,7 +228,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 													if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty && $row['INV_QTY'] > $QtyInitial){ echo "<span class='label label-warning label-mini'>Low</span>";
 													}else if($row['INV_QTY'] < $QtyInitial){ echo "<span class='label label-danger label-mini'>Re-order</span>";}} ?></td>
 													<td class="hidden-phone">
-														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditInv"><i class="icon-pencil"></i></a>
+														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" onclick="RetrieveInventory(<?php echo $row['INV_ID'] ?>)" data-target="#EditInv-<?php echo $row['INV_ID'] ?>"><i class="icon-pencil"></i></a>
 														<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><i class="icon-minus"></i></a>
 														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
 														
@@ -248,7 +251,7 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 										<?php
 										include 'lib/modals/Add-medicine-modal.php';
 										?>
-										<table  class="table table-striped table-advance table-hover" id="editmedtable">
+										<table class="table table-striped table-advance table-hover" id="editmedtable">
 											<thead>
 												<tr>
 													<th>Category(Age)</th>
@@ -260,29 +263,34 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
 													<th>Action</th>
 												</tr>
 											</thead>
-											<tbody>                               
+											<tbody>  
+                                            <?php
+                                              $Medicine = $db->prepare("Select * FROM medicine");
+                                              $Medicine->execute();
+                                            while($Medi = $Medicine->fetch()){
+                                            ?>                                
 												<tr class="gradeX">
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td class="text-center">
-														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMed"><i class="icon-pencil"></i></a>
-														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
-														
-													<?php
-													include 'lib/modals/Edit-med-modal.php';
-													?>
+													<td><?php echo $Medi['MEDICINE_CAT']; ?></td>
+													<td><?php echo $Medi['MEDICINE_TYPE']; ?></td>
+													<td><?php echo $Medi['MEDICINE_GNAME']; ?></td>
+													<td><?php echo $Medi['MEDICINE_BNAME']; ?></td>
+													<td><?php echo $Medi['MEDICINE_DFORM']; ?></td>
+													<td><?php echo $Medi['MEDICINE_DOSE']; ?></td>
+													<td class="hidden-phone">
+														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMedInfo-<?php echo $Medi['MEDICINE_ID']; ?>"><i class="icon-pencil"></i></a>
+                                                        <?php 
+                                                        include 'lib/modals/Edit-med-modal.php';
+                                                        ?>
+														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteMed(<?php echo $Medi['MEDICINE_ID']; ?>)"><i class="icon-trash"></i></a>
 													</td>
-												</tr>      
+												</tr> 
+                                            <?php
+											}
+											?>    
 											</tbody>
 										</table>
 									</div>
 								  </div>
-                                  <div id="profile" class="tab-pane">Profile</div>
-                                  <div id="contact" class="tab-pane">Contact</div>
                               </div>
                           </div>
                       </section>
@@ -314,13 +322,6 @@ $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.M
     <!--script for this page only-->
 	<!--key press limit-->
 	<script src="js/numbers-only.js"></script>
-	<script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#editmedtable').dataTable( {
-                  "aaSorting": [[ 4, "desc" ]]
-              } );
-          } );
-      </script>
 <?php
 include 'lib/functions/view-inventory-script.php';
 include 'lib/User-Accesslvl.php';

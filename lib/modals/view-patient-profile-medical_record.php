@@ -4,7 +4,7 @@
                   <div class="modal-content">
                       <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                          <h4 class="modal-title">Add Medical Records</h4>
+                          <h4 class="modal-title">Add Consultation</h4>
                       </div>
                       <div class="modal-body">
                           <form class="form-horizontal" role="form">
@@ -23,7 +23,7 @@
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Blood Pressure</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRBP" class="form-control" placeholder=""data-mask="999/99">
+                                          <input type="text" id="MedRBP" class="form-control" placeholder="" data-mask="999/?999">
                                       </div>
                                   </div>
 								   <div class="form-group">
@@ -35,7 +35,7 @@
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Temperature (℃)</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRTemp" class="form-control numdecimal" maxlength="5">
+                                          <input type="text" id="MedRTemp" class="form-control numdecimal" maxlength="4">
                                       </div>
                                   </div>
                   </form>

@@ -63,14 +63,13 @@ if($page == 'addNewPatient'){
 			$Date_Reg = mysql_real_escape_string($_POST['DATE_REG']);
 			$Occupation = mysql_real_escape_string($_POST['P_OCCU']);
 			$OccupationFBW = mysql_real_escape_string($_POST['P_OCCU_FBW']);
-				$timezone = date("Y-m-d");
-				$DATE_REGISTER = $timezone;
+				$DATE_REGISTER = date('Y-m-d',strtotime($Date_Reg));
 
 			$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
 			$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);
 			$date = date("Y-m-d");	
-			$Year = date('Y',strtotime($date));
-			$Month = date('M',strtotime($date));
+			$Year = date('Y',strtotime($Date_Reg));
+			$Month = date('M',strtotime($Date_Reg));
 
 	
 		$stmt = $db->prepare("insert into Patient values('',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -320,7 +319,8 @@ date_default_timezone_set('Asia/Manila');
 
 				$sqldate = date('Y-m-d',strtotime($Sched_date));
 				$TimeSet = date('H:i:s', strtotime($Sched_time));
-				$CheckDateTime = date('Y-m-d H:i:s');
+				$CheckDate = date('Y-m-d H:i:s');
+				$CheckDateTime = date('Y-m-d H:i:s', strtotime($CheckDate. ' -1 minutes'));
 				$MergeDateTime = date('Y-m-d H:i:s', strtotime("$sqldate $TimeSet"));
 			
 			if($MergeDateTime < $CheckDateTime){
@@ -351,7 +351,7 @@ require 'lib/Db.config.pdo.php';
 			$Sched_date = mysql_real_escape_string($_POST['SCHEDULE_DATE']);
 			$Sched_time = mysql_real_escape_string($_POST['SCHEDULE_TIME']);
 			$Sched_purpose = mysql_real_escape_string($_POST['SCHEDULE_PURPOSE']);
-			$Time = date('H:i:s', strtotime($Sched_time. ' +1 minutes'));
+			$Time = date('H:i:s', strtotime($Sched_time));
 			$sqldate = date('Y-m-d',strtotime($Sched_date)); 
 	
 		$stmt = $db->prepare("Update schedule set SCHEDULE_DATE=?, SCHEDULE_TIME=?, SCHEDULE_PURPOSE=? where SCHEDULE_ID=?");
@@ -391,8 +391,8 @@ require 'lib/Db.config.pdo.php';
 else if($page == 'MedicineName'){
 require 'lib/Db.config.php';
 
-			$INV_MEDTYPE = mysql_real_escape_string($_POST['INV_MEDTYPE']);
-			$INV_MEDCAT = mysql_real_escape_string($_POST['INV_MEDCAT']);
+	$INV_MEDTYPE = mysql_real_escape_string($_POST['INV_MEDTYPE']);
+	$INV_MEDCAT = mysql_real_escape_string($_POST['INV_MEDCAT']);
 
 	$sql = "SELECT MEDICINE_GNAME FROM medicine WHERE MEDICINE_TYPE = '$INV_MEDTYPE' AND MEDICINE_CAT = '$INV_MEDCAT' GROUP BY MEDICINE_GNAME";
 			$do = mysql_query($sql);
@@ -573,7 +573,7 @@ require 'lib/Db.config.php';
 	$date = date("Y-m-d");
 	$sql = "INSERT INTO `treatment` (`MR_ID`, `DIAG_DTLS`, `TREATMENT`, `REMARKS`, `F_CHECKUP`, `User_id`, `MONTH`, `YEAR`) VALUES ('$ID', '$Diagnosis', '$Treatment', '$Remarks', '$date', '$Doc_id', '$Month', '$Year')";
  		$stmt = $db->prepare($sql);
- 		$stmt -> execute();
+ 		$stmt->execute();
 
 }
 else if($page == 'DoctorList'){

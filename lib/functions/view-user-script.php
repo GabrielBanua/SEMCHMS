@@ -49,7 +49,6 @@
             url: "Server.php?p=UpdateUser",
             data: "UN="+Username+"&PW="+Password+"&FN="+Firstname+"&LN="+Lastname+"&MN="+Middlename+"&GN="+Gender+"&PS="+Position+"&User_id="+User_id+"&LCN="+License+"&DE="+DateEnd+"&STS="+status,
             success: function(data){
-                alert(data);
                 $('#Error_Message-'+str).html('');
                 $('#Success_Message-'+str).html('Updated successfully! &nbsp;');
                     setTimeout(function() {

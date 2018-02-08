@@ -1,8 +1,10 @@
 <?php
 require 'lib/session.php';
-if($Position == "Volunter"){
-  header('Location: index.php');
-}
+require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
+
+    $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM ((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID)");
+    $stmt->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -164,38 +166,30 @@ if($Position == "Volunter"){
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th>Patient No.</th>
-                                          <th>Name</th>
+                                          <th>ID</th>
+                                          <th>Date Requested</th>
+                                          <th>Patient fullname</th>
                                           <th>Test Requested</th>
                                           <th class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
+                                    <?php
+                                    while($LBR = $stmt->fetch()){
+                                    ?>
                                       <tr class="gradeX">
-                                          <td>000001</td>
-                                          <td>Alec Rebuiato</td>
-                                          <td>Urinalysis</td>
+                                          <td><?php echo $LBR['LBR_ID'];?></td>
+                                          <td><?php echo $LBR['LBR_DATE'];?></td>
+                                          <td><?php echo $LBR['Fullname'];?></td>
+                                          <td><?php echo $LBR['LBR_TYPE'];?></td>
                                           <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
+											<a class="btn btn-primary btn-xs" href="labtest.php">Proceed</a>
 										  </td>
                                       </tr>
-									  <tr class="gradeX">
-                                          <td>000002</td>
-                                          <td>Alson John Bayon-on</td>
-                                          <td>Urinalysis</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
-										  </td>
-                                      </tr>
-									  <tr class="gradeX">
-                                          <td>000003</td>
-                                          <td>Gabriel Francis Banua</td>
-                                          <td>Blood Chemistry</td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs" href="add-lab-blood.html">Proceed</a>
-										  </td>
-                                      </tr>
-                                      </tfoot>
+                                    <?php
+                                    }
+                                    ?>
+									  </tbody>
 									</table>
                                 </div>
                           </div>
@@ -244,5 +238,5 @@ if($Position == "Volunter"){
 <?php
 include 'lib/User-Accesslvl.php';
 ?>
-  </body>
+</body>
 </html>
