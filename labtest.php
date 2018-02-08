@@ -205,7 +205,7 @@ $Lab_row = mysql_fetch_array($result);
 									</div>
 									<label class="col-sm-2 control-label">Last Meal:</label>
 									<div class="col-sm-4">
-										<input type="text" id"LAST_MEAL" class="form-control">
+										<input type="text" id="LAST_MEAL" class="form-control">
 									</div>
 								</div>
 								<hr>
@@ -336,9 +336,9 @@ $Lab_row = mysql_fetch_array($result);
 									  </table>
 								  </section>
 								  <div class="form-group pull-right">
-									  <div class="col-sm-6">
-									  	<span style="float: left; font-weight: bold;" id="Error_Message_BC" class="text-danger"></span>
-                        				<span style="float: left; font-weight: bold;" id="Success_Message_BC" class="text-success"></span>
+									  <div class="col-sm-12">
+									  	<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Error_Message_BC" class="text-danger"></span>
+                        				<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Success_Message_BC" class="text-success"></span>
 										<a class="btn btn-shadow btn-success" onclick="addBloodChem(<?php echo $Lab_row['LBR_ID'] ?>)"><i class="icon-save"></i> Save</a>
 									  </div>
 									</div>
@@ -408,6 +408,7 @@ $Lab_row = mysql_fetch_array($result);
 											  <td><input id="PCELLS_MICRO_EXM" name="PCELLS_MICRO_EXM"type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
+										  	  <td></td>
 											  <td class="text-right"><b>ECyst</b></td>
 											  <td><input id="E_HISTOL_CYST" name="E_HISTOL_CYST" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
@@ -436,18 +437,22 @@ $Lab_row = mysql_fetch_array($result);
 											  <td class="text-right"><b>Troup</b></td>
 											  <td><input id="COLI_TROPH" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
+											  <td class="text-right"><b>Remarks</b></td>
+											  <td><input id="REMARKS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  </tbody>
 									  </table>
 								  </section>
 								  <div class="form-group pull-right">
-									  <div class="col-sm-6">
-										<a class="btn btn-shadow btn-success"><i class="icon-save"></i> Save</a>
+									  <div class="col-sm-12">
+									  	<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Error_Message_FC" class="text-danger"></span>
+                        				<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Success_Message_FC" class="text-success"></span>
+										<a class="btn btn-shadow btn-success" onclick="addFecalysis(<?php echo $Lab_row['LBR_ID'] ?>)"><i class="icon-save"></i> Save</a>
 									  </div>
 									</div>
 							  </div>
-							  <!--- Fecalysis End-->
-							  <!--- Hematology -->
+ <!--- Fecalysis End-->
+<!--- Hematology -->
 							  <div class="col-sm-12 Hematology test">
 								  <section class="panel">
 									  <header class="panel-heading text-center">
@@ -691,15 +696,7 @@ $Lab_row = mysql_fetch_array($result);
     <script src="js/preloader.js" ></script>
 	<script src="js/numbers-only.js"></script>
 
-	<script>
-		$('.btn').on('click', function() {
-			var $this = $(this);
-		  $this.button('loading');
-			setTimeout(function() {
-			   $this.button('reset');
-		   }, 3000);
-		});
-	</script>
+	
 <?php
 include 'lib/User-Accesslvl.php';
 ?>
@@ -762,17 +759,19 @@ include 'lib/User-Accesslvl.php';
 		var MEDTECH = $('#MEDTECH').val();
 		var PATHOLOGIST = $('#PATHOLOGIST').val();
 		var TAKEN = $('#TAKEN').val();
-
+		alert(MEAL);
 		if(MEAL == '' || MEDTECH == '' || PATHOLOGIST == ''){
-			$('#Error_message_BC').html('Succefully added laboratory record')
-		}else{
-			if(confirm('Are you sure you want to add this patient record in the database?')){
+			$('#Error_Message_BC').html('Last meal is required!');
+		}
+		else{
+			$('#Error_message_BC').html('')
+			if(confirm('Are you sure you want to add this blood chemistry record in the database?')){
 				$.ajax({
 					type: "POST",
 					url: "Server3.php?p=AddBloodChem",
 					data: "LBR_ID="+LABR_ID+"&BEI="+BUN_ETYPE_INT+"&BEC="+BUN_ETYPE_CON+"&CI="+CHSTRL_INT+"&CC="+CHSTRL_CON+"&CEI="+CRTN_ETYPE_INT+"&CEC="+CRTN_ETYPE_CON+"&FEI="+FBS_ETYPE_INT+"&FEC="+FBS_ETYPE_CON+"&HMEI="+HDL_M_ETYPE_INT+"&HMEC="+HDL_M_ETYPE_CON+"&HFEI="+HDL_F_ETYPE_INT+"&HFEC="+HDL_F_ETYPE_CON+"&LEI="+LDL_ETYPE_INT+"&LEC="+LDL_ETYPE_CON+"&PPEI="+PO_PR_ETYPE_INT+"&PPEC="+PO_PR_ETYPE_CON+"&REI="+RBS_ETYPE_INT+"&REC="+RBS_ETYPE_CON+"&SGOTMEI="+SGOT_M_ETYPE_INT+"&SGOTFEI="+SGOT_F_ETYPE_INT+"&SGPTMEI="+SGPT_M_ETYPE_INT+"&SGPTFEI="+SGPT_F_ETYPE_INT+"&TEI="+TRYLYDE_ETYPE_INT+"&TEC="+TRYLYDE_ETYPE_CON+"&UFEI="+URIC_F_ETYPE_INT+"&UFEC="+URIC_F_ETYPE_CON+"&UMEI="+URIC_M_ETYPE_INT+"&UMEC="+URIC_M_ETYPE_CON+"&LAST_MEAL="+MEAL+"&MEDTECH="+MEDTECH+"&PATHOLOGIST="+PATHOLOGIST+"&TAKEN="+TAKEN,
 					success: function(data){
-						
+						$('#Success_Message_BC').html('Successfully added laboratory result');
 					}
 				});
 			}else{
@@ -780,7 +779,8 @@ include 'lib/User-Accesslvl.php';
 			}
 		}
 	}
-	function addFecalysis(){
+	function addFecalysis(LBR_ID){
+		var LABR_ID = LBR_ID;
 		var CLR_MCRO_EXM = $('#CLR_MCRO_EXM').val();
 		var PARA_ASCARIS = $('#PARA_ASCARIS').val();
 		var FLAG_G_LAMBIA = $('#FLAG_G_LAMBIA').val();
@@ -799,12 +799,29 @@ include 'lib/User-Accesslvl.php';
 		var E_AMOEBA_COLI = $('#E_AMOEBA_COLI').val();
 		var COLI_CYST = $('#COLI_CYST').val();
 		var COLI_TROPH = $('#COLI_TROPH').val();
-
-		$.ajax({
-			type: "POST",
-			url: "Server3.php?p=AddFecal",
-			data: "",
-		});
+		var MEAL = $('#LAST_MEAL').val();
+		var MEDTECH = $('#MEDTECH').val();
+		var PATHOLOGIST = $('#PATHOLOGIST').val();
+		var TAKEN = $('#TAKEN').val();
+		var REMARKS = $('#REMARKS').val();
+		alert(MEAL);
+		if(MEAL == '' || MEDTECH == '' || PATHOLOGIST == ''){
+			$('#Error_Message_FC').html('Last meal is required!');
+		}else{
+			$('#Error_message_FC').html('');
+			if(confirm('Are you sure you want to add this fecalysis record in the database?')){
+				$.ajax({
+					type: "POST",
+					url: "Server3.php?p=AddFecal",
+					data: "LBR_ID="+LABR_ID+"&CLRME="+CLR_MCRO_EXM+"&PARAA="+PARA_ASCARIS+"&FGL="+FLAG_G_LAMBIA+"&CONSME="+CONS_MCRO_EXM+"&PHKW="+PARA_HKWORM+"&FTM="+FLAG_T_HOMINIS+"&HME="+HLMT_MCRO_EXM+"&PARAT="+PARA_TRHRIS+"&PARAST="+PARA_STRGLOIDES+"&CO="+CT_OB+"&EAH="+E_AMOEBA_HISTOL+"&PME="+PCELLS_MICRO_EXM+"&EHC="+E_HISTOL_CYST+"&RME="+RBC_MCRO_EXM+"&EHT="+E_HISTOL_TROPH+"&EAC="+E_AMOEBA_COLI+"&CC="+COLI_CYST+"&CT="+COLI_TROPH+"&LAST_MEAL="+MEAL+"&MEDTECH="+MEDTECH+"&PATHOLOGIST="+PATHOLOGIST+"&TAKEN="+TAKEN+"&REMARKS="+REMARKS,
+					success: function(data){
+						$('#Success_Message_FC').html('Successfully added laboratory result! &nbsp;&nbsp;');
+					}
+				});
+			}else{
+				//do nothing
+			}
+		}
 	 
 	}
 	function addUrinalysis(){
