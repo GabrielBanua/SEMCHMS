@@ -94,10 +94,10 @@
 			</form>
 		</div>
 		<div class="modal-footer">
-			<span id="Error_Message_EINV-<?php echo $row['INV_ID'] ?>" class="text-danger"></span>
-			<span id="Success_Message_EINV-<?php echo $row['INV_ID'] ?>" class="text-success"></span>
+			<span id="Error_Message_EINV-<?php echo $row['INV_ID'] ?>" style="float: left; font-weight: bold;" class="text-danger"></span>
+			<span id="Success_Message_EINV-<?php echo $row['INV_ID'] ?>" style="float: left; font-weight: bold;" class="text-success"></span>
 			<a data-dismiss="modal" class="btn btn-default" type="button">Cancel</a>
-			<a class="btn btn-success" onclick="addInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-save"></i> Save</a>
+			<a class="btn btn-success" onclick="EditInventory(<?php echo $row['INV_ID']; ?>)"><i class="icon-save"></i> Save</a>
 		</div>
 		</div>
 	</div>

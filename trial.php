@@ -147,3 +147,4 @@ $query = $db->prepare("INSERT INTO users(name, email, username, password) VALUES
           }
         }  
       </script>
+      alert(MedGname+" "+MedBname+" "+Medtype+" "+MedCat+" "+MedDose+" "+MedDform);

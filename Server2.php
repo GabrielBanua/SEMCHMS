@@ -149,10 +149,20 @@ else if($page == 'Loadlabrequest'){
 		<tr>
 			<td class="text-center"><?php echo $LR['LBR_DATE'];?></td>
 			<td class="text-center"><?php echo $LR['LBR_TYPE'];?></td>
-			<td class="text-center"><a class="btn btn-shadow btn-danger btn-xs"><i class="icon-trash"></i> Delete</a></td>
+			<td class="text-center"><a class="btn btn-shadow btn-danger btn-xs" onclick="DeleteLabRequest(<?php echo $LR['LBR_ID'];?>,<?php echo $MED_RID;?>, <?php echo $TREMNT_ID;?>)"><i class="icon-trash"></i> Delete</a></td>
 		</tr>
 <?php
 		}
+}
+else if($page == 'Deletelabrequest'){
+	require 'lib/Db.config.pdo.php';
+	require 'lib/Db.config.php';
+		
+		$labRequest_ID = mysql_real_escape_string($_POST['DEL_ID']);
+
+		$sql = "DELETE FROM lab_request WHERE LBR_ID = '$labRequest_ID'";
+			$stmt = $db->prepare($sql);
+			$stmt -> execute();
 }
 else if($page == 'EditMedicineInfo'){
 	require 'lib/Db.config.pdo.php';
@@ -294,4 +304,40 @@ else if($page == 'RetrieveInventoryDS'){
 			echo "<option value='";echo $DS['MEDICINE_DOSE']; echo "'"; if($DS['MEDICINE_DOSE'] == $Result['MEDICINE_DOSE']){echo "selected";} echo">"; echo $DS['MEDICINE_DOSE']; echo "</option>";
 		}
 }
+else if($page == 'EditInventory'){
+	require 'lib/Db.config.pdo.php';
+	require 'lib/Db.config.php';
+
+				$INV_ID = mysql_real_escape_string($_POST['INV_ID']);
+				$MedCat = mysql_real_escape_string($_POST['MEDICINE_CAT']);
+				$Medtype = mysql_real_escape_string($_POST['MEDICINE_TYPE']);
+				$MedGname = mysql_real_escape_string($_POST['MEDICINE_GNAME']);
+				$MedDform = mysql_real_escape_string($_POST['MEDICINE_DFORM']);
+				$MedBN = mysql_real_escape_string($_POST['MEDICINE_BNAME']);
+				$MedDose = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
+				$Supplier = mysql_real_escape_string($_POST['SUPPLIER']);
+				$EXPDATE = mysql_real_escape_string($_POST['EXPDATE']);
+				$DATEAR = mysql_real_escape_string($_POST['DATEARR']);
+				$Qty = mysql_real_escape_string($_POST['QTY']);
+				$DateExp = date('Y-m-d',strtotime($EXPDATE)); 
+				$DateArr = date('Y-m-d',strtotime($DATEAR)); 
+				$QtyHistory = $Qty;
+				
+	
+		$sql = "SELECT MEDICINE_ID FROM medicine WHERE MEDICINE_DOSE = '$MedDose' AND MEDICINE_BNAME = '$MedBN' AND(MEDICINE_GNAME = '$MedGname' AND MEDICINE_CAT = '$MedCat') AND MEDICINE_TYPE = '$Medtype'";
+				$do = mysql_query($sql);
+				$id = mysql_fetch_array($do);
+				$MedID = $id['MEDICINE_ID'];
+		echo $MedID;
+	
+		$stmt = $db->prepare("update inventory set MEDICINE_ID=?, INV_QTY=?, INV_SUPPLIER=?, INV_EXPD=?, INV_DATE_ARV=?, INV_QTY_HIST=? where INV_ID=?");
+				$stmt->bindParam(1,$MedID);
+				$stmt->bindParam(2,$Qty);
+				$stmt->bindParam(3,$Supplier);
+				$stmt->bindParam(4,$DateExp);
+				$stmt->bindParam(5,$DateArr);
+				$stmt->bindParam(6,$QtyHistory);
+				$stmt->bindParam(7,$INV_ID);
+				$stmt->execute();
+	}
 ?>

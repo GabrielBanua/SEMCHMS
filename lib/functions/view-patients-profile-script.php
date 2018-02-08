@@ -79,29 +79,33 @@
           var MedTemp = $('#MedRTemp').val();
           var MedDate = $('#MedRDate').val();
           var Sched_id = '<?php echo $SCHED_ID; ?>';
-          if(Medillness == '' || MedBP == '' || MedWeight == '' || MedTemp == ''){
-             $('#Error_Message').html('Please fill in all fields! &nbsp;');
-          }
-          else{
-             $('#Error_Message').html('');
-              if (confirm('Are you sure you want to set schedule for this patient?')) {
-                $.ajax({
-                      type: "POST",
-                      url: "Server.php?p=addMedicalRecord",
-                      data: "MedRillness="+Medillness+"&MedRBP="+MedBP+"&MedRWeight="+MedWeight+"&MedRTemp="+MedTemp+"&MedRDate="+MedDate+"&Sched_ID="+Sched_id+"&DOC_ID="+Doctor_id,
-                      success: function(data){
-                       $('#Success_Message').html('Successfully Added! &nbsp;');
-                        setTimeout(function() {
-                          $('#Success_Message').fadeOut('slow');
-                        }, 1000);
-                        setTimeout(function(){
-                          window.location.reload();
-                        }, 1500);
-                      }
-                    });
-              }else{
-                //do nothing
-              }
+          if(Sched_id == ''){
+            alert("Please set a schedule first before adding consoltation information!");
+          }else{
+                if(Medillness == '' || MedBP == '' || MedWeight == '' || MedTemp == ''){
+                  $('#Error_Message').html('Please fill in all fields! &nbsp;');
+                }
+                else{
+                  $('#Error_Message').html('');
+                    if (confirm('Are you sure you want to set schedule for this patient?')) {
+                      $.ajax({
+                            type: "POST",
+                            url: "Server.php?p=addMedicalRecord",
+                            data: "MedRillness="+Medillness+"&MedRBP="+MedBP+"&MedRWeight="+MedWeight+"&MedRTemp="+MedTemp+"&MedRDate="+MedDate+"&Sched_ID="+Sched_id+"&DOC_ID="+Doctor_id,
+                            success: function(data){
+                            $('#Success_Message').html('Successfully Added! &nbsp;');
+                              setTimeout(function() {
+                                $('#Success_Message').fadeOut('slow');
+                              }, 1000);
+                              setTimeout(function(){
+                                window.location.reload();
+                              }, 1500);
+                            }
+                          });
+                    }else{
+                      //do nothing
+                    }
+                }
           }
       }
     
@@ -201,7 +205,6 @@ function editTreatment(id){
                     $('#labreq-'+Mr_id).html(data);
                   }
         });
-
       }
       function addLabrequest(MR_id, TR_id){
         var Mr_id = MR_id;
@@ -223,6 +226,27 @@ function editTreatment(id){
               loadLabResult(Mr_id, Treatment_id);
           }
         });
+        }
+      }
+      function DeleteLabRequest(Del, Med_id, Treat_id){
+        var Deleted_id = Del;
+        var Mr_id = Med_id;
+        var Tr_id = Treat_id;
+        if (confirm('Are you sure you want to delete this request?')) {
+        $.ajax({
+          type: "POST",
+          url: "Server2.php?p=Deletelabrequest",
+          data: "DEL_ID="+Deleted_id,
+          success: function(data){
+            $('#Success_Message-LABRQ-'+Mr_id).html('Successfully requested! &nbsp;');
+            setTimeout(function(){
+              $('#Success_Message-LABRQ-'+Mr_id).fadeOut('slow');
+              }, 1500);
+              loadLabResult(Mr_id, Tr_id);
+          }
+        });
+        }else{
+          //do nothing
         }
       }
 	</script>

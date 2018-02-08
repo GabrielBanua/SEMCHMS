@@ -1,12 +1,6 @@
 <?php
 require 'lib/session.php';
 
-if($Position == "Doctor"){
-  header('Location: index.php');
-}
-else if($Position == "Volunter"){
-  header('Location: index.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -699,37 +693,10 @@ else if($Position == "Volunter"){
 			   $this.button('reset');
 		   }, 3000);
 		});
-
-    $(document).ready(function(){
-        var Auth ='<?php echo $Position; ?>';
-        if (Auth == "Admin") 
-        {                       
-            $('#Patient-li').show(); 
-            $('#Schedule-li').show();
-            $('#Inventory-li').show();
-            $('#Laboratory-li').show();
-            $('#Reports-li').show();
-            $('#User-li').show();
-            $('#Maintenance-li').show();
-        }
-        else if(Auth == "Doctor") {
-            $('#User-li').hide();
-            $('#Patient-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Laboratory-li').hide();
-            $('#Inventory-li').hide();
-        }
-        else if(Auth == "Medtech") {
-            $('#User-li').hide();
-            $('#Maintenance-li').hide();
-            $('#Reports-li').hide();
-            $('#Patient-li').hide();
-            $('#Schedule-li').hide();
-            $('#Inventory-li').hide();
-        }
-        });
 	</script>
+<?php
+include 'lib/User-Accesslvl.php';
+?>
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 	<script type="text/javascript" src="assets/select2/js/select2.min.js"></script>

@@ -498,4 +498,44 @@
 								$('#INV_MEDICINE_DS-'+DFORM_ID).html('<option><option>');
 							}
 					}
+					function EditInventory(Inv_id){
+						var INV_ID = Inv_id;
+						var MedDform = $('#INV_MEDICINE_DF-'+INV_ID).val();
+						var MedCat = $('#INV_MEDICINE_CAT-'+INV_ID).val();
+						var Medtype = $('#INV_MEDICINE_TYPE-'+INV_ID).val();
+						var MedGname = $('#INV_MEDICINE_GNAME-'+INV_ID).val();
+						var MedBname = $('#INV_MEDICINE_BNAME-'+INV_ID).val();
+						var MedDose  = $('#INV_MEDICINE_DS-'+INV_ID).val();
+						var Qty  = $('#INV_MEDICINE_QTY-'+INV_ID).val();
+						var ExpDate  = $('#INV_MEDICINE_EXPDATE-'+INV_ID).val();
+						var DateArr  = $('#INV_MEDICINE_DATEARR-'+INV_ID).val();
+						var Supplier  = $('#INV_MEDICINE_SUPP-'+INV_ID).val();
+						
+
+						if(MedDform == '' || MedCat == '' || Medtype == '' || MedGname == '' || MedBname == '' || MedDose == '' || Qty == '' || ExpDate == '' || DateArr == '' || Supplier == ''){
+							$('#Error_Message_EINV-'+INV_ID).html('Please fill all fields! &nbsp;');
+						}else{
+							$('#Error_Message_EINV-'+INV_ID).html('');
+							if (confirm('Are you sure you want to edit stock for this medicine?')) {
+							$.ajax({
+								type: "POST",
+								url: "Server2.php?p=EditInventory",
+								data: "MEDICINE_DFORM="+MedDform+"&MEDICINE_DOSE="+MedDose+"&MEDICINE_BNAME="+MedBname+"&MEDICINE_GNAME="+MedGname+"&MEDICINE_TYPE="+Medtype+"&MEDICINE_CAT="+MedCat+"&SUPPLIER="+Supplier+"&DATEARR="+DateArr+"&QTY="+Qty+"&EXPDATE="+ExpDate+"&INV_ID="+INV_ID,
+								success: function(data){
+									$('#Success_Message_EINV-'+INV_ID).html('Successfully updated! &nbsp;');
+									setTimeout(function() {
+										$('#Success_Message_EINV-'+INV_ID).fadeOut('slow');
+									}, 1000);
+									setTimeout(function(){
+										window.location.reload();
+									}, 1500);
+								}
+							});
+							}
+							else{
+								//do nothing
+							}
+						}
+
+					}
 		</script>

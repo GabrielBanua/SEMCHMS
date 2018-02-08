@@ -366,7 +366,7 @@ $medicalrecord->execute();
 											<!--Medical Records start-->
 									<div id="medrecord" class="tab-pane">
 									<div class="adv-table">
-										<header class="panel-heading" id="Medicalrecord_btn">
+										<header class="panel-heading" <?php if($SCHED_ID == ''){echo "style='display: none;'";}else{echo "style='display: block;'";}?> id="Medicalrecord_btn">
 											<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#medrecmodal"><i class="icon-plus"></i> Add Consultation Details</a>
 										</header>
 										<div class="panel-body">
