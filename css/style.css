@@ -31,7 +31,7 @@ a, a:hover, a:focus {
 }
 ::selection {
 
-    background: #3295ff;
+    background: #FF6C60;
     color: #fff;
 }
 ::-moz-selection {
