@@ -1,6 +1,13 @@
 <?php
 require 'lib/session.php';
+require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
+$LAB_R_ID = isset($_GET['LBR_ID'])?$_GET['LBR_ID']:'';
+$Datetoday = date('Y-m-d');
 
+$lab_stmt = "SELECT *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM ((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID) Where LBR_ID = '$LAB_R_ID'";
+$result = mysql_query($lab_stmt);
+$Lab_row = mysql_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +36,7 @@ require 'lib/session.php';
     <![endif]-->
   </head>
 
-  <body>
+  <body onload="loadMTandPT()">
   <div class="preloader-wrapper">
     <div class="preloader">
         <img src="gif/flask.svg" alt="SEMHCMS">
@@ -167,28 +174,26 @@ require 'lib/session.php';
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Patient Name:</label>
 									<div class="col-sm-4">
+<<<<<<< HEAD
 										<input type="text" id="Fullname" class="form-control"required>
+=======
+										<input type="text" value="<?php echo $Lab_row['Fullname']?>" class="form-control"required>
+>>>>>>> 03a6129fa22a2a0202e7b49be09138f639b4fbda
 									</div>
 									<label class="col-sm-2 control-label">Date Taken:</label>
 									<div class="col-sm-3">
-										<input type="date" id="#" class="form-control"required>
+										<input type="date" id="TAKEN" value="<?php echo $Datetoday; ?>" class="form-control"required>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 control-label">Medtech:</label>
+									<label class="col-sm-2 control-label">Medical Technologist:</label>
 									<div class="col-sm-4">
-										<select class="select2-single">
-											<option></option><!--for placeholder-->
-											<option>Gabriel Banua</option>
-											<option>Alessander Rebiato</option>
+										<select class="select2-single" id="MEDTECH">
 										</select>
 									</div>
-									<label class="col-sm-2 control-label">Pathologies:</label>
+									<label class="col-sm-2 control-label">Pathologist:</label>
 									<div class="col-sm-4">
-										<select class="select2-single">
-											<option></option><!--for placeholder-->
-											<option>Gabriel Banua</option>
-											<option>Alessander Rebiato</option>
+										<select class="select2-single" id="PATHOLOGIST">
 										</select>
 									</div>
 								</div>
@@ -197,20 +202,24 @@ require 'lib/session.php';
 									<div class="col-sm-4">
 										<select id="labtype" class="select2-single">
 											<option></option><!--for placeholder-->
-											<option selected value="blood">Blood Chemistry</option>
-											<option value="fecal">Fecalysis</option>
-											<option  value="hema">Hematology</option>
-											<option value="urinal">Urinalysis</option>
+											<option value="Blood" <?php
+                                            if ($Lab_row['LBR_TYPE'] == "Blood Chemistry") { echo " selected"; }?>>Blood Chemistry</option>
+											<option value="Fecalysis" <?php
+                                            if ($Lab_row['LBR_TYPE'] == "Fecalysis") { echo " selected"; }?>>Fecalysis</option>
+											<option value="Hematology" <?php
+                                            if ($Lab_row['LBR_TYPE'] == "Hematology") { echo " selected"; }?>>Hematology</option>
+											<option value="Urinalysis" <?php
+                                            if ($Lab_row['LBR_TYPE'] == "Urinalysis") { echo " selected"; }?>>Urinalysis</option>
 										</select>
 									</div>
 									<label class="col-sm-2 control-label">Last Meal:</label>
 									<div class="col-sm-4">
-										<input type="text" class="form-control">
+										<input type="text" id"LAST_MEAL" class="form-control">
 									</div>
 								</div>
 								<hr>
 <!--- Blood Chemistry -->
-								<div class="col-sm-12 blood test">
+								<div class="col-sm-12 Blood test">
 								  <section class="panel">
 									  <header class="panel-heading text-center">
 										  <u><b>Blood Chemistry</b></u>
@@ -337,13 +346,15 @@ require 'lib/session.php';
 								  </section>
 								  <div class="form-group pull-right">
 									  <div class="col-sm-6">
-										<a class="btn btn-shadow btn-success"><i class="icon-save"></i> Save</a>
+									  	<span style="float: left; font-weight: bold;" id="Error_Message_BC" class="text-danger"></span>
+                        				<span style="float: left; font-weight: bold;" id="Success_Message_BC" class="text-success"></span>
+										<a class="btn btn-shadow btn-success" onclick="addBloodChem(<?php echo $Lab_row['LBR_ID'] ?>)"><i class="icon-save"></i> Save</a>
 									  </div>
 									</div>
 							  </div>
-							  <!--- Blood Chemistry End-->
-							  <!--- Fecalysis -->
-								<div class="col-sm-12 fecal test">
+<!--- Blood Chemistry End-->
+<!--- Fecalysis -->
+								<div class="col-sm-12 Fecalysis test">
 								  <section class="panel">
 									  <header class="panel-heading text-center">
 										  <u><b>Fecalysis</b></u>
@@ -406,7 +417,6 @@ require 'lib/session.php';
 											  <td><input id="PCELLS_MICRO_EXM" name="PCELLS_MICRO_EXM"type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
-											  <td><input id="#" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-right"><b>ECyst</b></td>
 											  <td><input id="E_HISTOL_CYST" name="E_HISTOL_CYST" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
@@ -447,7 +457,7 @@ require 'lib/session.php';
 							  </div>
 							  <!--- Fecalysis End-->
 							  <!--- Hematology -->
-							  <div class="col-sm-12 hema test">
+							  <div class="col-sm-12 Hematology test">
 								  <section class="panel">
 									  <header class="panel-heading text-center">
 										  <u><b>Hematology</b></u>
@@ -536,7 +546,7 @@ require 'lib/session.php';
 							  </div>
 <!-- Hematology End -->
 <!--- Urinal -->
-								<div class="col-sm-12 urinal test">
+								<div class="col-sm-12 Urinalysis test">
 								  <section class="panel">
 									  <header class="panel-heading text-center">
 										  <u><b>Urinalysis</b></u>
@@ -727,17 +737,112 @@ include 'lib/User-Accesslvl.php';
 		}).change();
 	});
 
-	function addBloodChem(){
+	function addBloodChem(LBR_ID){
+		var LABR_ID = LBR_ID;
+		var BUN_ETYPE_INT = $('#BUN_ETYPE_INT').val();
+		var BUN_ETYPE_CON = $('#BUN_ETYPE_CON').val();
+		var CHSTRL_INT = $('#CHSTRL_INT').val();
+		var CHSTRL_CON = $('#CHSTRL_CON').val();
+		var CRTN_ETYPE_INT = $('#CRTN_ETYPE_INT').val();
+		var CRTN_ETYPE_CON = $('#CRTN_ETYPE_CON').val();
+		var FBS_ETYPE_INT = $('#FBS_ETYPE_INT').val();
+		var FBS_ETYPE_CON = $('#FBS_ETYPE_CON').val();
+		var HDL_M_ETYPE_INT = $('#HDL_M_ETYPE_INT').val();
+		var HDL_M_ETYPE_CON = $('#HDL_M_ETYPE_CON').val();
+		var HDL_F_ETYPE_INT = $('#HDL_F_ETYPE_INT').val();
+		var HDL_F_ETYPE_CON = $('#HDL_F_ETYPE_CON').val();
+		var LDL_ETYPE_INT = $('#LDL_ETYPE_INT').val();
+		var LDL_ETYPE_CON = $('#LDL_ETYPE_CON').val();
+		var PO_PR_ETYPE_INT = $('#PO_PR_ETYPE_INT').val();
+		var PO_PR_ETYPE_CON = $('#PO_PR_ETYPE_CON').val();
+		var RBS_ETYPE_INT = $('#RBS_ETYPE_INT').val();
+		var RBS_ETYPE_CON = $('#RBS_ETYPE_CON').val();
+		var SGOT_M_ETYPE_INT = $('#SGOT_M_ETYPE_INT').val();
+		var SGOT_F_ETYPE_INT = $('#SGOT_F_ETYPE_INT').val();
+		var SGPT_M_ETYPE_INT = $('#SGPT_M_ETYPE_INT').val();
+		var SGPT_F_ETYPE_INT = $('#SGPT_F_ETYPE_INT').val();
+		var TRYLYDE_ETYPE_INT = $('#TRYLYDE_ETYPE_INT').val();
+		var TRYLYDE_ETYPE_CON = $('#TRYLYDE_ETYPE_CON').val();
+		var URIC_F_ETYPE_INT = $('#URIC_F_ETYPE_INT').val();
+		var URIC_F_ETYPE_CON = $('#URIC_F_ETYPE_CON').val();
+		var URIC_M_ETYPE_INT = $('#URIC_M_ETYPE_INT').val();
+		var URIC_M_ETYPE_CON = $('#URIC_M_ETYPE_CON').val();
+		var MEAL = $('#LAST_MEAL').val();
+		var MEDTECH = $('#MEDTECH').val();
+		var PATHOLOGIST = $('#PATHOLOGIST').val();
+		var TAKEN = $('#TAKEN').val();
 
+		if(MEAL == '' || MEDTECH == '' || PATHOLOGIST == ''){
+			$('#Error_message_BC').html('Succefully added laboratory record')
+		}else{
+			if(confirm('Are you sure you want to add this patient record in the database?')){
+				$.ajax({
+					type: "POST",
+					url: "Server3.php?p=AddBloodChem",
+					data: "LBR_ID="+LABR_ID+"&BEI="+BUN_ETYPE_INT+"&BEC="+BUN_ETYPE_CON+"&CI="+CHSTRL_INT+"&CC="+CHSTRL_CON+"&CEI="+CRTN_ETYPE_INT+"&CEC="+CRTN_ETYPE_CON+"&FEI="+FBS_ETYPE_INT+"&FEC="+FBS_ETYPE_CON+"&HMEI="+HDL_M_ETYPE_INT+"&HMEC="+HDL_M_ETYPE_CON+"&HFEI="+HDL_F_ETYPE_INT+"&HFEC="+HDL_F_ETYPE_CON+"&LEI="+LDL_ETYPE_INT+"&LEC="+LDL_ETYPE_CON+"&PPEI="+PO_PR_ETYPE_INT+"&PPEC="+PO_PR_ETYPE_CON+"&REI="+RBS_ETYPE_INT+"&REC="+RBS_ETYPE_CON+"&SGOTMEI="+SGOT_M_ETYPE_INT+"&SGOTFEI="+SGOT_F_ETYPE_INT+"&SGPTMEI="+SGPT_M_ETYPE_INT+"&SGPTFEI="+SGPT_F_ETYPE_INT+"&TEI="+TRYLYDE_ETYPE_INT+"&TEC="+TRYLYDE_ETYPE_CON+"&UFEI="+URIC_F_ETYPE_INT+"&UFEC="+URIC_F_ETYPE_CON+"&UMEI="+URIC_M_ETYPE_INT+"&UMEC="+URIC_M_ETYPE_CON+"&LAST_MEAL="+MEAL+"&MEDTECH="+MEDTECH+"&PATHOLOGIST="+PATHOLOGIST+"&TAKEN="+TAKEN,
+					success: function(data){
+						
+					}
+				});
+			}else{
+				//do nothing
+			}
+		}
 	}
 	function addFecalysis(){
+		var CLR_MCRO_EXM = $('#CLR_MCRO_EXM').val();
+		var PARA_ASCARIS = $('#PARA_ASCARIS').val();
+		var FLAG_G_LAMBIA = $('#FLAG_G_LAMBIA').val();
+		var CONS_MCRO_EXM = $('#CONS_MCRO_EXM').val();
+		var PARA_HKWORM = $('#PARA_HKWORM').val();
+		var FLAG_T_HOMINIS = $('#FLAG_T_HOMINIS').val();
+		var HLMT_MCRO_EXM = $('#HLMT_MCRO_EXM').val();
+		var PARA_TRHRIS = $('#PARA_TRHRIS').val();
+		var PARA_STRGLOIDES = $('#PARA_STRGLOIDES').val();
+		var CT_OB = $('#CT_OB').val(); 
+		var E_AMOEBA_HISTOL = $('#E_AMOEBA_HISTOL').val();
+		var PCELLS_MICRO_EXM = $('#PCELLS_MICRO_EXM').val();
+		var E_HISTOL_CYST = $('#E_HISTOL_CYST').val();
+		var RBC_MCRO_EXM = $('#RBC_MCRO_EXM').val();
+		var E_HISTOL_TROPH = $('#E_HISTOL_TROPH').val();
+		var E_AMOEBA_COLI = $('#E_AMOEBA_COLI').val();
+		var COLI_CYST = $('#COLI_CYST').val();
+		var COLI_TROPH = $('#COLI_TROPH').val();
 
+		$.ajax({
+			type: "POST",
+			url: "Server3.php?p=AddFecal",
+			data: "",
+		});
+	 
 	}
 	function addUrinalysis(){
 
 	}
 	function addHematology(){
 		
+	}
+	function loadMTandPT(){
+		LoadMedtech();
+		LoadPathologist();
+	}
+	function LoadMedtech(){
+		$.ajax({
+                  type: "GET",
+                  url: "Server3.php?p=MedtechList",
+                  success: function(data){
+                    $('#MEDTECH').html(data);
+                  }
+        });
+	}
+	function LoadPathologist(){
+		$.ajax({
+                  type: "GET",
+                  url: "Server3.php?p=PathologistList",
+                  success: function(data){
+                    $('#PATHOLOGIST').html(data);
+                  }
+        });
 	}
 	</script>
   </body>

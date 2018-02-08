@@ -53,10 +53,10 @@
                 $('#Success_Message-'+str).html('Updated successfully! &nbsp;');
                     setTimeout(function() {
                           $('#Success_Message-'+str).fadeOut('slow');
-                    }, 2500);
+                    }, 1000);
                     setTimeout(function(){
                           window.location.reload();
-                    }, 2000);
+                    }, 1500);
               }
           });
             }else{

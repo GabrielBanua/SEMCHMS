@@ -19,7 +19,11 @@ CREATE TABLE `adult` (
   PRIMARY KEY (`ADULT_ID`),
   KEY `PMI_ID` (`PMI_ID`),
   CONSTRAINT `adult_ibfk_1` FOREIGN KEY (`PMI_ID`) REFERENCES `patient_medical_issue` (`PMI_ID`) ON UPDATE CASCADE
+<<<<<<< HEAD
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
+=======
 ) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
 
 INSERT INTO adult VALUES("2","Good","Good","Alson","Alson","Alson","Alson","Alson","15","Left","Fever","Fever","2","Jan","0"); 
 INSERT INTO adult VALUES("3","Good","--Select--","Yes","No","Yes","Yes","undefined","16","Left","fever","fever","3","Jan","0"); 
@@ -85,6 +89,28 @@ INSERT INTO adult VALUES("63","Good","Good","No","Permi","Permi","No","Mama","3"
 INSERT INTO adult VALUES("64","Very Good","Very Good","No","25 times a day","Drugs","No","Mother","4","Right","No","No","64","Feb","2018"); 
 INSERT INTO adult VALUES("65","Poor","Good","No","No","No","No","No","4","Right","No","No","65","Feb","2018"); 
 INSERT INTO adult VALUES("66","Good","Poor","No","sadda","No","No","AERA","16","Left","No","we","66","Feb","2018"); 
+<<<<<<< HEAD
+INSERT INTO adult VALUES("67","Good","Good","No","Twice a week","No","Correction glasses","No","4","Right","No","No","67","Feb","2018"); 
+INSERT INTO adult VALUES("68","Good","Good","No","No","No","No","No","4","Right","No","No","68","Oct","2016"); 
+INSERT INTO adult VALUES("69","Good","Good","No","No","No","No","No","1","Right","No","No","69","May","2016"); 
+INSERT INTO adult VALUES("70","Good","Good","No","No","No","No","No","4","Left","No","No","70","Jul","2016"); 
+INSERT INTO adult VALUES("71","Good","Good","No","No","No","No","No","4","Right","No","No","71","Feb","2016"); 
+INSERT INTO adult VALUES("72","Very Good","Good","No","No","No","No","No","4","Left","No","No","72","Dec","2016"); 
+INSERT INTO adult VALUES("73","Good","Good","No","No","No","No","No","4","Right","No","No","73","Jan","1970"); 
+INSERT INTO adult VALUES("74","Good","Good","No","Twice a day","No","No","No","2","Right","No","No","74","Feb","2016"); 
+INSERT INTO adult VALUES("75","Good","Good","No","No","No","No","No","3","Right","No","No","75","Jan","1970"); 
+INSERT INTO adult VALUES("76","Good","Good","No","No","No","No","No","3","Right","No","No","76","Dec","2016"); 
+INSERT INTO adult VALUES("77","Very Good","Very Good","No","No","No","No","No","4","Right","No","No","77","Dec","2016"); 
+INSERT INTO adult VALUES("78","Good","Good","No","No","No","No","No","3","Right","No","No","78","Aug","2016"); 
+INSERT INTO adult VALUES("79","Very Good","Very Good","No","No","No","No","No","4","Right","No","No","79","Dec","2016"); 
+INSERT INTO adult VALUES("80","Very Good","Very Good","No","No","No","No","No","4","Right","No","No","80","Nov","2016"); 
+INSERT INTO adult VALUES("81","Good","Good","No","No","No","No","No","4","Right","No","No","81","Apr","2016"); 
+INSERT INTO adult VALUES("82","Good","Good","No","No","No","No","No","4","Left","No","No","82","Jan","1970"); 
+INSERT INTO adult VALUES("83","Good","Good","No","No","No","No","Mother","4","Right","No","No","83","Jul","2016"); 
+INSERT INTO adult VALUES("84","Good","Good","No","No","No","Correction glasses","Father","3","Right","No","No","84","Jan","2016"); 
+INSERT INTO adult VALUES("85","Good","Poor","No","No","No","No","Nanny","4","Right","No","No","85","Feb","2018"); 
+=======
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
 
 
 
@@ -206,11 +232,17 @@ CREATE TABLE `inventory` (
   PRIMARY KEY (`INV_ID`),
   KEY `MEDICINE_ID` (`MEDICINE_ID`),
   CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`MEDICINE_ID`) REFERENCES `medicine` (`MEDICINE_ID`) ON UPDATE CASCADE
+<<<<<<< HEAD
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+INSERT INTO inventory VALUES("1","15","20","Unilab Drugstore","2018-02-07","2018-02-07","20","Feb","2018"); 
+=======
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 INSERT INTO inventory VALUES("6","17","45","Cebu National Drug Store","2018-02-01","2018-02-01","100","2","2018"); 
 INSERT INTO inventory VALUES("7","14","2","Unilab Drug Store","2018-02-01","2018-02-01","50","2","2018"); 
 INSERT INTO inventory VALUES("8","23","0","asdasdad","2018-02-01","2018-02-01","30","2","2018"); 
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
 
 
 
@@ -219,7 +251,10 @@ DROP TABLE lab_request;
 CREATE TABLE `lab_request` (
   `LBR_ID` int(5) NOT NULL AUTO_INCREMENT,
   `LBR_TYPE` text NOT NULL,
+<<<<<<< HEAD
+=======
   `LBR_REQ` text NOT NULL,
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
   `LBR_DATE` date NOT NULL,
   `TRMNT_ID` int(5) NOT NULL,
   `MONTH` char(3) NOT NULL,
@@ -227,8 +262,14 @@ CREATE TABLE `lab_request` (
   PRIMARY KEY (`LBR_ID`),
   KEY `TRMNT_ID` (`TRMNT_ID`),
   CONSTRAINT `lab_request_ibfk_1` FOREIGN KEY (`TRMNT_ID`) REFERENCES `treatment` (`TRMT_ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
+INSERT INTO lab_request VALUES("2","Blood Chemistry","2018-02-07","2","Feb","2018"); 
+INSERT INTO lab_request VALUES("3","Fecalysis","2018-02-07","2","Feb","2018"); 
+INSERT INTO lab_request VALUES("8","Fecalysis","2018-02-08","1","Feb","2018"); 
+=======
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
 
 
 
@@ -248,9 +289,17 @@ CREATE TABLE `medical_record` (
   PRIMARY KEY (`MR_ID`),
   KEY `SCHED_ID` (`SCHED_ID`),
   CONSTRAINT `medical_record_ibfk_1` FOREIGN KEY (`SCHED_ID`) REFERENCES `schedule` (`SCHEDULE_ID`) ON UPDATE CASCADE
+<<<<<<< HEAD
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+INSERT INTO medical_record VALUES("1","Allergy","100/80","64.50","37.50","2018-02-07 07:55:54","Feb","2018","1","Completed"); 
+INSERT INTO medical_record VALUES("2","Hypertension","100/80","67.50","37.50","2018-02-07 08:57:46","Feb","2018","2","Completed"); 
+INSERT INTO medical_record VALUES("3","Hypertention","100/80","60.00","37.50","2018-02-08 14:48:59","Feb","2018","1","Pending"); 
+=======
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO medical_record VALUES("1","asdfasf","123/12","21321.00","32132.00","2018-02-05 01:11:58","Feb","2018","14","Pending"); 
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
 
 
 
@@ -267,10 +316,13 @@ CREATE TABLE `medicine` (
   `Month` char(3) NOT NULL,
   `Year` int(11) NOT NULL,
   PRIMARY KEY (`MEDICINE_ID`)
+<<<<<<< HEAD
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+=======
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
 
-INSERT INTO medicine VALUES("11","Adult","Antibiotics","Paracetamol","Biogesic","Tablet","500 mg","1","2018"); 
-INSERT INTO medicine VALUES("12","Adult","Antibiotics","Paracetamol","Dolan","Tablet","500 mg","1","2018"); 
+INSERT INTO medicine VALUES("12","Adult","Antibiotics","Paracetamol Caps","Dolan","Tablet","500 mg","1","2018"); 
 INSERT INTO medicine VALUES("14","Adult","Antibiotics","Ambroxol","Neobloc","Tablet","300 mg","1","2018"); 
 INSERT INTO medicine VALUES("15","Adult","Antibiotics","Ambroxol","Amoxiciline","Tablet","500 mg","1","2018"); 
 INSERT INTO medicine VALUES("17","Adult","Antibiotics","Paracetamol","Tempra","Tablet","100 mg","1","2018"); 
@@ -280,6 +332,12 @@ INSERT INTO medicine VALUES("20","Adult","Antibiotics","Paracetamol","Tempra_For
 INSERT INTO medicine VALUES("21","Adult","Antibiotics","Paracetamol","Calpol","Tablet","1000mg","1","2018"); 
 INSERT INTO medicine VALUES("22","Adult","Antibiotics","paracetamol","neozep","Tablet","300 mg","1","2018"); 
 INSERT INTO medicine VALUES("23","Adult","Analgesic","Paracetamol","Calpol","Syrup","200 mL","2","2018"); 
+<<<<<<< HEAD
+INSERT INTO medicine VALUES("24","Children","Antibiotics","Paracetamol","calpol","Syrup","250 mL","Feb","2018"); 
+INSERT INTO medicine VALUES("25","Children","Antibiotics","asdasd","asdasd","Syrup","100mg","Feb","2018"); 
+INSERT INTO medicine VALUES("26","Children","Antibiotics","asdasdad","asdasd","Tablet","123","Feb","2018"); 
+=======
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
 
 
 
@@ -306,7 +364,97 @@ CREATE TABLE `patient` (
   `P_OCCU_FBW` text NOT NULL,
   `MONTH` char(11) NOT NULL,
   `YEAR` int(11) NOT NULL,
+  `P_BRGY` text NOT NULL,
+  `P_PUROK` text NOT NULL,
   PRIMARY KEY (`P_ID`)
+<<<<<<< HEAD
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
+
+INSERT INTO patient VALUES("2","Bayon-on","Alson John","R","Male","1997-07-12","20","36.00","180.00","179","Adult","Banago Bacolod City","091230298","Student","Catholic","Single","2018-01-14","Self-Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("3","Molabin","Daniel","V","Male","1997-11-11","20","38.00","82.00","163","Adult","La carlota City","091242265","Student","Catholic","Single","2017-12-31","Self-Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("4","Betio","Carl Louie","G.","Male","1997-09-17","20","37.00","65.00","162","Adult","Sum-ag, Bacolod City","091254423","Student","Catholic","Single","2017-12-31","Self-Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("5","Entes","Leonel","C.","Male","1997-08-12","20","37.00","160.00","60","Adult","Singcang, Bacolod City","123412287","Senior Citizen","Catholic","Single","2017-12-05","","Jan","2018","",""); 
+INSERT INTO patient VALUES("6","Garilao","Crosser","T","Male","1996-05-22","12","36.70","84.50","168","Adult","Brgy. Masulog Canlaon City","09091231475","Unemployed","Catholic","Single","2017-12-31","Self-Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("7","Marinay","Ryan Jefferson","A.","Male","1997-12-26","20","36.70","65.60","165","Adult","Canlaon City Negros Oriental","09092344522","Paid Employment","Catholic","Single","2017-12-31","--Select--","Jan","2018","",""); 
+INSERT INTO patient VALUES("8","asdasd","asdad","adsasd","Male","2014-10-14","3","12.00","12.00","12","MINOR","asdad","124125","Self-Employment","Catholic","Single","2018-01-14","Self-Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("9","Rosalia","Jethro","Manapla","Male","1998-01-02","20","34.00","70.00","170","Adult","Banago Bacolod City","53334231","Unemployed","Catholic","Single","2018-01-21","Self-Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("10","Tacey","Aleksandr","Mohammad","Male","1997-01-01","21","35.00","74.00","171","Adult","Handumanan","21314352","Paid Employment","Catholic","Single","2018-01-21","House-maker(Own House)","Jan","2018","",""); 
+INSERT INTO patient VALUES("11","Olga","Rheanna ","Villaridad","Female","1982-01-01","36","33.00","67.00","150","Adult","Taculing","4352413","House-maker(Own House)","Catholic","Married","2018-01-21","Self-Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("12","Amilcar","Gwyneth","Renz","Male","2000-02-02","17","34.00","70.00","169","Adult","Mansilingan","854464246","Non-paid work(Volunteer/Charity)","Muslim","Single","2018-01-21","Keeping house(for others)","Jan","2018","",""); 
+INSERT INTO patient VALUES("13","Sy","Fritz","Ola","Male","2010-02-02","7","35.00","50.00","140","Minor","Banago Bacolod City","9543532342","Student","Catholic","Single","2018-01-21","Student","Jan","2018","",""); 
+INSERT INTO patient VALUES("14","Nereida","Pirkko","Hoh","Male","1998-02-02","19","34.00","69.00","187","Adult","Bacolod City","796455434","Student","Catholic","Single","2018-01-21","Non-paid work(Volunteer/Charity)","Jan","2018","",""); 
+INSERT INTO patient VALUES("15","Pineapple","Ion","Del Monte","Male","1982-01-01","36","35.00","60.00","188","Adult","Manila","5676575674","Student","Muslim","Married","2018-01-21","Self-Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("16","Erico","Satomi","Legaspi","Female","1997-02-02","20","35.00","57.00","167","Adult","Mansilingan","6674524246","Student","Catholic","Single","2018-01-21","Student","Jan","2018","",""); 
+INSERT INTO patient VALUES("17","Ubas","Erul","John ","Male","1997-08-19","20","35.00","68.00","169","Adult","Sum-ag, Bacolod City","7746345345","Student","Catholic","Single","2018-01-21","Non-paid work(Volunteer/Charity)","Jan","2018","",""); 
+INSERT INTO patient VALUES("18","Chlothar","Shailaja","Hehe","Female","1997-02-03","20","35.00","67.00","167","Adult","Banago Bacolod City","9444431342","Student","Catholic","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("19","Torete","Gunder","Dela Rojas","Male","1997-02-03","20","34.50","69.00","168","Adult","Banago Bacolod City","67856444235","Student","Muslim","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("20","Cake","Top","Keke","Female","1997-02-03","20","34.00","69.00","169","Adult","Banago Bacolod City","96765634544","Paid Employment","Catholic","Single","2018-01-21","Non-paid work(Volunteer/Charity)","Jan","2018","",""); 
+INSERT INTO patient VALUES("21","Abrams","Joland","Em Juan","Male","2000-01-01","18","34.00","67.00","170","Adult","Cleveland","65356535432","Student","Catholic","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("22","Ramon","Gen","Neral","Male","1996-02-02","21","34.00","68.00","180","Adult","Banago Bacolod City","65465654564","Student","Muslim","Married","2018-01-21","Self-Employment","Feb","2018","",""); 
+INSERT INTO patient VALUES("23","Bahay","Gawain","Na ang","Male","1977-02-21","40","34.00","80.00","170","Adult","Mansilingan","56456598796","Paid Employment","Catholic","Divorced","2018-01-21","Self-Employment","Feb","2018","",""); 
+INSERT INTO patient VALUES("24","Konich","Cayetano","Alvarez","Male","1997-02-02","20","34.00","70.00","69","Adult","Banago Bacolod City","89765489765","Paid Employment","Catholic","Single","2018-01-21","Paid Employment","Feb","2018","",""); 
+INSERT INTO patient VALUES("25","Azad","Swapnil","Agapito","Male","1999-04-04","18","34.00","68.00","170","Adult","Banago Bacolod City","94573436575","Student","Born Again","Single","2018-01-21","Paid Employment","Feb","2018","",""); 
+INSERT INTO patient VALUES("26","Aydan","Gayathri","Pedsro","Male","1994-04-04","23","30.00","67.00","150","Adult","Banago Bacolod City","98765434567","Student","Catholic","Single","2018-01-21","Paid Employment","Feb","2018","",""); 
+INSERT INTO patient VALUES("27","Pearce","Aidan","Smith","Male","1996-02-02","21","34.00","69.00","169","Adult","Granada","99564365463","Student","Catholic","Single","2018-01-21","Paid Employment","Feb","2018","",""); 
+INSERT INTO patient VALUES("28","Naman","Sayen","Na","Male","1999-01-01","19","34.00","69.00","169","Adult","New Vegas","99878677564","Self-Employment","Born Again","Single","2018-01-21","Keeping house(for others)","Feb","2018","",""); 
+INSERT INTO patient VALUES("29","Daniel","Ofelia","Dece","Male","1997-02-02","20","34.00","60.00","170","Adult","Banago Bacolod City","89876437654","Paid Employment","Catholic","Single","2018-01-21","Non-paid work(Volunteer/Charity)","Feb","2018","",""); 
+INSERT INTO patient VALUES("30","Shrinivas","Bistra","Bistro","Female","1997-02-02","20","36.00","67.00","170","Adult","Banago Bacolod City","98765432345","Paid Employment","Catholic","Single","2018-01-21","House-maker(Own House)","Feb","2018","",""); 
+INSERT INTO patient VALUES("31","Junipero","Akiba","Alz","Male","1995-05-05","22","34.00","70.00","170","Adult","Banago Bacolod City","87654876543","Self-Employment","Catholic","Single","2018-01-21","Paid Employment","Feb","2018","",""); 
+INSERT INTO patient VALUES("32","Virgil","Sinikka","Down","Male","1996-04-07","21","50.00","69.00","170","Adult","Handumanan","98943657454","Paid Employment","Catholic","Married","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("33","Cruz","Crystal","Thelka","Female","1997-06-06","20","36.00","69.00","169","Adult","Banago Bacolod City","97754345352","Student","Catholic","Single","2018-01-21","Keeping house(for others)","Jan","2018","",""); 
+INSERT INTO patient VALUES("34","Dela Cruz","Anna Maria","Villasis","Female","2004-02-02","13","34.00","45.00","150","Minor","Banago Bacolod City","97654343243","Student","Catholic","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("35","Bronislav","Zorka","Slav","Female","2005-04-07","12","34.00","69.00","169","Minor","Handumanan","99853456545","Student","Catholic","Single","2018-01-21","Self-Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("36","Chua","Philaldelphia","Villaridad","Female","2001-04-04","16","34.50","60.00","161","Adult","Handumanan","98765432345","Student","Muslim","Single","2018-01-21","Keeping house(for others)","Jan","2018","",""); 
+INSERT INTO patient VALUES("37","Gerundio","Jyth ","L","Male","1997-07-17","20","35.00","70.00","171","Adult","Handumanan","99675463423","Paid Employment","Catholic","Single","2018-01-21","Keeping house(for others)","Jan","2018","",""); 
+INSERT INTO patient VALUES("38","Elof","Surinder","Mamamayan","Female","2004-06-06","13","35.00","50.00","140","Minor","Banago Bacolod City","99765534567","Student","Muslim","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("39","Ahed","Mohammad","Abdullah","Male","2005-05-08","12","35.00","60.00","171","Minor","Syria","89575665432","Paid Employment","Catholic","Single","2018-01-21","Non-paid work(Volunteer/Charity)","Jan","2018","",""); 
+INSERT INTO patient VALUES("40","Soltero","Sidonie","Kaja","Female","2005-08-07","12","35.00","69.00","169","Minor","Handumanan","94435323143","Student","Catholic","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("41","Quintina","Amelia","Quince","Male","1999-07-07","18","36.00","69.00","170","Adult","Handumanan","21345678765","Paid Employment","Catholic","Single","2018-01-21","Self-Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("42","Suyo","Jakob","Arnbor","Male","1997-04-05","20","37.00","70.00","170","Adult","Handumanan","89744521243","Student","Catholic","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("43","Bai","Alby","Botra","Female","1996-06-06","21","36.00","69.00","170","Adult","Handumanan","99754213456","Paid Employment","Catholic","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("44","Ledy","Loan","Mercy","Male","2010-06-06","7","36.00","70.00","160","Minor","Banago Bacolod City","99875465465","Student","Muslim","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("45","Madria","Vulcan","Mabelle ","Male","1998-01-01","20","34.00","60.00","160","Adult","Handumanan","99876564342","Student","Catholic","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("46","Lumpia","Chorizo","Hotdog","Male","2010-02-03","7","35.00","60.00","160","Minor","Food store","0977587654","Paid Employment","Catholic","Single","2018-01-21","Non-paid work(Volunteer/Charity)","Jan","2018","",""); 
+INSERT INTO patient VALUES("47","Canton","Pancit","Lucime","Male","2011-04-05","6","60.00","60.00","160","Minor","Hotdog","93665421678","Paid Employment","Catholic","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("48","Sidonia","Naveen","Dean","Male","2016-06-06","1","36.00","70.00","20","Minor","Handumanan","89543534231","Unemployed","Catholic","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("49","Sombilia","Mark","L.","Male","1997-05-05","20","36.00","70.00","169","Adult","Handumanan","89743324334","Student","Catholic","Single","2018-01-21","Retired","Jan","2018","",""); 
+INSERT INTO patient VALUES("50","Saludares","Steven","H.","Male","1996-06-06","21","57.00","200.00","12","Adult","Sum-ag, Bacolod City","99656365432","Self-Employment","Catholic","Single","2018-01-21","Keeping house(for others)","Feb1","2018","",""); 
+INSERT INTO patient VALUES("51","Phoibos","Fabricio","Luneta","Male","2010-03-08","7","36.00","67.00","160","Minor","Sum-ag, Bacolod City","92643853636","Student","Catholic","Single","2018-01-21","House-maker(Own House)","Feb","2018","",""); 
+INSERT INTO patient VALUES("52","Roksan","Lars","Ros","Male","1998-06-06","19","36.00","70.00","170","Adult","Sum-ag, Bacolod City","99553454342","Student","Catholic","Single","2018-01-21","Paid Employment","Feb","2018","",""); 
+INSERT INTO patient VALUES("53","Abdul","Mohammad","Rashid","Male","1982-05-05","35","37.00","70.00","168","Adult","Syria","98845654353","Paid Employment","Muslim","Single","2018-01-21","House-maker(Own House)","Feb","2018","",""); 
+INSERT INTO patient VALUES("54","Karecs","Halim","Rusiko","Male","1998-06-05","19","50.00","70.00","170","Adult","Banago Bacolod City","99643424324","Paid Employment","Catholic","Single","2018-01-21","Paid Employment","Feb","2018","",""); 
+INSERT INTO patient VALUES("55","Santiago","Andrea","Martin","Female","1998-06-07","19","36.00","60.00","170","Adult","Mansilingan, Bacolod","99986545352","Student","Catholic","Single","2018-01-21","Self-Employment","Feb","2018","",""); 
+INSERT INTO patient VALUES("56","Consuelo","Mordred","Dalisay","Male","1989-05-05","28","56.00","70.00","180","Adult","Food store","99876334342","Student","Catholic","Single","2018-01-21","Paid Employment","Feb","2018","",""); 
+INSERT INTO patient VALUES("57","Steiner","Kjell","John ","Male","1992-05-05","25","39.00","60.00","189","Adult","Granada, Bacolod","99543243432","Paid Employment","Born Again","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("58","Yanson","Alvin ","Michael ","Male","1997-05-05","20","67.00","70.00","165","Adult","Sa balay nya","98765456789","Retired","Catholic","Widowed","2018-01-21","Non-paid work(Volunteer/Charity)","Jan","2018","",""); 
+INSERT INTO patient VALUES("59","Roxas","Juan","Dela Cruz","Male","1995-05-05","22","56.00","46.00","176","Adult","Rojas","98765458796","Non-paid work(Volunteer/Charity)","Catholic","Single","2018-01-21","Self-Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("60","Kontrabida","Son ","Goku","Male","1990-04-02","27","67.00","67.00","180","Adult","Planet Earth","9565463422","Paid Employment","Born Again","Single","2018-01-21","Retired","Feb","2018","",""); 
+INSERT INTO patient VALUES("61","Ramsay","Michael","Gordon","Male","1999-08-08","18","36.00","69.00","170","Adult","Granada, Bacolod","99453253523","Paid Employment","Catholic","Single","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("62","Child","Julia","Medo","Female","1998-05-05","19","34.00","76.00","180","Adult","Bacolod City","89867543245","Student","Born Again","Single","2018-01-21","House-maker(Own House)","Jan","2018","",""); 
+INSERT INTO patient VALUES("63","China Man","Confucius","The","Male","1992-06-02","25","34.00","70.00","170","Adult","China","95344641231","Student","Catholic","Married","2018-01-21","Paid Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("64","Geduriagao","Decebel","Am","Female","1997-06-06","20","45.00","72.00","174","Adult","Sa Balay","98756453245","Self-Employment","Catholic","Single","2018-01-21","Self-Employment","Jan","2018","",""); 
+INSERT INTO patient VALUES("65","Dimon","Leki","Lad","Male","1997-05-11","20","20.00","67.00","169","Adult","Dimon Land","99545432432","Student","Born Again","Single","2018-01-21","Non-paid work(Volunteer/Charity)","Jan","2018","",""); 
+INSERT INTO patient VALUES("66","Banua","Gab","M","Male","1997-10-11","20","37.80","56.00","168","Adult","Kanlaon","09096771375","Paid Employment","Catholic","Single","2018-01-31","Paid Employment","Feb","2018","",""); 
+INSERT INTO patient VALUES("67","Rashi","Mohammad","Abdull","Male","2004-09-27","13","34.00","69.00","140","Minor","Bacolod City","99654356787","Student","Catholic","Single","2018-02-06","Non-paid work(Volunteer/Charity)","Feb","2018","Handumanan","Zone 2"); 
+INSERT INTO patient VALUES("68","Nayn","Loki","Pest","Male","2010-01-31","8","34.00","69.00","170","Minor","Bacolod City","98765435675","Student","Catholic","Single","2016-10-29","Self-Employment","Oct","2016","Banago","Zone 2"); 
+INSERT INTO patient VALUES("69","Burangos","Alzy","Ekek","Male","2016-12-30","1","34.00","35.00","70","Minor","Bacolod City","87653643254","Non-paid work(Volunteer/Charity)","Catholic","Single","2016-05-04","Paid Employment","May","2016","Banago","Zone 12"); 
+INSERT INTO patient VALUES("70","Springs","Oishi","Del Monte","Male","2005-10-30","12","35.00","60.00","150","Minor","Bacolod City","99675467865","Student","Catholic","Single","2016-07-27","Paid Employment","Jul","2016","Banago","Banago"); 
+INSERT INTO patient VALUES("71","Spring","Enes","Oman","Male","2003-02-27","14","34.00","69.00","169","Minor","Bacolod City","9876545674","Student","Catholic","Single","2016-02-27","Keeping house(for others)","Feb","2016","Handumanan","Zone 12"); 
+INSERT INTO patient VALUES("72","Meyers","John","Michael","Male","2009-03-29","8","34.00","67.00","170","Minor","Bacolod City","8987654321","Student","Catholic","Single","2016-12-04","Paid Employment","Dec","2016","Handumanan","Zone 2"); 
+INSERT INTO patient VALUES("73","Miller","Nazer","Mike","Male","2006-02-28","11","34.00","69.00","150","Minor","Bacolod City","66687643213","Student","Protestant","Single","1970-01-01","Paid Employment","Jan","1970","Handumanan","Zone 12"); 
+INSERT INTO patient VALUES("74","Smith","Will","Yu","Male","2005-08-24","12","34.00","69.00","160","Minor","Bacolod City","99967546534","Student","Catholic","Single","2016-02-23","Keeping house(for others)","Feb","2016","Banago","Zone 1"); 
+INSERT INTO patient VALUES("75","Abdullah","Gabriel","Mohammad","Male","2011-02-02","7","34.00","50.00","150","Minor","Bacolod City","78798978965","Student","Catholic","Single","1970-01-01","House-maker(Own House)","Jan","1970","Banago","Zone 2"); 
+INSERT INTO patient VALUES("76","Springfield","Daniel","Springs","Male","2001-08-28","16","45.00","70.00","170","Adult","Bacolod City","99967543214","Student","Catholic","Single","2016-12-27","Self-Employment","Dec","2016","Banago","Zone 1"); 
+INSERT INTO patient VALUES("77","Green","Alexander","Thee","Male","2011-10-29","6","34.00","60.00","170","Minor","Bacolod City","89976634533","Student","Protestant","Single","2016-12-28","Paid Employment","Dec","2016","Handumanan","Zone 2"); 
+INSERT INTO patient VALUES("78","Eey","Glenn","One","Male","2010-09-26","7","34.00","60.00","179","Minor","Bacolod City","99982221212","Student","Catholic","Single","2016-08-25","Paid Employment","Aug","2016","Handumanan","Zone 6"); 
+INSERT INTO patient VALUES("79","Smith","Haley","Filter","Male","2002-10-31","15","34.00","68.00","170","Adult","Bacolod City","99976867856","Student","Catholic","Single","2016-12-28","Keeping house(for others)","Dec","2016","Handumanan","Zone 3"); 
+INSERT INTO patient VALUES("80","Cong","Nam","Viet","Male","2013-03-24","4","34.00","68.00","166","Minor","Bacolod City","99987564675","Student","Catholic","Single","2016-11-28","Paid Employment","Nov","2016","Handumanan","Zone 1"); 
+INSERT INTO patient VALUES("81","Israel","Edward","Micth","Male","2012-11-30","5","34.00","54.00","170","Minor","Bacolod City","88384138418","Student","Catholic","Single","2016-04-02","Non-paid work(Volunteer/Charity)","Apr","2016","Handumanan","Zone 2"); 
+INSERT INTO patient VALUES("82","Sovl","Sonny","Javire","Male","2014-07-29","3","34.00","180.00","170","Minor","Bacolod City","99986543525","Paid Employment","Catholic","Single","1970-01-01","Student","Jan","1970","Handumanan","Zone 1"); 
+INSERT INTO patient VALUES("83","Dela Cruz","Sharon","Maribelle","Female","2001-09-29","16","34.00","60.00","169","Adult","Bacolod City","88976543214","Student","Catholic","Single","2016-07-27","Paid Employment","Jul","2016","Handumanan","Zone 2"); 
+INSERT INTO patient VALUES("84","Bailey","Hannah","Sharon","Female","2014-11-27","3","34.00","50.00","150","Minor","Bacolod City","99954354354","Student","Catholic","Single","2016-01-29","Paid Employment","Jan","2016","Handumanan","Zone 5"); 
+INSERT INTO patient VALUES("85","Johnson","Leki","Carl","Male","2002-01-30","16","34.00","60.00","160","Adult","Bacolod City","99875346543","Student","Catholic","Single","2018-02-07","Non-paid work(Volunteer/Charity)","Feb","2018","Banago","Zone 12"); 
+=======
 ) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
 
 INSERT INTO patient VALUES("2","Bayon-on","Alson John","R","Male","1997-07-12","20","36.00","180.00","179","Adult","Banago Bacolod City","091230298","Student","Catholic","Single","2018-01-14","Self-Employment","Jan","2018"); 
@@ -374,6 +522,7 @@ INSERT INTO patient VALUES("63","China Man","Confucius","The","Male","1992-06-02
 INSERT INTO patient VALUES("64","Geduriagao","Decebel","Am","Female","1997-06-06","20","45.00","72.00","174","Adult","Sa Balay","98756453245","Self-Employment","Catholic","Single","2018-01-21","Self-Employment","Jan","2018"); 
 INSERT INTO patient VALUES("65","Dimon","Leki","Lad","Male","1997-05-11","20","20.00","67.00","169","Adult","Dimon Land","99545432432","Student","Born Again","Single","2018-01-21","Non-paid work(Volunteer/Charity)","Jan","2018"); 
 INSERT INTO patient VALUES("66","Banua","Gab","M","Male","1997-10-11","20","37.80","56.00","168","Adult","Kanlaon","09096771375","Paid Employment","Catholic","Single","2018-01-31","Paid Employment","Feb","2018"); 
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
 
 
 
@@ -392,7 +541,7 @@ CREATE TABLE `patient_medical_issue` (
   PRIMARY KEY (`PMI_ID`),
   KEY `P_ID` (`P_ID`),
   CONSTRAINT `patient_medical_issue_ibfk_1` FOREIGN KEY (`P_ID`) REFERENCES `patient` (`P_ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
 
 INSERT INTO patient_medical_issue VALUES("2","Back Pain","No","No","No","No","2","0","0"); 
 INSERT INTO patient_medical_issue VALUES("3","none","Yes","No","No","Yes","3","Jan","0"); 
@@ -459,6 +608,25 @@ INSERT INTO patient_medical_issue VALUES("63","None","Ako","No","Yiz","No","63",
 INSERT INTO patient_medical_issue VALUES("64","None","No","No","Heart :( ","sang ligad","64","Feb","2018"); 
 INSERT INTO patient_medical_issue VALUES("65","None","No","No","YIZ","No","65","","2018"); 
 INSERT INTO patient_medical_issue VALUES("66","wer","sad","No","asdnlaknsd","sada","66","1","2018"); 
+INSERT INTO patient_medical_issue VALUES("67","None","No","No","No","Vaccination","67","Feb","2018"); 
+INSERT INTO patient_medical_issue VALUES("68","None","No","No","No","No","68","Oct","2016"); 
+INSERT INTO patient_medical_issue VALUES("69","None","No","No","No","Vaccination","69","May","2016"); 
+INSERT INTO patient_medical_issue VALUES("70","None","No","No","No","No","70","Jul","2016"); 
+INSERT INTO patient_medical_issue VALUES("71","None","No","No","No","No","71","Feb","2016"); 
+INSERT INTO patient_medical_issue VALUES("72","None","No","No","No","No","72","Dec","2016"); 
+INSERT INTO patient_medical_issue VALUES("73","none","No","No","No","No","73","Jan","1970"); 
+INSERT INTO patient_medical_issue VALUES("74","None","No","No","No","No","74","Feb","2016"); 
+INSERT INTO patient_medical_issue VALUES("75","None","No","No","No","No","75","Jan","1970"); 
+INSERT INTO patient_medical_issue VALUES("76","None","No","No","No","No","76","Dec","2016"); 
+INSERT INTO patient_medical_issue VALUES("77","None","No","No","No","No","77","Dec","2016"); 
+INSERT INTO patient_medical_issue VALUES("78","None","No","No","No","No","78","Aug","2016"); 
+INSERT INTO patient_medical_issue VALUES("79","None","No","No","No","No","79","Dec","2016"); 
+INSERT INTO patient_medical_issue VALUES("80","n","No","No","No","No","80","Nov","2016"); 
+INSERT INTO patient_medical_issue VALUES("81","None","No","No","No","No","81","Apr","2016"); 
+INSERT INTO patient_medical_issue VALUES("82","None","Anti rabies","Biogesic","No","Vaccination","82","Jan","1970"); 
+INSERT INTO patient_medical_issue VALUES("83","None","No","No","No","No","83","Jul","2016"); 
+INSERT INTO patient_medical_issue VALUES("84","None","No","Neozep","No","Vaccination","84","Jan","2016"); 
+INSERT INTO patient_medical_issue VALUES("85","None","Vaccination","Biogesic","Asthma","No","85","Feb","2018"); 
 
 
 
@@ -477,6 +645,10 @@ CREATE TABLE `referral` (
   CONSTRAINT `referral_ibfk_1` FOREIGN KEY (`TRMTMNT_ID`) REFERENCES `treatment` (`TRMT_ID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
+INSERT INTO referral VALUES("1","Dr. Barcelona PhD.","09096771375","Riverside Hospital 2nd floor","1","Feb","2018"); 
+=======
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
 
 
 
@@ -493,11 +665,18 @@ CREATE TABLE `schedule` (
   PRIMARY KEY (`SCHEDULE_ID`),
   KEY `P_ID` (`P_ID`),
   CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`P_ID`) REFERENCES `patient` (`P_ID`) ON UPDATE CASCADE
+<<<<<<< HEAD
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+INSERT INTO schedule VALUES("1","19","2018-02-07","07:18:00","Check Up","Feb","2018"); 
+INSERT INTO schedule VALUES("2","16","2018-02-07","07:19:00","Check Up","Feb","2018"); 
+=======
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 INSERT INTO schedule VALUES("12","10","2018-02-03","18:02:00","Check Up","Feb","2018"); 
 INSERT INTO schedule VALUES("13","11","2018-02-16","18:15:00","Check Up","Feb","2018"); 
 INSERT INTO schedule VALUES("14","10","2018-02-05","02:14:00","Check Up","Feb","2018"); 
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
 
 
 
@@ -506,7 +685,7 @@ DROP TABLE treatment;
 CREATE TABLE `treatment` (
   `TRMT_ID` int(5) NOT NULL AUTO_INCREMENT,
   `MR_ID` int(5) NOT NULL,
-  `DIAG_DTLS` text NOT NULL,
+  `DIAG_DTLS` longtext NOT NULL,
   `TREATMENT` text NOT NULL,
   `REMARKS` text NOT NULL,
   `F_CHECKUP` date NOT NULL,
@@ -518,9 +697,17 @@ CREATE TABLE `treatment` (
   KEY `User_id` (`User_id`),
   CONSTRAINT `treatment_ibfk_1` FOREIGN KEY (`MR_ID`) REFERENCES `medical_record` (`MR_ID`) ON UPDATE CASCADE,
   CONSTRAINT `treatment_ibfk_2` FOREIGN KEY (`User_id`) REFERENCES `users` (`User_id`) ON UPDATE CASCADE
+<<<<<<< HEAD
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+INSERT INTO treatment VALUES("1","1","You have a Family History of high cholesterol, depression. Allergies: Allergies noted: dust, food - gluten. Illnesses: chicken pox, migraine. Operations: No operations were identified. Prosthesis: No Prosthetic Devices were noted. Blood Transfusions: No history of Blood Transfusion(s). Bones Broken: You have broken your left middle femur.","Health Supplements: You are taking vitamin B, vitamin D, multivitamins, calcium, celery and juniper.","Please keep your vaccinations up to date and ask your doctor if they are current.","2018-02-10","3","Feb","2018"); 
+INSERT INTO treatment VALUES("2","2","ako ni sa","ako ni sa","ako ni sa","2018-02-15","11","Feb","2018"); 
+INSERT INTO treatment VALUES("3","3","","","","2018-02-08","3","Feb","2018"); 
+=======
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO treatment VALUES("1","1","","","","2018-02-04","3","Feb","2018"); 
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
 
 
 
@@ -583,7 +770,11 @@ CREATE TABLE `users` (
 
 INSERT INTO users VALUES("1","Admin","$2y$12$9/3KygM5a/dMUC/0Ggq46OoWNg2KQIOlqwqi8bNPHp1WJawprFKFi","ADMIN","ADMIN","ADMIN","-None-","Admin","ADMIN","2018-01-26","Active","1","2018"); 
 INSERT INTO users VALUES("2","Gabriel1011","$2y$12$47jkt5YXJ2EnZfjXBC5wbeAswQP.l3tWlgsAmhTBydnpoWpHB6EQy","Gabriel Francis","M.","Banua","Male","Admin","#LCN542682A","2018-01-27","Active","1","2018"); 
+<<<<<<< HEAD
+INSERT INTO users VALUES("3","Alec","$2y$12$MIATcGhWeAYlp8B/OBrMQuWjrvm5/4E3yecldzsJKFga0mqcmru5e","Alec","Legaspi","Rubz","Male","Doctor","#LCN123516HA","0000-00-00","Active","1","2018"); 
+=======
 INSERT INTO users VALUES("3","Alec","$2y$12$pcsAeLJbXuv7fH9JquIzY.7D9K2YDM26xZQ9UNJtFzDvnuTgBsxFu","Alec","Legaspi","Rubz","Male","Doctor","#LCN123516HA","0000-00-00","Active","1","2018"); 
+>>>>>>> 5a60b7876367fca1a12781b1e4c2758c097b1d94
 INSERT INTO users VALUES("11","Alson","$2y$12$opXK4Wp1cAbfAfsedFeGNOkf6ypp0T9Qiesfsl4QyuMeu.QMmSP6G","Alson John","R.","Bayon-on","Male","Doctor","#LCN1234ASD4","2018-01-28","Active","1","2018"); 
 INSERT INTO users VALUES("12","Carl","$2y$12$XbYd6n5cGRnC.ii9jRhlnODbD4iXJNRb0HEe9aTEfFX5UW8bBpCmG","Carl","B","Betio","Male","Admin","LCN12312515","2018-01-29","Active","1","2018"); 
 INSERT INTO users VALUES("13","Carl1","$2y$12$pB/L7qFz0/v0OOKXWS0eZu7bvj2PjzZJrpdz/QWBOrOPVjZ5IBBxq","carl","l","betio","Male","Pharmacist","#lcn1234567890","2018-01-31","Active","1","2018"); 

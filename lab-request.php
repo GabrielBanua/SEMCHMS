@@ -183,7 +183,7 @@ require 'lib/Db.config.php';
                                           <td><?php echo $LBR['Fullname'];?></td>
                                           <td><?php echo $LBR['LBR_TYPE'];?></td>
                                           <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs" href="labtest.php">Proceed</a>
+											<a class="btn btn-primary btn-xs"  href="labtest.php?LBR_ID=<?php echo $LBR['LBR_ID'];?>">Proceed</a>
 										  </td>
                                       </tr>
                                     <?php
