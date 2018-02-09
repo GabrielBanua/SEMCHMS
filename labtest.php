@@ -8,6 +8,11 @@ $Datetoday = date('Y-m-d');
 $lab_stmt = "SELECT *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM ((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID) Where LBR_ID = '$LAB_R_ID'";
 $result = mysql_query($lab_stmt);
 $Lab_row = mysql_fetch_array($result);
+
+$REQDOC = $Lab_row['User_id'];
+$Req_Doc = ("SELECT *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users WHERE User_id = '$REQDOC'");
+$RQ_DOC = mysql_query($Req_Doc);
+$RD = mysql_fetch_array($RQ_DOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -215,11 +220,11 @@ $Lab_row = mysql_fetch_array($result);
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Doctor Requested:</label>
 									<div class="col-sm-4">
-										<input type="text" id="#" class="form-control">
+										<input type="text" id="REQDOC" value="<?php echo $RD['Fullname']?>" class="form-control">
 									</div>
 									<label class="col-sm-2 control-label">Specimen:</label>
 									<div class="col-sm-4">
-										<input type="text" id="#" class="form-control">
+										<input type="text" id="SPECIMEN" class="form-control">
 									</div>
 								</div>
 								<hr>
@@ -721,6 +726,7 @@ include 'lib/User-Accesslvl.php';
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 	<script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
+	
 	<script type="text/javascript">
 	  $(document).ready(function () {
 		  $(".select2-single").select2({placeholder: 'Please select option'});

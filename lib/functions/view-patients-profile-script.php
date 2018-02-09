@@ -1,7 +1,12 @@
 <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 0, "desc" ]]
+                  "aaSorting": [[ 0, "asc" ]]
+              } );
+          } );
+          $(document).ready(function() {
+              $('#labrecords').dataTable( {
+                  "aaSorting": [[ 0, "asc" ]]
               } );
           } );
       
