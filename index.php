@@ -165,10 +165,9 @@ require 'lib/chartSQL.php';
                                 <i class="icon-stethoscope"></i>
                             </div>
                             <div class="value">
-                                <h1 class="counter" data-count="<?php echo $FollowCU; ?>">
-                                    0
+                                <h1 class="counter" data-count="<?php echo $fcup; ?>">
                                 </h1>
-                                <p><b>Patient With Follow-up Checkup</b></p>
+                                <p><b>Weekly count of follow-up checkups</b></p>
                             </div>
                         </section>
                     </div>
