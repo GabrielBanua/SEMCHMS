@@ -393,7 +393,7 @@ $Lab_row = mysql_fetch_array($result);
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Heinths</b></td>
-											  <td><input id="HLMT_MCRO_EXM" name="HLMT_MCRO_EXM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="HLMT_MCRO_EXM" name="HLMT_MCRO_EXM" type="text" class="form-control" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Trinchuris</b></td>
 											  <td><input id="PARA_TRHRIS" name="PARA_TRHRIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
@@ -452,7 +452,7 @@ $Lab_row = mysql_fetch_array($result);
 											  <td><input id="COLI_TROPH" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-right"><b>Remarks</b></td>
-											  <td><input id="REMARKSF" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="REMARKSF" type="text" class="form-control" maxlength="5" size="5"></td>
 										  </tr>
 										  </tbody>
 									  </table>
