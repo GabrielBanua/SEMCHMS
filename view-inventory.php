@@ -226,7 +226,7 @@ $current_date = date('Y-m-d');
 													<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; 
 													if($row['INV_EXPD'] <= $current_date || $row['INV_EXPD'] == $current_date){echo "<span class='label label-info label-mini'>Expired</span>";}else{
                                                         if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}
-                                                        if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty && $row['INV_QTY'] > $QtyInitial){ echo "<span class='label label-warning label-mini'>Low</span>";
+                                                        else if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty && $row['INV_QTY'] > $QtyInitial){ echo "<span class='label label-warning label-mini'>Low</span>";
                                                         }else if($row['INV_QTY'] < $QtyInitial){ echo "<span class='label label-danger label-mini'>Re-order</span>";}} ?></td>
 													<td class="hidden-phone">
 														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" onclick="RetrieveInventory(<?php echo $row['INV_ID'] ?>)" data-target="#EditInv-<?php echo $row['INV_ID'] ?>"><i class="icon-pencil"></i></a>
