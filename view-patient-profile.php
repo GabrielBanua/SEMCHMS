@@ -193,13 +193,13 @@ $medicalrecord->execute();
                                       <p><b><span>Date&nbsp;Registered </span></b> : <?php echo $row['DATE_REG']?></p>
                                   </div>
 								  <div class="bio-row">
-                                      <p><b><span>Purok </span></b>: </p>
+                                      <p><b><span>Purok </span></b>: <?php echo $row['P_PUROK']?></p>
                                   </div>
 								  <div class="bio-row">
                                       <p><b><span>First Name</span></b>: <?php echo $row['P_FNAME']?></p>
                                   </div>								  
 								  <div class="bio-row">
-                                      <p><b><span>Barangay </span></b>: </p>
+                                      <p><b><span>Barangay </span></b>: <?php echo $row['P_BRGY']?></p>
                                   </div>
                                   <div class="bio-row">
                                       <p><b><span>Middle Name </span></b>: <?php echo $row['P_MNAME']?></p>

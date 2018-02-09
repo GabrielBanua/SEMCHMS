@@ -235,22 +235,26 @@
 							url: "Server2.php?p=DispenseMedicine",
 							data: "INV_ID="+id+"&DES_QTY="+Dispense_Qty,
 							success: function(data){
-								if(data != ''){
-									$('#Warning_Message-Dis-'+id).html('Insufficient supply, only '+data+' is Subtracted')
-								setTimeout(function() {
-									$('#Success_Message-Dis-'+id).fadeOut('slow');
-									}, 1000);
-									setTimeout(function(){
-										window.location.reload();
-									}, 1500);
+								if(data == 'Expired'){
+									$('#Warning_Message-Dis-'+id).html('This medicine is expired!')
 								}else{
-									$('#Success_Message-Dis-'+id).html('Subtracted')
+									if(data != ''){
+										$('#Warning_Message-Dis-'+id).html('Insufficient supply, only '+data+' is Subtracted')
 									setTimeout(function() {
-									$('#Success_Message-Dis-'+id).fadeOut('slow');
-									}, 1000);
-									setTimeout(function(){
-										window.location.reload();
-									}, 1500);
+										$('#Success_Message-Dis-'+id).fadeOut('slow');
+										}, 1000);
+										setTimeout(function(){
+											window.location.reload();
+										}, 1500);
+									}else{
+										$('#Success_Message-Dis-'+id).html('Subtracted')
+										setTimeout(function() {
+										$('#Success_Message-Dis-'+id).fadeOut('slow');
+										}, 1000);
+										setTimeout(function(){
+											window.location.reload();
+										}, 1500);
+									}
 								}
 							}
 						});
