@@ -37,7 +37,7 @@
 				<label  class="col-lg-2 control-label"></label>
 				<div class="col-lg-4">
 				<a class="btn btn-shadow btn-success btn-md" onclick="loadLabResult(<?php echo $MR['MR_ID']; ?>,<?php echo $TRMNT_ID; ?>)" 
-					data-toggle="modal" data-target="#labtest-<?php echo $MR['MR_ID']; ?>"><i class="icon-plus"></i> Add Lab Request
+					data-toggle="modal" data-target="#labtest-<?php echo $MR['MR_ID']; ?>"><i class="icon-plus"></i> View Lab Request
 				</a>
 				</div>
 			</div>

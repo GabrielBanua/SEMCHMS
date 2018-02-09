@@ -180,12 +180,12 @@ $result = mysql_query($lab_stmt);
                                       while($LAB_REC = mysql_fetch_array($result)) {
                                       ?>
                                       <tr class="gradeX">
-                                          <td></td><?php echo $LAB_REC['P_ID'];?></td>
+                                          <td><?php echo $LAB_REC['P_ID'];?></td>
                                           <td><?php echo $LAB_REC['Fullname'];?></td>
                                           <td><?php echo $LAB_REC['LBR_TYPE'];?></td>
                                           <td><?php echo $LAB_REC['DATE_TAKEN'];?></td>
                                           <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
+											<a class="btn btn-primary btn-xs" href="labtest.php?LBR_ID=<?php echo $LBR['LBR_ID'];?>">Proceed</a>
 										  </td>
                                       </tr>
                                         <?php
@@ -233,7 +233,7 @@ $result = mysql_query($lab_stmt);
       <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 4, "desc" ]]
+                  "aaSorting": [[ 0, "asc" ]]
               } );
           } );
       </script>

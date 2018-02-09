@@ -7,6 +7,8 @@ if($page == 'AddBloodChem'){
 require 'lib/Db.config.pdo.php';
 require 'lib/Db.config.php';
 
+            
+            $SPECIMEN              = mysql_real_escape_string($_POST['SPECIMEN']);
             $LABR_ID               = mysql_real_escape_string($_POST['LBR_ID']);
             $PATHOLOGIST           = mysql_real_escape_string($_POST['PATHOLOGIST']);
             $MEDTECH               = mysql_real_escape_string($_POST['MEDTECH']);
@@ -45,14 +47,15 @@ require 'lib/Db.config.php';
             $Month                 = date('M',strtotime($date));
             
             
-            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?)");
+            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?,?)");
             $LAB_RECORD->bindParam(1,$LABR_ID);
             $LAB_RECORD->bindParam(2,$MEDTECH);
             $LAB_RECORD->bindParam(3,$PATHOLOGIST);
             $LAB_RECORD->bindParam(4,$TAKEN);
             $LAB_RECORD->bindParam(5,$MEAL);
-            $LAB_RECORD->bindParam(6,$Month);
-            $LAB_RECORD->bindParam(7,$Year);
+            $LAB_RECORD->bindParam(6,$SPECIMEN);
+            $LAB_RECORD->bindParam(7,$Month);
+            $LAB_RECORD->bindParam(8,$Year);
             $LAB_RECORD->execute();
 
             $Lab_rec_id = $db->lastInsertId();
@@ -90,6 +93,12 @@ require 'lib/Db.config.php';
             $BLOODCHEM->bindParam(30,$Month);
             $BLOODCHEM->bindParam(31,$Year);
             $BLOODCHEM->execute();
+
+            $Status = 'Completed';
+            $LABREQ_UP = $db->prepare("Update lab_request set STATUS=? Where LBR_ID = ?");
+            $LABREQ_UP->bindParam(1,$Status);
+            $LABREQ_UP->bindParam(2,$LABR_ID);
+            $LABREQ_UP->execute();
 }
 else if($page == 'MedtechList'){
     require 'lib/Db.config.pdo.php';
@@ -127,6 +136,8 @@ else if($page == 'AddFecal'){
     require 'lib/Db.config.pdo.php';
     require 'lib/Db.config.php';
 
+            
+            $SPECIMEN                           = mysql_real_escape_string($_POST['SPECIMEN']);
             $LABR_ID                            = mysql_real_escape_string($_POST['LBR_ID']);
             $CLR_MCRO_EXM                       = mysql_real_escape_string($_POST['CLRME']);
             $PARA_ASCARIS                       = mysql_real_escape_string($_POST['PARAA']);
@@ -155,14 +166,15 @@ else if($page == 'AddFecal'){
             $Year                               = date('Y',strtotime($date));
             $Month                              = date('M',strtotime($date));
 
-            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?)");        
+            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?,?)");        
             $LAB_RECORD->bindParam(1,$LABR_ID);
             $LAB_RECORD->bindParam(2,$MEDTECH);
             $LAB_RECORD->bindParam(3,$PATHOLOGIST);
             $LAB_RECORD->bindParam(4,$TAKEN);
             $LAB_RECORD->bindParam(5,$MEAL);
-            $LAB_RECORD->bindParam(6,$Month);
-            $LAB_RECORD->bindParam(7,$Year);
+            $LAB_RECORD->bindParam(6,$SPECIMEN);
+            $LAB_RECORD->bindParam(7,$Month);
+            $LAB_RECORD->bindParam(8,$Year);
             $LAB_RECORD->execute();
             
             $Lab_rec_id = $db->lastInsertId();
@@ -192,11 +204,19 @@ else if($page == 'AddFecal'){
             $FECAL->bindParam(22,$Year); 
             $FECAL->execute();
 
+            $Status = 'Completed';
+            $LABREQ_UP = $db->prepare("Update lab_request set STATUS=? Where LBR_ID = ?");
+            $LABREQ_UP->bindParam(1,$Status);
+            $LABREQ_UP->bindParam(2,$LABR_ID);
+            $LABREQ_UP->execute();
+
 }
 else if($page == 'AddHema'){
     require 'lib/Db.config.pdo.php';
     require 'lib/Db.config.php';
 
+            
+            $SPECIMEN         = mysql_real_escape_string($_POST['SPECIMEN']);
             $LABR_ID          = mysql_real_escape_string($_POST['LBR_ID']);
             $HEMA_M_ETYPE_CBC = mysql_real_escape_string($_POST['HEMA_M_ETYPE_CBC']);
             $WBC_ETYPE_CBC    = mysql_real_escape_string($_POST['WBC_ETYPE_CBC']);
@@ -224,14 +244,15 @@ else if($page == 'AddHema'){
             $Year             = date('Y',strtotime($date));
             $Month            = date('M',strtotime($date));
 
-            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?)");        
+            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?,?)");        
             $LAB_RECORD->bindParam(1,$LABR_ID);
             $LAB_RECORD->bindParam(2,$MEDTECH);
             $LAB_RECORD->bindParam(3,$PATHOLOGIST);
             $LAB_RECORD->bindParam(4,$TAKEN);
             $LAB_RECORD->bindParam(5,$MEAL);
-            $LAB_RECORD->bindParam(6,$Month);
-            $LAB_RECORD->bindParam(7,$Year);
+            $LAB_RECORD->bindParam(6,$SPECIMEN);
+            $LAB_RECORD->bindParam(7,$Month);
+            $LAB_RECORD->bindParam(8,$Year);
             $LAB_RECORD->execute();
             
             $Lab_rec_id = $db->lastInsertId();
@@ -259,11 +280,18 @@ else if($page == 'AddHema'){
             $HEMA->bindParam(20,$Year); 
             $HEMA->execute();
 
+            $Status = 'Completed';
+            $LABREQ_UP = $db->prepare("Update lab_request set STATUS=? Where LBR_ID = ?");
+            $LABREQ_UP->bindParam(1,$Status);
+            $LABREQ_UP->bindParam(2,$LABR_ID);
+            $LABREQ_UP->execute();
+
 }
 else if($page == 'AddUrinal'){
     require 'lib/Db.config.pdo.php';
     require 'lib/Db.config.php';
-
+            
+            $SPECIMEN           = mysql_real_escape_string($_POST['SPECIMEN']);
             $LABR_ID            = mysql_real_escape_string($_POST['LBR_ID']);
             $COLOR_PHY_PRO      = mysql_real_escape_string($_POST['COLOR_PHY_PRO']);            
             $PUS_CELL           = mysql_real_escape_string($_POST['PUS_CELL']);
@@ -298,14 +326,15 @@ else if($page == 'AddUrinal'){
             $Year               = date('Y',strtotime($date));
             $Month              = date('M',strtotime($date));
 
-            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?)");        
+            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?,?)");        
             $LAB_RECORD->bindParam(1,$LABR_ID);
             $LAB_RECORD->bindParam(2,$MEDTECH);
             $LAB_RECORD->bindParam(3,$PATHOLOGIST);
             $LAB_RECORD->bindParam(4,$TAKEN);
             $LAB_RECORD->bindParam(5,$MEAL);
-            $LAB_RECORD->bindParam(6,$Month);
-            $LAB_RECORD->bindParam(7,$Year);
+            $LAB_RECORD->bindParam(6,$SPECIMEN);
+            $LAB_RECORD->bindParam(7,$Month);
+            $LAB_RECORD->bindParam(8,$Year);
             $LAB_RECORD->execute();
             
             $Lab_rec_id = $db->lastInsertId();
@@ -340,6 +369,12 @@ else if($page == 'AddUrinal'){
             $URINE->bindParam(27,$Month);
             $URINE->bindParam(28,$Year); 
             $URINE->execute();
+
+            $Status = 'Completed';
+            $LABREQ_UP = $db->prepare("Update lab_request set STATUS=? Where LBR_ID=?");
+            $LABREQ_UP->bindParam(1,$Status);
+            $LABREQ_UP->bindParam(2,$LABR_ID);
+            $LABREQ_UP->execute();
 
 }
 ?>

@@ -14,6 +14,9 @@ $row = mysql_fetch_array($result);
 
 $medicalrecord = $db->prepare("Select * FROM (((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) WHERE patient.P_ID = $VIEW_ID");
 $medicalrecord->execute();
+
+$lab_stmt = "SELECT *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM (((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID)INNER JOIN laboratory_record ON lab_request.LBR_ID = laboratory_record.LBR_ID) WHERE patient.P_ID = $VIEW_ID";
+$result = mysql_query($lab_stmt);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -426,26 +429,37 @@ while($MR = $medicalrecord->fetch()){
 								</div>
 								<div id="labresult" class="tab-pane">
 									<div class="adv-table">
-										<table  class="display table table-bordered table-striped" id="example">
+										<table  class="display table table-bordered table-striped" id="labrecords">
 										  <thead>
 											<tr>
-											  <th>Laboratory No.</th>
-											  <th>Lab Test Type</th>
-											  <th>Date Taken</th>
-											  <th class="hidden-phone">Test Requested</th>
-											  <th class="hidden-phone">Action</th>
+											  <th style="width: 100%; text-align: center;">Laboratory No.</th>
+                                              <th style="width: 100%; text-align: center;">Requesting doctor</th>
+											  <th style="width: 100%; text-align: center;">Date Taken</th>
+											  <th style="width: 100%; text-align: center;">Test Requested</th>
+											  <th style="width: 100%; text-align: center;" class="hidden-phone">Action</th>
 											</tr>
 										  </thead>
 										  <tbody>
+                                            <?php
+                                            while($LAB_REC = mysql_fetch_array($result)) {
+                                                $DOCTOR_ID = $LAB_REC['User_id'];
+                                                
+                                                $Req_Doc = ("SELECT *, CONCAT('Dr. ',Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users WHERE User_id = '$DOCTOR_ID'");
+                                                $REQ_DOC = mysql_query($Req_Doc);
+                                                $RD = mysql_fetch_array($REQ_DOC);
+                                            ?>
 											  <tr class="gradeX">
-											  <td>000001</td>
-											  <td>Urinalysis</td>
-											  <td>12/12/2017</td>
-											  <td class="center hidden-phone">Uric Acid</td>
-											  <td class="center hidden-phone">
-												<a class="btn btn-primary btn-xs" href="add-lab-urinal.html">Proceed</a>
+											  <td style="text-align: center;"><?php echo $LAB_REC['LAB_ID'];?></td>
+                                              <td style="text-align: center;"><?php echo $RD['Fullname'];?></td>
+											  <td style="text-align: center;"><?php echo $LAB_REC['DATE_TAKEN'];?></td>
+											  <td style="text-align: center;" class="center hidden-phone"><?php echo $LAB_REC['LBR_TYPE'];?></td>
+											  <td style="text-align: center;" class="center hidden-phone">
+												<a class="btn btn-primary btn-xs" href="">Proceed</a>
 											  </td>
 											  </tr>
+                                            <?php
+                                            }
+                                             ?>
 										  </tbody>
 										</table>
 									</div>

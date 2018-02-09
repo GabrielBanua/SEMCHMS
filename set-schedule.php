@@ -1,6 +1,7 @@
 <?php
 require 'lib/session.php';
 require 'lib/Db.config.pdo.php';
+date_default_timezone_set('Asia/Manila');
 $date = date("Y-m-d");
 
 $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME,' ', P_LNAME) AS FullName from patient");
