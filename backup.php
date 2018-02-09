@@ -152,7 +152,7 @@ require 'lib/session.php';
                                 <div class="adv-table">
 									<a class="btn btn-shadow btn-success" href="backup/backup_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
 									<i class="icon-download-alt"> </i> Backup Database</a>
-									<a class="btn btn-shadow btn-info" href="backup/import_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
+									<a class="btn btn-shadow btn-info" href="#" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
 									<i class="icon-upload-alt"> </i> Import Database</a>
                                     <table  class="table table-striped table-advance table-hover" id="example">
                                       <thead>
