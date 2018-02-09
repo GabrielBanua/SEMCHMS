@@ -213,6 +213,16 @@ $Lab_row = mysql_fetch_array($result);
 										<input type="text" id="LAST_MEAL" class="form-control">
 									</div>
 								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Doctor Requested:</label>
+									<div class="col-sm-4">
+										<input type="text" id="#" class="form-control">
+									</div>
+									<label class="col-sm-2 control-label">Specimen:</label>
+									<div class="col-sm-4">
+										<input type="text" id="#" class="form-control">
+									</div>
+								</div>
 								<hr>
 <!--- Blood Chemistry -->
 								<div class="col-sm-12 Blood test">
