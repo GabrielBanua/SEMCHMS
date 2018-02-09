@@ -773,13 +773,14 @@ include 'lib/User-Accesslvl.php';
 			$('#Error_Message_BC').html('Last meal is required!');
 		}
 		else{
+			$('#Error_message_BC').html('');
 			if(confirm('Are you sure you want to add this blood chemistry record to the database?')){
 				$.ajax({
 					type: "POST",
 					url: "Server3.php?p=AddBloodChem",
 					data: "LBR_ID="+LABR_ID+"&BEI="+BUN_ETYPE_INT+"&BEC="+BUN_ETYPE_CON+"&CI="+CHSTRL_INT+"&CC="+CHSTRL_CON+"&CEI="+CRTN_ETYPE_INT+"&CEC="+CRTN_ETYPE_CON+"&FEI="+FBS_ETYPE_INT+"&FEC="+FBS_ETYPE_CON+"&HMEI="+HDL_M_ETYPE_INT+"&HMEC="+HDL_M_ETYPE_CON+"&HFEI="+HDL_F_ETYPE_INT+"&HFEC="+HDL_F_ETYPE_CON+"&LEI="+LDL_ETYPE_INT+"&LEC="+LDL_ETYPE_CON+"&PPEI="+PO_PR_ETYPE_INT+"&PPEC="+PO_PR_ETYPE_CON+"&REI="+RBS_ETYPE_INT+"&REC="+RBS_ETYPE_CON+"&SGOTMEI="+SGOT_M_ETYPE_INT+"&SGOTFEI="+SGOT_F_ETYPE_INT+"&SGPTMEI="+SGPT_M_ETYPE_INT+"&SGPTFEI="+SGPT_F_ETYPE_INT+"&TEI="+TRYLYDE_ETYPE_INT+"&TEC="+TRYLYDE_ETYPE_CON+"&UFEI="+URIC_F_ETYPE_INT+"&UFEC="+URIC_F_ETYPE_CON+"&UMEI="+URIC_M_ETYPE_INT+"&UMEC="+URIC_M_ETYPE_CON+"&LAST_MEAL="+MEAL+"&MEDTECH="+MEDTECH+"&PATHOLOGIST="+PATHOLOGIST+"&TAKEN="+TAKEN,
 					success: function(data){
-						$('#Error_message_BC').html('');
+						
 						$('#Success_Message_BC').html('Successfully added laboratory result');
 					}
 				});
@@ -817,13 +818,13 @@ include 'lib/User-Accesslvl.php';
 		if(MEAL == '' || MEDTECH == '' || PATHOLOGIST == ''){
 			$('#Error_Message_FC').html('Last meal is required!');
 		}else{
+			$('#Error_message_FC').html('');
 			if(confirm('Are you sure you want to add this fecalysis record to the database?')){
 				$.ajax({
 					type: "POST",
 					url: "Server3.php?p=AddFecal",
 					data: "LBR_ID="+LABR_ID+"&CLRME="+CLR_MCRO_EXM+"&PARAA="+PARA_ASCARIS+"&FGL="+FLAG_G_LAMBIA+"&CONSME="+CONS_MCRO_EXM+"&PHKW="+PARA_HKWORM+"&FTM="+FLAG_T_HOMINIS+"&HME="+HLMT_MCRO_EXM+"&PARAT="+PARA_TRHRIS+"&PARAST="+PARA_STRGLOIDES+"&CO="+CT_OB+"&EAH="+E_AMOEBA_HISTOL+"&PME="+PCELLS_MICRO_EXM+"&EHC="+E_HISTOL_CYST+"&RME="+RBC_MCRO_EXM+"&EHT="+E_HISTOL_TROPH+"&EAC="+E_AMOEBA_COLI+"&CC="+COLI_CYST+"&CT="+COLI_TROPH+"&LAST_MEAL="+MEAL+"&MEDTECH="+MEDTECH+"&PATHOLOGIST="+PATHOLOGIST+"&TAKEN="+TAKEN+"&REMARKS="+REMARKS,
 					success: function(data){
-						$('#Error_message_FC').html('');
 						$('#Success_Message_FC').html('Successfully added laboratory result! &nbsp;&nbsp;');
 					}
 				});
@@ -867,13 +868,13 @@ include 'lib/User-Accesslvl.php';
 		if(MEAL == '' || MEDTECH == '' || PATHOLOGIST == ''){
 			$('#Error_Message_UR').html('Last meal is required!');
 		}else{
+			$('#Error_message_UR').html('');
 			if(confirm('Are you sure you want to add this urinalysis record to the database?')){
 				$.ajax({
 					type: "POST",
 					url: "Server3.php?p=AddUrinal",
 					data: "LBR_ID="+LABR_ID+"&LAST_MEAL="+MEAL+"&MEDTECH="+MEDTECH+"&PATHOLOGIST="+PATHOLOGIST+"&TAKEN="+TAKEN+"&COLOR_PHY_PRO="+COLOR_PHY_PRO+"&PUS_CELL="+PUS_CELL+"&AU_CRYSTALS="+AU_CRYSTALS+"&TRANS_PHY_PRO="+TRANS_PHY_PRO+"&RBC_CELL="+RBC_CELL+"&APO_CRYSTALS="+APO_CRYSTALS+"&PH_PHY_PRO="+PH_PHY_PRO+"&YEAST_CELL="+YEAST_CELL+"&URIC_ACID_CRYSTALS="+URIC_ACID_CRYSTALS+"&SPEC_GRAV_PHY_PRO="+SPEC_GRAV_PHY_PRO+"&SQUAMOS_CELL="+SQUAMOS_CELL+"&CAL_OX_CRYSTALS="+CAL_OX_CRYSTALS+"&RENAL_CELL="+RENAL_CELL+"&TRI_PO_CRYSTALS="+TRI_PO_CRYSTALS+"&BACTERIA_CELL="+BACTERIA_CELL+"&RED_SUG_CT="+RED_SUG_CT+"&DESA_CASTS="+DESA_CASTS+"&MUC_TH="+MUC_TH+"&PRO_CT="+PRO_CT+"&CO_GRAN_CASTS="+CO_GRAN_CASTS+"&REMARKS="+REMARKS+"&FIN_GRAN_CASTS="+FIN_GRAN_CASTS+"&PUS_CASTS="+PUS_CASTS+"&RBC_CASTS="+RBC_CASTS+"&WAXY_CASTS="+WAXY_CASTS,
 					success: function(data){
-						$('#Error_message_UR').html('');
 						$('#Success_Message_UR').html('Successfully added laboratory result! &nbsp;&nbsp;');
 					}
 				});
@@ -910,13 +911,13 @@ include 'lib/User-Accesslvl.php';
 			$('#Error_Message_HM').html('Last meal is required!');
 		}
 		else{
+			$('#Error_message_HM').html('');
 			if(confirm('Are you sure you want to add this hematology record to the database?')){
 				$.ajax({
 					type: "POST",
 					url: "Server3.php?p=AddHema",
 					data: "LBR_ID="+LABR_ID+"&LAST_MEAL="+MEAL+"&MEDTECH="+MEDTECH+"&PATHOLOGIST="+PATHOLOGIST+"&TAKEN="+TAKEN+"&HEMA_M_ETYPE_CBC="+HEMA_M_ETYPE_CBC+"&WBC_ETYPE_CBC="+WBC_ETYPE_CBC+"&HEMA_F_ETYPE_CBC="+HEMA_F_ETYPE_CBC+"&RBC_ETYPE_CBC="+RBC_ETYPE_CBC+"&HEMO_M_ETYPE_CBC="+HEMO_M_ETYPE_CBC+"&HEMO_F_ETYPE_CBC="+HEMO_F_ETYPE_CBC+"&SEG_DIFF_COUNT="+SEG_DIFF_COUNT+"&STAB_DCOUNT="+STAB_DCOUNT+"&EOSI_DCOUNT="+EOSI_DCOUNT+"&PLA_CT_DCOUNT="+PLA_CT_DCOUNT+"&LYMP_DCOUNT="+LYMP_DCOUNT+"&BLD_TYP_DCOUNT="+BLD_TYP_DCOUNT+"&MONO_DCOUNT="+MONO_DCOUNT+"&BASO_DCOUNT="+BASO_DCOUNT+"&MYELO_DCOUNT="+MYELO_DCOUNT+"&JUVEN_DCOUNT="+JUVEN_DCOUNT+"&REMARKS="+REMARKS,
 					success: function(data){
-						$('#Error_message_HM').html('')
 						$('#Success_Message_HM').html('Successfully added laboratory result');
 					}
 				});
