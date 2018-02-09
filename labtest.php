@@ -132,8 +132,7 @@ $Lab_row = mysql_fetch_array($result);
                           <span>Lab Management</span>
                       </a>
                       <ul class="sub">
-						  <li class="active"><a  href="labtest.php">Add Lab Results</a></li>
-						  <li><a  href="lab-request.php">View Lab Request</a></li>
+						  <li class="active"><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="labview.php">View Lab Records</a></li>
 						  <li><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
                       </ul>
@@ -211,6 +210,16 @@ $Lab_row = mysql_fetch_array($result);
 									<label class="col-sm-2 control-label">Last Meal:</label>
 									<div class="col-sm-4">
 										<input type="text" id="LAST_MEAL" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Doctor Requested:</label>
+									<div class="col-sm-4">
+										<input type="text" id="#" class="form-control">
+									</div>
+									<label class="col-sm-2 control-label">Specimen:</label>
+									<div class="col-sm-4">
+										<input type="text" id="#" class="form-control">
 									</div>
 								</div>
 								<hr>
@@ -384,7 +393,7 @@ $Lab_row = mysql_fetch_array($result);
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Heinths</b></td>
-											  <td><input id="HLMT_MCRO_EXM" name="HLMT_MCRO_EXM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="HLMT_MCRO_EXM" name="HLMT_MCRO_EXM" type="text" class="form-control" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Trinchuris</b></td>
 											  <td><input id="PARA_TRHRIS" name="PARA_TRHRIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
@@ -443,7 +452,7 @@ $Lab_row = mysql_fetch_array($result);
 											  <td><input id="COLI_TROPH" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-right"><b>Remarks</b></td>
-											  <td><input id="REMARKSF" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="REMARKSF" type="text" class="form-control" maxlength="5" size="5"></td>
 										  </tr>
 										  </tbody>
 									  </table>
