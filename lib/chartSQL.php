@@ -15,8 +15,11 @@ $Year = date('Y',strtotime($date));
     $FCU = mysql_query("SELECT * FROM treatment WHERE F_CHECKUP BETWEEN '$start_date' AND '$end_date'");
     $fcup = mysql_num_rows($FCU);
 
-    $MedCount = mysql_query("SELECT * FROM inventory");
+    $Lab = mysql_query("SELECT * FROM lab_request WHERE LBR_DATE BETWEEN '$start_date' AND '$end_date'");
+    $lbr = mysql_num_rows($Lab);
 
+    $Medicine = mysql_query("SELECT SUM(INV_QTY) AS TotalMeds FROM inventory");
+    $Meds = mysql_num_rows($Medicine);
     
 
 
