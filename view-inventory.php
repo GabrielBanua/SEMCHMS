@@ -196,17 +196,17 @@ $current_date = date('Y-m-d');
 										<table  class="table table-striped table-advance table-hover" id="example">
 											<thead>
 												<tr>
-													<th width="120">Date Arrived</th>
-													<th width="70">Category</th>
-													<th width="80">Type</th>
-													<th width="120">Generic Name</th>
-													<th width="80">Brand</th>
-													<th width="115">Dosage Form</th>
-													<th width="90">Dose</th>
-													<th width="120">Expiry Date</th>
-													<th width="95">Quantity</th>
-													<th width="70">Status</th>
-													<th width="120">Action</th>
+													<th style="text-align:center;" width="120">Date Arrived</th>
+													<th style="text-align:center;" width="70">Category</th>
+													<th style="text-align:center;" width="80">Type</th>
+													<th style="text-align:center;" width="120">Generic Name</th>
+													<th style="text-align:center;" width="80">Brand</th>
+													<th style="text-align:center;" width="115">Dosage Form</th>
+													<th style="text-align:center;" width="90">Dose</th>
+													<th style="text-align:center;" width="120">Expiry Date</th>
+													<th style="text-align:center;" width="95">Quantity</th>
+													<th style="text-align:center;" width="70">Status</th>
+													<th style="text-align:center;" width="120">Action</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -222,13 +222,13 @@ $current_date = date('Y-m-d');
 													<td><?php echo $row['MEDICINE_DFORM'] ?></td>
 													<td><?php echo $row['MEDICINE_DOSE'] ?></td>
 													<td><?php echo $row['INV_EXPD'] ?></td>
-													<td><?php echo $row['INV_QTY'];echo "/"; echo $row['INV_QTY_HIST']; ?></td>
+													<td style="text-align:center;"><?php echo $row['INV_QTY'];echo " | "; echo $row['INV_QTY_HIST']; ?></td>
 													<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; 
 													if($row['INV_EXPD'] <= $current_date || $row['INV_EXPD'] == $current_date){echo "<span class='label label-info label-mini'>Expired</span>";}else{
                                                         if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}
                                                         else if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty && $row['INV_QTY'] > $QtyInitial){ echo "<span class='label label-warning label-mini'>Low</span>";
                                                         }else if($row['INV_QTY'] < $QtyInitial){ echo "<span class='label label-danger label-mini'>Re-order</span>";}} ?></td>
-													<td class="hidden-phone">
+													<td style="align:center;" class="hidden-phone">
 														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" onclick="RetrieveInventory(<?php echo $row['INV_ID'] ?>)" data-target="#EditInv-<?php echo $row['INV_ID'] ?>"><i class="icon-pencil"></i></a>
 														<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><i class="icon-minus"></i></a>
 														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
