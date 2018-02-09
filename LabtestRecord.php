@@ -132,7 +132,6 @@ $Lab_row = mysql_fetch_array($result);
                           <span>Lab Management</span>
                       </a>
                       <ul class="sub">
-						  <li class="active"><a  href="labtest.php">Add Lab Results</a></li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="labview.php">View Lab Records</a></li>
 						  <li><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
