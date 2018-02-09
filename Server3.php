@@ -7,6 +7,8 @@ if($page == 'AddBloodChem'){
 require 'lib/Db.config.pdo.php';
 require 'lib/Db.config.php';
 
+            
+            $SPECIMEN              = mysql_real_escape_string($_POST['SPECIMEN']);
             $LABR_ID               = mysql_real_escape_string($_POST['LBR_ID']);
             $PATHOLOGIST           = mysql_real_escape_string($_POST['PATHOLOGIST']);
             $MEDTECH               = mysql_real_escape_string($_POST['MEDTECH']);
@@ -51,8 +53,9 @@ require 'lib/Db.config.php';
             $LAB_RECORD->bindParam(3,$PATHOLOGIST);
             $LAB_RECORD->bindParam(4,$TAKEN);
             $LAB_RECORD->bindParam(5,$MEAL);
-            $LAB_RECORD->bindParam(6,$Month);
-            $LAB_RECORD->bindParam(7,$Year);
+            $LAB_RECORD->bindParam(6,$SPECIMEN);
+            $LAB_RECORD->bindParam(7,$Month);
+            $LAB_RECORD->bindParam(8,$Year);
             $LAB_RECORD->execute();
 
             $Lab_rec_id = $db->lastInsertId();
@@ -127,6 +130,8 @@ else if($page == 'AddFecal'){
     require 'lib/Db.config.pdo.php';
     require 'lib/Db.config.php';
 
+            
+            $SPECIMEN                           = mysql_real_escape_string($_POST['SPECIMEN']);
             $LABR_ID                            = mysql_real_escape_string($_POST['LBR_ID']);
             $CLR_MCRO_EXM                       = mysql_real_escape_string($_POST['CLRME']);
             $PARA_ASCARIS                       = mysql_real_escape_string($_POST['PARAA']);
@@ -161,8 +166,9 @@ else if($page == 'AddFecal'){
             $LAB_RECORD->bindParam(3,$PATHOLOGIST);
             $LAB_RECORD->bindParam(4,$TAKEN);
             $LAB_RECORD->bindParam(5,$MEAL);
-            $LAB_RECORD->bindParam(6,$Month);
-            $LAB_RECORD->bindParam(7,$Year);
+            $LAB_RECORD->bindParam(6,$SPECIMEN);
+            $LAB_RECORD->bindParam(7,$Month);
+            $LAB_RECORD->bindParam(8,$Year);
             $LAB_RECORD->execute();
             
             $Lab_rec_id = $db->lastInsertId();
@@ -197,6 +203,8 @@ else if($page == 'AddHema'){
     require 'lib/Db.config.pdo.php';
     require 'lib/Db.config.php';
 
+            
+            $SPECIMEN         = mysql_real_escape_string($_POST['SPECIMEN']);
             $LABR_ID          = mysql_real_escape_string($_POST['LBR_ID']);
             $HEMA_M_ETYPE_CBC = mysql_real_escape_string($_POST['HEMA_M_ETYPE_CBC']);
             $WBC_ETYPE_CBC    = mysql_real_escape_string($_POST['WBC_ETYPE_CBC']);
@@ -230,8 +238,9 @@ else if($page == 'AddHema'){
             $LAB_RECORD->bindParam(3,$PATHOLOGIST);
             $LAB_RECORD->bindParam(4,$TAKEN);
             $LAB_RECORD->bindParam(5,$MEAL);
-            $LAB_RECORD->bindParam(6,$Month);
-            $LAB_RECORD->bindParam(7,$Year);
+            $LAB_RECORD->bindParam(6,$SPECIMEN);
+            $LAB_RECORD->bindParam(7,$Month);
+            $LAB_RECORD->bindParam(8,$Year);
             $LAB_RECORD->execute();
             
             $Lab_rec_id = $db->lastInsertId();
@@ -263,7 +272,8 @@ else if($page == 'AddHema'){
 else if($page == 'AddUrinal'){
     require 'lib/Db.config.pdo.php';
     require 'lib/Db.config.php';
-
+            
+            $SPECIMEN           = mysql_real_escape_string($_POST['SPECIMEN']);
             $LABR_ID            = mysql_real_escape_string($_POST['LBR_ID']);
             $COLOR_PHY_PRO      = mysql_real_escape_string($_POST['COLOR_PHY_PRO']);            
             $PUS_CELL           = mysql_real_escape_string($_POST['PUS_CELL']);
@@ -304,8 +314,9 @@ else if($page == 'AddUrinal'){
             $LAB_RECORD->bindParam(3,$PATHOLOGIST);
             $LAB_RECORD->bindParam(4,$TAKEN);
             $LAB_RECORD->bindParam(5,$MEAL);
-            $LAB_RECORD->bindParam(6,$Month);
-            $LAB_RECORD->bindParam(7,$Year);
+            $LAB_RECORD->bindParam(6,$SPECIMEN);
+            $LAB_RECORD->bindParam(7,$Month);
+            $LAB_RECORD->bindParam(8,$Year);
             $LAB_RECORD->execute();
             
             $Lab_rec_id = $db->lastInsertId();
