@@ -85,35 +85,50 @@ else if($page == 'DispenseMedicine'){
 
 			$DispenseSql = mysql_query("SELECT * FROM inventory WHERE INV_ID = '$inv_id'");
 			$DispneseRes = mysql_fetch_array($DispenseSql);
-
+			
+			$Expdate = $DispneseRes['INV_EXPD'];
 			$DisQty = $DispneseRes['INV_QTY'];
 			
-			if($DisQty < $sub_qty){
-				$Lacking = $sub_qty - $DisQty;
-				$Lacking_sol = $sub_qty - $Lacking;
-				$Dis_QtyRes = $DisQty - $Lacking_sol;
-				echo $Lacking_sol;
+			if($Expdate > $date){
+					if($DisQty < $sub_qty){
+						$Lacking = $sub_qty - $DisQty;
+						$Lacking_sol = $sub_qty - $Lacking;
+						$Dis_QtyRes = $DisQty - $Lacking_sol;
+						echo $Lacking_sol;
 
-					$ResultDis = $db->prepare("update inventory set INV_QTY=? where INV_ID=?");
-					$ResultDis->bindParam(1,$Dis_QtyRes);
-					$ResultDis->bindParam(2,$inv_id);
-					$ResultDis->execute();
+							$ResultDis = $db->prepare("update inventory set INV_QTY=? where INV_ID=?");
+							$ResultDis->bindParam(1,$Dis_QtyRes);
+							$ResultDis->bindParam(2,$inv_id);
+							$ResultDis->execute();
 
-					$RecordDis = $db->prepare("insert into dispense values('',?)");
-					$RecordDis->bindParam(1,$Dis_QtyRes);
-					$RecordDis->bindParam(2,$inv_id);
-					$RecordDis->execute();
+							$RecordDis = $db->prepare("insert into dispense values('',?,?,?,?,?)");
+							$RecordDis->bindParam(1,$inv_id);
+							$RecordDis->bindParam(2,$sub_qty);
+							$RecordDis->bindParam(3,$date);
+							$RecordDis->bindParam(4,$Month);
+							$RecordDis->bindParam(5,$Year);
+							$RecordDis->execute();
+					}
+					else if($DisQty >= $sub_qty){
+						$DisResult = $DisQty - $sub_qty;
+					
+							$ResultDis = $db->prepare("update inventory set INV_QTY=? where INV_ID=?");
+							$ResultDis->bindParam(1,$DisResult);
+							$ResultDis->bindParam(2,$inv_id);
+							$ResultDis->execute();
 
+							$RecordDis = $db->prepare("insert into dispense values('',?,?,?,?,?)");
+							$RecordDis->bindParam(1,$inv_id);
+							$RecordDis->bindParam(2,$sub_qty);
+							$RecordDis->bindParam(3,$date);
+							$RecordDis->bindParam(4,$Month);
+							$RecordDis->bindParam(5,$Year);
+							$RecordDis->execute();
+					}
+			}else{
+				echo "Expired";
 			}
-			else if($DisQty >= $sub_qty){
-				$DisResult = $DisQty - $sub_qty;
-			
-					$ResultDis = $db->prepare("update inventory set INV_QTY=? where INV_ID=?");
-					$ResultDis->bindParam(1,$DisResult);
-					$ResultDis->bindParam(2,$inv_id);
-					$ResultDis->execute();
-			}
-			
+
 }
 else if($page == 'Addlabrequest'){
 	require 'lib/Db.config.pdo.php';

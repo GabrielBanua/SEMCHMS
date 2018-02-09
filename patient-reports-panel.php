@@ -123,7 +123,6 @@ else if($Position == "Volunter"){
                           <span>Lab Management</span>
                       </a>
                       <ul class="sub">
-						  <li><a  href="labtest.php">Add Lab Results</a></li>
 						  <li><a  href="lab-request.php">View Lab Request</a></li>
 						  <li><a  href="labview.php">View Lab Records</a></li>
 						  <li><a  href="lab-reports-panel.php">Laboratory Reports</a></li>
@@ -175,7 +174,7 @@ else if($Position == "Volunter"){
 								  </div>
 								  <div class="col-lg-3 col-sm-6">
 									  <section class="panel">
-											<a class="btn btn-shadow btn-success btn-lg" style="width:200px">
+											<a class="btn btn-shadow btn-success btn-lg" style="width:200px" onclick="printExternal('patient-list-report.php');">
 												<i class="icon-user icon-3x"></i><br>
 												List of<br>Patient
 											</a>
@@ -227,6 +226,15 @@ else if($Position == "Volunter"){
 			   $this.button('reset');
 		   }, 8000);
 		});
+	</script>
+	<script>
+		function printExternal(url) {
+			var printWindow = window.open( url, 'Print', 'left=200, top=200, width=950, height=500, toolbar=0, resizable=0');
+			printWindow.addEventListener('load', function(){
+				printWindow.print();
+				printWindow.close();
+			}, true);
+		}
 	</script>
 
 <?php

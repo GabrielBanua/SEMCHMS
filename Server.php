@@ -129,6 +129,8 @@ if($page == 'addNewPatient'){
 else if($page == 'UpdatePatient'){
 	require 'lib/Db.config.pdo.php';
 
+			$BRGY = mysql_real_escape_string($_POST['P_BRGY']);
+			$PUROK = mysql_real_escape_string($_POST['P_PUROK']);
 			$P_ID = mysql_real_escape_string($_POST['P_ID']);
 			$Lastname = mysql_real_escape_string($_POST['P_LNAME']);
 			$Firstname = mysql_real_escape_string($_POST['P_FNAME']);
@@ -154,7 +156,7 @@ else if($page == 'UpdatePatient'){
 			$Dominant = mysql_real_escape_string($_POST['DOM_HAND']);
 			$Physical = mysql_real_escape_string($_POST['PHY_HEALTH']);	
 	
-		$stmt = $db->prepare("Update Patient set P_LNAME=?, P_FNAME=?, P_MNAME=?, P_GNDR=?, P_BDATE=?, P_AGE=?, P_TEMP=?, P_WGHT=?, P_HGHT=?, P_TYPE=?, P_ADD=?, P_CN=?, P_OCCU=?, P_REL=?, P_CVL_STAT=?, DATE_REG=?, P_OCCU_FBW=? where P_ID = ?");
+		$stmt = $db->prepare("Update Patient set P_LNAME=?, P_FNAME=?, P_MNAME=?, P_GNDR=?, P_BDATE=?, P_AGE=?, P_TEMP=?, P_WGHT=?, P_HGHT=?, P_TYPE=?, P_ADD=?, P_CN=?, P_OCCU=?, P_REL=?, P_CVL_STAT=?, DATE_REG=?, P_OCCU_FBW=?, P_PUROK=?, P_BRGY=? where P_ID = ?");
 			$stmt->bindParam(1,$Lastname);
 			$stmt->bindParam(2,$Firstname);
 			$stmt->bindParam(3,$Middlename);
@@ -172,7 +174,9 @@ else if($page == 'UpdatePatient'){
 			$stmt->bindParam(15,$Civil);
 			$stmt->bindParam(16,$DATE_REGISTER);
 			$stmt->bindParam(17,$OccupationFBW);
-			$stmt->bindParam(18,$P_ID);
+			$stmt->bindParam(18,$PUROK);
+			$stmt->bindParam(19,$BRGY);
+			$stmt->bindParam(20,$P_ID);
 			$stmt->execute();
 
 			$Past_pre = mysql_real_escape_string($_POST['PP_HEATH']);
