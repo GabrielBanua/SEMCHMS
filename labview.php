@@ -15,7 +15,7 @@ $result = mysql_query($lab_stmt);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Laboratory Request</title>
+    <title>Laboratory Record</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -167,11 +167,13 @@ $result = mysql_query($lab_stmt);
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th>Patient No.</th>
-                                          <th>Name</th>
-                                          <th>Test Requested</th>
-                                          <th>Status</th>   
-                                          <th class="hidden-phone">Action</th>
+                                          <th class="text-center" width="7%">ID</th>
+                                          <th class="text-center" width="15%">Date taken</th>
+                                          <th class="text-center" width="30%">Name</th>
+                                          <th class="text-center" width="20%">Specimen</th>
+                                          <th class="text-center" width="20%">Test Requested</th>
+                                          <th class="text-center">Status</th>   
+                                          <th class="text-center">Action</th>
                                           
                                       </tr>
                                       </thead>
@@ -180,12 +182,14 @@ $result = mysql_query($lab_stmt);
                                       while($LAB_REC = mysql_fetch_array($result)) {
                                       ?>
                                       <tr class="gradeX">
-                                          <td><?php echo $LAB_REC['P_ID'];?></td>
-                                          <td><?php echo $LAB_REC['Fullname'];?></td>
-                                          <td><?php echo $LAB_REC['LBR_TYPE'];?></td>
-                                          <td><?php echo $LAB_REC['DATE_TAKEN'];?></td>
-                                          <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs" href="labtest.php?LBR_ID=<?php echo $LBR['LBR_ID'];?>">Proceed</a>
+                                          <td class="text-center"><?php echo $LAB_REC['LAB_ID'];?></td>
+                                          <td class="text-center"><?php echo $LAB_REC['DATE_TAKEN'];?></td>
+                                          <td class="text-center"><?php echo $LAB_REC['Fullname'];?></td>
+                                          <td class="text-center"><?php echo $LAB_REC['SPECIMEN'];?></td>
+                                          <td class="text-center"><?php echo $LAB_REC['LBR_TYPE'];?></td>
+                                          <td class="text-center"><?php echo $LAB_REC['STATUS'];?></td>
+                                          <td class="text-center">
+											<a class="btn btn-primary btn-xs" href="LabtestRecord.php?LREC_ID=<?php echo $LAB_REC['LAB_ID'];?>">Proceed</a>
 										  </td>
                                       </tr>
                                         <?php

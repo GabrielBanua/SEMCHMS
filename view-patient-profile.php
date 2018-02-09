@@ -454,7 +454,7 @@ while($MR = $medicalrecord->fetch()){
 											  <td style="text-align: center;"><?php echo $LAB_REC['DATE_TAKEN'];?></td>
 											  <td style="text-align: center;" class="center hidden-phone"><?php echo $LAB_REC['LBR_TYPE'];?></td>
 											  <td style="text-align: center;" class="center hidden-phone">
-												<a class="btn btn-primary btn-xs" href="">Proceed</a>
+												<a class="btn btn-primary btn-xs" href="LabtestRecord.php?LREC_ID=<?php echo $LAB_REC['LAB_ID'];?>">Proceed</a>
 											  </td>
 											  </tr>
                                             <?php
