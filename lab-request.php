@@ -168,7 +168,7 @@ require 'lib/Db.config.php';
                                       <tr>
                                           <th>ID</th>
                                           <th>Date Requested</th>
-                                          <th>Patient fullname</th>
+                                          <th>Patient Fullname</th>
                                           <th>Test Requested</th>
                                           <th class="hidden-phone">Action</th>
                                       </tr>
@@ -183,7 +183,7 @@ require 'lib/Db.config.php';
                                           <td><?php echo $LBR['Fullname'];?></td>
                                           <td><?php echo $LBR['LBR_TYPE'];?></td>
                                           <td class="center hidden-phone">
-											<a class="btn btn-primary btn-xs"  href="labtest.php?LBR_ID=<?php echo $LBR['LBR_ID'];?>">Proceed</a>
+											<a class="btn btn-shadow btn-primary btn-xs"  href="labtest.php?LBR_ID=<?php echo $LBR['LBR_ID'];?>"><i class="icon-share"></i> <b>Proceed</b></a>
 										  </td>
                                       </tr>
                                     <?php
