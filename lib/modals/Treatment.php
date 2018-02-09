@@ -33,7 +33,11 @@
 				<label  class="col-lg-2 control-label">Temperature</label>
 				<div class="col-lg-4">
 					<input type="text" value="<?php echo $MR['MR_TEMP']; ?>" class="form-control" readonly>
-				</div>	
+				</div>
+				<label  class="col-lg-2 control-label"></label>
+				<div class="col-lg-4">
+				<a class="btn btn-shadow btn-success btn-md" onclick="loadLabResult(<?php echo $MR['MR_ID']; ?>,<?php echo $TRMNT_ID; ?>)" data-toggle="modal" data-target="#labtest-<?php echo $MR['MR_ID']; ?>"><i class="icon-plus"></i> Add Lab Result</a>
+				</div>
 			</div>		
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Diagnosis:</label>
