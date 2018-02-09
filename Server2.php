@@ -140,13 +140,15 @@ else if($page == 'Addlabrequest'){
 	$date = date("Y-m-d");
 	$Year = date('Y',strtotime($date));
 	$Month = date('M',strtotime($date));
+	$Status = 'Pending';
 
-	$LabReq = $db->prepare("insert into lab_request values('',?,?,?,?,?)");
+	$LabReq = $db->prepare("insert into lab_request values('',?,?,?,?,?,?)");
 	$LabReq->bindParam(1,$Test_Requested);
 	$LabReq->bindParam(2,$Test_Date);
 	$LabReq->bindParam(3,$TREAT_ID);
 	$LabReq->bindParam(4,$Month);
 	$LabReq->bindParam(5,$Year);
+	$LabReq->bindParam(6,$Status);
 	$LabReq->execute();
 
 }

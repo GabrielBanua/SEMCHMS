@@ -1,8 +1,8 @@
 <?php
 require 'lib/session.php';
-
 require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
+date_default_timezone_set('Asia/Manila');
 if($Position == 'Doctor'){
     $purpose = 'Check Up';
     $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_PURPOSE = '$purpose'");

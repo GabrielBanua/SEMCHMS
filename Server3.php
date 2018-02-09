@@ -47,7 +47,7 @@ require 'lib/Db.config.php';
             $Month                 = date('M',strtotime($date));
             
             
-            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?)");
+            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?,?)");
             $LAB_RECORD->bindParam(1,$LABR_ID);
             $LAB_RECORD->bindParam(2,$MEDTECH);
             $LAB_RECORD->bindParam(3,$PATHOLOGIST);
@@ -93,6 +93,12 @@ require 'lib/Db.config.php';
             $BLOODCHEM->bindParam(30,$Month);
             $BLOODCHEM->bindParam(31,$Year);
             $BLOODCHEM->execute();
+
+            $Status = 'Completed';
+            $LABREQ_UP = $db->prepare("Update lab_request set STATUS=? Where LBR_ID = ?");
+            $LABREQ_UP->bindParam(1,$Status);
+            $LABREQ_UP->bindParam(2,$LABR_ID);
+            $LABREQ_UP->execute();
 }
 else if($page == 'MedtechList'){
     require 'lib/Db.config.pdo.php';
@@ -160,7 +166,7 @@ else if($page == 'AddFecal'){
             $Year                               = date('Y',strtotime($date));
             $Month                              = date('M',strtotime($date));
 
-            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?)");        
+            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?,?)");        
             $LAB_RECORD->bindParam(1,$LABR_ID);
             $LAB_RECORD->bindParam(2,$MEDTECH);
             $LAB_RECORD->bindParam(3,$PATHOLOGIST);
@@ -198,6 +204,12 @@ else if($page == 'AddFecal'){
             $FECAL->bindParam(22,$Year); 
             $FECAL->execute();
 
+            $Status = 'Completed';
+            $LABREQ_UP = $db->prepare("Update lab_request set STATUS=? Where LBR_ID = ?");
+            $LABREQ_UP->bindParam(1,$Status);
+            $LABREQ_UP->bindParam(2,$LABR_ID);
+            $LABREQ_UP->execute();
+
 }
 else if($page == 'AddHema'){
     require 'lib/Db.config.pdo.php';
@@ -232,7 +244,7 @@ else if($page == 'AddHema'){
             $Year             = date('Y',strtotime($date));
             $Month            = date('M',strtotime($date));
 
-            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?)");        
+            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?,?)");        
             $LAB_RECORD->bindParam(1,$LABR_ID);
             $LAB_RECORD->bindParam(2,$MEDTECH);
             $LAB_RECORD->bindParam(3,$PATHOLOGIST);
@@ -267,6 +279,12 @@ else if($page == 'AddHema'){
             $HEMA->bindParam(19,$Month);
             $HEMA->bindParam(20,$Year); 
             $HEMA->execute();
+
+            $Status = 'Completed';
+            $LABREQ_UP = $db->prepare("Update lab_request set STATUS=? Where LBR_ID = ?");
+            $LABREQ_UP->bindParam(1,$Status);
+            $LABREQ_UP->bindParam(2,$LABR_ID);
+            $LABREQ_UP->execute();
 
 }
 else if($page == 'AddUrinal'){
@@ -308,7 +326,7 @@ else if($page == 'AddUrinal'){
             $Year               = date('Y',strtotime($date));
             $Month              = date('M',strtotime($date));
 
-            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?)");        
+            $LAB_RECORD = $db->prepare("insert into laboratory_record values('',?,?,?,?,?,?,?,?)");        
             $LAB_RECORD->bindParam(1,$LABR_ID);
             $LAB_RECORD->bindParam(2,$MEDTECH);
             $LAB_RECORD->bindParam(3,$PATHOLOGIST);
@@ -351,6 +369,12 @@ else if($page == 'AddUrinal'){
             $URINE->bindParam(27,$Month);
             $URINE->bindParam(28,$Year); 
             $URINE->execute();
+
+            $Status = 'Completed';
+            $LABREQ_UP = $db->prepare("Update lab_request set STATUS=? Where LBR_ID=?");
+            $LABREQ_UP->bindParam(1,$Status);
+            $LABREQ_UP->bindParam(2,$LABR_ID);
+            $LABREQ_UP->execute();
 
 }
 ?>
