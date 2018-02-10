@@ -16,7 +16,7 @@ else if($Position == "Volunter"){
 	<meta name="google" content="notranslate">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Patient Reports Panel</title>
+    <title>Laboratory Reports Panel</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
