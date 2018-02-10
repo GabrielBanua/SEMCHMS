@@ -169,7 +169,7 @@ require 'lib/session.php';
 													<div class="btn-group">
 														<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Filter By <span class="caret"></span></a>
 														<ul class="dropdown-menu" role="menu">
-															<li><a href="#" onclick="openWin()">Patient Type</a></li>
+															<li><a href="#" onclick="oType()">Patient Type</a></li>
 															<li><a href="#" onclick="oGender()">Patient Gender</a></li>
 															<li><a href="#" onclick="oAge()">Patient Age</a></li>
 															<li><a href="#" onclick="oQuarter()">Population Quarterly</a></li>   
@@ -357,7 +357,13 @@ include 'lib/User-Accesslvl.php';
 		function oGender() {
 			myWindow = window.open("reports/filter_gender_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
 		}
-    </script>
+		function oType() {
+			myWindow = window.open("reports/filter_type_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
+		}
+		function oQuarter() {
+			myWindow = window.open("reports/filter_quarter_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
+		}
+	</script>
 		
   </body>
 </html>
