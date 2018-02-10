@@ -1,5 +1,6 @@
 <?php
 require 'lib/session.php';
+require 'reports/charts/patient-health-report.tabular.php';
 
 ?>
 <!DOCTYPE html>
@@ -207,7 +208,20 @@ require 'lib/session.php';
 												</div><br><br>
 											  <div id="patient_population" style="width: 100%; height: 400px"></div>
 										  </div>
+<!--Tabular form-->
 										  <div id="tabular" class="tab-pane">
+										  <div class="col-lg-2 pull-right">
+													<select id="tyear" class="form-control">
+														<option hidden>Choose</option>
+														<?php
+														for($y=2012; $y<=2025; $y++){
+														?>
+														<option value="<?php echo $y ?>"><?php echo $y; ?></option>
+														<?php
+														}
+														?>
+													</select>
+												</div><br><br>
 												<table class="table table-striped table-advance table-hover">
 												  <thead>
 												  <tr>
@@ -216,68 +230,8 @@ require 'lib/session.php';
 													  <th class="text-center"><i class="icon-wrench icon-2x"></i><br> Action</th>
 												  </tr>
 												  </thead>
-												  <tbody>
-												  <tr>
-													  <td class="text-center"><b>January</b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>February</b></td>
-													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>March</b></td>
-													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>April</b></td>
-													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>May</b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>June</b></td>
-													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>July</b></td>
-													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>August</b></td>
-													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>September</b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>October</b></td>
-													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>November</b></td>
-													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>December</b></td>
-													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-				
-												  </tr>
+												  <tbody id="list">
+												  
 												  </tbody>
 											  </table>
 											 
@@ -350,6 +304,31 @@ include 'lib/User-Accesslvl.php';
 		function oQuarter() {
 			myWindow = window.open("reports/filter_quarter_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
 		}
+	</script>
+	<script>
+	$(document).ready(function(){
+		var year = $(this).val();
+				$.ajax({
+					type: "POST",
+                  	url: "reports/charts/patient-health-report.tabular.php?",
+                 	data: "YEAR="+year,
+                  	success: function(data){
+                    $('#list').html(data);
+                  }
+				});
+	});
+	$("#tyear").on('change', function(){
+				var year = $(this).val();
+				$.ajax({
+					type: "POST",
+                  	url: "reports/charts/patient-health-report.tabular.php?",
+                 	data: "YEAR="+year,
+                  	success: function(data){
+                    $('#list').html(data);
+                  }
+				});		
+	});
+	
 	</script>
 		
   </body>

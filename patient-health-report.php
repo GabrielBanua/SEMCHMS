@@ -1,6 +1,5 @@
 <?php
 require 'lib/session.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -196,6 +195,7 @@ require 'lib/session.php';
 												</div><br><br>
 											  <div id="health_issue" style="width: 100%; height: 400px"></div>
 										  </div>
+<!--Tabular form-->
 										  <div id="tabular" class="tab-pane">
 												<div class="col-lg-2 pull-right">
 													<select class="form-control">
