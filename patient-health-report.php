@@ -341,6 +341,6 @@ include 'lib/User-Accesslvl.php';
 			});
 		</script>
     <script src = "js/jquery.canvasjs.min.js"></script>
-	<?php require 'reports/charts/health_issue.php'?>
+	<?php require 'reports/charts/health_issue.1.php'?>
   </body>
 </html>
