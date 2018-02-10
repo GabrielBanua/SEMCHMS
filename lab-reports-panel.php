@@ -158,7 +158,7 @@ else if($Position == "Volunter"){
 								<div class="row state-overview">
 								  <div class="col-lg-3 col-sm-6">
 									  <section class="panel">
-											<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="lab-total-reports.php">
+											<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="lab-chart-reports.php">
 												<i class="icon-beaker icon-3x"></i><br>
 												Total<br>Laboratory Results
 											</a>
