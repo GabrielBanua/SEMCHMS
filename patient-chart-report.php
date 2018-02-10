@@ -208,19 +208,6 @@ require 'lib/session.php';
 											  <div id="patient_population" style="width: 100%; height: 400px"></div>
 										  </div>
 										  <div id="tabular" class="tab-pane">
-												<div class="col-lg-2 pull-right">
-													<select class="form-control">
-														<option hidden> Select Year</option>
-														<option>2015</option>
-														<option>2016</option>
-														<option>2017</option>
-														<option>2018</option>
-														<option>2019</option>
-														<option>2020</option>
-														<option>2021</option>
-														<option>2022</option>
-													</select>
-												</div>
 												<table class="table table-striped table-advance table-hover">
 												  <thead>
 												  <tr>
