@@ -22,7 +22,7 @@ $qjul = $conn->query("SELECT COUNT(*) as total FROM `patient` WHERE `month` = 'J
 $fjul = $qjul->fetch_array();
 $qaug = $conn->query("SELECT COUNT(*) as total FROM `patient` WHERE `month` = 'Aug' && `year` = '$year'") or die(mysqli_error());
 $faug = $qaug->fetch_array();
-$qsep = $conn->query("SELECT COUNT(*) as total FROM `patient` WHERE `month` = 'Sept' && `year` = '$year'") or die(mysqli_error());
+$qsep = $conn->query("SELECT COUNT(*) as total FROM `patient` WHERE `month` = 'Sep' && `year` = '$year'") or die(mysqli_error());
 $fsep = $qsep->fetch_array();
 $qoct = $conn->query("SELECT COUNT(*) as total FROM `patient` WHERE `month` = 'Oct' && `year` = '$year'") or die(mysqli_error());
 $foct = $qoct->fetch_array();
