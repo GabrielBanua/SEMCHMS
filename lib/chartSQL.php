@@ -18,7 +18,7 @@ $Year = date('Y',strtotime($date));
     $Lab = mysql_query("SELECT * FROM lab_request WHERE LBR_DATE BETWEEN '$start_date' AND '$end_date'");
     $lbr = mysql_num_rows($Lab);
 
-    $Med = mysql_query("SELECT SUM(INV_QTY) AS TotalMeds FROM inventory");
+   z $Med = mysql_query("SELECT SUM(INV_QTY) AS TotalMeds FROM inventory");
     $tmeds = mysql_result($Med);
     
 ?>

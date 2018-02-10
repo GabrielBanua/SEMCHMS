@@ -160,7 +160,7 @@ else if($Position == "Volunter"){
 									  <section class="panel">
 											<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="sched-chart-report.php">
 												<i class="icon-time icon-3x"></i><br>
-												Appointment<br>Report
+												Appointment<br>Reports
 											</a>
 									  </section>
 								  </div>
