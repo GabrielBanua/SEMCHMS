@@ -164,9 +164,11 @@ else if($Position == "Volunter"){
                                     $query = mysql_query("SELECT *, CONCAT(Position,' ',Firstname,' ',Lastname) AS Rank FROM users Where User_id = '$ID'");
                                     $result = mysql_fetch_array($query);
                                 ?>
+                                
 								<div class="pull-right"><span>Date : <?php echo date('m-d-y');?></span></div><br> <!--current date is based on server, main unit must be set up correctly -->
 								  <div class="pull-right"><span class = "username">Printed By: <?php echo $result['Rank'];?></span></div><br>
 							  <div class="text-center corporate-id">
+                                  
                                   <img src="img/form-header.jpg" alt="" style="height:100px">
 								  <h3>Inventory List of <?php echo date("Y");?></h3>   
                               </div>

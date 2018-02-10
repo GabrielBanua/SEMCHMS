@@ -177,8 +177,7 @@ require 'lib/chartSQL.php';
                                 <i class="icon-truck"></i>
                             </div>
                             <div class="value">
-                                <h1 class="counter" data-count="<?php echo $Medicine; ?>">
-                                    0
+                                <h1 class="counter" data-count="<?php echo $tmeds; ?>">
                                 </h1>
                                 <p><b>Inventory Stocks</b></p>
                             </div>
@@ -191,7 +190,7 @@ require 'lib/chartSQL.php';
                             </div>
                             <div class="value">
                                 <h1 class="counter" data-count="<?php echo $lbr;?>">
-                                    0
+                                    
                                 </h1>
                                 <p><b>Laboratory Requests Count</b></p>
                             </div>
