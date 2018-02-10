@@ -203,64 +203,64 @@ require 'lib/chartSQL.php';
                     <div class="col-lg-12">
                         <!--custom chart start-->
                         <div class="border-head">
-                            <h3>Number of Patients Graph <?php echo $Year;?></h3>
+                            <h3>Number of Patients Graph 2018</h3>
                         </div>
                         <div class="custom-bar-chart">
                             <ul class="y-axis">
-                                <li><span></span></li>
-                                <li><span></span></li>
-                                <li><span></span></li>
-                                <li><span></span></li>
-                                <li><span></span></li>
-                                <li><span></span></li>
+                                <li><span>100</span></li>
+                                <li><span>80</span></li>
+                                <li><span>60</span></li>
+                                <li><span>40</span></li>
+                                <li><span>20</span></li>
+                                <li><span>0</span></li>
                             </ul>
                             <div class="bar">
                                 <div class="title">JAN</div>
-                                <div class="value tooltips" data-original-title="<?php echo $iJAN_RES['JAN_RES']; ?>%" data-toggle="tooltip" data-placement="top"><?php echo $iJAN_RES['JAN_RES']; ?></div>
+                                <div class="value tooltips" data-original-title="90%" data-toggle="tooltip" data-placement="top">90%</div>
                             </div>
                             <div class="bar ">
                                 <div class="title">FEB</div>
-                                <div class="value tooltips" data-original-title="<?php echo $iFEB_RES['FEB_RES']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $iFEB_RES['FEB_RES']; ?></div>
+                                <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
                             </div>
                             <div class="bar ">
                                 <div class="title">MAR</div>
-                                <div class="value tooltips" data-original-title="<?php echo $iMAR_RES['MAR_RES']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $iMAR_RES['MAR_RES']; ?></div>
+                                <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
                             </div>
                             <div class="bar ">
                                 <div class="title">APR</div>
-                                <div class="value tooltips" data-original-title="<?php echo $iAPR_RES['APR_RES']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $iAPR_RES['APR_RES']; ?></div>
+                                <div class="value tooltips" data-original-title="55%" data-toggle="tooltip" data-placement="top">55%</div>
                             </div>
                             <div class="bar">
                                 <div class="title">MAY</div>
-                                <div class="value tooltips" data-original-title="<?php echo $iMAY_RES['MAY_RES']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $iMAY_RES['MAY_RES']; ?></div>
+                                <div class="value tooltips" data-original-title="20%" data-toggle="tooltip" data-placement="top">20%</div>
                             </div>
                             <div class="bar ">
                                 <div class="title">JUN</div>
-                                <div class="value tooltips" data-original-title="<?php echo $iJUN_RES['JUN_RES']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $iJUN_RES['JUN_RES']; ?></div>
+                                <div class="value tooltips" data-original-title="39%" data-toggle="tooltip" data-placement="top">39%</div>
                             </div>
                             <div class="bar">
                                 <div class="title">JUL</div>
-                                <div class="value tooltips" data-original-title="<?php echo $iJUL_RES['JUL_RES']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $iJUL_RES['JUL_RES']; ?></div>
+                                <div class="value tooltips" data-original-title="75%" data-toggle="tooltip" data-placement="top">75%</div>
                             </div>
                             <div class="bar ">
                                 <div class="title">AUG</div>
-                                <div class="value tooltips" data-original-title="<?php echo $iAUG_RES['AUG_RES']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $iAUG_RES['AUG_RES']; ?></div>
+                                <div class="value tooltips" data-original-title="45%" data-toggle="tooltip" data-placement="top">45%</div>
                             </div>
                             <div class="bar ">
                                 <div class="title">SEP</div>
-                                <div class="value tooltips" data-original-title="<?php echo $iSEP_RES['SEP_RES']; ?>" data-toggle="tooltip" data-placement="top"<?php echo $iSEP_RES['SEP_RES']; ?></div>
+                                <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
                             </div>
                             <div class="bar ">
                                 <div class="title">OCT</div>
-                                <div class="value tooltips" data-original-title="<?php echo $iOCT_RES['OCT_RES']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $iOCT_RES['OCT_RES']; ?></div>
+                                <div class="value tooltips" data-original-title="42%" data-toggle="tooltip" data-placement="top">42%</div>
                             </div>
                             <div class="bar ">
                                 <div class="title">NOV</div>
-                                <div class="value tooltips" data-original-title="<?php echo $iNOV_RES['NOV_RES']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $iNOV_RES['NOV_RES']; ?></div>
+                                <div class="value tooltips" data-original-title="60%" data-toggle="tooltip" data-placement="top">60%</div>
                             </div>
                             <div class="bar ">
                                 <div class="title">DEC</div>
-                                <div class="value tooltips" data-original-title="<?php echo $iDEC_RES['DEC_RES']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $iDEC_RES['DEC_RES']; ?></div>
+                                <div class="value tooltips" data-original-title="90%" data-toggle="tooltip" data-placement="top">90%</div>
                             </div>
                         </div>
                         <!--custom chart end-->

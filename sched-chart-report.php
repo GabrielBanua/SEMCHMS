@@ -10,7 +10,7 @@ require 'lib/session.php';
 	<meta name="google" content="notranslate">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>Patient Reports Panel</title>
+    <title>Schedule Reports Panel</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -169,7 +169,7 @@ require 'lib/session.php';
 													<div class="btn-group">
 														<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Filter By <span class="caret"></span></a>
 														<ul class="dropdown-menu" role="menu">
-															<li><a href="#" onclick="openWin()">Patient Type</a></li>
+															<li><a href="#" onclick="oType()">Patient Type</a></li>
 															<li><a href="#" onclick="oGender()">Patient Gender</a></li>
 															<li><a href="#" onclick="oAge()">Patient Age</a></li>
 															<li><a href="#" onclick="oQuarter()">Population Quarterly</a></li>   
@@ -177,12 +177,115 @@ require 'lib/session.php';
 													</div>
 												</div>
 												<div class="col-lg-2 pull-right">
-													
+													<select id="pyear" class="form-control">
+														<option hidden value="<?php 
+															if(isset($_GET['year'])){
+																$value=$_GET['year']; 
+																echo $value;
+															}
+															else{
+																echo date('Y');
+															}
+														?>">
+														<?php 
+														if(isset($_GET['year'])){
+															$value=$_GET['year']; 
+															echo $value;
+														}
+														else{
+															echo date('Y');
+														}
+														?></option>
+														<?php
+														for($y=2012; $y<=2025; $y++){
+														?>
+														<option value="<?php echo $y ?>"><?php echo $y; ?></option>
+														<?php
+														}
+														?>
 													</select>
 												</div><br><br>
 											  <div id="patient_population" style="width: 100%; height: 400px"></div>
 										  </div>
-										 
+										  <div id="tabular" class="tab-pane">
+												<table class="table table-striped table-advance table-hover">
+												  <thead>
+												  <tr>
+													  <th class="text-center"><i class="icon-calendar icon-2x"></i><br> Month</th>
+													  <th class="text-center"><i class="icon-group icon-2x"></i><br> Patient Per Month</th>
+													  <th class="text-center"><i class="icon-wrench icon-2x"></i><br> Action</th>
+												  </tr>
+												  </thead>
+												  <tbody>
+												  <tr>
+													  <td class="text-center"><b>January</b></td>
+													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>February</b></td>
+													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>March</b></td>
+													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>April</b></td>
+													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>May</b></td>
+													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>June</b></td>
+													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>July</b></td>
+													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>August</b></td>
+													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>September</b></td>
+													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>October</b></td>
+													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>November</b></td>
+													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
+												  </tr>
+												  <tr>
+													  <td class="text-center"><b>December</b></td>
+													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
+				
+												  </tr>
+												  </tbody>
+											  </table>
+											 
+										  </div>
+										  <?php
+													include 'lib/modals/modal-patient-list.php';
+												?>
+									  </div>
 								  </div>
 							  </section>
 							</div>
@@ -241,7 +344,13 @@ include 'lib/User-Accesslvl.php';
 		function oGender() {
 			myWindow = window.open("reports/filter_gender_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
 		}
-    </script>
+		function oType() {
+			myWindow = window.open("reports/filter_type_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
+		}
+		function oQuarter() {
+			myWindow = window.open("reports/filter_quarter_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
+		}
+	</script>
 		
   </body>
 </html>
