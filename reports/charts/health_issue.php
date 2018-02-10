@@ -6,29 +6,29 @@ if(isset($_GET['year']))
 }
 
 $conn = new mysqli("localhost", "root", "", "semhcms") or die(mysqli_error());
-$q1 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'AIDS' && `year` = '$year'") or die(mysqli_error());
+$q1 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'AIDS' && `YEAR` = '$year'") or die(mysqli_error());
 $f1 = $q1->fetch_array();
-$q2 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Allergies' && `year` = '$year'") or die(mysqli_error());
+$q2 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Allergies' && `YEAR` = '$year'") or die(mysqli_error());
 $f2 = $q2->fetch_array();
-$q3 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Alzheimer' && `year` = '$year'") or die(mysqli_error());
+$q3 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Alzheimer' && `YEAR` = '$year'") or die(mysqli_error());
 $f3 = $q3->fetch_array();
-$q4 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Arthritis' && `year` = '$year'") or die(mysqli_error());
+$q4 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Arthritis' && `YEAR` = '$year'") or die(mysqli_error());
 $f4 = $q4->fetch_array();
-$q5 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Asthma' && `year` = '$year'") or die(mysqli_error());
+$q5 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Asthma' && `YEAR` = '$year'") or die(mysqli_error());
 $f5 = $q5->fetch_array();
-$q6 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Back Ache' && `year` = '$year'") or die(mysqli_error());
+$q6 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Back Ache' && `YEAR` = '$year'") or die(mysqli_error());
 $f6 = $q6->fetch_array();
-$q7 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Cancer' && `year` = '$year'") or die(mysqli_error());
+$q7 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Cancer' && `YEAR` = '$year'") or die(mysqli_error());
 $f7 = $q7->fetch_array();
-$q8 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Chicken Pox' && `year` = '$year'") or die(mysqli_error());
+$q8 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Chicken Pox' && `YEAR` = '$year'") or die(mysqli_error());
 $f8 = $q8->fetch_array();
-$q9 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Cold' && `year` = '$year'") or die(mysqli_error());
+$q9 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Cold' && `YEAR` = '$year'") or die(mysqli_error());
 $f9 = $q9->fetch_array();
-$q10 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Cough' && `year` = '$year'") or die(mysqli_error());
+$q10 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Cough' && `YEAR` = '$year'") or die(mysqli_error());
 $f10 = $q10->fetch_array();
-$q11 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Diabetes' && `year` = '$year'") or die(mysqli_error());
+$q11 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Diabetes' && `YEAR` = '$year'") or die(mysqli_error());
 $f11 = $q11->fetch_array();
-$q12 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Digestion' && `year` = '$year'") or die(mysqli_error());
+$q12 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = 'Digestion' && `YEAR` = '$year'") or die(mysqli_error());
 $f12 = $q12->fetch_array();
 
 ?>

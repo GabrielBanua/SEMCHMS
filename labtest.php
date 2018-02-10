@@ -397,7 +397,7 @@ $RD = mysql_fetch_array($RQ_DOC);
 											  <td><input id="FLAG_T_HOMINIS" name="FLAG_T_HOMINIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
-											  <td class="text-center"><b>Heinths</b></td>
+											  <td class="text-center"><b>Helminths</b></td>
 											  <td><input id="HLMT_MCRO_EXM" name="HLMT_MCRO_EXM" type="text" class="form-control" size="5"></td>
 											  <td class="text-center"><b>Trinchuris</b></td>
 											  <td><input id="PARA_TRHRIS" name="PARA_TRHRIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
