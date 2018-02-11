@@ -10,7 +10,7 @@
 					  <a class="btn btn-shadow btn-success btn-xs pull-right"><i class="icon-print"></i> Print</a>
 					  <br><br>
 					  <div class="adv-table">
-								<table  class="display table table-bordered table-striped">
+								<table  class="display table table-bordered table-striped" id="example-<?php echo $JAN['YEAR']; echo $MO; ?>">
 								  <thead>
 								  <tr>
 									  <th style="text-align:center;">Patient No.</th>

@@ -185,7 +185,7 @@ require 'lib/session.php';
 														}
 														?></option>
 														<?php
-														for($y=2012; $y<=2025; $y++){
+														for($y=2010; $y<=2025; $y++){
 														?>
 														<option value="<?php echo $y ?>"><?php echo $y; ?></option>
 														<?php

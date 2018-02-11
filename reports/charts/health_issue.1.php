@@ -72,7 +72,7 @@ json_encode($data_points);
 					showInLegend: true, 
 					legendText: "Total Number of Patients",
 					name: "Total Patients this year",
-					color: "#7E8F74",
+					color: "#cc270a",
 					dataPoints: <?php echo json_encode($data_points); ?>
 	
 				}
