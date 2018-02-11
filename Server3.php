@@ -574,7 +574,7 @@ else if($page == 'EditHema'){
             $LAB_RECORD->bindParam(6,$LABR_ID);
             $LAB_RECORD->execute();
             
-            $HEMA = $db->prepare("Update laboratory_record set HEMA_M_ETYPE_CBC=?, HEMA_F_ETYPE_CBC=?, HEMO_M_ETYPE_CBC=?, HEMO_F_ETYPE_CBC=?, WBC_ETYPE_CBC=?, RBC_ETYPE_CBC=?, SEG_DIFF_COUNT=?, STAB_DCOUNT=?, EOSI_DCOUNT=?, LYMP_DCOUNT=?, MONO_DCOUNT=?, BASO_DCOUNT=?, MYELO_DCOUNT=?, PLA_CT_DCOUNT=?, BLD_TYP_DCOUNT=?, JUVEN_DCOUNT=?, REMARKSH=? WHERE HEMA_ID=?");
+            $HEMA = $db->prepare("Update hematology set HEMA_M_ETYPE_CBC=?, HEMA_F_ETYPE_CBC=?, HEMO_M_ETYPE_CBC=?, HEMO_F_ETYPE_CBC=?, WBC_ETYPE_CBC=?, RBC_ETYPE_CBC=?, SEG_DIFF_COUNT=?, STAB_DCOUNT=?, EOSI_DCOUNT=?, LYMP_DCOUNT=?, MONO_DCOUNT=?, BASO_DCOUNT=?, MYELO_DCOUNT=?, PLA_CT_DCOUNT=?, BLD_TYP_DCOUNT=?, JUVEN_DCOUNT=?, REMARKSH=? WHERE HEMA_ID=?");
             $HEMA->bindParam(1,$HEMA_M_ETYPE_CBC); 
             $HEMA->bindParam(2,$HEMA_F_ETYPE_CBC); 
             $HEMA->bindParam(3,$HEMO_M_ETYPE_CBC); 
