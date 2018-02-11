@@ -220,29 +220,29 @@ else if($LAB_TYPE == 'Hematology'){
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Patient Name:</label>
 									<div class="col-sm-4">
-										<input type="text" value="<?php echo $LAB_REC['Fullname']?>" class="form-control"required>
+										<input type="text" value="<?php echo $LAB_REC['Fullname']?>" class="form-control" required <?php if($Position == 'Doctor'){ echo "disabled";}?>>
 									</div>
 									<label class="col-sm-2 control-label">Date Taken:</label>
 									<div class="col-sm-3">
-										<input type="date" id="TAKEN" value="<?php echo $LAB_REC['DATE_TAKEN']?>" class="form-control"required>
+										<input type="date" id="TAKEN" value="<?php echo $LAB_REC['DATE_TAKEN']?>" class="form-control" required <?php if($Position == 'Doctor'){ echo "disabled";}?>>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Medical Technologist:</label>
 									<div class="col-sm-4">
-										<select class="select2-single" id="MEDTECH">
+										<select class="select2-single" id="MEDTECH" <?php if($Position == 'Doctor'){ echo "disabled";}?>>
 										</select>
 									</div>
 									<label class="col-sm-2 control-label">Pathologist:</label>
 									<div class="col-sm-4">
-										<select class="select2-single" id="PATHOLOGIST">
+										<select class="select2-single" id="PATHOLOGIST" <?php if($Position == 'Doctor'){ echo "disabled";}?>>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Test Requested:</label>
 									<div class="col-sm-4">
-										<select id="labtype" class="select2-single">
+										<select id="labtype" class="select2-single" disabled>
 											<option></option><!--for placeholder-->
 											<option value="Blood" <?php
                                             if ($LAB_REC['LBR_TYPE'] == "Blood Chemistry") { echo " selected"; }?>>Blood Chemistry</option>
@@ -256,17 +256,17 @@ else if($LAB_TYPE == 'Hematology'){
 									</div>
 									<label class="col-sm-2 control-label">Last Meal:</label>
 									<div class="col-sm-4">
-										<input type="text" id="LAST_MEAL" value="<?php echo $LAB_REC['LAST_MEAL']?>" class="form-control">
+										<input type="text" id="LAST_MEAL" value="<?php echo $LAB_REC['LAST_MEAL']?>" <?php if($Position == 'Doctor'){ echo "disabled";}?> class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Doctor Requested:</label>
 									<div class="col-sm-4">
-										<input type="text" id="REQDOC" value="<?php echo $RD['Fullname']?>" class="form-control">
+										<input type="text" id="REQDOC" value="<?php echo $RD['Fullname']?>" <?php if($Position == 'Doctor'){ echo "disabled";}?> class="form-control">
 									</div>
 									<label class="col-sm-2 control-label">Specimen:</label>
 									<div class="col-sm-4">
-										<input type="text" id="SPECIMEN" value="<?php echo $LAB_REC['SPECIMEN']?>" class="form-control">
+										<input type="text" id="SPECIMEN" value="<?php echo $LAB_REC['SPECIMEN']?>" <?php if($Position == 'Doctor'){ echo "disabled";}?> class="form-control">
 									</div>
 								</div>
 								<hr>
@@ -400,7 +400,7 @@ else if($LAB_TYPE == 'Hematology'){
 									  <div class="col-sm-12">
 									  	<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Error_Message_BC" class="text-danger"></span>
                         				<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Success_Message_BC" class="text-success"></span>
-										<a class="btn btn-shadow btn-success" onclick="UpdateBloodChem(<?php echo $LAB_R_ID; ?>,<?php echo $LAB_REC['BLD_CHEM_ID']; ?>)"><i class="icon-save"></i> Update</a>
+										<a class="btn btn-shadow btn-success" <?php if($Position == 'Doctor'){ echo "style='display: none;'";}?>  onclick="UpdateBloodChem(<?php echo $LAB_R_ID; ?>,<?php echo $LAB_REC['BLD_CHEM_ID']; ?>)"><i class="icon-save"></i> Update</a>
 									  </div>
 									</div>
 							  </div>
@@ -508,7 +508,7 @@ else if($LAB_TYPE == 'Hematology'){
 									  <div class="col-sm-12">
 									  	<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Error_Message_FC" class="text-danger"></span>
                         				<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Success_Message_FC" class="text-success"></span>
-										<a class="btn btn-shadow btn-success" onclick="UpdateFecalysis(<?php echo $LAB_R_ID; ?>,<?php echo $LAB_REC['FECAL_ID'] ?>)"><i class="icon-save"></i> Update</a>
+										<a class="btn btn-shadow btn-success" <?php if($Position == 'Doctor'){ echo "style='display: none;'";}?> onclick="UpdateFecalysis(<?php echo $LAB_R_ID; ?>,<?php echo $LAB_REC['FECAL_ID'] ?>)"><i class="icon-save"></i> Update</a>
 									  </div>
 									</div>
 							  </div>
@@ -599,7 +599,7 @@ else if($LAB_TYPE == 'Hematology'){
 									  <div class="col-sm-12">
 									  	<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Error_Message_HM" class="text-danger"></span>
 										<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Success_Message_HM" class="text-success"></span>
-										<a class="btn btn-shadow btn-success" onclick="UpdateHematology(<?php echo $LAB_R_ID; ?>,<?php echo $LAB_REC['HEMA_ID'] ?>)"><i class="icon-save"></i> Update</a>
+										<a class="btn btn-shadow btn-success" <?php if($Position == 'Doctor'){ echo "style='display: none;'";}?> onclick="UpdateHematology(<?php echo $LAB_R_ID; ?>,<?php echo $LAB_REC['HEMA_ID'] ?>)"><i class="icon-save"></i> Update</a>
 									  </div>
 									</div>
 							  </div>
@@ -723,11 +723,11 @@ else if($LAB_TYPE == 'Hematology'){
 									  <div class="col-sm-12">
 									  	<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Error_Message_UR" class="text-danger"></span>
 										<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Success_Message_UR" class="text-success"></span>
-										<a class="btn btn-shadow btn-success" onclick="UpdateUrinalysis(<?php echo $LAB_R_ID; ?>,<?php echo $LAB_REC['URINE_ID'] ?>)"><i class="icon-save"></i> Update</a>
+										<a class="btn btn-shadow btn-success" <?php if($Position == 'Doctor'){ echo "style='display: none;'";}?> onclick="UpdateUrinalysis(<?php echo $LAB_R_ID; ?>,<?php echo $LAB_REC['URINE_ID'] ?>)"><i class="icon-save"></i> Update</a>
 									  </div>
 									</div>
 							  </div>
-							  <!-- Urinal End -->
+<!-- Urinal End -->
 							</form>
 						</div>
                     </section>
