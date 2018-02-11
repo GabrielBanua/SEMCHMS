@@ -1,6 +1,16 @@
 <?php
 require 'lib/session.php';
-require 'reports/charts/patient-health-report.tabular.php';
+require 'lib/Db.config.php';
+require 'lib/Db.config.pdo.php';
+$yr = mysql_real_escape_string($_POST['YEAR']);
+
+if(isset($_POST['tyear'])){
+    $yr = $_POST['tyear'];
+    $stmtJAN = mysql_query("SELECT *, COUNT(P_ID) AS TOTALPATIENTS FROM patient WHERE YEAR = '$yr' GROUP BY MONTH ORDER BY DATE_REG ASC");
+}else{
+    $yr = date('Y');
+    $stmtJAN = mysql_query("SELECT *, COUNT(P_ID) AS TOTALPATIENTS FROM patient WHERE YEAR = '$yr' GROUP BY MONTH ORDER BY DATE_REG ASC");
+}
 
 ?>
 <!DOCTYPE html>
@@ -211,17 +221,20 @@ require 'reports/charts/patient-health-report.tabular.php';
 <!--Tabular form-->
 										  <div id="tabular" class="tab-pane">
 										  <div class="col-lg-2 pull-right">
-													<select id="tyear" class="form-control">
+                                                <form action="" method="POST">
+													<select id="tyear" name="tyear" class="form-control" onchange="this.form.submit()">
 														<option hidden>Choose</option>
 														<?php
-														for($y=2012; $y<=2025; $y++){
+														for($y=2000; $y<=2025; $y++){
 														?>
-														<option value="<?php echo $y ?>"><?php echo $y; ?></option>
+														<option value="<?php echo $y ?>"<?php if($yr == $y){ echo " selected";}?>><?php echo $y; ?></option>
 														<?php
 														}
 														?>
 													</select>
+                                                    </form>
 												</div><br><br>
+                                                <h2 style="Text-align:center;">List of patient this <?php echo $yr;?></h2>
 												<table class="table table-striped table-advance table-hover">
 												  <thead>
 												  <tr>
@@ -230,15 +243,33 @@ require 'reports/charts/patient-health-report.tabular.php';
 													  <th class="text-center"><i class="icon-wrench icon-2x"></i><br> Action</th>
 												  </tr>
 												  </thead>
-												  <tbody id="list">
-												  
+												  <tbody>
+<?php
+while($JAN = mysql_fetch_array($stmtJAN)){
+    $month = $JAN['MONTH'];
+    $year = $JAN['YEAR'];
+    $MO = date('F',strtotime($month));
+    $docu = $year .''. $MO;
+    
+?>
+<tr>
+	 <td class="text-center"><b><?php echo $MO; ?></b></td>
+	 <td class="text-center"><span class="label label-info label-mini"><?php echo $JAN['TOTALPATIENTS'];?></span></td>
+	 <td class="text-center">
+     <a class="btn btn-shadow btn-success btn-xs" type="button" data-toggle="modal" data-target="#patientlist-<?php echo $JAN['YEAR']; echo $MO; ?>"><i class="icon-eye-open"></i> View</a>
+     <?php
+    include 'lib/modals/modal-patient-list.php';
+?>		
+</td>
+</tr>
+<?php
+}
+?>
 												  </tbody>
 											  </table>
-											 
+	 
 										  </div>
-										  <?php
-													include 'lib/modals/modal-patient-list.php';
-												?>
+										 
 									  </div>
 								  </div>
 							  </section>
@@ -263,9 +294,7 @@ require 'reports/charts/patient-health-report.tabular.php';
   </section>
 
     
-<?php
-include 'lib/User-Accesslvl.php';
-?>
+
 	<!-- js placed at the end of the document so the pages load faster -->
     <!--<script src="js/jquery.js"></script>-->
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
@@ -275,6 +304,13 @@ include 'lib/User-Accesslvl.php';
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+    <script src="js/preloader.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<?php
+include 'lib/User-Accesslvl.php';
+?>
 	<script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
@@ -304,31 +340,6 @@ include 'lib/User-Accesslvl.php';
 		function oQuarter() {
 			myWindow = window.open("reports/filter_quarter_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
 		}
-	</script>
-	<script>
-	$(document).ready(function(){
-		var year = $(this).val();
-				$.ajax({
-					type: "POST",
-                  	url: "reports/charts/patient-health-report.tabular.php?",
-                 	data: "YEAR="+year,
-                  	success: function(data){
-                    $('#list').html(data);
-                  }
-				});
-	});
-	$("#tyear").on('change', function(){
-				var year = $(this).val();
-				$.ajax({
-					type: "POST",
-                  	url: "reports/charts/patient-health-report.tabular.php?",
-                 	data: "YEAR="+year,
-                  	success: function(data){
-                    $('#list').html(data);
-                  }
-				});		
-	});
-	
 	</script>
 		
   </body>

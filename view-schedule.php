@@ -11,6 +11,7 @@ if($Position == 'Doctor'){
      $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
     $stmt->execute();
   }
+  
 if(isset($_POST['Sched_filter'])){
     $filtering = $_POST['Sched_filter'];
     $DateToday = date('Y-m-d');

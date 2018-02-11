@@ -1,44 +1,36 @@
 <!-- Modal Medical Records-->
-<div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $YR; ?>" role="dialog" tabindex="-1" id="patientlist-<?php echo $YR; ?>" class="modal fade">
+<div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $JAN['YEAR']; echo $MO; ?>" role="dialog" tabindex="-1" id="patientlist-<?php echo $JAN['YEAR']; echo $MO; ?>" class="modal fade">
               <div class="modal-dialog">
                   <div class="modal-content">
                       <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                          <h4 class="modal-title" id="myModalLabel-<?php echo $YR; ?>">Patient List Month of January</h4>
+                          <h4 class="modal-title" id="myModalLabel-<<?php echo $JAN['YEAR']; echo $MO; ?>">Patients of <?php echo $MO; echo " "; echo $JAN['YEAR'];?></h4>
                       </div>
                       <div class="modal-body">
 					  <a class="btn btn-shadow btn-success btn-xs pull-right"><i class="icon-print"></i> Print</a>
+					  <br><br>
 					  <div class="adv-table">
-								<table  class="display table table-bordered table-striped" id="example">
+								<table  class="display table table-bordered table-striped">
 								  <thead>
 								  <tr>
-									  <th>Patient No.</th>
-									  <th>Full Name</th>
-									  <th>Gender</th>
-									  <th class="hidden-phone">Type</th>
+									  <th style="text-align:center;">Patient No.</th>
+									  <th style="text-align:center;">Full Name</th>
+									  <th style="text-align:center;">Gender</th>
+									  <th style="text-align:center;">Type</th>
 								  </tr>
 								  </thead>
 								  <tbody>
 <?php
-error_reporting(0);
+$stmt = mysql_query("SELECT *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM patient WHERE YEAR = '$year' AND MONTH = '$month'");
 
-$DB_host = "localhost";
-$DB_user = "root";
-$DB_pass = "";
-$DB_name = "semhcms";
-
-$connection = mysql_connect($DB_host, $DB_user, $DB_pass) or die("could'nt connect to server!");
-mysql_select_db($DB_name, $connection) or die("could'nt connect to database!");
-
-$stmt = mysql_query("SELECT *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM patient WHERE YEAR = '$YR' AND MONTH = 'Jan'");
-while($LIST = mysql_fetch_array($stmt)){
+while($result = mysql_fetch_array($stmt)){
 ?>
-								  <tr class="gradeX">
-									  <td><?php echo $LIST['P_ID'];?></td>
-									  <td><?php echo $LIST['Fullname'];?></td>
-									  <td><?php echo $LIST['P_GNDR'];?></td>
-									  <td><?php echo $LIST['P_TYPE'];?></td>
-								  </tr>
+									<tr class="gradeX">
+									<td><?php echo $result['P_ID'];?></td>
+									<td><?php echo $result['Fullname']; ?></td>
+									<td><?php echo $result['P_GNDR']; ?></td>
+									<td><?php echo $result['P_TYPE']; ?></td>
+									</tr>
 <?php
 }
 ?>
