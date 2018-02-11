@@ -250,16 +250,32 @@ while($JAN = mysql_fetch_array($stmtJAN)){
     $year = $JAN['YEAR'];
     $MO = date('F',strtotime($month));
     $docu = $year .''. $MO;
-    
 ?>
 <tr>
 	 <td class="text-center"><b><?php echo $MO; ?></b></td>
 	 <td class="text-center"><span class="label label-info label-mini"><?php echo $JAN['TOTALPATIENTS'];?></span></td>
 	 <td class="text-center">
-     <a class="btn btn-shadow btn-success btn-xs" type="button" data-toggle="modal" data-target="#patientlist-<?php echo $JAN['YEAR']; echo $MO; ?>"><i class="icon-eye-open"></i> View</a>
+     <a class="btn btn-shadow btn-success btn-xs" onclick="loadthis(<?php echo $JAN['YEAR']; ?>)" data-toggle="modal" data-target="#patientlist-<?php echo $JAN['YEAR']; echo $MO; ?>"><i class="icon-eye-open"></i> View</a>
      <?php
     include 'lib/modals/modal-patient-list.php';
-?>		
+?>
+<script type="text/javascript" charset="utf-8">
+        function loadthis(tr){
+            $('.example-'+tr).dataTable( {
+                "bRetrieve": true, 
+                "bProcessing": true,
+                "bDestroy": true, 
+                "bPaginate": true, 
+                "bAutoWidth": false,
+                "bFilter": true,
+                "bInfo": false, 
+                "aaSorting": [[1, 'desc']], 
+                "bJQueryUI": false,
+                "processing": true,
+                "serverSide": true, 
+              } );
+        }
+      </script>		
 </td>
 </tr>
 <?php
@@ -311,13 +327,7 @@ while($JAN = mysql_fetch_array($stmtJAN)){
 <?php
 include 'lib/User-Accesslvl.php';
 ?>
-	<script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#example').dataTable( {
-                  "aaSorting": [[ 4, "desc" ]]
-              } );
-          } );
-      </script>
+	
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 	<script>
