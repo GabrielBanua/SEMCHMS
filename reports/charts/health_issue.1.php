@@ -6,13 +6,13 @@ if(isset($_GET['year']))
 }
 
 $conn = new mysqli("localhost", "root", "", "semhcms") or die(mysqli_error());
-$res = $conn->query("SELECT PP_HEATH FROM `patient_medical_issue` GROUP BY PP_HEATH") or die(mysqli_error());
+$res = $conn->query("SELECT MR_ILL FROM `medical_record` GROUP BY MR_ILL") or die(mysqli_error());
 
 $data_points = array();
 
 while($result = $res->fetch_array()){
-$R = $result['PP_HEATH'];
-$q1 = $conn->query("SELECT COUNT(*) as total FROM `patient_medical_issue` WHERE `PP_HEATH` = '$R' && `YEAR` = '$year'") or die(mysqli_error());
+$R = $result['MR_ILL'];
+$q1 = $conn->query("SELECT COUNT(*) as total FROM `medical_record` WHERE `MR_ILL` = '$R' && `YEAR` = '$year'") or die(mysqli_error());
 $f1 = $q1->fetch_array();
 $FR = intval($f1['total']);
 	$point = array('label' => $R, 'y' => $FR);
@@ -74,7 +74,7 @@ json_encode($data_points);
 					name: "Total Patients this year",
 					color: "#7E8F74",
 					dataPoints: <?php echo json_encode($data_points); ?>
-					
+	
 				}
 			] 
 		}); 
