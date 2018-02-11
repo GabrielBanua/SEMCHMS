@@ -467,6 +467,7 @@ $RD = mysql_fetch_array($RQ_DOC);
 									  	<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Error_Message_FC" class="text-danger"></span>
                         				<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Success_Message_FC" class="text-success"></span>
 										<a class="btn btn-shadow btn-success" onclick="addFecalysis(<?php echo $Lab_row['LBR_ID'] ?>)"><i class="icon-save"></i> Save</a>
+										<a class="btn btn-shadow btn-success" onclick="printData()"><i class="icon-save"></i> Print</a>
 									  </div>
 									</div>
 							  </div>
@@ -477,7 +478,7 @@ $RD = mysql_fetch_array($RQ_DOC);
 									  <header class="panel-heading text-center">
 										  <u><b>Hematology</b></u>
 									  </header>
-									  <table class="table table-bordered">
+									  <table class="table table-bordered" id="printme">
 										  <thead>
 										  <tr>
 											  <th>CBC:</th>
@@ -1024,6 +1025,16 @@ include 'lib/User-Accesslvl.php';
                   }
         });
 	}
+	</script>
+	<script>
+	function printData()
+{
+   var divToPrint=document.getElementById("printTable");
+   newWin= window.open("");
+   newWin.document.write(divToPrint.outerHTML);
+   newWin.print();
+   newWin.close();
+}
 	</script>
   </body>
 </html>
