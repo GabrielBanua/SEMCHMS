@@ -150,7 +150,7 @@ require 'lib/session.php';
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-									<a class="btn btn-shadow btn-success" href="backup/backup_db.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
+									<a class="btn btn-shadow btn-success" href="backup-test.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
 									<i class="icon-download-alt"> </i> Backup Database</a>
 									<a class="btn btn-shadow btn-info" href="#" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
 									<i class="icon-upload-alt"> </i> Import Database</a>

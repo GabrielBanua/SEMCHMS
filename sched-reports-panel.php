@@ -171,7 +171,7 @@ else if($Position == "Volunter"){
 												Patient<br>Population
 											</a>
 									  </section>
-								  </div>
+								  </div>    
 							  </div>
 						</div>
                     </section>
