@@ -270,10 +270,7 @@ while($JAN = mysql_fetch_array($stmtJAN)){
                 "bFilter": true,
                 "bInfo": true, 
                 "aaSorting": [[0, 'asc']], 
-                "bJQueryUI": false,
-                "processing": true,
-                "serverSide": true
-                
+                "bJQueryUI": false
               } );
         }
       </script>		

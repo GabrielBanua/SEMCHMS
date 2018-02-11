@@ -148,3 +148,18 @@ $query = $db->prepare("INSERT INTO users(name, email, username, password) VALUES
         }  
       </script>
       alert(MedGname+" "+MedBname+" "+Medtype+" "+MedCat+" "+MedDose+" "+MedDform);
+
+
+<link rel="stylesheet" type="text/css" href="DataTables-1.10.16/css/jquery.dataTables.css"/>
+<link rel="stylesheet" type="text/css" href="Buttons-1.5.1/css/buttons.dataTables.css"/>
+<link rel="stylesheet" type="text/css" href="Responsive-2.2.1/css/responsive.dataTables.css"/>
+<script type="text/javascript" src="JSZip-2.5.0/jszip.js"></script>
+<script type="text/javascript" src="pdfmake-0.1.32/pdfmake.js"></script>
+<script type="text/javascript" src="pdfmake-0.1.32/vfs_fonts.js"></script>
+<script type="text/javascript" src="DataTables-1.10.16/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="Buttons-1.5.1/js/dataTables.buttons.js"></script>
+<script type="text/javascript" src="Buttons-1.5.1/js/buttons.colVis.js"></script>
+<script type="text/javascript" src="Buttons-1.5.1/js/buttons.flash.js"></script>
+<script type="text/javascript" src="Buttons-1.5.1/js/buttons.html5.js"></script>
+<script type="text/javascript" src="Buttons-1.5.1/js/buttons.print.js"></script>
+<script type="text/javascript" src="Responsive-2.2.1/js/dataTables.responsive.js"></script>
