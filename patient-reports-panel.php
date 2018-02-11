@@ -171,24 +171,7 @@ else if($Position == "Volunter"){
 												Patient Health<br>Issue
 											</a>
 									  </section>
-								  </div>
-								  <div class="col-lg-3 col-sm-6">
-									  <section class="panel">
-											<a class="btn btn-shadow btn-success btn-lg" style="width:200px" onclick="printExternal('patient-list-report.php');">
-												<i class="icon-user icon-3x"></i><br>
-												List of<br>Patient
-											</a>
-									  </section>
-								  </div>
-								  <div class="col-lg-3 col-sm-6">
-									  <section class="panel">
-											<a class="btn btn-shadow btn-success btn-lg" style="width:200px">
-												<i class="icon-user icon-3x"></i><br>
-												List of<br>Patient
-											</a>
-									  </section>
-								  </div>
-							  </div>
+							     </div>
 						</div>
                     </section>
                   </div>

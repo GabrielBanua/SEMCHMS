@@ -247,7 +247,7 @@ $current_date = date('Y-m-d');
                                   </div>
                                   <div id="medtab" class="tab-pane">
 										<div class="adv-table">
-										<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddMed"><i class="icon-plus"></i> Add Medicines</a>
+										<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddMed"><i class="icon-plus"></i> Add Medicine Type</a>
 										<?php
 										include 'lib/modals/Add-medicine-modal.php';
 										?>

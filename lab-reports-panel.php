@@ -172,22 +172,6 @@ else if($Position == "Volunter"){
 											</a>
 									  </section>
 								  </div>
-								  <div class="col-lg-3 col-sm-6">
-									  <section class="panel">
-											<a class="btn btn-shadow btn-success btn-lg" style="width:200px">
-												<i class="icon-user icon-3x"></i><br>
-												List of<br>Patient
-											</a>
-									  </section>
-								  </div>
-								  <div class="col-lg-3 col-sm-6">
-									  <section class="panel">
-											<a class="btn btn-shadow btn-success btn-lg" style="width:200px">
-												<i class="icon-user icon-3x"></i><br>
-												List of<br>Patient
-											</a>
-									  </section>
-								  </div>
 							  </div>
 						</div>
                     </section>

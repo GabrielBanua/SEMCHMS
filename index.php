@@ -155,7 +155,7 @@ require 'lib/chartSQL.php';
                             <div class="value">
                                 <h1 class="counter" data-count="<?php echo $NewPatient; ?>">
                                 </h1>
-                                <p><b>New Patients</b></p>
+                                <p><b>New Patients <br>Monthly Count</b></p>
                             </div>
                         </section>
                     </div>
@@ -167,7 +167,7 @@ require 'lib/chartSQL.php';
                             <div class="value">
                                 <h1 class="counter" data-count="<?php echo $fcup; ?>">
                                 </h1>
-                                <p><b>Weekly count of follow-up checkups</b></p>
+                                <p><b>Follow-up Checkups <br> Weekly Count</b></p>
                             </div>
                         </section>
                     </div>
@@ -179,7 +179,7 @@ require 'lib/chartSQL.php';
                             <div class="value">
                                 <h1 class="counter" data-count="<?php echo $tmeds['TotalMeds']; ?>">
                                 </h1>
-                                <p><b>Inventory Stocks</b></p>
+                                <p><b>Inventory Stocks<br>Total Count</b></p>
                             </div>
                         </section>
                     </div>
@@ -192,7 +192,7 @@ require 'lib/chartSQL.php';
                                 <h1 class="counter" data-count="<?php echo $LR['TotalRequest'];?>">
                                     
                                 </h1>
-                                <p><b>Laboratory Requests Count</b></p>
+                                <p><b>Laboratory Requests <br> Weekly Count</b></p>
                             </div>
                         </section>
                     </div>
