@@ -1,7 +1,18 @@
 <?php
 require 'lib/session.php';
 
-?>
+
+$query = "SELECT *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM ((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) 
+INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID) Where LBR_ID = '$LAB_R_ID'"; 
+
+$labr = mysql_query($query);
+
+$labrquery = mysql_fetch_array($labr);
+
+ ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -224,74 +235,24 @@ require 'lib/session.php';
 												<table class="table table-striped table-advance table-hover">
 												  <thead>
 												  <tr>
-													  <th class="text-center"><i class="icon-calendar icon-2x"></i><br> Month</th>
-													  <th class="text-center"><i class="icon-group icon-2x"></i><br> Patient Per Month</th>
+													  <th class="text-center"><i class="icon-calendar icon-2x"></i><br> Name</th>
+													  <th class="text-center"><i class="icon-group icon-2x"></i><br> Laboratory Test</th>
 													  <th class="text-center"><i class="icon-wrench icon-2x"></i><br> Action</th>
 												  </tr>
 												  </thead>
 												  <tbody>
+												  <?php
+                                     			 while($labrequest = mysql_fetch_array($labrquery)) {
+                                     				 ?>
 												  <tr>
-													  <td class="text-center"><b>January</b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
+													  <td class="text-center"><b>d<?php echo $labrequest['LAB_ID'];?></b></td>
+													  <td class="text-center"><span class="label label-info label-mini">11<?php echo $labrequest['LBR_TYPE']; ?></span></td>
 													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>February</b></td>
-													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>March</b></td>
-													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>April</b></td>
-													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>May</b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>June</b></td>
-													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>July</b></td>
-													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>August</b></td>
-													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>September</b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>October</b></td>
-													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>November</b></td>
-													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>December</b></td>
-													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-				
 												  </tr>
 												  </tbody>
+												  <?php
+												  }
+												  ?>
 											  </table>
 											 
 										  </div>
