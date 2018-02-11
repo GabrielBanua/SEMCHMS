@@ -7,9 +7,9 @@
                           <h4 class="modal-title" id="myModalLabel-<<?php echo $JAN['YEAR']; echo $MO; ?>">Patients of <?php echo $MO; echo " "; echo $JAN['YEAR'];?></h4>
                       </div>
                       <div class="modal-body">
-					  <a class="btn btn-shadow btn-success btn-xs pull-right"><i class="icon-print"></i> Print</a>
+					  <a class="btn btn-shadow btn-success btn-sm pull-right" onclick="openPrintDialogue()"><i class="icon-print"></i> Print</a>
 					  <br><br>
-					  <div class="adv-table">
+					  <div class="adv-table" id="printArea">
 								<table  class="display table table-bordered table-striped example-<?php echo $JAN['YEAR']; ?>">
 								  <thead>
 								  <tr>

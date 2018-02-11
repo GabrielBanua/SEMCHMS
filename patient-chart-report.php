@@ -268,11 +268,12 @@ while($JAN = mysql_fetch_array($stmtJAN)){
                 "bPaginate": true, 
                 "bAutoWidth": false,
                 "bFilter": true,
-                "bInfo": false, 
-                "aaSorting": [[1, 'desc']], 
+                "bInfo": true, 
+                "aaSorting": [[0, 'asc']], 
                 "bJQueryUI": false,
                 "processing": true,
-                "serverSide": true, 
+                "serverSide": true
+                
               } );
         }
       </script>		
@@ -351,6 +352,11 @@ include 'lib/User-Accesslvl.php';
 			myWindow = window.open("reports/filter_quarter_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
 		}
 	</script>
+    <script>
+    function openPrintDialogue(){
+        
+    }
+    </script>
 		
   </body>
 </html>

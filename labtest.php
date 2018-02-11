@@ -369,7 +369,7 @@ $RD = mysql_fetch_array($RQ_DOC);
 									  <header class="panel-heading text-center">
 										  <u><b>Fecalysis</b></u>
 									  </header>
-									  <table class="table table-bordered">
+									  <table class="table table-bordered" id="printTable">
 										  <thead>
 										  <tr>
 											  <th class="text-center" colspan="2">Microscopic Examination:</th>

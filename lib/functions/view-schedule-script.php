@@ -2,7 +2,7 @@
 <script type="text/javascript" charset="utf-8">
           $(document).ready(function() {
               $('#example').dataTable( {
-                  "aaSorting": [[ 1, "asc" ]]
+                  "aaSorting": [[ 1, "asc" ]],
               } );
           } );
       
