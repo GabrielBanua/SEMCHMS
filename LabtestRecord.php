@@ -499,7 +499,7 @@ else if($LAB_TYPE == 'Hematology'){
 											  <td><input id="COLI_TROPH" value="<?php echo $LAB_REC['COLI_TROPH']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-right"><b>Remarks</b></td>
-											  <td><input id="REMARKSF" value="<?php echo $LAB_REC['REMARKSF']?>" type="text" class="form-control" maxlength="5" size="5"></td>
+											  <td><input id="REMARKSF" value="<?php echo $LAB_REC['REMARKSF']?>" type="text" class="form-control" size="5"></td>
 										  </tr>
 										  </tbody>
 									  </table>
