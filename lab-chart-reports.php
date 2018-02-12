@@ -177,6 +177,15 @@ $labrquery = mysql_fetch_array($labr);
 									  <div class="tab-content">
 										  <div id="graph" class="tab-pane active">
 												<div class="btn-group pull-left">
+													<div class="btn-group">
+														<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Filter By <span class="caret"></span></a>
+														<ul class="dropdown-menu" role="menu">
+															<li><a href="#" onclick="openWin()">Patient Type</a></li>
+															<li><a href="#" onclick="oGender()">Patient Gender</a></li>
+															<li><a href="#" onclick="oAge()">Patient Age</a></li>
+															<li><a href="#" onclick="oQuarter()">Population Quarterly</a></li>   
+														</ul>
+													</div>
 												</div>
 												<div class="col-lg-2 pull-right">
 													<select id="pyear" class="form-control">
@@ -299,7 +308,7 @@ include 'lib/User-Accesslvl.php';
 			$(document).ready(function(){
 				$("#pyear").on('change', function(){
 					var year=$(this).val();
-					window.location = 'lab-total-reports.php?year='+year;
+					window.location = 'lab-chart-reports.php?year='+year;
 				});
 			});
 		</script>

@@ -156,9 +156,6 @@ require 'lib/session.php';
 										  <li class="active">
 											  <a data-toggle="tab" href="#graph"><i class="icon-bar-chart"></i><b> Graphical Form</b></a>
 										  </li>
-										  <li class="">
-											  <a data-toggle="tab" href="#tabular"><i class="icon-table"></i><b> Tabular Form</b></a>
-										  </li>
 									  </ul>
 								  </header>
 								  <div class="panel-body">
@@ -196,93 +193,6 @@ require 'lib/session.php';
 											  <div id="health_issue" style="width: 100%; height: 400px"></div>
 										  </div>
 <!--Tabular form-->
-										  <div id="tabular" class="tab-pane">
-												<div class="col-lg-2 pull-right">
-													<select class="form-control">
-														<option hidden> Select Year</option>
-														<option>2015</option>
-														<option>2016</option>
-														<option>2017</option>
-														<option>2018</option>
-														<option>2019</option>
-														<option>2020</option>
-														<option>2021</option>
-														<option>2022</option>
-													</select>
-												</div>
-												<table class="table table-striped table-advance table-hover">
-												  <thead>
-												  <tr>
-													  <th class="text-center"><i class="icon-calendar icon-2x"></i><br> Month</th>
-													  <th class="text-center"><i class="icon-group icon-2x"></i><br> Patient Per Month</th>
-													  <th class="text-center"><i class="icon-wrench icon-2x"></i><br> Action</th>
-												  </tr>
-												  </thead>
-												  <tbody>
-												  <tr>
-													  <td class="text-center"><b>January</b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>February</b></td>
-													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>March</b></td>
-													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>April</b></td>
-													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>May</b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>June</b></td>
-													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>July</b></td>
-													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>August</b></td>
-													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>September</b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>October</b></td>
-													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>November</b></td>
-													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>December</b></td>
-													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-				
-												  </tr>
-												  </tbody>
-											  </table>
-											 
 										  </div>
 										  <?php
 													include 'lib/modals/modal-patient-list.php';
