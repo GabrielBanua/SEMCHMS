@@ -22,7 +22,7 @@ if(isset($_POST['tyear'])){
     <link rel="shortcut icon" href="img/favicon.ico">
 
     <title>Patient Reports Panel</title>
-
+    
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -33,7 +33,21 @@ if(isset($_POST['tyear'])){
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
-
+    <script type="text/javascript" src="Bootstrap-4-4.0.0/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="DataTables-1.10.16/css/jquery.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="Buttons-1.5.1/css/buttons.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="Select-1.2.5/css/select.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="jQueryUI-1.12.1/themes/base/jquery-ui.css"/>
+    <script type="text/javascript" src="JSZip-2.5.0/jszip.js"></script>
+    <script type="text/javascript" src="pdfmake-0.1.32/pdfmake.js"></script>
+    <script type="text/javascript" src="pdfmake-0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="DataTables-1.10.16/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/dataTables.buttons.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.colVis.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.flash.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.html5.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.print.js"></script>
+    <script type="text/javascript" src="Select-1.2.5/js/dataTables.select.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -249,7 +263,8 @@ while($JAN = mysql_fetch_array($stmtJAN)){
     $month = $JAN['MONTH'];
     $year = $JAN['YEAR'];
     $MO = date('F',strtotime($month));
-    $docu = $year .''. $MO;
+    $time = date('H:i:s');
+    $docu = $year .'-'. $MO .' '.$time;
 ?>
 <tr>
 	 <td class="text-center"><b><?php echo $MO; ?></b></td>
@@ -261,19 +276,43 @@ while($JAN = mysql_fetch_array($stmtJAN)){
 ?>
 <script type="text/javascript" charset="utf-8">
         function loadthis(tr){
-            $('.example-'+tr).dataTable( {
-                "bRetrieve": true, 
-                "bProcessing": true,
-                "bDestroy": true, 
-                "bPaginate": true, 
-                "bAutoWidth": false,
-                "bFilter": true,
-                "bInfo": true, 
-                "aaSorting": [[0, 'asc']], 
-                "bJQueryUI": false
+            $('.example-'+tr).DataTable( {
+                dom: 'lfrtipB',
+                buttons: [
+                    'pdf',
+                    {
+                extend: 'print',
+                text: 'Print',
+                header: true,
+                filename: '<?php echo $docu; ?>',
+                title: 'Patient report of <?php echo $JAN['YEAR'];?>',
+                customize: function ( win ) {
+                    $(win.document.body)
+                        .css( 'font-size', '10pt', '')
+                        .prepend(
+                            '<h4>Printed by: <?php echo $UserN; ?></h2>'
+                        );
+                        $(win.document.body).find( 'table' )
+                        .addClass( 'compact' )
+                        .css( 'font-size', 'inherit' );
+                }
+            },
+            {
+                extend: 'excel',
+                text: 'Excel',
+                exportOptions: {
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            }
+                ],
+                bRetrieve: true,
+                bDestroy: true,  
+                aaSorting: [[0, 'asc']]  
               } );
         }
-      </script>		
+</script>		
 </td>
 </tr>
 <?php
@@ -322,6 +361,21 @@ while($JAN = mysql_fetch_array($stmtJAN)){
     <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
     <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <script type="text/javascript" src="Bootstrap-4-4.0.0/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="DataTables-1.10.16/css/jquery.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="Buttons-1.5.1/css/buttons.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="Select-1.2.5/css/select.dataTables.css"/>
+    <script type="text/javascript" src="JSZip-2.5.0/jszip.js"></script>
+    <script type="text/javascript" src="pdfmake-0.1.32/pdfmake.js"></script>
+    <script type="text/javascript" src="pdfmake-0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="DataTables-1.10.16/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/dataTables.buttons.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.colVis.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.flash.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.html5.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.print.js"></script>
+    <script type="text/javascript" src="Select-1.2.5/js/dataTables.select.js"></script>
+
 <?php
 include 'lib/User-Accesslvl.php';
 ?>
@@ -349,11 +403,7 @@ include 'lib/User-Accesslvl.php';
 			myWindow = window.open("reports/filter_quarter_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
 		}
 	</script>
-    <script>
-    function openPrintDialogue(){
-        
-    }
-    </script>
+    
 		
   </body>
 </html>

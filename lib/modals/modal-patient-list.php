@@ -7,7 +7,7 @@
                           <h4 class="modal-title" id="myModalLabel-<<?php echo $JAN['YEAR']; echo $MO; ?>">Patients of <?php echo $MO; echo " "; echo $JAN['YEAR'];?></h4>
                       </div>
                       <div class="modal-body">
-					  <div class="adv-table" id="printArea">
+					  <div class="adv-table">
 								<table  class="display table table-bordered table-striped example-<?php echo $JAN['YEAR']; ?>">
 								  <thead>
 								  <tr>
@@ -37,10 +37,7 @@ while($result = mysql_fetch_array($stmt)){
 							</div><br><br>
 					</div>
                       <div class="modal-footer">
-                        <span id="Error_Message" style="float: left; font-weight: bold;" class="text-danger"></span>
-                        <span id="Success_Message" style="float: left; font-weight: bold;" class="text-success"></span>
-          					<a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Cancel</a>
-          					<a  class="btn btn-shadow btn-success"><i class="icon-check">&nbsp;</i>Save</a>
+          					<a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Back</a>
                       </div>
                   </div>
               </div>
