@@ -396,6 +396,9 @@ include 'lib/User-Accesslvl.php';
 		function oGender() {
 			myWindow = window.open("reports/filter_gender_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
 		}
+		function oAge() {
+			myWindow = window.open("reports/filter_age_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
+		}
 		function oType() {
 			myWindow = window.open("reports/filter_type_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
 		}
