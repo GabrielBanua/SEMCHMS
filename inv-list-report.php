@@ -206,17 +206,24 @@ else if($Position == "Volunter"){
                           </table>
                           <div class="row">
                           <?php
-                            $total = "SELECT COUNT(INV_QTY) AS Total_Tabs FROM `inventory` , `medicine` WHERE medicine.MEDICINE_ID = inventory.MEDICINE_ID GROUP BY MEDICINE_DFORM";
-                            $tmeds = mysql_fetch_array($total);
+                            $totaltabs = "SELECT COUNT(INV_QTY) AS Total_Tabs FROM `inventory` , `medicine` ON medicine.MEDICINE_ID = inventory.MEDICINE_ID where MEDICINE_DFORM = 'tablet'";
+                            $tmeds = mysql_fetch_array($totaltabs);
+
+                            $totalsyrup = "SELECT COUNT(INV_QTY) AS Total_syr FROM `inventory` , `medicine` on medicine.MEDICINE_ID = inventory.MEDICINE_ID WHERE MEDICINE_DFORM ='Syrup' ";
+                            $tmedsyrup = mysql_fetch_array($totalsyrup);
+                            while($rw = mysql_fetch_array($totalsyrup,$tmedsyrup)){
                             ?>
                               <div class="col-lg-4 invoice-block pull-right">
                                   <ul class="unstyled amounts">
-                                      <li><strong>Tablets:</strong><?php echo $tmeds['Total_Tabs']?></li>
-                                      <li><strong>Syrup :</strong> 1</li>
+                                      <li><strong>Tablets:</strong>11<?php echo $tmeds['Total_Tabs']; ?></li>
+                                      <li><strong>Syrup :</strong> 1<?php echo $tmedsyrup['tmedsyrup']; ?></li>
                                       <li><strong>Inventory Total:</strong> 12</li>
                                      </ul>
                               </div>
                           </div>
+                          <?php
+                                }
+                              ?>
                       </div>
                     </section>
                   </div>

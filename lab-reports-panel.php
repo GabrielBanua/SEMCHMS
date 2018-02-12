@@ -164,14 +164,6 @@ else if($Position == "Volunter"){
 											</a>
 									  </section>
 								  </div>
-								  <div class="col-lg-3 col-sm-6">
-									  <section class="panel">
-											<a class="btn btn-shadow btn-primary btn-lg" style="width:200px" href="patient-chart-report.php">
-												<i class="icon-bar-chart icon-3x"></i><br>
-												Patient<br>Population
-											</a>
-									  </section>
-								  </div>
 							  </div>
 						</div>
                     </section>
