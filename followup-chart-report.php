@@ -165,6 +165,8 @@ require 'lib/session.php';
 								  <div class="panel-body">
 									  <div class="tab-content">
 										  <div id="graph" class="tab-pane active">
+												<div class="btn-group pull-left">
+												</div>
 												<div class="col-lg-2 pull-right">
 													<select id="pyear" class="form-control">
 														<option hidden value="<?php 
@@ -194,7 +196,7 @@ require 'lib/session.php';
 														?>
 													</select>
 												</div><br><br>
-											  <div id="patient_appointment" style="width: 100%; height: 400px"></div>
+											  <div id="patient_followup" style="width: 100%; height: 400px"></div>
 										  </div>
 										  <div id="tabular" class="tab-pane">
 												<table class="table table-striped table-advance table-hover">
@@ -323,12 +325,12 @@ include 'lib/User-Accesslvl.php';
 			$(document).ready(function(){
 				$("#pyear").on('change', function(){
 					var year=$(this).val();
-					window.location = 'sched-chart-report.php?year='+year;
+					window.location = 'followup-chart-report.php?year='+year;
 				});
 			});
 		</script>
     <script src = "js/jquery.canvasjs.min.js"></script>
-	<?php require 'reports/charts/patient_appointment.php'?>
-
+	<?php require 'reports/charts/patient_followup.php'?>
+		
   </body>
 </html>
