@@ -299,7 +299,7 @@ include 'lib/User-Accesslvl.php';
 			$(document).ready(function(){
 				$("#pyear").on('change', function(){
 					var year=$(this).val();
-					window.location = 'lab-total-reports.php?year='+year;
+					window.location = 'lab-chart-reports.php?year='+year;
 				});
 			});
 		</script>

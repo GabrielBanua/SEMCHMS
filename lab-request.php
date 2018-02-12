@@ -5,6 +5,20 @@ require 'lib/Db.config.php';
 
     $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM ((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID)");
     $stmt->execute();
+
+if(isset($_POST['lab_filter'])){
+        $filtering = $_POST['lab_filter'];
+        if($filtering == 'Pending'){
+            $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM ((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID) WHERE STATUS = 'Pending'");
+             $stmt->execute();
+        }else if($filtering == 'Completed'){
+            $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM ((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID) WHERE STATUS = 'Completed'");
+         $stmt->execute();
+        }
+}else{
+    $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM ((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID)");
+    $stmt->execute();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -162,6 +176,17 @@ require 'lib/Db.config.php';
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
+                                <div class="col-lg-2 pull-right">
+                                        <form id="Filtered" action="lab-request.php" method="POST">
+                                        <select id="lab_filter" name="lab_filter" class="form-control" onchange="this.form.submit()">
+                                            <option hidden>Select</option>
+                                            <option value="Pending" <?php
+                                            if ($filtering == "Pending") { echo " selected"; }?>>Pending</option>
+                                            <option value="Completed" <?php
+                                            if ($filtering == "Completed") { echo " selected"; }?>>Completed</option>
+                                        </select>
+                                        </form>
+                                    </div>
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
@@ -169,6 +194,7 @@ require 'lib/Db.config.php';
                                           <th>Date Requested</th>
                                           <th>Patient Fullname</th>
                                           <th>Test Requested</th>
+                                          <th>Status</th>
                                           <th class="hidden-phone">Action</th>
                                       </tr>
                                       </thead>
@@ -181,6 +207,7 @@ require 'lib/Db.config.php';
                                           <td><?php echo $LBR['LBR_DATE'];?></td>
                                           <td><?php echo $LBR['Fullname'];?></td>
                                           <td><?php echo $LBR['LBR_TYPE'];?></td>
+                                          <td><?php echo $LBR['STATUS'];?></td>
                                           <td class="center hidden-phone">
 											<a class="btn btn-shadow btn-primary btn-xs"  href="labtest.php?LBR_ID=<?php echo $LBR['LBR_ID'];?>"><i class="icon-share"></i> <b>Proceed</b></a>
 										  </td>
