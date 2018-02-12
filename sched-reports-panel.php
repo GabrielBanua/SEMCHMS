@@ -158,17 +158,17 @@ else if($Position == "Volunter"){
 								<div class="row state-overview">
 								  <div class="col-lg-3 col-sm-6">
 									  <section class="panel">
-											<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="sched-chart-report.php">
+											<a class="btn btn-shadow btn-danger btn-lg" style="width:200px" href="sched-chart-report.php">
 												<i class="icon-time icon-3x"></i><br>
-												Appointment<br>Reports
+												Patients<br>Appointment
 											</a>
 									  </section>
 								  </div>
 								  <div class="col-lg-3 col-sm-6">
 									  <section class="panel">
-											<a class="btn btn-shadow btn-primary btn-lg" style="width:200px" href="patient-chart-report.php">
-												<i class="icon-bar-chart icon-3x"></i><br>
-												Patient<br>Population
+											<a class="btn btn-shadow btn-warning btn-lg" style="width:200px" href="followup-chart-report.php">
+												<i class="icon-calendar icon-3x"></i><br>
+												Patient with<br>Check-up
 											</a>
 									  </section>
 								  </div>
