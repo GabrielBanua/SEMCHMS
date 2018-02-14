@@ -1,6 +1,6 @@
 <!-- Modal Medical Records-->
 <div aria-hidden="true" aria-labelledby="myModalLabel-<?php echo $JAN['YEAR']; echo $MO; ?>" role="dialog" tabindex="-1" id="patientlist-<?php echo $JAN['YEAR']; echo $MO; ?>" class="modal fade">
-              <div class="modal-dialog">
+              <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                       <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -15,6 +15,7 @@
 									  <th style="text-align:center;">Full Name</th>
 									  <th style="text-align:center;">Gender</th>
 									  <th style="text-align:center;">Type</th>
+									  <th style="text-align:center;">Contact No.</th>
 								  </tr>
 								  </thead>
 								  <tbody>
@@ -28,6 +29,7 @@ while($result = mysql_fetch_array($stmt)){
 									<td><?php echo $result['Fullname']; ?></td>
 									<td><?php echo $result['P_GNDR']; ?></td>
 									<td><?php echo $result['P_TYPE']; ?></td>
+									<td><?php echo $result['P_CN']; ?></td>
 									</tr>
 <?php
 }

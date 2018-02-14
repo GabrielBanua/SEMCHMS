@@ -3,9 +3,51 @@ require 'lib/session.php';
 require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
 date_default_timezone_set('Asia/Manila');
-$current_date = date('Y-m-d');
-  $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
-  $stmt->execute();
+
+if(isset($_POST['Inv_filter'])){
+    $filtering = $_POST['Inv_filter'];
+    $DateToday = date('Y-m-d');
+    $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
+    $stmt->execute();
+
+    global $Qty;
+    global $QtyInitial;
+    global $QtyStatus;
+    while($check = $stmt->fetch()){
+        $Qty = $check['INV_QTY_HIST'] / '2'; 
+        $QtyInitial = $Qty / '2'; 
+        $QtyStatus = $Qty + $QtyInitial; 
+    }
+    
+        if($filtering == 'Expired'){
+            $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND (inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday')");
+            $stmt->execute();
+        }
+        else if($filtering == 'Re-order'){
+                $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_QTY < '50'");
+                $stmt->execute();
+        }
+        else if($filtering == 'Full'){
+                $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_QTY > '$QtyStatus'");
+                $stmt->execute();
+        }
+        else if($filtering == 'Average'){
+                $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND(inventory.INV_QTY >= '$Qty' AND inventory.INV_QTY <= '$QtyStatus')");
+                $stmt->execute();
+        }
+        else if($filtering == 'Low'){
+                $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND(inventory.INV_QTY < '$Qty' AND inventory.INV_QTY > '50')");
+                $stmt->execute();
+        }
+        else if($filtering == 'All'){
+            $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
+            $stmt->execute();
+    }
+        
+}else{
+    $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
+    $stmt->execute(); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -192,6 +234,23 @@ $current_date = date('Y-m-d');
 										<?php
 										include 'lib/modals/Add-inventory-modal.php';
 										?>
+                                        <div class="col-lg-2 pull-right">
+                                        <form id="Filtered" action="view-inventory.php" method="POST">
+                                        <select id="Inv_filter" name="Inv_filter" class="form-control" onchange="this.form.submit()">
+                                            <option>All</option>
+                                            <option value="Expired" <?php
+                                            if ($filtering == "Expired") { echo " selected"; }?>>Expired</option>
+                                            <option value="Low" <?php
+                                            if ($filtering == "Low") { echo " selected"; }?>>Low</option>
+                                            <option value="Average" <?php
+                                            if ($filtering == "Average") { echo " selected"; }?>>Average</option>
+                                            <option value="Full" <?php
+                                            if ($filtering == "Full") { echo " selected"; }?>>Full</option>
+                                            <option value="Re-order" <?php
+                                            if ($filtering == "Re-order") { echo " selected"; }?>>Re-order</option>
+                                        </select>
+                                        </form>
+                                    </div>
 										<table  class="table table-striped table-advance table-hover" id="example">
 											<thead>
 												<tr>
@@ -223,10 +282,10 @@ $current_date = date('Y-m-d');
 													<td><?php echo $row['INV_EXPD'] ?></td>
 													<td style="text-align:center;"><?php echo $row['INV_QTY'];echo " | "; echo $row['INV_QTY_HIST']; ?></td>
 													<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; 
-													if($row['INV_EXPD'] <= $current_date || $row['INV_EXPD'] == $current_date){echo "<span class='label label-info label-mini'>Expired</span>";}else{
-                                                        if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}
-                                                        else if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty && $row['INV_QTY'] > $QtyInitial){ echo "<span class='label label-warning label-mini'>Low</span>";
-                                                        }else if($row['INV_QTY'] < $QtyInitial){ echo "<span class='label label-danger label-mini'>Re-order</span>";}} ?></td>
+													if($row['INV_EXPD'] <= $DateToday || $row['INV_EXPD'] == $DateToday){echo "<span class='label label-info label-mini'>Expired</span>";}else{
+                                                        if($row['INV_QTY'] < 50){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}
+                                                        else if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty && $row['INV_QTY'] > 50){ echo "<span class='label label-warning label-mini'>Low</span>";
+                                                        }} ?></td>
 													<td style="align:center;" class="hidden-phone">
 														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" onclick="RetrieveInventory(<?php echo $row['INV_ID'] ?>)" data-target="#EditInv-<?php echo $row['INV_ID'] ?>"><i class="icon-pencil"></i></a>
 														<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><i class="icon-minus"></i></a>

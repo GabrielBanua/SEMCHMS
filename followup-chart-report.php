@@ -157,7 +157,7 @@ require 'lib/session.php';
 										  <li class="active">
 											  <a data-toggle="tab" href="#graph"><i class="icon-bar-chart"></i><b> Graphical Form</b></a>
 										  </li>
-										  <li class="">
+										  <li class="" style="display: none;">
 											  <a data-toggle="tab" href="#tabular"><i class="icon-table"></i><b> Tabular Form</b></a>
 										  </li>
 									  </ul>

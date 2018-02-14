@@ -44,7 +44,7 @@ $RD = mysql_fetch_array($RQ_DOC);
   <body onload="loadMTandPT()">
   <div class="preloader-wrapper">
     <div class="preloader">
-        <img src="gif/flask.svg" alt="SEMHCMS">
+        <img src="gif/Ellipsis1.gif" alt="SEMHCMS">
         <div style="position: absolute; top: 110%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
           <p style="font-size: 15px; font-weight: bold;">Please Wait</p>
         </div>

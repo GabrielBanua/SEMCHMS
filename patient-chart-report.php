@@ -264,7 +264,7 @@ while($JAN = mysql_fetch_array($stmtJAN)){
     $year = $JAN['YEAR'];
     $MO = date('F',strtotime($month));
     $time = date('H:i:s');
-    $docu = $year .'-'. $MO .' '.$time;
+    $docu = $year .'-'. $MO;
 ?>
 <tr>
 	 <td class="text-center"><b><?php echo $MO; ?></b></td>
@@ -275,40 +275,46 @@ while($JAN = mysql_fetch_array($stmtJAN)){
     include 'lib/modals/modal-patient-list.php';
 ?>
 <script type="text/javascript" charset="utf-8">
+
         function loadthis(tr){
-            $('.example-'+tr).DataTable( {
+            var img = '<img src="semlogo.png" style="display: block; margin: 0 auto; width: 100; height: 100;">';
+            $('.example-'+tr).dataTable( {
                 dom: 'lfrtipB',
                 buttons: [
-                    'pdf',
                     {
                 extend: 'print',
                 text: 'Print',
-                header: true,
-                filename: '<?php echo $docu; ?>',
-                title: 'Patient report of <?php echo $JAN['YEAR'];?>',
+                autoPrint: true,
+                title: '',
+                exportOptions: {
+                    stripHtml: false
+                },
                 customize: function ( win ) {
                     $(win.document.body)
-                        .css( 'font-size', '10pt', '')
+                   
+                        .css( 'font-size', '12pt')
                         .prepend(
-                            '<h4>Printed by: <?php echo $UserN; ?></h2>'
+                            '<h4 style="text-align: center;">Patient Report for <?php echo $MO; ?> <?php echo $JAN['YEAR'];?></h4>'
+                        )
+                        .prepend(
+                            '<h3 style="text-align: center;">Saint Ezekiel Moreno<br>Health Center</h3>'
+                        )
+                        .prepend(img)
+                        .append(
+                            '<br><br><p style="float: right; text-align: center;"><u><?php echo $Fullname; ?></u><br>Printed by</p>'
                         );
-                        $(win.document.body).find( 'table' )
-                        .addClass( 'compact' )
-                        .css( 'font-size', 'inherit' );
-                }
+                }     
             },
             {
                 extend: 'excel',
-                text: 'Excel',
-                exportOptions: {
-                    modifier: {
-                        page: 'current'
-                    }
-                }
+                text: 'Excel'
+                
             }
                 ],
                 bRetrieve: true,
-                bDestroy: true,  
+                bDestroy: true,
+                searchDelay: 5,
+                stateSave: true,
                 aaSorting: [[0, 'asc']]  
               } );
         }

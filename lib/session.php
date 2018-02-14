@@ -11,9 +11,11 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
     exit;
 }
 $ID = $_SESSION['user_id'];
-$sql = "SELECT * FROM users where User_id = $ID";
+$sql = "SELECT *, CONCAT(Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users where User_id = $ID";
 $result = mysql_query($sql);
 $row = mysql_fetch_array($result);
+
+$Fullname = $row['Fullname'];
 $UserN = $row['Username'];
 $Fname = $row['Firstname'];
 $Lname = $row['Lastname'];
