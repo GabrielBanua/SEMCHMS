@@ -1,18 +1,16 @@
 <?php
 require 'lib/session.php';
 
-
-$query = "SELECT *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM ((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) 
-INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID) Where LBR_ID = '$LAB_R_ID'"; 
-
+if(isset($_POST['tyear'])){
+    $yr = $_POST['tyear'];
+$query = "SELECT *, COUNT(CASE WHEN LBR_TYPE = 'Fecalysis' THEN 1 END) AS TOTALFREQ, COUNT(CASE WHEN LBR_TYPE = 'Blood Chemistry' THEN 1 END) AS TOTALBREQ, COUNT(CASE WHEN LBR_TYPE = 'Hematology' THEN 1 END) AS TOTALHREQ, COUNT(CASE WHEN LBR_TYPE = 'Urinalysis' THEN 1 END) AS TOTALUREQ FROM lab_request WHERE STATUS = 'Completed' AND YEAR = '$yr' GROUP BY MONTH ORDER BY LBR_DATE ASC"; 
 $labr = mysql_query($query);
-
-$labrquery = mysql_fetch_array($labr);
-
- ?>
-
-
-
+}else{
+    $yr = date('Y');
+    $query = "SELECT *, COUNT(CASE WHEN LBR_TYPE = 'Fecalysis' THEN 1 END) AS TOTALFREQ, COUNT(CASE WHEN LBR_TYPE = 'Blood Chemistry' THEN 1 END) AS TOTALBREQ, COUNT(CASE WHEN LBR_TYPE = 'Hematology' THEN 1 END) AS TOTALHREQ, COUNT(CASE WHEN LBR_TYPE = 'Urinalysis' THEN 1 END) AS TOTALUREQ FROM lab_request WHERE STATUS = 'Completed' AND YEAR = '$yr' GROUP BY MONTH ORDER BY LBR_DATE ASC"; 
+    $labr = mysql_query($query);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -220,39 +218,49 @@ $labrquery = mysql_fetch_array($labr);
 										  </div>
 										  <div id="tabular" class="tab-pane">
 												<div class="col-lg-2 pull-right">
-													<select class="form-control">
-														<option hidden> Select Year</option>
-														<option>2015</option>
-														<option>2016</option>
-														<option>2017</option>
-														<option>2018</option>
-														<option>2019</option>
-														<option>2020</option>
-														<option>2021</option>
-														<option>2022</option>
+                                                <form action="" method="POST">
+													<select id="tyear" name="tyear" class="form-control" onchange="this.form.submit()">
+														<option hidden>Choose</option>
+														<?php
+														for($y=2000; $y<=2025; $y++){
+														?>
+														<option value="<?php echo $y ?>"<?php if($yr == $y){ echo " selected";}?>><?php echo $y; ?></option>
+														<?php
+														}
+														?>
 													</select>
+                                                    </form>
 												</div>
 												<table class="table table-striped table-advance table-hover">
 												  <thead>
 												  <tr>
-													  <th class="text-center"><i class="icon-calendar icon-2x"></i><br> Name</th>
-													  <th class="text-center"><i class="icon-group icon-2x"></i><br> Laboratory Test</th>
+													  <th class="text-center"><i class="icon-calendar icon-2x"></i><br> Month</th>
+													  <th class="text-center"><i class="icon-group icon-2x"></i><br> Fecalysis Test</th>
+                                                      <th class="text-center"><i class="icon-group icon-2x"></i><br> Blood Chemistry Test</th>
+                                                      <th class="text-center"><i class="icon-group icon-2x"></i><br> Hematology Test</th>
+                                                      <th class="text-center"><i class="icon-group icon-2x"></i><br> Urinalysis Test</th>
 													  <th class="text-center"><i class="icon-wrench icon-2x"></i><br> Action</th>
 												  </tr>
 												  </thead>
 												  <tbody>
-												  <?php
-                                     			 while($labrequest = mysql_fetch_array($labrquery)) {
-                                     				 ?>
+												<?php
+                                     			 while($labrequest = mysql_fetch_array($labr)) {
+                                                    $month = $labrequest['MONTH'];
+                                                    $year = $labrequest['YEAR'];
+                                                    $MO = date('F',strtotime($month));
+                                     			?>
 												  <tr>
-													  <td class="text-center"><b>d<?php echo $labrequest['LAB_ID'];?></b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11<?php echo $labrequest['LBR_TYPE']; ?></span></td>
+													  <td class="text-center"><b><?php echo $MO;?></b></td>
+													  <td class="text-center"><span class="label label-info label-mini"><?php echo $labrequest['TOTALFREQ']; ?></span></td>
+                                                      <td class="text-center"><span class="label label-info label-mini"><?php echo $labrequest['TOTALBREQ']; ?></span></td>
+                                                      <td class="text-center"><span class="label label-info label-mini"><?php echo $labrequest['TOTALHREQ']; ?></span></td>
+                                                      <td class="text-center"><span class="label label-info label-mini"><?php echo $labrequest['TOTALUREQ']; ?></span></td>
 													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
 												  </tr>
 												  </tbody>
-												  <?php
+												<?php
 												  }
-												  ?>
+												?>
 											  </table>
 											 
 										  </div>

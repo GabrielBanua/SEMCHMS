@@ -277,7 +277,6 @@ while($JAN = mysql_fetch_array($stmtJAN)){
 <script type="text/javascript" charset="utf-8">
 
         function loadthis(tr){
-            var img = '<img src="semlogo.png" style="display: block; margin: 0 auto; width: 100; height: 100;">';
             $('.example-'+tr).dataTable( {
                 dom: 'lfrtipB',
                 buttons: [
@@ -299,7 +298,6 @@ while($JAN = mysql_fetch_array($stmtJAN)){
                         .prepend(
                             '<h3 style="text-align: center;">Saint Ezekiel Moreno<br>Health Center</h3>'
                         )
-                        .prepend(img)
                         .append(
                             '<br><br><p style="float: right; text-align: center;"><u><?php echo $Fullname; ?></u><br>Printed by</p>'
                         );
@@ -313,7 +311,7 @@ while($JAN = mysql_fetch_array($stmtJAN)){
                 ],
                 bRetrieve: true,
                 bDestroy: true,
-                searchDelay: 5,
+                searchDelay: 1,
                 stateSave: true,
                 aaSorting: [[0, 'asc']]  
               } );

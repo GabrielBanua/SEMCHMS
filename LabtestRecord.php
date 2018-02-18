@@ -276,7 +276,7 @@ else if($LAB_TYPE == 'Hematology'){
 									  <header class="panel-heading text-center">
 										  <u><b>Blood Chemistry</b></u>
 									  </header>
-									  <table class="table table-bordered">
+									  <table class="table table-bordered" id="bloodTable">
 										  <thead>
 										  <tr>
 											  <th class="text-center">Examination:</th>
@@ -411,7 +411,7 @@ else if($LAB_TYPE == 'Hematology'){
 									  <header class="panel-heading text-center">
 										  <u><b>Fecalysis</b></u>
 									  </header>
-									  <table class="table table-bordered" id="printTable">
+									  <table class="table table-bordered" id="FecalysisTable">
 										  <thead>
 										  <tr>
 											  <th class="text-center" colspan="2">Microscopic Examination:</th>
@@ -509,7 +509,6 @@ else if($LAB_TYPE == 'Hematology'){
 									  	<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Error_Message_FC" class="text-danger"></span>
                         				<span style="float: left; font-weight: bold; margin-top: 10px; margin-right: 10px;" id="Success_Message_FC" class="text-success"></span>
 										<a class="btn btn-shadow btn-success" <?php if($Position == 'Doctor'){ echo "style='display: none;'";}?> onclick="UpdateFecalysis(<?php echo $LAB_R_ID; ?>,<?php echo $LAB_REC['FECAL_ID'] ?>)"><i class="icon-save"></i> Update</a>
-										<a class="btn btn-shadow btn-success" onclick="printData()"><i class="icon-save"></i> Print</a>
 									  </div>
 									</div>
 							  </div>
@@ -520,7 +519,7 @@ else if($LAB_TYPE == 'Hematology'){
 									  <header class="panel-heading text-center">
 										  <u><b>Hematology</b></u>
 									  </header>
-									  <table class="table table-bordered">
+									  <table class="table table-bordered" id="HematologyTable">
 										  <thead>
 										  <tr>
 											  <th>CBC:</th>
@@ -611,7 +610,7 @@ else if($LAB_TYPE == 'Hematology'){
 									  <header class="panel-heading text-center">
 										  <u><b>Urinalysis</b></u>
 									  </header>
-									  <table class="table table-bordered">
+									  <table class="table table-bordered" id="UrinalysisTable">
 										  <thead>
 										  <tr>
 											  <th class="text-center" colspan="2">PHYSICAL PROPERTIES:</th>
@@ -1074,13 +1073,13 @@ include 'lib/User-Accesslvl.php';
 	</script>
 	<script>
 	function printData()
-{
-   var divToPrint=document.getElementById("printTable");
-   newWin= window.open();
-   newWin.document.write(divToPrint.innerHTML);
-   newWin.print();
-   newWin.close();
-}
+		{
+		var divToPrint=document.getElementById("printTable");
+		newWin= window.open();
+		newWin.document.write(divToPrint.innerHTML);
+		newWin.print();
+		newWin.close();
+		}
 	</script>
   </body>
 </html>
