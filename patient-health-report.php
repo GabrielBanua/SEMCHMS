@@ -150,18 +150,7 @@ require 'lib/session.php';
                               Patient Reports Panel
                           </header>
 							<div class="panel-body">
-								<section class="panel">
-								  <header class="panel-heading tab-bg-dark-navy-blue ">
-									  <ul class="nav nav-tabs">
-										  <li class="active">
-											  <a data-toggle="tab" href="#graph"><i class="icon-bar-chart"></i><b> Graphical Form</b></a>
-										  </li>
-									  </ul>
-								  </header>
-								  <div class="panel-body">
-									  <div class="tab-content">
-										  <div id="graph" class="tab-pane active">
-												<div class="col-lg-2 pull-right">
+								<div class="col-lg-2 pull-right">
 													<select id="pyear" class="form-control">
 														<option hidden value="<?php 
 															if(isset($_GET['year'])){
@@ -191,15 +180,6 @@ require 'lib/session.php';
 													</select>
 												</div><br><br>
 											  <div id="health_issue" style="width: 100%; height: 400px"></div>
-										  </div>
-<!--Tabular form-->
-										  </div>
-										  <?php
-													include 'lib/modals/modal-patient-list.php';
-												?>
-									  </div>
-								  </div>
-							  </section>
 							</div>
                     </section>
                   </div>
