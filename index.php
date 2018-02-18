@@ -198,166 +198,47 @@ require 'lib/chartSQL.php';
                     </div>
                 </div>
                 <!--state overview end-->
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!--custom chart start-->
-                        <div class="border-head">
-                            <h3>Number of Patients Graph 2018</h3>
-                        </div>
-                        <div class="custom-bar-chart">
-                            <ul class="y-axis">
-                                <li><span>100</span></li>
-                                <li><span>80</span></li>
-                                <li><span>60</span></li>
-                                <li><span>40</span></li>
-                                <li><span>20</span></li>
-                                <li><span>0</span></li>
-                            </ul>
-                            <div class="bar">
-                                <div class="title">JAN</div>
-                                <div class="value tooltips" data-original-title="90%" data-toggle="tooltip" data-placement="top">90%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">FEB</div>
-                                <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">MAR</div>
-                                <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">APR</div>
-                                <div class="value tooltips" data-original-title="55%" data-toggle="tooltip" data-placement="top">55%</div>
-                            </div>
-                            <div class="bar">
-                                <div class="title">MAY</div>
-                                <div class="value tooltips" data-original-title="20%" data-toggle="tooltip" data-placement="top">20%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">JUN</div>
-                                <div class="value tooltips" data-original-title="39%" data-toggle="tooltip" data-placement="top">39%</div>
-                            </div>
-                            <div class="bar">
-                                <div class="title">JUL</div>
-                                <div class="value tooltips" data-original-title="75%" data-toggle="tooltip" data-placement="top">75%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">AUG</div>
-                                <div class="value tooltips" data-original-title="45%" data-toggle="tooltip" data-placement="top">45%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">SEP</div>
-                                <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">OCT</div>
-                                <div class="value tooltips" data-original-title="42%" data-toggle="tooltip" data-placement="top">42%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">NOV</div>
-                                <div class="value tooltips" data-original-title="60%" data-toggle="tooltip" data-placement="top">60%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">DEC</div>
-                                <div class="value tooltips" data-original-title="90%" data-toggle="tooltip" data-placement="top">90%</div>
-                            </div>
-                        </div>
-                        <!--custom chart end-->
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <!--Health Trend Issue Start-->
                         <section class="panel">
                             <div class="panel-body progress-panel">
                                 <div class="task-progress">
-                                    <h1>Health Issue Trend</h1>
+                                    <h1>Patient Population</h1>
                                     <p></p>
                                 </div>
                                 <div class="task-option">
-                                    <select class="styled">
-                                      <option>JAN</option>
-                                      <option>FEB</option>
-									  <option>MAR</option>
-									  <option>APR</option>
-									  <option>MAY</option>
-									  <option>JUN</option>
-									  <option>JUL</option>
-									  <option>AUG</option>
-									  <option>SEP</option>
-									  <option>OCT</option>
-									  <option>NOV</option>
-									  <option>DEC</option>
-                                  </select>
+                                    <select id="pyear" class="styled">
+										<option hidden value="<?php 
+											if(isset($_GET['year'])){
+												$value=$_GET['year']; 
+												echo $value;
+											}
+											else{
+												echo date('Y');
+											}
+										?>">
+										<?php 
+										if(isset($_GET['year'])){
+											$value=$_GET['year']; 
+											echo $value;
+										}
+										else{
+											echo date('Y');
+										}
+										?></option>
+										<?php
+										for($y=2012; $y<=2025; $y++){
+										?>
+										<option value="<?php echo $y ?>"><?php echo $y; ?></option>
+										<?php
+										}
+										?>
+									</select>
                                 </div>
                             </div>
-                            <table class="table table-hover personal-task">
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            Cold
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-important">75%</span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress1"></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>
-                                            Cough
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-success">43%</span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress2"></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>
-                                            Tooth ache
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-info">67%</span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress3"></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>
-                                            Lbm
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-warning">30%</span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress4"></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>
-                                            Aids
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-primary">15%</span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress5"></div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+								<div id="patient_population" style="width: 100%; height: 400px"></div>
                         </section>
-                        <!--Health Trend Issue end-->
                     </div>
                 </div>
             </section>
@@ -393,6 +274,16 @@ require 'lib/chartSQL.php';
     <script src="js/sparkline-chart.js"></script>
     <script src="js/easy-pie-chart.js"></script>
     <script src="js/count.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#pyear").on('change', function(){
+					var year=$(this).val();
+					window.location = 'index.php?year='+year;
+				});
+			});
+		</script>
+    <script src = "js/jquery.canvasjs.min.js"></script>
+	<?php require 'reports/charts/patient_population.php'?>
     <script>  
     //owl carousel
         $(document).ready(function() {
