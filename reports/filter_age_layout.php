@@ -25,7 +25,13 @@
 	</head>
 
 	<body>
-
-		<div id="patient_age" style="width: 100%; height: 400px"></div>
+		<div class="panel">
+			<div class="panel-body">
+				<div class="text-center corporate-id">
+					<img src="../img/form-header.jpg" alt="" style="height:100px">
+				</div>
+				<div id="patient_age" style="width: 100%; height: 400px"></div>
+			</div>
+		</div>
 	</body>
 </html>
