@@ -151,35 +151,35 @@ require 'lib/session.php';
                           </header>
 							<div class="panel-body">
 								<div class="col-lg-2 pull-right">
-													<select id="pyear" class="form-control">
-														<option hidden value="<?php 
-															if(isset($_GET['year'])){
-																$value=$_GET['year']; 
-																echo $value;
-															}
-															else{
-																echo date('Y');
-															}
-														?>">
-														<?php 
-														if(isset($_GET['year'])){
-															$value=$_GET['year']; 
-															echo $value;
-														}
-														else{
-															echo date('Y');
-														}
-														?></option>
-														<?php
-														for($y=2010; $y<=2025; $y++){
-														?>
-														<option value="<?php echo $y ?>"><?php echo $y; ?></option>
-														<?php
-														}
-														?>
-													</select>
-												</div><br><br>
-											  <div id="health_issue" style="width: 100%; height: 400px"></div>
+									<select id="pyear" class="form-control">
+										<option hidden value="<?php 
+											if(isset($_GET['year'])){
+												$value=$_GET['year']; 
+												echo $value;
+											}
+											else{
+												echo date('Y');
+											}
+										?>">
+										<?php 
+										if(isset($_GET['year'])){
+											$value=$_GET['year']; 
+											echo $value;
+										}
+										else{
+											echo date('Y');
+										}
+										?></option>
+										<?php
+										for($y=2010; $y<=2025; $y++){
+										?>
+										<option value="<?php echo $y ?>"><?php echo $y; ?></option>
+										<?php
+										}
+										?>
+									</select>
+								</div><br><br>
+							  <div id="health_issue" style="width: 100%; height: 400px"></div>
 							</div>
                     </section>
                   </div>

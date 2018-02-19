@@ -212,7 +212,50 @@ require 'lib/chartSQL.php';
                                 </div>
                             </div>
 								<div id="patient_population" style="width: 100%; height: 400px"></div>
-                        </section>
+                        </section>  
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col-lg-6">
+                        <!--Health Trend Issue Start-->
+                        <section class="panel">
+                            <div class="panel-body progress-panel">
+                                <div class="task-progress">
+                                    <h1>Health Trend</h1>
+                                    <p></p>
+                                </div>
+                                <div class="task-option">
+                                    
+                                </div>
+								<table class="table table-hover">
+								  <thead>
+								  <tr>
+									  <th class="text-center"><i class="icon-bar-chart icon-2x"></i><br> Rank #</th>
+									  <th class="text-center"><i class="icon-medkit icon-2x"></i><br> Ailments/Illness</th>
+								  </tr>
+								  </thead>
+								  <tbody>
+								  <tr>
+									  <td class="text-center">1</td>
+									  <td class="text-center">Cancer</td>
+								  </tr>
+								   <tr>
+									  <td class="text-center">1</td>
+									  <td class="text-center">Cancer</td>
+								  </tr>
+								   <tr>
+									  <td class="text-center">1</td>
+									  <td class="text-center">Cancer</td>
+								  </tr>
+								   <tr>
+									  <td class="text-center">1</td>
+									  <td class="text-center">Cancer</td>
+								  </tr>
+								  </tbody>
+							  </table>
+                            </div>
+								
+                        </section>  
                     </div>
                 </div>
             </section>

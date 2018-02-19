@@ -209,7 +209,7 @@ if(isset($_POST['lab_filter'])){
                                           <td><?php echo $LBR['LBR_TYPE'];?></td>
                                           <td><?php echo $LBR['STATUS'];?></td>
                                           <td class="center hidden-phone">
-											<a class="btn btn-shadow btn-primary btn-xs"  href="labtest.php?LBR_ID=<?php echo $LBR['LBR_ID'];?>"><i class="icon-share"></i> <b>Proceed</b></a>
+											<a class="btn btn-shadow btn-primary btn-xs"  href="labtest.php?LBR_ID=<?php echo $LBR['LBR_ID'];?>"><i class="icon-share-alt"></i> <b>Proceed</b></a>
 										  </td>
                                       </tr>
                                     <?php
