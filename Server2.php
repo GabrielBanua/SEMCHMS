@@ -31,20 +31,39 @@ require 'lib/Db.config.php';
 				$Up_ID = mysql_query($Last_updated_id);
 				$Updated_ID_fetch = mysql_fetch_array($Up_ID);		
 				$updated_TR_id = $Updated_ID_fetch['TRMT_ID'];
-
-				$stmt = $db->prepare("update treatment set DIAG_DTLS=?, TREATMENT=?, REMARKS=?, F_CHECKUP=?, User_id=? where MR_ID=?");
+			//sql fetch follow_up checkup value
+				$Follow_up = "SELECT * FROM followup_check_up WHERE TRT_ID = '$updated_TR_id'";
+				$FU_ID = mysql_query($Follow_up);
+				$FU_ID_FETCH = mysql_fetch_array($FU_ID);
+				$Updated_FU = $FU_ID_FETCH['TRT_ID'];
+				
+				$stmt = $db->prepare("update treatment set DIAG_DTLS=?, TREATMENT=?, REMARKS=?, User_id=? where MR_ID=?");
 						$stmt->bindParam(1,$Diagnosis);
 						$stmt->bindParam(2,$Treatment);
 						$stmt->bindParam(3,$Remarks);
-						$stmt->bindParam(4,$sqldate);
-                        $stmt->bindParam(5,$User_id);
-                        $stmt->bindParam(6,$MedicalRec_ID);
+                        $stmt->bindParam(4,$User_id);
+                        $stmt->bindParam(5,$MedicalRec_ID);
 						$stmt->execute();
+						
+				if(empty($Updated_FU) && !empty($Follow)){
+					$FCUP = $db->prepare("insert into followup_check_up values('',?,?,?,?)");
+					$FCUP->bindParam(1,$updated_TR_id);
+					$FCUP->bindParam(2,$sqldate);
+					$FCUP->bindParam(3,$Month);
+					$FCUP->bindParam(4,$Year);
+					$FCUP->execute();
+				}
+				if(!empty($Updated_FU) && !empty($Follow)){
+					$FCUP = $db->prepare("update followup_check_up set FCUP_DATE=? where TRT_ID=?");
+					$FCUP->bindParam(1,$sqldate);
+					$FCUP->bindParam(2,$updated_TR_id);
+					$FCUP->execute();
+				}
 
-						$referral_check = "SELECT * FROM referral WHERE TRMTMNT_ID = '$updated_TR_id'";
+				$referral_check = "SELECT * FROM referral WHERE TRMTMNT_ID = '$updated_TR_id'";
 						$retrive_referral = mysql_query($referral_check);
 						$count_ref = mysql_num_rows($retrive_referral);
-			
+
 				if($count_ref > 0){
 					$ref = $db->prepare("update referral set RF_DOCNAME=?, RF_CN=?, RF_ADD=? where TRMTMNT_ID=?");
 						$ref->bindParam(1,$DocName);

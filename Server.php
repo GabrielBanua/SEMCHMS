@@ -514,20 +514,28 @@ require 'lib/Db.config.php';
 				$Updated_ID_fetch = mysql_fetch_array($Up_ID);		
 				$updated_TR_id = $Updated_ID_fetch['TRMT_ID'];
 
-				$stmt = $db->prepare("update treatment set DIAG_DTLS=?, TREATMENT=?, REMARKS=?, F_CHECKUP=?, User_id=? where MR_ID=?");
-						$stmt->bindParam(6,$MedicalRec_ID);
+				$stmt = $db->prepare("update treatment set DIAG_DTLS=?, TREATMENT=?, REMARKS=?, User_id=? where MR_ID=?");
+						$stmt->bindParam(5,$MedicalRec_ID);
 						$stmt->bindParam(1,$Diagnosis);
 						$stmt->bindParam(2,$Treatment);
 						$stmt->bindParam(3,$Remarks);
-						$stmt->bindParam(4,$sqldate);
-						$stmt->bindParam(5,$User_id);
+						$stmt->bindParam(4,$User_id);
 						$stmt->execute();
 				
 				$MR = $db->prepare("Update medical_record set MR_STATUS=? where MR_ID=?");
 						$MR->bindParam(1,$Status);
 						$MR->bindParam(2,$MedicalRec_ID);
 						$MR->execute();
-				
+				if(empty($Follow)){
+					//do nothing
+				}else{
+					$FCUP = $db->prepare("insert into followup_check_up values('',?,?,?,?)");
+					$FCUP->bindParam(1,$updated_TR_id);
+					$FCUP->bindParam(2,$sqldate);
+					$FCUP->bindParam(3,$Month);
+					$FCUP->bindParam(4,$Year);
+					$FCUP->execute();
+				}
 				if(empty($DocName) || empty($DocCN) || empty($DocADD)){
 					//do nothing
 				}else{
@@ -575,7 +583,7 @@ require 'lib/Db.config.php';
 	$Treatment = '';
 	$Remarks = '';
 	$date = date("Y-m-d");
-	$sql = "INSERT INTO `treatment` (`MR_ID`, `DIAG_DTLS`, `TREATMENT`, `REMARKS`, `F_CHECKUP`, `User_id`, `MONTH`, `YEAR`) VALUES ('$ID', '$Diagnosis', '$Treatment', '$Remarks', '$date', '$Doc_id', '$Month', '$Year')";
+	$sql = "INSERT INTO `treatment` (`MR_ID`, `DIAG_DTLS`, `TREATMENT`, `REMARKS`, `User_id`, `MONTH`, `YEAR`) VALUES ('$ID', '$Diagnosis', '$Treatment', '$Remarks', '$Doc_id', '$Month', '$Year')";
  		$stmt = $db->prepare($sql);
  		$stmt->execute();
 

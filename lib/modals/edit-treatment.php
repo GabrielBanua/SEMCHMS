@@ -62,7 +62,7 @@
 			<div class="form-group">
 				<label  class="col-lg-2 control-label">Follow-Up Checkup</label>
 				<div class="col-lg-4">
-					<input type="date" id="FO_CHECKUP-<?php echo $MR['MR_ID']; ?>" value="<?php echo strftime('%Y-%m-%d', strtotime($MR['F_CHECKUP'])); ?>" class="form-control" required>
+					<input type="date" id="FO_CHECKUP-<?php echo $MR['MR_ID']; ?>" value="<?php if($MR['FCUP_DATE'] == ''){echo "placeholder='mm/dd/yy'";}else{echo strftime('%Y-%m-%d', strtotime($MR['FCUP_DATE']));} ?>" class="form-control" required>
 				</div>
 				<label  class="col-lg-2 control-label">Doctor</label>
 				<div class="col-lg-4">
@@ -74,7 +74,7 @@
 			<div class="form-group">
 				<div class="checkbox-inline pull-left">
 					<label class="control-label">
-						<input type="checkbox" name="c2-<?php echo $MR['MR_ID']; ?>" <?php if(!empty($TR['RF_DOCNAME']) || !empty($TR['RF_CN']) || !empty($TR['RF_ADD'])){echo "checked";}?> onclick="ShowRefedit('editreferral-<?php echo $MR['MR_ID']; ?>', <?php echo $MR['MR_ID']; ?>)"> Referral
+						<input type="checkbox" id="c2-<?php echo $MR['MR_ID']; ?>" name="c2-<?php echo $MR['MR_ID']; ?>" <?php if(!empty($TR['RF_DOCNAME']) || !empty($TR['RF_CN']) || !empty($TR['RF_ADD'])){echo "checked";}?> onclick="ShowRefedit('editreferral-<?php echo $MR['MR_ID']; ?>', <?php echo $MR['MR_ID']; ?>)"> Referral
 					</label>
 				</div>
 			</div><hr>

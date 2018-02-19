@@ -12,7 +12,7 @@ $sql = "SELECT *, CONCAT(patient.P_FNAME,' ', patient.P_LNAME) AS FullName FROM 
 $result = mysql_query($sql);
 $row = mysql_fetch_array($result);
 
-$medicalrecord = $db->prepare("Select * FROM (((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) WHERE patient.P_ID = $VIEW_ID");
+$medicalrecord = $db->prepare("Select * FROM ((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID) WHERE patient.P_ID = $VIEW_ID");
 $medicalrecord->execute();
 
 $lab_stmt = "SELECT *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS Fullname FROM (((((patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID) INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID) INNER JOIN lab_request ON treatment.TRMT_ID = lab_request.TRMNT_ID)INNER JOIN laboratory_record ON lab_request.LBR_ID = laboratory_record.LBR_ID) WHERE patient.P_ID = $VIEW_ID";
@@ -406,7 +406,7 @@ while($MR = $medicalrecord->fetch()){
 													  <td style="text-align: center;"><?php echo $MR['MR_BP'] ?></td>
 													  <td style="text-align: center;"><?php echo $MR['MR_WEIGHT'] ?></td>
 													  <td style="text-align: center;"><?php echo $MR['MR_TEMP'] ?></td>
-													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ echo $MR['F_CHECKUP'];} ?></td>
+													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "Awaiting";}else{ if($MR['FCUP_DATE'] == ''){echo "N/A";}else{ echo $MR['FCUP_DATE'];} } ?></td>
 													  <td style="text-align: center;"><?php if($MR['MR_STATUS'] == 'Pending'){ echo "<span class='label label-danger label-mini'>Pending</span>";}else{ echo "<span class='label label-success label-mini'>Completed</span>";} ?></td>
                                                       <td style="text-align: center;"><?php
                                                       if($MR['MR_STATUS'] == 'Pending'){ echo "<a class='btn btn-shadow btn-info btn-xs' onclick='RetrieveDoctor(";?><?php echo $MR['MR_ID']; ?><?php echo ")' data-toggle='modal' data-target='#treatment-";?><?php echo $MR['MR_ID']; ?><?php echo "'><i class='icon-share-alt'></i> Proceed</a>";}else{ echo "<a class='btn btn-shadow btn-success btn-xs' onclick='RetrieveSaveDoctor(";?><?php echo $MR['MR_ID'] ?><?php echo ")' data-toggle='modal' data-target='#edit-treatment-";?><?php echo $MR['MR_ID'] ?><?php echo "'><i class='icon-eye-open'></i> View</a>";}

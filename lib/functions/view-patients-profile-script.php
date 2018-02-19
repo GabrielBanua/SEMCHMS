@@ -125,7 +125,7 @@ function addTreatment(str){
           var RefDoc_CN = $('#Ref_Doc_CN-'+Med_RID).val();
           var RefDoc_Add = $('#Ref_Doc_Add-'+Med_RID).val();
 
-          if(Diagnosis == '' || Treatment == '' || Remarks == '' || FollowUp == ''){
+          if(Diagnosis == '' || Treatment == '' || Remarks == ''){
              $('#Error_Message-TRMT-'+Med_RID).html('Please fill all fields! &nbsp;');
           }else{
             $('#Error_Message-TRMT-'+Med_RID).html('');
@@ -155,7 +155,8 @@ function editTreatment(id){
           var RefDoc = $('#RefDoc_name-'+Update_ID).val();
           var RefDoc_CN = $('#RefDoc_CN-'+Update_ID).val();
           var RefDoc_Add = $('#RefDoc_Add-'+Update_ID).val();
-
+          var check_ref = $('#c2-'+Update_ID).val();
+          alert(check_ref);
 
           if(Diagnosis == '' || Treatment == '' || Remarks == '' || FollowUp == ''){
              $('#Error_Message-ETRMT-'+Update_ID).html('Please fill all fields! &nbsp;');

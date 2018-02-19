@@ -6,29 +6,29 @@ if(isset($_GET['year']))
 }
 
 $conn = new mysqli("localhost", "root", "", "semhcms") or die(mysqli_error());
-$qjan = $conn->query("SELECT COUNT(*) as total FROM `treatment` WHERE `month` = 'Jan' && `year` = '$year'") or die(mysqli_error());
+$qjan = $conn->query("SELECT patient.P_ID, followup_check_up.MONTH, CASE WHEN followup_check_up.MONTH IS NOT NULL AND followup_check_up.YEAR IS NOT NULL THEN COUNT(DISTINCT patient.P_ID) ELSE 0 END AS TOTALF FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID WHERE followup_check_up.MONTH = 'Jan' OR followup_check_up.MONTH IS NULL AND followup_check_up.YEAR = '$year' OR followup_check_up.YEAR IS NULL AND(followup_check_up.MONTH = 'Jan')") or die(mysqli_error());
 $fjan = $qjan->fetch_array();
-$qfeb = $conn->query("SELECT COUNT(*) as total FROM `treatment` WHERE `month` = 'Feb' && `year` = '$year'") or die(mysqli_error());
+$qfeb = $conn->query("SELECT patient.P_ID, followup_check_up.MONTH, CASE WHEN followup_check_up.MONTH IS NOT NULL AND followup_check_up.YEAR IS NOT NULL THEN COUNT(DISTINCT patient.P_ID) ELSE 0 END AS TOTALF FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID WHERE followup_check_up.MONTH = 'Feb' OR followup_check_up.MONTH IS NULL AND followup_check_up.YEAR = '$year' OR followup_check_up.YEAR IS NULL AND(followup_check_up.MONTH = 'Feb')") or die(mysqli_error());
 $ffeb = $qfeb->fetch_array();
-$qmar = $conn->query("SELECT COUNT(*) as total FROM `treatment` WHERE `month` = 'Mar' && `year` = '$year'") or die(mysqli_error());
+$qmar = $conn->query("SELECT patient.P_ID, followup_check_up.MONTH, CASE WHEN followup_check_up.MONTH IS NOT NULL AND followup_check_up.YEAR IS NOT NULL THEN COUNT(DISTINCT patient.P_ID) ELSE 0 END AS TOTALF FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID WHERE followup_check_up.MONTH = 'Mar' OR followup_check_up.MONTH IS NULL AND followup_check_up.YEAR = '$year' OR followup_check_up.YEAR IS NULL AND(followup_check_up.MONTH = 'Mar')") or die(mysqli_error());
 $fmar = $qmar->fetch_array();
-$qapr = $conn->query("SELECT COUNT(*) as total FROM `treatment` WHERE `month` = 'Apr' && `year` = '$year'") or die(mysqli_error());
+$qapr = $conn->query("SELECT patient.P_ID, followup_check_up.MONTH, CASE WHEN followup_check_up.MONTH IS NOT NULL AND followup_check_up.YEAR IS NOT NULL THEN COUNT(DISTINCT patient.P_ID) ELSE 0 END AS TOTALF FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID WHERE followup_check_up.MONTH = 'Apr' OR followup_check_up.MONTH IS NULL AND followup_check_up.YEAR = '$year' OR followup_check_up.YEAR IS NULL AND(followup_check_up.MONTH = 'Apr')") or die(mysqli_error());
 $fapr = $qapr->fetch_array();
-$qmay = $conn->query("SELECT COUNT(*) as total FROM `treatment` WHERE `month` = 'May' && `year` = '$year'") or die(mysqli_error());
+$qmay = $conn->query("SELECT patient.P_ID, followup_check_up.MONTH, CASE WHEN followup_check_up.MONTH IS NOT NULL AND followup_check_up.YEAR IS NOT NULL THEN COUNT(DISTINCT patient.P_ID) ELSE 0 END AS TOTALF FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID WHERE followup_check_up.MONTH = 'May' OR followup_check_up.MONTH IS NULL AND followup_check_up.YEAR = '$year' OR followup_check_up.YEAR IS NULL AND(followup_check_up.MONTH = 'May')") or die(mysqli_error());
 $fmay = $qmay->fetch_array();
-$qjun = $conn->query("SELECT COUNT(*) as total FROM `treatment` WHERE `month` = 'Jun' && `year` = '$year'") or die(mysqli_error());
+$qjun = $conn->query("SELECT patient.P_ID, followup_check_up.MONTH, CASE WHEN followup_check_up.MONTH IS NOT NULL AND followup_check_up.YEAR IS NOT NULL THEN COUNT(DISTINCT patient.P_ID) ELSE 0 END AS TOTALF FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID WHERE followup_check_up.MONTH = 'Jun' OR followup_check_up.MONTH IS NULL AND followup_check_up.YEAR = '$year' OR followup_check_up.YEAR IS NULL AND(followup_check_up.MONTH = 'Jun')") or die(mysqli_error());
 $fjun = $qjun->fetch_array();
-$qjul = $conn->query("SELECT COUNT(*) as total FROM `treatment` WHERE `month` = 'Jul' && `year` = '$year'") or die(mysqli_error());
+$qjul = $conn->query("SELECT patient.P_ID, followup_check_up.MONTH, CASE WHEN followup_check_up.MONTH IS NOT NULL AND followup_check_up.YEAR IS NOT NULL THEN COUNT(DISTINCT patient.P_ID) ELSE 0 END AS TOTALF FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID WHERE followup_check_up.MONTH = 'Jul' OR followup_check_up.MONTH IS NULL AND followup_check_up.YEAR = '$year' OR followup_check_up.YEAR IS NULL AND(followup_check_up.MONTH = 'Jul')") or die(mysqli_error());
 $fjul = $qjul->fetch_array();
-$qaug = $conn->query("SELECT COUNT(*) as total FROM `treatment` WHERE `month` = 'Aug' && `year` = '$year'") or die(mysqli_error());
+$qaug = $conn->query("SELECT patient.P_ID, followup_check_up.MONTH, CASE WHEN followup_check_up.MONTH IS NOT NULL AND followup_check_up.YEAR IS NOT NULL THEN COUNT(DISTINCT patient.P_ID) ELSE 0 END AS TOTALF FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID WHERE followup_check_up.MONTH = 'Aug' OR followup_check_up.MONTH IS NULL AND followup_check_up.YEAR = '$year' OR followup_check_up.YEAR IS NULL AND(followup_check_up.MONTH = 'Aug')") or die(mysqli_error());
 $faug = $qaug->fetch_array();
-$qsep = $conn->query("SELECT COUNT(*) as total FROM `treatment` WHERE `month` = 'Sep' && `year` = '$year'") or die(mysqli_error());
+$qsep = $conn->query("SELECT patient.P_ID, followup_check_up.MONTH, CASE WHEN followup_check_up.MONTH IS NOT NULL AND followup_check_up.YEAR IS NOT NULL THEN COUNT(DISTINCT patient.P_ID) ELSE 0 END AS TOTALF FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID WHERE followup_check_up.MONTH = 'Sep' OR followup_check_up.MONTH IS NULL AND followup_check_up.YEAR = '$year' OR followup_check_up.YEAR IS NULL AND(followup_check_up.MONTH = 'Sep')") or die(mysqli_error());
 $fsep = $qsep->fetch_array();
-$qoct = $conn->query("SELECT COUNT(*) as total FROM `treatment` WHERE `month` = 'Oct' && `year` = '$year'") or die(mysqli_error());
+$qoct = $conn->query("SELECT patient.P_ID, followup_check_up.MONTH, CASE WHEN followup_check_up.MONTH IS NOT NULL AND followup_check_up.YEAR IS NOT NULL THEN COUNT(DISTINCT patient.P_ID) ELSE 0 END AS TOTALF FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID WHERE followup_check_up.MONTH = 'Oct' OR followup_check_up.MONTH IS NULL AND followup_check_up.YEAR = '$year' OR followup_check_up.YEAR IS NULL AND(followup_check_up.MONTH = 'Oct')") or die(mysqli_error());
 $foct = $qoct->fetch_array();
-$qnov = $conn->query("SELECT COUNT(*) as total FROM `treatment` WHERE `month` = 'Nov' && `year` = '$year'") or die(mysqli_error());
+$qnov = $conn->query("SELECT patient.P_ID, followup_check_up.MONTH, CASE WHEN followup_check_up.MONTH IS NOT NULL AND followup_check_up.YEAR IS NOT NULL THEN COUNT(DISTINCT patient.P_ID) ELSE 0 END AS TOTALF FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID WHERE followup_check_up.MONTH = 'Nov' OR followup_check_up.MONTH IS NULL AND followup_check_up.YEAR = '$year' OR followup_check_up.YEAR IS NULL AND(followup_check_up.MONTH = 'Nov')") or die(mysqli_error());
 $fnov = $qnov->fetch_array();
-$qdec = $conn->query("SELECT COUNT(*) as total FROM `treatment` WHERE `month` = 'Dec' && `year` = '$year'") or die(mysqli_error());
+$qdec = $conn->query("SELECT patient.P_ID, followup_check_up.MONTH, CASE WHEN followup_check_up.MONTH IS NOT NULL AND followup_check_up.YEAR IS NOT NULL THEN COUNT(DISTINCT patient.P_ID) ELSE 0 END AS TOTALF FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID INNER JOIN treatment ON medical_record.MR_ID = treatment.MR_ID LEFT JOIN followup_check_up ON treatment.TRMT_ID = followup_check_up.TRT_ID WHERE followup_check_up.MONTH = 'Dec' OR followup_check_up.MONTH IS NULL AND followup_check_up.YEAR = '$year' OR followup_check_up.YEAR IS NULL AND(followup_check_up.MONTH = 'Dec')") or die(mysqli_error());
 $fdec = $qdec->fetch_array();
 
 
@@ -53,7 +53,7 @@ $fdec = $qdec->fetch_array();
 			},
 			subtitles:[
 				{
-					text: "Patient Follow-up- Year <?php echo $year?>"
+					text: "Patient Follow-up checkup Year <?php echo $year?>"
 				}
 			],
 			legend: {
@@ -88,21 +88,21 @@ $fdec = $qdec->fetch_array();
 					type: "column", 
 					showInLegend: true, 
 					legendText: "Total Number of Patients",
-					name: "Patients for Follow up this month",
+					name: "Patients for Follow-up checkup this month",
 					color: "#7E8F74",
 					dataPoints: [ 
-						{ label: "January", y: <?php echo $fjan['total']?> },
-						 { label: "February", y: <?php echo $ffeb['total']?> },
-						{ label: "March", y: <?php echo $fmar['total']?> },
-						 { label: "April", y: <?php echo $fapr['total']?> },
-						{ label: "May", y: <?php echo $fmay['total']?> },
-						 { label: "June", y: <?php echo $fjun['total']?> },
-						{ label: "July", y: <?php echo $fjul['total']?> },
-						 { label: "August", y: <?php echo $faug['total']?> },
-						{ label: "September", y: <?php echo $fsep['total']?> },
-						 { label: "October", y: <?php echo $foct['total']?> },
-						{ label: "November", y: <?php echo $fnov['total']?> },
-						 { label: "December", y: <?php echo $fdec['total']?> }
+						{ label: "January", y: <?php echo $fjan['TOTALF']?> },
+						 { label: "February", y: <?php echo $ffeb['TOTALF']?> },
+						{ label: "March", y: <?php echo $fmar['TOTALF']?> },
+						 { label: "April", y: <?php echo $fapr['TOTALF']?> },
+						{ label: "May", y: <?php echo $fmay['TOTALF']?> },
+						 { label: "June", y: <?php echo $fjun['TOTALF']?> },
+						{ label: "July", y: <?php echo $fjul['TOTALF']?> },
+						 { label: "August", y: <?php echo $faug['TOTALF']?> },
+						{ label: "September", y: <?php echo $fsep['TOTALF']?> },
+						 { label: "October", y: <?php echo $foct['TOTALF']?> },
+						{ label: "November", y: <?php echo $fnov['TOTALF']?> },
+						 { label: "December", y: <?php echo $fdec['TOTALF']?> }
 					] 
 				}
 			] 
