@@ -238,7 +238,7 @@ require 'lib/chartSQL.php';
                                 </div>
                             </div>
 								<div id="patient_population" style="width: 100%; height: 400px"></div>
-                        </section>
+                        </section>  
                     </div>
                 </div>
             </section>
