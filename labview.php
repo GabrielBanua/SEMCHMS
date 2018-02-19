@@ -189,7 +189,7 @@ $result = mysql_query($lab_stmt);
                                           <td class="text-center"><?php echo $LAB_REC['LBR_TYPE'];?></td>
                                           <td class="text-center"><?php echo $LAB_REC['STATUS'];?></td>
                                           <td class="text-center">
-											<a class="btn btn-primary btn-xs" href="LabtestRecord.php?LREC_ID=<?php echo $LAB_REC['LAB_ID'];?>">Proceed</a>
+											<a class="btn btn-shadow btn-primary btn-xs" href="LabtestRecord.php?LREC_ID=<?php echo $LAB_REC['LAB_ID'];?>"><i class="icon-share"></i> Proceed</a>
 										  </td>
                                       </tr>
                                         <?php
