@@ -433,7 +433,7 @@ while($MR = $medicalrecord->fetch()){
 										  <thead>
 											<tr>
 											  <th style="width: 100%; text-align: center;">Laboratory No.</th>
-                                              <th style="width: 100%; text-align: center;">Requesting doctor</th>
+                                              <th style="width: 130%; text-align: center;">Requesting doctor</th>
 											  <th style="width: 100%; text-align: center;">Date Taken</th>
 											  <th style="width: 100%; text-align: center;">Test Requested</th>
 											  <th style="width: 100%; text-align: center;" class="hidden-phone">Action</th>
@@ -454,7 +454,7 @@ while($MR = $medicalrecord->fetch()){
 											  <td style="text-align: center;"><?php echo $LAB_REC['DATE_TAKEN'];?></td>
 											  <td style="text-align: center;" class="center hidden-phone"><?php echo $LAB_REC['LBR_TYPE'];?></td>
 											  <td style="text-align: center;" class="center hidden-phone">
-												<a class="btn btn-primary btn-xs" href="LabtestRecord.php?LREC_ID=<?php echo $LAB_REC['LAB_ID'];?>">Proceed</a>
+												<a class="btn btn-shadow btn-primary btn-xs" href="LabtestRecord.php?LREC_ID=<?php echo $LAB_REC['LAB_ID'];?>"><i class="icon-share-alt"></i> Proceed</a>
 											  </td>
 											  </tr>
                                             <?php
