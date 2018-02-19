@@ -208,33 +208,7 @@ require 'lib/chartSQL.php';
                                     <p></p>
                                 </div>
                                 <div class="task-option">
-                                    <select id="pyear" class="styled">
-										<option hidden value="<?php 
-											if(isset($_GET['year'])){
-												$value=$_GET['year']; 
-												echo $value;
-											}
-											else{
-												echo date('Y');
-											}
-										?>">
-										<?php 
-										if(isset($_GET['year'])){
-											$value=$_GET['year']; 
-											echo $value;
-										}
-										else{
-											echo date('Y');
-										}
-										?></option>
-										<?php
-										for($y=2012; $y<=2025; $y++){
-										?>
-										<option value="<?php echo $y ?>"><?php echo $y; ?></option>
-										<?php
-										}
-										?>
-									</select>
+                                    
                                 </div>
                             </div>
 								<div id="patient_population" style="width: 100%; height: 400px"></div>

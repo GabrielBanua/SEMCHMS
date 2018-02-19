@@ -158,7 +158,7 @@ $a12 = $a12->fetch_array();
 					showInLegend: true, 
 					legendText: "Total Number of Patients",
 					name: "Total Patients this month",
-					color: "#7E8F74",
+					color: "#ff1e47",
 					dataPoints: [ 
 						{ label: "January", y: <?php echo $fjan['total']?> },
 						 { label: "February", y: <?php echo $ffeb['total']?> },
@@ -178,6 +178,7 @@ $a12 = $a12->fetch_array();
 					type: "spline", 
 					showInLegend: true, 
 					legendText: "Chilren",
+					color: "#ffe500",
 					name: "Children",
 					dataPoints: [ 
 						{ label: "January", y: <?php echo $c1['total']?> },
@@ -198,6 +199,7 @@ $a12 = $a12->fetch_array();
 					type: "spline", 
 					showInLegend: true, 
 					legendText: "Adult",
+					color: "#0cf7e3",
 					name: "Adult",
 					dataPoints: [ 
 						{ label: "January", y: <?php echo $a1['total']?> },

@@ -299,7 +299,7 @@ while($JAN = mysql_fetch_array($stmtJAN)){
                             '<h3 style="text-align: center;">Saint Ezekiel Moreno<br>Health Center</h3>'
                         )
                         .append(
-                            '<br><br><p style="float: right; text-align: center;"><u><?php echo $Fullname; ?></u><br>Printed by</p>'
+                            '<br><br><p style="float: right; text-align: center;"><u><?php echo $Fullname; ?></u><br>Approved by</p>'
                         );
                 }     
             },
