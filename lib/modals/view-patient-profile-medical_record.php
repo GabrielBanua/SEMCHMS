@@ -23,7 +23,7 @@
 								   <div class="form-group">
                                       <label  class="col-lg-3 control-label">Blood Pressure</label>
                                       <div class="col-lg-3">
-                                          <input type="text" id="MedRBP" class="form-control" placeholder="" data-mask="999/?999">
+                                          <input type="text" id="MedRBP" class="form-control" placeholder="" data-mask="999/99?9">
                                       </div>
                                   </div>
 								   <div class="form-group">

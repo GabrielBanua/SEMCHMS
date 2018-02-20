@@ -1,6 +1,11 @@
 <?php
 require 'lib/session.php';
 require 'lib/chartSQL.php';
+$Date = date('Y-m-d');
+$TrendMonth = date('M',strtotime($Date));
+$TrendMonthname = date('F',strtotime($Date));
+$TrendYear = date('Y',strtotime($Date));
+$Stmt = mysql_query("Select medical_record.MR_ILL, patient.P_BRGY, COUNT(medical_record.MR_ILL) AS TOTALILL FROM patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID INNER JOIN medical_record ON schedule.SCHEDULE_ID = medical_record.SCHED_ID WHERE medical_record.MONTH = '$TrendMonth' AND medical_record.YEAR = '$TrendYear' Group by medical_record.MR_ILL, patient.P_BRGY ORDER BY TOTALILL DESC LIMIT 5");
 
 ?>
 <!DOCTYPE html>
@@ -221,7 +226,7 @@ require 'lib/chartSQL.php';
                         <section class="panel">
                             <div class="panel-body progress-panel">
                                 <div class="task-progress">
-                                    <h1>Health Trend</h1>
+                                    <h1>Health Trend this <?php echo "$TrendMonthname $TrendYear"?></h1>
                                     <p></p>
                                 </div>
                                 <div class="task-option">
@@ -232,25 +237,21 @@ require 'lib/chartSQL.php';
 								  <tr>
 									  <th class="text-center"><i class="icon-bar-chart icon-2x"></i><br> Rank #</th>
 									  <th class="text-center"><i class="icon-medkit icon-2x"></i><br> Ailments/Illness</th>
+                                      <th class="text-center"><i class="icon-medkit icon-2x"></i><br> Place</th>
 								  </tr>
 								  </thead>
+<?php
+while($Trends = mysql_fetch_array($Stmt)){
+?>
 								  <tbody>
 								  <tr>
-									  <td class="text-center">1</td>
-									  <td class="text-center">Cancer</td>
+									  <td class="text-center"><strong><?php echo $Trends['TOTALILL']; ?></strong></td>
+									  <td class="text-center"><strong><?php echo $Trends['MR_ILL']; ?></strong></td>
+                                      <td class="text-center"><strong><?php echo $Trends['P_BRGY']; ?></strong></td>
 								  </tr>
-								   <tr>
-									  <td class="text-center">1</td>
-									  <td class="text-center">Cancer</td>
-								  </tr>
-								   <tr>
-									  <td class="text-center">1</td>
-									  <td class="text-center">Cancer</td>
-								  </tr>
-								   <tr>
-									  <td class="text-center">1</td>
-									  <td class="text-center">Cancer</td>
-								  </tr>
+<?php
+}
+?>
 								  </tbody>
 							  </table>
                             </div>
