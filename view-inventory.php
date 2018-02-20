@@ -7,36 +7,25 @@ date_default_timezone_set('Asia/Manila');
 if(isset($_POST['Inv_filter'])){
     $filtering = $_POST['Inv_filter'];
     $DateToday = date('Y-m-d');
-    $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
-    $stmt->execute();
-
-    global $Qty;
-    global $QtyInitial;
-    global $QtyStatus;
-    while($check = $stmt->fetch()){
-        $Qty = $check['INV_QTY_HIST'] / '2'; 
-        $QtyInitial = $Qty / '2'; 
-        $QtyStatus = $Qty + $QtyInitial; 
-    }
-    
+        
         if($filtering == 'Expired'){
             $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND (inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday')");
             $stmt->execute();
         }
         else if($filtering == 'Re-order'){
-                $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_QTY < '50'");
+                $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_QTY < '50' AND NOT(inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday')");
                 $stmt->execute();
         }
         else if($filtering == 'Full'){
-                $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_QTY > '$QtyStatus'");
+                $stmt = $db->prepare("SELECT *, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AND NOT(inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday')");
                 $stmt->execute();
         }
         else if($filtering == 'Average'){
-                $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND(inventory.INV_QTY >= '$Qty' AND inventory.INV_QTY <= '$QtyStatus')");
+                $stmt = $db->prepare("SELECT *, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY BETWEEN (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AND (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0))");
                 $stmt->execute();
         }
         else if($filtering == 'Low'){
-                $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND(inventory.INV_QTY < '$Qty' AND inventory.INV_QTY > '50')");
+                $stmt = $db->prepare("SELECT *, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY BETWEEN '50' AND (SELECT @QTY:= FORMAT((inventory.INV_QTY_HIST / 2)-1, 0))");
                 $stmt->execute();
         }
         else if($filtering == 'All'){
@@ -283,7 +272,7 @@ if(isset($_POST['Inv_filter'])){
 													<td style="text-align:center;"><?php echo $row['INV_QTY'];echo " | "; echo $row['INV_QTY_HIST']; ?></td>
 													<td class="text-center"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; 
 													if($row['INV_EXPD'] <= $DateToday || $row['INV_EXPD'] == $DateToday){echo "<span class='label label-info label-mini'>Expired</span>";}else{
-                                                        if($row['INV_QTY'] < 50){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else if($row['INV_QTY'] > $QtyStatus){ echo "<span class='label label-primary label-mini'>Full</span>";}
+                                                        if($row['INV_QTY'] < 50){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else if($row['INV_QTY'] > $QtyStatus || $row['INV_QTY'] == $row['INV_QTY_HIST']){ echo "<span class='label label-primary label-mini'>Full</span>";}
                                                         else if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty && $row['INV_QTY'] > 50){ echo "<span class='label label-warning label-mini'>Low</span>";
                                                         }} ?></td>
 													<td style="align:center;" class="hidden-phone">
