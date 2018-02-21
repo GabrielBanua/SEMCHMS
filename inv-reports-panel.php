@@ -158,15 +158,7 @@ else if($Position == "Volunter"){
 									<div class="row state-overview">
 										<div class="col-lg-3 col-sm-6">
 											<section class="panel">
-												<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="inv-list-report.php">
-													<i class="icon-truck icon-3x"></i><br>
-													List of<br>Inventory
-												</a>
-											</section>
-										</div>
-										<div class="col-lg-3 col-sm-6">
-											<section class="panel">
-												<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="medicine-status-report.php">
+												<a class="btn btn-shadow btn-danger btn-lg" style="width:200px" href="medicine-status-report.php">
 													<i class="icon-medkit icon-3x"></i><br>
 													Medicine<br>Status
 												</a>
@@ -174,7 +166,7 @@ else if($Position == "Volunter"){
 										</div>
 										<div class="col-lg-3 col-sm-6">
 											<section class="panel">
-												<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="medication-dispensation.php">
+												<a class="btn btn-shadow btn-info btn-lg" style="width:200px" href="medication-dispensation.php">
 													<i class="icon-medkit icon-3x"></i><br>
 													Medication<br>Dispensation
 												</a>
