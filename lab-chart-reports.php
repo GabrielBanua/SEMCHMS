@@ -255,7 +255,54 @@ $labr = mysql_query($query);
                                                       <td class="text-center"><span class="label label-info label-mini"><?php echo $labrequest['TOTALBREQ']; ?></span></td>
                                                       <td class="text-center"><span class="label label-info label-mini"><?php echo $labrequest['TOTALHREQ']; ?></span></td>
                                                       <td class="text-center"><span class="label label-info label-mini"><?php echo $labrequest['TOTALUREQ']; ?></span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" onclick="loadthis(<?php echo $labrequest['YEAR']; ?>)" data-target="#lablist-<?php echo $labrequest['YEAR']; echo $MO; ?>"><i class="icon-eye-open"></i> View</a>
+                                                    <?php
+													    include 'lib/modals/modal-lab-list.php';
+												    ?>
+                                                    <script type="text/javascript" charset="utf-8">
+
+function loadthis(tr){
+    $('.example-'+tr).dataTable( {
+        dom: 'lfrtpB',
+        buttons: [
+            {
+        extend: 'print',
+        text: 'Print',
+        autoPrint: true,
+        title: '',
+        exportOptions: {
+            stripHtml: false
+        },
+        customize: function ( win ) {
+            $(win.document.body)
+           
+                .css( 'font-size', '12pt')
+                .prepend(
+                    '<h4 style="text-align: center;">Laboratory Report for <?php echo $MO; ?> <?php echo $labrequest['YEAR'];?></h4>'
+                )
+                .prepend(
+                    '<h3 style="text-align: center;">Saint Ezekiel Moreno<br>Health Center</h3>'
+                )
+                .append(
+                    '<br><br><p style="float: right; text-align: center;"><u><?php echo $Fullname; ?></u><br>Approved by</p>'
+                );
+        }     
+    },
+    {
+        extend: 'excel',
+        text: 'Excel'
+        
+    }
+        ],
+        bRetrieve: true,
+        bDestroy: true,
+        searchDelay: 1,
+        stateSave: true,
+        aaSorting: [[0, 'asc']]  
+      } );
+}
+</script>		
+                                                      </td>
 												  </tr>
 												  </tbody>
 												<?php
@@ -264,9 +311,6 @@ $labr = mysql_query($query);
 											  </table>
 											 
 										  </div>
-										  <?php
-													include 'lib/modals/modal-patient-list.php';
-												?>
 									  </div>
 								  </div>
 							  </section>
@@ -303,13 +347,19 @@ include 'lib/User-Accesslvl.php';
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-	<script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#example').dataTable( {
-                  "aaSorting": [[ 4, "desc" ]]
-              } );
-          } );
-      </script>
+    <link rel="stylesheet" type="text/css" href="DataTables-1.10.16/css/jquery.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="Buttons-1.5.1/css/buttons.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="Select-1.2.5/css/select.dataTables.css"/>
+    <script type="text/javascript" src="JSZip-2.5.0/jszip.js"></script>
+    <script type="text/javascript" src="pdfmake-0.1.32/pdfmake.js"></script>
+    <script type="text/javascript" src="pdfmake-0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="DataTables-1.10.16/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/dataTables.buttons.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.colVis.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.flash.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.html5.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.print.js"></script>
+    <script type="text/javascript" src="Select-1.2.5/js/dataTables.select.js"></script>
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 	<script>
