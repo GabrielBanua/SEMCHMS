@@ -6,29 +6,29 @@ if(isset($_GET['year']))
 }
 
 $conn = new mysqli("localhost", "root", "", "semhcms") or die(mysqli_error());
-$qjan = $conn->query("select count(disp_qty) as total FROM `dispense` WHERE `month` = 'Jan' && `year` = '$year' ") or die(mysqli_error());
+$qjan = $conn->query("SELECT CASE WHEN dispense.MONTH = 'Jan' AND dispense.YEAR = '$year' THEN SUM(DISP_QTY) ELSE 0 END AS total FROM dispense WHERE dispense.MONTH = 'Jan' AND dispense.MONTH IS NOT NULL AND dispense.YEAR ='$year' AND dispense.YEAR IS NOT NULL") or die(mysqli_error());
 $fjan = $qjan->fetch_array();
-$qfeb = $conn->query("select sum(disp_qty) as total FROM `dispense` WHERE `month` = 'Feb' && `year` = '$year' ") or die(mysqli_error());
+$qfeb = $conn->query("SELECT CASE WHEN dispense.MONTH = 'Feb' AND dispense.YEAR = '$year' THEN SUM(DISP_QTY) ELSE 0 END AS total FROM dispense WHERE dispense.MONTH = 'Feb' AND dispense.MONTH IS NOT NULL AND dispense.YEAR ='$year' AND dispense.YEAR IS NOT NULL") or die(mysqli_error());
 $ffeb = $qfeb->fetch_array();
-$qmar = $conn->query("select count(disp_qty) as total FROM `dispense` WHERE `month` = 'Mar' && `year` = '$year' ") or die(mysqli_error());
+$qmar = $conn->query("SELECT CASE WHEN dispense.MONTH = 'Mar' AND dispense.YEAR = '$year' THEN SUM(DISP_QTY) ELSE 0 END AS total FROM dispense WHERE dispense.MONTH = 'Mar' AND dispense.MONTH IS NOT NULL AND dispense.YEAR ='$year' AND dispense.YEAR IS NOT NULL") or die(mysqli_error());
 $fmar = $qmar->fetch_array();
-$qapr = $conn->query("select count(disp_qty) as total FROM `dispense` WHERE `month` = 'Apr' && `year` = '$year' ") or die(mysqli_error());
+$qapr = $conn->query("SELECT CASE WHEN dispense.MONTH = 'Apr' AND dispense.YEAR = '$year' THEN SUM(DISP_QTY) ELSE 0 END AS total FROM dispense WHERE dispense.MONTH = 'Apr' AND dispense.MONTH IS NOT NULL AND dispense.YEAR ='$year' AND dispense.YEAR IS NOT NULL") or die(mysqli_error());
 $fapr = $qapr->fetch_array();
-$qmay = $conn->query("select count(disp_qty) as total FROM `dispense` WHERE `month` = 'May' && `year` = '$year' ") or die(mysqli_error());
+$qmay = $conn->query("SELECT CASE WHEN dispense.MONTH = 'May' AND dispense.YEAR = '$year' THEN SUM(DISP_QTY) ELSE 0 END AS total FROM dispense WHERE dispense.MONTH = 'May' AND dispense.MONTH IS NOT NULL AND dispense.YEAR ='$year' AND dispense.YEAR IS NOT NULL") or die(mysqli_error());
 $fmay = $qmay->fetch_array();
-$qjun = $conn->query("select count(disp_qty) as total FROM `dispense` WHERE `month` = 'Jun' && `year` = '$year' ") or die(mysqli_error());
+$qjun = $conn->query("SELECT CASE WHEN dispense.MONTH = 'Jun' AND dispense.YEAR = '$year' THEN SUM(DISP_QTY) ELSE 0 END AS total FROM dispense WHERE dispense.MONTH = 'Jun' AND dispense.MONTH IS NOT NULL AND dispense.YEAR ='$year' AND dispense.YEAR IS NOT NULL") or die(mysqli_error());
 $fjun = $qjun->fetch_array();
-$qjul = $conn->query("select count(disp_qty) as total FROM `dispense` WHERE `month` = 'Jul' && `year` = '$year' ") or die(mysqli_error());
+$qjul = $conn->query("SELECT CASE WHEN dispense.MONTH = 'Jul' AND dispense.YEAR = '$year' THEN SUM(DISP_QTY) ELSE 0 END AS total FROM dispense WHERE dispense.MONTH = 'Jul' AND dispense.MONTH IS NOT NULL AND dispense.YEAR ='$year' AND dispense.YEAR IS NOT NULL") or die(mysqli_error());
 $fjul = $qjul->fetch_array();
-$qaug = $conn->query("select count(disp_qty) as total FROM `dispense` WHERE `month` = 'Aug' && `year` = '$year' ") or die(mysqli_error());
+$qaug = $conn->query("SELECT CASE WHEN dispense.MONTH = 'Aug' AND dispense.YEAR = '$year' THEN SUM(DISP_QTY) ELSE 0 END AS total FROM dispense WHERE dispense.MONTH = 'Aug' AND dispense.MONTH IS NOT NULL AND dispense.YEAR ='$year' AND dispense.YEAR IS NOT NULL") or die(mysqli_error());
 $faug = $qaug->fetch_array();
-$qsep = $conn->query("select count(disp_qty) as total FROM `dispense` WHERE `month` = 'Sep' && `year` = '$year' ") or die(mysqli_error());
+$qsep = $conn->query("SELECT CASE WHEN dispense.MONTH = 'Sep' AND dispense.YEAR = '$year' THEN SUM(DISP_QTY) ELSE 0 END AS total FROM dispense WHERE dispense.MONTH = 'Sep' AND dispense.MONTH IS NOT NULL AND dispense.YEAR ='$year' AND dispense.YEAR IS NOT NULL") or die(mysqli_error());
 $fsep = $qsep->fetch_array();
-$qoct = $conn->query("select count(disp_qty) as total FROM `dispense` WHERE `month` = 'Oct' && `year` = '$year' ") or die(mysqli_error());
+$qoct = $conn->query("SELECT CASE WHEN dispense.MONTH = 'Oct' AND dispense.YEAR = '$year' THEN SUM(DISP_QTY) ELSE 0 END AS total FROM dispense WHERE dispense.MONTH = 'Oct' AND dispense.MONTH IS NOT NULL AND dispense.YEAR ='$year' AND dispense.YEAR IS NOT NULL") or die(mysqli_error());
 $foct = $qoct->fetch_array();
-$qnov = $conn->query("select count(disp_qty) as total FROM `dispense` WHERE `month` = 'Nov' && `year` = '$year' ") or die(mysqli_error());
+$qnov = $conn->query("SELECT CASE WHEN dispense.MONTH = 'Nov' AND dispense.YEAR = '$year' THEN SUM(DISP_QTY) ELSE 0 END AS total FROM dispense WHERE dispense.MONTH = 'Nov' AND dispense.MONTH IS NOT NULL AND dispense.YEAR ='$year' AND dispense.YEAR IS NOT NULL") or die(mysqli_error());
 $fnov = $qnov->fetch_array();
-$qdec = $conn->query("select count(disp_qty) as total FROM `dispense` WHERE `month` = 'Dec' && `year` = '$year' ") or die(mysqli_error());
+$qdec = $conn->query("SELECT CASE WHEN dispense.MONTH = 'Dec' AND dispense.YEAR = '$year' THEN SUM(DISP_QTY) ELSE 0 END AS total FROM dispense WHERE dispense.MONTH = 'Dec' AND dispense.MONTH IS NOT NULL AND dispense.YEAR ='$year' AND dispense.YEAR IS NOT NULL") or die(mysqli_error());
 $fdec = $qdec->fetch_array();
 
 
@@ -39,7 +39,7 @@ $fdec = $qdec->fetch_array();
 			theme: "light2",
 			animationEnabled: true,
 			animationDuration: 1000,
-			exportFileName: "TB Patient Registration Group", 
+			exportFileName: "Saint Ezekiel Moreno Inventory", 
 			exportEnabled: true,
 			title: { 
 				text: "St. Ezekiel Moreno Health Center",

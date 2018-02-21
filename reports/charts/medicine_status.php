@@ -1,13 +1,14 @@
 <?php
 
+$DateToday = date('Y-m-d');
 $conn = new mysqli("localhost", "root", "", "semhcms") or die(mysqli_error());
-$full = $conn->query("SELECT COUNT(*) as total FROM `inventory` WHERE (inv_qty >=150 && inv_qty <=500)") or die(mysqli_error());
+$full = $conn->query("SELECT COUNT(*) AS total, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AND NOT(inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday')") or die(mysqli_error());
 $f1 = $full->fetch_array();
-$avg = $conn->query("SELECT COUNT(*) as total FROM `inventory` WHERE (inv_qty >=100 && inv_qty <=149)") or die(mysqli_error());
+$avg = $conn->query("SELECT COUNT(*) AS total, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY BETWEEN (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AND (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0))") or die(mysqli_error());
 $f2 = $avg->fetch_array();
-$low = $conn->query("SELECT COUNT(*) as total FROM `inventory` WHERE (inv_qty >=51 && inv_qty <=99)") or die(mysqli_error());
+$low = $conn->query("SELECT COUNT(*) AS total, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY BETWEEN '50' AND (SELECT @QTY:= FORMAT((inventory.INV_QTY_HIST / 2)-1, 0))") or die(mysqli_error());
 $f3 = $low->fetch_array();
-$reorder = $conn->query("SELECT COUNT(*) as total FROM `inventory` WHERE (inv_qty >=1 && inv_qty <=50)") or die(mysqli_error());
+$reorder = $conn->query("SELECT COUNT(*) AS total FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_QTY < '50' AND NOT(inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday')") or die(mysqli_error());
 $f4 = $reorder->fetch_array();
 
 ?>

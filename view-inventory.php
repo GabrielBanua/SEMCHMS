@@ -9,7 +9,7 @@ if(isset($_POST['Inv_filter'])){
     $DateToday = date('Y-m-d');
         
         if($filtering == 'Expired'){
-            $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND (inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday')");
+            $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE (inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday')");
             $stmt->execute();
         }
         else if($filtering == 'Re-order'){
@@ -29,12 +29,12 @@ if(isset($_POST['Inv_filter'])){
                 $stmt->execute();
         }
         else if($filtering == 'All'){
-            $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
+            $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY != '0'");
             $stmt->execute();
     }
         
 }else{
-    $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
+    $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY != '0'");
     $stmt->execute(); 
 }
 ?>
