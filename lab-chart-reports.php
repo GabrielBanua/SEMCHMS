@@ -3,11 +3,11 @@ require 'lib/session.php';
 
 if(isset($_POST['tyear'])){
     $yr = $_POST['tyear'];
-$query = "SELECT *, COUNT(CASE WHEN LBR_TYPE = 'Fecalysis' THEN 1 END) AS TOTALFREQ, COUNT(CASE WHEN LBR_TYPE = 'Blood Chemistry' THEN 1 END) AS TOTALBREQ, COUNT(CASE WHEN LBR_TYPE = 'Hematology' THEN 1 END) AS TOTALHREQ, COUNT(CASE WHEN LBR_TYPE = 'Urinalysis' THEN 1 END) AS TOTALUREQ FROM lab_request WHERE STATUS = 'Completed' AND YEAR = '$yr' GROUP BY MONTH ORDER BY LBR_DATE ASC"; 
+$query = "SELECT *, COUNT(CASE WHEN LBR_TYPE = 'Fecalysis' THEN 1 END) AS TOTALFREQ, COUNT(CASE WHEN LBR_TYPE = 'Blood Chemistry' THEN 1 END) AS TOTALBREQ, COUNT(CASE WHEN LBR_TYPE = 'Hematology' THEN 1 END) AS TOTALHREQ, COUNT(CASE WHEN LBR_TYPE = 'Urinalysis' THEN 1 END) AS TOTALUREQ FROM lab_request INNER JOIN laboratory_record ON lab_request.LBR_ID = laboratory_record.LBR_ID WHERE lab_request.STATUS = 'Completed' AND laboratory_record.YEAR = '$yr' GROUP BY laboratory_record.MONTH ORDER BY laboratory_record.DATE_TAKEN ASC"; 
 $labr = mysql_query($query);
 }else{
     $yr = date('Y');
-    $query = "SELECT *, COUNT(CASE WHEN LBR_TYPE = 'Fecalysis' THEN 1 END) AS TOTALFREQ, COUNT(CASE WHEN LBR_TYPE = 'Blood Chemistry' THEN 1 END) AS TOTALBREQ, COUNT(CASE WHEN LBR_TYPE = 'Hematology' THEN 1 END) AS TOTALHREQ, COUNT(CASE WHEN LBR_TYPE = 'Urinalysis' THEN 1 END) AS TOTALUREQ FROM lab_request WHERE STATUS = 'Completed' AND YEAR = '$yr' GROUP BY MONTH ORDER BY LBR_DATE ASC"; 
+    $query = "SELECT *, COUNT(CASE WHEN LBR_TYPE = 'Fecalysis' THEN 1 END) AS TOTALFREQ, COUNT(CASE WHEN LBR_TYPE = 'Blood Chemistry' THEN 1 END) AS TOTALBREQ, COUNT(CASE WHEN LBR_TYPE = 'Hematology' THEN 1 END) AS TOTALHREQ, COUNT(CASE WHEN LBR_TYPE = 'Urinalysis' THEN 1 END) AS TOTALUREQ FROM lab_request INNER JOIN laboratory_record ON lab_request.LBR_ID = laboratory_record.LBR_ID WHERE lab_request.STATUS = 'Completed' AND laboratory_record.YEAR = '$yr' GROUP BY laboratory_record.MONTH ORDER BY laboratory_record.DATE_TAKEN ASC"; 
     $labr = mysql_query($query);
 }
 ?>
