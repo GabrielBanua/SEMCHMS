@@ -7,6 +7,7 @@ if($page == 'editTreatment'){
 require 'lib/Db.config.pdo.php';
 require 'lib/Db.config.php';
 
+			$CheckB = mysql_real_escape_string($_POST['CHECK']);
 			$Diagnosis = mysql_real_escape_string($_POST['DGNE']);
 			$Treatment = mysql_real_escape_string($_POST['TRMTE']);
 			$Remarks = mysql_real_escape_string($_POST['RMKSE']);
@@ -63,7 +64,10 @@ require 'lib/Db.config.php';
 				$referral_check = "SELECT * FROM referral WHERE TRMTMNT_ID = '$updated_TR_id'";
 						$retrive_referral = mysql_query($referral_check);
 						$count_ref = mysql_num_rows($retrive_referral);
+						$get_ref_id = mysql_fetch_array($retrive_referral);
+						$Ref_id = $get_ref_id['RF_ID'];
 
+			if($CheckB == 'check'){
 				if($count_ref > 0){
 					$ref = $db->prepare("update referral set RF_DOCNAME=?, RF_CN=?, RF_ADD=? where TRMTMNT_ID=?");
 						$ref->bindParam(1,$DocName);
@@ -80,8 +84,12 @@ require 'lib/Db.config.php';
 						$ref->bindParam(5,$Month);
 						$ref->bindParam(6,$Year);
 					$ref->execute();
-				}			
-				
+				}
+			}else if($CheckB == 'uncheck'){
+				$sql = "DELETE FROM referral WHERE RF_ID = $Ref_id";
+				$stmt = $db->prepare($sql);
+				$stmt -> execute();
+			}				
 }
 else if($page == 'DeleteInventory'){
 require 'lib/Db.config.pdo.php';
@@ -152,7 +160,7 @@ else if($page == 'DispenseMedicine'){
 else if($page == 'Addlabrequest'){
 	require 'lib/Db.config.pdo.php';
 	require 'lib/Db.config.php';
-
+	date_default_timezone_set('Asia/Manila');
 	$Test_Requested = mysql_real_escape_string($_POST['T_REQ']);
 	$TREAT_ID = mysql_real_escape_string($_POST['T_ID']);
 	$Test_Date = date('Y-m-d');

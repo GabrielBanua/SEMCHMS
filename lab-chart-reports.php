@@ -365,7 +365,7 @@ function loadthis(tr){
 		}
     </script>
 	<?php
-include 'lib/User-Accesslvl.php';
-?>
+    include 'lib/User-Accesslvl.php';
+    ?>
   </body>
 </html>

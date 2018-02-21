@@ -155,17 +155,20 @@ function editTreatment(id){
           var RefDoc = $('#RefDoc_name-'+Update_ID).val();
           var RefDoc_CN = $('#RefDoc_CN-'+Update_ID).val();
           var RefDoc_Add = $('#RefDoc_Add-'+Update_ID).val();
-          var check_ref = $('#c2-'+Update_ID).val();
-          alert(check_ref);
+          if($('#c2-'+Update_ID).prop('checked')){
+            var check = "check";
+          }else{
+            var check = "uncheck";
+          }
 
-          if(Diagnosis == '' || Treatment == '' || Remarks == '' || FollowUp == ''){
+          if(Diagnosis == '' || Treatment == '' || Remarks == ''){
              $('#Error_Message-ETRMT-'+Update_ID).html('Please fill all fields! &nbsp;');
           }else{
             $('#Error_Message-ETRMT-'+Update_ID).html('');
            $.ajax({
                 type: "POST",
                 url: "Server2.php?p=editTreatment",
-                data: "DGNE="+Diagnosis+"&TRMTE="+Treatment+"&RMKSE="+Remarks+"&FPCHKE="+FollowUp+"&DOCE="+Doctor+"&MRIDE="+Update_ID+"&REFDNE="+RefDoc+"&REF_CNE="+RefDoc_CN+"&REF_ADDE="+RefDoc_Add,
+                data: "DGNE="+Diagnosis+"&TRMTE="+Treatment+"&RMKSE="+Remarks+"&FPCHKE="+FollowUp+"&DOCE="+Doctor+"&MRIDE="+Update_ID+"&REFDNE="+RefDoc+"&REF_CNE="+RefDoc_CN+"&REF_ADDE="+RefDoc_Add+"&CHECK="+check,
                 success: function(data){
                   $('#Success_Message-ETRMT-'+Update_ID).html('Successfully updated! &nbsp;');
                         setTimeout(function() {
