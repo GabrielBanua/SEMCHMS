@@ -187,7 +187,7 @@ $result = mysql_query($lab_stmt);
                                           <td class="text-center"><?php echo $LAB_REC['Fullname'];?></td>
                                           <td class="text-center"><?php echo $LAB_REC['SPECIMEN'];?></td>
                                           <td class="text-center"><?php echo $LAB_REC['LBR_TYPE'];?></td>
-                                          <td class="text-center"><?php echo $LAB_REC['STATUS'];?></td>
+                                          <td class="text-center"><?php echo $LAB_REC['STATUS'];?> <span class='label label-info label-mini'>Expired</span></td>
                                           <td class="text-center">
 											<a class="btn btn-shadow btn-success btn-xs" href="LabtestRecord.php?LREC_ID=<?php echo $LAB_REC['LAB_ID'];?>"><i class="icon-eye-open"></i> View</a>
 										  </td>
