@@ -235,9 +235,9 @@ $Stmt = mysql_query("Select medical_record.MR_ILL, patient.P_BRGY, COUNT(medical
 								<table class="table table-hover">
 								  <thead>
 								  <tr>
-									  <th class="text-center"><i class="icon-bar-chart icon-2x"></i><br> Rank #</th>
-									  <th class="text-center"><i class="icon-medkit icon-2x"></i><br> Ailments/Illness</th>
-                                      <th class="text-center"><i class="icon-medkit icon-2x"></i><br> Place</th>
+									  <th class="text-center"><i class="icon-bar-chart icon-2x" style="color:green;"></i><br> Rank #</th>
+									  <th class="text-center"><i class="icon-medkit icon-2x" style="color:red;"></i><br> Ailments/Illness</th>
+                                      <th class="text-center"><i class="icon-map-marker icon-2x" style="color:orange;"></i><br> Place</th>
 								  </tr>
 								  </thead>
 <?php
