@@ -852,7 +852,7 @@ include 'lib/User-Accesslvl.php';
 					success: function(data){
 					$('#Success_Message_BC').html('Successfully added laboratory result');
 					setTimeout(function() {
-						window.location.href = 'http://localhost/expert/labview.php'; 
+						window.location.href = 'http://localhost/semhcms/labview.php'; 
 					}, 1500);
 					}
 				});
@@ -912,7 +912,7 @@ include 'lib/User-Accesslvl.php';
 					success: function(data){
 						$('#Success_Message_FC').html('Successfully added laboratory result!');
 						setTimeout(function() {
-							window.location.href = 'http://localhost/expert/labview.php'; 
+							window.location.href = 'http://localhost/semhcms/labview.php'; 
 						}, 1500);
 					}
 				});
@@ -979,7 +979,7 @@ include 'lib/User-Accesslvl.php';
 					success: function(data){
 						$('#Success_Message_UR').html('Successfully added laboratory result!');
 						setTimeout(function() {
-							window.location.href = 'http://localhost/expert/labview.php'; 
+							window.location.href = 'http://localhost/semhcms/labview.php'; 
 						}, 1500);
 					}
 				});
@@ -1038,7 +1038,7 @@ include 'lib/User-Accesslvl.php';
 					success: function(data){
 						$('#Success_Message_HM').html('Successfully added laboratory result');
 						setTimeout(function() {
-							window.location.href = 'http://localhost/expert/labview.php'; 
+							window.location.href = 'http://localhost/semhcms/labview.php'; 
 						}, 1500);
 					}
 				});
