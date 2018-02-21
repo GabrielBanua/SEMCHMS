@@ -1,6 +1,15 @@
 <?php
 require 'lib/session.php';
 
+if(isset($_POST['tyear'])){
+    $yr = $_POST['tyear'];
+$query = "SELECT *, COUNT(CASE WHEN SCHEDULE_PURPOSE = 'Check up' THEN 1 END) AS TOTALC, COUNT(CASE WHEN SCHEDULE_PURPOSE = 'Dental' THEN 1 END) AS TOTALD, COUNT(CASE WHEN SCHEDULE_PURPOSE = 'X-ray' THEN 1 END) AS TOTALX, COUNT(CASE WHEN SCHEDULE_PURPOSE = 'Laboratory Test' THEN 1 END) AS TOTALL FROM schedule WHERE YEAR = '$yr' GROUP BY MONTH ORDER BY MONTH ASC"; 
+$sched = mysql_query($query);
+}else{
+    $yr = date('Y');
+    $query = "SELECT *, COUNT(CASE WHEN SCHEDULE_PURPOSE = 'Check up' THEN 1 END) AS TOTALC, COUNT(CASE WHEN SCHEDULE_PURPOSE = 'Dental' THEN 1 END) AS TOTALD, COUNT(CASE WHEN SCHEDULE_PURPOSE = 'X-ray' THEN 1 END) AS TOTALX, COUNT(CASE WHEN SCHEDULE_PURPOSE = 'Laboratory Test' THEN 1 END) AS TOTALL FROM schedule WHERE YEAR = '$yr' GROUP BY MONTH ORDER BY MONTH ASC"; 
+    $sched = mysql_query($query);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -197,83 +206,101 @@ require 'lib/session.php';
 											  <div id="patient_appointment" style="width: 100%; height: 400px"></div>
 										  </div>
 										  <div id="tabular" class="tab-pane">
+                                          <div id="tabular" class="tab-pane">
+												<div class="col-lg-2 pull-right">
+                                                <form action="" method="POST">
+													<select id="tyear" name="tyear" class="form-control" onchange="this.form.submit()">
+														<option hidden>Choose</option>
+														<?php
+														for($y=2000; $y<=2025; $y++){
+														?>
+														<option value="<?php echo $y ?>"<?php if($yr == $y){ echo " selected";}?>><?php echo $y; ?></option>
+														<?php
+														}
+														?>
+													</select>
+                                                    </form>
+												</div>
 												<table class="table table-striped table-advance table-hover">
 												  <thead>
 												  <tr>
 													  <th class="text-center"><i class="icon-calendar icon-2x"></i><br> Month</th>
-													  <th class="text-center"><i class="icon-group icon-2x"></i><br> Patient Per Month</th>
+													  <th class="text-center"><i class="icon-group icon-2x"></i><br> Check-up</th>
+                                                      <th class="text-center"><i class="icon-group icon-2x"></i><br> Dental</th>
+                                                      <th class="text-center"><i class="icon-group icon-2x"></i><br> X-ray</th>
+                                                      <th class="text-center"><i class="icon-group icon-2x"></i><br> Laboratory test</th>
 													  <th class="text-center"><i class="icon-wrench icon-2x"></i><br> Action</th>
 												  </tr>
 												  </thead>
 												  <tbody>
+                                                <?php
+                                     			 while($SC = mysql_fetch_array($sched)) {
+                                                    $month = $SC['MONTH'];
+                                                    $year = $SC['YEAR'];
+                                                    $MO = date('F',strtotime($month));
+                                     			?>
 												  <tr>
-													  <td class="text-center"><b>January</b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
+													  <td class="text-center"><b><?php echo $MO;?></b></td>
+													  <td class="text-center"><span class="label label-info label-mini"><?php echo $SC['TOTALC']; ?></span></td>
+                                                      <td class="text-center"><span class="label label-info label-mini"><?php echo $SC['TOTALD']; ?></span></td>
+                                                      <td class="text-center"><span class="label label-info label-mini"><?php echo $SC['TOTALX']; ?></span></td>
+                                                      <td class="text-center"><span class="label label-info label-mini"><?php echo $SC['TOTALL']; ?></span></td>
+													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" onclick="loadthis(<?php echo $SC['YEAR']; ?>)" data-target="#schedlist-<?php echo $SC['YEAR']; echo $MO;?>"><i class="icon-eye-open"></i> View</a>
+                                                      <?php
+													include 'lib/modals/modal-sched-list.php';
+												    ?>
+                                                <script>
+                                                    function loadthis(tr){
+    $('.example-'+tr).dataTable( {
+        dom: 'lfrtipB',
+        buttons: [
+            {
+        extend: 'print',
+        text: 'Print',
+        autoPrint: true,
+        title: '',
+        exportOptions: {
+            stripHtml: false
+        },
+        customize: function ( win ) {
+            $(win.document.body)
+           
+                .css( 'font-size', '12pt')
+                .prepend(
+                    '<h4 style="text-align: center;">Schedule Report for <?php echo $MO; ?> <?php echo $SC['YEAR'];?></h4>'
+                )
+                .prepend(
+                    '<h3 style="text-align: center;">Saint Ezekiel Moreno<br>Health Center</h3>'
+                )
+                .append(
+                    '<br><br><p style="float: right; text-align: center;"><u><?php echo $Fullname; ?></u><br>Approved by</p>'
+                );
+        }     
+    },
+    {
+        extend: 'excel',
+        text: 'Excel'
+        
+    }
+        ],
+        bRetrieve: true,
+        bDestroy: true,
+        searchDelay: 1,
+        stateSave: true,
+        aaSorting: [[0, 'asc']]  
+      } );
+}
+</script>		
+                                                      </td>
 												  </tr>
-												  <tr>
-													  <td class="text-center"><b>February</b></td>
-													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>March</b></td>
-													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>April</b></td>
-													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>May</b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>June</b></td>
-													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>July</b></td>
-													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>August</b></td>
-													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#patientlist"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>September</b></td>
-													  <td class="text-center"><span class="label label-info label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>October</b></td>
-													  <td class="text-center"><span class="label label-primary label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>November</b></td>
-													  <td class="text-center"><span class="label label-success label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-												  </tr>
-												  <tr>
-													  <td class="text-center"><b>December</b></td>
-													  <td class="text-center"><span class="label label-danger label-mini">11</span></td>
-													  <td class="text-center"><a class="btn btn-shadow btn-success btn-xs"><i class="icon-eye-open"></i> View</a></td>
-				
-												  </tr>
+                                                  <?php
+                                                  }
+                                                  ?>
 												  </tbody>
 											  </table>
 											 
 										  </div>
-										  <?php
-													include 'lib/modals/modal-patient-list.php';
-												?>
+										  
 									  </div>
 								  </div>
 							  </section>
@@ -310,13 +337,19 @@ include 'lib/User-Accesslvl.php';
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-	<script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#example').dataTable( {
-                  "aaSorting": [[ 4, "desc" ]]
-              } );
-          } );
-      </script>
+    <link rel="stylesheet" type="text/css" href="DataTables-1.10.16/css/jquery.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="Buttons-1.5.1/css/buttons.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="Select-1.2.5/css/select.dataTables.css"/>
+    <script type="text/javascript" src="JSZip-2.5.0/jszip.js"></script>
+    <script type="text/javascript" src="pdfmake-0.1.32/pdfmake.js"></script>
+    <script type="text/javascript" src="pdfmake-0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="DataTables-1.10.16/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/dataTables.buttons.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.colVis.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.flash.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.html5.js"></script>
+    <script type="text/javascript" src="Buttons-1.5.1/js/buttons.print.js"></script>
+    <script type="text/javascript" src="Select-1.2.5/js/dataTables.select.js"></script>
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 	<script>

@@ -211,11 +211,11 @@ else if($Position == "Volunter"){
 				}, 8000);
 			});
 		</script>
+		
+		<!--common script for all pages-->
+		<script src="js/common-scripts.js"></script>
 		<?php
 		include 'lib/User-Accesslvl.php';
 		?>
-		<!--common script for all pages-->
-		<script src="js/common-scripts.js"></script>
-
 	</body>
 </html>

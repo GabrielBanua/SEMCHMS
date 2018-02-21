@@ -252,7 +252,7 @@ $labr = mysql_query($query);
 
 function loadthis(tr){
     $('.example-'+tr).dataTable( {
-        dom: 'lfrtpB',
+        dom: 'lfrtipB',
         buttons: [
             {
         extend: 'print',

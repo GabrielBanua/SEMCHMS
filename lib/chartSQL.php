@@ -12,7 +12,7 @@ $Year = date('Y',strtotime($date));
     $start_date = date('Y-m-d');
     $end_date = date('Y-m-d', strtotime('+7 days'));
 
-    $FCU = mysql_query("SELECT * FROM treatment WHERE F_CHECKUP BETWEEN '$start_date' AND '$end_date'");
+    $FCU = mysql_query("SELECT * FROM followup_check_up WHERE FCUP_DATE BETWEEN '$start_date' AND '$end_date'");
     $fcup = mysql_num_rows($FCU);
 
     $Lab = mysql_query("SELECT * FROM lab_request WHERE LBR_DATE BETWEEN '$start_date' AND '$end_date'");

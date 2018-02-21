@@ -173,9 +173,7 @@ require 'lib/session.php';
 		</section>
 
 
-		<?php
-		include 'lib/User-Accesslvl.php';
-		?>
+		
 		<!-- js placed at the end of the document so the pages load faster -->
 		<!--<script src="js/jquery.js"></script>-->
 		<script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
@@ -196,5 +194,8 @@ require 'lib/session.php';
 		<script src="js/common-scripts.js"></script>
 		<script src = "js/jquery.canvasjs.min.js"></script>
 		<?php require 'reports/charts/medicine_status.php'?>
+		<?php
+		include 'lib/User-Accesslvl.php';
+		?>
 	</body>
 </html>
