@@ -221,7 +221,7 @@ $Stmt = mysql_query("Select medical_record.MR_ILL, patient.P_BRGY, COUNT(medical
                     </div>
                 </div>
 				<div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <!--Health Trend Issue Start-->
                         <section class="panel">
                             <div class="panel-body progress-panel">
