@@ -38,13 +38,10 @@ foreach ($tables as $table) {
 
     $return .="\n\n\n";
 
-if( 'time(H:i:s)' == 'time(H:i:s)') {
-$handle = fopen('semhcms('.date('m-d-Y').').sql', 'w+');
-} else {
-    echo "<script> alert ('Failed to create backup')</script>";
-}
+
+$handle = fopen('semhcms('.date('Y-m-d').').sql', 'w+');
 fwrite($handle, $return);
 fclose($handle);
-echo "<script> alert ('Successfully created a backup of the database!')</script>";
-echo "<script>document.location='../backup.php'</script>". $date;  
+echo "<script>document.location='../backup.php'</script>";  
+
 ?>

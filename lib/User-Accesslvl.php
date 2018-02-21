@@ -21,6 +21,7 @@
             $('#Medicalrecord_btn').hide();
             $('#set-sched-id').hide();
             $('#sched-reports-id').hide();
+            $('#ShowFiltering').hide();
             $('#span-schedule-management').html("Consoltation schedule");
             
         }

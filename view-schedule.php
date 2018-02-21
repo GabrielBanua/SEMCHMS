@@ -5,7 +5,8 @@ require 'lib/Db.config.pdo.php';
 date_default_timezone_set('Asia/Manila');
 if($Position == 'Doctor'){
     $purpose = 'Check Up';
-    $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_PURPOSE = '$purpose'");
+    $DateToday = date('Y-m-d');
+    $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_PURPOSE = '$purpose' AND schedule.SCHEDULE_DATE = '$DateToday'");
     $stmt->execute();
   }else if($Position == 'Admin'){
      $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
@@ -15,22 +16,13 @@ if($Position == 'Doctor'){
 if(isset($_POST['Sched_filter'])){
     $filtering = $_POST['Sched_filter'];
     $DateToday = date('Y-m-d');
-    
     if($filtering == 'Current'){
-        if($Position == 'Doctor'){
-            $purpose = 'Check Up';
-            $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_PURPOSE = '$purpose' AND schedule.SCHEDULE_DATE = '$DateToday'");
-            $stmt->execute();
-          }else if($Position == 'Admin'){
+        if($Position == 'Admin'){
              $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_DATE = '$DateToday'");
             $stmt->execute();
-          }
+        }
     }else if($filtering == 'All'){
-        if($Position == 'Doctor'){
-            $purpose = 'Check Up';
-            $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID) WHERE schedule.SCHEDULE_PURPOSE = '$purpose'");
-            $stmt->execute();
-          }else if($Position == 'Admin'){
+        if($Position == 'Admin'){
              $stmt = $db->prepare("Select *, CONCAT(P_FNAME,' ',P_MNAME,' ',P_LNAME) AS FullName FROM (patient INNER JOIN schedule ON patient.P_ID = schedule.P_ID)");
             $stmt->execute();
           }
@@ -211,7 +203,7 @@ if(isset($_POST['Sched_filter'])){
                           <div class="panel-body">
                                 <div class="adv-table">
                                     <a class="btn btn-shadow btn-success" href="set-schedule.php"><i class="icon-calendar"></i> Set Appointment</a>
-                                    <div class="col-lg-2 pull-right">
+                                    <div class="col-lg-2 pull-right" id="ShowFiltering">
                                         <form id="Filtered" action="view-schedule.php" method="POST">
                                         <select id="Sched_filter" name="Sched_filter" class="form-control" onchange="this.form.submit()">
                                             <option value="All" <?php

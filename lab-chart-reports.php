@@ -324,9 +324,7 @@ function loadthis(tr){
   </section>
 
     
-<?php
-include 'lib/User-Accesslvl.php';
-?>
+
 	<!-- js placed at the end of the document so the pages load faster -->
     <!--<script src="js/jquery.js"></script>-->
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
@@ -366,6 +364,8 @@ include 'lib/User-Accesslvl.php';
 			myWindow = window.open("reports/filter_gender_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
 		}
     </script>
-		
+	<?php
+include 'lib/User-Accesslvl.php';
+?>
   </body>
 </html>
