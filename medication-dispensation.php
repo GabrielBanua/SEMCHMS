@@ -1,12 +1,5 @@
 <?php
 require 'lib/session.php';
-
-if($Position == "Doctor"){
-	header('Location: index.php');
-}
-else if($Position == "Volunter"){
-	header('Location: index.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +9,15 @@ else if($Position == "Volunter"){
 		<meta name="google" content="notranslate">
 		<link rel="shortcut icon" href="img/favicon.ico">
 
-		<title>Inventory Reports Panel</title>
+		<title>Patient Reports Panel</title>
 
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-reset.css" rel="stylesheet">
 		<!--external css-->
 		<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+		<link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+		<link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
 		<!-- Custom styles for this template -->
 		<link href="css/style.css" rel="stylesheet">
 		<link href="css/style-responsive.css" rel="stylesheet" />
@@ -152,35 +147,41 @@ else if($Position == "Volunter"){
 						<div class="col-lg-12">
 							<section class="panel">
 								<header class="panel-heading">
-									Inventory Reports Panel
+									Medicine Status
 								</header>
 								<div class="panel-body">
-									<div class="row state-overview">
-										<div class="col-lg-3 col-sm-6">
-											<section class="panel">
-												<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="inv-list-report.php">
-													<i class="icon-truck icon-3x"></i><br>
-													List of<br>Inventory
-												</a>
-											</section>
-										</div>
-										<div class="col-lg-3 col-sm-6">
-											<section class="panel">
-												<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="medicine-status-report.php">
-													<i class="icon-medkit icon-3x"></i><br>
-													Medicine<br>Status
-												</a>
-											</section>
-										</div>
-										<div class="col-lg-3 col-sm-6">
-											<section class="panel">
-												<a class="btn btn-shadow btn-success btn-lg" style="width:200px" href="medication-dispensation.php">
-													<i class="icon-medkit icon-3x"></i><br>
-													Medication<br>Dispensation
-												</a>
-											</section>
-										</div>
+									<div class="col-lg-2 pull-right">
+										<select id="pyear" class="form-control">
+											<option hidden value="<?php 
+																  if(isset($_GET['year'])){
+																	  $value=$_GET['year']; 
+																	  echo $value;
+																  }
+																  else{
+																	  echo date('Y');
+																  }
+																  ?>">
+												<?php 
+												if(isset($_GET['year'])){
+													$value=$_GET['year']; 
+													echo $value;
+												}
+												else{
+													echo date('Y');
+												}
+												?></option>
+											<?php
+											for($y=2012; $y<=2025; $y++){
+											?>
+											<option value="<?php echo $y ?>"><?php echo $y; ?></option>
+											<?php
+											}
+											?>
+										</select>
 									</div>
+									<br><br>
+
+									<div id="medicines_dispensed" style="width: 100%; height: 400px"></div>
 								</div>
 							</section>
 						</div>
@@ -201,6 +202,10 @@ else if($Position == "Volunter"){
 			<!--footer end-->
 		</section>
 
+
+		<?php
+		include 'lib/User-Accesslvl.php';
+		?>
 		<!-- js placed at the end of the document so the pages load faster -->
 		<!--<script src="js/jquery.js"></script>-->
 		<script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
@@ -211,19 +216,23 @@ else if($Position == "Volunter"){
 		<script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
 		<script src="js/respond.min.js" ></script>
 		<script>
-			$('.btn').on('click', function() {
-				var $this = $(this);
-				$this.button('loading');
-				setTimeout(function() {
-					$this.button('reset');
-				}, 8000);
+			$(document).ready(function(){
+				$("#pyear").on('change', function(){
+					var year=$(this).val();
+					window.location = 'medication-dispensation.php?year='+year;
+				});
 			});
 		</script>
-		<?php
-		include 'lib/User-Accesslvl.php';
-		?>
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#example').dataTable( {
+					"aaSorting": [[ 4, "desc" ]]
+				} );
+			} );
+		</script>
 		<!--common script for all pages-->
 		<script src="js/common-scripts.js"></script>
-
+		<script src = "js/jquery.canvasjs.min.js"></script>
+		<?php require 'reports/charts/medicines_dispensed.php'?>
 	</body>
 </html>
