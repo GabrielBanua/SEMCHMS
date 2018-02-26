@@ -207,7 +207,7 @@ if(isset($_POST['lab_filter'])){
                                           <td><?php echo $LBR['LBR_DATE'];?></td>
                                           <td><?php echo $LBR['Fullname'];?></td>
                                           <td><?php echo $LBR['LBR_TYPE'];?></td>
-                                          <td class="text-center"><?php if($LBR['STATUS'] == 'Completed'){echo "<span class='label label-primary label-mini'>Completed</span>";}else{ echo "<span class='label label-danger label-mini'>Pending</span>";}?></td>
+                                          <td class="text-center"><?php if($LBR['STATUS'] == 'Completed'){echo "<span class='label label-primary label-mini'><b>Completed</b></span>";}else{ echo "<span class='label label-danger label-mini'><b>Pending</b></span>";}?></td>
                                           <td class="center hidden-phone">
 											<a class="btn btn-shadow btn-primary btn-xs"  href="labtest.php?LBR_ID=<?php echo $LBR['LBR_ID'];?>"><i class="icon-share-alt"></i> <b>Proceed</b></a>
 										  </td>

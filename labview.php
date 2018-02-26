@@ -187,7 +187,7 @@ $result = mysql_query($lab_stmt);
                                           <td class="text-center"><?php echo $LAB_REC['Fullname'];?></td>
                                           <td class="text-center"><?php echo $LAB_REC['SPECIMEN'];?></td>
                                           <td class="text-center"><?php echo $LAB_REC['LBR_TYPE'];?></td>
-                                          <td class="text-center"><?php if($LAB_REC['STATUS'] == 'Completed'){echo "<span class='label label-primary label-mini'>Completed</span>";}else{ echo "<span class='label label-danger label-mini'>Pending</span>";}?></td>
+                                          <td class="text-center"><?php if($LAB_REC['STATUS'] == 'Completed'){echo "<span class='label label-primary label-mini'><b>Completed</b></span>";}else{ echo "<span class='label label-danger label-mini'><b>Pending</b></span>";}?></td>
                                           <td class="text-center">
 											<a class="btn btn-shadow btn-success btn-xs" href="LabtestRecord.php?LREC_ID=<?php echo $LAB_REC['LAB_ID'];?>"><i class="icon-eye-open"></i> View</a>
 										  </td>

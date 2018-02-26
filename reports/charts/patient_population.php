@@ -136,10 +136,11 @@ $a12 = $a12->fetch_array();
 					e.chart.render();
 				}
 			},
-			axisX: {		       
+			axisX: {
+				interval: 1,
 				gridDashType: "dot",
 				gridThickness: 1,
-				labelFontColor: "black",
+				labelFontColor: "#808287",
 				crosshair: {
 					enabled: true 
 				}
@@ -147,14 +148,14 @@ $a12 = $a12->fetch_array();
 			axisY: { 
 				title: "Total Population", 
 				includeZero: false,
-				labelFontColor: "black",
+				labelFontColor: "#808287",
 				crosshair: {
 					enabled: true 
 				}
 			}, 
 			data: [ 
 				{ 
-					type: "column", 
+					type: "stackedColumn", 
 					showInLegend: true, 
 					legendText: "Total Number of Patients",
 					name: "Total Patients this month",
@@ -175,7 +176,7 @@ $a12 = $a12->fetch_array();
 					] 
 				},
 				{ 
-					type: "spline", 
+					type: "stackedColumn", 
 					showInLegend: true, 
 					legendText: "Chilren",
 					color: "#ffe500",
@@ -196,7 +197,7 @@ $a12 = $a12->fetch_array();
 					] 
 				},
 				{ 
-					type: "spline", 
+					type: "stackedColumn", 
 					showInLegend: true, 
 					legendText: "Adult",
 					color: "#0cf7e3",
