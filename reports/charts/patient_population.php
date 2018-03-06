@@ -121,7 +121,8 @@ $a12 = $a12->fetch_array();
 			toolTip: {
 				shared: true  
 			},
-			title: { 
+			title: {
+				labelFontColor: "#808287",
 				text: "Patient Population as of Year <?php echo $year?> ",
 				fontSize: 20
 			},
@@ -136,7 +137,8 @@ $a12 = $a12->fetch_array();
 					e.chart.render();
 				}
 			},
-			axisX: {		       
+			axisX: {
+				interval: 1,
 				gridDashType: "dot",
 				gridThickness: 1,
 				labelFontColor: "black",
@@ -147,35 +149,14 @@ $a12 = $a12->fetch_array();
 			axisY: { 
 				title: "Total Population", 
 				includeZero: false,
-				labelFontColor: "black",
+				labelFontColor: "#808287",
 				crosshair: {
 					enabled: true 
 				}
 			}, 
 			data: [ 
 				{ 
-					type: "column", 
-					showInLegend: true, 
-					legendText: "Total Number of Patients",
-					name: "Total Patients this month",
-					color: "#ff1e47",
-					dataPoints: [ 
-						{ label: "January", y: <?php echo $fjan['total']?> },
-						 { label: "February", y: <?php echo $ffeb['total']?> },
-						{ label: "March", y: <?php echo $fmar['total']?> },
-						 { label: "April", y: <?php echo $fapr['total']?> },
-						{ label: "May", y: <?php echo $fmay['total']?> },
-						 { label: "June", y: <?php echo $fjun['total']?> },
-						{ label: "July", y: <?php echo $fjul['total']?> },
-						 { label: "August", y: <?php echo $faug['total']?> },
-						{ label: "September", y: <?php echo $fsep['total']?> },
-						 { label: "October", y: <?php echo $foct['total']?> },
-						{ label: "November", y: <?php echo $fnov['total']?> },
-						 { label: "December", y: <?php echo $fdec['total']?> }
-					] 
-				},
-				{ 
-					type: "spline", 
+					type: "stackedColumn", 
 					showInLegend: true, 
 					legendText: "Chilren",
 					color: "#ffe500",
@@ -196,7 +177,7 @@ $a12 = $a12->fetch_array();
 					] 
 				},
 				{ 
-					type: "spline", 
+					type: "stackedColumn", 
 					showInLegend: true, 
 					legendText: "Adult",
 					color: "#0cf7e3",
@@ -214,6 +195,27 @@ $a12 = $a12->fetch_array();
 						 { label: "October", y: <?php echo $a10['total']?> },
 						{ label: "November", y: <?php echo $a11['total']?> },
 						 { label: "December", y: <?php echo $a12['total']?> }
+					] 
+				},
+				{ 
+					type: "stackedColumn", 
+					showInLegend: true, 
+					legendText: "Total Number of Patients",
+					name: "Total Patients this month",
+					color: "#ff1e47",
+					dataPoints: [ 
+						{ label: "January", y: <?php echo $fjan['total']?> },
+						 { label: "February", y: <?php echo $ffeb['total']?> },
+						{ label: "March", y: <?php echo $fmar['total']?> },
+						 { label: "April", y: <?php echo $fapr['total']?> },
+						{ label: "May", y: <?php echo $fmay['total']?> },
+						 { label: "June", y: <?php echo $fjun['total']?> },
+						{ label: "July", y: <?php echo $fjul['total']?> },
+						 { label: "August", y: <?php echo $faug['total']?> },
+						{ label: "September", y: <?php echo $fsep['total']?> },
+						 { label: "October", y: <?php echo $foct['total']?> },
+						{ label: "November", y: <?php echo $fnov['total']?> },
+						 { label: "December", y: <?php echo $fdec['total']?> }
 					] 
 				}
 			] 
