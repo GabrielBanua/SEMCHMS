@@ -57,7 +57,7 @@ require 'lib/session.php';
 								<li><a href="#"><i class=" icon-suitcase"></i>Profile</a></li>
 								<li><a href="#"><i class="icon-cog"></i> Settings</a></li>
 								<li><a href="#"><i class="icon-bell-alt"></i> Notification</a></li>
-								<li><a href="logout.php"><i class="icon-key"></i> Log Out</a></li>
+								<li><a onclick="logout()"><i class="icon-key"></i> Log Out</a></li>
 							</ul>
 						</li>
 						<!-- user login dropdown end -->
@@ -232,6 +232,7 @@ require 'lib/session.php';
 		<?php require 'reports/charts/medicines_dispensed.php'?>
 		<?php
 		include 'lib/User-Accesslvl.php';
+		include 'lib/logout.script.php';
 		?>
 	</body>
 </html>

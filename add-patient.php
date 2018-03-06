@@ -88,7 +88,7 @@ require 'lib/Db.config.php';
                           <li><a href="#"><i class=" icon-suitcase"></i>Profile</a></li>
                           <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
                           <li><a href="#"><i class="icon-bell-alt"></i> Notification</a></li>
-                          <li><a href="login.php"><i class="icon-key"></i> Log Out</a></li>
+                          <li><a onclick="logout()"><i class="icon-key"></i> Log Out</a></li>
                       </ul>
                   </li>
                   <!-- user login dropdown end -->
@@ -203,7 +203,7 @@ require 'lib/Db.config.php';
 							<div class="form-group">
                                 <label class="col-md-4 control-label">Patient Id</label>
                                 <div class="col-lg-4">
-                                    <input type="text" name="P_ID" id="P_ID" value="P000<?php echo $MaxID ?>" readonly class="form_datetime form-control">
+                                    <input type="text" name="P_ID" id="P_ID" value="P<?php echo $MaxID ?>" readonly class="form_datetime form-control">
                                 </div>
                             </div>
 							<div class="form-group">
@@ -582,7 +582,7 @@ require 'lib/Db.config.php';
 <?php
 include 'lib/functions/Add-patient-script.php';
 include 'lib/User-Accesslvl.php';
-
+include 'lib/logout.script.php';
 ?>
   </body>
 </html>

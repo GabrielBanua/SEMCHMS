@@ -384,4 +384,14 @@ else if($page == 'EditInventory'){
 				$stmt->bindParam(7,$INV_ID);
 				$stmt->execute();
 	}
+	else if($page == 'DeleteMedicine'){
+		require 'lib/Db.config.pdo.php';
+		require 'lib/Db.config.php';
+
+		$MED_ID = mysql_real_escape_string($_POST['MED_ID']);
+
+		$sql = "DELETE FROM medicine WHERE MEDICINE_ID = $MED_ID";
+		$stmt = $db->prepare($sql);
+ 		$stmt -> execute();
+	}
 ?>

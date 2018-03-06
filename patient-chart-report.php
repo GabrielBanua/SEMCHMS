@@ -83,7 +83,7 @@ if(isset($_POST['tyear'])){
                           <li><a href="#"><i class=" icon-suitcase"></i>Profile</a></li>
                           <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
                           <li><a href="#"><i class="icon-bell-alt"></i> Notification</a></li>
-                          <li><a href="logout.php"><i class="icon-key"></i> Log Out</a></li>
+                          <li><a onclick="logout()"><i class="icon-key"></i> Log Out</a></li>
                       </ul>
                   </li>
                   <!-- user login dropdown end -->
@@ -380,9 +380,7 @@ while($JAN = mysql_fetch_array($stmtJAN)){
     <script type="text/javascript" src="Buttons-1.5.1/js/buttons.print.js"></script>
     <script type="text/javascript" src="Select-1.2.5/js/dataTables.select.js"></script>
 
-<?php
-include 'lib/User-Accesslvl.php';
-?>
+
 	
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
@@ -410,7 +408,10 @@ include 'lib/User-Accesslvl.php';
 			myWindow = window.open("reports/filter_quarter_layout.php?year=<?php echo $year?>", "", "width=1350, height=650");
 		}
 	</script>
-    
+<?php
+include 'lib/User-Accesslvl.php';
+include 'lib/logout.script.php';
+?>
 		
   </body>
 </html>

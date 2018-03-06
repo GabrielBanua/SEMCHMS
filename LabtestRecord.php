@@ -118,7 +118,7 @@ else if($LAB_TYPE == 'Hematology'){
                           <li><a href="#"><i class=" icon-suitcase"></i>Profile</a></li>
                           <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
                           <li><a href="#"><i class="icon-bell-alt"></i> Notification</a></li>
-                          <li><a href="logout.php"><i class="icon-key"></i> Log Out</a></li>
+                          <li><a onclick="logout()"><i class="icon-key"></i> Log Out</a></li>
                       </ul>
                   </li>
                   <!-- user login dropdown end -->
@@ -294,103 +294,103 @@ else if($LAB_TYPE == 'Hematology'){
 										  </tr>
 										   <tr>
 											  <td class="text-center"><b>BUN</b></td>
-											  <td><input id="BUN_ETYPE_INT" value="<?php echo $LAB_REC['BUN_ETYPE_INT']?>" name="BUN_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+											  <td><input id="BUN_ETYPE_INT" value="<?php echo $LAB_REC['BUN_ETYPE_INT']?>" name="BUN_ETYPE_INT" type="text" class="form-control text-center numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">2.5-6.4 mmol/L</td>
-											  <td><input id="BUN_ETYPE_CON" value="<?php echo $LAB_REC['BUN_ETYPE_CON']?>" name="BUN_ETYPE_CON"type="text" class="form-control numonly" maxlength="2" size="5"></td>
+											  <td><input id="BUN_ETYPE_CON" value="<?php echo $LAB_REC['BUN_ETYPE_CON']?>" name="BUN_ETYPE_CON"type="text" class="form-control text-center numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">7-8 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Cholesterol</b></td>
-											  <td><input id="CHSTRL_INT" value="<?php echo $LAB_REC['CHSTRL_INT']?>" name = "CHSTRL_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="CHSTRL_INT" value="<?php echo $LAB_REC['CHSTRL_INT']?>" name = "CHSTRL_INT" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center">3.87-6.71 mmol/L</td>
-											  <td><input id="CHSTRL_CON" value="<?php echo $LAB_REC['CHSTRL_CON']?>" name = "CHSTRL_CON"type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="CHSTRL_CON" value="<?php echo $LAB_REC['CHSTRL_CON']?>" name = "CHSTRL_CON"type="text" class="form-control text-center numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">150-230 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Creatinine</b></td>
-											  <td><input id="CRTN_ETYPE_INT" value="<?php echo $LAB_REC['CRTN_ETYPE_INT']?>" name = "CRTN_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="CRTN_ETYPE_INT" value="<?php echo $LAB_REC['CRTN_ETYPE_INT']?>" name = "CRTN_ETYPE_INT" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center">44.2-150.28 mmol/L</td>
-											  <td><input id="CRTN_ETYPE_CON" value="<?php echo $LAB_REC['CRTN_ETYPE_CON']?>" name = "CRTN_ETYPE_CON" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
+											  <td><input id="CRTN_ETYPE_CON" value="<?php echo $LAB_REC['CRTN_ETYPE_CON']?>" name = "CRTN_ETYPE_CON" type="text" class="form-control text-center numdecimal" maxlength="3" size="5"></td>
 											  <td class="text-center">0.5-1.7 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>FBS</b></td>
-											  <td><input id="FBS_ETYPE_INT" value="<?php echo $LAB_REC['FBS_ETYPE_INT']?>" name = "FBS_ETYPE_INT"type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+											  <td><input id="FBS_ETYPE_INT" value="<?php echo $LAB_REC['FBS_ETYPE_INT']?>" name = "FBS_ETYPE_INT"type="text" class="form-control text-center numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">3.85-6.05 mmol/L</td>
-											  <td><input id="FBS_ETYPE_CON" value="<?php echo $LAB_REC['FBS_ETYPE_CON']?>" name = "FBS_ETYPE_CON"type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="FBS_ETYPE_CON" value="<?php echo $LAB_REC['FBS_ETYPE_CON']?>" name = "FBS_ETYPE_CON"type="text" class="form-control text-center numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">70-100 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>HDL-Cholesterol</b></td>
-											  <td><input id="HDL_M_ETYPE_INT" value="<?php echo $LAB_REC['HDL_M_ETYPE_INT']?>" name = "HDL_M_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="HDL_M_ETYPE_INT" value="<?php echo $LAB_REC['HDL_M_ETYPE_INT']?>" name = "HDL_M_ETYPE_INT" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center">M: 0.78-1.55 mmol/L</td>
-											  <td><input id="HDL_M_ETYPE_CON" value="<?php echo $LAB_REC['HDL_M_ETYPE_CON']?>" name = "HDL_M_ETYPE_CON" type="text" class="form-control numonly" maxlength="2" size="5"></td>
+											  <td><input id="HDL_M_ETYPE_CON" value="<?php echo $LAB_REC['HDL_M_ETYPE_CON']?>" name = "HDL_M_ETYPE_CON" type="text" class="form-control text-center numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">M:30-60 mg/dl</td>
 										  </tr>
 										  <tr>
-											  <td><input id="HDL_F_ETYPE_INT" value="<?php echo $LAB_REC['HDL_F_ETYPE_INT']?>" name = "HDL_F_ETYPE_INT"type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+											  <td><input id="HDL_F_ETYPE_INT" value="<?php echo $LAB_REC['HDL_F_ETYPE_INT']?>" name = "HDL_F_ETYPE_INT"type="text" class="form-control text-center numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">F:1.03 mmol/L</td>
-											  <td><input id="HDL_F_ETYPE_CON" value="<?php echo $LAB_REC['HDL_F_ETYPE_CON']?>" name = "HDL_F_ETYPE_CON"type="text" class="form-control numonly" maxlength="2" size="5"></td>
+											  <td><input id="HDL_F_ETYPE_CON" value="<?php echo $LAB_REC['HDL_F_ETYPE_CON']?>" name = "HDL_F_ETYPE_CON"type="text" class="form-control text-center numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">F:40-70 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>LDL-Cholesterol</b></td>
-											  <td><input id="LDL_ETYPE_INT" value="<?php echo $LAB_REC['LDL_ETYPE_INT']?>" name ="LDL_ETYPE_INT"type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+											  <td><input id="LDL_ETYPE_INT" value="<?php echo $LAB_REC['LDL_ETYPE_INT']?>" name ="LDL_ETYPE_INT"type="text" class="form-control text-center numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">1.56 mmol/L</td>
-											  <td><input id="LDL_ETYPE_CON" value="<?php echo $LAB_REC['LDL_ETYPE_CON']?>" name="LDL_ETYPE_CON" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="LDL_ETYPE_CON" value="<?php echo $LAB_REC['LDL_ETYPE_CON']?>" name="LDL_ETYPE_CON" type="text" class="form-control text-center numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">60-210 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>2 Hrs Post-Prandial</b></td>
-											  <td><input id="PO_PR_ETYPE_INT" value="<?php echo $LAB_REC['PO_PR_ETYPE_INT']?>" name ="PO_PR_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PO_PR_ETYPE_INT" value="<?php echo $LAB_REC['PO_PR_ETYPE_INT']?>" name ="PO_PR_ETYPE_INT" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><6.60 mmol/L</td>
-											  <td><input id="PO_PR_ETYPE_CON" value="<?php echo $LAB_REC['PO_PR_ETYPE_CON']?>" name ="PO_PR_ETYPE_CON" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="PO_PR_ETYPE_CON" value="<?php echo $LAB_REC['PO_PR_ETYPE_CON']?>" name ="PO_PR_ETYPE_CON" type="text" class="form-control text-center numonly" maxlength="3" size="5"></td>
 											  <td class="text-center"><120 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>RBS</b></td>
-											  <td><input id="RBS_ETYPE_INT" value="<?php echo $LAB_REC['RBS_ETYPE_INT']?>" name="RBS_ETYPE_INT" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="RBS_ETYPE_INT" value="<?php echo $LAB_REC['RBS_ETYPE_INT']?>" name="RBS_ETYPE_INT" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"> mmol/L</td>
-											  <td><input id="RBS_ETYPE_CON" value="<?php echo $LAB_REC['RBS_ETYPE_CON']?>" name="RBS_ETYPE_CON" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="RBS_ETYPE_CON" value="<?php echo $LAB_REC['RBS_ETYPE_CON']?>" name="RBS_ETYPE_CON" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"> mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>SGOT/AST</b></td>
-											  <td><input id="SGOT_M_ETYPE_INT" value="<?php echo $LAB_REC['SGOT_M_ETYPE_INT']?>" name="SGOT_M_ETYPE_INT" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="SGOT_M_ETYPE_INT" value="<?php echo $LAB_REC['SGOT_M_ETYPE_INT']?>" name="SGOT_M_ETYPE_INT" type="text" class="form-control text-center numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">M: 0-40 U/L</td>
 											  <td rowspan="4"></td>
 										  </tr>
 										  <tr>
-											  <td><input id="SGOT_F_ETYPE_INT" value="<?php echo $LAB_REC['SGOT_F_ETYPE_INT']?>" name="SGOT_F_ETYPE_INT"type="text" class="form-control numonly" maxlength="2" size="5"></td>
+											  <td><input id="SGOT_F_ETYPE_INT" value="<?php echo $LAB_REC['SGOT_F_ETYPE_INT']?>" name="SGOT_F_ETYPE_INT"type="text" class="form-control text-center numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">F: 0-40 U/L</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>SGPT/ALT</b></td>
-											  <td><input id="SGPT_M_ETYPE_INT" value="<?php echo $LAB_REC['SGPT_M_ETYPE_INT']?>" name="SGPT_M_ETYPE_INT"type="text" class="form-control numonly" maxlength="2" size="5"></td>
+											  <td><input id="SGPT_M_ETYPE_INT" value="<?php echo $LAB_REC['SGPT_M_ETYPE_INT']?>" name="SGPT_M_ETYPE_INT"type="text" class="form-control text-center numonly" maxlength="2" size="5"></td>
 											  <td class="text-center">M: 0-38 U/L</td>
 										  </tr>
 										  <tr>
-											  <td><input id="SGPT_F_ETYPE_INT" value="<?php echo $LAB_REC['SGPT_F_ETYPE_INT']?>" name="SGPT_F_ETYPE_INT" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="SGPT_F_ETYPE_INT" value="<?php echo $LAB_REC['SGPT_F_ETYPE_INT']?>" name="SGPT_F_ETYPE_INT" type="text" class="form-control text-center numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">F: 0-38 U/L</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Triglyceride</b></td>
-											  <td><input id="TRYLYDE_ETYPE_INT" value="<?php echo $LAB_REC['TRYLYDE_ETYPE_INT']?>" name="TRYLYDE_ETYPE_INT"type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
+											  <td><input id="TRYLYDE_ETYPE_INT" value="<?php echo $LAB_REC['TRYLYDE_ETYPE_INT']?>" name="TRYLYDE_ETYPE_INT"type="text" class="form-control text-center numdecimal" maxlength="3" size="5"></td>
 											  <td class="text-center">0.7-2.8 mmol/L</td>
-											  <td><input id="TRYLYDE_ETYPE_CON" value="<?php echo $LAB_REC['TRYLYDE_ETYPE_CON']?>" name="TRYLYDE_ETYPE_CON" type="text" class="form-control numonly" maxlength="5" size="5"></td>
+											  <td><input id="TRYLYDE_ETYPE_CON" value="<?php echo $LAB_REC['TRYLYDE_ETYPE_CON']?>" name="TRYLYDE_ETYPE_CON" type="text" class="form-control text-center numonly" maxlength="5" size="5"></td>
 											  <td class="text-center">61.0-248.5 mg/dl</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>Uric Acid</b></td>
-											  <td><input id="URIC_F_ETYPE_INT" value="<?php echo $LAB_REC['URIC_F_ETYPE_INT']?>" name="URIC_F_ETYPE_INT" type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="URIC_F_ETYPE_INT" value="<?php echo $LAB_REC['URIC_F_ETYPE_INT']?>" name="URIC_F_ETYPE_INT" type="text" class="form-control text-center numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">F: 143-357 mmol/L</td>
-											  <td><input id="URIC_F_ETYPE_CON" value="<?php echo $LAB_REC['URIC_F_ETYPE_CON']?>" name="URIC_F_ETYPE_CON" type="text" class="form-control numdecimal" maxlength="3" size="5"></td>
+											  <td><input id="URIC_F_ETYPE_CON" value="<?php echo $LAB_REC['URIC_F_ETYPE_CON']?>" name="URIC_F_ETYPE_CON" type="text" class="form-control text-center numdecimal" maxlength="3" size="5"></td>
 											  <td class="text-center">2.4-6.0 mg/dl</td>
 										  </tr>
 										  <tr>
-											  <td><input id="URIC_M_ETYPE_INT" value="<?php echo $LAB_REC['URIC_M_ETYPE_INT']?>" name="URIC_M_ETYPE_INT"type="text" class="form-control numonly" maxlength="3" size="5"></td>
+											  <td><input id="URIC_M_ETYPE_INT" value="<?php echo $LAB_REC['URIC_M_ETYPE_INT']?>" name="URIC_M_ETYPE_INT"type="text" class="form-control text-center text-center numonly" maxlength="3" size="5"></td>
 											  <td class="text-center">M:202-416 mmol/L</td>
-											  <td><input id="URIC_M_ETYPE_CON" value="<?php echo $LAB_REC['URIC_M_ETYPE_CON']?>" name="URIC_M_ETYPE_CON" type="text" class="form-control numdecimal" maxlength="4" size="5"></td>
+											  <td><input id="URIC_M_ETYPE_CON" value="<?php echo $LAB_REC['URIC_M_ETYPE_CON']?>" name="URIC_M_ETYPE_CON" type="text" class="form-control text-center numdecimal" maxlength="4" size="5"></td>
 											  <td class="text-center">3.4-7.0 mg/dl</td>
 										  </tr>
 										  </tbody>
@@ -422,33 +422,33 @@ else if($LAB_TYPE == 'Hematology'){
 										  <tbody>
 										  <tr>
 											  <td class="text-center"><b>Color</b></td>
-											  <td><input id="CLR_MCRO_EXM" value="<?php echo $LAB_REC['CLR_MCRO_EXM']?>" name="CLR_MCRO_EXM" type="text" class="form-control" size="5"></td>
+											  <td><input id="CLR_MCRO_EXM" value="<?php echo $LAB_REC['CLR_MCRO_EXM']?>" name="CLR_MCRO_EXM" type="text" class="form-control text-center" size="5"></td>
 											  <td class="text-center"><b>Ascans</b></td>
-											  <td><input id="PARA_ASCARIS" value="<?php echo $LAB_REC['PARA_ASCARIS']?>" name="PARA_ASCARIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PARA_ASCARIS" value="<?php echo $LAB_REC['PARA_ASCARIS']?>" name="PARA_ASCARIS" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>G.lambia<b></td>
-											  <td><input id="FLAG_G_LAMBIA" value="<?php echo $LAB_REC['FLAG_G_LAMBIA']?>" name="FLAG_G_LAMBIA" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="FLAG_G_LAMBIA" value="<?php echo $LAB_REC['FLAG_G_LAMBIA']?>" name="FLAG_G_LAMBIA" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Consistency</b></td>
-											  <td><input id="CONS_MCRO_EXM" value="<?php echo $LAB_REC['CONS_MCRO_EXM']?>" name ="CONS_MCRO_EXM" type="text" class="form-control" size="5"></td>
+											  <td><input id="CONS_MCRO_EXM" value="<?php echo $LAB_REC['CONS_MCRO_EXM']?>" name ="CONS_MCRO_EXM" type="text" class="form-control text-center" size="5"></td>
 											  <td class="text-center"><b>Hookworm</b></td>
-											  <td><input id="PARA_HKWORM" value="<?php echo $LAB_REC['PARA_HKWORM']?>" name="PARA_HKWORM" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PARA_HKWORM" value="<?php echo $LAB_REC['PARA_HKWORM']?>" name="PARA_HKWORM" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>T.hominis<b></td>
-											  <td><input id="FLAG_T_HOMINIS" value="<?php echo $LAB_REC['FLAG_T_HOMINIS']?>" name="FLAG_T_HOMINIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="FLAG_T_HOMINIS" value="<?php echo $LAB_REC['FLAG_T_HOMINIS']?>" name="FLAG_T_HOMINIS" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Heinths</b></td>
-											  <td><input id="HLMT_MCRO_EXM" value="<?php echo $LAB_REC['HLMT_MCRO_EXM']?>" name="HLMT_MCRO_EXM" type="text" class="form-control" size="5"></td>
+											  <td><input id="HLMT_MCRO_EXM" value="<?php echo $LAB_REC['HLMT_MCRO_EXM']?>" name="HLMT_MCRO_EXM" type="text" class="form-control text-center" size="5"></td>
 											  <td class="text-center"><b>Trinchuris</b></td>
-											  <td><input id="PARA_TRHRIS" value="<?php echo $LAB_REC['PARA_TRHRIS']?>" name="PARA_TRHRIS" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PARA_TRHRIS" value="<?php echo $LAB_REC['PARA_TRHRIS']?>" name="PARA_TRHRIS" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-center"><b>Strongyloides</b></td>
-											  <td><input id="PARA_STRGLOIDES" value="<?php echo $LAB_REC['PARA_STRGLOIDES']?>" name="PARA_STRGLOIDES" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PARA_STRGLOIDES" value="<?php echo $LAB_REC['PARA_STRGLOIDES']?>" name="PARA_STRGLOIDES" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
@@ -461,45 +461,45 @@ else if($LAB_TYPE == 'Hematology'){
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>Occult Blood</b></td>
-											  <td><input id="CT_OB" value="<?php echo $LAB_REC['CT_OB']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="CT_OB" value="<?php echo $LAB_REC['CT_OB']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>E.histolylica:</b></td>
-											  <td><input id="E_AMOEBA_HISTOL" value="<?php echo $LAB_REC['E_AMOEBA_HISTOL']?>" name="E_AMOEBA_HISTOL"type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="E_AMOEBA_HISTOL" value="<?php echo $LAB_REC['E_AMOEBA_HISTOL']?>" name="E_AMOEBA_HISTOL"type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Pus Cells<b></td>
-											  <td><input id="PCELLS_MICRO_EXM" value="<?php echo $LAB_REC['PCELLS_MICRO_EXM']?>" name="PCELLS_MICRO_EXM"type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PCELLS_MICRO_EXM" value="<?php echo $LAB_REC['PCELLS_MICRO_EXM']?>" name="PCELLS_MICRO_EXM"type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 										  	  <td></td>
 											  <td class="text-right"><b>ECyst</b></td>
-											  <td><input id="E_HISTOL_CYST" value="<?php echo $LAB_REC['E_HISTOL_CYST']?>" name="E_HISTOL_CYST" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="E_HISTOL_CYST" value="<?php echo $LAB_REC['E_HISTOL_CYST']?>" name="E_HISTOL_CYST" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>RBC<b></td>
-											  <td><input id="RBC_MCRO_EXM" value="<?php echo $LAB_REC['RBC_MCRO_EXM']?>" name ="RBC_MCRO_EXM"type="text" class="form-control numdecimal" maxlength="5" size="5"></td> 
+											  <td><input id="RBC_MCRO_EXM" value="<?php echo $LAB_REC['RBC_MCRO_EXM']?>" name ="RBC_MCRO_EXM"type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td> 
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-right"><b>Troph</b></td>
-											  <td><input id="E_HISTOL_TROPH" value="<?php echo $LAB_REC['E_HISTOL_TROPH']?>" name="E_HISTOL_TROPH" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="E_HISTOL_TROPH" value="<?php echo $LAB_REC['E_HISTOL_TROPH']?>" name="E_HISTOL_TROPH" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-center"><b>E.coli:</b></td>
-											  <td><input id="E_AMOEBA_COLI" value="<?php echo $LAB_REC['E_AMOEBA_COLI']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="E_AMOEBA_COLI" value="<?php echo $LAB_REC['E_AMOEBA_COLI']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-right"><b>Cyst</b></td>
-											  <td><input id="COLI_CYST" value="<?php echo $LAB_REC['COLI_CYST']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="COLI_CYST" value="<?php echo $LAB_REC['COLI_CYST']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-right"><b>Troup</b></td>
-											  <td><input id="COLI_TROPH" value="<?php echo $LAB_REC['COLI_TROPH']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="COLI_TROPH" value="<?php echo $LAB_REC['COLI_TROPH']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-right"><b>Remarks</b></td>
-											  <td><input id="REMARKSF" value="<?php echo $LAB_REC['REMARKSF']?>" type="text" class="form-control" size="5"></td>
+											  <td><input id="REMARKSF" value="<?php echo $LAB_REC['REMARKSF']?>" type="text" class="form-control text-center" size="5"></td>
 										  </tr>
 										  </tbody>
 									  </table>
@@ -533,64 +533,64 @@ else if($LAB_TYPE == 'Hematology'){
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>HEMATOCRIT:</b></td>
-											  <td class="text-center"><input id="HEMA_M_ETYPE_CBC" value="<?php echo $LAB_REC['HEMA_M_ETYPE_CBC']?>" type="text" class="form-control numdecimal" maxlength="4" size="5">(M: 0.40-0.60)</td>
+											  <td class="text-center"><input id="HEMA_M_ETYPE_CBC" value="<?php echo $LAB_REC['HEMA_M_ETYPE_CBC']?>" type="text" class="form-control text-center numdecimal" maxlength="4" size="5">(M: 0.40-0.60)</td>
 											  <td class="text-center"><b>WBC</b></td>
-											  <td class="text-center"><input id="WBC_ETYPE_CBC" value="<?php echo $LAB_REC['WBC_ETYPE_CBC']?>" type="text" class="form-control numdecimal" maxlength="5" size="5">(5-10.0 X 10/L)</td>
+											  <td class="text-center"><input id="WBC_ETYPE_CBC" value="<?php echo $LAB_REC['WBC_ETYPE_CBC']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5">(5-10.0 X 10/L)</td>
 										  </tr>
 										  <tr>
-											  <td class="text-center"><input id="HEMA_F_ETYPE_CBC" value="<?php echo $LAB_REC['HEMA_F_ETYPE_CBC']?>" type="text" class="form-control numdecimal" maxlength="5" size="5">(F: 0.36-0.40)</td>
+											  <td class="text-center"><input id="HEMA_F_ETYPE_CBC" value="<?php echo $LAB_REC['HEMA_F_ETYPE_CBC']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5">(F: 0.36-0.40)</td>
 											  <td class="text-center"><b>RCB</b></td>
-											  <td class="text-center"><input id="RBC_ETYPE_CBC" value="<?php echo $LAB_REC['RBC_ETYPE_CBC']?>" type="text" class="form-control numdecimal" maxlength="4" size="5">(4-5X 10/L)</td>
+											  <td class="text-center"><input id="RBC_ETYPE_CBC" value="<?php echo $LAB_REC['RBC_ETYPE_CBC']?>" type="text" class="form-control text-center numdecimal" maxlength="4" size="5">(4-5X 10/L)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center" rowspan="2"><b>HEMOGLOBIN:</b></td>
-											  <td class="text-center"><input id="HEMO_M_ETYPE_CBC" value="<?php echo $LAB_REC['HEMO_M_ETYPE_CBC']?>" type="text" class="form-control numonly" maxlength="3" size="5">(M: 140-170)</td>
+											  <td class="text-center"><input id="HEMO_M_ETYPE_CBC" value="<?php echo $LAB_REC['HEMO_M_ETYPE_CBC']?>" type="text" class="form-control text-center numonly" maxlength="3" size="5">(M: 140-170)</td>
 										  </tr>
 										  <tr>
-											  <td class="text-center"><input id="HEMO_F_ETYPE_CBC" value="<?php echo $LAB_REC['HEMO_F_ETYPE_CBC']?>" type="text" class="form-control numdecimal" maxlength="3" size="5">(F: 120-150)</td>
+											  <td class="text-center"><input id="HEMO_F_ETYPE_CBC" value="<?php echo $LAB_REC['HEMO_F_ETYPE_CBC']?>" type="text" class="form-control text-center numdecimal" maxlength="3" size="5">(F: 120-150)</td>
 										  </tr>
 										  <tr>
 											  <th>DIFFERENTIAL COUNT:</th>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Segmeters</b></td>
-											  <td class="text-center"><input id="SEG_DIFF_COUNT" value="<?php echo $LAB_REC['SEG_DIFF_COUNT']?>" type="text" class="form-control numdecimal" maxlength="4" size="5">(0.35-0.65)</td>
+											  <td class="text-center"><input id="SEG_DIFF_COUNT" value="<?php echo $LAB_REC['SEG_DIFF_COUNT']?>" type="text" class="form-control text-center numdecimal" maxlength="4" size="5">(0.35-0.65)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Stab:</b></td>
-											  <td class="text-center"><input id="STAB_DCOUNT" value="<?php echo $LAB_REC['STAB_DCOUNT']?>" type="text" class="form-control numdecimal" maxlength="5" size="5">(0.02-0.04)</td>
+											  <td class="text-center"><input id="STAB_DCOUNT" value="<?php echo $LAB_REC['STAB_DCOUNT']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5">(0.02-0.04)</td>
 										  </tr>
 										   <tr>
 											  <td class="text-center"><b>Eosinophils:</b></td>
-											  <td class="text-center"><input id="EOSI_DCOUNT" value="<?php echo $LAB_REC['EOSI_DCOUNT']?>" type="text" class="form-control numdecimal" maxlength="5" size="5">(0-02)</td>
+											  <td class="text-center"><input id="EOSI_DCOUNT" value="<?php echo $LAB_REC['EOSI_DCOUNT']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5">(0-02)</td>
 											  <td class="text-center"><b>Platelete Count:</b></td>
-											  <td class="text-center"><input id="PLA_CT_DCOUNT" value="<?php echo $LAB_REC['PLA_CT_DCOUNT']?>" type="text" class="form-control numdecimal" maxlength="5" size="5">(150-400x10^9/L)</td>
+											  <td class="text-center"><input id="PLA_CT_DCOUNT" value="<?php echo $LAB_REC['PLA_CT_DCOUNT']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5">(150-400x10^9/L)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Lymphocytes:</b></td>
-											  <td class="text-center"><input id="LYMP_DCOUNT" value="<?php echo $LAB_REC['LYMP_DCOUNT']?>" type="text" class="form-control numdecimal" maxlength="5" size="5">(0.20-0.35)</td>
+											  <td class="text-center"><input id="LYMP_DCOUNT" value="<?php echo $LAB_REC['LYMP_DCOUNT']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5">(0.20-0.35)</td>
 											  <td class="text-center"><b>Blood Type:</b></td>
-											  <td class="text-center"><input id="BLD_TYP_DCOUNT" value="<?php echo $LAB_REC['BLD_TYP_DCOUNT']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td class="text-center"><input id="BLD_TYP_DCOUNT" value="<?php echo $LAB_REC['BLD_TYP_DCOUNT']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Monocytes:</b></td>
-											  <td class="text-center"><input id="MONO_DCOUNT" value="<?php echo $LAB_REC['MONO_DCOUNT']?>" type="text" class="form-control numdecimal" maxlength="3" size="5">(0.02-0.04)</td>
+											  <td class="text-center"><input id="MONO_DCOUNT" value="<?php echo $LAB_REC['MONO_DCOUNT']?>" type="text" class="form-control text-center numdecimal" maxlength="3" size="5">(0.02-0.04)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Basophils</b></td>
-											  <td class="text-center"><input id="BASO_DCOUNT" value="<?php echo $LAB_REC['BASO_DCOUNT']?>" type="text" class="form-control numdecimal" maxlength="3" size="5">(0-0.01)</td>
+											  <td class="text-center"><input id="BASO_DCOUNT" value="<?php echo $LAB_REC['BASO_DCOUNT']?>" type="text" class="form-control text-center numdecimal" maxlength="3" size="5">(0-0.01)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Myelocytes:</b></td>
-											  <td class="text-center"><input id="MYELO_DCOUNT" value="<?php echo $LAB_REC['MYELO_DCOUNT']?>" type="text" class="form-control numdecimal" maxlength="5" size="5">(0)</td>
+											  <td class="text-center"><input id="MYELO_DCOUNT" value="<?php echo $LAB_REC['MYELO_DCOUNT']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5">(0)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Juveniles:</b></td>
-											  <td class="text-center"><input id="JUVEN_DCOUNT" value="<?php echo $LAB_REC['JUVEN_DCOUNT']?>" type="text" class="form-control numdecimal" maxlength="5" size="5">(0-1)</td>
+											  <td class="text-center"><input id="JUVEN_DCOUNT" value="<?php echo $LAB_REC['JUVEN_DCOUNT']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5">(0-1)</td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Remarks:</b></td>
-											  <td class="text-center"><input id="REMARKSH" value="<?php echo $LAB_REC['REMARKSH']?>" type="text" class="form-control" size="5"></td>
+											  <td class="text-center"><input id="REMARKSH" value="<?php echo $LAB_REC['REMARKSH']?>" type="text" class="form-control text-center" size="5"></td>
 										  </tr>
 										  </tbody>
 									  </table>
@@ -621,52 +621,52 @@ else if($LAB_TYPE == 'Hematology'){
 										  <tbody>
 										  <tr>
 											  <td class="text-center"><b>Color</b></td>
-											  <td><input id="COLOR_PHY_PRO" type="text" value="<?php echo $LAB_REC['text']?>" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="COLOR_PHY_PRO" type="text" value="<?php echo $LAB_REC['text']?>" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Pus</b></td>
-											  <td><input id="PUS_CELL" value="<?php echo $LAB_REC['PUS_CELL']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PUS_CELL" value="<?php echo $LAB_REC['PUS_CELL']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Amorphous Urates<b></td>
-											  <td><input id="AU_CRYSTALS" value="<?php echo $LAB_REC['AU_CRYSTALS']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="AU_CRYSTALS" value="<?php echo $LAB_REC['AU_CRYSTALS']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Transparency</b></td>
-											  <td><input id="TRANS_PHY_PRO" value="<?php echo $LAB_REC['TRANS_PHY_PRO']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="TRANS_PHY_PRO" value="<?php echo $LAB_REC['TRANS_PHY_PRO']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>RBC</b></td>
-											  <td><input id="RBC_CELL" value="<?php echo $LAB_REC['RBC_CELL']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="RBC_CELL" value="<?php echo $LAB_REC['RBC_CELL']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Amorphous Pos<b></td>
-											  <td><input id="APO_CRYSTALS" value="<?php echo $LAB_REC['APO_CRYSTALS']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="APO_CRYSTALS" value="<?php echo $LAB_REC['APO_CRYSTALS']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>pH</b></td>
-											  <td><input id="PH_PHY_PRO" value="<?php echo $LAB_REC['PH_PHY_PRO']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PH_PHY_PRO" value="<?php echo $LAB_REC['PH_PHY_PRO']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Yeast</b></td>
-											  <td><input id="YEAST_CELL" value="<?php echo $LAB_REC['YEAST_CELL']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="YEAST_CELL" value="<?php echo $LAB_REC['YEAST_CELL']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Uric Acid<b></td>
-											  <td><input id="URIC_ACID_CRYSTALS" value="<?php echo $LAB_REC['URIC_ACID_CRYSTALS']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="URIC_ACID_CRYSTALS" value="<?php echo $LAB_REC['URIC_ACID_CRYSTALS']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Specific Gravity</b></td>
-											  <td><input id="SPEC_GRAV_PHY_PRO" value="<?php echo $LAB_REC['SPEC_GRAV_PHY_PRO']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="SPEC_GRAV_PHY_PRO" value="<?php echo $LAB_REC['SPEC_GRAV_PHY_PRO']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Squamous</b></td>
-											  <td><input id="SQUAMOS_CELL" value="<?php echo $LAB_REC['SQUAMOS_CELL']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="SQUAMOS_CELL" value="<?php echo $LAB_REC['SQUAMOS_CELL']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Calcium Ceslate<b></td>
-											  <td><input id="CAL_OX_CRYSTALS" value="<?php echo $LAB_REC['CAL_OX_CRYSTALS']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="CAL_OX_CRYSTALS" value="<?php echo $LAB_REC['CAL_OX_CRYSTALS']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"</td>
 											  <td class="text-center"><b>Renal</b></td>
-											  <td><input id="RENAL_CELL" value="<?php echo $LAB_REC['RENAL_CELL']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="RENAL_CELL" value="<?php echo $LAB_REC['RENAL_CELL']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Triple PO4<b></td>
-											  <td><input id="TRI_PO_CRYSTALS" value="<?php echo $LAB_REC['TRI_PO_CRYSTALS']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="TRI_PO_CRYSTALS" value="<?php echo $LAB_REC['TRI_PO_CRYSTALS']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"</td>
 											  <td class="text-center"><b>Bacteria</b></td>
-											  <td><input id="BACTERIA_CELL" value="<?php echo $LAB_REC['BACTERIA_CELL']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="BACTERIA_CELL" value="<?php echo $LAB_REC['BACTERIA_CELL']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										  <tr>
@@ -676,44 +676,44 @@ else if($LAB_TYPE == 'Hematology'){
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Reducing Sugar</b></td>
-											  <td><input id="RED_SUG_CT" value="<?php echo $LAB_REC['RED_SUG_CT']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="RED_SUG_CT" value="<?php echo $LAB_REC['RED_SUG_CT']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>DESA</b></td>
-											  <td><input id="DESA_CASTS" value="<?php echo $LAB_REC['DESA_CASTS']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="DESA_CASTS" value="<?php echo $LAB_REC['DESA_CASTS']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Mucus Thread<b></td>
-											  <td><input id="MUC_TH" value="<?php echo $LAB_REC['MUC_TH']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="MUC_TH" value="<?php echo $LAB_REC['MUC_TH']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td class="text-center"><b>Protein</b></td>
-											  <td><input id="PRO_CT" value="<?php echo $LAB_REC['PRO_CT']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PRO_CT" value="<?php echo $LAB_REC['PRO_CT']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td class="text-center"><b>Course Granular</b></td>
-											  <td><input id="CO_GRAN_CASTS" value="<?php echo $LAB_REC['CO_GRAN_CASTS']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="CO_GRAN_CASTS" value="<?php echo $LAB_REC['CO_GRAN_CASTS']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 											  <td class="text-center"><b>Remarks</b></td>
-											  <td><input id="REMARKSU" value="<?php echo $LAB_REC['REMARKSU']?>" type="text" class="form-control" size="5"></td>
+											  <td><input id="REMARKSU" value="<?php echo $LAB_REC['REMARKSU']?>" type="text" class="form-control text-center" size="5"></td>
 										  </tr>
 										  <tr>
 											  <td colspan="2"></td>
 											  <td class="text-center"><b>Fine Granular</b></td>
-											  <td><input id="FIN_GRAN_CASTS" value="<?php echo $LAB_REC['FIN_GRAN_CASTS']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="FIN_GRAN_CASTS" value="<?php echo $LAB_REC['FIN_GRAN_CASTS']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										   <tr>
 											  <td colspan="2"></td>
 											  <td class="text-center"><b>Pus</b></td>
-											  <td><input id="PUS_CASTS" value="<?php echo $LAB_REC['PUS_CASTS']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="PUS_CASTS" value="<?php echo $LAB_REC['PUS_CASTS']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										   <tr>
 											  <td colspan="2"></td>
 											  <td class="text-center"><b>RBC</b></td>
-											  <td><input id="RBC_CASTS" value="<?php echo $LAB_REC['RBC_CASTS']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="RBC_CASTS" value="<?php echo $LAB_REC['RBC_CASTS']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										   <tr>
 											  <td colspan="2"></td>
 											  <td class="text-center"><b>Waxy Cast</b></td>
-											  <td><input id="WAXY_CASTS" value="<?php echo $LAB_REC['WAXY_CASTS']?>" type="text" class="form-control numdecimal" maxlength="5" size="5"></td>
+											  <td><input id="WAXY_CASTS" value="<?php echo $LAB_REC['WAXY_CASTS']?>" type="text" class="form-control text-center numdecimal" maxlength="5" size="5"></td>
 											  <td>/LPF</td>
 										  </tr>
 										   </tbody>
@@ -761,10 +761,6 @@ else if($LAB_TYPE == 'Hematology'){
     <script src="js/preloader.js" ></script>
 	<script src="js/numbers-only.js"></script>
 
-	
-<?php
-include 'lib/User-Accesslvl.php';
-?>
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 	<script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
@@ -1081,5 +1077,9 @@ include 'lib/User-Accesslvl.php';
 		newWin.close();
 		}
 	</script>
+<?php
+include 'lib/User-Accesslvl.php';
+include 'lib/logout.script.php';
+?>
   </body>
 </html>

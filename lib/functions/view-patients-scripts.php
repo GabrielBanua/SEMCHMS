@@ -204,6 +204,7 @@
             success: function(data){
                 alert('Updated successfully!');
                 window.location.reload();
+                editpatientlog(P_ID);
               }
           });
           } else {
@@ -224,3 +225,16 @@
 		}
 		});
 	</script>
+  <script>
+  function editpatientlog(pid){
+    var id = '<?php echo $ID?>';
+    var patient_id = pid;
+    $.ajax({
+			type: "POST",
+			url: "LOG_SERVER.php?p=Editpatientlog",
+			data: "ID="+id+"&EID="+patient_id,
+			success: function(data){ 
+      }
+		});					
+  }
+  </script>

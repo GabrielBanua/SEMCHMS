@@ -543,3 +543,19 @@
 
 					}
 		</script>
+		<script>
+		function deleteMed(tr){
+			var Med_id = tr;
+			if (confirm('Are you sure you want to remove this medicine from the medicine list?')) {
+							$.ajax({
+								type: "POST",
+								url: "Server2.php?p=DeleteMedicine",
+								data: "MED_ID="+Med_id,
+								success: function(data){
+                                    alert('Successfully deleted from database')
+								    window.location.reload();
+								}
+							});
+			}
+		}
+		</script>

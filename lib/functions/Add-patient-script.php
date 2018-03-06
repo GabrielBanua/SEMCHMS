@@ -1,6 +1,6 @@
 <script>
 	  function addNewPatient(){
-
+        var patient_id = '<?php echo $MaxID?>';
         var Brgy = $('#P_BRGY').val();
         var Purok = $('#P_PUROK').val(); 
         var Lastname = $('#P_LNAME').val();
@@ -103,6 +103,7 @@
                       data: "P_LNAME="+Lastname+"&P_FNAME="+Firstname+"&P_MNAME="+Middlename+"&P_GNDR="+Gender+"&P_BDATE="+Birthday+"&P_AGE="+Age+"&P_TEMP="+Temperature+"&P_WGHT="+Weight+"&P_HGHT="+Height+"&P_TYPE="+Type+"&P_ADD="+Address+"&P_CN="+Contact+"&P_OCCU="+Occupation+"&P_REL="+Religion+"&P_CVL_STAT="+Civil+"&PP_HEATH="+Past_pre+"&TRMT="+Treatment+"&MEDCT="+Medication+"&DISE_DISO="+Disease+"&HPTL="+Hospitalized+"&DOM_HAND="+Dominant+"&PHY_HEALTH="+Physical_H+"&MENT_EMO_HEAl="+Mental_Emo+"&SIG_INJ="+Significant+"&SMOKE="+Smoke+"&ALCO_DRUGS="+Alcohol+"&ASSIST_DEV="+Assistive_dev+"&PERS_ASSIST="+Person_assist+"&YEARS_FE="+Formal_ED+"&CB_HEALTH_COND="+CB_Health+"&TU_HEALTH_COND="+TU_Health+"&P_OCCU_FBW="+OccupationFBW+"&P_BRGY="+Brgy+"&P_PUROK="+Purok+"&DATE_REG="+DateReg,
                       success: function(data){
                   $('#Success_Message').html('Successfully Added! &nbsp;');
+                  addnewpatientlog(patient_id);
                   setTimeout(function() {
                     $('#Success_Message').fadeOut('slow');
                   }, 2000);
@@ -224,3 +225,17 @@
 		}
 		});
 	</script>
+
+  <script>
+  function addnewpatientlog(pid){
+    var id = '<?php echo $ID?>';
+    var patient_id = pid;
+    $.ajax({
+			type: "POST",
+			url: "LOG_SERVER.php?p=addnewpatientlog",
+			data: "ID="+id+"&PATIENT_ID="+patient_id,
+			success: function(data){ 
+      }
+		});					
+  }
+  </script>

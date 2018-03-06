@@ -3,8 +3,9 @@
 session_start();
  
 require 'lib/Db.config.pdo.php';
+require 'lib/Db.config.php';
 require 'lib/password.php';
- 
+date_default_timezone_set('Asia/Manila');
 if(isset($_POST['login'])){
     
     //Retrieve the field values from our login form.
@@ -33,12 +34,31 @@ if(isset($_POST['login'])){
         
         //If $validPassword is TRUE
         if($valid){
-            
+
             //Provide the user with a login session.
             $_SESSION['user_id'] = $user['User_id'];
             $_SESSION['position'] = $user['Position'];
             $_SESSION['logged_in'] = time();
-            
+            $log_id = $user['User_id'];
+
+            //provide login logs for the system
+            $fetch = "SELECT *, CONCAT(Firstname,' ',Middlename,' ',Lastname) AS Fullname FROM users WHERE User_id = '$log_id'";
+            $stmtq = mysql_query($fetch);
+            $res = mysql_fetch_array($stmtq);
+
+            $date = date('Y-m-d H:i:s');
+            $Fullname = $res['Fullname'];
+            $postion = $res['Position'];
+            $Act = "Logged in the system";
+
+            $stmt = $db->prepare("insert into login_logs values('',?,?,?,?,?)");
+                $stmt->bindParam(1,$log_id);
+                $stmt->bindParam(2,$Fullname);
+                $stmt->bindParam(3,$date);
+                $stmt->bindParam(4,$postion);
+                $stmt->bindParam(5,$Act);
+                $stmt->execute();
+
             //Redirect to protected page
             header('Location: index.php');
             exit;

@@ -1,12 +1,5 @@
 <?php
 require 'lib/session.php';
-
-if($Position == "Doctor"){
-  header('Location: index.php');
-}
-else if($Position == "Volunter"){
-  header('Location: index.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +55,7 @@ else if($Position == "Volunter"){
                           <li><a href="#"><i class=" icon-suitcase"></i>Profile</a></li>
                           <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
                           <li><a href="#"><i class="icon-bell-alt"></i> Notification</a></li>
-                          <li><a href="logout.php"><i class="icon-key"></i> Log Out</a></li>
+                          <li><a onclick="logout()"><i class="icon-key"></i> Log Out</a></li>
                       </ul>
                   </li>
                   <!-- user login dropdown end -->
@@ -202,6 +195,9 @@ else if($Position == "Volunter"){
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
+    
+    <!--common script for all pages-->
+    <script src="js/common-scripts.js"></script>
 	<script>
 		$('.btn').on('click', function() {
 			var $this = $(this);
@@ -211,11 +207,11 @@ else if($Position == "Volunter"){
 		   }, 8000);
 		});
 	</script>
+
+ 
 <?php
     include 'lib/User-Accesslvl.php';
+    include 'lib/logout.script.php';
 ?>
-  <!--common script for all pages-->
-    <script src="js/common-scripts.js"></script>
-
   </body>
 </html>
