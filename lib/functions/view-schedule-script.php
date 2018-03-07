@@ -57,7 +57,8 @@
                       data: "Sched_Id="+Sched_Id+"&SCHEDULE_DATE="+SCHEDULE_DATE+"&SCHEDULE_TIME="+SCHEDULE_TIME+"&SCHEDULE_PURPOSE="+SCHEDULE_PURPOSE,
                       success: function(data){
                         $('#Error_Message-'+str).html('');
-                                $('#Success_Message-'+str).html('Successfully Added! &nbsp;');
+                        $('#Success_Message-'+str).html('Successfully Added! &nbsp;');
+                        editSchedlog(Sched_Id, SCHEDULE_PURPOSE, SCHEDULE_DATE);
                                 setTimeout(function() {
                                   $('#Success_Message-'+str).fadeOut('slow');
                                 }, 1000);
@@ -90,7 +91,19 @@
               // Do nothing!
           } 
         }
-      $(document).ready(function(){
-        
-      });
-      </script>
+</script>
+<script>
+  function editSchedlog(sid, purpose, date){
+    var id = '<?php echo $ID?>';
+    var sched_id = sid;
+    var sched_purpose = purpose;
+    var sched_date = date;
+    $.ajax({
+			type: "POST",
+			url: "LOG_SERVER.php?p=Editschedlog",
+			data: "ID="+id+"&SID="+sched_id+"&SCHED_PURPOSE="+sched_purpose+"&SCHED_DATE="+sched_date,
+			success: function(data){ 
+      }
+		});					
+  }
+</script>
