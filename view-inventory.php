@@ -275,10 +275,10 @@ if(isset($_POST['Inv_filter'])){
                                                         if($row['INV_QTY'] < 50){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else if($row['INV_QTY'] > $QtyStatus || $row['INV_QTY'] == $row['INV_QTY_HIST']){ echo "<span class='label label-primary label-mini'>Full</span>";}
                                                         else if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty && $row['INV_QTY'] > 50){ echo "<span class='label label-warning label-mini'>Low</span>";
                                                         }} ?></td>
-													<td style="align:center;" class="hidden-phone">
-														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" onclick="RetrieveInventory(<?php echo $row['INV_ID'] ?>)" data-target="#EditInv-<?php echo $row['INV_ID'] ?>"><i class="icon-pencil"></i></a>
-														<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><i class="icon-minus"></i></a>
-														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>
+													<td style="align:center;" class="hidden-phone text-center">
+														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" onclick="RetrieveInventory(<?php echo $row['INV_ID'] ?>)" data-target="#EditInv-<?php echo $row['INV_ID'] ?>"><span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit Inventory"><i class="icon-pencil"></i></span></a>
+														<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Dispense Medicines"><i class="icon-minus"></i></span></a>
+														<!--<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteInventory(<?php echo $row['INV_ID'] ?>)"><i class="icon-trash"></i></a>-->
 														
 													<?php
 													include 'lib/modals/Dispense-medicine-modal.php';
@@ -324,12 +324,12 @@ if(isset($_POST['Inv_filter'])){
 													<td><?php echo $Medi['MEDICINE_BNAME']; ?></td>
 													<td><?php echo $Medi['MEDICINE_DFORM']; ?></td>
 													<td><?php echo $Medi['MEDICINE_DOSE']; ?></td>
-													<td class="hidden-phone">
-														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMedInfo-<?php echo $Medi['MEDICINE_ID']; ?>"><i class="icon-pencil"></i></a>
+													<td class="hidden-phone text-center">
+														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMedInfo-<?php echo $Medi['MEDICINE_ID']; ?>"><span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit Medicines Info"><i class="icon-pencil"></i> Edit</span></a>
                                                         <?php 
                                                         include 'lib/modals/Edit-med-modal.php';
                                                         ?>
-														<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteMed(<?php echo $Medi['MEDICINE_ID']; ?>)"><i class="icon-trash"></i></a>
+														<!--<a class="btn btn-shadow btn-danger btn-xs" onclick="deleteMed(<?php echo $Medi['MEDICINE_ID']; ?>)"><i class="icon-trash"></i></a>-->
 													</td>
 												</tr> 
                                             <?php
