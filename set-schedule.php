@@ -207,7 +207,9 @@ $stmt = $db->prepare("Select P_ID, P_GNDR, P_REL, P_OCCU, P_TYPE, CONCAT(P_FNAME
                                               <td><?php echo $row['P_OCCU'] ?></td>
                                               <td class="center hidden-phone"><?php echo $row['P_TYPE'] ?></td>
                                               <td class="center hidden-phone">
-                        		<a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#setsched-<?php echo $row['P_ID']?>"><i class="icon-calendar"></i> Set Schedule</a>
+                        		<a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" data-target="#setsched-<?php echo $row['P_ID']?>">
+									<span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Set Schedule"><i class="icon-calendar"></i>
+									Set Schedule</span></a>
 <?php
 include 'lib/modals/set-schedule-modal.php';
 ?>
