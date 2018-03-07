@@ -84,6 +84,8 @@
           var MedTemp = $('#MedRTemp').val();
           var MedDate = $('#MedRDate').val();
           var Sched_id = '<?php echo $SCHED_ID; ?>';
+          var Patient_id = '<?php echo $VIEW_ID; ?>';
+
           if(Sched_id == ''){
             alert("Please set a schedule first before adding consoltation information!");
           }else{
@@ -99,6 +101,7 @@
                             data: "MedRillness="+Medillness+"&MedRBP="+MedBP+"&MedRWeight="+MedWeight+"&MedRTemp="+MedTemp+"&MedRDate="+MedDate+"&Sched_ID="+Sched_id+"&DOC_ID="+Doctor_id,
                             success: function(data){
                             $('#Success_Message').html('Successfully Added! &nbsp;');
+                            addmedicalreclog(Patient_id);
                               setTimeout(function() {
                                 $('#Success_Message').fadeOut('slow');
                               }, 1000);
@@ -124,6 +127,7 @@ function addTreatment(str){
           var RefDoc = $('#Ref_Doc_name-'+Med_RID).val();
           var RefDoc_CN = $('#Ref_Doc_CN-'+Med_RID).val();
           var RefDoc_Add = $('#Ref_Doc_Add-'+Med_RID).val();
+          var Patient_id = '<?php echo $VIEW_ID; ?>';
 
           if(Diagnosis == '' || Treatment == '' || Remarks == ''){
              $('#Error_Message-TRMT-'+Med_RID).html('Please fill all fields! &nbsp;');
@@ -135,6 +139,7 @@ function addTreatment(str){
                 data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID+"&REFDN="+RefDoc+"&REF_CN="+RefDoc_CN+"&REF_ADD="+RefDoc_Add,
                 success: function(data){
                   $('#Success_Message-TRMT-'+Med_RID).html('Successfully Added! &nbsp;');
+                  addtreatmentlog(Patient_id, Med_RID);
                         setTimeout(function() {
                           $('#Success_Message-TRMT-'+Med_RID).fadeOut('slow');
                         }, 1000);
@@ -155,6 +160,8 @@ function editTreatment(id){
           var RefDoc = $('#RefDoc_name-'+Update_ID).val();
           var RefDoc_CN = $('#RefDoc_CN-'+Update_ID).val();
           var RefDoc_Add = $('#RefDoc_Add-'+Update_ID).val();
+          var Patient_id = '<?php echo $VIEW_ID; ?>';
+
           if($('#c2-'+Update_ID).prop('checked')){
             var check = "check";
           }else{
@@ -171,6 +178,7 @@ function editTreatment(id){
                 data: "DGNE="+Diagnosis+"&TRMTE="+Treatment+"&RMKSE="+Remarks+"&FPCHKE="+FollowUp+"&DOCE="+Doctor+"&MRIDE="+Update_ID+"&REFDNE="+RefDoc+"&REF_CNE="+RefDoc_CN+"&REF_ADDE="+RefDoc_Add+"&CHECK="+check,
                 success: function(data){
                   $('#Success_Message-ETRMT-'+Update_ID).html('Successfully updated! &nbsp;');
+                  edittreatmentlog(Patient_id, Update_ID);
                         setTimeout(function() {
                           $('#Success_Message-ETRMT-'+Update_ID).fadeOut('slow');
                         }, 1500);
@@ -219,6 +227,8 @@ function editTreatment(id){
         var Mr_id = MR_id;
         var TestReq = $('#TRequested-'+Mr_id).val();
         var Treatment_id = TR_id;
+        var Patient_id = '<?php echo $VIEW_ID; ?>';
+
         if(TestReq == 'Select'){
           $('#Error_Message-LABRQ-'+Mr_id).html('Please select a request');
         }else{
@@ -229,6 +239,7 @@ function editTreatment(id){
           data: "T_REQ="+TestReq+"&T_ID="+Treatment_id,
           success: function(data){
             $('#Success_Message-LABRQ-'+Mr_id).html('Successfully requested! &nbsp;');
+            addlabrequestlog(Patient_id, TestReq, Mr_id);
             setTimeout(function(){
               $('#Success_Message-LABRQ-'+Mr_id).fadeOut('slow');
               }, 1500);
@@ -241,7 +252,10 @@ function editTreatment(id){
         var Deleted_id = Del;
         var Mr_id = Med_id;
         var Tr_id = Treat_id;
+        var Patient_id = '<?php echo $VIEW_ID; ?>';
+
         if (confirm('Are you sure you want to delete this request?')) {
+        removelabrequestlog(Patient_id, Deleted_id, Mr_id);
         $.ajax({
           type: "POST",
           url: "Server2.php?p=Deletelabrequest",
@@ -259,3 +273,68 @@ function editTreatment(id){
         }
       }
 	</script>
+<script>
+  function addmedicalreclog(pid){
+    var id = '<?php echo $ID?>';
+    var patient_id = pid;
+    $.ajax({
+			type: "POST",
+			url: "LOG_SERVER.php?p=addmedicalrecordlog",
+			data: "ID="+id+"&MRID="+patient_id,
+			success: function(data){ 
+      }
+		});					
+  }
+  function addtreatmentlog(pid, mrid){
+    var id = '<?php echo $ID?>';
+    var patient_id = pid;
+    var MID = mrid;
+    $.ajax({
+			type: "POST",
+			url: "LOG_SERVER.php?p=addtreatmentlog",
+			data: "ID="+id+"&TRTID="+patient_id+"&MR_ID="+MID,
+			success: function(data){ 
+      }
+		});					
+  }
+  function edittreatmentlog(pid, mrid){
+    var id = '<?php echo $ID?>';
+    var patient_id = pid;
+    var MID = mrid;
+    $.ajax({
+			type: "POST",
+			url: "LOG_SERVER.php?p=edittreatmentlog",
+			data: "ID="+id+"&ETRTID="+patient_id+"&MR_ID="+MID,
+			success: function(data){ 
+      }
+		});					
+  }
+  function addlabrequestlog(pid, test, mrid){
+    var id = '<?php echo $ID?>';
+    var patient_id = pid;
+    var TestR = test;
+    var MID = mrid;
+
+    $.ajax({
+			type: "POST",
+			url: "LOG_SERVER.php?p=addlabreqlog",
+			data: "ID="+id+"&TRTID="+patient_id+"&TestReq="+TestR+"&MR_ID="+MID,
+			success: function(data){ 
+      }
+		});					
+  }
+  function removelabrequestlog(pid, remove, mrid){
+    var id = '<?php echo $ID?>';
+    var patient_id = pid;
+    var TestRem = remove;
+    var MID = mrid;
+
+    $.ajax({
+			type: "POST",
+			url: "LOG_SERVER.php?p=removelabreqlog",
+			data: "ID="+id+"&TRTID="+patient_id+"&TestRem="+TestRem+"&MR_ID="+MID,
+			success: function(data){ 
+      }
+		});					
+  }
+</script>

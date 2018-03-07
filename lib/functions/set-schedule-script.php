@@ -35,12 +35,13 @@
                           success: function(data){
                                 $('#Error_Message-'+str).html('');
                                 $('#Success_Message-'+str).html('Successfully Added! &nbsp;');
+                                setSchedlog(P_ID, SCHEDULE_PURPOSE, SCHEDULE_DATE);
                                 setTimeout(function() {
                                   $('#Success_Message-'+str).fadeOut('slow');
                                 }, 1000);
                                 setTimeout(function(){
                                   window.location.reload();
-                                }, 1200);
+                                }, 1000);
                              } 
                           });
                     }
@@ -52,4 +53,19 @@
             }
           }
       }
+</script>
+<script>
+  function setSchedlog(pid, purpose, date){
+    var id = '<?php echo $ID?>';
+    var patient_id = pid;
+    var sched_purpose = purpose;
+    var sched_date = date;
+    $.ajax({
+			type: "POST",
+			url: "LOG_SERVER.php?p=Setschedlog",
+			data: "ID="+id+"&PID="+patient_id+"&SCHED_PURPOSE="+sched_purpose+"&SCHED_DATE="+sched_date,
+			success: function(data){ 
+      }
+		});					
+  }
 </script>

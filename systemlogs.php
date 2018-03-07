@@ -160,10 +160,10 @@ $Query = mysql_query($userlogs);
                                     <table  class="table table-striped table-advance table-hover" id="example">
                                       <thead>
                                       <tr>
-                                        <th class="text-center"><i class="icon-calendar"></i> Date & time</th>
-                                        <th class="text-center"><i class="icon-user"></i> User Fullname</th>
-                                        <th class="text-center"><i class="icon-user"></i> Position</th>
-                                        <th class="text-center"> Action</th>
+                                        <th class="text-center" width="15%"><i class="icon-calendar"></i> Date & time</th>
+                                        <th class="text-center" width="25%"><i class="icon-user"></i> User Fullname</th>
+                                        <th class="text-center" width="15%"><i class="icon-user"></i> Position</th>
+                                        <th class="text-center" width="40%"> Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
