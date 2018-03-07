@@ -203,8 +203,8 @@ while($row = $stmt->fetch()){
                                           <td><?php echo $row['P_ADD'] ?></td>
                                           <td>+639<?php echo $row['P_CN'] ?></td>
                                           <td align="center">
-                                            <a class="btn btn-shadow btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><i class="icon-eye-open"></i> View</a>
-                                            <a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" onclick="change(<?php echo $row['P_ID'] ?>)" href="#editpatient-<?php echo $row['P_ID'] ?>"><i class="icon-pencil"></i>&nbsp;&nbsp;Edit</a>
+                                            <a class="btn btn-shadow btn-primary btn-xs" href="view-patient-profile.php?VID=<?php echo $row['P_ID'] ?>"><span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="View Patient Profile"><i class="icon-eye-open"></i> View</span></a>
+                                            <a class="btn btn-shadow btn-success btn-xs" data-toggle="modal" onclick="change(<?php echo $row['P_ID'] ?>)" href="#editpatient-<?php echo $row['P_ID'] ?>"><span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit Patient Profile"><i class="icon-pencil"></i>&nbsp;&nbsp;Edit</span></a>
 <!--Call the View patient edit modal-->
 <?php
 include 'lib/modals/view-patients-editmodal.php';
