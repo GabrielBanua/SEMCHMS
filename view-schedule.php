@@ -183,6 +183,7 @@ if(isset($_POST['Sched_filter'])){
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
                           <li><a  href="view-users.php">Manage Users</a></li>
+						  <li><a  href="systemlogs.php">System Logs</a></li>
                       </ul>
                   </li>
               </ul>

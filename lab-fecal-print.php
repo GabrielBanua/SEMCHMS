@@ -138,6 +138,7 @@ else if($Position == "Volunter"){
                       <ul class="sub">
                           <li><a  href="backup.php">Backup Database</a></li>
 						  <li><a  href="view-users.php">View Users</a></li>
+						  <li><a  href="systemlogs.php">System Logs</a></li>
                       </ul>
                   </li>
               </ul>
