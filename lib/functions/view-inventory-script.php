@@ -23,8 +23,9 @@
 		      	var MEDICINE_BNAME = $('#MEDICINE_BNAME').val();
 		      	var MEDICINE_DFORM = $('#MEDICINE_DFORM').val();
 		      	var MEDICINE_DOSE = $('#MEDICINE_DOSE').val();
+				var REORDER_P = $('#ReOrder').val();
 
-				if(MEDICINE_CAT == '' || MEDICINE_TYPE == '' || MEDICINE_GNAME == '' || MEDICINE_BNAME == '' || MEDICINE_DFORM == '' || MEDICINE_DOSE == ''){
+				if(MEDICINE_CAT == '' || MEDICINE_TYPE == '' || MEDICINE_GNAME == '' || MEDICINE_BNAME == '' || MEDICINE_DFORM == '' || MEDICINE_DOSE == '' || REORDER_P == ''){
 					$('#Error_Message_AMED').html('Please fill in all fields! &nbsp;');
 				}else{
 					$('#Error_Message_AMED').html('');
@@ -32,7 +33,7 @@
 			        $.ajax({
 			          type: "POST",
 			          url: "Server.php?p=addMedicine",
-			          data: "MEDICINE_CAT="+MEDICINE_CAT+"&MEDICINE_TYPE="+MEDICINE_TYPE+"&MEDICINE_GNAME="+MEDICINE_GNAME+"&MEDICINE_BNAME="+MEDICINE_BNAME+"&MEDICINE_DFORM="+MEDICINE_DFORM+"&MEDICINE_DOSE="+MEDICINE_DOSE,
+			          data: "MEDICINE_CAT="+MEDICINE_CAT+"&MEDICINE_TYPE="+MEDICINE_TYPE+"&MEDICINE_GNAME="+MEDICINE_GNAME+"&MEDICINE_BNAME="+MEDICINE_BNAME+"&MEDICINE_DFORM="+MEDICINE_DFORM+"&MEDICINE_DOSE="+MEDICINE_DOSE+"&REORDER="+REORDER_P,
 			          success: function(data){
 						$('#Success_Message_AMED').html('Successfully added new medicine!');
 			            setTimeout(function() {

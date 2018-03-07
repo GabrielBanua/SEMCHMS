@@ -376,11 +376,12 @@ require 'lib/Db.config.pdo.php';
 			$MED_BNAME = mysql_real_escape_string($_POST['MEDICINE_BNAME']);
 			$MED_DFORM = mysql_real_escape_string($_POST['MEDICINE_DFORM']);
 			$MED_DOSE = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
+			$REORDER = mysql_real_escape_string($_POST['REORDER']);
 			$date = date("Y-m-d");	
 			$Year = date('Y',strtotime($date));
 			$Month = date('M',strtotime($date));
 
-		$stmt = $db->prepare("insert into medicine values('',?,?,?,?,?,?,?,?)");
+		$stmt = $db->prepare("insert into medicine values('',?,?,?,?,?,?,?,?,?)");
 			$stmt->bindParam(1,$MED_CAT);
 			$stmt->bindParam(2,$MED_TYPE);
 			$stmt->bindParam(3,$MED_GNAME);
@@ -389,6 +390,7 @@ require 'lib/Db.config.pdo.php';
 			$stmt->bindParam(6,$MED_DOSE);
 			$stmt->bindParam(7,$Month);
 			$stmt->bindParam(8,$Year);
+			$stmt->bindParam(9,$REORDER);
 			$stmt->execute();
 
 }
