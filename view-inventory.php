@@ -325,7 +325,7 @@ if(isset($_POST['Inv_filter'])){
 													<td><?php echo $Medi['MEDICINE_BNAME']; ?></td>
 													<td><?php echo $Medi['MEDICINE_DFORM']; ?></td>
 													<td><?php echo $Medi['MEDICINE_DOSE']; ?></td>
-													<td class="hidden-phone text-center">
+													<td class="hidden-phone">
 														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" data-target="#EditMedInfo-<?php echo $Medi['MEDICINE_ID']; ?>"><span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit Medicines Info"><i class="icon-pencil"></i> Edit</span></a>
                                                         <?php 
                                                         include 'lib/modals/Edit-med-modal.php';
