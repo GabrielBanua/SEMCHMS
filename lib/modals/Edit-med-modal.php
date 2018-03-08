@@ -76,6 +76,12 @@
 							<input type="text" id="MEDICINE_DOSE-<?php echo $Medi['MEDICINE_ID']; ?>" value="<?php echo $Medi['MEDICINE_DOSE']; ?>" class="form-control" required>
 						</div>
 				</div>
+				<div class="form-group">
+					<label class="col-md-3 col-sm-2 control-label">Re-order Point:</label>
+						<div class="col-lg-4">
+							<input type="text" id="MEDICINE_DOSE-<?php echo $Medi['MEDICINE_ID']; ?>" value="<?php echo $Medi['MEDICINE_DOSE']; ?>" class="form-control numonly" required>
+						</div>
+				</div>
 			</form>
 		</div>
 		<div class="modal-footer">
