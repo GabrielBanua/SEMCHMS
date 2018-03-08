@@ -156,7 +156,7 @@ $a12 = $a12->fetch_array();
 			}, 
 			data: [ 
 				{ 
-					type: "stackedColumn", 
+					type: "bar", 
 					showInLegend: true, 
 					legendText: "Chilren",
 					color: "#ffe500",
@@ -177,7 +177,7 @@ $a12 = $a12->fetch_array();
 					] 
 				},
 				{ 
-					type: "stackedColumn", 
+					type: "bar", 
 					showInLegend: true, 
 					legendText: "Adult",
 					color: "#0cf7e3",
@@ -198,7 +198,7 @@ $a12 = $a12->fetch_array();
 					] 
 				},
 				{ 
-					type: "stackedColumn", 
+					type: "bar", 
 					showInLegend: true, 
 					legendText: "Total Number of Patients",
 					name: "Total Patients this month",
