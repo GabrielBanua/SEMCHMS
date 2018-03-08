@@ -277,7 +277,7 @@ if(isset($_POST['Inv_filter'])){
                                                         if($row['INV_QTY'] < $row['ReOrder']){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else if($row['INV_QTY'] > $QtyStatus || $row['INV_QTY'] == $row['INV_QTY_HIST']){ echo "<span class='label label-primary label-mini'>Full</span>";}
                                                         else if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty -1 && $row['INV_QTY'] > $row['ReOrder']){ echo "<span class='label label-warning label-mini'>Low</span>";
                                                         }} ?></td>
-													<td style="text-align:center;">
+													<td>
 														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" onclick="RetrieveInventory(<?php echo $row['INV_ID'] ?>)" data-target="#EditInv-<?php echo $row['INV_ID'] ?>"><span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit Inventory"><i class="icon-pencil"></i></span></a>
 														<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Dispense Medicines"><i class="icon-minus"></i></span></a>
 														
