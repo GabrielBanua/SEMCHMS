@@ -127,6 +127,7 @@ function addTreatment(str){
           var RefDoc = $('#Ref_Doc_name-'+Med_RID).val();
           var RefDoc_CN = $('#Ref_Doc_CN-'+Med_RID).val();
           var RefDoc_Add = $('#Ref_Doc_Add-'+Med_RID).val();
+          var RefDoc_email = $('#Ref_Doc_email-'+Med_RID).val();
           var Patient_id = '<?php echo $VIEW_ID; ?>';
 
           if(Diagnosis == '' || Treatment == '' || Remarks == ''){
@@ -136,7 +137,7 @@ function addTreatment(str){
            $.ajax({
                 type: "POST",
                 url: "Server.php?p=addTreatment",
-                data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID+"&REFDN="+RefDoc+"&REF_CN="+RefDoc_CN+"&REF_ADD="+RefDoc_Add,
+                data: "DGN="+Diagnosis+"&TRMT="+Treatment+"&RMKS="+Remarks+"&FPCHK="+FollowUp+"&DOC="+Doctor+"&MRID="+Med_RID+"&REFDN="+RefDoc+"&REF_CN="+RefDoc_CN+"&REF_ADD="+RefDoc_Add+"&REF_EMAIL="+RefDoc_email,
                 success: function(data){
                   $('#Success_Message-TRMT-'+Med_RID).html('Successfully Added! &nbsp;');
                   addtreatmentlog(Patient_id, Med_RID);
@@ -160,6 +161,7 @@ function editTreatment(id){
           var RefDoc = $('#RefDoc_name-'+Update_ID).val();
           var RefDoc_CN = $('#RefDoc_CN-'+Update_ID).val();
           var RefDoc_Add = $('#RefDoc_Add-'+Update_ID).val();
+          var RefDoc_email = $('#RefDoc_email-'+Update_ID).val();
           var Patient_id = '<?php echo $VIEW_ID; ?>';
 
           if($('#c2-'+Update_ID).prop('checked')){
@@ -175,7 +177,7 @@ function editTreatment(id){
            $.ajax({
                 type: "POST",
                 url: "Server2.php?p=editTreatment",
-                data: "DGNE="+Diagnosis+"&TRMTE="+Treatment+"&RMKSE="+Remarks+"&FPCHKE="+FollowUp+"&DOCE="+Doctor+"&MRIDE="+Update_ID+"&REFDNE="+RefDoc+"&REF_CNE="+RefDoc_CN+"&REF_ADDE="+RefDoc_Add+"&CHECK="+check,
+                data: "DGNE="+Diagnosis+"&TRMTE="+Treatment+"&RMKSE="+Remarks+"&FPCHKE="+FollowUp+"&DOCE="+Doctor+"&MRIDE="+Update_ID+"&REFDNE="+RefDoc+"&REF_CNE="+RefDoc_CN+"&REF_ADDE="+RefDoc_Add+"&CHECK="+check+"&REF_EMAIL="+RefDoc_email,
                 success: function(data){
                   $('#Success_Message-ETRMT-'+Update_ID).html('Successfully updated! &nbsp;');
                   edittreatmentlog(Patient_id, Update_ID);

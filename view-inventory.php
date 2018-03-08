@@ -21,11 +21,11 @@ if(isset($_POST['Inv_filter'])){
                 $stmt->execute();
         }
         else if($filtering == 'Average'){
-                $stmt = $db->prepare("SELECT *, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY BETWEEN (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AND (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AND NOT(inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday')");
+                $stmt = $db->prepare("SELECT *, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY BETWEEN (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AND (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AND NOT(inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday') AND NOT(inventory.INV_QTY < medicine.ReOrder)");
                 $stmt->execute();
         }
         else if($filtering == 'Low'){
-                $stmt = $db->prepare("SELECT *, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY BETWEEN medicine.ReOrder AND (SELECT @QTY:= FORMAT((inventory.INV_QTY_HIST / 2)-1, 0)) AND NOT(inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday')");
+                $stmt = $db->prepare("SELECT *, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY BETWEEN medicine.ReOrder AND (SELECT @QTY:= FORMAT((inventory.INV_QTY_HIST / 2)-1, 0)) AND NOT(inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday') AND NOT(inventory.INV_QTY < medicine.ReOrder)");
                 $stmt->execute();
         }
         else if($filtering == 'All'){

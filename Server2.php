@@ -16,7 +16,8 @@ require 'lib/Db.config.php';
 			$MedicalRec_ID = mysql_real_escape_string($_POST['MRIDE']);
 			$DocName = mysql_real_escape_string($_POST['REFDNE']);
 			$DocCN = mysql_real_escape_string($_POST['REF_CNE']);
-			$DocADD = mysql_real_escape_string($_POST['REF_ADDE']);				
+			$DocADD = mysql_real_escape_string($_POST['REF_ADDE']);
+			$DocEmail = mysql_real_escape_string($_POST['REF_EMAIL']);				
 			$sqldate = date('Y-m-d',strtotime($Follow));
 			$date = date("Y-m-d");
 			$Year = date('Y',strtotime($date));
@@ -69,20 +70,22 @@ require 'lib/Db.config.php';
 
 			if($CheckB == 'check'){
 				if($count_ref > 0){
-					$ref = $db->prepare("update referral set RF_DOCNAME=?, RF_CN=?, RF_ADD=? where TRMTMNT_ID=?");
+					$ref = $db->prepare("update referral set RF_DOCNAME=?, RF_CN=?, RF_ADD=?, RF_EMAIL=? where TRMTMNT_ID=?");
 						$ref->bindParam(1,$DocName);
 						$ref->bindParam(2,$DocCN);
 						$ref->bindParam(3,$DocADD);
-						$ref->bindParam(4,$updated_TR_id);
+						$ref->bindParam(4,$DocEmail);
+						$ref->bindParam(5,$updated_TR_id);
 						$ref->execute();
 				}else{
-					$ref = $db->prepare("insert into referral values('',?,?,?,?,?,?)");
+					$ref = $db->prepare("insert into referral values('',?,?,?,?,?,?,?)");
 						$ref->bindParam(1,$DocName);
 						$ref->bindParam(2,$DocCN);
 						$ref->bindParam(3,$DocADD);
 						$ref->bindParam(4,$updated_TR_id);
 						$ref->bindParam(5,$Month);
 						$ref->bindParam(6,$Year);
+						$ref->bindParam(7,$DocEmail);
 					$ref->execute();
 				}
 			}else if($CheckB == 'uncheck'){

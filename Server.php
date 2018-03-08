@@ -499,6 +499,7 @@ require 'lib/Db.config.php';
 			$DocName = mysql_real_escape_string($_POST['REFDN']);
 			$DocCN = mysql_real_escape_string($_POST['REF_CN']);
 			$DocADD = mysql_real_escape_string($_POST['REF_ADD']);
+			$DocEmail = mysql_real_escape_string($_POST['REF_EMAIL']);
 			$date = date("Y-m-d");
 			$Year = date('Y',strtotime($date));
 			$Month = date('M',strtotime($date));
@@ -548,6 +549,7 @@ require 'lib/Db.config.php';
 						$ref->bindParam(4,$updated_TR_id);
 						$ref->bindParam(5,$Month);
 						$ref->bindParam(6,$Year);
+						$ref->bindParam(7,$DocEmail);
 					$ref->execute();
 				}
 }
