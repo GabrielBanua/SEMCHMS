@@ -268,8 +268,9 @@
 					var MEDICINE_BNAME = $('#MEDICINE_BNAME-'+M_id).val();
 					var MEDICINE_DFORM = $('#MEDICINE_DFORM-'+M_id).val();
 					var MEDICINE_DOSE = $('#MEDICINE_DOSE-'+M_id).val();
+					var Reorder = $('#RE_ORDER-'+M_id).val();
 					var MDCINE_ID = M_id;
-					if(MEDICINE_CAT == '' || MEDICINE_TYPE == '' || MEDICINE_GNAME == '' || MEDICINE_BNAME == '' || MEDICINE_DFORM == '' || MEDICINE_DOSE == ''){
+					if(MEDICINE_CAT == '' || MEDICINE_TYPE == '' || MEDICINE_GNAME == '' || MEDICINE_BNAME == '' || MEDICINE_DFORM == '' || MEDICINE_DOSE == '' || Reorder == ''){
 						$('#Error_Message_EDMED-'+M_id).html('Please fill in all fields! &nbsp;');
 					}else{
 						$('#Error_Message_EDMED-'+M_id).html('');
@@ -277,7 +278,7 @@
 							$.ajax({
 								type: "POST",
 								url: "Server2.php?p=EditMedicineInfo",
-								data: "MEDICINE_CAT="+MEDICINE_CAT+"&MEDICINE_TYPE="+MEDICINE_TYPE+"&MEDICINE_GNAME="+MEDICINE_GNAME+"&MEDICINE_BNAME="+MEDICINE_BNAME+"&MEDICINE_DFORM="+MEDICINE_DFORM+"&MEDICINE_DOSE="+MEDICINE_DOSE+"&MED_ID="+MDCINE_ID,
+								data: "MEDICINE_CAT="+MEDICINE_CAT+"&MEDICINE_TYPE="+MEDICINE_TYPE+"&MEDICINE_GNAME="+MEDICINE_GNAME+"&MEDICINE_BNAME="+MEDICINE_BNAME+"&MEDICINE_DFORM="+MEDICINE_DFORM+"&MEDICINE_DOSE="+MEDICINE_DOSE+"&MED_ID="+MDCINE_ID+"&REORDER="+Reorder,
 								success: function(data){
 									$('#Success_Message_EDMED-'+M_id).html('Successfully updated medicine!');
 									setTimeout(function() {

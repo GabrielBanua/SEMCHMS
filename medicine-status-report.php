@@ -151,6 +151,37 @@ require 'lib/session.php';
 									Medicine Status
 								</header>
 								<div class="panel-body">
+								<div class="col-lg-2 pull-right">
+                                                <form action="" method="POST">
+												<select id="pyear" class="form-control">
+														<option hidden value="<?php 
+															if(isset($_GET['year'])){
+																$value=$_GET['year']; 
+																echo $value;
+															}
+															else{
+																echo date('Y');
+															}
+														?>">
+														<?php 
+														if(isset($_GET['year'])){
+															$value=$_GET['year']; 
+															echo $value;
+														}
+														else{
+															echo date('Y');
+														}
+														?></option>
+														<?php
+														for($y=2012; $y<=2025; $y++){
+														?>
+														<option value="<?php echo $y ?>"><?php echo $y; ?></option>
+														<?php
+														}
+														?>
+													</select>
+                                                    </form>
+												</div>
 									<br><br>
 									<div id="medicine_status" style="width: 100%; height: 400px"></div>
 								</div>
@@ -190,6 +221,14 @@ require 'lib/session.php';
 					"aaSorting": [[ 4, "desc" ]]
 				} );
 			} );
+		</script>
+		<script>
+			$(document).ready(function(){
+				$("#pyear").on('change', function(){
+					var year=$(this).val();
+					window.location = 'medicine-status-report.php?year='+year;
+				});
+			});
 		</script>
 		<!--common script for all pages-->
 		<script src="js/common-scripts.js"></script>

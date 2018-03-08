@@ -174,13 +174,13 @@ include 'lib/modals/register_user_modal.php';
                                     <table  class="display table table-bordered table-striped" id="example">
                                       <thead>
                                       <tr>
-                                          <th style="text-align: center;" width="6%">ID</th>
-                                          <th width="10%">Username</th>
-                                          <th width="20%">Fullname</th>
-                                          <th width="10%" class="hidden-phone">Position</th>
-                                          <th width="15%" class="hidden-phone">License No.</th>
-                                          <th width="15%" class="hidden-phone">Status</th>
-                                          <th width="15%" class="hidden-phone">Action</th>
+                                          <th style="text-align:center;" width="6%">ID</th>
+                                          <th width="10%" style="text-align:center;">Username</th>
+                                          <th width="20%" style="text-align:center;">Fullname</th>
+                                          <th width="10%" class="hidden-phone" style="text-align:center;">Position</th>
+                                          <th width="15%" class="hidden-phone" style="text-align:center;">License No.</th>
+                                          <th width="15%" class="hidden-phone" style="text-align:center;">Status</th>
+                                          <th width="15%" class="hidden-phone" style="text-align:center;">Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
@@ -192,15 +192,15 @@ include 'lib/modals/register_user_modal.php';
         $DE = mysql_fetch_array($DTEND);
 ?>
                                           <tr class="gradeX">
-                                                <td style="text-align: center;"><?php echo $row['User_id'] ?></td>
-                                                <td><?php echo $row['Username'] ?></td>
-                                                <td><?php echo $row['FullName'] ?></td>
-                                                <td><?php echo $row['Position'] ?></td>
-                                                <td><?php echo $row['License_No'] ?></td>
-                                                <td><?php echo $row['STATUS'] ?></td>
+                                                <td style="text-align:center;"><?php echo $row['User_id'] ?></td>
+                                                <td style="text-align:center;"><?php echo $row['Username'] ?></td>
+                                                <td style="text-align:center;"><?php echo $row['FullName'] ?></td>
+                                                <td style="text-align:center;"><?php echo $row['Position'] ?></td>
+                                                <td style="text-align:center;"><?php echo $row['License_No'] ?></td>
+                                                <td style="text-align:center;"><?php echo $row['STATUS'] ?></td>
                                                 <td class="center hidden-phone">
                                                 <a class="btn btn-shadow btn-success btn-sm" data-toggle="modal" data-target="#EditModal-<?php echo $row['User_id']?>"><i class="icon-edit"></i> Edit</a>
-												<a class="btn btn-shadow btn-danger btn-sm" type="submit" onclick="DeleteUser(<?php echo $row['User_id']?>)"><i class="icon-trash"></i> Delete</a>
+												
 <?php
 include 'lib/modals/edit_user_modal.php';
 ?>

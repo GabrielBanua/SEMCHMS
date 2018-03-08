@@ -219,15 +219,17 @@ else if($page == 'EditMedicineInfo'){
 			$MED_BNAME = mysql_real_escape_string($_POST['MEDICINE_BNAME']);
 			$MED_DFORM = mysql_real_escape_string($_POST['MEDICINE_DFORM']);
 			$MED_DOSE = mysql_real_escape_string($_POST['MEDICINE_DOSE']);
+			$REORDER = mysql_real_escape_string($_POST['REORDER']);
 
-			$MedStmt = $db->prepare("Update medicine set MEDICINE_CAT=?, MEDICINE_TYPE=?, MEDICINE_GNAME=?, MEDICINE_BNAME=?, MEDICINE_DFORM=?, MEDICINE_DOSE=? where MEDICINE_ID=?");
+			$MedStmt = $db->prepare("Update medicine set MEDICINE_CAT=?, MEDICINE_TYPE=?, MEDICINE_GNAME=?, MEDICINE_BNAME=?, MEDICINE_DFORM=?, MEDICINE_DOSE=?, ReOrder=? where MEDICINE_ID=?");
 			$MedStmt->bindParam(1,$MED_CAT);
 			$MedStmt->bindParam(2,$MED_TYPE);
 			$MedStmt->bindParam(3,$MED_GNAME);
 			$MedStmt->bindParam(4,$MED_BNAME);
 			$MedStmt->bindParam(5,$MED_DFORM);
 			$MedStmt->bindParam(6,$MED_DOSE);
-			$MedStmt->bindParam(7,$MED_ID);
+			$MedStmt->bindParam(7,$REORDER);
+			$MedStmt->bindParam(8,$MED_ID);
 			$MedStmt->execute();
 }
 else if($page == 'RetrieveInventoryCAT'){

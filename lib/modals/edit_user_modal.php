@@ -96,12 +96,6 @@
 												<input type="text" id="LCN-<?php echo $row['User_id'] ?>" value="<?php echo $row['License_No']; ?>" class="form-control">
 											</div>
 									  </div>
-									  <div class="form-group">
-											<label class="col-md-3 col-sm-2 control-label">Date End:</label>
-											<div class="col-lg-4">
-												<input type="date" id="DE-<?php echo $row['User_id'] ?>" <?php if(empty($DE['END_DATE'])){echo "placeholder='mm/dd/yyyy'";}else{ echo "value='";?><?php echo strftime('%Y-%m-%d', strtotime($DE['END_DATE']));?><?php echo"'";}?>  class="form-control">
-											</div>
-									  </div>
                                       <div class="form-group">
 											<label class="col-md-3 col-sm-2 control-label">Status:</label>
 											<div class="col-lg-4">
@@ -111,6 +105,12 @@
                                                     <option value="Inactive" <?php
                                                         if ($row['STATUS'] == "Inactive") { echo " selected"; }?>>Inactive</option>
 												</select>
+											</div>
+									  </div>
+									  <div class="form-group">
+											<label class="col-md-3 col-sm-2 control-label">Date End:</label>
+											<div class="col-lg-4">
+												<input type="date" id="DE-<?php echo $row['User_id'] ?>" <?php if(empty($DE['END_DATE'])){echo "placeholder='mm/dd/yyyy'";}else{ echo "value='";?><?php echo strftime('%Y-%m-%d', strtotime($DE['END_DATE']));?><?php echo"'";}?>  class="form-control">
 											</div>
 									  </div>
                                 </form>

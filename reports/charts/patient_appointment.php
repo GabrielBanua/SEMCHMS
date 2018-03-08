@@ -166,7 +166,7 @@ $l12 = $l12->fetch_array();
 			}, 
 			data: [ 
 				{ 
-					type: "stackedColumn", 
+					type: "column", 
 					showInLegend: true, 
 					legendText: "Check up",
 					name: "Check up",
@@ -187,7 +187,7 @@ $l12 = $l12->fetch_array();
 					] 
 				},
 				{ 
-					type: "stackedColumn", 
+					type: "column", 
 					showInLegend: true, 
 					legendText: "Dental",
 					name: "Dental",
@@ -208,7 +208,7 @@ $l12 = $l12->fetch_array();
 					] 
 				},
 				{ 
-					type: "stackedColumn", 
+					type: "column", 
 					showInLegend: true, 
 					legendText: "X-ray",
 					name: "X-ray",
@@ -229,7 +229,7 @@ $l12 = $l12->fetch_array();
 					] 
 				},
 				{ 
-					type: "stackedColumn", 
+					type: "column", 
 					showInLegend: true, 
 					legendText: "Laboratory Test",
 					name: "Laboratory Test",

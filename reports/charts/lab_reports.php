@@ -209,7 +209,7 @@ $u12 = $e12->fetch_array();
 			}, 
 			data: [ 
 				{ 
-					type: "stackedColumn", 
+					type: "column", 
 					showInLegend: true, 
 					legendText: "Blood Chemistry",
 					name: "Blood Chemistry",
@@ -229,7 +229,7 @@ $u12 = $e12->fetch_array();
 					] 
 				},
 				{ 
-					type: "stackedColumn", 
+					type: "column", 
 					showInLegend: true, 
 					legendText: "Fecalysis",
 					name: "Fecalysis",
@@ -249,7 +249,7 @@ $u12 = $e12->fetch_array();
 					] 
 				},
 				{ 
-					type: "stackedColumn", 
+					type: "column", 
 					showInLegend: true, 
 					legendText: "Hematology",
 					name: "Hematology",
@@ -269,7 +269,7 @@ $u12 = $e12->fetch_array();
 					] 
 				},
 				{ 
-					type: "stackedColumn", 
+					type: "column", 
 					showInLegend: true, 
 					legendText: "Urinalysis",
 					name: "Urinalysis",
