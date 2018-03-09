@@ -148,7 +148,7 @@ require 'lib/session.php';
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              Users
+                              Backup
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
