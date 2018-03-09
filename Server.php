@@ -542,7 +542,7 @@ require 'lib/Db.config.php';
 				if(empty($DocName) || empty($DocCN) || empty($DocADD)){
 					//do nothing
 				}else{
-					$ref = $db->prepare("insert into referral values('',?,?,?,?,?,?)");
+					$ref = $db->prepare("insert into referral values('',?,?,?,?,?,?,?)");
 						$ref->bindParam(1,$DocName);
 						$ref->bindParam(2,$DocCN);
 						$ref->bindParam(3,$DocADD);

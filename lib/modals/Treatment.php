@@ -100,7 +100,7 @@
 				<div class="form-group">
 					<label  class="col-lg-4 control-label">Email Address</label>
 					<div class="col-lg-6">
-						<input type="email" id="RefDoc_email-<?php echo $MR['MR_ID']; ?>"  value="<?php echo $TR['RF_ADD']; ?>" class="form-control" required>
+						<input type="email" id="Ref_Doc_email-<?php echo $MR['MR_ID']; ?>"  value="<?php echo $TR['RF_EMAIL']; ?>" class="form-control" required>
 					</div>
 				</div>
 			</div>
