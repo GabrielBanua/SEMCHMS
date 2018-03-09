@@ -148,30 +148,45 @@ require 'lib/session.php';
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              Backup
+                              Users
                           </header>
                           <div class="panel-body">
                                 <div class="adv-table">
-									<a class="btn btn-shadow btn-success" href="backup-test.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
-									<i class="icon-download-alt"> </i> Backup Database</a>
-									<a class="btn btn-shadow btn-info" data-toggle="modal" data-target="#importdb"><i class="icon-upload-alt"> </i> Import Database</a>
-										<?php
-										include 'lib/modals/importdb_modal.php';
-										?>
-									
-                                    <table  class="table table-striped table-advance table-hover" id="example">
-                                      <thead>
-                                      <tr>
-                                          <th class="text-center"><i class="icon-calendar"></i> Date</th>
-                                          <th class="text-center"><i class="icon-book"></i> History</th>
-                                      </tr>
-                                      </thead>
-                                      <tbody>
-                                          <tr class="gradeX">
-											<td class="text-center">2018-1-26</td>
-											<td class="text-center"><span class="label label-success label-mini"> Successfully Backup Database</span></td>
-                                          </tr>
-                                      </tbody>
+									<table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                                <thead>
+                                <tr>
+                                    <th>Rendering engine</th>
+                                    <th>Browser</th>
+                                    <th class="hidden-phone">Platform(s)</th>
+                                    <th class="hidden-phone">Engine version</th>
+                                    <th class="hidden-phone">CSS grade</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="gradeX">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                        Explorer 4.0</td>
+                                    <td class="hidden-phone">Win 95+</td>
+                                    <td class="center hidden-phone">4</td>
+                                    <td class="center hidden-phone">X</td>
+                                </tr>
+                                <tr class="gradeC">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                        Explorer 5.0</td>
+                                    <td class="hidden-phone">Win 95+</td>
+                                    <td class="center hidden-phone">5</td>
+                                    <td class="center hidden-phone">C</td>
+                                </tr>
+								<tr class="gradeU">
+                                    <td>Other browsers</td>
+                                    <td>All others</td>
+                                    <td class="hidden-phone">-</td>
+                                    <td class="center hidden-phone">-</td>
+                                    <td class="center hidden-phone">U</td>
+                                </tr>
+                                </tbody>
 									</table>
                                 </div>
                           </div>
@@ -194,29 +209,82 @@ require 'lib/session.php';
       <!--footer end-->
   </section>
 
-    <!-- js placed at the end of the document so the pages load faster -->
+        <!-- js placed at the end of the document so the pages load faster -->
     <!--<script src="js/jquery.js"></script>-->
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-	<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
 
-  <!--common script for all pages-->
+
+    <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 
-    <!--script for this page only-->
+    <script type="text/javascript">
+      /* Formating function for row details */
+      function fnFormatDetails ( oTable, nTr )
+      {
+          var aData = oTable.fnGetData( nTr );
+          var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+          sOut += '<tr><td>Rendering engine:</td><td>'+aData[1]+' '+aData[4]+'</td></tr>';
+          sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
+          sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
+          sOut += '</table>';
 
-      <script type="text/javascript" charset="utf-8">
-          $(document).ready(function() {
-              $('#example').dataTable( {
-                  "aaSorting": [[ 10, "desc" ]]
-              } );
+          return sOut;
+      }
+
+      $(document).ready(function() {
+          /*
+           * Insert a 'details' column to the table
+           */
+          var nCloneTh = document.createElement( 'th' );
+          var nCloneTd = document.createElement( 'td' );
+          nCloneTd.innerHTML = '<img src="assets/advanced-datatable/examples/examples_support/details_open.png">';
+          nCloneTd.className = "center";
+
+          $('#hidden-table-info thead tr').each( function () {
+              this.insertBefore( nCloneTh, this.childNodes[0] );
           } );
-      </script>
+
+          $('#hidden-table-info tbody tr').each( function () {
+              this.insertBefore(  nCloneTd.cloneNode( true ), this.childNodes[0] );
+          } );
+
+          /*
+           * Initialse DataTables, with no sorting on the 'details' column
+           */
+          var oTable = $('#hidden-table-info').dataTable( {
+              "aoColumnDefs": [
+                  { "bSortable": false, "aTargets": [ 0 ] }
+              ],
+              "aaSorting": [[1, 'asc']]
+          });
+
+          /* Add event listener for opening and closing details
+           * Note that the indicator for showing which row is open is not controlled by DataTables,
+           * rather it is done here
+           */
+          $('#hidden-table-info tbody td img').live('click', function () {
+              var nTr = $(this).parents('tr')[0];
+              if ( oTable.fnIsOpen(nTr) )
+              {
+                  /* This row is already open - close it */
+                  this.src = "assets/advanced-datatable/examples/examples_support/details_open.png";
+                  oTable.fnClose( nTr );
+              }
+              else
+              {
+                  /* Open this row */
+                  this.src = "assets/advanced-datatable/examples/examples_support/details_close.png";
+                  oTable.fnOpen( nTr, fnFormatDetails(oTable, nTr), 'details' );
+              }
+          } );
+      } );
+  </script>
 <?php
 include 'lib/User-Accesslvl.php';
 include 'lib/logout.script.php';
