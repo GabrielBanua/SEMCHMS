@@ -17,6 +17,7 @@ require 'lib/session.php';
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap-fileupload/bootstrap-fileupload.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -153,8 +154,11 @@ require 'lib/session.php';
                                 <div class="adv-table">
 									<a class="btn btn-shadow btn-success" href="backup-test.php" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
 									<i class="icon-download-alt"> </i> Backup Database</a>
-									<a class="btn btn-shadow btn-info" href="#" id="load" data-loading-text="<i class='icon-spinner'></i> Processing Backup">
-									<i class="icon-upload-alt"> </i> Import Database</a>
+									<a class="btn btn-shadow btn-info" data-toggle="modal" data-target="#importdb"><i class="icon-upload-alt"> </i> Import Database</a>
+										<?php
+										include 'lib/modals/importdb_modal.php';
+										?>
+									
                                     <table  class="table table-striped table-advance table-hover" id="example">
                                       <thead>
                                       <tr>
@@ -199,7 +203,7 @@ require 'lib/session.php';
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="js/respond.min.js" ></script>
-
+	<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
 
   <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
