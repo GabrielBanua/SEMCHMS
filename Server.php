@@ -470,7 +470,7 @@ require 'lib/Db.config.php';
 			$Year = date('Y',strtotime($date));
 			$Month = date('M',strtotime($date));
 
-	$sql = "SELECT MEDICINE_ID FROM medicine WHERE MEDICINE_DOSE = '$MedDose' AND MEDICINE_BNAME = '$MedBN' AND(MEDICINE_GNAME = '$MedGname' AND MEDICINE_CAT = '$MedCat') AND MEDICINE_TYPE = '$Medtype'";
+	$sql = "SELECT MEDICINE_ID FROM medicine WHERE MEDICINE_DOSE = '$MedDose' AND MEDICINE_BNAME = '$MedBN' AND(MEDICINE_GNAME = '$MedGname' AND MEDICINE_CAT = '$MedCat') AND (MEDICINE_TYPE = '$Medtype' AND MEDICINE_DFORM = '$MedDform')";
 			$do = mysql_query($sql);
 			$id = mysql_fetch_array($do);
 			$MedID = $id['MEDICINE_ID'];
@@ -485,6 +485,33 @@ require 'lib/Db.config.php';
 			$stmt->bindParam(7,$Month);
 			$stmt->bindParam(8,$Year);
 			$stmt->execute();
+	
+			$Last_INVID = $db->lastInsertId();
+
+	$checkInv = mysql_query("SELECT inventory.INV_ID, MIN(inventory.INV_ID) AS Minimum FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.MEDICINE_ID = '$MedID'");
+		$checkResults = mysql_num_rows($checkInv);
+		$checkID = mysql_fetch_array($checkInv);
+		$RetrieveCheckID = $checkID['Minimum'];
+
+	$checkAdjust = mysql_query("SELECT ADJ_ID, QUANTITY FROM adjustments WHERE INV_ID = '$RetrieveCheckID'");
+		$AdjustCount = mysql_num_rows($checkAdjust);
+			$AdjustResults = mysql_fetch_array($checkAdjust);
+			$AdjustID = $AdjustResults['ADJ_ID'];
+			$AdjustQuantity = $AdjustResults['QUANTITY'];
+
+		$AdjustNewQuantity = $Qty + $AdjustQuantity;
+
+		if($AdjustCount > 0){
+			$updateAdjustments = $db->prepare("Update adjustments set QUANTITY = ? where ADJ_ID=?");
+			$updateAdjustments->bindParam(1,$AdjustNewQuantity);
+			$updateAdjustments->bindParam(2,$AdjustID);
+			$updateAdjustments->execute();
+		}else{
+			$InsertAdjustments = $db->prepare("insert into adjustments values('',?,?)");
+			$InsertAdjustments->bindParam(1,$Last_INVID);
+			$InsertAdjustments->bindParam(2,$Qty);
+			$InsertAdjustments->execute();
+		}
 }
 else if($page == 'addTreatment'){
 require 'lib/Db.config.pdo.php';

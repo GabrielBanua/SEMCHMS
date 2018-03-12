@@ -163,3 +163,14 @@ $query = $db->prepare("INSERT INTO users(name, email, username, password) VALUES
 <script type="text/javascript" src="Buttons-1.5.1/js/buttons.html5.js"></script>
 <script type="text/javascript" src="Buttons-1.5.1/js/buttons.print.js"></script>
 <script type="text/javascript" src="Responsive-2.2.1/js/dataTables.responsive.js"></script>
+
+
+
+
+
+"SELECT inventory.INV_ID FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.MEDICINE_ID = '17' AND inventory.INV_EXPD = (SELECT @MIN:=MIN(inventory.INV_EXPD) AS MINI FROM inventory WHERE inventory.MEDICINE_ID = '17' AND inventory.INV_QTY > 0)";
+
+
+"SELECT * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID INNER JOIN adjustments ON inventory.INV_ID = adjustments.INV_ID"
+
+"SELECT *, @MED:=inventory.MEDICINE_ID, @RES:=(SELECT MAX(inventory.INV_EXPD) AS MAXD FROM inventory WHERE inventory.MEDICINE_ID = @MED) AS EXP FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID INNER JOIN adjustments ON inventory.INV_ID = adjustments.INV_ID GROUP BY inventory.INV_ID"

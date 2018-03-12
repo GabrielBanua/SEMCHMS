@@ -107,57 +107,182 @@ require 'lib/Db.config.php';
 else if($page == 'DispenseMedicine'){
 	require 'lib/Db.config.pdo.php';
 	require 'lib/Db.config.php';
-			$inv_id = mysql_real_escape_string($_POST['INV_ID']);
+			$Med_id = mysql_real_escape_string($_POST['MED_ID']);
+			$Inv_id = mysql_real_escape_string($_POST['INV_ID']);
 			$sub_qty = mysql_real_escape_string($_POST['DES_QTY']);
 			$date = date("Y-m-d");
 			$Year = date('Y',strtotime($date));
 			$Month = date('M',strtotime($date));
 
-			$DispenseSql = mysql_query("SELECT * FROM inventory WHERE INV_ID = '$inv_id'");
+			$DispenseSql = mysql_query("SELECT inventory.INV_ID, inventory.INV_QTY FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.MEDICINE_ID = '$Med_id' AND inventory.INV_EXPD = (SELECT @MIN:=MIN(inventory.INV_EXPD) AS MINI FROM inventory WHERE inventory.MEDICINE_ID = '$Med_id' AND (inventory.INV_QTY > 0 AND inventory.INV_EXPD > '$date'))");
 			$DispneseRes = mysql_fetch_array($DispenseSql);
+			$DispenseCount = mysql_num_rows($DispenseSql);
 			
 			$Expdate = $DispneseRes['INV_EXPD'];
 			$DisQty = $DispneseRes['INV_QTY'];
+			$DisID = $DispneseRes['INV_ID'];
 			
-			if($Expdate > $date){
+			if($DispenseCount > 0){
+			
 					if($DisQty < $sub_qty){
 						$Lacking = $sub_qty - $DisQty;
 						$Lacking_sol = $sub_qty - $Lacking;
 						$Dis_QtyRes = $DisQty - $Lacking_sol;
-						echo $Lacking_sol;
 
 							$ResultDis = $db->prepare("update inventory set INV_QTY=? where INV_ID=?");
 							$ResultDis->bindParam(1,$Dis_QtyRes);
-							$ResultDis->bindParam(2,$inv_id);
+							$ResultDis->bindParam(2,$DisID);
 							$ResultDis->execute();
 
 							$RecordDis = $db->prepare("insert into dispense values('',?,?,?,?,?)");
-							$RecordDis->bindParam(1,$inv_id);
+							$RecordDis->bindParam(1,$DisID);
 							$RecordDis->bindParam(2,$sub_qty);
 							$RecordDis->bindParam(3,$date);
 							$RecordDis->bindParam(4,$Month);
 							$RecordDis->bindParam(5,$Year);
 							$RecordDis->execute();
+
+							$checkInv = mysql_query("SELECT inventory.INV_ID, MIN(inventory.INV_ID) AS Minimum FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.MEDICINE_ID = '$Med_id'");
+								$checkID = mysql_fetch_array($checkInv);
+								$RetrieveCheckID = $checkID['Minimum'];
+
+							$checkAdjust = mysql_query("SELECT ADJ_ID, QUANTITY FROM adjustments WHERE INV_ID = '$RetrieveCheckID'");
+							$AdjustCount = mysql_num_rows($checkAdjust);
+								$AdjustResults = mysql_fetch_array($checkAdjust);
+								$AdjustID = $AdjustResults['ADJ_ID'];
+								$AdjustQuantity = $AdjustResults['QUANTITY'];
+								$AdjustNewQuantity = $AdjustQuantity - $Lacking_sol;
+
+								$updateAdjustments = $db->prepare("Update adjustments set QUANTITY = ? where ADJ_ID=?");
+								$updateAdjustments->bindParam(1,$AdjustNewQuantity);
+								$updateAdjustments->bindParam(2,$AdjustID);
+								$updateAdjustments->execute();
+					
+					if($Lacking > 0){
+						$Lack = $Lacking;
+						while($Lack > 0){
+							$ProviderSql = mysql_query("SELECT inventory.INV_ID, inventory.INV_QTY FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.MEDICINE_ID = '$Med_id' AND inventory.INV_EXPD = (SELECT @MIN:=MIN(inventory.INV_EXPD) AS MINI FROM inventory WHERE inventory.MEDICINE_ID = '$Med_id' AND (inventory.INV_QTY > 0 AND inventory.INV_EXPD > '$date'))");
+							$ProviderRes = mysql_fetch_array($ProviderSql);
+							$ProviderCount = mysql_num_rows($ProviderSql);
+							
+							$Lack;
+							$providerQty = $ProviderRes['INV_QTY'];
+							$providerID = $ProviderRes['INV_ID'];
+							if($ProviderCount > 0){
+							if($providerQty < $Lacking){
+								$LackingN = $Lacking - $providerQty;
+								$LackingProv = $Lacking - $LackingN;
+								$NewQty = $providerQty - $LackingProv;
+								
+								$ResultDisNEW = $db->prepare("update inventory set INV_QTY=? where INV_ID=?");
+								$ResultDisNEW->bindParam(1,$NewQty);
+								$ResultDisNEW->bindParam(2,$providerID);
+								$ResultDisNEW->execute();
+
+								$RecordDisNEW = $db->prepare("insert into dispense values('',?,?,?,?,?)");
+								$RecordDisNEW->bindParam(1,$providerID);
+								$RecordDisNEW->bindParam(2,$Lacking);
+								$RecordDisNEW->bindParam(3,$date);
+								$RecordDisNEW->bindParam(4,$Month);
+								$RecordDisNEW->bindParam(5,$Year);
+								$RecordDisNEW->execute();
+
+								$checkInvNEW = mysql_query("SELECT inventory.INV_ID, MIN(inventory.INV_ID) AS Minimum FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.MEDICINE_ID = '$Med_id'");
+								$checkIDNW = mysql_fetch_array($checkInvNEW);
+								$RetrieveCheckIDNW = $checkIDNW['Minimum'];
+
+								$checkAdjustNW = mysql_query("SELECT ADJ_ID, QUANTITY FROM adjustments WHERE INV_ID = '$RetrieveCheckIDNW'");
+								$AdjustCountNW = mysql_num_rows($checkAdjustNW);
+								$AdjustResultsNW = mysql_fetch_array($checkAdjustNW);
+								$AdjustIDNW = $AdjustResultsNW['ADJ_ID'];
+								$AdjustQuantityNW = $AdjustResultsNW['QUANTITY'];
+								$AdjustNewQuantityNW = $AdjustQuantityNW - $Lack;
+
+								$updateAdjustments = $db->prepare("Update adjustments set QUANTITY = ? where ADJ_ID=?");
+								$updateAdjustments->bindParam(1,$AdjustNewQuantityNW);
+								$updateAdjustments->bindParam(2,$AdjustIDNW);
+								$updateAdjustments->execute();
+
+								$Lack = $LackingN;
+
+							return $Lack;
+							}else if($providerQty >= $Lacking){
+								$ProviderNewRes = $providerQty - $Lacking;
+								$Lack = 0;
+								$ResultNEW = $db->prepare("update inventory set INV_QTY=? where INV_ID=?");
+								$ResultNEW->bindParam(1,$ProviderNewRes);
+								$ResultNEW->bindParam(2,$providerID);
+								$ResultNEW->execute();
+
+								$RecordDis = $db->prepare("insert into dispense values('',?,?,?,?,?)");
+								$RecordDis->bindParam(1,$providerID);
+								$RecordNEW->bindParam(2,$Lacking);
+								$RecordNEW->bindParam(3,$date);
+								$RecordNEW->bindParam(4,$Month);
+								$RecordNEW->bindParam(5,$Year);
+								$RecordNEW->execute();
+
+								$checkInv = mysql_query("SELECT inventory.INV_ID, MIN(inventory.INV_ID) AS Minimum FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.MEDICINE_ID = '$Med_id'");
+								$checkID = mysql_fetch_array($checkInv);
+								$RetrieveCheckID = $checkID['Minimum'];
+
+								$checkAdjust = mysql_query("SELECT ADJ_ID, QUANTITY FROM adjustments WHERE INV_ID = '$RetrieveCheckID'");
+								$AdjustCount = mysql_num_rows($checkAdjust);
+								$AdjustResults = mysql_fetch_array($checkAdjust);
+								$AdjustID = $AdjustResults['ADJ_ID'];
+								$AdjustQuantity = $AdjustResults['QUANTITY'];
+								$AdjustNewQuantity = $AdjustQuantity - $Lacking;
+
+								$updateAdjustments = $db->prepare("Update adjustments set QUANTITY = ? where ADJ_ID=?");
+								$updateAdjustments->bindParam(1,$AdjustNewQuantity);
+								$updateAdjustments->bindParam(2,$AdjustID);
+								$updateAdjustments->execute();
+
+							return $Lack;
+							}
+							}else{
+								echo "Out";
+							}
+						}return $Lack;
+					}else{
+						//no action
 					}
-					else if($DisQty >= $sub_qty){
+
+				}else if($DisQty >= $sub_qty){
 						$DisResult = $DisQty - $sub_qty;
 					
 							$ResultDis = $db->prepare("update inventory set INV_QTY=? where INV_ID=?");
 							$ResultDis->bindParam(1,$DisResult);
-							$ResultDis->bindParam(2,$inv_id);
+							$ResultDis->bindParam(2,$DisID);
 							$ResultDis->execute();
 
 							$RecordDis = $db->prepare("insert into dispense values('',?,?,?,?,?)");
-							$RecordDis->bindParam(1,$inv_id);
+							$RecordDis->bindParam(1,$DisID);
 							$RecordDis->bindParam(2,$sub_qty);
 							$RecordDis->bindParam(3,$date);
 							$RecordDis->bindParam(4,$Month);
 							$RecordDis->bindParam(5,$Year);
 							$RecordDis->execute();
+
+							$checkInv = mysql_query("SELECT inventory.INV_ID, MIN(inventory.INV_ID) AS Minimum FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.MEDICINE_ID = '$Med_id'");
+								$checkID = mysql_fetch_array($checkInv);
+								$RetrieveCheckID = $checkID['Minimum'];
+
+								$checkAdjust = mysql_query("SELECT ADJ_ID, QUANTITY FROM adjustments WHERE INV_ID = '$RetrieveCheckID'");
+								$AdjustCount = mysql_num_rows($checkAdjust);
+								$AdjustResults = mysql_fetch_array($checkAdjust);
+								$AdjustID = $AdjustResults['ADJ_ID'];
+								$AdjustQuantity = $AdjustResults['QUANTITY'];
+								$AdjustNewQuantity = $AdjustQuantity - $sub_qty;
+
+								$updateAdjustments = $db->prepare("Update adjustments set QUANTITY = ? where ADJ_ID=?");
+								$updateAdjustments->bindParam(1,$AdjustNewQuantity);
+								$updateAdjustments->bindParam(2,$AdjustID);
+								$updateAdjustments->execute();
 					}
-			}else{
-				echo "Expired";
-			}
+		}else{
+			echo "Nomed";
+		}
 
 }
 else if($page == 'Addlabrequest'){

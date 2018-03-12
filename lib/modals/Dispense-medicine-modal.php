@@ -45,7 +45,7 @@
 			<span id="Warning_Message-Dis-<?php echo $row['INV_ID'] ?>" style="float: left; font-weight: bold;" class="text-warning"></span>
 			<span id="Success_Message-Dis-<?php echo $row['INV_ID'] ?>" style="float: left; font-weight: bold;" class="text-success"></span>
 			<a data-dismiss="modal" class="btn btn-shadow btn-default" type="button">Cancel</a>
-			<a class="btn btn-shadow btn-success" type="submit" onclick="DispenseMed(<?php echo $row['INV_ID'] ?>)"><i class="icon-minus"></i> Dispense</a>
+			<a class="btn btn-shadow btn-success" type="submit" onclick="DispenseMed(<?php echo $row['MEDICINE_ID']; ?>,<?php echo $row['INV_ID']; ?>)"><i class="icon-minus"></i> Dispense</a>
 		</div>
 		</div>
 	</div>

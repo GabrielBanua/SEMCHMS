@@ -224,8 +224,9 @@
 							});
 							}
                     }
-					function DispenseMed(str){
+					function DispenseMed(MID, str){
 						var id = str;
+						var MED = MID;
 						var Dispense_Qty = $('#INV_QTY-'+id).val();
 						if(Dispense_Qty == ''){
 							$('#Error_Message-Dis-'+id).html('Please input quantity');
@@ -234,12 +235,12 @@
 						$.ajax({
 							type: "POST",
 							url: "Server2.php?p=DispenseMedicine",
-							data: "INV_ID="+id+"&DES_QTY="+Dispense_Qty,
+							data: "INV_ID="+id+"&DES_QTY="+Dispense_Qty+"&MED_ID="+MED,
 							success: function(data){
-								if(data == 'Expired'){
-									$('#Warning_Message-Dis-'+id).html('This medicine is expired!')
+								if(data == 'Nomed'){
+									$('#Warning_Message-Dis-'+id).html('No stocks available')
 								}else{
-									if(data != ''){
+									if(data == 'Out'){
 										$('#Warning_Message-Dis-'+id).html('Insufficient supply, only '+data+' is Subtracted')
 									setTimeout(function() {
 										$('#Success_Message-Dis-'+id).fadeOut('slow');
