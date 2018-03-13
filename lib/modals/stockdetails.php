@@ -8,7 +8,7 @@
 			</div>
 		<div class="modal-body">
 			<div class="adv-table">
-				<table class="display table table-bordered table-striped stock-<?php echo $row['MEDICINE_ID']; ?>">
+				<table class="table table-striped table-advance table-hover example-<?php echo $row['MEDICINE_ID']; ?>">
 				  <thead>
 				  <tr>
 					  <th style="text-align:center;" width="15%">Date Arrived</th>
@@ -40,9 +40,8 @@ while($FETCH_INV = mysql_fetch_array($INV_FETCH)){
 						<td style="text-align:center;" width="15%"><?php $Qty = $FETCH_INV['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($FETCH_INV['INV_EXPD'] <= $DateToday || $FETCH_INV['INV_EXPD'] == $DateToday){echo "<span class='label label-info label-mini'>Expired</span>";}else{if($FETCH_INV['INV_QTY'] < $FETCH_INV['ReOrder']){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else if($FETCH_INV['INV_QTY'] > $QtyStatus || $FETCH_INV['INV_QTY'] == $FETCH_INV['INV_QTY_HIST']){ echo "<span class='label label-primary label-mini'>Full</span>";}else if($FETCH_INV['INV_QTY'] >= $Qty && $FETCH_INV['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($FETCH_INV['INV_QTY'] < $Qty && $FETCH_INV['INV_QTY'] > $FETCH_INV['ReOrder']){ echo "<span class='label label-warning label-mini'>Low</span>";}} ?></td>
 						<td style="text-align:center;" width="10%">
 						<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" onclick="RetrieveInventory(<?php echo $FETCH_INV['INV_ID'] ?>)" data-target="#EditInv-<?php echo $FETCH_INV['INV_ID'] ?>"><span class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit Inventory"><i class="icon-pencil"></i></span></a>
-
 <?php
-include 'lib/modals/Edit-inventory-modal.php';
+require 'lib/modals/Edit-inventory-modal.php';
 ?>
 						</td>
 					  </tr>

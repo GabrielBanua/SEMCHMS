@@ -238,7 +238,7 @@ $stmt->execute();
 													?>
 <script type="text/javascript" charset="utf-8">
 function loadthis(tr){
-    $('.stock-'+tr).dataTable( {
+    $('.example-'+tr).dataTable( {
         bRetrieve: true,
         bDestroy: true,
         searchDelay: 1,
