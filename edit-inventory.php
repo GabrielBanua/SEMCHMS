@@ -29,13 +29,13 @@ if(isset($_POST['Inv_filter'])){
                 $stmt->execute();
         }
         else if($filtering == 'All'){
-            $stmt = $db->prepare("SELECT * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
+            $stmt = $db->prepare("SELECT * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID");
             $stmt->execute();
     }
         
 }else{
     $DateToday = date('Y-m-d');
-    $stmt = $db->prepare("SELECT * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
+    $stmt = $db->prepare("SELECT * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID");
             $stmt->execute();
 }
 ?>
@@ -227,7 +227,7 @@ if(isset($_POST['Inv_filter'])){
 										include 'lib/modals/Add-inventory-modal.php';
 										?>
                                         <div class="col-lg-2 pull-right">
-                                        <form id="Filtered" action="view-inventory.php" method="POST">
+                                        <form id="Filtered" action="edit-inventory.php" method="POST">
                                         <select id="Inv_filter" name="Inv_filter" class="form-control" onchange="this.form.submit()">
                                             <option>All</option>
                                             <option value="Expired" <?php
@@ -264,27 +264,24 @@ if(isset($_POST['Inv_filter'])){
 										while($row = $stmt->fetch()){
 										?>                               
 												<tr class="gradeX">
-													<td><?php echo $row['INV_DATE_ARV'] ?></td>
-													<td><?php echo $row['MEDICINE_CAT'] ?></td>
-													<td><?php echo $row['MEDICINE_TYPE'] ?></td>
-													<td><?php echo $row['MEDICINE_GNAME'] ?></td>
-													<td><?php echo $row['MEDICINE_BNAME'] ?></td>
-													<td><?php echo $row['MEDICINE_DFORM'] ?></td>
-													<td><?php echo $row['MEDICINE_DOSE'] ?></td>
-													<td><?php echo $row['INV_EXPD'] ?></td>
+													<td style="text-align:center;"><?php echo $row['INV_DATE_ARV'] ?></td>
+													<td style="text-align:center;"><?php echo $row['MEDICINE_CAT'] ?></td>
+													<td style="text-align:center;"><?php echo $row['MEDICINE_TYPE'] ?></td>
+													<td style="text-align:center;"><?php echo $row['MEDICINE_GNAME'] ?></td>
+													<td style="text-align:center;"><?php echo $row['MEDICINE_BNAME'] ?></td>
+													<td style="text-align:center;"><?php echo $row['MEDICINE_DFORM'] ?></td>
+													<td style="text-align:center;"><?php echo $row['MEDICINE_DOSE'] ?></td>
+													<td style="text-align:center;"><?php echo $row['INV_EXPD'] ?></td>
 													<td style="text-align:center;"><?php echo $row['INV_QTY'];echo " | "; echo $row['INV_QTY_HIST']; ?></td>
 													<td style="text-align:center;"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; 
-													if($row['INV_EXPD'] <= $DateToday || $row['INV_EXPD'] == $DateToday){echo "<span class='label label-info label-mini'>Expired</span>";}else{
-                                                        if($row['INV_QTY'] < $row['ReOrder']){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else if($row['INV_QTY'] > $QtyStatus || $row['INV_QTY'] == $row['INV_QTY_HIST']){ echo "<span class='label label-primary label-mini'>Full</span>";}
+													if($row['INV_EXPD'] <= $DateToday || $row['INV_EXPD'] == $DateToday){echo "<span class='label label-info label-mini'>Expired</span>";}else{if($row['INV_QTY'] ==  '0'){ echo "<span class='label label-default label-mini'>Depleted</span>";}
+                                                        else if($row['INV_QTY'] > '0' && $row['INV_QTY'] < $row['ReOrder']){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else if($row['INV_QTY'] > $QtyStatus || $row['INV_QTY'] == $row['INV_QTY_HIST']){ echo "<span class='label label-primary label-mini'>Full</span>";}
                                                         else if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty -1 && $row['INV_QTY'] > $row['ReOrder']){ echo "<span class='label label-warning label-mini'>Low</span>";
                                                         }} ?></td>
-													<td>
+													<td style="text-align:center;">
 														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" onclick="RetrieveInventory(<?php echo $row['INV_ID'] ?>)" data-target="#EditInv-<?php echo $row['INV_ID'] ?>"><span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit Inventory"><i class="icon-pencil"></i> Edit</span></a>
-														
-														
-														
+															
 													<?php
-													include 'lib/modals/Dispense-medicine-modal.php';
 													include 'lib/modals/Edit-inventory-modal.php';
 													?>
 													</td>

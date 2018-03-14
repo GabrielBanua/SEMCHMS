@@ -237,11 +237,12 @@
 							url: "Server2.php?p=DispenseMedicine",
 							data: "INV_ID="+id+"&DES_QTY="+Dispense_Qty+"&MED_ID="+MED,
 							success: function(data){
+								alert(data);
 								if(data == 'Nomed'){
 									$('#Warning_Message-Dis-'+id).html('No stocks available')
 								}else{
-									if(data == 'Out'){
-										$('#Warning_Message-Dis-'+id).html('Insufficient supply, only '+data+' is Subtracted')
+									if(data == 'Depleted'){
+										$('#Warning_Message-Dis-'+id).html('Insufficient supply of this medicine!')
 									setTimeout(function() {
 										$('#Success_Message-Dis-'+id).fadeOut('slow');
 										}, 1000);
@@ -505,8 +506,10 @@
 								$('#INV_MEDICINE_DS-'+DFORM_ID).html('<option><option>');
 							}
 					}
-					function EditInventory(Inv_id){
+					function EditInventory(Inv_id, med_id, oldQty){
 						var INV_ID = Inv_id;
+						var MED_ID = med_id;
+						var OLDQTY = oldQty;
 						var MedDform = $('#INV_MEDICINE_DF-'+INV_ID).val();
 						var MedCat = $('#INV_MEDICINE_CAT-'+INV_ID).val();
 						var Medtype = $('#INV_MEDICINE_TYPE-'+INV_ID).val();
@@ -527,7 +530,7 @@
 							$.ajax({
 								type: "POST",
 								url: "Server2.php?p=EditInventory",
-								data: "MEDICINE_DFORM="+MedDform+"&MEDICINE_DOSE="+MedDose+"&MEDICINE_BNAME="+MedBname+"&MEDICINE_GNAME="+MedGname+"&MEDICINE_TYPE="+Medtype+"&MEDICINE_CAT="+MedCat+"&SUPPLIER="+Supplier+"&DATEARR="+DateArr+"&QTY="+Qty+"&EXPDATE="+ExpDate+"&INV_ID="+INV_ID,
+								data: "MEDICINE_DFORM="+MedDform+"&MEDICINE_DOSE="+MedDose+"&MEDICINE_BNAME="+MedBname+"&MEDICINE_GNAME="+MedGname+"&MEDICINE_TYPE="+Medtype+"&MEDICINE_CAT="+MedCat+"&SUPPLIER="+Supplier+"&DATEARR="+DateArr+"&QTY="+Qty+"&EXPDATE="+ExpDate+"&INV_ID="+INV_ID+"&MED_ID="+MED_ID+"&OLD_QTY="+OLDQTY,
 								success: function(data){
 									$('#Success_Message_EINV-'+INV_ID).html('Successfully updated! &nbsp;');
 									setTimeout(function() {

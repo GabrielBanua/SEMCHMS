@@ -19,7 +19,6 @@
 						<th style="text-align:center;" width="15%">Expiry Date</th>
 						<th style="text-align:center;" width="18%">Quantity</th>
 						<th style="text-align:center;" width="15%">Status</th>
-						<th style="text-align:center;" width="10%">Action</th>
 				  </tr>
 				  </thead>
 				  <tbody>
@@ -31,19 +30,13 @@ while($FETCH_INV = mysql_fetch_array($INV_FETCH)){
 ?>
 					  <tr class="gradeX">
 						<td style="text-align:center;" width="15%"><?php echo $FETCH_INV['INV_DATE_ARV'] ?></td>
-						<td style="text-align:center;" width="20%"><?php echo $FETCH_INV['MEDICINE_GNAME'] ?></td>
-						<td style="text-align:center;" width="20%"><?php echo $FETCH_INV['MEDICINE_BNAME'] ?></td>
+						<td style="text-align:center;" width="18%"><?php echo $FETCH_INV['MEDICINE_GNAME'] ?></td>
+						<td style="text-align:center;" width="18%"><?php echo $FETCH_INV['MEDICINE_BNAME'] ?></td>
 						<td style="text-align:center;" width="10%"><?php echo $FETCH_INV['MEDICINE_DFORM'] ?></td>
-						<td style="text-align:center;" width="10%"><?php echo $FETCH_INV['MEDICINE_DOSE'] ?></td>
+						<td style="text-align:center;" width="12%"><?php echo $FETCH_INV['MEDICINE_DOSE'] ?></td>
 						<td style="text-align:center;" width="15%"><?php echo $FETCH_INV['INV_EXPD'] ?></td>
-						<td style="text-align:center;" width="18%"><?php echo $FETCH_INV['INV_QTY']; echo " | "; echo $FETCH_INV['INV_QTY_HIST'];?></td>
-						<td style="text-align:center;" width="15%"><?php $Qty = $FETCH_INV['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($FETCH_INV['INV_EXPD'] <= $DateToday || $FETCH_INV['INV_EXPD'] == $DateToday){echo "<span class='label label-info label-mini'>Expired</span>";}else{if($FETCH_INV['INV_QTY'] < $FETCH_INV['ReOrder']){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else if($FETCH_INV['INV_QTY'] > $QtyStatus || $FETCH_INV['INV_QTY'] == $FETCH_INV['INV_QTY_HIST']){ echo "<span class='label label-primary label-mini'>Full</span>";}else if($FETCH_INV['INV_QTY'] >= $Qty && $FETCH_INV['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($FETCH_INV['INV_QTY'] < $Qty && $FETCH_INV['INV_QTY'] > $FETCH_INV['ReOrder']){ echo "<span class='label label-warning label-mini'>Low</span>";}} ?></td>
-						<td style="text-align:center;" width="10%">
-						<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" onclick="RetrieveInventory(<?php echo $FETCH_INV['INV_ID'] ?>)" data-target="#EditInv-<?php echo $FETCH_INV['INV_ID'] ?>"><span class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit Inventory"><i class="icon-pencil"></i></span></a>
-<?php
-require 'lib/modals/Edit-inventory-modal.php';
-?>
-						</td>
+						<td style="text-align:center;" width="25%"><?php echo $FETCH_INV['INV_QTY']; echo " | "; echo $FETCH_INV['INV_QTY_HIST'];?></td>
+						<td style="text-align:center;" width="15%"><?php $Qty = $FETCH_INV['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; if($FETCH_INV['INV_EXPD'] <= $DateToday || $FETCH_INV['INV_EXPD'] == $DateToday){echo "<span class='label label-info label-mini'>Expired</span>";}else{if($FETCH_INV['INV_QTY'] ==  '0'){ echo "<span class='label label-default label-mini'>Depleted</span>";}else if($FETCH_INV['INV_QTY'] > '0' && $FETCH_INV['INV_QTY'] < $FETCH_INV['ReOrder']){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else if($FETCH_INV['INV_QTY'] > $QtyStatus || $FETCH_INV['INV_QTY'] == $FETCH_INV['INV_QTY_HIST']){ echo "<span class='label label-primary label-mini'>Full</span>";}else if($FETCH_INV['INV_QTY'] >= $Qty && $FETCH_INV['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($FETCH_INV['INV_QTY'] < $Qty && $FETCH_INV['INV_QTY'] > $FETCH_INV['ReOrder']){ echo "<span class='label label-warning label-mini'>Low</span>";}} ?></td>
 					  </tr>
 <?php
 }

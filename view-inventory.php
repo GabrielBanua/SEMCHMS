@@ -227,7 +227,7 @@ $stmt->execute();
 													<td style="text-align:center;"><?php echo $row['QUANTITY'];?></td>
 													<td style="text-align:center;"><?php  
 													if($row['EXP'] <= $DateToday || $row['EXP'] == $DateToday){echo "<span class='label label-info label-mini'>Expired</span>";}else
-                                                        if($row['QUANTITY'] < $row['ReOrder']){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else{ echo "<span class='label label-success label-mini'>Available</span>";}
+                                                        if($row['QUANTITY'] > '0' && $row['QUANTITY'] < $row['ReOrder']){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else if($row['QUANTITY'] == '0'){ echo "<span class='label label-default label-mini'>Depleted</span>";}else{ echo "<span class='label label-success label-mini'>Available</span>";}
                                                         ?>
                                                     </td>
 													<td style="text-align:center;">
