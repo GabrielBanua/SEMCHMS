@@ -4,11 +4,40 @@ require 'lib/Db.config.php';
 require 'lib/Db.config.pdo.php';
 date_default_timezone_set('Asia/Manila');
 
-
-$DateToday = date('Y-m-d');
-$stmt = $db->prepare("SELECT *, @MED:=inventory.MEDICINE_ID AS MED_ID, @RES:=(SELECT MAX(inventory.INV_EXPD) AS MAXD FROM inventory WHERE inventory.MEDICINE_ID = @MED) AS EXP FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID =medicine.MEDICINE_ID INNER JOIN adjustments ON inventory.INV_ID = adjustments.INV_ID GROUP BY inventory.INV_ID");
-$stmt->execute();
-
+if(isset($_POST['Inv_filter'])){
+    $filtering = $_POST['Inv_filter'];
+    $DateToday = date('Y-m-d');
+        
+        if($filtering == 'Expired'){
+            $stmt = $db->prepare("Select * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE (inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday')");
+            $stmt->execute();
+        }
+        else if($filtering == 'Re-order'){
+                $stmt = $db->prepare("SELECT * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0' AND inventory.INV_QTY < medicine.ReOrder AND NOT(inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday')");
+                $stmt->execute();
+        }
+        else if($filtering == 'Full'){
+                $stmt = $db->prepare("SELECT *, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AND NOT(inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday') AND NOT(inventory.INV_QTY < medicine.ReOrder)");
+                $stmt->execute();
+        }
+        else if($filtering == 'Average'){
+                $stmt = $db->prepare("SELECT *, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY BETWEEN (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AND (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AND NOT(inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday') AND NOT(inventory.INV_QTY < medicine.ReOrder)");
+                $stmt->execute();
+        }
+        else if($filtering == 'Low'){
+                $stmt = $db->prepare("SELECT *, (SELECT @QTY:= FORMAT(inventory.INV_QTY_HIST / 2, 0)) AS QTY, (SELECT @QTYS:=FORMAT(inventory.INV_QTY_HIST / 2 + inventory.INV_QTY_HIST / 4,0)) AS QTYS FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY BETWEEN medicine.ReOrder AND (SELECT @QTY:= FORMAT((inventory.INV_QTY_HIST / 2)-1, 0)) AND NOT(inventory.INV_EXPD <= '$DateToday' OR inventory.INV_EXPD = '$DateToday') AND NOT(inventory.INV_QTY < medicine.ReOrder)");
+                $stmt->execute();
+        }
+        else if($filtering == 'All'){
+            $stmt = $db->prepare("SELECT * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
+            $stmt->execute();
+    }
+        
+}else{
+    $DateToday = date('Y-m-d');
+    $stmt = $db->prepare("SELECT * FROM inventory INNER JOIN medicine ON inventory.MEDICINE_ID = medicine.MEDICINE_ID WHERE inventory.INV_QTY > '0'");
+            $stmt->execute();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -193,13 +222,31 @@ $stmt->execute();
                                   <div id="inventorytab" class="tab-pane active">
                                       <div class="adv-table">
 										<a class="btn btn-shadow btn-success" data-toggle="modal" data-target="#AddInventory"><i class="icon-plus"></i> Add Stocks</a>
-										<a class="btn btn-shadow btn-success" href="edit-inventory.php"><i class="icon-pencil"></i> Edit Stock</a>
+										<a class="btn btn-shadow btn-success" href="view-inventory.php"><i class="icon-arrow-left"></i> Back</a>
 										<?php
 										include 'lib/modals/Add-inventory-modal.php';
 										?>
+                                        <div class="col-lg-2 pull-right">
+                                        <form id="Filtered" action="view-inventory.php" method="POST">
+                                        <select id="Inv_filter" name="Inv_filter" class="form-control" onchange="this.form.submit()">
+                                            <option>All</option>
+                                            <option value="Expired" <?php
+                                            if ($filtering == "Expired") { echo " selected"; }?>>Expired</option>
+                                            <option value="Low" <?php
+                                            if ($filtering == "Low") { echo " selected"; }?>>Low</option>
+                                            <option value="Average" <?php
+                                            if ($filtering == "Average") { echo " selected"; }?>>Average</option>
+                                            <option value="Full" <?php
+                                            if ($filtering == "Full") { echo " selected"; }?>>Full</option>
+                                            <option value="Re-order" <?php
+                                            if ($filtering == "Re-order") { echo " selected"; }?>>Re-order</option>
+                                        </select>
+                                        </form>
+                                    </div>
 										<table  class="table table-striped table-advance table-hover" id="example">
 											<thead>
 												<tr>
+													<th style="text-align:center;" width="120">Date Arrived</th>
 													<th style="text-align:center;" width="70">Category</th>
 													<th style="text-align:center;" width="80">Type</th>
 													<th style="text-align:center;" width="120">Generic Name</th>
@@ -215,39 +262,31 @@ $stmt->execute();
 											<tbody>
 										<?php
 										while($row = $stmt->fetch()){
-                                            ?>                               
+										?>                               
 												<tr class="gradeX">
-													<td style="text-align:center;"><?php echo $row['MEDICINE_CAT'] ?></td>
-													<td style="text-align:center;"><?php echo $row['MEDICINE_TYPE'] ?></td>
-													<td style="text-align:center;"><?php echo $row['MEDICINE_GNAME'] ?></td>
-													<td style="text-align:center;"><?php echo $row['MEDICINE_BNAME'] ?></td>
-													<td style="text-align:center;"><?php echo $row['MEDICINE_DFORM'] ?></td>
-													<td style="text-align:center;"><?php echo $row['MEDICINE_DOSE'] ?></td>
-													<td style="text-align:center;"><?php echo $row['EXP'] ?></td>
-													<td style="text-align:center;"><?php echo $row['QUANTITY'];?></td>
-													<td style="text-align:center;"><?php  
-													if($row['EXP'] <= $DateToday || $row['EXP'] == $DateToday){echo "<span class='label label-info label-mini'>Expired</span>";}else
-                                                        if($row['QUANTITY'] < $row['ReOrder']){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else{ echo "<span class='label label-success label-mini'>Available</span>";}
-                                                        ?>
-                                                    </td>
-													<td style="text-align:center;">
-														<a class="btn btn-shadow btn-warning btn-xs" data-toggle="modal" data-target="#DispenseMed-<?php echo $row['INV_ID'] ?>"><span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Dispense Medicines"><i class="icon-minus"></i></span></a>
-														<a class="btn btn-shadow btn-success btn-xs" onclick="loadthis(<?php echo $row['MEDICINE_ID']; ?>)" data-toggle="modal" data-target="#stockdetails-<?php echo $row['MEDICINE_ID'];?>"><span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Stock Details"><i class="icon-list"></i></span></a>
+													<td><?php echo $row['INV_DATE_ARV'] ?></td>
+													<td><?php echo $row['MEDICINE_CAT'] ?></td>
+													<td><?php echo $row['MEDICINE_TYPE'] ?></td>
+													<td><?php echo $row['MEDICINE_GNAME'] ?></td>
+													<td><?php echo $row['MEDICINE_BNAME'] ?></td>
+													<td><?php echo $row['MEDICINE_DFORM'] ?></td>
+													<td><?php echo $row['MEDICINE_DOSE'] ?></td>
+													<td><?php echo $row['INV_EXPD'] ?></td>
+													<td style="text-align:center;"><?php echo $row['INV_QTY'];echo " | "; echo $row['INV_QTY_HIST']; ?></td>
+													<td style="text-align:center;"><?php $Qty = $row['INV_QTY_HIST'] / '2'; $QtyInitial = $Qty / '2'; $QtyStatus = $Qty + $QtyInitial; 
+													if($row['INV_EXPD'] <= $DateToday || $row['INV_EXPD'] == $DateToday){echo "<span class='label label-info label-mini'>Expired</span>";}else{
+                                                        if($row['INV_QTY'] < $row['ReOrder']){ echo "<span class='label label-danger label-mini'>Re-order</span>";}else if($row['INV_QTY'] > $QtyStatus || $row['INV_QTY'] == $row['INV_QTY_HIST']){ echo "<span class='label label-primary label-mini'>Full</span>";}
+                                                        else if($row['INV_QTY'] >= $Qty && $row['INV_QTY'] <= $QtyStatus){ echo "<span class='label label-success label-mini'>Average</span>";}else if($row['INV_QTY'] < $Qty -1 && $row['INV_QTY'] > $row['ReOrder']){ echo "<span class='label label-warning label-mini'>Low</span>";
+                                                        }} ?></td>
+													<td>
+														<a class="btn btn-shadow btn-primary btn-xs" data-toggle="modal" onclick="RetrieveInventory(<?php echo $row['INV_ID'] ?>)" data-target="#EditInv-<?php echo $row['INV_ID'] ?>"><span  class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit Inventory"><i class="icon-pencil"></i> Edit</span></a>
+														
+														
+														
 													<?php
 													include 'lib/modals/Dispense-medicine-modal.php';
-													include 'lib/modals/stockdetails.php';
-																										?>
-													<script type="text/javascript" charset="utf-8">
-													function loadthis(tr){
-														$('.example-'+tr).dataTable( {
-															bRetrieve: true,
-															bDestroy: true,
-															searchDelay: 1,
-															stateSave: true,
-															aaSorting: [[0, 'asc']]  
-														  } );
-													}
-													</script>
+													include 'lib/modals/Edit-inventory-modal.php';
+													?>
 													</td>
 												</tr>
 												<?php
@@ -327,6 +366,7 @@ $stmt->execute();
 <!--footer end-->
 </section>
 
+    
   	<!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
 	<script type="text/javascript" src="assets/select2/js/select2.min.js"></script>
