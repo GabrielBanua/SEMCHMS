@@ -631,6 +631,28 @@ else if($page == 'EditInventory'){
 						$updateThisAdjustments->bindParam(2,$AdjustID);
 						$updateThisAdjustments->execute();
 				}
+//not sure here
+				if($INV_ID != $RetrieveCheckID){
+						$checkAdjustDel = mysql_query("SELECT ADJ_ID, QUANTITY FROM adjustments WHERE INV_ID = '$INV_ID'");
+						$AdjustCountD = mysql_num_rows($checkAdjustDel);
+						$AdjustResultsD = mysql_fetch_array($checkAdjustDel);
+						$AdjustIDD = $AdjustResultsD['ADJ_ID'];
+						$AdjustQuantityD = $AdjustResultsD['QUANTITY'];
+
+						if($AdjustCountD > 0){
+							$NewQtyToAdd = $Qty + $AdjustQuantity;
+
+							$updateThisAdjustments = $db->prepare("Update adjustments set QUANTITY=? where ADJ_ID=?");
+								$updateThisAdjustments->bindParam(1,$NewQtyToAdd);
+								$updateThisAdjustments->bindParam(2,$AdjustID);
+								$updateThisAdjustments->execute();
+
+							$sql = "DELETE FROM adjustments WHERE ADJ_ID = $AdjustIDD";
+							$stmt = $db->prepare($sql);
+							$stmt -> execute();
+						}
+				}
+//End of not sure
 		}
 	}
 	else if($page == 'DeleteMedicine'){
